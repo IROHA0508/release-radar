@@ -49,7 +49,8 @@
     "ChatGPT Plus, Pro, Business, Enterprise (순차 배포). Pro, Business, Enterprise는 GPT-6 Astra Pro도 사용 가능",
     "Enterprise는 관리자가 워크스페이스에서 켜야 합니다(출시 시 기본 꺼짐)",
     "API 모델명: gpt-6-astra (Microsoft Azure, AWS Bedrock에서도 제공)",
-    "구독 사용량 안에 포함되며, 추가 사용량은 크레딧으로 구매 가능"
+    "구독 사용량 안에 포함되며, 추가 사용량은 크레딧으로 구매 가능",
+    "9월 29일 DevDay에서 GPT-6 Astra Ultrafast 출시: Codex에서 최대 8배(초당 300토큰), API에서 최대 6배 빠른 생성. API와 ChatGPT Work·Codex의 Pro 500, Enterprise 플랜"
   ],
   "tips": [
     {
@@ -105,6 +106,10 @@
     {
       "title": "GPT-6 Astra 시스템 카드",
       "url": "https://deploymentsafety.openai.com/gpt-6-astra"
+    },
+    {
+      "title": "DevDay 2026 Recap (OpenAI)",
+      "url": "https://openai.com/index/devday-2026-recap/"
     }
   ],
   "chartSource": "OpenAI GPT-6 Astra 발표문의 비교표 기준이며, 각 모델이 어떤 effort에서든 낸 최고 점수입니다. Claude 점수 일부는 OpenAI가 직접 측정했습니다.",

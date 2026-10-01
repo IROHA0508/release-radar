@@ -49,13 +49,15 @@
     "Extended Thinking은 추론과 말하기를 동시에 합니다. '확인해 볼게요' 같은 말로 먼저 반응하고, 여러 단계의 백그라운드 작업 진행 상황을 말로 중계합니다.",
     "도구와 API 호출을 백그라운드에서 실행하는 동안에도 대화를 이어 갑니다.",
     "카메라·화면 같은 시각 입력을 거의 실시간으로 처리해 대화 맥락에 반영합니다.",
-    "생성된 모든 오디오에는 SynthID 워터마크가 들어갑니다."
+    "생성된 모든 오디오에는 SynthID 워터마크가 들어갑니다.",
+    "9월 24일 Live Avatar가 추가됐습니다. 실시간 대화에 저지연 영상 아바타를 붙여 97개 언어로 입 모양과 표정을 맞추고, 오디오·영상 모두에 SynthID 워터마크가 들어갑니다."
   ],
   "availability": [
     "개발자: Gemini API의 Live API, Google AI Studio",
     "기업: Gemini Enterprise 비공개 프리뷰 (Customer Experience 제품군은 곧 제공)",
     "3.8 Live: 검색의 Search Live",
-    "Extended Thinking: Gemini Live, Workspace의 Docs(Google AI Pro·Ultra), Gmail·Keep(모든 Google AI 구독자)"
+    "Extended Thinking: Gemini Live, Workspace의 Docs(Google AI Pro·Ultra), Gmail·Keep(모든 Google AI 구독자)",
+    "Live Avatar: Gemini Enterprise에서 사용 가능. 참조 이미지로 만드는 맞춤 아바타는 기업 허용 목록(allowlist)으로만 제공"
   ],
   "tips": [
     {
@@ -97,6 +99,10 @@
     {
       "title": "Gemini Live API 문서",
       "url": "https://ai.google.dev/gemini-api/docs/live-api"
+    },
+    {
+      "title": "Introducing Gemini 3.8 Live with Live Avatar (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-with-live-avatar/"
     },
     {
       "title": "Gemini 3.8 Live 평가 문서 (Google DeepMind, PDF)",
