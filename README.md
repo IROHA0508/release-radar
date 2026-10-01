@@ -1,5 +1,7 @@
 # 릴리스 레이더
 
+**사이트: https://release-radar-ten.vercel.app**
+
 ChatGPT(OpenAI), Claude(Anthropic), Gemini(Google)의 공식 발표를 뉴스별로 한국어로 요약하는 정적 웹사이트입니다. 소식마다 핵심 수치, 성능 그래프, 모델 사양, 활용 팁, 추천 프롬프트, 공식 출처를 정리하고, 세 회사의 프롬프트 가이드와 API 가격표를 함께 제공합니다.
 
 ## 구조
@@ -28,7 +30,9 @@ python3 -m http.server 8000
 1. https://vercel.com 에 GitHub 계정으로 로그인합니다(Hobby 플랜 무료).
 2. **Add New → Project**에서 이 저장소(`release-radar`)를 **Import**합니다.
 3. Framework Preset은 **Other**, Build Command와 Output Directory는 비워 둡니다.
-4. **Deploy**를 누르면 `https://release-radar-<무작위>.vercel.app` 같은 주소가 생깁니다. 프로젝트 Settings → Domains에서 이름을 바꾸거나 개인 도메인을 연결할 수 있습니다.
+4. **Deploy**를 누르면 공개 주소(Production 도메인)가 생깁니다. 이 저장소는 https://release-radar-ten.vercel.app 으로 배포되어 있습니다. 프로젝트 Settings → Domains에서 이름을 바꾸거나 개인 도메인을 연결할 수 있습니다.
+
+> 배포마다 생기는 `release-radar-<해시>-<팀>.vercel.app` 주소는 Vercel 보호 설정 때문에 로그인한 본인만 볼 수 있습니다. 공유할 때는 위 Production 도메인을 쓰세요.
 
 이후 `main` 브랜치에 커밋이 올라올 때마다 Vercel이 자동으로 다시 배포합니다.
 
