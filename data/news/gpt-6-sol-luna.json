@@ -1,0 +1,187 @@
+{
+  "id": "gpt-6-sol-luna",
+  "company": "openai",
+  "date": "2026-09-22",
+  "kind": "모델 출시",
+  "title": "GPT-6 Sol · GPT-6 Luna",
+  "headline": "Astra의 학습 방식을 더 빠르고 저렴한 두 모델로",
+  "tldr": "GPT-6 Astra와 비슷한 방법으로 학습한 두 모델입니다. Sol은 어려운 업무를 자주 돌리기 위한 중간 티어, Luna는 대량 처리용 경량 티어이며 API 가격은 GPT-5.6 대비 50% 내려갔습니다. Sol은 일주일 뒤 GPT-6.1 Sol로 업그레이드됐습니다.",
+  "models": [
+    {
+      "name": "GPT-6 Sol",
+      "apiId": "gpt-6-sol",
+      "input": "$2",
+      "output": "$10",
+      "cached": null
+    },
+    {
+      "name": "GPT-6 Luna",
+      "apiId": "gpt-6-luna",
+      "input": "$0.10",
+      "output": "$0.50",
+      "cached": "$0.01"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "AutomationBench (Sol, xhigh)",
+      "value": "33.2%",
+      "note": "과제당 $0.27, Claude Opus 5(max) 26.9%를 비용 9%로 앞섬"
+    },
+    {
+      "label": "DeepSWE v1.1",
+      "value": "Sol 68.8% · Luna 66.6%",
+      "note": "둘 다 max 강도"
+    },
+    {
+      "label": "OSWorld 2.0 오프라인 (Sol, xhigh)",
+      "value": "60.5%",
+      "note": "Opus 5 medium(60.3%)과 비슷한 점수를 약 80% 낮은 비용으로"
+    },
+    {
+      "label": "API 가격 인하",
+      "value": "50%",
+      "note": "GPT-5.6 프로모션 가격 대비"
+    }
+  ],
+  "changes": [
+    "API 가격이 절반으로 내려갔습니다. Sol은 $4→$2(입력) / $20→$10(출력), Luna는 $0.20→$0.10 / $1.20→$0.50입니다(1M 토큰당).",
+    "Agents' Last Exam(55개 세부 산업의 장기 전문 업무)에서 Sol(max)이 56.4%로 Claude Opus 5 최고점보다 높고 과제당 비용은 60% 낮습니다.",
+    "사실성 평가에서 Sol의 오류가 이전 모델의 약 절반으로 줄었고, Luna도 높은 강도에서 GPT-5.6 Sol과 비슷한 정확도를 약 1/100 비용으로 냅니다.",
+    "Astra의 대화 스타일을 이어받아 전문용어와 불필요한 디테일이 줄고 답변이 조금 짧아졌습니다.",
+    "프롬프트 캐싱 개선: 기본 캐시 적중률이 올라갔고 캐시 읽기는 90% 할인됩니다. 대화 중 추론 강도를 바꾸거나 도구를 켜고 꺼도 캐시가 유지되며, 명시적 브레이크포인트로 캐시할 접두부의 끝을 지정할 수 있습니다.",
+    "캐시 사용량을 보여주는 Prompt Caching Dashboard와, 캐시가 빗나간 이유를 알려주는 진단 도구가 추가됐습니다."
+  ],
+  "availability": [
+    "ChatGPT Work와 Codex: Plus, Pro, Business, Enterprise, Edu 사용자",
+    "Free·Go 사용자: 데스크톱 앱에서 GPT-6 Luna 사용 가능",
+    "일반 ChatGPT 채팅(Chat)에서는 아직 선택할 수 없습니다",
+    "API 모델명: gpt-6-sol, gpt-6-luna"
+  ],
+  "tips": [
+    {
+      "title": "티어 고르기",
+      "body": "OpenAI의 포지셔닝은 이렇습니다. 최고 결과가 필요하면 Astra, 어려운 일을 자주 반복하면 Sol, 빠르고 많은 처리는 Luna. 분류, 추출, 요약처럼 단순하고 양이 많은 작업은 Luna로 시작해 보세요."
+    },
+    {
+      "title": "어려운 단계에서만 추론 강도 올리기",
+      "body": "GPT-6 계열은 대화 중간에 reasoning effort를 바꿔도 앞선 컨텍스트 캐시가 깨지지 않습니다. 계획 단계는 높게, 단순 후속 질문은 낮게 두면 품질과 비용을 같이 챙길 수 있습니다."
+    },
+    {
+      "title": "캐시 대시보드로 비용 점검",
+      "body": "에이전트 비용이 예상보다 높다면 Prompt Caching Dashboard에서 캐시 비율을 보고, 진단 도구로 캐시가 빗나간 원인을 확인하세요. 매 요청마다 바뀌는 값(타임스탬프 등)이 프롬프트 앞부분에 있으면 캐시가 깨집니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Luna로 대량 분류",
+      "when": "고객 문의, 리뷰, 로그처럼 같은 판단을 수천 번 할 때 (Structured Outputs와 함께)",
+      "type": "prompt",
+      "text": "다음 고객 문의를 분류해.\n\n카테고리: 결제, 배송, 환불, 계정, 기타\n출력: JSON 한 줄 {\"category\": \"...\", \"urgency\": \"high|normal\", \"reason\": \"20자 이내\"}\n\n문의:\n[텍스트]"
+    },
+    {
+      "title": "Sol로 여러 앱 업무 자동화",
+      "when": "ChatGPT Work에서 앱 연결 후 반복 업무를 맡길 때",
+      "type": "prompt",
+      "text": "[앱 A]에서 지난주 신규 리드를 읽고, [앱 B]에 담당자별 할 일을 만들어줘.\n\n- 중복 리드는 합치고 합친 근거를 남겨\n- 생성이나 수정 같은 쓰기 작업 전에 변경 목록을 한 번 보여줘\n- 끝나면 만든 항목 수와 건너뛴 항목, 그 이유를 요약해"
+    }
+  ],
+  "cautions": [
+    "GPT-6 Sol은 9월 29일 GPT-6.1 Sol로 업그레이드됐습니다. 새로 시작한다면 gpt-6.1-sol을 먼저 검토하세요.",
+    "GPT-6.1 Sol 발표의 평가에서 Luna는 검색 도구 고장을 알리지 않은 비율이 28.7%였습니다. 도구 결과를 믿고 진행해야 하는 에이전트에는 Sol 이상이 안전합니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing GPT-6 Sol and Luna (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+    },
+    {
+      "title": "Prompt caching 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching"
+    }
+  ],
+  "chartSource": "OpenAI GPT-6 Sol·Luna 발표문 기준입니다. 괄호 안은 추론 강도입니다.",
+  "charts": [
+    {
+      "title": "AutomationBench",
+      "desc": "여러 앱을 오가는 업무 자동화",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Sol (xhigh)",
+          "value": 33.2,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1 (max)",
+          "value": 31.4
+        },
+        {
+          "label": "GPT-6 Astra (low)",
+          "value": 30.3
+        },
+        {
+          "label": "Claude Opus 5 (max)",
+          "value": 26.9
+        }
+      ],
+      "note": "Fable 5.1 점수는 Opus 5 폴백 포함"
+    },
+    {
+      "title": "AutomationBench 과제당 비용",
+      "desc": "GPT-6 Sol($0.27)을 1로 둔 배수",
+      "type": "bar",
+      "unit": "×",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "GPT-6 Sol (xhigh)",
+          "value": 1,
+          "highlight": true,
+          "display": "×1"
+        },
+        {
+          "label": "GPT-6 Astra (low)",
+          "value": 3.9,
+          "display": "×3.9"
+        },
+        {
+          "label": "Claude Fable 5.1 (max)",
+          "value": 8.9,
+          "display": "×8.9 이상"
+        },
+        {
+          "label": "Claude Opus 5 (max)",
+          "value": 11.1,
+          "display": "×11.1"
+        }
+      ],
+      "note": "Fable 5.1은 폴백 비용이 빠져 실제보다 낮게 표시됨"
+    },
+    {
+      "title": "DeepSWE v1.1",
+      "desc": "실제 코드베이스의 장기 엔지니어링",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5 (xhigh)",
+          "value": 69.9
+        },
+        {
+          "label": "GPT-6 Sol (max)",
+          "value": 68.8,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Luna (max)",
+          "value": 66.6,
+          "highlight": true
+        }
+      ]
+    }
+  ]
+}

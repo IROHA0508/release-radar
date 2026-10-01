@@ -1,0 +1,79 @@
+{
+  "updatedAt": "2026-10-02",
+  "common": [
+    { "title": "결과와 완료 기준을 먼저 쓰기", "body": "무엇을 만들지, 어디까지 하면 끝인지를 첫머리에 적으세요. OpenAI는 GPT-6 Astra가 첫 구현 뒤 일찍 멈추는 경향이 있다며 완료 기준을 미리 정하라고 했고, Anthropic은 '새로 온 유능한 동료가 읽어도 헷갈리지 않을 만큼' 구체적으로 쓰라고 권합니다." },
+    { "title": "긴 자료는 위에, 질문은 맨 아래에", "body": "Anthropic과 Google 모두 긴 문서와 데이터를 프롬프트 앞에 두고 질문과 지시를 끝에 두라고 권합니다. Anthropic 테스트에서는 이렇게만 해도 응답 품질이 최대 30% 좋아졌습니다." },
+    { "title": "구분자로 구조 잡기", "body": "지시, 자료, 예시, 출력 형식을 <context>, <task> 같은 XML 태그나 마크다운 제목으로 나누세요. 한 프롬프트 안에서는 한 가지 방식만 일관되게 씁니다(Google 권고)." },
+    { "title": "예시는 3~5개, 형식은 똑같이", "body": "예시는 형식과 톤을 맞추는 가장 확실한 방법입니다. Anthropic은 3~5개를 <example> 태그로 감싸라고 하고, Google은 예시의 줄바꿈, 태그, 구분자까지 통일하라고 합니다." },
+    { "title": "추론 강도(effort)는 낮게 시작", "body": "세 회사 모두 추론 강도를 조절할 수 있습니다. 최신 모델은 낮거나 중간 설정에서도 이전 세대의 최고 설정을 넘는 경우가 많으니, 기본값이나 그보다 낮게 시작해 부족할 때만 올리세요." },
+    { "title": "예전 모델용 과잉 지시 정리", "body": "'CRITICAL', '반드시' 같은 강한 표현이나 매번 테스트하라는 지시는 최신 모델에서 과한 도구 호출과 불필요한 검증을 부를 수 있습니다. 모델을 바꿀 때마다 시스템 프롬프트와 AGENTS.md를 다시 읽어 보세요(OpenAI·Anthropic 공통 권고)." }
+  ],
+  "vendors": [
+    {
+      "company": "openai",
+      "name": "OpenAI · GPT",
+      "summary": "GPT-6 세대는 스스로 검증하고 판단하는 폭이 넓어졌습니다. 지시를 늘리기보다 완료 기준과 경계를 명확히 하고, API는 Responses API의 기본 설정을 그대로 쓰는 것이 핵심입니다.",
+      "principles": [
+        { "title": "Responses API + 추론 유지 + 컴팩션", "body": "OpenAI는 레거시 Chat Completions 대신 Responses API를 쓰고, 이전 응답 ID로 추론을 이어 가며, 긴 작업은 잘라내기 대신 컴팩션을 쓰라고 권합니다. 이 설정만으로 ARC-AGI-3 점수가 약 3배가 됐습니다." },
+        { "title": "역할과 톤은 시스템 메시지, 과제는 사용자 메시지", "body": "전체 톤이나 역할 지침은 system(developer) 메시지에, 과제별 세부 내용과 예시는 user 메시지에 두라고 OpenAI 문서가 안내합니다." },
+        { "title": "완료 기준과 지속성을 명시", "body": "GPT-6 Astra는 첫 구현 뒤 검토를 받으러 일찍 돌아올 수 있습니다. '실행해 보고, 결과를 확인하고, 실패를 고칠 때까지'처럼 끝나는 조건을 넣고, 첫 구현 뒤 검토가 정말 필요한지도 다시 생각해 보세요." },
+        { "title": "AGENTS.md는 상황별로", "body": "'모든 수정 전에 문서 세 개를 읽어라' 대신 '스키마 변경 시 database.md를 보라'처럼 필요한 때만 참고하게 하세요. 테스트를 돌리라는 지시도 Astra에서는 과잉 검증을 부를 수 있습니다." },
+        { "title": "스킬 설명은 짧게, 루트 문서는 라우터로", "body": "스킬 설명에는 '언제 쓰는지'만 좁게 적고, 워크플로가 여럿인 스킬은 루트 문서가 하위 문서와 스크립트를 안내만 하게 하세요(점진적 공개)." },
+        { "title": "프롬프트는 코드로 관리", "body": "API의 재사용 프롬프트 객체(v1/prompts)는 2026년 11월 30일 종료 예정입니다. 프롬프트를 버전 관리되는 코드 모듈로 옮기고, 변수는 타입이 있는 함수 인자로, 변경은 PR 리뷰와 평가 테스트로 관리하라고 OpenAI가 권합니다." },
+        { "title": "캐시를 의식한 배치", "body": "매번 같은 지시, 도구 정의, 참고 문서는 앞에, 바뀌는 입력은 뒤에 두세요. GPT-6 계열은 대화 중 추론 강도나 도구 구성을 바꿔도 캐시가 유지되고, 명시적 브레이크포인트로 캐시 범위를 정할 수 있습니다." }
+      ],
+      "templateTitle": "코딩 에이전트용 개발자 메시지",
+      "templateNote": "OpenAI가 GPT-6 Astra 평가(FrontierCode)에 사용했다고 공개한 Codex 개발자 메시지 일부를 번역했습니다.",
+      "template": "불필요한 테스트 파일을 만들지 마. 저장소 규칙상 필요하거나 기존 파일 중 알맞은 곳이 없을 때만 새 테스트 파일을 만들어.\n관련 없는 정리 작업과 불필요한 복잡성을 피하고, 쓸 만한 기존 유틸리티는 재사용해.\n관련 저장소 지침을 읽고 주변 코드, 테스트, 문서, CI를 살펴서 기존 규칙을 따라.\n목표는 깔끔하고 병합 가능한 코드야.",
+      "sources": [
+        { "title": "Rethinking skills and prompts for GPT-6 Astra", "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra" },
+        { "title": "Prompting 개요 (OpenAI API)", "url": "https://developers.openai.com/api/docs/guides/prompting" },
+        { "title": "How two settings tripled our ARC-AGI-3 scores", "url": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/" }
+      ]
+    },
+    {
+      "company": "anthropic",
+      "name": "Anthropic · Claude",
+      "summary": "Claude는 지시를 문자 그대로, 정확하게 따르는 쪽으로 학습됐습니다. 이유를 함께 설명하고, XML 태그로 구조를 나누고, 원하는 행동을 동사로 분명히 말할수록 결과가 좋아집니다.",
+      "principles": [
+        { "title": "명확하고 직접적으로", "body": "Claude를 '맥락을 모르는 유능한 신입 동료'라고 생각하세요. 맥락이 적은 동료에게 보여 줬을 때 헷갈릴 프롬프트라면 Claude도 헷갈립니다. 기대 이상을 원하면 '기본을 넘어 완성도 높게'처럼 직접 요청하세요." },
+        { "title": "지시에 이유를 붙이기", "body": "'말줄임표 쓰지 마'보다 '이 답은 음성 합성으로 읽히니 발음할 수 없는 말줄임표는 쓰지 마'가 낫습니다. Claude는 이유에서 일반화합니다." },
+        { "title": "XML 태그와 예시", "body": "<instructions>, <context>, <input>처럼 내용 종류별로 태그를 나누고, 예시는 3~5개를 <example> 태그로 감싸세요. 여러 문서는 <document> 안에 <source>와 <document_content>로 넣습니다." },
+        { "title": "긴 문서는 위, 질문은 끝, 인용부터", "body": "2만 토큰 이상의 자료는 프롬프트 맨 위에 두고 질문을 끝에 두세요. 긴 문서 과제는 관련 부분을 먼저 인용하게 한 뒤 답하게 하면 정확도가 올라갑니다." },
+        { "title": "하지 말 것 대신 할 것", "body": "'마크다운 쓰지 마'보다 '매끄러운 문단으로 써'가 잘 통합니다. 프롬프트 자체의 서식도 결과 서식에 영향을 줍니다." },
+        { "title": "행동을 원하면 동사로", "body": "'개선 방안을 제안해 줄래?'라고 하면 제안만 합니다. 바로 고치길 원하면 '이 함수를 성능 좋게 바꿔줘'처럼 말하세요." },
+        { "title": "effort와 thinking (API)", "body": "생각의 양은 effort 파라미터로 조절합니다. budget_tokens는 Claude 4.7 이후 모델에서 400 오류를 냅니다. Opus 5.5와 Fable 5.1은 thinking이 항상 켜져 있고, Sonnet 5.5의 가장 낮은 설정은 between_tools입니다." },
+        { "title": "대화 기록은 추가만, prefill은 없음", "body": "Opus 5.5, Fable 5.1, Sonnet 5.5에서는 thinking 블록 앞의 대화를 편집하면 오류가 납니다. 마지막 assistant 턴을 미리 채우는 prefill도 Claude 4.6 이후 지원되지 않으니, 형식은 지시와 구조화 출력으로 잡으세요." }
+      ],
+      "templateTitle": "시스템 프롬프트 기본 틀",
+      "templateNote": "Anthropic 프롬프팅 가이드의 원칙(역할, 이유, XML 구조, 예시, 긍정형 서식 지시)을 한 틀로 묶었습니다.",
+      "template": "너는 [역할]이야. 이 작업은 [누가 어디에 쓰는지]라서 [중요한 이유]가 중요해.\n\n<context>\n[배경 자료]\n</context>\n\n<instructions>\n1. [단계]\n2. [단계]\n3. 끝내기 전에 [검증 기준]에 맞는지 확인해\n</instructions>\n\n<examples>\n<example>\n[입력과 이상적인 출력 예시]\n</example>\n</examples>\n\n<output_format>\n결과는 매끄러운 문단으로 쓰고, 비교가 필요한 경우에만 표를 써.\n</output_format>",
+      "sources": [
+        { "title": "Prompting best practices (Claude Platform Docs)", "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" },
+        { "title": "Effort 파라미터", "url": "https://platform.claude.com/docs/en/build-with-claude/effort" }
+      ]
+    },
+    {
+      "company": "google",
+      "name": "Google · Gemini",
+      "summary": "Gemini 3 계열은 직접적이고 잘 구조화된 프롬프트에 가장 잘 반응하며, 기본 답변이 간결합니다. 핵심 제약은 맨 앞에, 긴 자료 뒤 질문은 맨 끝에, 샘플링 값은 기본값으로 두는 것이 요점입니다.",
+      "principles": [
+        { "title": "정확하고 직접적으로", "body": "목표를 짧고 분명하게 쓰고, 과하게 설득하는 표현은 빼세요. 모호한 용어나 파라미터는 직접 정의해 주세요." },
+        { "title": "핵심 제약은 맨 앞에", "body": "역할(페르소나), 꼭 지킬 제약, 출력 형식은 시스템 지시나 사용자 프롬프트의 맨 앞에 둡니다." },
+        { "title": "긴 컨텍스트는 자료 먼저, 질문은 끝", "body": "문서나 코드를 먼저 모두 넣고, 구체적인 질문은 맨 끝에 두세요. 자료 뒤에는 '위 정보를 바탕으로…' 같은 연결 문장을 넣으면 좋습니다." },
+        { "title": "분량은 명시적으로", "body": "Gemini 3는 기본적으로 직접적이고 짧게 답합니다. 대화체나 자세한 설명이 필요하면 분명히 요청하세요." },
+        { "title": "예시는 거의 항상", "body": "구글은 few-shot 예시를 항상 넣으라고 권합니다. 예시가 충분히 명확하면 지시 일부를 빼도 될 정도입니다. 단, 너무 많으면 예시에 과적합합니다." },
+        { "title": "temperature는 기본값(1.0)", "body": "Gemini 3.x에서 temperature를 1.0 아래로 내리면 반복 루프나 수학·추론 성능 저하가 생길 수 있어 기본값 유지를 강하게 권합니다." },
+        { "title": "도구로 환각 줄이기", "body": "최신이거나 드문 사실은 Google 검색 그라운딩을, 계산·집계는 코드 실행 도구를 켜세요." },
+        { "title": "추론은 짧은 한마디로", "body": "Gemini는 내부적으로 생각하므로 답변에 단계별 추론을 쓰게 할 필요가 없습니다. 어려운 문제에는 '답하기 전에 깊이 생각해'라는 한마디가 도움이 됩니다(토큰은 더 씀)." }
+      ],
+      "templateTitle": "사용자 프롬프트 기본 틀",
+      "templateNote": "구글 Gemini 3 프롬프트 가이드의 예시 템플릿을 번역했습니다. 시스템 지시 틀은 Gemini 3.8 Flash 소식에 있습니다.",
+      "template": "<context>\n[관련 문서, 코드, 배경 정보]\n</context>\n\n<task>\n위 정보를 바탕으로 [구체적인 요청]\n</task>\n\n<final_instruction>\n답하기 전에 단계별로 생각해.\n</final_instruction>",
+      "sources": [
+        { "title": "Prompt design strategies (Gemini API)", "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies" },
+        { "title": "Thinking (Gemini API)", "url": "https://ai.google.dev/gemini-api/docs/thinking" }
+      ]
+    }
+  ]
+}

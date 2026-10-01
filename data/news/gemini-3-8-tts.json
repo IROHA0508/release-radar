@@ -1,0 +1,109 @@
+{
+  "id": "gemini-3-8-tts",
+  "company": "google",
+  "date": "2026-09-23",
+  "kind": "모델 출시",
+  "title": "Gemini 3.8 Flash TTS · Flash-Lite TTS",
+  "headline": "말로 목소리를 설계하고, 대본 줄마다 연기를 지시하는 음성 합성 모델",
+  "tldr": "Gemini 3.8 세대의 텍스트 음성 변환(TTS) 모델 두 가지입니다. 자연어 설명만으로 새 목소리를 만들고, 2,000개 이상의 기성 음성과 100개 이상의 언어·방언을 지원하며, 두 화자 대화와 몇 시간 길이의 연속 낭독도 품질을 유지합니다.",
+  "models": [
+    {
+      "name": "Gemini 3.8 Flash TTS",
+      "apiId": "gemini-3.8-flash-tts",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Gemini 3.8 Flash-Lite TTS",
+      "apiId": "gemini-3.8-flash-lite-tts",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Voice Design 벤치마크",
+      "value": "71.4",
+      "note": "Hume AI 평가 1위"
+    },
+    {
+      "label": "억양 모델링",
+      "value": "60.8",
+      "note": "최고 점수"
+    },
+    {
+      "label": "기성 음성",
+      "value": "2,000개 이상",
+      "note": "기존 30개에서 확대"
+    },
+    {
+      "label": "지원 언어",
+      "value": "100개 이상",
+      "note": "지역 방언 포함"
+    }
+  ],
+  "changes": [
+    "'멜버른 출신의 활기찬 DJ 목소리'처럼 자연어 설명으로 완전히 새로운 목소리를 만들 수 있습니다.",
+    "만든 목소리를 '미국 남부 억양을 살짝 넣어줘', '전달을 부드럽게 해줘'처럼 말로 다듬을 수 있습니다.",
+    "대본 줄마다 자연스러운 지시어로 연기를 조정하고, 웃음·맞장구 같은 짧은 소리도 대본으로 넣을 수 있습니다.",
+    "두 화자 장면을 기본 지원하고, 몇 시간 길이의 연속 오디오에서도 품질을 유지합니다.",
+    "30초 음성 샘플로 목소리를 복제할 수 있으며, 본인 동의 확인을 거칩니다.",
+    "Hume AI 종합 품질 지수에서 Flash TTS가 1위, Flash-Lite TTS가 2위를 기록했습니다."
+  ],
+  "availability": [
+    "Flash TTS: Gemini API·Google AI Studio(개발자), Gemini Notebook(모든 사용자), Gemini Enterprise API(곧 제공)",
+    "Flash-Lite TTS: Gemini API·Google AI Studio(개발자), Google Vids(모든 사용자), Gemini Enterprise API(곧 제공)",
+    "API 모델명: gemini-3.8-flash-tts, gemini-3.8-flash-lite-tts (가격은 발표문에 나오지 않음)"
+  ],
+  "tips": [
+    {
+      "title": "목소리는 구체적인 캐릭터로 설명하기",
+      "body": "구글 예시처럼 출신 지역, 에너지, 음색, 말투를 함께 적으면 원하는 목소리를 얻기 쉽습니다. '활기찬 DJ', '단조로운 로봇', '일본 용'처럼 캐릭터를 떠올릴 수 있게 쓰세요."
+    },
+    {
+      "title": "처음부터 다시 말고 리믹스로 다듬기",
+      "body": "마음에 거의 드는 목소리가 나오면 새로 만들지 말고 '억양을 살짝 추가', '전달을 부드럽게'처럼 바꿀 점만 말해 조정하세요."
+    },
+    {
+      "title": "연기 지시는 대본 줄 단위로",
+      "body": "줄마다 감정이나 속도를 지시어로 붙이고, 맞장구나 웃음 같은 짧은 소리도 대본에 넣으면 대화가 더 자연스러워집니다. 두 사람 대화는 화자를 나눠 한 번에 생성할 수 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "새 목소리 설계",
+      "when": "AI Studio에서 캐릭터 목소리를 만들 때",
+      "type": "prompt",
+      "text": "[나이대]의 [성별/캐릭터] 목소리를 만들어줘.\n- 출신과 억양: [지역]\n- 에너지: [차분함/활기참]\n- 음색: [따뜻함/허스키함/맑음]\n- 말하는 속도: [느림/보통/빠름]\n\n이 목소리로 다음 문장을 읽어줘:\n[문장]"
+    },
+    {
+      "title": "두 사람 팟캐스트 대본 낭독",
+      "when": "두 화자 대화 오디오를 만들 때",
+      "type": "prompt",
+      "text": "다음 대본을 두 사람의 대화로 읽어줘.\n진행자: [차분하고 친근한 목소리]\n게스트: [활기차고 빠른 목소리]\n\n진행자: (반갑게) [대사]\n게스트: (웃으며) [대사]\n진행자: (맞장구치며) 아, 그렇군요.\n게스트: (진지하게) [대사]"
+    }
+  ],
+  "cautions": [
+    "음성 복제는 일리노이, 텍사스, 유럽경제지역(EEA), 영국, 스위스, 인도에서는 쓸 수 없고 동의 확인이 필요합니다.",
+    "생성된 모든 오디오에 SynthID 워터마크가 들어가고, 복제 음성에는 C2PA 인증 정보가 붙습니다.",
+    "기업용 Gemini Enterprise API는 아직 '곧 제공' 상태입니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.8 text-to-speech says hello (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-text-to-speech/"
+    },
+    {
+      "title": "Gemini 3.8 오디오 모델 카드",
+      "url": "https://deepmind.google/models/model-cards/gemini-3-8-audio/"
+    },
+    {
+      "title": "Gemini 3.8 TTS 평가 문서 (Google DeepMind, PDF)",
+      "url": "https://deepmind.google/models/evals-methodology/gemini-3-8-tts/"
+    }
+  ],
+  "charts": [],
+  "chartNote": "Google은 이 모델의 비교 그래프를 이미지와 평가 PDF로만 공개해, 정확한 비교 수치를 옮기지 않았습니다. 원문 그래프는 아래 평가 문서에서 볼 수 있습니다."
+}

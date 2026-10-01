@@ -1,0 +1,312 @@
+{
+  "id": "gemini-4-argon",
+  "company": "google",
+  "date": "2026-09-30",
+  "kind": "모델 발표",
+  "title": "Gemini 4 Argon",
+  "headline": "구글의 차세대 프런티어 모델, 출력 한도 100만 토큰",
+  "tldr": "실전 소프트웨어 엔지니어링, 법률·재무 같은 기업 지식 업무, 사이버 방어에 초점을 둔 새 프런티어 모델입니다. 지금은 Fairwind 프로그램의 신뢰된 사이버 방어자에게만 배포 중이고, 이후 유료 API 고객과 Google AI Ultra 구독자부터 열릴 예정입니다.",
+  "models": [
+    {
+      "name": "Gemini 4 Argon",
+      "apiId": null,
+      "input": "$2 (도입가)",
+      "output": "$10 (도입가)",
+      "cached": "입력가의 5%"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "출력 토큰 한도",
+      "value": "100만",
+      "note": "이전 6.4만에서 확대"
+    },
+    {
+      "label": "DeepSWE v1.1",
+      "value": "77.9%",
+      "note": "발표 기준 최고 기록"
+    },
+    {
+      "label": "AutomationBench",
+      "value": "51.3%",
+      "note": "1위"
+    },
+    {
+      "label": "LVBench (긴 영상 이해)",
+      "value": "91.7%",
+      "note": "발표 기준 최고 기록"
+    }
+  ],
+  "changes": [
+    "출력 토큰 한도를 6.4만에서 100만으로 늘렸습니다. 한 번의 흐름에서 수십만 토큰을 생성하며 깊게 추론해 어려운 문제를 한 번에 풀도록 했습니다.",
+    "경제적 영향 기준 종합 지표인 Vals Index에서 선두이고, Vals Finance Agent v2(재무 리서치)와 Harvey 법률 에이전트 벤치마크에서도 앞섰습니다.",
+    "차트 분석, 긴 영상 속 세부 찾기, 여러 문서를 보고 행동하기처럼 시각 정보가 필요한 지식 업무에 강합니다.",
+    "사이버 방어: 취약점을 스스로 찾고 검증하고 패치합니다. CWE-bench v1에서 68%로 공동 1위이며, Wiz는 다른 프런티어 모델이 놓친 병원용 소프트웨어의 치명적 취약점을 찾았다고 밝혔습니다.",
+    "구글 내부 활용: Fuchsia Zircon 커널(80만 줄 이상)까지 C/C++ 코드를 Rust로 옮기는 작업을 감사·검토하며 진행 중이고, libgav1 Rust 포트를 2.7배 빠르게 최적화했으며, 데이터센터 전체에서 300TiB 이상의 메모리를 확보하는 최적화를 찾아 적용했습니다.",
+    "안전: 사고 과정(chain-of-thought)과 행동을 모니터링해 사용자 의도를 벗어나면 실행을 멈추고, Gray Swan 간접 프롬프트 인젝션 평가에서 선두입니다."
+  ],
+  "availability": [
+    "현재: Fairwind 프로그램의 신뢰된 사이버 방어자 (사이버 가드레일 없이 제공)",
+    "다음 단계: 유료 API 고객과 Google AI Ultra 구독자부터 확대 예정 (일정 미공개)",
+    "도입가 $2 / $10(1M 토큰), 캐시 입력은 95% 할인. 도입 기간 후 $4 / $20",
+    "API 모델 ID와 컨텍스트 창 크기는 아직 공개되지 않았습니다"
+  ],
+  "tips": [
+    {
+      "title": "출시 전에 준비할 것",
+      "body": "100만 출력 한도는 대규모 마이그레이션이나 장문 분석처럼 결과물이 큰 작업을 한 번에 끝내는 데 유리합니다. 지금 출력 한도 때문에 작업을 잘게 쪼개고 있다면, 어떤 단계를 합칠 수 있을지 미리 정리해 두세요."
+    },
+    {
+      "title": "영상·차트·문서가 섞인 업무",
+      "body": "구글이 강조한 강점은 시각 정보 기반 지식 업무입니다. 회의 녹화, 대시보드 캡처, 보고서 묶음처럼 형식이 섞인 자료를 한 번에 넘기는 용도를 우선 시험해 볼 만합니다."
+    },
+    {
+      "title": "공용 컨텍스트는 캐시로",
+      "body": "캐시 입력이 95% 할인되므로, 매번 같은 긴 자료(코드베이스 요약, 규정집 등)를 앞에 고정해 재사용하는 설계가 비용 면에서 유리합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "긴 영상에서 정보 뽑기",
+      "when": "회의·강의 녹화 분석 (Gemini 권장대로 자료 먼저, 질문은 마지막)",
+      "type": "prompt",
+      "text": "[영상 첨부]\n\n위 영상을 바탕으로:\n1. [주제]가 언급된 구간의 타임스탬프를 모두 적어줘\n2. 구간마다 핵심 내용을 한 줄로 요약해줘\n3. 화면에 나온 표나 차트의 수치는 따로 표로 정리해줘"
+    },
+    {
+      "title": "C/C++ → Rust 이전 계획",
+      "when": "대규모 언어 마이그레이션을 검토할 때",
+      "type": "prompt",
+      "text": "<context>\n[모듈 목록, 의존성 그래프, 기존 테스트 현황]\n</context>\n\n<task>\n이 C++ 라이브러리를 안전한 Rust로 옮기는 단계별 계획을 세워줘.\n단계마다 검증 방법(기존 테스트 통과, 출력 동일성 비교, 성능 측정)을 포함해.\n</task>"
+    }
+  ],
+  "cautions": [
+    "아직 일반 개발자와 소비자는 쓸 수 없습니다. 위 프롬프트는 출시 후를 위한 예시입니다.",
+    "구글은 미국 정부의 사전 모델 접근 절차에 참여하며 단계적으로 공개 범위를 넓히겠다고 밝혔습니다.",
+    "구글 비교표에서도 Terminal-bench 4.0(57.4%), FrontierSWE v2(55.0%), Terminal-Bench Science(57.6%)에서는 Claude Opus 5.5나 GPT-6 Astra가 앞섭니다. 코딩 에이전트 용도라면 작업 유형별로 비교해 보세요."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 4 Argon: our next era of frontier intelligence (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
+    },
+    {
+      "title": "Fairwind Program (Google DeepMind)",
+      "url": "https://deepmind.google/fairwind-program/"
+    },
+    {
+      "title": "Gemini 모델 페이지 (Google DeepMind) — Argon 비교표",
+      "url": "https://deepmind.google/models/gemini/"
+    }
+  ],
+  "chartSource": "Google DeepMind 모델 페이지(deepmind.google/models/gemini)의 Gemini 4 Argon 비교표 기준입니다. 강점과 약점을 함께 보도록 뒤지는 항목도 넣었습니다.",
+  "charts": [
+    {
+      "title": "Vals Index",
+      "desc": "금융·코딩·법률·세무 경제 영향 종합",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 4 Argon",
+          "value": 68.9,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 67.0
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 65.8
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 63.1
+        }
+      ]
+    },
+    {
+      "title": "AutomationBench",
+      "desc": "여러 앱을 오가는 업무 자동화",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 4 Argon",
+          "value": 51.3,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 42.5
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 41.4
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 31.4
+        }
+      ]
+    },
+    {
+      "title": "DeepSWE v1.1",
+      "desc": "실제 코드베이스의 장기 엔지니어링",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 4 Argon",
+          "value": 77.9,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 74.2
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 74.1
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 67.4
+        }
+      ]
+    },
+    {
+      "title": "Terminal-bench 4.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 66.4
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 58.2
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 57.9
+        },
+        {
+          "label": "Gemini 4 Argon",
+          "value": 57.4,
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "title": "FrontierSWE v2",
+      "desc": "에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 65.5
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 62.3
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 56.3
+        },
+        {
+          "label": "Gemini 4 Argon",
+          "value": 55.0,
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "title": "Terminal-Bench Science 0.1",
+      "desc": "과학 연구 워크플로",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 68.1
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 63.3
+        },
+        {
+          "label": "Gemini 4 Argon",
+          "value": 57.6,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 52.6
+        }
+      ]
+    },
+    {
+      "title": "GraphWalks 256k~1M",
+      "desc": "긴 컨텍스트 추론 (BFS, F1)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 4 Argon",
+          "value": 84.2,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 71.8
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 66.8
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 65.0
+        }
+      ]
+    },
+    {
+      "title": "LVBench",
+      "desc": "긴 영상 이해",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 4 Argon",
+          "value": 91.7,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 87.5
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 83.7
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 79.7
+        }
+      ]
+    }
+  ]
+}

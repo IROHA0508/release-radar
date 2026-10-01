@@ -1,0 +1,233 @@
+{
+  "id": "gemini-3-8-flash",
+  "company": "google",
+  "date": "2026-09-02",
+  "kind": "모델 출시",
+  "title": "Gemini 3.8 Flash · 3.8 Flash Cyber",
+  "headline": "3.7 Flash와 같은 속도·가격에 더 강한 추론과 코딩",
+  "tldr": "6주 사이 세 번째 Flash 출시입니다. 3.8 Flash는 구글이 '가장 똑똑한 일꾼 모델'이라 부르는 모델로 소프트웨어 엔지니어링, 에이전트 작업, 전문 분야 추론이 크게 좋아졌습니다. 3.8 Flash Cyber는 취약점 탐지와 자동 패치에 특화된 버전으로 신뢰된 방어자에게만 제공됩니다.",
+  "models": [
+    {
+      "name": "Gemini 3.8 Flash",
+      "apiId": "gemini-3.8-flash",
+      "input": "$0.75 (도입가)",
+      "output": "$3.75 (도입가)",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "입력 / 출력 (도입가)",
+      "value": "$0.75 / $3.75",
+      "note": "2027년 1월 1일부터 $1.50 / $7.50"
+    },
+    {
+      "label": "HLE-Verified",
+      "value": "54.9%",
+      "note": "STEM·인문·전문 분야 다단계 추론"
+    },
+    {
+      "label": "CWE-Bench (Flash Cyber)",
+      "value": "47.2%",
+      "note": "선두 프런티어 모델 47.8%와 비슷, 비용은 훨씬 낮음"
+    },
+    {
+      "label": "Chrome 보안 패치 (Flash Cyber)",
+      "value": "2.6배",
+      "note": "더 큰 상용 모델 대비 올바른 패치 수"
+    }
+  ],
+  "changes": [
+    "DeepSWE v1.1에서 대부분의 더 큰 프런티어 모델보다 높은 성능을 훨씬 낮은 비용으로 냈습니다.",
+    "Vals Finance Agent v2, Harvey 법률 에이전트 벤치마크에서 3.7 Flash와 다른 프런티어 모델을 앞섰습니다.",
+    "'더 열심히 일하는' 설계: 복잡한 작업에서 추론 단계를 더 밟고 도구를 반복 호출합니다. 그래서 높은 effort에서는 토큰을 더 쓸 수 있습니다.",
+    "Flash Cyber는 CyberGym에서 프런티어급 취약점 발견 성능을 냈고, 20개 언어에 걸친 구글 내부 벤치마크에서 70% 넘게 성공했습니다.",
+    "구글은 공격 능력보다 취약점 수정을 우선해 Flash Cyber를 학습했다고 밝혔습니다.",
+    "Gray Swan 평가 기준 프롬프트 인젝션 견고성이 크게 좋아졌습니다."
+  ],
+  "availability": [
+    "개발자: Gemini API(Google AI Studio), Google Antigravity, Android Studio, Stitch",
+    "API 모델명: gemini-3.8-flash",
+    "기업: Gemini Enterprise",
+    "소비자: Google AI Pro·Ultra 구독자의 Gemini 앱, 검색 AI 모드, Google Sheets의 Gemini",
+    "Flash Cyber: Fairwind 프로그램(정부 기관, 핵심 인프라 운영자, 소프트웨어 메인테이너)"
+  ],
+  "tips": [
+    {
+      "title": "효율이 먼저면 effort를 낮추거나 3.7 Flash",
+      "body": "구글의 공식 안내입니다. 3.8 Flash는 성능을 위해 토큰을 더 쓸 수 있으니, 비용이 가장 중요한 작업은 낮은 effort로 돌리거나 계속 지원되는 3.7 Flash를 쓰세요."
+    },
+    {
+      "title": "샘플링 값은 기본값 그대로",
+      "body": "Gemini API 문서는 Gemini 3.x에서 temperature를 1.0 아래로 내리면 반복 루프나 성능 저하가 생길 수 있다며 기본값 유지를 강하게 권합니다."
+    },
+    {
+      "title": "최신 정보는 검색, 계산은 코드 실행",
+      "body": "최근 사실이 필요하면 Google 검색 그라운딩을, 산수나 집계가 필요하면 코드 실행 도구를 켜라고 구글 프롬프트 가이드가 권합니다."
+    },
+    {
+      "title": "날짜를 명시해 주기",
+      "body": "구글은 Gemini 3 Flash 계열의 시스템 지시에 현재 연도를 알려 주는 문장을 넣으면 시간에 민감한 검색 정확도가 오른다고 안내합니다. 아래 프롬프트 예시를 참고하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Gemini 3 권장 구조 (시스템 지시)",
+      "when": "API나 AI Studio에서 시스템 지시를 짤 때 (구글 공식 템플릿 번역)",
+      "type": "prompt",
+      "text": "<role>\n너는 [분야] 전문 어시스턴트야. 정확하고 분석적이며 끈기 있게 일해.\n</role>\n\n<instructions>\n1. 계획: 과제를 분석하고 단계별 계획을 세워\n2. 실행: 계획을 수행해\n3. 검증: 결과를 사용자 요청과 대조해 점검해\n4. 형식: 요청한 구조로 최종 답을 내\n</instructions>\n\n<constraints>\n- 분량: [짧게/보통/길게]\n- 톤: [격식/일상/기술적]\n</constraints>\n\n<output_format>\n1. 요약: [짧은 개요]\n2. 상세 답변: [본문]\n</output_format>"
+    },
+    {
+      "title": "현재 날짜 보정 문장",
+      "when": "검색 도구를 쓰는 앱의 시스템 지시에 추가 (구글 권장 문장 번역)",
+      "type": "prompt",
+      "text": "최신 정보가 필요한 시간 민감 질문에서는 검색 도구에 넣을 검색어를 만들 때 반드시 제공된 현재 시각(날짜와 연도)을 따라야 해. 올해는 2026년이라는 점을 기억해."
+    }
+  ],
+  "cautions": [
+    "높은 effort에서는 3.7 Flash보다 토큰을 더 쓸 수 있습니다.",
+    "도입가는 2026년 12월 31일까지입니다.",
+    "Flash Cyber는 일반에 공개되지 않습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/"
+    },
+    {
+      "title": "Prompt design strategies (Gemini API)",
+      "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+    },
+    {
+      "title": "Gemini Flash 모델 페이지 (Google DeepMind)",
+      "url": "https://deepmind.google/models/gemini/flash/"
+    },
+    {
+      "title": "GPT-6 Astra 발표문 비교표 (OpenAI)",
+      "url": "https://openai.com/index/gpt-6-astra/"
+    }
+  ],
+  "chartSource": "앞의 세 그래프는 Google 모델 페이지의 차트 수치, DeepSWE는 OpenAI GPT-6 Astra 발표문의 비교표, CWE-Bench는 Google 발표문 기준입니다.",
+  "charts": [
+    {
+      "title": "Vals Finance Agent v2",
+      "desc": "다단계 재무 리서치",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.8 Flash",
+          "value": 61.4,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.7 Flash",
+          "value": 59.0
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 58.6
+        }
+      ],
+      "source": "Google"
+    },
+    {
+      "title": "HLE-Verified",
+      "desc": "STEM·인문·전문 분야 다단계 추론",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.8 Flash",
+          "value": 54.9,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 54.5
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 54.4
+        }
+      ],
+      "source": "Google"
+    },
+    {
+      "title": "Harvey 법률 에이전트 벤치마크",
+      "desc": "법률 리서치와 문서 작성",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.8 Flash",
+          "value": 10.0,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.7 Flash",
+          "value": 8.8
+        }
+      ],
+      "source": "Google"
+    },
+    {
+      "title": "DeepSWE v1.1",
+      "desc": "실제 코드베이스의 장기 엔지니어링",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 74.1
+        },
+        {
+          "label": "Gemini 3.8 Flash",
+          "value": 73.8,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 73.7
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 72.7
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 69.9
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 67.4
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "CWE-Bench",
+      "desc": "취약점 자동 패치 (pass@1)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "선두 프런티어 모델 (이름 미공개)",
+          "value": 47.8
+        },
+        {
+          "label": "Gemini 3.8 Flash Cyber",
+          "value": 47.2,
+          "highlight": true
+        }
+      ],
+      "note": "Flash Cyber는 훨씬 낮은 비용으로 비슷한 점수",
+      "source": "Google"
+    }
+  ]
+}

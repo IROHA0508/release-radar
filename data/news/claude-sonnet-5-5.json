@@ -1,0 +1,260 @@
+{
+  "id": "claude-sonnet-5-5",
+  "company": "anthropic",
+  "date": "2026-09-28",
+  "kind": "모델 출시",
+  "title": "Claude Sonnet 5.5",
+  "headline": "Sonnet 5보다 30% 이상 빠르고 과제당 최대 30% 저렴한 실무형 모델",
+  "tldr": "Claude 5.5 패밀리의 두 번째 모델입니다. Opus 5.5가 판단이 필요한 복잡한 일을 맡는다면, Sonnet 5.5는 범위가 분명한 일상 업무, 버그 수정, 문서·슬라이드·스프레드시트 작성에 강합니다. 가격은 Sonnet 5와 같지만 토큰을 훨씬 덜 써서 과제당 비용이 낮습니다.",
+  "models": [
+    {
+      "name": "Claude Sonnet 5.5",
+      "apiId": "claude-sonnet-5-5",
+      "input": "$2",
+      "output": "$10",
+      "cached": "$0.20"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Terminal-Bench 4.0",
+      "value": "70.6%",
+      "note": "Sonnet 5는 10.3%"
+    },
+    {
+      "label": "GDPval-AA v2.1",
+      "value": "1844",
+      "note": "Opus 5.5(1846)와 거의 같고 Sonnet 5보다 약 400점 높음"
+    },
+    {
+      "label": "CursorBench 4.0",
+      "value": "55.5%",
+      "note": "Opus 5.5(57.8%)와 약 2%p 차이"
+    },
+    {
+      "label": "OSWorld 2.1 (부분 점수)",
+      "value": "80.1%",
+      "note": "Opus 5.5 81.8%"
+    }
+  ],
+  "changes": [
+    "출력 생성 속도가 Sonnet 5보다 30% 이상 빨라져 역대 가장 빠른 Sonnet입니다.",
+    "여러 벤치마크에서 Low·Medium effort만으로 Sonnet 5의 최고점을 약 1/10 비용으로 넘었습니다.",
+    "얼리 테스터들은 도구 호출을 묶어서 처리해 단계 수와 비용이 줄었다고 보고했습니다(Lovable: 도구 호출 1/3 감소, 셸 실행 약 절반).",
+    "Opus 5.5의 글쓰기 개선을 일부 이어받아 더 명확하게 쓰고, 디자인 감각이 좋아 UI 마감과 슬라이드 템플릿 준수가 뛰어납니다.",
+    "사이버 역량이 Opus 5 수준이라 Sonnet 최초로 사이버보안 보호 장치와 폴백이 적용됐습니다.",
+    "추론 추출을 막는 분류기와 확장된 preserved thinking이 적용됐습니다."
+  ],
+  "availability": [
+    "Claude 앱, Claude Code, Claude Platform 및 AWS, Google Cloud, Microsoft Azure",
+    "API 모델명: claude-sonnet-5-5",
+    "기본 effort: Claude 앱·Claude Code는 Medium, Claude Platform(API)은 High",
+    "제로 데이터 보존(ZDR) 지원",
+    "Claude Haiku 5.5는 몇 주 안에 출시 예정"
+  ],
+  "tips": [
+    {
+      "title": "effort는 낮게 시작",
+      "body": "Anthropic은 Sonnet 5.5가 낮은 effort에서 과제당 비용이 적어 Opus 5.5를 가장 잘 보완한다고 설명합니다. 일상 작업은 Low나 Medium으로 돌리고, 결과가 부족할 때만 올리세요."
+    },
+    {
+      "title": "Max가 항상 최선은 아니다",
+      "body": "FrontierCode에서 Max(46.2%)가 Xhigh(52.1%)보다 낮았습니다. Max에서는 코드 리뷰 서브에이전트를 더 많이 돌리다 범위 밖 수정을 하거나 시간 초과가 났기 때문입니다. 범위가 정해진 코드 수정은 High~Xhigh가 적당합니다."
+    },
+    {
+      "title": "설계는 Opus, 구현은 Sonnet",
+      "body": "얼리 테스터(Creator)는 Opus 5.5가 아키텍처와 틀을 잡으면 구현은 Sonnet 5.5에 맡겨도 된다고 평가했습니다. 계획 단계와 구현 단계를 모델별로 나누면 비용이 크게 줄어듭니다."
+    },
+    {
+      "title": "API에서 thinking을 끄고 쓰던 경우",
+      "body": "Sonnet 5.5로 옮기기 전에 새 between_tools 설정으로 바꿔야 합니다. 사전 thinking은 끈 채, 도구 호출 사이에서만 생각하는 가장 낮은 설정입니다(effort high 이하에서 허용)."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "템플릿 기반 운영 리뷰 덱",
+      "when": "실적 자료와 슬라이드 템플릿이 있을 때 (Anthropic 내부 테스트를 응용)",
+      "type": "prompt",
+      "text": "<template>\n[슬라이드 템플릿 첨부]\n</template>\n\n<materials>\n[실적 자료, 콜 녹취록]\n</materials>\n\n위 자료만 근거로 템플릿을 따라 10장짜리 운영 리뷰 덱을 만들어줘.\n각 장에는 핵심 메시지 한 문장과 근거 수치 2~3개를 넣고, 수치마다 출처 문서를 발표자 노트에 남겨."
+    },
+    {
+      "title": "범위를 정한 버그 수정",
+      "when": "Claude Code에서 실패하는 테스트를 맡길 때",
+      "type": "prompt",
+      "text": "이 실패하는 테스트를 고쳐줘: [테스트 이름]\n\n- 원인을 찾은 뒤 최소한으로 수정해\n- 요청과 무관한 리팩터링이나 포맷 변경은 하지 마\n- 수정 후 관련 테스트를 실행하고 결과를 알려줘"
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "Claude Platform에서 effort를 직접 정할 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-sonnet-5-5\",\n    max_tokens=16000,\n    output_config={\"effort\": \"medium\"},  # API 기본값은 high\n    messages=[{\"role\": \"user\", \"content\": \"[요청]\"}],\n)"
+    }
+  ],
+  "cautions": [
+    "고위험 사이버보안 요청은 Sonnet 5로 자동 전환됩니다. 일상적인 버그 찾기와 수정은 영향이 없습니다.",
+    "일부 미생물학·바이러스학 요청이 잘못 걸러질 수 있습니다. 연구 조직은 Life Sciences Verification Program을 신청할 수 있습니다.",
+    "대화를 다른 계정으로 옮기면(Claude Code 세션 중 계정 전환 포함) preserved thinking 때문에 동작이 달라질 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Sonnet 5.5 (Anthropic)",
+      "url": "https://www.anthropic.com/claude-sonnet-5-5"
+    },
+    {
+      "title": "Sonnet 5.5 마이그레이션 가이드",
+      "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide"
+    },
+    {
+      "title": "Prompting Claude Sonnet 5.5",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5"
+    }
+  ],
+  "chartSource": "Anthropic Claude Sonnet 5.5 발표문의 비교표 기준입니다.",
+  "charts": [
+    {
+      "title": "Terminal-Bench 4.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 70.6,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5.5 (xhigh)",
+          "value": 66.4
+        },
+        {
+          "label": "Claude Sonnet 5",
+          "value": 10.3
+        }
+      ]
+    },
+    {
+      "title": "CursorBench 4.0",
+      "desc": "실제 Cursor 세션의 모호한 다중 파일 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 57.8
+        },
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 55.5,
+          "highlight": true
+        },
+        {
+          "label": "Claude Sonnet 5",
+          "value": 34.1
+        }
+      ]
+    },
+    {
+      "title": "FrontierCode 1.1 (Main)",
+      "desc": "병합 가능한 코드 변경",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 54.4
+        },
+        {
+          "label": "Claude Sonnet 5.5 (xhigh)",
+          "value": 52.1,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Sol",
+          "value": 49.3
+        },
+        {
+          "label": "Claude Sonnet 5",
+          "value": 42.4
+        }
+      ],
+      "note": "Sonnet 5.5는 max에서 46.2%로 xhigh보다 낮음"
+    },
+    {
+      "title": "OSWorld 2.1",
+      "desc": "컴퓨터 사용 (부분 점수)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 81.8
+        },
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 80.1,
+          "highlight": true
+        },
+        {
+          "label": "Claude Sonnet 5",
+          "value": 57.0
+        }
+      ]
+    },
+    {
+      "title": "Chartography",
+      "desc": "차트 인식 (도구 없이)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 64.4
+        },
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 61.6,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Sol",
+          "value": 53.6
+        },
+        {
+          "label": "Claude Sonnet 5",
+          "value": 15.6
+        }
+      ]
+    },
+    {
+      "title": "GDPval-AA v2.1",
+      "desc": "44개 직업군 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 1846
+        },
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 1844,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Sol",
+          "value": 1487
+        },
+        {
+          "label": "Claude Sonnet 5",
+          "value": 1449
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "id": "gpt-6-1-sol",
+  "company": "openai",
+  "date": "2026-09-29",
+  "kind": "모델 업데이트",
+  "title": "GPT-6.1 Sol",
+  "headline": "Astra에 가까운 성능을 Astra 가격의 1/5로",
+  "tldr": "GPT-6 Sol을 업그레이드한 모델입니다. 에이전트 코딩, 컴퓨터 사용, 전문 업무에서 GPT-6 Astra에 근접하면서 표준 API 가격은 Astra의 1/5이고, 캐시 입력은 표준 입력보다 95% 저렴한 $0.10입니다.",
+  "models": [
+    {
+      "name": "GPT-6.1 Sol",
+      "apiId": "gpt-6.1-sol",
+      "input": "$2",
+      "output": "$10",
+      "cached": "$0.10"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "입력 / 출력",
+      "value": "$2 / $10",
+      "note": "1M 토큰당, Astra의 1/5"
+    },
+    {
+      "label": "캐시 입력",
+      "value": "$0.10",
+      "note": "표준 입력 대비 95% 할인, GPT-6 Sol 대비 50% 인하"
+    },
+    {
+      "label": "DeepSWE v1.1",
+      "value": "Astra와 동점",
+      "note": "약 1/5 비용, GPT-6 Sol 최고점 대비 +6.4%p"
+    },
+    {
+      "label": "사실 오류 응답 비율",
+      "value": "11.4% → 7.7%",
+      "note": "어렵게 고른 질문, low 추론 강도 기준 약 32% 감소"
+    }
+  ],
+  "changes": [
+    "DeepSWE v1.1(실제 코드베이스의 장기 소프트웨어 엔지니어링 과제)에서 GPT-6 Astra와 같은 점수를 약 1/5 비용으로 냈습니다. GPT-6 Sol 최고점보다 6.4%p 높고, 더 낮은 추론 강도에서 달성했습니다.",
+    "OSWorld 2.0 오프라인 세트에서 최대 추론 강도 기준 GPT-6 Sol보다 7%p 높고 비용은 절반 이하입니다. Astra와의 차이는 2.1%p, 과제당 비용은 약 1/7입니다.",
+    "GDP.pdf(표·차트·각주가 많은 전문 PDF 질의)에서 Claude Opus 5.5보다 높은 점수를 절반 이하 비용으로 기록했습니다.",
+    "AutomationBench(여러 앱을 오가는 업무 자동화)에서 medium 강도로 Opus 5.5보다 2.2%p 높고 비용은 약 1/3입니다.",
+    "Terminal-Bench Science 0.1에서 GPT-6 Sol 점수의 두 배를 넘겼습니다. 최대 강도 과제당 평균 비용은 $5.47로 Opus 5.5($23.21), Astra($23.80)보다 75% 이상 낮습니다.",
+    "검색 도구가 고장 났을 때 이를 사용자에게 알리지 않는 비율이 2.1%로 GPT-6 Sol(4.9%)보다 낮아졌고, 자동 안전 검토를 우회하려는 시도는 관찰되지 않았습니다."
+  ],
+  "availability": [
+    "ChatGPT Work와 Codex: Plus, Pro, Business, Enterprise, Edu 사용자",
+    "일반 ChatGPT 채팅(Chat)에서는 아직 선택할 수 없습니다",
+    "API 모델명: gpt-6.1-sol",
+    "Codex용 Ultrafast 옵션(표준 대비 최대 8배 빠른 토큰 생성)이 며칠 안에 추가될 예정입니다"
+  ],
+  "tips": [
+    {
+      "title": "평소엔 6.1 Sol, 가장 어려운 일만 Astra",
+      "body": "OpenAI는 Terminal-Bench Science에서 Astra가 여전히 최고점(68.1%)이라며 가장 어려운 과학 연구 과제에는 Astra를 쓰라고 밝혔습니다. 리팩터링, 코드베이스 조사, 문서 기반 업무처럼 자주 반복하는 일은 6.1 Sol로 돌리고, 막히는 과제만 Astra로 올리는 2단 구성이 비용 대비 효율이 좋습니다."
+    },
+    {
+      "title": "고정된 앞부분으로 캐시 할인 받기",
+      "body": "캐시 입력이 표준 입력의 1/20입니다. 시스템 지시, 도구 정의, 참고 문서처럼 매번 같은 내용은 프롬프트 맨 앞에 두고 바뀌는 질문을 뒤에 붙이세요. GPT-6 계열은 대화 중 추론 강도를 바꾸거나 도구를 켜고 꺼도 앞선 캐시가 유지됩니다."
+    },
+    {
+      "title": "가벼운 질의는 low 강도부터",
+      "body": "6.1 Sol의 사실성 개선은 low 추론 강도에서 가장 컸습니다. 속도와 비용이 중요한 Q&A는 low로 시작하고, 답이 부족할 때만 강도를 올리세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "코드베이스 조사 후 리팩터링",
+      "when": "Codex나 ChatGPT Work에서 큰 리팩터링을 맡길 때",
+      "type": "prompt",
+      "text": "목표: [모듈/기능]을 [새 구조]로 리팩터링한다.\n\n먼저 관련 코드, 테스트, CI 설정을 직접 읽고 현재 구조를 파악해.\n\n완료 기준:\n- 기존 테스트가 모두 통과한다\n- 공개 API 시그니처는 바꾸지 않는다\n- 요청 범위 밖의 정리 작업은 하지 않는다\n\n진행: 파일별 변경 계획 → 구현 → 테스트 실행 → 결과 요약.\n호환성이 깨지는 결정처럼 결과를 바꿀 지점만 질문하고, 나머지는 계속 진행해."
+    },
+    {
+      "title": "표와 각주가 많은 PDF 질의",
+      "when": "재무제표, 계약서, 규정집처럼 세부 수치가 중요한 문서",
+      "type": "prompt",
+      "text": "첨부한 PDF만 근거로 답해줘.\n\n질문: [질문]\n\n규칙:\n- 표, 차트, 각주에서 가져온 수치는 페이지 번호를 함께 적어\n- 문서에 없는 내용은 '문서에 없음'이라고 적어\n- 마지막에 결론을 세 줄로 요약해"
+    }
+  ],
+  "cautions": [
+    "일반 Chat 모드에는 아직 없습니다. ChatGPT Work, Codex, API에서 사용하세요.",
+    "가장 어려운 과학 연구 과제에서는 GPT-6 Astra가 여전히 앞섭니다(Terminal-Bench Science 68.1%)."
+  ],
+  "sources": [
+    {
+      "title": "Introducing GPT-6.1 Sol (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-6-1-sol/"
+    },
+    {
+      "title": "GPT-6.1 Sol 시스템 카드 부록",
+      "url": "https://deploymentsafety.openai.com/gpt-6-1-sol"
+    }
+  ],
+  "chartSource": "OpenAI GPT-6.1 Sol 발표문 기준입니다.",
+  "charts": [
+    {
+      "title": "과학 연구 과제당 비용",
+      "desc": "Terminal-Bench Science 0.1, 최대 추론 강도의 과제당 평균 비용",
+      "type": "bar",
+      "unit": "$",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "GPT-6.1 Sol",
+          "value": 5.47,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 23.21
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 23.8
+        }
+      ],
+      "note": "점수 최고는 여전히 GPT-6 Astra(68.1%)"
+    },
+    {
+      "title": "사실 오류 응답 비율",
+      "desc": "일부러 어렵게 고른 질문, low 추론 강도",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "GPT-6.1 Sol",
+          "value": 7.7,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Sol",
+          "value": 11.4
+        }
+      ]
+    },
+    {
+      "title": "검색 도구 고장 미고지 비율",
+      "desc": "도구가 고장 났는데 알리지 않은 비율, 최대 강도",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 1.5
+        },
+        {
+          "label": "GPT-6.1 Sol",
+          "value": 2.1,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Sol",
+          "value": 4.9
+        },
+        {
+          "label": "GPT-6 Luna",
+          "value": 28.7
+        }
+      ]
+    },
+    {
+      "title": "표준 출력 가격",
+      "desc": "1M 토큰당 USD",
+      "type": "bar",
+      "unit": "$",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "GPT-6 Luna",
+          "value": 0.5
+        },
+        {
+          "label": "GPT-6.1 Sol",
+          "value": 10,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 50
+        }
+      ]
+    }
+  ]
+}

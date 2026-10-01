@@ -1,0 +1,269 @@
+{
+  "id": "claude-fable-mythos-5-1",
+  "company": "anthropic",
+  "date": "2026-09-01",
+  "kind": "모델 출시",
+  "title": "Claude Fable 5.1 · Mythos 5.1",
+  "headline": "코딩·지식 업무 최상위 모델, 캐시 읽기 가격은 75% 인하",
+  "tldr": "같은 모델에 보호 장치 수준만 다르게 적용한 두 버전입니다. Fable 5.1은 일반 공개, Mythos 5.1은 사이버보안·생명과학 신뢰 접근 프로그램 전용입니다. 캐시 읽기 가격을 75% 내려 일반 워크로드는 약 25%, 에이전트 작업은 최대 약 45% 저렴해졌습니다.",
+  "models": [
+    {
+      "name": "Claude Fable 5.1",
+      "apiId": "claude-fable-5-1",
+      "input": "$10",
+      "output": "$50",
+      "cached": "$0.25"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Terminal-Bench-Science 0.1",
+      "value": "52.6%",
+      "note": "Fable 5는 24.7%"
+    },
+    {
+      "label": "Terminal-Bench 4.0",
+      "value": "55.8%",
+      "note": "같은 모델의 Mythos 5.1은 60.9%"
+    },
+    {
+      "label": "CursorBench 3.2.0",
+      "value": "73.4%",
+      "note": "Fable 5 70.5%, Opus 5 70.0%"
+    },
+    {
+      "label": "캐시 읽기",
+      "value": "$0.25",
+      "note": "1M 토큰당, 75% 인하"
+    }
+  ],
+  "changes": [
+    "코딩, 지식 업무, 장기 문제 해결에서 Fable 5보다 크게 좋아졌고, Low·Medium effort로도 Fable 5와 비슷하거나 나은 결과를 훨씬 낮은 비용으로 냅니다.",
+    "지름길 대신 근본 원인을 고칩니다. 투자사 Millennium은 수년간 원인을 찾지 못한 희귀 크래시를 Fable 5.1이 외부 라이브러리를 역어셈블해 찾아냈다고 밝혔습니다.",
+    "사이버 보호 장치의 오탐이 60% 줄었고, 이제 취약점 '발견'에 쓸 수 있습니다(익스플로잇 개발은 불가). Claude Code 세션당 개입이 평균 약 60% 감소합니다.",
+    "생물학 보호 장치는 기초 생물학·의료 질문에서 85% 덜 걸립니다.",
+    "Enterprise Frontier Safeguards(EFS): 데이터를 고객 소유 클라우드에 보관해 ZDR 수준의 프라이버시를 주면서 오남용을 막는 체계로, 올가을부터 단계적으로 도입됩니다.",
+    "과학 연구 사례: 단백질 결합체 설계에서 12개 타깃 평균 약 50% 적중률, 금성 1/3 면적의 고해상도 고도 지도 생성, 생물학 모델 7종 추론 최대 2.5배 가속."
+  ],
+  "availability": [
+    "Fable 5.1: Claude 앱, Claude Code, Claude Platform 및 AWS, Google Cloud, Microsoft Azure",
+    "API 모델명: claude-fable-5-1",
+    "기본 effort: Claude Code는 High, Claude Cowork와 Claude.ai는 Medium",
+    "Mythos 5.1: Cyber Verification Program, Life Sciences Verification Program 참여 기관(현재 미국 기관 일부), Claude Security"
+  ],
+  "tips": [
+    {
+      "title": "진행 상황 업데이트는 직접 요청",
+      "body": "Fable 5.1은 에이전트 작업 중 사용자에게 보내는 중간 업데이트를 이전보다 덜 씁니다. 진행 보고가 필요하면 프롬프트에 요구하고, '업데이트는 짧게' 같은 기존 지시는 지우세요."
+    },
+    {
+      "title": "포맷 억제 지시는 빼기",
+      "body": "Fable 5.1은 이미 예전 모델보다 서식을 덜 씁니다. '마크다운과 불릿을 줄여라' 같은 긴 지시 블록은 필요한 구조까지 없앨 수 있으니 제거하거나 짧은 규칙으로 바꾸세요."
+    },
+    {
+      "title": "긴 에이전트 루프의 병렬 호출 지시",
+      "body": "독립적인 도구 호출을 병렬로 하라는 지시는, 긴 루프에서는 도구 결과가 돌아올 때마다 턴 단위 system 메시지로 다시 보내라고 Anthropic 문서가 권합니다."
+    },
+    {
+      "title": "연구·장기 작업의 오케스트레이터로",
+      "body": "Ramp는 연구, 신규 개발, 장기 작업에서는 Fable 5.1을 오케스트레이터로 쓰겠다고 했습니다. 하위 작업은 더 저렴한 모델에 맡기고 Fable은 계획과 판단을 맡기는 구성이 비용 면에서 유리합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "연구 오케스트레이터",
+      "when": "가설을 세우고 실험을 돌려야 하는 장기 작업",
+      "type": "prompt",
+      "text": "너는 이 연구 작업의 오케스트레이터야. 목표: [문제]\n\n- 먼저 가설 2~3개를 세우고 research_notes.md에 각각의 신뢰도와 함께 기록해\n- 서로 독립적인 실험은 병렬로 돌리고, 결과가 나오면 가설을 갱신해\n- 한 단계가 끝날 때마다 한 일, 알게 된 것, 다음 단계를 세 줄로 보고해\n- 막히면 접근을 바꾸되 무엇을 왜 바꿨는지 기록해"
+    },
+    {
+      "title": "근본 원인 분석",
+      "when": "재현이 어려운 장애나 크래시",
+      "type": "prompt",
+      "text": "첨부한 크래시 로그와 코어 덤프를 분석해서 근본 원인을 찾아줘.\n\n증상을 가리는 우회책은 제안하지 마.\n원인이 외부 라이브러리에 있다면 근거가 되는 코드 위치와 재현 조건을 함께 보여줘."
+    }
+  ],
+  "cautions": [
+    "침투 테스트, 익스플로잇 생성, 바이너리 기반 취약점 스캔 같은 이중 용도 보안 작업은 Opus 모델로 전환됩니다.",
+    "생명과학 연구개발 질의는 Opus 모델로 전환됩니다.",
+    "증류 방지를 위해, 출시일 이후 만든 API 계정은 이전 컨텍스트를 편집하면서 thinking 기록을 보존할 수 없습니다.",
+    "EU AI Act 대응으로 텍스트 워터마크가 적용됩니다(품질에는 영향 없음)."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Fable 5.1 and Claude Mythos 5.1 (Anthropic)",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    },
+    {
+      "title": "Prompting Claude Fable 5.1",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1"
+    }
+  ],
+  "chartSource": "Anthropic Claude Fable 5.1·Mythos 5.1 발표문의 비교표 기준입니다.",
+  "charts": [
+    {
+      "title": "Terminal-Bench-Science 0.1",
+      "desc": "과학 연구 워크플로",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5.1",
+          "value": 52.6,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 29.0
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 24.7
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 22.4
+        }
+      ]
+    },
+    {
+      "title": "Terminal-Bench 4.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos 5.1",
+          "value": 60.9,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 55.8,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 52.3
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 42.0
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 37.3
+        }
+      ],
+      "note": "같은 모델이며, 차이는 보호장치 개입 여부"
+    },
+    {
+      "title": "CursorBench 3.2.0",
+      "desc": "실제 Cursor 세션 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5.1",
+          "value": 73.4,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 70.5
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 70.0
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 67.2
+        }
+      ]
+    },
+    {
+      "title": "AutomationBench",
+      "desc": "여러 앱을 오가는 업무 자동화",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5.1",
+          "value": 31.4,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 26.9
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 19.6
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 17.1
+        }
+      ]
+    },
+    {
+      "title": "GDPval-AA v2",
+      "desc": "44개 직업군 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5.1",
+          "value": 1853,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 1824
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 1723
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 1711
+        }
+      ]
+    },
+    {
+      "title": "사용 비용 지수",
+      "desc": "같은 작업량의 비용, Fable 5 = 100",
+      "type": "bar",
+      "unit": "",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "Fable 5 · 일반 워크로드",
+          "value": 100
+        },
+        {
+          "label": "Fable 5.1 · 일반 워크로드",
+          "value": 75,
+          "highlight": true
+        },
+        {
+          "label": "Fable 5 · 에이전트 작업",
+          "value": 100
+        },
+        {
+          "label": "Fable 5.1 · 에이전트 작업",
+          "value": 55,
+          "highlight": true
+        }
+      ],
+      "keepOrder": true
+    }
+  ]
+}

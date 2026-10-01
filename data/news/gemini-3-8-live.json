@@ -1,0 +1,108 @@
+{
+  "id": "gemini-3-8-live",
+  "company": "google",
+  "date": "2026-09-15",
+  "kind": "모델 출시",
+  "title": "Gemini 3.8 Live · Live Extended Thinking",
+  "headline": "말하면서 동시에 생각하는 실시간 음성 대화 모델",
+  "tldr": "실시간 음성 대화용 두 모델입니다. 3.8 Live는 대규모·저비용 음성 에이전트용, 3.8 Live Extended Thinking은 말하면서 깊게 추론해야 하는 복잡한 작업용입니다. 대화를 끊지 않고 도구를 백그라운드로 실행하고, 97개 언어를 자동으로 전환합니다.",
+  "models": [
+    {
+      "name": "Gemini 3.8 Live",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Gemini 3.8 Live Extended Thinking",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Speech-to-Speech 품질 지수",
+      "value": "82.6",
+      "note": "Extended Thinking, Artificial Analysis 1위"
+    },
+    {
+      "label": "τ-Voice (에이전트 과제 완료)",
+      "value": "68.6%",
+      "note": "Extended Thinking, 은행 시나리오 τ-Voice-banking 35.1%"
+    },
+    {
+      "label": "Big Bench Audio",
+      "value": "97.7%",
+      "note": "음성 추론"
+    },
+    {
+      "label": "지원 언어",
+      "value": "97개",
+      "note": "대화 중 자동 감지·전환"
+    }
+  ],
+  "changes": [
+    "3.8 Live는 규모와 비용 효율에 맞춘 모델로, 자연스러운 대화와 시각 정보 이해를 결합했습니다. Speech Agent Arena 사용자 선호 2위입니다.",
+    "Extended Thinking은 추론과 말하기를 동시에 합니다. '확인해 볼게요' 같은 말로 먼저 반응하고, 여러 단계의 백그라운드 작업 진행 상황을 말로 중계합니다.",
+    "도구와 API 호출을 백그라운드에서 실행하는 동안에도 대화를 이어 갑니다.",
+    "카메라·화면 같은 시각 입력을 거의 실시간으로 처리해 대화 맥락에 반영합니다.",
+    "생성된 모든 오디오에는 SynthID 워터마크가 들어갑니다."
+  ],
+  "availability": [
+    "개발자: Gemini API의 Live API, Google AI Studio",
+    "기업: Gemini Enterprise 비공개 프리뷰 (Customer Experience 제품군은 곧 제공)",
+    "3.8 Live: 검색의 Search Live",
+    "Extended Thinking: Gemini Live, Workspace의 Docs(Google AI Pro·Ultra), Gmail·Keep(모든 Google AI 구독자)"
+  ],
+  "tips": [
+    {
+      "title": "단순 응대는 Live, 다단계 업무는 Extended Thinking",
+      "body": "예약 변경처럼 여러 번 도구를 불러야 하는 일은 Extended Thinking이 진행 상황을 말로 알려 줘 기다리는 시간이 덜 어색합니다. 짧은 문답이 많은 대량 응대는 비용 효율이 좋은 3.8 Live가 맞습니다."
+    },
+    {
+      "title": "보여 주면서 묻기",
+      "body": "시각 입력을 실시간으로 이해하므로, 기기 문제나 화면 오류는 말로 설명하기보다 카메라나 화면을 보여 주며 단계별로 묻는 편이 빠릅니다."
+    },
+    {
+      "title": "개발은 파트너 플랫폼으로",
+      "body": "LiveKit, Pipecat, Agora, Vercel 등이 Live API 연동을 제공해 실시간 미디어 스트리밍 인프라를 직접 만들 필요가 줄었습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Gemini Live로 메일 정리",
+      "when": "Gemini 앱에서 음성으로 말할 때",
+      "type": "prompt",
+      "text": "오늘 받은 메일 중에 답장이 필요한 것만 골라서 하나씩 읽어줘. 각 메일마다 내가 말하는 내용으로 답장 초안을 써줘."
+    },
+    {
+      "title": "음성 상담 에이전트 시스템 지시",
+      "when": "Live API로 예약·상담 에이전트를 만들 때",
+      "type": "prompt",
+      "text": "<role>\n너는 [회사] 예약 상담원이야.\n</role>\n\n<rules>\n- 한 번에 한 가지만 질문해\n- 도구로 예약을 조회하는 동안 '확인해 볼게요'라고 먼저 말해\n- 날짜, 시간, 인원은 마지막에 한 번 더 복창해 확인받아\n- 고객이 다른 언어로 말하면 그 언어로 계속해\n</rules>"
+    }
+  ],
+  "cautions": [
+    "기업용은 아직 비공개 프리뷰입니다.",
+    "가격과 API 모델 ID는 발표문에 나오지 않았습니다. Live API 문서에서 확인하세요."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/"
+    },
+    {
+      "title": "Gemini Live API 문서",
+      "url": "https://ai.google.dev/gemini-api/docs/live-api"
+    },
+    {
+      "title": "Gemini 3.8 Live 평가 문서 (Google DeepMind, PDF)",
+      "url": "https://deepmind.google/models/evals-methodology/gemini-3-8-live/"
+    }
+  ],
+  "charts": [],
+  "chartNote": "Google은 이 모델의 비교 그래프를 이미지와 평가 PDF로만 공개해, 정확한 비교 수치를 옮기지 않았습니다. 원문 그래프는 아래 평가 문서에서 볼 수 있습니다."
+}

@@ -1,0 +1,293 @@
+{
+  "id": "gpt-6-astra",
+  "company": "openai",
+  "date": "2026-09-03",
+  "kind": "모델 출시",
+  "title": "GPT-6 Astra",
+  "headline": "OpenAI의 새 세대 플래그십, 컴퓨터 사용과 코딩·과학에서 최고 수준",
+  "tldr": "OpenAI가 '가장 똑똑하고 정렬이 잘 된 모델'로 소개한 GPT-6 세대의 첫 모델입니다. 컴퓨터 사용, 브라우징, 소프트웨어 엔지니어링, 과학, 전문 업무에서 최고 성능을 내세우며, OpenAI 모델 중 처음으로 사이버보안 '임계(Critical)' 수준에 도달해 보호 장치가 강화됐습니다.",
+  "models": [
+    {
+      "name": "GPT-6 Astra",
+      "apiId": "gpt-6-astra",
+      "input": "$10",
+      "output": "$50",
+      "cached": "$1"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "OSWorld 2.0 (컴퓨터 사용)",
+      "value": "72.6%",
+      "note": "과제당 약 40분. GPT-5.6 Sol은 65.7%, 약 75분"
+    },
+    {
+      "label": "Terminal-Bench 4.0",
+      "value": "57.9%",
+      "note": "GPT-5.6 Sol 37.3%"
+    },
+    {
+      "label": "ARC-AGI-3",
+      "value": "99.9%",
+      "note": "FrontierMath Tier 4 97.6%, GPQA Diamond 96.0%"
+    },
+    {
+      "label": "입력 / 출력",
+      "value": "$10 / $50",
+      "note": "1M 토큰당. Fast 모드는 최대 2배 속도에 2배 가격"
+    }
+  ],
+  "changes": [
+    "컴퓨터 사용 속도와 정확도가 크게 올랐습니다. 양식 입력, CRM 기록 갱신, 일정 정리, 프런트엔드 QA 같은 화면 작업을 맡길 수 있고, 개선된 Codex 하네스와 합쳐 Mind2Web 과제를 1.9배 빨리 끝냅니다.",
+    "지시가 모호할 때 판단이 좋아졌습니다. 일상적인 빈칸은 맥락으로 채우고 결과를 바꿀 수 있는 부분만 짧게 묻습니다. Codex에서는 질문을 남겨 둔 채 답과 무관한 작업을 계속하고, 답이 없으면 무난한 가정으로 진행하되 중요한 결정은 기다립니다.",
+    "작업 도중 방향을 바꾸거나 곁가지 질문을 해도 원래 목표와 제약을 잃지 않습니다.",
+    "기존 슬라이드·문서 템플릿과 문체를 따라 바로 쓸 수 있는 문서, 프레젠테이션, 스프레드시트를 만듭니다. ChatGPT의 Sites로 웹사이트, 웹앱, 게임을 만들어 호스팅하고 공유할 수 있습니다.",
+    "Codex 장기 작업에서 컨텍스트 창이 가득 차도 요약 압축 대신 노트를 이어서 쓰고, 이전 창의 내용을 검색할 수 있습니다(실험 기능, config.toml에서 켜기, 몇 주 안에 Astra 기본값 예정).",
+    "OpenAI의 준비성 프레임워크에서 사이버보안 '임계' 수준에 도달한 첫 모델이라, 오정렬 모니터링과 사이버 보호 장치가 추가됐습니다."
+  ],
+  "availability": [
+    "ChatGPT Plus, Pro, Business, Enterprise (순차 배포). Pro, Business, Enterprise는 GPT-6 Astra Pro도 사용 가능",
+    "Enterprise는 관리자가 워크스페이스에서 켜야 합니다(출시 시 기본 꺼짐)",
+    "API 모델명: gpt-6-astra (Microsoft Azure, AWS Bedrock에서도 제공)",
+    "구독 사용량 안에 포함되며, 추가 사용량은 크레딧으로 구매 가능"
+  ],
+  "tips": [
+    {
+      "title": "완료 기준을 먼저 정의하기",
+      "body": "OpenAI 개발자 블로그에 따르면 Astra는 첫 구현 뒤 검토를 받으러 일찍 돌아오는 경향이 있습니다. '실행해 보고, 결과를 확인하고, 실패한 부분을 고칠 때까지'처럼 끝나는 조건을 요청에 넣으세요. 더 탐색하길 원하면 무엇을 어디까지 탐색할지 적어 주세요."
+    },
+    {
+      "title": "예전 모델용 과잉 지시 걷어내기",
+      "body": "'매 수정 전에 architecture.md, database.md를 모두 읽어라'나 '반드시 테스트를 돌려라' 같은 지시는 Astra에서 컨텍스트만 낭비합니다. Astra는 스스로 검증합니다. AGENTS.md는 '스키마 변경 시 database.md 참고'처럼 상황별로 바꾸세요."
+    },
+    {
+      "title": "강한 경계 문구 다시 보기",
+      "body": "이전 모델을 막으려고 넣었던 '반드시 먼저 물어봐' 같은 문구를 Astra는 지나치게 진지하게 받아들여 작업을 멈출 수 있습니다. 안전한 작업은 승인 없이 진행해도 된다고 명시하는 편이 좋습니다."
+    },
+    {
+      "title": "스킬 설명은 짧게, 언제 쓰는지만",
+      "body": "스킬이 많으면 설명이 잘려 모델이 고르기 어려워집니다. 'DB 작업 전반에 사용'보다 '마이그레이션을 추가·변경하거나 롤아웃을 검토할 때 사용'처럼 적용 시점을 좁히고, 워크플로가 여럿이면 루트 문서는 하위 문서를 안내하는 라우터로만 두세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "회사 템플릿으로 발표자료 만들기",
+      "when": "슬라이드 템플릿과 자료를 함께 첨부할 때",
+      "type": "prompt",
+      "text": "첨부한 회사 슬라이드 템플릿의 레이아웃, 색, 폰트 규칙을 그대로 따라 [주제] 발표자료 [N]장을 만들어줘.\n\n- 슬라이드마다 핵심 메시지는 하나\n- 수치는 첨부 자료에서만 가져오고, 출처는 발표자 노트에 적어\n- 첨부 자료에 없는 정보는 넣지 마"
+    },
+    {
+      "title": "웹 조사와 정리를 컴퓨터 사용으로 맡기기",
+      "when": "여러 사이트를 돌아다니며 비교해야 할 때",
+      "type": "prompt",
+      "text": "웹에서 [조건]에 맞는 [항목] 5개를 찾아 비교표(이름, 가격, 장단점, 링크)를 문서로 정리해줘.\n\n결제, 제출, 계정 변경처럼 되돌리기 어려운 동작은 하지 말고, 그 직전에 멈춰서 알려줘."
+    },
+    {
+      "title": "AGENTS.md에 넣을 승인 문장",
+      "when": "안전한 반복 작업을 매번 승인하지 않고 진행시키고 싶을 때 (OpenAI 블로그 예시 번역)",
+      "type": "prompt",
+      "text": "로컬 테스트는 일회용 픽스처를 쓰고 운영 환경에 접근하지 않는다. 요청한 변경 때문에 실패한 테스트는 단계마다 승인을 받지 말고 고친 뒤, 영향받은 테스트를 다시 실행한다."
+    }
+  ],
+  "cautions": [
+    "취약점 개념증명(PoC) 익스플로잇 작성 같은 고급 사이버보안 작업은 거절합니다. 보안 코드 리뷰와 패치는 가능하며, OpenAI Daybreak로 방어 목적 접근을 넓힐 예정입니다.",
+    "추가 안전 점검이 작업을 멈출 수 있습니다. ChatGPT와 Codex에서는 검토를 요청하고, API에서는 작업이 중단됩니다."
+  ],
+  "sources": [
+    {
+      "title": "GPT-6 Astra: A new generation of intelligence (OpenAI)",
+      "url": "https://openai.com/index/gpt-6-astra/"
+    },
+    {
+      "title": "Rethinking skills and prompts for GPT-6 Astra (OpenAI Developers)",
+      "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"
+    },
+    {
+      "title": "GPT-6 Astra 시스템 카드",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra"
+    }
+  ],
+  "chartSource": "OpenAI GPT-6 Astra 발표문의 비교표 기준이며, 각 모델이 어떤 effort에서든 낸 최고 점수입니다. Claude 점수 일부는 OpenAI가 직접 측정했습니다.",
+  "charts": [
+    {
+      "title": "Terminal-Bench 4.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 57.9,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 55.8
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 52.6
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 44.5
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 37.3
+        },
+        {
+          "label": "Gemini 3.8 Flash",
+          "value": 19.1
+        }
+      ]
+    },
+    {
+      "title": "OSWorld 2.0",
+      "desc": "컴퓨터 사용 (오프라인 세트, 부분 점수)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 72.6,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 70.2
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 65.7
+        }
+      ]
+    },
+    {
+      "title": "DeepSWE v1.1",
+      "desc": "실제 코드베이스의 장기 엔지니어링",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 74.1,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.8 Flash",
+          "value": 73.8
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 73.7
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 72.7
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 69.9
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 67.4
+        }
+      ]
+    },
+    {
+      "title": "Terminal-Bench Science 0.1",
+      "desc": "과학 연구 워크플로",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 64.6,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 52.6
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 30.0
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 22.4
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 21.4
+        }
+      ]
+    },
+    {
+      "title": "AutomationBench",
+      "desc": "여러 앱을 오가는 업무 자동화",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 41.4,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 31.4
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 26.9
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 18.1
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 17.4
+        }
+      ]
+    },
+    {
+      "title": "컴퓨터 사용 안전성",
+      "desc": "의도치 않은 결과를 낸 비율 (OpenAI 내부 평가)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 2.4,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 9.5
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 11.5
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 18.3
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 22.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "id": "openai-retained-reasoning-compaction",
+  "company": "openai",
+  "date": "2026-07-29",
+  "kind": "활용 팁",
+  "title": "API 설정 두 개로 점수 3배: 추론 유지와 컴팩션",
+  "headline": "OpenAI가 자사 제품과 같은 API 설정을 권하는 이유",
+  "tldr": "같은 GPT-5.6 Sol도 Responses API에서 이전 추론을 유지하고 컴팩션을 켜자 ARC-AGI-3 공개 세트 점수가 13.3%에서 38.3%로 약 3배 오르고 출력 토큰은 6배 줄었습니다. 에이전트를 만든다면 그대로 따라 할 만한 기본 설정입니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "ARC-AGI-3 공개 세트",
+      "value": "13.3% → 38.3%",
+      "note": "GPT-5.6 Sol, 같은 모델에 설정만 변경"
+    },
+    {
+      "label": "출력 토큰",
+      "value": "6배 감소",
+      "note": "덜 고민하고 더 빨리 진행"
+    }
+  ],
+  "changes": [
+    "기존 공식 하네스는 매 행동마다 모델의 비공개 추론을 버렸습니다. 모델은 매 턴 게임을 처음부터 다시 이해해야 했습니다.",
+    "또 기록이 17.5만 자를 넘으면 오래된 메시지부터 잘라냈습니다(rolling truncation). 그래서 앞서 한 행동까지 잊었습니다.",
+    "추론 유지: Responses API에서 이전 응답 ID를 넘기면 도구 호출과 턴 사이에 추론이 자동으로 이어집니다. 모델이 매 행동 전에 덜 고민하고 일관된 전략을 유지했습니다.",
+    "컴팩션: 잘라내는 대신 대화를 요약해 이어 갑니다. 배운 내용을 보존하고, 꽉 찬 컨텍스트로 일하는 시간이 줄어 성능이 좋아졌습니다."
+  ],
+  "availability": [
+    "OpenAI Responses API (레거시 Chat Completions API가 아닌)",
+    "ChatGPT와 Codex는 이미 이 방식으로 동작합니다"
+  ],
+  "tips": [
+    {
+      "title": "Chat Completions 대신 Responses API",
+      "body": "OpenAI의 공식 권고입니다. 모델이 학습되고 배포된 방식(비공개 추론을 대화 기록에 유지)과 같은 환경에서 써야 성능이 제대로 나옵니다."
+    },
+    {
+      "title": "멀티턴·도구 루프에서는 추론을 이어 붙이기",
+      "body": "다음 요청에 이전 응답 ID를 넘기면 추론이 유지됩니다. 매 턴 기록을 직접 재구성하면서 추론 항목을 빠뜨리지 마세요."
+    },
+    {
+      "title": "긴 작업은 잘라내기 대신 컴팩션",
+      "body": "컨텍스트 한도에 다다를 때 오래된 메시지를 버리지 말고 컴팩션으로 요약해 이어 가세요. 자세한 사용법은 출처의 Compaction 가이드에 있습니다."
+    },
+    {
+      "title": "모델 비교 결과를 읽을 때도",
+      "body": "OpenAI는 벤치마크가 모델만이 아니라 API 설정, 하네스, 프롬프트까지 함께 측정한다고 지적합니다. 위 설정을 쓴 평가를 기준으로 비교하라고 권합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Responses API에서 추론 이어 가기 (Python)",
+      "when": "도구를 여러 번 부르는 에이전트 루프를 짤 때",
+      "type": "code",
+      "text": "from openai import OpenAI\n\nclient = OpenAI()\n\nfirst = client.responses.create(\n    model=\"gpt-6.1-sol\",\n    input=\"[첫 요청]\",\n)\n\n# 다음 턴: 이전 응답 ID를 넘기면 추론이 자동으로 유지된다\nnext_turn = client.responses.create(\n    model=\"gpt-6.1-sol\",\n    previous_response_id=first.id,\n    input=\"[이어지는 요청 또는 도구 결과]\",\n)"
+    }
+  ],
+  "cautions": [
+    "실험은 GPT-5.6 Sol 기준입니다. OpenAI는 같은 설정을 일반적으로 권하지만, 효과의 크기는 모델과 작업에 따라 다를 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "How enabling two settings tripled our scores on the ARC-AGI-3 benchmark (OpenAI)",
+      "url": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/"
+    },
+    {
+      "title": "Compaction 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/compaction"
+    },
+    {
+      "title": "Conversation state 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/conversation-state"
+    }
+  ],
+  "chartSource": "OpenAI 연구 글 기준, 모델은 GPT-5.6 Sol입니다.",
+  "charts": [
+    {
+      "title": "ARC-AGI-3 공개 세트",
+      "desc": "인간 대비 행동 효율(RHAE)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "공식 하네스",
+          "value": 13.3
+        },
+        {
+          "label": "추론 유지 + 컴팩션",
+          "value": 38.3,
+          "highlight": true
+        },
+        {
+          "label": "평균 인간 테스터 (OpenAI 추정)",
+          "value": 48.0
+        }
+      ],
+      "keepOrder": true
+    },
+    {
+      "title": "출력 토큰 사용량",
+      "desc": "새 설정을 1로 둔 배수",
+      "type": "bar",
+      "unit": "×",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "공식 하네스",
+          "value": 6,
+          "display": "×6"
+        },
+        {
+          "label": "추론 유지 + 컴팩션",
+          "value": 1,
+          "highlight": true,
+          "display": "×1"
+        }
+      ],
+      "keepOrder": true
+    }
+  ]
+}

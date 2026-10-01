@@ -1,0 +1,291 @@
+{
+  "id": "claude-opus-5-5",
+  "company": "anthropic",
+  "date": "2026-09-22",
+  "kind": "모델 출시",
+  "title": "Claude Opus 5.5",
+  "headline": "Fable 5.1 수준 성능을 Opus 5보다 40% 낮은 비용으로",
+  "tldr": "Claude 5.5 패밀리의 첫 모델입니다. 대부분의 작업에서 Claude Fable 5.1 수준이고, 일반 워크로드 기준 Opus 5보다 40% 저렴합니다. 에이전트 코딩, 컴퓨터 사용, 지식 업무 벤치마크에서 선두이며 글이 훨씬 읽기 쉬워졌습니다.",
+  "models": [
+    {
+      "name": "Claude Opus 5.5",
+      "apiId": "claude-opus-5-5",
+      "input": "$4",
+      "output": "$20",
+      "cached": "$0.20"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Terminal-Bench 4.0",
+      "value": "66.4%",
+      "note": "Fable 5.1 55.8%, GPT-6 Astra 57.9%"
+    },
+    {
+      "label": "FrontierCode (기본 effort)",
+      "value": "54.6%",
+      "note": "GPT-6 Astra 최고점 53.3%를 약 1/5 비용으로 앞섬"
+    },
+    {
+      "label": "GDPval-AA v2.1",
+      "value": "1846",
+      "note": "44개 직업군 실무 평가, Fable 5.1 1735"
+    },
+    {
+      "label": "비용",
+      "value": "Opus 5 대비 −40%",
+      "note": "토큰 단가 인하 + 과제당 토큰 감소"
+    }
+  ],
+  "changes": [
+    "가격 인하: 입력 $4, 출력 $20으로 Opus 5보다 20% 낮고, 에이전트·코딩 비용의 대부분을 차지하는 캐시 읽기는 $0.20으로 60% 낮습니다.",
+    "출력 속도가 Opus 5보다 30% 이상 빠릅니다. Claude Code와 Claude Platform의 Fast 모드는 최대 2.5배 속도($8/$40)입니다.",
+    "코드베이스 전체 마이그레이션이나 감사처럼 길고 넓은 작업에 특히 강합니다. 68만 줄 마이그레이션을 하루 안에, 20만 줄 감사·수정을 3시간 안에 끝낸 사례가 공개됐습니다.",
+    "글쓰기가 달라졌습니다. 중요한 정보를 먼저 쓰고, 전문용어와 특이한 표현을 줄이며, 사용자가 준 글쓰기 규칙을 잘 따릅니다.",
+    "자동 행동 감사에서 역대 최고 점수를 받았고, 되돌리기 어려운 행동이나 권한 밖 행동이 줄었으며 프롬프트 인젝션 저항이 Opus 5보다 강해졌습니다.",
+    "Pro, Max, Team, 좌석형 Enterprise 플랜의 5시간 사용 한도가 올라갔고, 구독자는 원할 때 쓸 수 있는 사용량 리셋을 한 번 받습니다."
+  ],
+  "availability": [
+    "Claude 앱, Claude Code, Claude Platform 및 AWS, Google Cloud, Microsoft Azure",
+    "API 모델명: claude-opus-5-5",
+    "제로 데이터 보존(ZDR) 지원",
+    "thinking을 끌 수 없습니다(항상 적응형 thinking)"
+  ],
+  "tips": [
+    {
+      "title": "medium effort로 시작",
+      "body": "기본값(medium)에서도 여러 벤치마크에서 Opus 5의 max를 넘었습니다. Factory는 'medium을 기본으로 쓸 첫 모델'이라고 했고, Deloitte와 Rogo는 가장 낮은 effort에서도 Opus 5 high보다 나았다고 보고했습니다."
+    },
+    {
+      "title": "글쓰기 규칙을 시스템 프롬프트에",
+      "body": "Opus 5.5는 주어진 글쓰기 규칙을 잘 따릅니다. 팀 문체 가이드를 시스템 프롬프트에 넣어 두면 PR 설명, 문서, 공지를 거의 고치지 않고 쓸 수 있습니다."
+    },
+    {
+      "title": "서브에이전트와 자기 검증 활용",
+      "body": "얼리 테스터(Column)는 서브에이전트 위임과 자기 검증 루프가 훨씬 쉬워졌다고 평가했습니다. 큰 작업은 하위 작업으로 나눠 맡기고, 진행 기록 파일을 남기게 하세요."
+    },
+    {
+      "title": "API 대화 기록은 '추가만'",
+      "body": "Opus 5.5에서는 thinking 블록 앞의 대화를 고치면(이전 메시지 편집, system·tools 재구성, 오래된 턴 요약) 오류가 나거나 블록이 버려집니다. 바뀐 지시는 대화 중간 system 메시지나 서버 측 컨텍스트 관리로 넣으세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "여러 저장소에 걸친 장기 작업",
+      "when": "Claude Code에 밤새 맡길 큰 작업",
+      "type": "prompt",
+      "text": "목표: [서비스 A~F] 사이의 통신 규약을 정의하고 각 서비스에 적용해.\n\n진행 방식:\n- 먼저 각 저장소를 조사해 progress.md에 현재 구조와 계획을 적어\n- 마일스톤마다 테스트를 돌리고 progress.md를 갱신해\n- force push, 브랜치 삭제, 외부 메시지 전송처럼 되돌리기 어려운 작업은 하기 전에 물어봐\n\n완료 기준: 모든 저장소의 CI 통과, 변경 요약과 남은 이슈 목록 제출"
+    },
+    {
+      "title": "팀 글쓰기 규칙 적용",
+      "when": "공지, 보고서, PR 설명을 팀 문체로 받고 싶을 때",
+      "type": "prompt",
+      "text": "<writing_rules>\n- 결론을 첫 문장에 쓴다\n- 문단은 세 문장 이내\n- 약어는 처음 나올 때 풀어 쓴다\n- 과장 표현을 쓰지 않는다\n</writing_rules>\n\n위 규칙대로 다음 변경 사항을 팀 공지로 정리해줘:\n[내용]"
+    },
+    {
+      "title": "그럴듯한 첫 답에서 멈추지 않는 데이터 분석",
+      "when": "원인 분석처럼 결론을 검증해야 할 때 (Hex 사례 응용)",
+      "type": "prompt",
+      "text": "이 데이터로 [질문]에 답해줘.\n\n첫 번째로 그럴듯한 설명에서 멈추지 말고, 그 설명과 경쟁하는 다른 가설도 데이터로 확인해.\n각 가설을 지지하거나 반박하는 근거를 표로 정리한 뒤 결론을 내려줘."
+    }
+  ],
+  "cautions": [
+    "대부분의 사이버보안 작업은 Claude Opus 4.8로 전환됩니다(일상적인 버그 찾기·수정은 가능). 보안 실무자용 Cyber Verification Program이 곧 확대됩니다.",
+    "생물학 연구개발은 보호 장치에 걸릴 수 있어, 해당 조직은 Life Sciences Verification Program을 신청할 수 있습니다.",
+    "2026년 8월 31일 이후 생성된 API 계정은 preserved thinking이 적용되어, Claude의 이전 컨텍스트를 편집하는 통합은 수정이 필요할 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Opus 5.5 (Anthropic)",
+      "url": "https://www.anthropic.com/claude-opus-5-5"
+    },
+    {
+      "title": "Opus 5.5 마이그레이션 가이드",
+      "url": "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide"
+    },
+    {
+      "title": "Prompting Claude Opus 5.5",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5"
+    }
+  ],
+  "chartSource": "Anthropic Claude Opus 5.5 발표문의 비교표 기준이며, Opus 5.5는 max effort(Terminal-Bench는 xhigh) 점수입니다.",
+  "charts": [
+    {
+      "title": "Terminal-Bench 4.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 66.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 57.9
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 55.8
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 52.3
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 37.3
+        }
+      ]
+    },
+    {
+      "title": "FrontierCode v1.1 (Main)",
+      "desc": "병합 가능한 코드 변경",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 54.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 53.3
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 50.3
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 48.0
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 47.5
+        }
+      ]
+    },
+    {
+      "title": "CursorBench 4.0",
+      "desc": "실제 Cursor 세션의 모호한 다중 파일 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 57.8,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 51.8
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 46.6
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 41.7
+        }
+      ]
+    },
+    {
+      "title": "AutomationBench",
+      "desc": "여러 앱을 오가는 업무 자동화 (Zapier 측정)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 41.4
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 40.0,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 31.4
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 28.8
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 26.9
+        }
+      ],
+      "note": "폴백 없이 측정해 보호장치 개입은 실패로 처리됨"
+    },
+    {
+      "title": "Terminal-Bench Science 0.1",
+      "desc": "과학 연구 워크플로",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 64.6
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 58.7,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 52.6
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 29.0
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 22.4
+        }
+      ]
+    },
+    {
+      "title": "GDPval-AA v2.1",
+      "desc": "44개 직업군 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "value": 1846,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "value": 1735
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 1708
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 1588
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 1542
+        }
+      ]
+    }
+  ]
+}
