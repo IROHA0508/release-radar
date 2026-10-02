@@ -308,3 +308,29 @@ def test_api_key_alone_selects_api(monkeypatch):
     assert summ.llm_available() == "api"
     monkeypatch.delenv("ANTHROPIC_API_KEY")
     assert summ.llm_available() is None
+
+
+def test_auth_failure_stops_early_and_is_reported(site, monkeypatch):
+    import backend.summarize as summ
+
+    monkeypatch.setattr(feeds, "fetch_all", lambda sources=None: (feeds.parse_rss(RSS, OPENAI), {}))
+    monkeypatch.setattr(summ, "Claude", FakeClaude)
+
+    def bad_triage(*a, **k):
+        raise RuntimeError('claude CLI 실패(1): "api_error_status":401,"result":"Failed to authenticate. API Error: 401 Invalid bearer token"')
+
+    monkeypatch.setattr(summ, "triage", bad_triage)
+    monkeypatch.setattr(summ, "write_item", lambda *a, **k: pytest.fail("should not be called after an auth error"))
+    report = pipeline.run_update(api_key="test")
+    assert report.authError and "인증 실패" in report.note
+    saved = json.loads((site / "backend/state/last-run.json").read_text())
+    assert saved["authError"] is True
+    state = json.loads((site / "backend/state/seen.json").read_text())
+    assert state.get("urls", {}) == {} and not state.get("attempts")   # nothing burned, retried next run
+
+
+def test_cli_token_whitespace_is_removed(monkeypatch):
+    import backend.summarize as summ
+
+    monkeypatch.setenv("CLAUDE_CODE_OAUTH_TOKEN", "  sk-ant-oat01-abc\r\ndef ghi \n")
+    assert summ.ClaudeCodeCLI().env["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-abcdefghi"

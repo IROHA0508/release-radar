@@ -38,6 +38,7 @@ class RunReport:
     failed: list = field(default_factory=list)
     guardNotes: dict = field(default_factory=dict)
     note: str = ""
+    authError: bool = False
 
     def save(self) -> None:
         path = config.STATE_FILE.parent / "last-run.json"
@@ -116,7 +117,7 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
             report.save()
         return report
 
-    from .summarize import Claude, make_llm, triage, write_item
+    from .summarize import Claude, is_auth_error, make_llm, triage, write_item
 
     claude = Claude(api_key) if api_key else make_llm()
     report.note = f"요약 엔진: {'Claude Code CLI(구독)' if backend == 'cli' else 'Claude API'}"
@@ -125,6 +126,15 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
         try:
             verdicts = triage(claude, cands, site_lines)
         except Exception as exc:  # noqa: BLE001 - the writing step can still skip non-model posts
+            if is_auth_error(exc):
+                # Every later call would fail the same way: stop here, keep candidates for the next run.
+                report.authError = True
+                report.note += " | Claude 인증 실패: 토큰(또는 API 키)이 잘못됐거나 만료됨. 새로 만들어 GitHub Secret을 바꿔 주세요."
+                annotate("error", "Claude 인증 실패", str(exc)[-400:])
+                store.touch_last_checked(today)
+                detect.save_state(state)
+                report.save()
+                return report
             log.warning("triage failed (%s); sending every candidate to the writing step", exc)
             annotate("warning", "분류 단계 실패", str(exc)[:500])
             verdicts = {}
@@ -144,6 +154,11 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
             draft = write_item(claude, e, art, site_lines, today)
         except Exception as exc:  # noqa: BLE001 - try again next run
             log.exception("failed: %s", e.url)
+            if is_auth_error(exc):
+                report.authError = True
+                report.note += " | Claude 인증 실패: 토큰(또는 API 키)을 새로 만들어 GitHub Secret을 바꿔 주세요."
+                annotate("error", "Claude 인증 실패", str(exc)[-400:])
+                break
             _fail(state, e, today, report, f"{type(exc).__name__}: {exc}")
             annotate("warning", "요약 실패", f"{e.url} {exc}")
             continue

@@ -86,3 +86,10 @@ jobs:
           git commit -m "$msg"
           git pull --rebase origin main
           git push origin HEAD:main
+      - name: Claude 인증 확인
+        if: github.event.inputs.command != 'detect' && github.event.inputs.command != 'selftest'
+        run: |
+          if python -c "import json,sys;sys.exit(0 if json.load(open('backend/state/last-run.json')).get('authError') else 1)"; then
+            echo "::error title=Claude 인증 실패::CLAUDE_CODE_OAUTH_TOKEN이 잘못됐거나 만료됐습니다. claude setup-token으로 새로 만들어 GitHub Secret을 바꿔 주세요."
+            exit 1
+          fi

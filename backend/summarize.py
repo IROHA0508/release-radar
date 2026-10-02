@@ -126,6 +126,9 @@ class ClaudeCodeCLI:
 
         self.binary = shutil.which(binary) or binary
         self.env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+        # A token copied from a terminal often picks up line breaks or spaces; the real token has none.
+        if self.env.get("CLAUDE_CODE_OAUTH_TOKEN"):
+            self.env["CLAUDE_CODE_OAUTH_TOKEN"] = re.sub(r"\s+", "", self.env["CLAUDE_CODE_OAUTH_TOKEN"])
 
     def json_call(self, *, model: str, system: str, user: str, schema: dict, max_tokens: int) -> dict:
         import subprocess
@@ -144,6 +147,15 @@ class ClaudeCodeCLI:
         if isinstance(envelope.get("structured_output"), dict):
             return envelope["structured_output"]
         return parse_json(envelope.get("result") or "")
+
+
+class AuthError(RuntimeError):
+    """The credential was rejected (bad, expired or revoked token / key)."""
+
+
+def is_auth_error(exc: Exception) -> bool:
+    text = str(exc)
+    return isinstance(exc, AuthError) or "401" in text or "authenticate" in text.lower() or "authentication_error" in text
 
 
 def make_llm():
