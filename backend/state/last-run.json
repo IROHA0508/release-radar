@@ -1,0 +1,140 @@
+{
+  "startedAt": "2026-10-03T01:07:47+09:00",
+  "mode": "update",
+  "sourceErrors": {},
+  "entries": 1637,
+  "candidates": [
+    {
+      "title": "How Albertsons Companies is reimagining retail from the inside out",
+      "url": "https://openai.com/index/albertsons-reimagining-retail",
+      "company": "openai",
+      "date": "2026-10-01",
+      "relatedId": null
+    },
+    {
+      "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
+      "url": "https://openai.com/index/the-den-family-social",
+      "company": "openai",
+      "date": "2026-10-01",
+      "relatedId": null
+    },
+    {
+      "title": "Oct 1, 2026 Announcements Barclays scales Claude to upgrade operations and improve client experience",
+      "url": "https://www.anthropic.com/news/barclays-scales-claude",
+      "company": "anthropic",
+      "date": "2026-10-01",
+      "relatedId": null
+    },
+    {
+      "title": "Disrupting a coordinated model-distillation campaign",
+      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
+      "company": "openai",
+      "date": "2026-09-30",
+      "relatedId": null
+    },
+    {
+      "title": "Are you a Codex Original?",
+      "url": "https://openai.com/form/codex-originals",
+      "company": "openai",
+      "date": "2026-09-28",
+      "relatedId": null
+    },
+    {
+      "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra",
+      "url": "https://openai.com/index/basis-tax-workbook-with-astra",
+      "company": "openai",
+      "date": "2026-09-28",
+      "relatedId": "gpt-6-astra"
+    },
+    {
+      "title": "See what 4 builders are making with Gemini 3.8 Flash",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-flash-developers/",
+      "company": "google",
+      "date": "2026-09-28",
+      "relatedId": "gemini-3-8-flash"
+    },
+    {
+      "title": "Proaction boosts sales 60% and saves 75+ hours with Codex",
+      "url": "https://openai.com/index/proaction",
+      "company": "openai",
+      "date": "2026-09-25",
+      "relatedId": null
+    },
+    {
+      "title": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
+      "url": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
+      "company": "openai",
+      "date": "2026-09-23",
+      "relatedId": "gpt-6-astra"
+    },
+    {
+      "title": "How invideo improves color grading 3x with GPT‑6 Astra",
+      "url": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
+      "company": "openai",
+      "date": "2026-09-23",
+      "relatedId": "gpt-6-astra"
+    },
+    {
+      "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
+      "url": "https://openai.com/index/ringg",
+      "company": "openai",
+      "date": "2026-09-23",
+      "relatedId": null
+    },
+    {
+      "title": "ChatGPT Ads expands to Southeast Asia and Taiwan",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan",
+      "company": "openai",
+      "date": "2026-09-23",
+      "relatedId": null
+    },
+    {
+      "title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
+      "url": "https://openai.com/index/airbnb-gpt-6-astra",
+      "company": "openai",
+      "date": "2026-09-23",
+      "relatedId": "gpt-6-astra"
+    },
+    {
+      "title": "Sep 23, 2026 Science Claude discovers a novel enzyme system with CRISPR-like repeats",
+      "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+      "company": "anthropic",
+      "date": "2026-09-23",
+      "relatedId": null
+    },
+    {
+      "title": "Claude Corps",
+      "url": "https://www.anthropic.com/claude-corps",
+      "company": "anthropic",
+      "date": "2026-10-03",
+      "relatedId": null
+    }
+  ],
+  "added": [],
+  "updated": [],
+  "skipped": [],
+  "failed": [
+    {
+      "url": "https://openai.com/index/albertsons-reimagining-retail",
+      "error": "RuntimeError: claude CLI 실패(1): l_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":401,\"result\":\"Failed to authenticate. API Error: 401 Invalid bearer token\",\"type\":\"result\",\"duration_ms\":1850,\"uuid\":\"3ee98ebd-231b-4c2a-8d07-bb7e97f60abb\",\"queued_turn_count\":0,\"result_index\":0}\n"
+    },
+    {
+      "url": "https://openai.com/index/the-den-family-social",
+      "error": "RuntimeError: claude CLI 실패(1): l_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":401,\"result\":\"Failed to authenticate. API Error: 401 Invalid bearer token\",\"type\":\"result\",\"duration_ms\":1784,\"uuid\":\"6ab57e93-91d0-491b-be67-0bff1bf78283\",\"queued_turn_count\":0,\"result_index\":0}\n"
+    },
+    {
+      "url": "https://www.anthropic.com/news/barclays-scales-claude",
+      "error": "RuntimeError: claude CLI 실패(1): l_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":401,\"result\":\"Failed to authenticate. API Error: 401 Invalid bearer token\",\"type\":\"result\",\"duration_ms\":1922,\"uuid\":\"f2a6c3f6-bf3b-4b09-b608-fd3198ee3af9\",\"queued_turn_count\":0,\"result_index\":0}\n"
+    },
+    {
+      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
+      "error": "RuntimeError: claude CLI 실패(1): l_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":401,\"result\":\"Failed to authenticate. API Error: 401 Invalid bearer token\",\"type\":\"result\",\"duration_ms\":2075,\"uuid\":\"5a2dc6ca-5195-41f7-b14b-0196d8eab9d4\",\"queued_turn_count\":0,\"result_index\":0}\n"
+    },
+    {
+      "url": "https://openai.com/form/codex-originals",
+      "error": "RuntimeError: 원문을 읽지 못함: https://openai.com/form/codex-originals (본문이 너무 짧음(276자); reader 403 Client Error: Forbidden for url: https://r.jina.ai/https://openai.com/form/codex-originals)"
+    }
+  ],
+  "guardNotes": {},
+  "note": "요약 엔진: Claude Code CLI(구독)"
+}
