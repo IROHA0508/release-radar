@@ -1,0 +1,302 @@
+{
+  "id": "claude-fable-5-mythos-5",
+  "company": "anthropic",
+  "date": "2026-06-09",
+  "kind": "모델 출시",
+  "title": "Claude Fable 5 · Claude Mythos 5",
+  "headline": "Mythos급 모델 첫 일반 공개, 보호 장치를 더한 Fable 5",
+  "tldr": "Anthropic이 Mythos급 모델을 처음으로 일반에 공개했습니다. Claude Fable 5와 Claude Mythos 5는 같은 바탕 모델이며, 일반에 공개된 Fable 5에는 보호 장치가 더해져 사이버보안·생물·화학·증류(distillation) 관련 요청은 Opus 4.8이 대신 답합니다. Mythos 5는 Project Glasswing 파트너에게만 제공됩니다.",
+  "models": [
+    {
+      "name": "Claude Fable 5",
+      "apiId": "claude-fable-5",
+      "input": "$10",
+      "output": "$50",
+      "cached": null
+    },
+    {
+      "name": "Claude Mythos 5",
+      "apiId": null,
+      "input": "$10",
+      "output": "$50",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "SWE-Bench Pro",
+      "value": "80% / 80.3%",
+      "note": "Fable 5 / Mythos 5, OpenAI GPT-5.6 표 기준"
+    },
+    {
+      "label": "폴백 없는 세션",
+      "value": "95% 이상",
+      "note": "Fable 5 세션 중 Opus 4.8로 넘어가지 않은 비율"
+    },
+    {
+      "label": "가격",
+      "value": "$10 / $50",
+      "note": "입력 / 출력, 100만 토큰당"
+    },
+    {
+      "label": "데이터 보존",
+      "value": "30일",
+      "note": "Mythos급 모델 트래픽 전체"
+    }
+  ],
+  "chartSource": "Anthropic 발표문의 표는 이미지로만 공개돼, 7월 OpenAI GPT-5.6 발표문의 비교표에 실린 수치로 그렸습니다. Fable 5 출시 시점의 경쟁 모델만 넣었습니다.",
+  "charts": [
+    {
+      "title": "SWE-Bench Pro",
+      "desc": "실제 저장소 이슈 해결",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos 5",
+          "value": 80.3,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 80,
+          "highlight": true
+        },
+        {
+          "label": "Claude Mythos Preview",
+          "value": 77.8
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 69.2
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 59.4
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 54.2
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "Terminal-Bench 2.1",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos 5",
+          "value": 88,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 85.6
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 83.1,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 78.9
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 70.7
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "Artificial Analysis Intelligence Index",
+      "desc": "종합 지능 지수",
+      "type": "bar",
+      "unit": "",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5",
+          "value": 59.9,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 55.7
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 54.8
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 50.2
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 46.5
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "GDPval-AA v2",
+      "desc": "전문직 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5",
+          "value": 1759.6,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 1600.1
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 1493.7
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 1348.8
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 962.3
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "BrowseComp",
+      "desc": "찾기 어려운 정보 웹 탐색",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos 5",
+          "value": 88,
+          "highlight": true
+        },
+        {
+          "label": "Claude Mythos Preview",
+          "value": 87.9
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 85.9
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 84.4
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 84.3
+        }
+      ],
+      "note": "Fable 5 수치는 표에 없음",
+      "source": "OpenAI"
+    },
+    {
+      "title": "Agents' Last Exam",
+      "desc": "장기 에이전트 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.5",
+          "value": 46.9
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 45.2
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 40.5,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 32.1
+        }
+      ],
+      "source": "OpenAI"
+    }
+  ],
+  "changes": [
+    "Fable 5와 Mythos 5는 같은 바탕 모델이며, Mythos 5는 일부 영역에서 보호 장치를 푼 버전입니다. 가격은 두 모델 모두 $10 / $50입니다.",
+    "Fable 5의 분류기가 사이버보안, 생물·화학, 증류 관련 요청을 감지하면 Claude Opus 4.8이 대신 답합니다. Fable 세션의 95% 이상은 이런 전환이 전혀 없습니다.",
+    "가장 높은 effort에서 Fable 5는 자기 작업을 되돌아보고 검증합니다.",
+    "Mythos급 모델의 모든 트래픽은 30일 보존이 필수이며, 대부분 30일 뒤 삭제됩니다.",
+    "6월 12일 미국 상무부 수출 통제를 따르기 위해 Fable 5·Mythos 5 제공이 중단됐고, 6월 30일 통제가 해제된 뒤 7월 1일 재개됐습니다."
+  ],
+  "availability": [
+    "Fable 5: Claude 앱, Claude Code, Claude API (claude-fable-5)",
+    "6월 22일까지 Pro·Max·Team·좌석형 Enterprise 플랜에 추가 비용 없이 포함, 6월 23일부터 플랜 기본 제공에서 제외",
+    "Mythos 5: Project Glasswing 파트너 전용 (일부 생물학 연구자에게도 곧 제공 예정)"
+  ],
+  "tips": [
+    {
+      "title": "검증이 중요한 일은 최고 effort로",
+      "body": "Anthropic은 가장 높은 effort에서 Fable 5가 자기 작업을 되돌아보고 검증한다고 설명합니다. 결과를 바로 써야 하는 중요한 분석이나 코드에 쓰세요."
+    },
+    {
+      "title": "보안·생명과학 작업은 전환을 염두에",
+      "body": "해당 분야 요청은 Opus 4.8이 답하므로 품질과 말투가 달라질 수 있습니다. 이런 작업이 많다면 처음부터 Opus 4.8로 돌리는 편이 예측하기 쉽습니다."
+    },
+    {
+      "title": "비용 대비 효과 따져 보기",
+      "body": "가격이 Opus 4.8의 2배입니다. Agents' Last Exam처럼 Opus 4.8이 더 높은 영역도 있으니 대표 과제로 비교해 보고 고르세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "스스로 검증까지 맡기는 분석",
+      "when": "최고 effort로 결과의 신뢰도를 높이고 싶을 때",
+      "type": "prompt",
+      "text": "<data>\n[분석할 데이터 또는 문서]\n</data>\n\n질문: [분석 질문]\n\n결론을 내기 전에 다른 해석 가능성을 검토하고, 계산은 다시 확인해.\n최종 답에는 결론, 근거 수치, 확신 수준(높음/중간/낮음)을 적어줘."
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "Fable 5를 API로 쓸 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-fable-5\",\n    max_tokens=32000,\n    output_config={\"effort\": \"max\"},\n    messages=[{\"role\": \"user\", \"content\": \"[중요한 과제]\"}],\n)"
+    }
+  ],
+  "cautions": [
+    "Mythos급 모델 트래픽은 30일 보존이 필수라 제로 데이터 보존(ZDR)이 필요한 경우 맞지 않습니다.",
+    "6월 23일부터 구독 플랜 기본 제공에서 빠졌습니다.",
+    "그래프 수치는 OpenAI 표 기준이라 Anthropic 측정과 다를 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Fable 5 and Claude Mythos 5 (Anthropic)",
+      "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5"
+    },
+    {
+      "title": "Statement on the directive to suspend Fable 5 access (Anthropic, 6월 12일)",
+      "url": "https://www.anthropic.com/news/fable-mythos-access"
+    },
+    {
+      "title": "US lifts restrictions on Anthropic’s powerful AI models Fable and Mythos (Al Jazeera, 7월 1일)",
+      "url": "https://www.aljazeera.com/economy/2026/7/1/us-lifts-restrictions-on-powerful-ai-models-fable-mythos-anthropic-says"
+    },
+    {
+      "title": "GPT-5.6 (그래프 수치 출처, OpenAI)",
+      "url": "https://openai.com/index/gpt-5-6/"
+    }
+  ]
+}

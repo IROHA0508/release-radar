@@ -1,0 +1,87 @@
+{
+  "id": "lyria-3-5",
+  "company": "google",
+  "date": "2026-09-04",
+  "kind": "모델 출시",
+  "title": "Lyria 3.5",
+  "headline": "표현력 있는 보컬과 풍부한 편곡, 짧은 곡과 긴 곡을 고르는 음악 모델",
+  "tldr": "Google이 음악 생성 모델 Lyria 3.5를 Gemini 앱과 API에 내놓았습니다. 보컬 표현력과 편곡이 풍부해지고 음질이 높아졌으며, 짧은 곡과 긴 곡을 고를 수 있습니다. Gemini API에서는 전체 길이의 곡을 만드는 lyria-3.5가 정식(GA) 모델로 나왔습니다.",
+  "models": [
+    {
+      "name": "Lyria 3.5",
+      "apiId": "lyria-3.5",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "곡 길이",
+      "value": "짧은 곡 · 긴 곡 선택",
+      "note": "API는 전체 길이 곡 생성"
+    },
+    {
+      "label": "API 상태",
+      "value": "정식(GA)",
+      "note": "9월 3일 API 변경 로그"
+    },
+    {
+      "label": "제공 범위",
+      "value": "전 세계 모든 사용자",
+      "note": "Gemini 웹·모바일 앱"
+    }
+  ],
+  "chartNote": "음악 생성 모델이라 공식 발표에 성능 비교 수치가 없습니다.",
+  "changes": [
+    "보컬 표현력이 좋아지고 편곡이 풍부해져 더 높은 음질의 곡을 만듭니다.",
+    "짧은 곡과 긴 곡 중에서 고를 수 있습니다.",
+    "Gemini API의 lyria-3.5는 음악적 일관성, 자연스러운 보컬, 길이와 구조를 세밀하게 조절하는 전체 길이 곡 생성을 지원합니다."
+  ],
+  "availability": [
+    "Gemini 앱: 전 세계 모든 사용자 (웹·모바일)",
+    "Google Flow Music, Google AI Studio, Google Vids",
+    "Gemini API: lyria-3.5 (정식)"
+  ],
+  "tips": [
+    {
+      "title": "길이를 먼저 정하기",
+      "body": "SNS용 배경음악은 짧은 곡, 영상 전체에 깔 음악은 긴 곡으로 처음부터 정하면 구성이 맞게 나옵니다."
+    },
+    {
+      "title": "API에서는 구조를 시간대별로",
+      "body": "lyria-3.5는 길이와 구조를 세밀하게 조절할 수 있습니다. 인트로, 벌스, 후렴, 아웃트로의 순서와 대략적인 시간을 적어 주세요."
+    },
+    {
+      "title": "보컬 스타일을 구체적으로",
+      "body": "보컬 표현력이 좋아졌으므로 '숨소리가 섞인 부드러운 여성 보컬', '힘 있는 남성 합창'처럼 목소리 질감을 구체적으로 적어 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "영상용 긴 배경음악",
+      "when": "유튜브 영상 전체에 깔 음악을 만들 때",
+      "type": "prompt",
+      "text": "[영상 주제] 영상에 쓸 긴 배경음악을 만들어줘.\n- 장르: [장르], 템포: 보통\n- 보컬 없이 악기만\n- 구성: 잔잔한 시작 → 중간에 점점 고조 → 마지막 20초는 조용히 마무리\n- 말소리를 가리지 않도록 중음역은 비워 둬"
+    },
+    {
+      "title": "보컬이 있는 짧은 곡",
+      "when": "Gemini 앱에서 짧은 노래를 만들 때",
+      "type": "prompt",
+      "text": "[주제]에 대한 짧은 곡을 만들어줘.\n보컬: [목소리 질감과 성별], 한국어 가사\n분위기: [감정]\n후렴에 \"[문구]\"가 반복되게 해줘."
+    }
+  ],
+  "cautions": [
+    "Google 발표문에 곡 길이의 정확한 수치나 API 가격은 적혀 있지 않습니다."
+  ],
+  "sources": [
+    {
+      "title": "Lyria 3.5 in Gemini (Google)",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/better-tracks-lyria-gemini/"
+    },
+    {
+      "title": "Gemini API 변경 로그",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog"
+    }
+  ]
+}

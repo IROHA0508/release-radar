@@ -1,0 +1,91 @@
+{
+  "id": "gemini-3-1-flash-live",
+  "company": "google",
+  "date": "2026-03-26",
+  "kind": "모델 출시",
+  "title": "Gemini 3.1 Flash Live",
+  "headline": "실시간 음성 대화 모델, 대화를 두 배 길게 기억하고 음성 도구 호출 90.8%",
+  "tldr": "Google이 실시간 음성 대화 모델 Gemini 3.1 Flash Live를 공개했습니다. 음성으로 복잡한 함수를 호출하는 ComplexFuncBench Audio에서 90.8%를 기록했고, 말투를 더 잘 알아들어 대화가 자연스러워졌으며 대화 흐름을 두 배 오래 따라갑니다. Gemini Live와 200개 이상 국가의 Search Live, Live API에서 쓸 수 있습니다.",
+  "models": [
+    {
+      "name": "Gemini 3.1 Flash Live (프리뷰)",
+      "apiId": "gemini-3.1-flash-live-preview",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "ComplexFuncBench Audio",
+      "value": "90.8%",
+      "note": "음성 기반 복잡한 함수 호출"
+    },
+    {
+      "label": "Audio MultiChallenge",
+      "value": "36.1%",
+      "note": "thinking 켬, Scale AI 평가"
+    },
+    {
+      "label": "대화 기억",
+      "value": "2배",
+      "note": "대화 흐름을 따라가는 길이"
+    },
+    {
+      "label": "Search Live",
+      "value": "200개 이상",
+      "note": "국가와 지역"
+    }
+  ],
+  "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
+  "changes": [
+    "전반적인 품질과 안정성이 올라 개발자가 믿고 쓰기 쉬워졌습니다.",
+    "어조를 더 잘 이해해 대화가 자연스럽습니다.",
+    "대화 흐름을 두 배 더 오래 따라갑니다.",
+    "기본적으로 다국어를 지원하며, Search Live가 200개 이상 국가와 지역으로 확대됐습니다.",
+    "3.1 Flash Live가 만든 모든 음성에는 SynthID 워터마크가 들어갑니다."
+  ],
+  "availability": [
+    "개발자: Google AI Studio의 Gemini Live API (gemini-3.1-flash-live-preview)",
+    "기업: Gemini Enterprise for Customer Experience",
+    "일반 사용자: Gemini Live, Search Live"
+  ],
+  "tips": [
+    {
+      "title": "도구 호출이 많은 음성 에이전트에",
+      "body": "음성으로 함수를 호출하는 평가에서 90.8%를 기록했습니다. 예약, 주문 조회처럼 대화 중 시스템을 조회하는 상담 에이전트에 잘 맞습니다."
+    },
+    {
+      "title": "어려운 대화는 thinking 켜기",
+      "body": "여러 차례 오가는 까다로운 대화 평가 점수는 thinking을 켰을 때 기준입니다. 조건이 복잡한 상담은 thinking을 켜 두세요."
+    },
+    {
+      "title": "긴 통화도 한 세션으로",
+      "body": "대화를 두 배 길게 따라가므로 긴 상담이나 회의 보조도 세션을 나누지 않고 이어 갈 수 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "음성 예약 에이전트 지시문",
+      "when": "Live API로 예약·상담 에이전트를 만들 때",
+      "type": "prompt",
+      "text": "<role>\n너는 [가게 이름]의 전화 예약 담당이야.\n</role>\n\n<rules>\n- 한 번에 한 가지만 물어봐\n- 예약 가능 여부를 조회하는 동안 '확인해 볼게요'라고 먼저 말해\n- 날짜, 시간, 인원, 이름은 마지막에 한 번 더 복창해 확인받아\n- 고객이 다른 언어로 말하면 그 언어로 계속해\n</rules>"
+    },
+    {
+      "title": "Search Live로 현장 질문",
+      "when": "카메라를 비추며 검색할 때",
+      "type": "prompt",
+      "text": "지금 보이는 [물건/장소]가 뭔지 알려주고, 관련해서 알아 두면 좋은 점 세 가지를 짧게 말해줘. 내가 중간에 질문하면 그 부분만 더 자세히 찾아줘."
+    }
+  ],
+  "cautions": [
+    "API 모델은 발표 시점에 프리뷰입니다.",
+    "생성된 음성에는 SynthID 워터마크가 들어갑니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.1 Flash Live (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-live/"
+    }
+  ]
+}

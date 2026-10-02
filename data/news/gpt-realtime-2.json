@@ -1,0 +1,106 @@
+{
+  "id": "gpt-realtime-2",
+  "company": "openai",
+  "date": "2026-05-07",
+  "kind": "모델 출시",
+  "title": "GPT-Realtime-2 · Realtime-Translate · Realtime-Whisper",
+  "headline": "GPT-5급 추론을 갖춘 실시간 음성 모델과 동시통역·실시간 받아쓰기 모델",
+  "tldr": "OpenAI가 API용 음성 모델 세 가지를 내놓았습니다. GPT-Realtime-2는 GPT-5급 추론으로 더 어려운 요청을 처리하고, GPT-Realtime-Translate는 70개 이상 언어를 13개 언어로 말하는 속도에 맞춰 통역하며, GPT-Realtime-Whisper는 말하는 동안 바로 받아쓰는 스트리밍 음성 인식 모델입니다.",
+  "models": [
+    {
+      "name": "GPT-Realtime-2 (오디오)",
+      "apiId": "gpt-realtime-2",
+      "input": "$32",
+      "output": "$64",
+      "cached": "$0.40"
+    },
+    {
+      "name": "GPT-Realtime-Translate",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "GPT-Realtime-Whisper",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Big Bench Audio",
+      "value": "+15.2%",
+      "note": "GPT-Realtime-1.5 대비, high 설정"
+    },
+    {
+      "label": "Audio MultiChallenge",
+      "value": "+13.8%",
+      "note": "xhigh 설정"
+    },
+    {
+      "label": "통역 언어",
+      "value": "70+ → 13",
+      "note": "입력 언어 → 출력 언어"
+    },
+    {
+      "label": "분당 가격",
+      "value": "$0.034 / $0.017",
+      "note": "Translate / Whisper"
+    }
+  ],
+  "chartNote": "공식 발표에는 이전 모델 대비 개선 폭(%)만 텍스트로 있어 그래프 대신 핵심 수치로 정리했습니다.",
+  "changes": [
+    "GPT-Realtime-2는 GPT-5급 추론으로 더 어려운 요청을 처리하고, 맥락을 더 잘 다루며 대화가 더 자연스럽습니다.",
+    "답하기 전에 짧게 말을 거는 프리앰블(preamble), 병렬 도구 호출, 실수 뒤 회복 동작이 좋아졌고 컨텍스트는 128K입니다.",
+    "추론 강도를 minimal, low, medium, high, xhigh 중에서 고를 수 있고 기본값은 low입니다.",
+    "말투와 전달 방식을 조절할 수 있습니다.",
+    "GPT-Realtime-Translate는 70개 이상 입력 언어를 13개 출력 언어로 말하는 속도에 맞춰 통역합니다.",
+    "GPT-Realtime-Whisper는 화자가 말하는 동안 실시간으로 받아쓰는 스트리밍 음성 인식 모델입니다."
+  ],
+  "availability": [
+    "OpenAI API (Realtime)",
+    "GPT-Realtime-2: 오디오 입력 $32, 캐시 입력 $0.40, 오디오 출력 $64 (100만 토큰당)",
+    "GPT-Realtime-Translate 분당 $0.034, GPT-Realtime-Whisper 분당 $0.017"
+  ],
+  "tips": [
+    {
+      "title": "추론 강도는 low에서 시작",
+      "body": "기본값 low로 대부분의 대화를 처리하고, 예약 변경이나 복잡한 조건 확인처럼 생각이 필요한 흐름에서만 높이세요. 높일수록 응답이 늦어질 수 있습니다."
+    },
+    {
+      "title": "도구를 부를 때는 프리앰블로 공백 메우기",
+      "body": "도구 조회 중 침묵이 길면 사용자가 불안해합니다. '확인해 볼게요'처럼 짧게 먼저 말하도록 지시하면 프리앰블 기능을 살릴 수 있습니다."
+    },
+    {
+      "title": "통역과 받아쓰기는 전용 모델로",
+      "body": "통역만 필요하면 Translate, 회의록처럼 글자만 필요하면 Whisper를 쓰는 편이 분당 가격이 낮고 단순합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "음성 상담 에이전트 지시문",
+      "when": "GPT-Realtime-2로 고객 상담 에이전트를 만들 때",
+      "type": "prompt",
+      "text": "<role>\n너는 [회사] 고객센터 상담원이야. 차분하고 친절한 말투를 써.\n</role>\n\n<rules>\n- 한 번에 한 가지만 질문해\n- 도구로 주문을 조회하기 전에 '잠시만요, 확인해 볼게요'라고 먼저 말해\n- 주문 번호, 날짜, 금액은 마지막에 한 번 더 복창해 확인받아\n- 환불처럼 되돌릴 수 없는 처리는 고객이 '네'라고 확실히 답한 뒤에만 진행해\n</rules>"
+    },
+    {
+      "title": "실시간 통역 안내 멘트",
+      "when": "Translate를 쓰는 행사나 상담 화면에 띄울 안내",
+      "type": "prompt",
+      "text": "이 대화는 AI 실시간 통역으로 진행됩니다.\n- 한 문장씩 또렷하게 말씀해 주세요\n- 고유명사와 숫자는 천천히 말씀해 주세요\n- 통역이 어색하면 '다시'라고 말씀해 주세요"
+    }
+  ],
+  "cautions": [
+    "추론 강도를 높이면 응답 지연이 늘 수 있습니다.",
+    "Translate의 출력 언어는 13개로 제한됩니다."
+  ],
+  "sources": [
+    {
+      "title": "Advancing voice intelligence with new models in the API (OpenAI)",
+      "url": "https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api/"
+    }
+  ]
+}

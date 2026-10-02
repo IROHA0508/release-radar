@@ -1,0 +1,105 @@
+{
+  "id": "chatgpt-images-2-5",
+  "company": "openai",
+  "date": "2026-09-08",
+  "kind": "모델 출시",
+  "title": "ChatGPT Images 2.5 (GPT-Image-2.5 Sunburst · Flare)",
+  "headline": "생성 지연 최대 50% 단축, 참조 사진 인물 유지와 여러 번 고치기에 강해진 이미지 모델",
+  "tldr": "OpenAI가 ChatGPT Images 2.5를 내놓았습니다. Images 2.0보다 생성 지연이 최대 50% 줄었고, 참조 사진 속 대상을 더 잘 유지하며 여러 차례 이어지는 편집 지시도 더 정확히 따릅니다. API에서는 편집 정밀도가 높은 Sunburst와 GPT-Image-2보다 2~4배 빠른 Flare 두 모델로 나왔습니다.",
+  "models": [
+    {
+      "name": "GPT-Image-2.5 Sunburst",
+      "apiId": "gpt-image-2.5-sunburst",
+      "input": "$8",
+      "output": "$30",
+      "cached": "$2"
+    },
+    {
+      "name": "GPT-Image-2.5 Flare",
+      "apiId": "gpt-image-2.5-flare",
+      "input": "$8",
+      "output": "$30",
+      "cached": "$2"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "생성 지연",
+      "value": "최대 50% 감소",
+      "note": "Images 2.0 대비"
+    },
+    {
+      "label": "Flare 속도",
+      "value": "2~4배",
+      "note": "GPT-Image-2 대비"
+    },
+    {
+      "label": "주간 생성량",
+      "value": "30억 장 이상",
+      "note": "ChatGPT Images와 API 합계"
+    },
+    {
+      "label": "Flare Batch 출력",
+      "value": "$15",
+      "note": "100만 토큰당, 표준 $30"
+    }
+  ],
+  "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
+  "changes": [
+    "세부 묘사가 선명해지고 생성 속도가 빨라졌습니다. 생성 지연이 Images 2.0보다 최대 50% 줄었습니다.",
+    "참조 사진 속 대상을 더 잘 유지하고, 여러 차례 이어지는 편집 지시를 더 정확히 따릅니다.",
+    "조명이 더 자연스럽고 질감이 풍부해졌습니다.",
+    "ChatGPT에서 직접 스케치해 시각적 가이드로 쓰는 Sketch 기능과, 인기 있는 형식의 템플릿이 생겼습니다.",
+    "API는 두 모델로 나뉩니다. Sunburst는 편집 정밀도가 가장 중요한 작업용 최상위 모델, Flare는 빠른 일상 이미지 생성용입니다."
+  ],
+  "availability": [
+    "ChatGPT, ChatGPT Work, Codex 모든 사용자 (데스크톱·모바일·웹)",
+    "API: gpt-image-2.5-sunburst, gpt-image-2.5-flare"
+  ],
+  "tips": [
+    {
+      "title": "대략적인 구도는 스케치로",
+      "body": "말로 설명하기 어려운 배치는 Sketch 기능으로 대충 그려 주면 그 구도를 가이드로 삼아 이미지를 만듭니다."
+    },
+    {
+      "title": "편집은 한 번에 하나씩",
+      "body": "여러 차례 이어지는 편집 지시를 더 잘 따르므로, 한 번에 모든 수정을 몰아넣기보다 '배경만 바꿔', '이제 조명을 저녁으로'처럼 단계별로 고치세요."
+    },
+    {
+      "title": "API 모델은 용도별로",
+      "body": "썸네일·시안처럼 빨리 많이 만들 때는 Flare, 상품 사진 보정처럼 세밀한 편집이 중요할 때는 Sunburst를 쓰세요. 급하지 않은 Flare 작업은 Batch로 출력 비용이 절반입니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "참조 사진 인물 유지 편집",
+      "when": "내 사진을 바탕으로 장면을 바꿀 때",
+      "type": "prompt",
+      "text": "첨부한 사진 속 인물의 얼굴, 머리 모양, 옷은 그대로 유지해줘.\n바꿀 것: 배경을 [장소]로, 시간대를 [시간대]로\n유지할 것: 인물 자세와 표정, 카메라 각도\n\n결과가 마음에 들면 다음 단계에서 조명만 따로 조정할 거야."
+    },
+    {
+      "title": "Flare로 썸네일 시안 여러 장 (Python)",
+      "when": "빠르게 여러 시안을 받아 고를 때",
+      "type": "code",
+      "text": "import base64\nfrom openai import OpenAI\n\nclient = OpenAI()\n\nfor i, style in enumerate([\"미니멀\", \"레트로\", \"사진풍\"]):\n    result = client.images.generate(\n        model=\"gpt-image-2.5-flare\",\n        prompt=f\"[주제] 블로그 썸네일, {style} 스타일, 제목 문구 \\\"[제목]\\\"\",\n    )\n    with open(f\"thumb_{i}.png\", \"wb\") as f:\n        f.write(base64.b64decode(result.data[0].b64_json))"
+    }
+  ],
+  "cautions": [
+    "API 가격은 토큰 기준이라 해상도와 품질 설정에 따라 이미지 한 장의 비용이 달라집니다.",
+    "모델 사양 표의 입력·캐시 가격은 이미지 입력 기준입니다. 텍스트 입력은 두 모델 모두 $5(캐시 $1.25)입니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing ChatGPT Images 2.5 (OpenAI)",
+      "url": "https://openai.com/index/introducing-chatgpt-images-2-5/"
+    },
+    {
+      "title": "GPT-Image-2.5 Flare 모델 문서",
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-2.5-flare"
+    },
+    {
+      "title": "GPT-Image-2.5 Sunburst 모델 문서",
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "gemini-3-1-flash-tts",
+  "company": "google",
+  "date": "2026-04-15",
+  "kind": "모델 출시",
+  "title": "Gemini 3.1 Flash TTS",
+  "headline": "문장 속 오디오 태그와 감독 메모로 연출하는 음성 합성, 70개 이상 언어",
+  "tldr": "Google이 음성 합성 모델 Gemini 3.1 Flash TTS를 공개했습니다. 텍스트 안에 자연어로 연출 지시를 넣는 오디오 태그, 장면 설정, 화자별 오디오 프로필과 감독 메모로 속도·톤·억양을 조절할 수 있고, 70개 이상 언어와 여러 화자를 지원합니다. Artificial Analysis TTS 리더보드에서 Elo 1,211을 기록했습니다.",
+  "models": [
+    {
+      "name": "Gemini 3.1 Flash TTS (프리뷰)",
+      "apiId": "gemini-3.1-flash-tts-preview",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Artificial Analysis TTS Elo",
+      "value": "1,211",
+      "note": "블라인드 사용자 선호 기반"
+    },
+    {
+      "label": "지원 언어",
+      "value": "70개 이상",
+      "note": ""
+    },
+    {
+      "label": "화자",
+      "value": "여러 명",
+      "note": "한 번에 여러 화자 대화 생성"
+    }
+  ],
+  "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
+  "changes": [
+    "오디오 태그: 텍스트 안에 자연어 명령을 넣어 그 부분의 말투와 감정을 연출합니다.",
+    "장면 설정(scene direction): 환경과 대사 지시를 정해 무대를 만듭니다.",
+    "화자별 설정: 오디오 프로필로 인물을 정하고, 감독 메모(Director's Notes)로 속도·톤·억양을 바꿉니다.",
+    "AI Studio에서 설정한 연출을 API 코드로 내보낼 수 있습니다.",
+    "생성된 모든 음성에는 SynthID 워터마크가 들어갑니다."
+  ],
+  "availability": [
+    "개발자: Gemini API·Google AI Studio (프리뷰, gemini-3.1-flash-tts-preview)",
+    "기업: Vertex AI (프리뷰)",
+    "Workspace: Google Vids"
+  ],
+  "tips": [
+    {
+      "title": "AI Studio에서 연출을 잡고 코드로",
+      "body": "장면 설정과 화자 설정을 AI Studio에서 들어 보며 맞춘 뒤 API 코드로 내보내면, 같은 연출을 앱에서 그대로 재현할 수 있습니다."
+    },
+    {
+      "title": "장면을 먼저, 대사는 나중에",
+      "body": "어디서 누구에게 말하는 장면인지 먼저 적으면 전체 톤이 안정됩니다. 그다음 대사 중간에 감정 변화를 짧게 지시하세요."
+    },
+    {
+      "title": "화자마다 감독 메모 따로",
+      "body": "두 사람 대화는 화자마다 속도, 톤, 억양을 따로 적어야 목소리가 뚜렷하게 구분됩니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "장면 설정이 있는 내레이션",
+      "when": "광고나 영상 내레이션을 만들 때",
+      "type": "prompt",
+      "text": "장면: 조용한 새벽 카페, 손님 한 명에게 다정하게 이야기하듯\n화자: 30대 여성, 따뜻하고 차분한 목소리, 보통 속도\n\n(작게 웃으며) 오늘도 일찍 나오셨네요.\n(천천히, 진심을 담아) 하루를 시작하는 첫 잔은 조금 특별해야 하니까요.\n(밝게) [브랜드 이름], 당신의 아침을 응원합니다."
+    },
+    {
+      "title": "두 화자 팟캐스트",
+      "when": "여러 화자 대화 오디오를 만들 때",
+      "type": "prompt",
+      "text": "진행자: 차분하고 친근한 목소리, 감독 메모 - 또박또박, 보통 속도\n게스트: 활기찬 목소리, 감독 메모 - 조금 빠르게, 웃음이 많음\n\n진행자: (반갑게) 오늘은 [주제] 이야기를 나눠 볼게요.\n게스트: (웃으며) 제가 제일 좋아하는 주제예요.\n진행자: (궁금하다는 듯) 처음 시작하게 된 계기가 뭐였어요?\n게스트: (진지하게) [대사]"
+    }
+  ],
+  "cautions": [
+    "발표 시점에는 프리뷰 모델입니다.",
+    "생성된 음성에는 SynthID 워터마크가 들어갑니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.1 Flash TTS (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/"
+    }
+  ]
+}

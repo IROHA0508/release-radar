@@ -1,0 +1,174 @@
+{
+  "id": "gemini-3-6-flash",
+  "company": "google",
+  "date": "2026-07-21",
+  "kind": "모델 출시",
+  "title": "Gemini 3.6 Flash · 3.5 Flash-Lite · 3.5 Flash Cyber",
+  "headline": "출력 토큰 17% 절약하며 더 정확해진 3.6 Flash, 초당 350토큰 3.5 Flash-Lite",
+  "tldr": "Google이 Gemini 3.6 Flash와 3.5 Flash-Lite, 보안 특화 3.5 Flash Cyber를 공개했습니다. 3.6 Flash는 3.5 Flash보다 출력 토큰을 17%(DeepSWE에서는 최대 65%) 덜 쓰면서 불필요한 코드 수정과 실행 반복이 줄었고, 컴퓨터 사용과 지식 업무 점수도 올랐습니다. 3.5 Flash-Lite는 초당 350토큰을 내는 저가 모델입니다.",
+  "models": [
+    {
+      "name": "Gemini 3.6 Flash",
+      "apiId": "gemini-3.6-flash",
+      "input": "$1.50",
+      "output": "$7.50",
+      "cached": null
+    },
+    {
+      "name": "Gemini 3.5 Flash-Lite",
+      "apiId": "gemini-3.5-flash-lite",
+      "input": "$0.30",
+      "output": "$2.50",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "출력 토큰",
+      "value": "17% 감소",
+      "note": "3.5 Flash 대비, DeepSWE에서는 최대 65%"
+    },
+    {
+      "label": "DeepSWE",
+      "value": "49%",
+      "note": "3.5 Flash 37%"
+    },
+    {
+      "label": "OSWorld-Verified",
+      "value": "83.0%",
+      "note": "3.5 Flash 78.4%"
+    },
+    {
+      "label": "3.5 Flash-Lite 속도",
+      "value": "350 토큰/초",
+      "note": "Artificial Analysis 기준"
+    }
+  ],
+  "chartSource": "Google 발표문 본문에 적힌 3.6 Flash와 3.5 Flash 비교 수치입니다.",
+  "charts": [
+    {
+      "title": "DeepSWE",
+      "desc": "장기 소프트웨어 엔지니어링",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.6 Flash",
+          "value": 49,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 37
+        }
+      ]
+    },
+    {
+      "title": "OSWorld-Verified",
+      "desc": "컴퓨터 사용",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.6 Flash",
+          "value": 83.0,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 78.4
+        }
+      ]
+    },
+    {
+      "title": "GDPval-AA v2",
+      "desc": "전문직 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.6 Flash",
+          "value": 1421,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 1349
+        }
+      ]
+    },
+    {
+      "title": "출력 토큰 절감",
+      "desc": "3.5 Flash 대비, 클수록 적게 씀",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "평균",
+          "value": 17,
+          "highlight": true
+        },
+        {
+          "label": "DeepSWE (최대)",
+          "value": 65,
+          "highlight": true
+        }
+      ],
+      "keepOrder": true
+    }
+  ],
+  "changes": [
+    "3.5 Flash보다 출력 토큰을 17% 덜 쓰고, DeepSWE 같은 일부 평가에서는 최대 65% 덜 씁니다.",
+    "원치 않는 코드 수정과 실행 반복이 줄어 DeepSWE가 37%에서 49%로 올랐습니다.",
+    "컴퓨터 사용(OSWorld-Verified 83.0%)과 지식 업무(GDPval-AA v2 1421)도 3.5 Flash보다 좋아졌습니다.",
+    "3.5 Flash-Lite는 초당 350 출력 토큰을 내는 저가 모델입니다.",
+    "3.5 Flash Cyber는 보안 취약점을 찾아 고치도록 조정한 모델로, 정부와 신뢰할 수 있는 파트너에게만 CodeMender를 통한 제한 시범 프로그램으로 제공될 예정입니다."
+  ],
+  "availability": [
+    "Gemini API(Google AI Studio, Android Studio), Gemini Enterprise Agent Platform, Gemini 앱",
+    "API 모델명: gemini-3.6-flash, gemini-3.5-flash-lite",
+    "3.5 Flash Cyber: 정부·신뢰 파트너 대상 제한 시범 (CodeMender)"
+  ],
+  "tips": [
+    {
+      "title": "토큰 단가보다 과제당 비용으로 비교",
+      "body": "3.6 Flash는 같은 일을 더 적은 출력 토큰으로 끝냅니다. 단가만 보지 말고 대표 과제 하나를 돌려 실제 청구 금액을 비교하세요."
+    },
+    {
+      "title": "코드 수정 범위를 지정하기",
+      "body": "불필요한 수정이 줄었지만, 수정해도 되는 파일과 건드리면 안 되는 파일을 적어 주면 결과가 더 깔끔합니다."
+    },
+    {
+      "title": "빠른 응답은 3.5 Flash-Lite로",
+      "body": "초당 350토큰으로 매우 빠르고 싸므로 자동 완성, 짧은 요약, 분류처럼 즉시 답이 필요한 곳에 두세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "범위를 정한 버그 수정",
+      "when": "3.6 Flash에 코드 수정을 맡길 때",
+      "type": "prompt",
+      "text": "이 오류를 고쳐줘: [오류 메시지]\n\n- 수정해도 되는 파일: [파일 목록]\n- 테스트 파일과 설정 파일은 건드리지 마\n- 원인을 한 문장으로 설명하고, 바꾼 부분만 diff로 보여줘"
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "3.5 Flash-Lite로 빠르게 요약할 때",
+      "type": "code",
+      "text": "from google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nresp = client.models.generate_content(\n    model=\"gemini-3.5-flash-lite\",\n    contents=\"[요청]\",\n    config=types.GenerateContentConfig(\n        thinking_config=types.ThinkingConfig(thinking_level=\"low\"),\n    ),\n)\nprint(resp.text)"
+    }
+  ],
+  "cautions": [
+    "3.5 Flash Cyber는 일반 사용자에게 제공되지 않습니다.",
+    "3.6 Flash의 토큰 단가는 3.5 Flash-Lite보다 5배(입력)·3배(출력) 비쌉니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.6 Flash, 3.5 Flash-Lite, 3.5 Flash Cyber (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/"
+    }
+  ]
+}

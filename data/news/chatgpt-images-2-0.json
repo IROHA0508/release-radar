@@ -1,0 +1,92 @@
+{
+  "id": "chatgpt-images-2-0",
+  "company": "openai",
+  "date": "2026-04-21",
+  "kind": "모델 출시",
+  "title": "ChatGPT Images 2.0 (gpt-image-2)",
+  "headline": "글자와 도표에 강해진 이미지 모델, 최대 2K 해상도와 생각 모드",
+  "tldr": "OpenAI가 ChatGPT Images 2.0과 API 모델 gpt-image-2를 내놓았습니다. 최대 2K까지 다양한 비율을 지원하고, 다이어그램·인포그래픽·차트·포스터·만화 같은 구조적인 이미지와 여러 언어의 글자 표현이 좋아졌습니다. 더 풍부한 작업을 위한 생각(thinking) 모드도 생겼습니다.",
+  "models": [
+    {
+      "name": "GPT Image 2",
+      "apiId": "gpt-image-2",
+      "input": "$8",
+      "output": "$30",
+      "cached": "$2"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "최대 해상도",
+      "value": "2K",
+      "note": "다양한 화면 비율 지원"
+    },
+    {
+      "label": "이미지 출력",
+      "value": "$30",
+      "note": "100만 토큰당"
+    },
+    {
+      "label": "이미지 입력",
+      "value": "$8",
+      "note": "100만 토큰당, 캐시 입력 $2"
+    }
+  ],
+  "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
+  "changes": [
+    "앱, 광고, 상품 화면, SNS, 발표 자료, 문서에 맞춘 다양한 화면 비율과 최대 2K 해상도를 지원합니다.",
+    "다이어그램, 인포그래픽, 차트, 포스터, 만화 같은 구조적인 이미지 생성이 강해지고 여러 언어의 글자 표현이 좋아졌습니다.",
+    "지시를 더 정확히 따르고, 세부 묘사와 구도를 더 잘 유지합니다.",
+    "더 풍부한 작업을 위한 생각(thinking) 모드가 생겼습니다."
+  ],
+  "availability": [
+    "ChatGPT (Enterprise·Edu는 곧 제공, 개발자 커뮤니티 공지 기준)",
+    "API와 Codex: gpt-image-2 (스냅숏 gpt-image-2-2026-04-21)"
+  ],
+  "tips": [
+    {
+      "title": "이미지 속 글자는 따옴표로 정확히",
+      "body": "넣을 문구를 따옴표로 묶어 그대로 적고, 글꼴 느낌과 위치를 함께 지정하세요. 여러 언어 글자 표현이 좋아졌으므로 한국어 문구도 직접 넣어 볼 만합니다."
+    },
+    {
+      "title": "도표는 구조를 먼저 설명",
+      "body": "인포그래픽이나 다이어그램은 '제목 → 3단계 흐름 → 하단 요약'처럼 배치 순서를 먼저 적고, 각 칸에 들어갈 내용을 목록으로 주면 구도가 안정적입니다."
+    },
+    {
+      "title": "복잡한 구성은 생각 모드로",
+      "body": "요소가 많은 포스터나 여러 칸짜리 만화처럼 구성을 계획해야 하는 이미지는 생각 모드를 쓰면 지시를 더 잘 반영합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "한국어 인포그래픽",
+      "when": "보고서나 SNS용 정보 그래픽을 만들 때",
+      "type": "prompt",
+      "text": "세로형(4:5) 인포그래픽을 만들어줘.\n\n제목: \"[제목]\"\n구성: 위에서 아래로 3단계 흐름\n1단계: \"[문구]\" + [아이콘 설명]\n2단계: \"[문구]\" + [아이콘 설명]\n3단계: \"[문구]\" + [아이콘 설명]\n하단 요약: \"[한 문장]\"\n\n스타일: 흰 배경, [브랜드 색] 포인트, 굵은 산세리프 글꼴. 글자는 위에 적은 그대로 써줘."
+    },
+    {
+      "title": "API로 이미지 만들기 (Python)",
+      "when": "앱에서 gpt-image-2를 호출할 때",
+      "type": "code",
+      "text": "import base64\nfrom openai import OpenAI\n\nclient = OpenAI()\n\nresult = client.images.generate(\n    model=\"gpt-image-2\",\n    prompt=\"[이미지 설명]\",\n)\nwith open(\"out.png\", \"wb\") as f:\n    f.write(base64.b64decode(result.data[0].b64_json))"
+    }
+  ],
+  "cautions": [
+    "9월 8일 후속 모델인 ChatGPT Images 2.5가 나왔습니다.",
+    "가격은 토큰 기준이라 해상도와 품질 설정에 따라 이미지 한 장의 비용이 달라집니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing ChatGPT Images 2.0 (OpenAI)",
+      "url": "https://openai.com/index/introducing-chatgpt-images-2-0/"
+    },
+    {
+      "title": "Introducing gpt-image-2 (OpenAI 개발자 커뮤니티 공지)",
+      "url": "https://community.openai.com/t/introducing-gpt-image-2-available-today-in-the-api-and-codex/1379479"
+    },
+    {
+      "title": "gpt-image-2 모델 문서",
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-2"
+    }
+  ]
+}

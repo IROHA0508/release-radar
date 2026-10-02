@@ -1,0 +1,92 @@
+{
+  "id": "gemini-3-1-flash-lite",
+  "company": "google",
+  "date": "2026-03-03",
+  "kind": "모델 출시",
+  "title": "Gemini 3.1 Flash-Lite",
+  "headline": "100만 토큰당 $0.25, 2.5 Flash보다 첫 답이 2.5배 빠른 대량 처리용 모델",
+  "tldr": "Google이 대량 처리용 저가 모델 Gemini 3.1 Flash-Lite를 공개했습니다. 입력 $0.25 / 출력 $1.50이며 Gemini 2.5 Flash보다 첫 답 토큰까지 2.5배, 출력 속도는 45% 빠릅니다. 번역, 콘텐츠 검수, UI·대시보드 생성 같은 대량 작업에 맞춰 생각 수준(thinking level)을 조절할 수 있습니다.",
+  "models": [
+    {
+      "name": "Gemini 3.1 Flash-Lite",
+      "apiId": "gemini-3.1-flash-lite",
+      "input": "$0.25",
+      "output": "$1.50",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "첫 답 토큰까지",
+      "value": "2.5배 빠름",
+      "note": "Gemini 2.5 Flash 대비"
+    },
+    {
+      "label": "출력 속도",
+      "value": "45% 빠름",
+      "note": "Gemini 2.5 Flash 대비"
+    },
+    {
+      "label": "GPQA Diamond",
+      "value": "86.9%",
+      "note": "MMMU Pro 76.8%"
+    },
+    {
+      "label": "Arena Elo",
+      "value": "1432",
+      "note": ""
+    }
+  ],
+  "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
+  "changes": [
+    "Gemini 2.5 Flash보다 첫 답 토큰까지 2.5배, 출력 속도는 45% 빨라졌습니다.",
+    "GPQA Diamond 86.9%, MMMU Pro 76.8%, Arena Elo 1432를 기록했습니다.",
+    "생각 수준(thinking level)을 조절해 속도와 품질의 균형을 정할 수 있습니다.",
+    "3월 3일 프리뷰(gemini-3.1-flash-lite-preview)로 나왔고, 5월 7일 정식 모델 gemini-3.1-flash-lite가 됐습니다."
+  ],
+  "availability": [
+    "Gemini API·Google AI Studio, Vertex AI",
+    "API 모델명: gemini-3.1-flash-lite (프리뷰: gemini-3.1-flash-lite-preview)"
+  ],
+  "tips": [
+    {
+      "title": "대량·저지연 작업 전용으로",
+      "body": "Google이 꼽은 쓰임새는 번역, 콘텐츠 검수, UI와 대시보드 생성입니다. 요청 수가 많고 지연이 중요한 곳에 두고, 깊은 추론은 상위 모델로 넘기세요."
+    },
+    {
+      "title": "생각 수준은 낮게 시작",
+      "body": "단순 분류나 번역은 생각 수준을 낮춰 속도와 비용을 아끼고, 결과가 흔들릴 때만 올리세요."
+    },
+    {
+      "title": "출력 형식을 못 박기",
+      "body": "작은 모델일수록 출력 형식 지시를 짧고 분명하게 줄 때 안정적입니다. JSON 스키마나 라벨 목록을 함께 주세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "콘텐츠 검수 라벨링",
+      "when": "게시물이나 댓글을 대량으로 검수할 때",
+      "type": "prompt",
+      "text": "다음 댓글을 검수해. 아래 JSON 형식으로만 답해.\n{\"label\": \"정상\" | \"스팸\" | \"욕설\" | \"개인정보\", \"reason\": \"한 문장\"}\n\n댓글: [댓글 내용]"
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "생각 수준을 낮춰 빠르게 처리할 때",
+      "type": "code",
+      "text": "from google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nresp = client.models.generate_content(\n    model=\"gemini-3.1-flash-lite\",\n    contents=\"[요청]\",\n    config=types.GenerateContentConfig(\n        thinking_config=types.ThinkingConfig(thinking_level=\"low\"),\n    ),\n)\nprint(resp.text)"
+    }
+  ],
+  "cautions": [
+    "복잡한 추론이나 긴 에이전트 작업에는 상위 모델이 더 적합합니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.1 Flash-Lite (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/"
+    },
+    {
+      "title": "Gemini API 변경 로그",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog"
+    }
+  ]
+}

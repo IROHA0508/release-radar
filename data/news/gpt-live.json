@@ -1,0 +1,89 @@
+{
+  "id": "gpt-live",
+  "company": "openai",
+  "date": "2026-07-08",
+  "kind": "모델 출시",
+  "title": "GPT-Live",
+  "headline": "듣고 말하기를 동시에 하는 음성 모델, ChatGPT 음성 대화의 새 기본값",
+  "tldr": "ChatGPT 음성 대화에 듣기와 말하기를 동시에 하는 전이중(full-duplex) 음성 모델 GPT-Live가 들어왔습니다. Go·Plus·Pro는 GPT-Live-1, Free는 GPT-Live-1 mini가 기본이며, 생각이 필요한 부분은 뒤에서 GPT-5.5가 처리합니다. 대화 중에 끼어들 수 있고 추론 수준도 고를 수 있습니다.",
+  "models": [
+    {
+      "name": "GPT-Live-1",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "GPT-Live-1 mini",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "기본 모델 (Go·Plus·Pro)",
+      "value": "GPT-Live-1",
+      "note": ""
+    },
+    {
+      "label": "기본 모델 (Free)",
+      "value": "GPT-Live-1 mini",
+      "note": ""
+    },
+    {
+      "label": "뒤에서 생각하는 모델",
+      "value": "GPT-5.5",
+      "note": "기본 Instant, Medium·High는 GPT-5.5 Thinking"
+    }
+  ],
+  "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
+  "changes": [
+    "듣는 동안에도 말할 수 있는 전이중 방식이라, 모델이 말하는 중에 끼어들어 방향을 바꿀 수 있습니다.",
+    "음성 모델이 대화를 이끌고, 생각이 필요한 부분은 뒤에서 GPT-5.5가 처리합니다. 기본은 GPT-5.5 Instant이고 Medium·High를 고르면 GPT-5.5 Thinking이 맡습니다.",
+    "사용자가 추론 수준을 직접 고를 수 있습니다."
+  ],
+  "availability": [
+    "ChatGPT 음성 대화: Go·Plus·Pro는 GPT-Live-1, Free는 GPT-Live-1 mini"
+  ],
+  "tips": [
+    {
+      "title": "말을 끊는 것을 망설이지 않기",
+      "body": "전이중 방식이라 모델이 말하는 도중에 '잠깐, 그건 됐고'처럼 끼어들어도 됩니다. 긴 설명을 끝까지 들을 필요 없이 원하는 방향으로 바로 돌리세요."
+    },
+    {
+      "title": "어려운 질문은 추론 수준을 올리기",
+      "body": "계산, 비교, 계획처럼 생각이 필요한 질문은 Medium이나 High로 바꾸면 GPT-5.5 Thinking이 답을 만듭니다. 가벼운 대화는 기본 설정이 더 빠릅니다."
+    },
+    {
+      "title": "말로 묻고 글로 정리받기",
+      "body": "음성으로 충분히 이야기한 뒤 마지막에 '지금까지 내용을 정리해줘'라고 요청하면 나중에 다시 보기 쉽습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "영어 면접 연습",
+      "when": "음성으로 회화나 면접을 연습할 때",
+      "type": "prompt",
+      "text": "지금부터 영어 면접관 역할을 해줘.\n질문은 한 번에 하나씩 하고, 내 답이 끝나면 더 자연스러운 표현을 한 문장으로 알려준 다음 다음 질문으로 넘어가.\n내가 '피드백'이라고 말하면 지금까지 답변의 장단점을 정리해줘."
+    },
+    {
+      "title": "회의 직전 음성 브리핑",
+      "when": "이동 중에 빠르게 내용을 파악해야 할 때",
+      "type": "prompt",
+      "text": "10분 뒤 [주제] 회의가 있어.\n핵심 쟁점 세 가지를 각각 30초 안에 말로 설명해줘.\n내가 중간에 끼어들어 질문하면 그 부분만 더 자세히 풀어줘."
+    }
+  ],
+  "cautions": [
+    "Medium·High 추론을 고르면 답이 나오기까지 더 오래 걸릴 수 있습니다.",
+    "Free 사용자는 GPT-Live-1 mini가 기본입니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing GPT-Live (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-live/"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "id": "nano-banana-2",
+  "company": "google",
+  "date": "2026-02-26",
+  "kind": "모델 출시",
+  "title": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+  "headline": "512px부터 4K까지, 인물 5명·사물 14개를 일관되게 유지하는 빠른 이미지 모델",
+  "tldr": "Google이 Nano Banana 2(Gemini 3.1 Flash Image)를 공개했습니다. 512px부터 4K까지 다양한 비율로 만들고, 한 작업 안에서 인물 최대 5명과 사물 14개를 일관되게 유지하며, 이미지 속 글자를 정확히 쓰고 번역할 수 있습니다. Gemini 앱에서 Nano Banana Pro를 대신하고 Flow의 기본 모델이 됐으며, 6월 30일에는 더 싼 Nano Banana 2 Lite가 나왔습니다.",
+  "models": [
+    {
+      "name": "Gemini 3.1 Flash Image",
+      "apiId": "gemini-3.1-flash-image",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Nano Banana 2 Lite",
+      "apiId": "gemini-3.1-flash-lite-image",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "해상도",
+      "value": "512px ~ 4K",
+      "note": "다양한 화면 비율"
+    },
+    {
+      "label": "일관성 유지",
+      "value": "인물 5 · 사물 14",
+      "note": "한 작업 흐름 안에서"
+    },
+    {
+      "label": "Nano Banana 2 Lite",
+      "value": "$0.034",
+      "note": "1K 이미지 1장당, 약 4초, 6월 30일 출시"
+    },
+    {
+      "label": "SynthID 확인",
+      "value": "2천만 회 이상",
+      "note": "Gemini 앱 검증 기능 사용 횟수"
+    }
+  ],
+  "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
+  "changes": [
+    "512px부터 4K까지 해상도와 화면 비율을 고를 수 있습니다.",
+    "한 작업 흐름 안에서 인물 최대 5명의 생김새와 사물 최대 14개의 형태를 유지합니다.",
+    "마케팅 시안이나 카드에 들어갈 글자를 정확하게 쓰고, 이미지 속 글자를 번역·현지화할 수 있습니다.",
+    "Gemini의 지식과 웹 검색의 실시간 정보·이미지를 바탕으로 만듭니다.",
+    "5월 28일 API에서 정식(GA) 모델 gemini-3.1-flash-image가 나왔고, 6월 30일 1K 이미지 1장당 $0.034, 생성 약 4초인 Nano Banana 2 Lite가 추가됐습니다."
+  ],
+  "availability": [
+    "Gemini 앱: Fast·Thinking·Pro 모드에서 Nano Banana Pro를 대체",
+    "Google 검색 AI Mode·Lens, Google Ads",
+    "Flow: 새 기본 이미지 모델, 모든 사용자 크레딧 없이 사용",
+    "Gemini API·AI Studio: 프리뷰 gemini-3.1-flash-image-preview → 5월 28일 GA"
+  ],
+  "tips": [
+    {
+      "title": "인물은 기준 이미지와 이름으로 고정",
+      "body": "여러 장면에 같은 인물을 쓰려면 기준 이미지를 먼저 만들고 '인물 A', '인물 B'처럼 이름을 붙여 계속 같은 이름으로 부르세요. 최대 5명까지 일관성이 유지됩니다."
+    },
+    {
+      "title": "글자는 그대로 쓸 문구를 따옴표로",
+      "body": "카드나 포스터 문구는 따옴표 안에 정확히 적고, 번역이 필요하면 '이 이미지의 영어 문구를 한국어로 바꿔줘'처럼 편집으로 요청하세요."
+    },
+    {
+      "title": "대량 생성은 Lite로",
+      "body": "썸네일이나 시안을 많이 만들 때는 1K 이미지 1장당 $0.034인 Nano Banana 2 Lite가 경제적입니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "같은 인물로 4컷 만화",
+      "when": "캐릭터 일관성이 필요한 연속 이미지를 만들 때",
+      "type": "prompt",
+      "text": "인물 A: [외모와 옷차림]\n인물 B: [외모와 옷차림]\n\n위 두 인물로 4컷 만화를 만들어줘. 각 컷에서 생김새와 옷은 똑같이 유지해.\n1컷: [상황]\n2컷: [상황], 인물 A 말풍선 \"[대사]\"\n3컷: [상황]\n4컷: [반전], 인물 B 말풍선 \"[대사]\""
+    },
+    {
+      "title": "이미지 속 글자 현지화",
+      "when": "영문 광고 이미지를 한국어로 바꿀 때",
+      "type": "prompt",
+      "text": "첨부한 광고 이미지의 영어 문구를 모두 자연스러운 한국어로 바꿔줘.\n- 글꼴 느낌, 크기, 위치, 색은 원본과 같게\n- 제품 사진과 배경은 그대로 유지\n- 바꾼 문구 목록을 원문과 함께 따로 알려줘"
+    }
+  ],
+  "cautions": [
+    "생성된 이미지에는 SynthID 워터마크가 들어갑니다.",
+    "웹 검색 정보를 쓰는 만큼 실존 인물이나 상표가 들어간 이미지는 사용 목적을 확인하세요."
+  ],
+  "sources": [
+    {
+      "title": "Nano Banana 2 (Google)",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/nano-banana-2/"
+    },
+    {
+      "title": "Gemini Omni Flash·Nano Banana 2 Lite (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/"
+    },
+    {
+      "title": "Gemini API 변경 로그",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog"
+    }
+  ]
+}

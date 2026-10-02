@@ -1,0 +1,103 @@
+{
+  "id": "gemini-3-5-transcribe",
+  "company": "google",
+  "date": "2026-08-26",
+  "kind": "모델 출시",
+  "title": "Gemini 3.5 Transcribe",
+  "headline": "단어 오류율 2.6%의 받아쓰기 모델, 실시간용 Live와 녹음 파일용 두 가지",
+  "tldr": "Google이 음성 인식 전용 모델 Gemini 3.5 Transcribe를 공개했습니다. Artificial Analysis 측정 평균 단어 오류율(WER)이 스트리밍 4.0%, 비스트리밍 2.6%이고, 85개 이상 언어를 자동 감지합니다. 이전 받아쓰기 모델 Chirp 3보다 오류율과 지연이 개선돼 최종 받아쓰기까지 걸리는 시간이 70% 줄었습니다.",
+  "models": [
+    {
+      "name": "Gemini 3.5 Transcribe",
+      "apiId": "gemini-3.5-transcribe",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Gemini 3.5 Transcribe Live",
+      "apiId": "gemini-3.5-transcribe-live",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "WER (비스트리밍)",
+      "value": "2.6%",
+      "note": "Artificial Analysis 측정 평균"
+    },
+    {
+      "label": "WER (스트리밍)",
+      "value": "4.0%",
+      "note": "Artificial Analysis 측정 평균"
+    },
+    {
+      "label": "지원 언어",
+      "value": "85개 이상",
+      "note": "자동 감지"
+    },
+    {
+      "label": "FLEURS WER",
+      "value": "5.04% / 5.50%",
+      "note": "비스트리밍 / 스트리밍, 주요 언어 기준"
+    },
+    {
+      "label": "최종 결과까지 시간",
+      "value": "70% 단축",
+      "note": "Chirp 3 대비, Artificial Analysis 측정"
+    }
+  ],
+  "chartNote": "Google은 이전 모델 Chirp 3와의 비교 그래프를 이미지로만 공개해 비교 수치를 옮기지 않았습니다. 본문에 텍스트로 적힌 이 모델의 단어 오류율만 위 핵심 수치에 정리했습니다.",
+  "changes": [
+    "이전 받아쓰기 모델 Chirp 3보다 단어 오류율과 지연이 개선됐습니다. 평균 단어 오류율은 Artificial Analysis 측정 스트리밍 4.0%, 비스트리밍 2.6%이고, FLEURS 주요 언어 기준으로는 스트리밍 5.50%, 비스트리밍 5.04%입니다.",
+    "85개 이상 언어를 자동으로 감지해 받아씁니다.",
+    "녹음 파일에서 최대 3명의 화자를 타임스탬프와 함께 구분합니다(3명 초과는 실험 기능).",
+    "제공한 사용자 단어장에 맞춰 전문 용어와 특이한 표기를 인식합니다.",
+    "최종 받아쓰기까지 걸리는 시간이 Chirp 3보다 70% 줄었습니다(Artificial Analysis 측정)."
+  ],
+  "availability": [
+    "Gemini API(Google AI Studio, Google Antigravity) 공개 프리뷰",
+    "Gemini Enterprise Agent Platform 공개 프리뷰",
+    "Android의 Rambler(일부 국가·언어), Chrome에 곧 제공"
+  ],
+  "tips": [
+    {
+      "title": "녹음 파일은 비스트리밍 모델로",
+      "body": "실시간 자막이 필요 없다면 오류율이 더 낮은 gemini-3.5-transcribe를 쓰세요. 회의록·인터뷰 정리에 적합합니다."
+    },
+    {
+      "title": "전문 용어는 단어장으로",
+      "body": "회사명, 제품명, 업계 약어를 사용자 단어장으로 미리 주면 표기가 정확해집니다."
+    },
+    {
+      "title": "화자는 3명까지가 안정적",
+      "body": "화자 구분은 3명까지가 정식 기능입니다. 참석자가 많은 회의는 결과의 화자 표시를 한 번 더 확인하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "회의록 정리 (받아쓰기 후)",
+      "when": "받아쓴 텍스트를 회의록으로 바꿀 때",
+      "type": "prompt",
+      "text": "아래는 회의 녹음을 받아쓴 내용이야. 화자는 [이름1], [이름2], [이름3]이야.\n\n<transcript>\n[받아쓰기 결과]\n</transcript>\n\n1. 결정된 사항\n2. 담당자별 할 일 (기한 포함)\n3. 다음 회의 안건\n으로 정리해줘. 받아쓰기에서 의미가 불분명한 부분은 [확인 필요]로 표시해."
+    },
+    {
+      "title": "단어장 준비",
+      "when": "받아쓰기 전에 사용자 단어장을 만들 때",
+      "type": "prompt",
+      "text": "다음 자료에서 받아쓰기 모델이 틀리기 쉬운 고유명사와 약어를 뽑아 단어장으로 만들어줘.\n형식: 표기 | 읽는 법 | 설명\n\n<material>\n[회사 소개, 제품 목록, 참석자 명단]\n</material>"
+    }
+  ],
+  "cautions": [
+    "발표 시점에는 공개 프리뷰입니다.",
+    "3명을 넘는 화자 구분은 실험 기능입니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.5 Transcribe (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/"
+    }
+  ]
+}

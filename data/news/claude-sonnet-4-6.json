@@ -1,0 +1,112 @@
+{
+  "id": "claude-sonnet-4-6",
+  "company": "anthropic",
+  "date": "2026-02-17",
+  "kind": "모델 출시",
+  "title": "Claude Sonnet 4.6",
+  "headline": "코딩·컴퓨터 사용·긴 문맥 전반을 끌어올린 Sonnet, Free·Pro 기본 모델로",
+  "tldr": "Anthropic이 Claude Sonnet 4.6을 공개했습니다. 코딩, 컴퓨터 사용, 긴 문맥 추론, 에이전트 계획, 지식 업무, 디자인 전반이 좋아졌고 100만 토큰 컨텍스트를 베타로 지원합니다. Claude Code 초기 테스트에서 사용자들은 Sonnet 4.5와 비교했을 때 약 70%, 이전 최상위 모델인 Opus 4.5와 비교했을 때도 59%의 경우 Sonnet 4.6을 골랐습니다.",
+  "models": [
+    {
+      "name": "Claude Sonnet 4.6",
+      "apiId": "claude-sonnet-4-6",
+      "input": "$3",
+      "output": "$15",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Sonnet 4.5 대비 선호",
+      "value": "약 70%",
+      "note": "Claude Code 초기 테스트"
+    },
+    {
+      "label": "Opus 4.5 대비 선호",
+      "value": "59%",
+      "note": ""
+    },
+    {
+      "label": "컨텍스트",
+      "value": "1M (베타)",
+      "note": ""
+    },
+    {
+      "label": "기본 모델",
+      "value": "Free·Pro",
+      "note": "claude.ai"
+    }
+  ],
+  "chartSource": "Anthropic Claude Sonnet 4.6 발표문 본문에 적힌 사용자 선호 비율입니다. 벤치마크 표는 이미지로만 공개됐습니다.",
+  "charts": [
+    {
+      "title": "사용자 선호율",
+      "desc": "Sonnet 4.6을 고른 비율 (50%면 동률)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Sonnet 4.5 대비",
+          "value": 70,
+          "highlight": true,
+          "display": "약 70%"
+        },
+        {
+          "label": "Claude Opus 4.5 대비",
+          "value": 59,
+          "highlight": true
+        }
+      ],
+      "keepOrder": true
+    }
+  ],
+  "changes": [
+    "코딩, 컴퓨터 사용, 긴 문맥 추론, 에이전트 계획, 지식 업무, 디자인 전반을 업그레이드했습니다.",
+    "100만 토큰 컨텍스트를 베타로 지원합니다.",
+    "claude.ai의 Free·Pro 플랜 기본 모델이 됐고 모든 플랜에서 쓸 수 있습니다.",
+    "가격은 Sonnet 4.5와 같은 $3 / $15입니다."
+  ],
+  "availability": [
+    "Claude 앱(모든 플랜, Free·Pro 기본), Claude Code, Claude API",
+    "API 모델명: claude-sonnet-4-6"
+  ],
+  "tips": [
+    {
+      "title": "effort 범위를 넓게 시험해 보기",
+      "body": "Anthropic은 Sonnet 4.6이 어떤 effort에서도, 확장 사고를 꺼도 성능이 좋다고 설명합니다. Sonnet 4.5에서 옮겨 온다면 낮은 effort부터 높은 effort까지 돌려 보고 품질과 비용의 균형점을 찾으세요."
+    },
+    {
+      "title": "가장 깊은 추론은 Opus 4.6에",
+      "body": "코드베이스 리팩터링이나 여러 에이전트를 조율하는 워크플로처럼 가장 깊은 추론이 필요한 일은 여전히 Opus 4.6이 낫다고 Anthropic은 안내합니다."
+    },
+    {
+      "title": "일상 업무의 기본값으로",
+      "body": "Opus 4.5보다도 더 선호됐으므로 문서 작성, 코드 수정, 데이터 정리 같은 일상 업무는 Sonnet 4.6을 기본으로 두고 어려운 일만 Opus로 넘기세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "effort 비교 실험",
+      "when": "Sonnet 4.5에서 옮기며 적정 effort를 찾을 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\nTASK = \"[대표 과제]\"\n\nfor effort in [\"low\", \"medium\", \"high\"]:\n    msg = client.messages.create(\n        model=\"claude-sonnet-4-6\",\n        max_tokens=8000,\n        output_config={\"effort\": effort},\n        messages=[{\"role\": \"user\", \"content\": TASK}],\n    )\n    print(effort, msg.usage.output_tokens)\n    print(msg.content[-1].text[:500])"
+    },
+    {
+      "title": "범위를 정한 디자인 수정",
+      "when": "UI 마감이나 슬라이드 디자인을 맡길 때",
+      "type": "prompt",
+      "text": "이 화면의 디자인을 다듬어줘.\n\n- 기능과 텍스트는 바꾸지 마\n- 간격, 정렬, 글자 크기 위계만 손봐\n- 바꾼 부분을 항목별로 한 줄씩 설명해"
+    }
+  ],
+  "cautions": [
+    "100만 토큰 컨텍스트는 베타 기능입니다.",
+    "가장 깊은 추론이 필요한 작업은 Opus 4.6이 더 적합하다고 Anthropic이 밝혔습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Sonnet 4.6 (Anthropic)",
+      "url": "https://www.anthropic.com/news/claude-sonnet-4-6"
+    }
+  ]
+}

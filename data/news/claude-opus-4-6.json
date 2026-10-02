@@ -1,0 +1,116 @@
+{
+  "id": "claude-opus-4-6",
+  "company": "anthropic",
+  "date": "2026-02-05",
+  "kind": "모델 출시",
+  "title": "Claude Opus 4.6",
+  "headline": "Opus 최초 100만 토큰 컨텍스트(베타), 적응형 사고와 effort 4단계",
+  "tldr": "Anthropic이 Claude Opus 4.6을 공개했습니다. Opus 모델 처음으로 100만 토큰 컨텍스트를 베타로 지원하고, 필요할 때만 깊게 생각하는 적응형 사고(adaptive thinking)와 low부터 max까지 4단계 effort를 도입했습니다. 전문직 업무 평가 GDPval-AA에서 GPT-5.2보다 약 144 Elo 높았습니다.",
+  "models": [
+    {
+      "name": "Claude Opus 4.6",
+      "apiId": "claude-opus-4-6",
+      "input": "$5",
+      "output": "$25",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "GDPval-AA",
+      "value": "+144 Elo",
+      "note": "GPT-5.2 대비, Opus 4.5보다는 +190"
+    },
+    {
+      "label": "MRCR v2 (긴 문맥 검색)",
+      "value": "76%",
+      "note": "8-needle 1M 버전, Sonnet 4.5 18.5%"
+    },
+    {
+      "label": "컨텍스트",
+      "value": "1M (베타)",
+      "note": "Opus 최초, 출력 최대 128K"
+    },
+    {
+      "label": "200K 초과 프롬프트 가격",
+      "value": "$10 / $37.50",
+      "note": "입력 / 출력, 100만 토큰당"
+    }
+  ],
+  "chartSource": "Anthropic Claude Opus 4.6 발표문 본문에 적힌 수치입니다. 나머지 벤치마크 표는 이미지로만 공개됐습니다.",
+  "charts": [
+    {
+      "title": "MRCR v2 (8-needle, 1M)",
+      "desc": "아주 긴 문맥 속 정보 찾기",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 4.6",
+          "value": 76,
+          "highlight": true
+        },
+        {
+          "label": "Claude Sonnet 4.5",
+          "value": 18.5
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "Opus 모델 처음으로 100만 토큰 컨텍스트를 베타로 지원하고, 출력은 최대 128K 토큰입니다.",
+    "적응형 사고(adaptive thinking): 더 깊은 추론이 필요한지 Claude가 스스로 판단합니다.",
+    "effort를 low, medium, high(기본), max 네 단계로 고를 수 있습니다.",
+    "컨텍스트 압축(compaction, 베타): 대화가 설정한 한도에 가까워지면 오래된 맥락을 자동으로 요약해 바꿔 넣습니다.",
+    "Claude Code에서 여러 에이전트가 팀으로 병렬 작업하며 스스로 조율하는 에이전트 팀을 리서치 프리뷰로 쓸 수 있습니다.",
+    "Claude in Excel은 행동 전에 계획을 세우고 비정형 데이터의 구조를 스스로 추론하며, Claude in PowerPoint는 레이아웃·글꼴·슬라이드 마스터를 읽어 브랜드 양식을 지킵니다."
+  ],
+  "availability": [
+    "Claude 앱, Claude Code, Claude API",
+    "API 모델명: claude-opus-4-6",
+    "200K 토큰 초과 프롬프트는 프리미엄 가격($10 / $37.50)"
+  ],
+  "tips": [
+    {
+      "title": "생각이 너무 길면 effort를 medium으로",
+      "body": "Anthropic은 모델이 과제에 비해 지나치게 오래 생각한다면 기본값 high에서 medium으로 낮추라고 권합니다. 단순한 작업일수록 효과가 큽니다."
+    },
+    {
+      "title": "긴 에이전트 작업에는 compaction",
+      "body": "몇 시간씩 이어지는 에이전트 작업은 컨텍스트 압축을 켜 두면 한도에 닿을 때 오래된 맥락이 요약돼 작업을 이어 갈 수 있습니다."
+    },
+    {
+      "title": "100만 토큰은 필요할 때만",
+      "body": "200K 토큰을 넘으면 입력 가격이 2배가 됩니다. 문서 전체를 넣기 전에 관련 부분만 추려 넣을 수 있는지 먼저 확인하세요."
+    },
+    {
+      "title": "병렬로 나눌 수 있는 일은 에이전트 팀으로",
+      "body": "프런트엔드·백엔드·테스트처럼 서로 독립적인 작업은 Claude Code의 에이전트 팀에 맡기면 동시에 진행됩니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "적응형 사고와 effort를 함께 쓸 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-opus-4-6\",\n    max_tokens=16000,\n    thinking={\"type\": \"adaptive\"},\n    output_config={\"effort\": \"medium\"},  # 기본값은 high\n    messages=[{\"role\": \"user\", \"content\": \"[요청]\"}],\n)"
+    },
+    {
+      "title": "엑셀 비정형 데이터 정리",
+      "when": "Claude in Excel에 정리되지 않은 데이터를 줄 때",
+      "type": "prompt",
+      "text": "이 시트의 A열에는 거래처 이메일 본문이 그대로 붙어 있어.\n\n1. 먼저 어떤 열(날짜, 거래처, 품목, 수량, 금액)로 나눌지 계획을 보여줘\n2. 계획대로 새 시트에 표를 만들어\n3. 값을 확신할 수 없는 셀은 노란색으로 표시하고 이유를 메모로 남겨"
+    }
+  ],
+  "cautions": [
+    "100만 토큰 컨텍스트와 컨텍스트 압축은 베타 기능입니다.",
+    "200K 토큰을 넘는 프롬프트는 입력 $10, 출력 $37.50의 프리미엄 가격이 적용됩니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Opus 4.6 (Anthropic)",
+      "url": "https://www.anthropic.com/news/claude-opus-4-6"
+    }
+  ]
+}

@@ -1,0 +1,431 @@
+{
+  "id": "gpt-5-6",
+  "company": "openai",
+  "date": "2026-07-09",
+  "kind": "모델 출시",
+  "title": "GPT-5.6 (Sol · Terra · Luna)",
+  "headline": "세 가지 크기로 나온 GPT-5.6, 에이전트 4개를 병렬로 돌리는 ultra 설정",
+  "tldr": "OpenAI가 GPT-5.6을 Sol, Terra, Luna 세 등급으로 내놓았습니다. 최상위 Sol은 Terminal-Bench 2.1 88.8%(ultra 91.9%), BrowseComp 90.4%를 기록했고, 새 ultra 설정은 기본으로 에이전트 4개를 병렬로 돌려 어려운 과제를 더 빨리 끝냅니다. 6월 26일 Sol 제한 프리뷰를 거쳐 7월 9일 정식 출시됐습니다.",
+  "models": [
+    {
+      "name": "GPT-5.6 Sol",
+      "apiId": "gpt-5.6-sol",
+      "input": "$5",
+      "output": "$30",
+      "cached": "$0.50"
+    },
+    {
+      "name": "GPT-5.6 Terra",
+      "apiId": "gpt-5.6-terra",
+      "input": "$2.50",
+      "output": "$15",
+      "cached": "$0.25"
+    },
+    {
+      "name": "GPT-5.6 Luna",
+      "apiId": "gpt-5.6-luna",
+      "input": "$1",
+      "output": "$6",
+      "cached": "$0.10"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Terminal-Bench 2.1 (Sol)",
+      "value": "88.8%",
+      "note": "ultra 91.9%, GPT-5.5 85.6%"
+    },
+    {
+      "label": "BrowseComp (Sol)",
+      "value": "90.4%",
+      "note": "ultra 92.2%"
+    },
+    {
+      "label": "SWE-Bench Pro (Sol)",
+      "value": "64.6%",
+      "note": "GPT-5.5 59.4%"
+    },
+    {
+      "label": "ARC-AGI-3 (Sol)",
+      "value": "7.78%",
+      "note": "비교 모델 중 최고"
+    }
+  ],
+  "chartSource": "OpenAI GPT-5.6 발표문의 비교표 기준입니다. Claude·Gemini 수치도 같은 표에서 가져왔습니다.",
+  "charts": [
+    {
+      "title": "Artificial Analysis Intelligence Index",
+      "desc": "종합 지능 지수",
+      "type": "bar",
+      "unit": "",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5",
+          "value": 59.9
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 58.9,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 55.7
+        },
+        {
+          "label": "GPT-5.6 Terra",
+          "value": 55,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 54.8
+        },
+        {
+          "label": "GPT-5.6 Luna",
+          "value": 51.2,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 50.2
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 46.5
+        }
+      ]
+    },
+    {
+      "title": "Terminal-Bench 2.1",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.6 Sol ultra",
+          "value": 91.9,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 88.8,
+          "highlight": true
+        },
+        {
+          "label": "Claude Mythos 5",
+          "value": 88
+        },
+        {
+          "label": "GPT-5.6 Terra",
+          "value": 87.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 85.6
+        },
+        {
+          "label": "GPT-5.6 Luna",
+          "value": 84.7,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 83.1
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 78.9
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 70.7
+        }
+      ]
+    },
+    {
+      "title": "SWE-Bench Pro",
+      "desc": "실제 저장소 이슈 해결",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos 5",
+          "value": 80.3
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 80
+        },
+        {
+          "label": "Claude Mythos Preview",
+          "value": 77.8
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 69.2
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 64.6,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Terra",
+          "value": 63.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Luna",
+          "value": 62.7,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 59.4
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 54.2
+        }
+      ]
+    },
+    {
+      "title": "BrowseComp",
+      "desc": "찾기 어려운 정보 웹 탐색",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.6 Sol ultra",
+          "value": 92.2,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 90.4,
+          "highlight": true
+        },
+        {
+          "label": "Claude Mythos 5",
+          "value": 88
+        },
+        {
+          "label": "Claude Mythos Preview",
+          "value": 87.9
+        },
+        {
+          "label": "GPT-5.6 Terra",
+          "value": 87.5,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 85.9
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 84.4
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 84.3
+        },
+        {
+          "label": "GPT-5.6 Luna",
+          "value": 83.3,
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "title": "GDPval-AA v2",
+      "desc": "전문직 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5",
+          "value": 1759.6
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 1747.8,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 1600.1
+        },
+        {
+          "label": "GPT-5.6 Terra",
+          "value": 1593,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Luna",
+          "value": 1591.8,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 1493.7
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 1348.8
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 962.3
+        }
+      ]
+    },
+    {
+      "title": "Agents' Last Exam",
+      "desc": "장기 에이전트 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 52.7,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Terra",
+          "value": 50.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Luna",
+          "value": 50.3,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 46.9
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 45.2
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 40.5
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 32.1
+        }
+      ]
+    },
+    {
+      "title": "ARC-AGI-3",
+      "desc": "상호작용형 추론 게임",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 7.78,
+          "highlight": true,
+          "display": "7.78%"
+        },
+        {
+          "label": "Claude Opus 4.8",
+          "value": 1.5
+        },
+        {
+          "label": "GPT-5.6 Terra",
+          "value": 0.8,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 0.43,
+          "display": "0.43%"
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 0.42,
+          "display": "0.42%"
+        },
+        {
+          "label": "GPT-5.6 Luna",
+          "value": 0.18,
+          "highlight": true,
+          "display": "0.18%"
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "한 세대를 Sol(최상위), Terra(중간), Luna(경량) 세 등급으로 나눠 냈습니다. Luna는 Sol 가격의 1/5입니다.",
+    "새 ultra 설정은 기본으로 에이전트 4개를 병렬로 조율해, 토큰을 더 쓰는 대신 어려운 과제에서 더 좋은 결과를 더 빨리 냅니다.",
+    "Agents' Last Exam에서는 세 등급 모두 GPT-5.5와 경쟁사 모델보다 높았고, ARC-AGI-3에서는 Sol이 7.78%로 다른 모델(최고 1.5%)을 크게 앞섰습니다.",
+    "SWE-Bench Pro는 Sol 64.6%로 GPT-5.5(59.4%)보다 올랐지만 Claude Fable 5(80%)·Mythos 5(80.3%)와는 차이가 큽니다."
+  ],
+  "availability": [
+    "ChatGPT 채팅(Plus·Pro·Business·Enterprise): Medium 이상 effort에서 Sol 사용",
+    "ChatGPT Work·Codex: Free·Go는 Terra, Plus 이상은 Sol·Terra·Luna 중 선택",
+    "ultra: ChatGPT Work는 Pro·Enterprise, Codex는 Plus 이상",
+    "API: gpt-5.6-sol, gpt-5.6-terra, gpt-5.6-luna"
+  ],
+  "tips": [
+    {
+      "title": "등급은 과제 난이도에 맞추기",
+      "body": "Terminal-Bench 2.1에서 Luna(84.7%)와 Sol(88.8%)의 차이는 4%p인데 가격은 5배 차이입니다. 일상 코딩과 문서 작업은 Luna나 Terra로 시작하고, 결과가 부족할 때만 Sol로 올리세요."
+    },
+    {
+      "title": "ultra는 길고 어려운 과제에만",
+      "body": "ultra는 에이전트 4개를 동시에 돌려 토큰을 더 씁니다. 원인을 여러 갈래로 조사해야 하는 디버깅이나 대규모 조사처럼 병렬로 나눌 수 있는 일에만 켜세요."
+    },
+    {
+      "title": "병렬로 나눌 수 있게 지시하기",
+      "body": "ultra에 맡길 때는 조사할 가설이나 하위 과제를 목록으로 주면 에이전트들이 나눠 맡기 쉽습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "ultra용 병렬 조사 과제",
+      "when": "원인 후보가 여러 개인 문제를 맡길 때",
+      "type": "prompt",
+      "text": "이 저장소의 테스트 스위트가 40분 넘게 걸려. 실행 시간을 절반 이하로 줄여줘.\n\n- 원인 후보를 병렬로 조사해: 테스트 픽스처, DB 초기화, 외부 네트워크 호출, 직렬 실행 설정\n- 후보마다 측정한 시간과 근거를 표로 정리해\n- 효과가 확인된 변경만 적용하고 전체 테스트가 통과하는지 확인해"
+    },
+    {
+      "title": "등급을 나눠 쓰는 파이프라인 (Python)",
+      "when": "쉬운 일은 Luna, 어려운 일만 Sol로 보낼 때",
+      "type": "code",
+      "text": "from openai import OpenAI\n\nclient = OpenAI()\n\ndef ask(model: str, prompt: str) -> str:\n    return client.responses.create(model=model, input=prompt).output_text\n\nreq = \"[사용자 요청]\"\nlevel = ask(\"gpt-5.6-luna\", f\"다음 요청의 난이도를 easy 또는 hard로만 답해.\\n\\n{req}\").strip()\nmodel = \"gpt-5.6-sol\" if level == \"hard\" else \"gpt-5.6-luna\"\nanswer = ask(model, req)"
+    }
+  ],
+  "cautions": [
+    "ultra는 에이전트 여러 개를 돌려 토큰 사용량과 비용이 늘어납니다.",
+    "위 가격은 출시 당시 기준입니다. 10월 현재 모델 문서에는 Sol 프로모션가 $4 / $20(최소 11월 21일까지), Terra $2 / $12, Luna $0.20 / $1.20으로 내려가 있습니다.",
+    "272K 토큰이 넘는 프롬프트는 요청 전체에 입력 2배, 출력 1.5배 가격이 적용됩니다(모델 문서 기준).",
+    "Claude·Gemini 수치는 OpenAI 표 기준이며 각 사 발표와 측정 조건이 다를 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "GPT-5.6 (OpenAI)",
+      "url": "https://openai.com/index/gpt-5-6/"
+    },
+    {
+      "title": "Previewing GPT-5.6 Sol (OpenAI)",
+      "url": "https://openai.com/index/previewing-gpt-5-6-sol/"
+    },
+    {
+      "title": "GPT-5.6 Sol 모델 문서 (현재 가격)",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol"
+    }
+  ]
+}

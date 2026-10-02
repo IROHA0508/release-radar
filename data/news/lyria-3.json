@@ -1,0 +1,105 @@
+{
+  "id": "lyria-3",
+  "company": "google",
+  "date": "2026-02-18",
+  "kind": "모델 출시",
+  "title": "Lyria 3 (Gemini 앱 음악 생성)",
+  "headline": "설명이나 사진 한 장으로 가사·보컬까지 들어간 30초 곡, 3월에는 API로 최대 3분",
+  "tldr": "Google이 음악 생성 모델 Lyria 3를 Gemini 앱에 넣었습니다. 아이디어를 설명하거나 사진·영상을 올리면 가사와 보컬, Nano Banana가 만든 커버 아트까지 들어간 30초 곡을 만들어 주며, 한국어를 포함한 8개 언어를 지원합니다. 3월 25일에는 Gemini API에 30초용 Lyria 3 Clip과 최대 약 3분 곡을 만드는 Lyria 3 Pro가 공개됐습니다.",
+  "models": [
+    {
+      "name": "Lyria 3 Clip",
+      "apiId": "lyria-3-clip-preview",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Lyria 3 Pro",
+      "apiId": "lyria-3-pro-preview",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Gemini 앱 곡 길이",
+      "value": "30초",
+      "note": "커버 아트 포함"
+    },
+    {
+      "label": "API 곡 길이 (Pro)",
+      "value": "약 3분",
+      "note": "Clip은 30초"
+    },
+    {
+      "label": "지원 언어",
+      "value": "8개",
+      "note": "한국어 포함"
+    },
+    {
+      "label": "이용 연령",
+      "value": "18세 이상",
+      "note": ""
+    }
+  ],
+  "chartNote": "음악 생성 모델이라 공식 발표에 성능 비교 수치가 없습니다.",
+  "changes": [
+    "아이디어를 설명하거나 사진·영상을 올리면 30초 곡을 만듭니다. 가사는 따로 쓰지 않아도 자동으로 만들어집니다.",
+    "스타일, 보컬, 템포를 더 세밀하게 조절할 수 있습니다.",
+    "곡마다 Nano Banana가 만든 커버 아트가 붙습니다.",
+    "프롬프트에 특정 아티스트 이름을 넣으면 그대로 흉내 내지 않고, 비슷한 스타일이나 분위기를 참고하는 수준으로 반영합니다.",
+    "Gemini 앱에서 만든 모든 곡에는 SynthID 워터마크가 들어갑니다.",
+    "3월 25일 Gemini API·AI Studio에 공개 프리뷰로 나왔습니다. 템포 지정, 시간에 맞춘 가사 배치, 이미지로 분위기 정하기를 지원합니다."
+  ],
+  "availability": [
+    "Gemini 앱: 18세 이상, 영어·독일어·스페인어·프랑스어·힌디어·일본어·한국어·포르투갈어",
+    "Google AI Plus·Pro·Ultra 구독자는 더 높은 사용 한도",
+    "YouTube Dream Track (크리에이터)",
+    "Gemini API·Google AI Studio: lyria-3-clip-preview, lyria-3-pro-preview (3월 25일, 공개 프리뷰)"
+  ],
+  "tips": [
+    {
+      "title": "감정과 사연을 함께 적기",
+      "body": "Google 예시처럼 '엄마와 보낸 좋은 시절을 떠올리는 곡'처럼 누구를 위한, 어떤 감정의 곡인지 적으면 가사가 구체적으로 나옵니다."
+    },
+    {
+      "title": "사진으로 분위기 전달",
+      "body": "말로 설명하기 어려운 분위기는 사진이나 영상을 올리면 그 장면에 맞는 곡을 만듭니다."
+    },
+    {
+      "title": "API에서는 곡 구성을 시간대별로",
+      "body": "Lyria 3 Pro는 곡의 진행을 프롬프트에 적으면 가사가 언제 시작하고 끝날지 조절할 수 있습니다. 인트로, 벌스, 후렴 순서와 대략적인 시간을 적어 주세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "사연이 있는 짧은 곡",
+      "when": "Gemini 앱에서 선물용 곡을 만들 때",
+      "type": "prompt",
+      "text": "친구 [이름]의 생일 축하 곡을 만들어줘.\n- 분위기: 밝고 신나는 [장르]\n- 템포: 빠르게\n- 가사에 넣을 이야기: 대학 시절 같이 [추억], 요즘 [근황]\n- 보컬: [여성/남성] 보컬, 한국어"
+    },
+    {
+      "title": "구성을 정한 3분 곡 (Lyria 3 Pro)",
+      "when": "API나 AI Studio에서 긴 곡을 만들 때",
+      "type": "prompt",
+      "text": "장르: [장르], 템포: 느리게\n분위기: [감정]\n\n구성:\n0:00-0:20 피아노 인트로, 보컬 없음\n0:20-1:00 1절 (가사 주제: [주제])\n1:00-1:30 후렴 (가사: \"[후렴 문구]\")\n1:30-2:30 2절과 후렴 반복\n2:30-3:00 악기만으로 잔잔하게 마무리"
+    }
+  ],
+  "cautions": [
+    "18세 이상만 쓸 수 있습니다.",
+    "특정 아티스트를 그대로 흉내 내는 곡은 만들 수 없고, 비슷한 분위기를 참고하는 수준으로 반영됩니다.",
+    "9월 4일 후속 모델 Lyria 3.5가 나왔습니다."
+  ],
+  "sources": [
+    {
+      "title": "Use Lyria 3 to create music tracks in the Gemini app (Google)",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/lyria-3/"
+    },
+    {
+      "title": "How developers can use Lyria 3 for AI music generation (Google)",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/lyria-3-developers/"
+    }
+  ]
+}

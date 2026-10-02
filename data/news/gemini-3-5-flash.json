@@ -1,0 +1,152 @@
+{
+  "id": "gemini-3-5-flash",
+  "company": "google",
+  "date": "2026-05-19",
+  "kind": "모델 출시",
+  "title": "Gemini 3.5 Flash",
+  "headline": "코딩·에이전트 평가에서 3.1 Pro를 넘은 Flash, 다른 프런티어 모델보다 4배 빠른 출력",
+  "tldr": "Google I/O에서 Gemini 3.5 Flash가 공개됐습니다. Terminal-Bench 2.1 76.2%, GDPval-AA 1656 Elo, MCP Atlas 83.6%로 어려운 코딩·에이전트 평가에서 상위 모델인 Gemini 3.1 Pro를 넘었고, 초당 출력 토큰 기준으로 다른 프런티어 모델보다 4배 빠릅니다. Gemini 앱과 검색 AI Mode의 기본 모델로 모든 사용자에게 제공됩니다.",
+  "models": [
+    {
+      "name": "Gemini 3.5 Flash",
+      "apiId": "gemini-3.5-flash",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Terminal-Bench 2.1",
+      "value": "76.2%",
+      "note": "Gemini 3.1 Pro보다 높음"
+    },
+    {
+      "label": "GDPval-AA",
+      "value": "1656 Elo",
+      "note": "Google 발표 기준"
+    },
+    {
+      "label": "MCP Atlas",
+      "value": "83.6%",
+      "note": "CharXiv Reasoning 84.2%"
+    },
+    {
+      "label": "출력 속도",
+      "value": "4배",
+      "note": "다른 프런티어 모델 대비"
+    }
+  ],
+  "chartSource": "Google 발표문의 비교표는 이미지로만 공개돼, 7월 OpenAI GPT-5.6 발표문의 비교표에 실린 수치로 그렸습니다. Opus 4.8은 3.5 Flash보다 9일 뒤에 나왔습니다.",
+  "charts": [
+    {
+      "title": "Artificial Analysis Intelligence Index",
+      "desc": "종합 지능 지수",
+      "type": "bar",
+      "unit": "",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 4.8",
+          "value": 55.7
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 54.8
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 50.2,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 46.5
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "GDPval-AA v2",
+      "desc": "전문직 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 4.8",
+          "value": 1600.1
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 1493.7
+        },
+        {
+          "label": "Gemini 3.5 Flash",
+          "value": 1348.8,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 962.3
+        }
+      ],
+      "note": "Google 발표의 GDPval-AA(1656)와는 평가 버전이 달라 점수 척도가 다릅니다.",
+      "source": "OpenAI"
+    }
+  ],
+  "changes": [
+    "Terminal-Bench 2.1(76.2%), GDPval-AA(1656 Elo), MCP Atlas(83.6%)에서 Gemini 3.1 Pro를 앞섰습니다.",
+    "CharXiv Reasoning 84.2%로 멀티모달 이해에서 선두라고 밝혔습니다.",
+    "초당 출력 토큰 기준으로 다른 프런티어 모델보다 4배 빠릅니다.",
+    "Google은 3.5 Pro를 내부에서 쓰고 있으며 다음 달 내놓겠다고 밝혔습니다."
+  ],
+  "availability": [
+    "모든 사용자: Gemini 앱, Google 검색 AI Mode",
+    "개발자: Google Antigravity, Gemini API(Google AI Studio), Android Studio",
+    "기업: Gemini Enterprise Agent Platform, Gemini Enterprise",
+    "API 모델명: gemini-3.5-flash"
+  ],
+  "tips": [
+    {
+      "title": "에이전트 작업의 기본 모델로",
+      "body": "도구 연동(MCP Atlas)과 터미널 코딩에서 3.1 Pro보다 높으면서 훨씬 빠릅니다. 도구를 여러 번 오가는 에이전트는 3.5 Flash로 먼저 만들어 보세요."
+    },
+    {
+      "title": "차트·도표 읽기에 활용",
+      "body": "CharXiv Reasoning 84.2%로 차트 이해가 강합니다. 보고서 속 그래프를 읽고 수치를 표로 옮기는 일에 쓰기 좋습니다."
+    },
+    {
+      "title": "속도가 중요한 화면에",
+      "body": "출력이 빠르므로 사용자가 결과를 기다리는 채팅·코딩 도우미에 두면 체감 속도가 좋아집니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "차트 이미지에서 수치 추출",
+      "when": "보고서 속 그래프를 데이터로 바꿀 때",
+      "type": "prompt",
+      "text": "첨부한 차트 이미지를 읽고 표로 옮겨줘.\n- 열: [항목], [값], [단위]\n- 눈금 사이 값은 추정이라고 따로 표시해\n- 마지막에 차트가 말하는 핵심 결론을 한 문장으로 적어"
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "에이전트나 앱에서 3.5 Flash를 부를 때",
+      "type": "code",
+      "text": "from google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nresp = client.models.generate_content(\n    model=\"gemini-3.5-flash\",\n    contents=\"[요청]\",\n    config=types.GenerateContentConfig(\n        thinking_config=types.ThinkingConfig(thinking_level=\"medium\"),\n    ),\n)\nprint(resp.text)"
+    }
+  ],
+  "cautions": [
+    "Gemini API 변경 로그 기준으로 8월 말까지 3.5 Pro는 출시되지 않았습니다.",
+    "그래프 수치는 OpenAI 표 기준이라 Google 측정과 다를 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.5 (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/"
+    },
+    {
+      "title": "GPT-5.6 (그래프 수치 출처, OpenAI)",
+      "url": "https://openai.com/index/gpt-5-6/"
+    }
+  ]
+}

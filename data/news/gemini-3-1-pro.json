@@ -1,0 +1,275 @@
+{
+  "id": "gemini-3-1-pro",
+  "company": "google",
+  "date": "2026-02-19",
+  "kind": "모델 출시",
+  "title": "Gemini 3.1 Pro",
+  "headline": "ARC-AGI-2 77.1%로 3 Pro의 두 배 넘는 추론, 복잡한 문제 해결의 새 기본 모델",
+  "tldr": "Google이 Gemini 3.1 Pro를 프리뷰로 공개했습니다. 처음 보는 논리 패턴을 푸는 ARC-AGI-2에서 77.1%를 기록해 Gemini 3 Pro의 두 배가 넘는 추론 성능을 보였습니다. 개발자용 Gemini API·CLI·Antigravity, 기업용 Vertex AI, 일반 사용자용 Gemini 앱과 NotebookLM에서 쓸 수 있습니다.",
+  "models": [
+    {
+      "name": "Gemini 3.1 Pro (프리뷰)",
+      "apiId": "gemini-3.1-pro-preview",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "ARC-AGI-2",
+      "value": "77.1%",
+      "note": "검증 점수, Gemini 3 Pro의 2배 이상"
+    },
+    {
+      "label": "BrowseComp",
+      "value": "85.9%",
+      "note": "OpenAI GPT-5.5 발표문 표 기준"
+    },
+    {
+      "label": "GPQA Diamond",
+      "value": "94.3%",
+      "note": "OpenAI GPT-5.5 발표문 표 기준"
+    },
+    {
+      "label": "MCP Atlas",
+      "value": "78.2%",
+      "note": "OpenAI GPT-5.5 발표문 표 기준"
+    }
+  ],
+  "chartSource": "Google 발표문의 비교표는 이미지로만 공개돼, 4월 OpenAI GPT-5.5 발표문의 비교표에 실린 수치로 그렸습니다. 비교 대상은 모두 Gemini 3.1 Pro보다 나중에 나온 모델입니다. ARC-AGI-2 77.1%는 Google 발표문과 같습니다.",
+  "charts": [
+    {
+      "title": "ARC-AGI-2",
+      "desc": "처음 보는 퍼즐형 추론",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.5",
+          "value": 85.0
+        },
+        {
+          "label": "GPT-5.4 Pro",
+          "value": 83.3
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 77.1,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.7",
+          "value": 75.8
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 73.3
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "BrowseComp",
+      "desc": "찾기 어려운 정보 웹 탐색",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.5 Pro",
+          "value": 90.1
+        },
+        {
+          "label": "GPT-5.4 Pro",
+          "value": 89.3
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 85.9,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 84.4
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 82.7
+        },
+        {
+          "label": "Claude Opus 4.7",
+          "value": 79.3
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "GPQA Diamond",
+      "desc": "대학원 수준 과학 문제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.4 Pro",
+          "value": 94.4
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 94.3,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.7",
+          "value": 94.2
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 93.6
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 92.8
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "MCP Atlas",
+      "desc": "MCP 도구 연동 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 4.7",
+          "value": 79.1
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 78.2,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 75.3
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 70.6
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "Terminal-Bench 2.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.5",
+          "value": 82.7
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 75.1
+        },
+        {
+          "label": "Claude Opus 4.7",
+          "value": 69.4
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 68.5,
+          "highlight": true
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "SWE-Bench Pro",
+      "desc": "실제 저장소 이슈 해결",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 4.7",
+          "value": 64.3
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 58.6
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 57.7
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 54.2,
+          "highlight": true
+        }
+      ],
+      "source": "OpenAI"
+    }
+  ],
+  "changes": [
+    "핵심 추론이 한 단계 올라, 복잡한 문제 해결의 더 똑똑한 기본 모델이 됐습니다.",
+    "ARC-AGI-2 검증 점수 77.1%로 Gemini 3 Pro의 두 배가 넘습니다.",
+    "Google은 코드 기반 애니메이션, 복잡한 시스템 종합, 인터랙티브 디자인, 크리에이티브 코딩처럼 단순한 답으로 충분하지 않은 작업을 예로 들었습니다.",
+    "두 달 뒤 경쟁사 표에서도 BrowseComp 85.9%, GPQA 94.3%로 상위권을 유지했지만, 코딩(Terminal-Bench 2.0, SWE-Bench Pro)은 상대적으로 낮았습니다."
+  ],
+  "availability": [
+    "개발자: Gemini API(Google AI Studio), Gemini CLI, Google Antigravity, Android Studio (프리뷰)",
+    "기업: Vertex AI, Gemini Enterprise",
+    "일반 사용자: Gemini 앱(Google AI Pro·Ultra는 더 높은 한도), NotebookLM(Pro·Ultra 전용)",
+    "API 모델명: gemini-3.1-pro-preview"
+  ],
+  "tips": [
+    {
+      "title": "한 번에 답이 안 나오는 문제에",
+      "body": "Google은 3.1 Pro를 단순한 답으로 충분하지 않은 작업용으로 소개합니다. 여러 조건을 따져야 하는 설계, 데이터 종합, 인터랙티브 시각화에 쓰세요."
+    },
+    {
+      "title": "검색·조사형 작업에 강함",
+      "body": "경쟁사 표에서도 BrowseComp 85.9%로 GPT-5.5(84.4%)보다 높았습니다. 여러 출처를 찾아 종합하는 조사 업무에 잘 맞습니다."
+    },
+    {
+      "title": "thinking_level은 high로",
+      "body": "Gemini 3 계열은 thinking_level로 생각의 깊이를 정합니다. 어려운 추론 과제는 high로 두고, 빠른 답이 필요할 때만 낮추세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "코드 기반 인터랙티브 시각화",
+      "when": "데이터나 개념을 움직이는 화면으로 보여 주고 싶을 때",
+      "type": "prompt",
+      "text": "[개념 또는 데이터]를 설명하는 인터랙티브 웹 페이지를 HTML 파일 하나로 만들어줘.\n\n- 슬라이더로 [변수]를 바꾸면 그래프가 바로 바뀌게 해\n- 화면 오른쪽에 지금 상태를 한두 문장으로 설명하는 영역을 둬\n- 외부 라이브러리는 쓰지 말고, 모바일에서도 보이게 해"
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "깊은 추론이 필요한 요청을 보낼 때",
+      "type": "code",
+      "text": "from google import genai\nfrom google.genai import types\n\nclient = genai.Client()\n\nresp = client.models.generate_content(\n    model=\"gemini-3.1-pro-preview\",\n    contents=\"[요청]\",\n    config=types.GenerateContentConfig(\n        thinking_config=types.ThinkingConfig(thinking_level=\"high\"),\n    ),\n)\nprint(resp.text)"
+    }
+  ],
+  "cautions": [
+    "발표 시점에는 프리뷰 모델입니다.",
+    "그래프 수치는 OpenAI 표 기준이며, 비교 모델들은 3.1 Pro보다 나중에 나왔습니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.1 Pro (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/"
+    },
+    {
+      "title": "Introducing GPT-5.5 (그래프 수치 출처, OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-5-5/"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "id": "gemini-3-7-flash",
+  "company": "google",
+  "date": "2026-08-13",
+  "kind": "모델 출시",
+  "title": "Gemini 3.7 Flash",
+  "headline": "실무형 코드·문서·자동화 점수가 크게 오른 3.7 Flash, 연말까지 반값 도입가",
+  "tldr": "Google이 Gemini 3.7 Flash를 공개했습니다. 3.6 Flash보다 실제 병합 가능한 코드(FrontierCode 43.6% 대 34.4%), 장기 개발 과제(DeepSWE 65.3% 대 49.0%), PDF 이해, 업무 자동화가 크게 좋아졌습니다. 12월 31일까지는 입력 $0.75 / 출력 $3.75의 도입가이며, 24시간 대신 일해 주는 개인 에이전트 Gemini Spark도 이날부터 3.7 Flash로 동작합니다.",
+  "models": [
+    {
+      "name": "Gemini 3.7 Flash (도입가, 12월 31일까지)",
+      "apiId": "gemini-3.7-flash",
+      "input": "$0.75",
+      "output": "$3.75",
+      "cached": null
+    },
+    {
+      "name": "Gemini 3.7 Flash (정가, 2027년 1월부터)",
+      "apiId": "gemini-3.7-flash",
+      "input": "$1.50",
+      "output": "$7.50",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "FrontierCode 1.1 (Main)",
+      "value": "43.6%",
+      "note": "3.6 Flash 34.4%"
+    },
+    {
+      "label": "DeepSWE v1.1",
+      "value": "65.3%",
+      "note": "3.6 Flash 49.0%"
+    },
+    {
+      "label": "AutomationBench",
+      "value": "30.4%",
+      "note": "3.6 Flash 17.0%"
+    },
+    {
+      "label": "도입가",
+      "value": "$0.75 / $3.75",
+      "note": "12월 31일까지, 이후 $1.50 / $7.50"
+    }
+  ],
+  "chartSource": "Google Gemini 3.7 Flash 발표문 본문에 적힌 3.6 Flash 대비 수치입니다.",
+  "charts": [
+    {
+      "title": "FrontierCode 1.1 (Main)",
+      "desc": "실제 병합 가능한 코드 품질",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.7 Flash",
+          "value": 43.6,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.6 Flash",
+          "value": 34.4
+        }
+      ]
+    },
+    {
+      "title": "DeepSWE v1.1",
+      "desc": "장기 소프트웨어 엔지니어링",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.7 Flash",
+          "value": 65.3,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.6 Flash",
+          "value": 49.0
+        }
+      ]
+    },
+    {
+      "title": "GDP.pdf",
+      "desc": "PDF 문서 이해",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.7 Flash",
+          "value": 34.0,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.6 Flash",
+          "value": 22.0
+        }
+      ]
+    },
+    {
+      "title": "AutomationBench",
+      "desc": "기업 업무 자동화",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.7 Flash",
+          "value": 30.4,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.6 Flash",
+          "value": 17.0
+        }
+      ]
+    },
+    {
+      "title": "WebDev Arena",
+      "desc": "웹 개발 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.7 Flash",
+          "value": 1588,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.6 Flash",
+          "value": 1538
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "실제 병합 가능한 코드 품질(FrontierCode)과 장기 개발 과제(DeepSWE)에서 3.6 Flash보다 9~16%p 올랐습니다.",
+    "PDF 문서 이해(GDP.pdf 34.0%)와 기업 업무 자동화(AutomationBench 30.4%)가 크게 좋아졌습니다.",
+    "WebDev Arena Elo 1588로 웹 개발 능력도 올랐습니다.",
+    "I/O에서 공개된 개인 AI 에이전트 Gemini Spark(사용자의 지시 아래 24시간 대신 행동)가 이날부터 Gemini 3.7 Flash를 씁니다."
+  ],
+  "availability": [
+    "개발자: Google AI Studio, Android Studio (gemini-3.7-flash)",
+    "기업: Gemini Enterprise Agent Platform",
+    "개인: Gemini 앱의 Spark (Google AI Pro·Ultra, 160개 이상 국가)"
+  ],
+  "tips": [
+    {
+      "title": "도입가 기간에 대량 작업 옮기기",
+      "body": "12월 31일까지는 정가의 절반입니다. 문서 처리나 코드 리뷰처럼 토큰을 많이 쓰는 작업을 이 기간에 시험해 보세요. 2027년부터는 $1.50 / $7.50입니다."
+    },
+    {
+      "title": "PDF 업무에 먼저 써 보기",
+      "body": "PDF 이해 점수가 22.0%에서 34.0%로 올랐습니다. 계약서, 보고서, 청구서처럼 PDF에서 정보를 뽑는 일에 효과가 큽니다."
+    },
+    {
+      "title": "Spark에는 범위와 승인 조건을",
+      "body": "Spark는 사용자를 대신해 행동합니다. 맡길 일의 범위와 '결제나 발송 전에는 먼저 물어볼 것' 같은 승인 조건을 분명히 적어 두세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "PDF에서 표 추출",
+      "when": "여러 PDF에서 같은 항목을 모을 때",
+      "type": "prompt",
+      "text": "첨부한 PDF 청구서들에서 다음 항목을 표로 정리해줘.\n열: 파일명, 발행일, 공급자, 합계 금액, 부가세, 지급 기한\n- 문서에 없는 값은 빈칸으로 두고 추측하지 마\n- 금액은 숫자만, 통화는 별도 열로"
+    },
+    {
+      "title": "Spark에 맡기는 반복 업무",
+      "when": "Gemini 앱의 Spark에 일을 맡길 때",
+      "type": "prompt",
+      "text": "매일 아침 8시에 내 메일함에서 [키워드]가 들어간 새 메일을 찾아 세 줄로 요약해줘.\n- 답장이 필요한 메일은 초안만 만들어 두고 보내지는 마\n- 일정이 포함된 메일은 캘린더에 추가하기 전에 나에게 먼저 물어봐"
+    }
+  ],
+  "cautions": [
+    "도입가는 2026년 12월 31일까지이며 2027년 1월 1일부터 $1.50 / $7.50으로 오릅니다.",
+    "Spark는 Google AI Pro·Ultra 구독자만 쓸 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Gemini 3.7 Flash (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-3-7-flash/"
+    }
+  ]
+}

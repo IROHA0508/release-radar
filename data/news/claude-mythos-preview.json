@@ -1,0 +1,231 @@
+{
+  "id": "claude-mythos-preview",
+  "company": "anthropic",
+  "date": "2026-04-07",
+  "kind": "모델 발표",
+  "title": "Claude Mythos Preview · Project Glasswing",
+  "headline": "일반 공개 없이 보안 파트너에게만 제공하는 최상위 모델, SWE-bench Verified 93.9%",
+  "tldr": "Anthropic이 새 최상위 모델 Claude Mythos Preview를 공개하고, 이를 핵심 소프트웨어의 보안 취약점을 찾아 고치는 데 쓰는 Project Glasswing을 시작했습니다. AWS, Apple, Google, Microsoft, NVIDIA 등 11개 파트너와 40여 개 조직이 참여하며, 일반 공개 계획은 없습니다. CyberGym 83.1%, SWE-bench Verified 93.9%로 Opus 4.6을 크게 앞섰습니다.",
+  "models": [
+    {
+      "name": "Claude Mythos Preview",
+      "apiId": null,
+      "input": "$25",
+      "output": "$125",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "SWE-bench Verified",
+      "value": "93.9%",
+      "note": "Opus 4.6 80.8%"
+    },
+    {
+      "label": "CyberGym",
+      "value": "83.1%",
+      "note": "Opus 4.6 66.6%"
+    },
+    {
+      "label": "사용 크레딧",
+      "value": "최대 1억 달러",
+      "note": "참여 조직 지원"
+    },
+    {
+      "label": "참여 조직",
+      "value": "11개 파트너 + 40여 곳",
+      "note": ""
+    }
+  ],
+  "chartSource": "Anthropic Project Glasswing 발표문에 텍스트로 공개된 수치입니다.",
+  "charts": [
+    {
+      "title": "CyberGym",
+      "desc": "보안 취약점 재현",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos Preview",
+          "value": 83.1,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.6",
+          "value": 66.6
+        }
+      ]
+    },
+    {
+      "title": "SWE-bench Verified",
+      "desc": "검증된 실제 이슈 해결",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos Preview",
+          "value": 93.9,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.6",
+          "value": 80.8
+        }
+      ]
+    },
+    {
+      "title": "SWE-bench Pro",
+      "desc": "어려운 실제 저장소 이슈",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos Preview",
+          "value": 77.8,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.6",
+          "value": 53.4
+        }
+      ]
+    },
+    {
+      "title": "Terminal-Bench 2.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos Preview",
+          "value": 82.0,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.6",
+          "value": 65.4
+        }
+      ]
+    },
+    {
+      "title": "SWE-bench Multimodal",
+      "desc": "화면·이미지가 포함된 이슈",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos Preview",
+          "value": 59.0,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.6",
+          "value": 27.1
+        }
+      ]
+    },
+    {
+      "title": "SWE-bench Multilingual",
+      "desc": "여러 언어 저장소",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos Preview",
+          "value": 87.3,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.6",
+          "value": 77.8
+        }
+      ]
+    },
+    {
+      "title": "GPQA Diamond",
+      "desc": "대학원 수준 과학 문제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos Preview",
+          "value": 94.6,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.6",
+          "value": 91.3
+        }
+      ]
+    },
+    {
+      "title": "Humanity's Last Exam",
+      "desc": "전문가 수준 문제 (도구 없이)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Mythos Preview",
+          "value": 56.8,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 4.6",
+          "value": 40.0
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "아직 일반 공개되지 않은 범용 프런티어 모델로, 코딩·보안 능력이 크게 올랐습니다. SWE-bench Multimodal은 27.1%에서 59.0%로 두 배 넘게 뛰었습니다.",
+    "Project Glasswing: AWS, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, Linux Foundation, Microsoft, NVIDIA, Palo Alto Networks가 파트너로 참여하고, 40여 개 조직이 추가로 함께합니다.",
+    "Anthropic은 참여 조직에 최대 1억 달러의 사용 크레딧을 지원합니다.",
+    "참여 조직 대상 가격은 100만 토큰당 입력 $25, 출력 $125입니다."
+  ],
+  "availability": [
+    "Project Glasswing 참여 조직 전용",
+    "일반 공개(GA) 계획 없음"
+  ],
+  "tips": [
+    {
+      "title": "일반 사용자는 공개 모델로 방어적 보안 점검",
+      "body": "Mythos Preview는 쓸 수 없지만, 같은 방향의 작업은 공개 모델로도 할 수 있습니다. 자기 코드의 입력 검증, 인증, 비밀값 관리처럼 범위를 정해 점검을 요청하세요."
+    },
+    {
+      "title": "오픈소스 의존성 업데이트를 미루지 않기",
+      "body": "Glasswing의 목표는 널리 쓰이는 소프트웨어의 취약점을 찾아 고치는 것입니다. 패치가 나오면 빨리 반영할 수 있도록 의존성 업데이트 절차를 점검해 두세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "내 코드 보안 리뷰",
+      "when": "자기 저장소를 방어적으로 점검할 때",
+      "type": "prompt",
+      "text": "이 저장소의 보안 리뷰를 해줘. 범위는 [디렉터리]야.\n\n- 입력 검증, 인증·권한, 비밀값 노출, 의존성 버전을 중심으로 봐\n- 발견한 문제마다 위치(파일:줄), 위험도(높음/중간/낮음), 근거, 수정 방법을 표로 정리해\n- 확신이 낮은 항목은 따로 표시해"
+    },
+    {
+      "title": "패치 우선순위 정리",
+      "when": "취약점 공지가 여러 개 쌓였을 때",
+      "type": "prompt",
+      "text": "아래는 우리 서비스가 쓰는 라이브러리의 최근 보안 공지야.\n\n<advisories>\n[공지 목록]\n</advisories>\n\n우리 사용 방식([간단한 설명])을 기준으로 실제 영향이 있는 것부터 순서를 매기고, 각각 업데이트 시 확인할 테스트를 적어줘."
+    }
+  ],
+  "cautions": [
+    "일반 사용자와 일반 API 고객은 쓸 수 없는 모델입니다.",
+    "벤치마크 비교 대상은 발표 당시 공개 최상위 모델인 Opus 4.6입니다."
+  ],
+  "sources": [
+    {
+      "title": "Project Glasswing (Anthropic)",
+      "url": "https://www.anthropic.com/glasswing"
+    }
+  ]
+}

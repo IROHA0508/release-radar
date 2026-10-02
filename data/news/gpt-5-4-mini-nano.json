@@ -1,0 +1,265 @@
+{
+  "id": "gpt-5-4-mini-nano",
+  "company": "openai",
+  "date": "2026-03-17",
+  "kind": "모델 출시",
+  "title": "GPT-5.4 mini · nano",
+  "headline": "GPT-5.4에 가까운 성능을 싸고 빠르게, 서브에이전트용 소형 모델 두 종",
+  "tldr": "GPT-5.4의 소형 버전 두 가지가 나왔습니다. mini는 GPT-5 mini보다 2배 이상 빠르면서 OSWorld-Verified 72.1%로 GPT-5.4(75.0%)에 근접했고, nano는 분류·추출·순위 매기기 같은 단순 작업용 저가 모델입니다. 큰 모델이 계획하고 작은 모델이 실행하는 구성에 맞춰 나왔습니다.",
+  "models": [
+    {
+      "name": "GPT-5.4 mini",
+      "apiId": "gpt-5.4-mini",
+      "input": "$0.75",
+      "output": "$4.50",
+      "cached": "$0.075"
+    },
+    {
+      "name": "GPT-5.4 nano",
+      "apiId": "gpt-5.4-nano",
+      "input": "$0.20",
+      "output": "$1.25",
+      "cached": "$0.02"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "OSWorld-Verified (mini)",
+      "value": "72.1%",
+      "note": "GPT-5.4 75.0%"
+    },
+    {
+      "label": "SWE-Bench Pro (mini)",
+      "value": "54.4%",
+      "note": "GPT-5.4 57.7%, nano 52.4%"
+    },
+    {
+      "label": "속도 (mini)",
+      "value": "2배 이상",
+      "note": "GPT-5 mini 대비"
+    },
+    {
+      "label": "컨텍스트",
+      "value": "400K",
+      "note": "mini·nano 모두"
+    }
+  ],
+  "chartSource": "OpenAI GPT-5.4 mini·nano 발표문의 비교표 기준입니다(GPT-5.4·mini·nano는 xhigh, GPT-5 mini는 high). 가격 그래프는 발표문의 API 가격입니다.",
+  "charts": [
+    {
+      "title": "SWE-Bench Pro",
+      "desc": "실제 저장소 이슈 해결",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.4",
+          "value": 57.7
+        },
+        {
+          "label": "GPT-5.4 mini",
+          "value": 54.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.4 nano",
+          "value": 52.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5 mini",
+          "value": 45.7
+        }
+      ]
+    },
+    {
+      "title": "Terminal-Bench 2.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.4",
+          "value": 75.1
+        },
+        {
+          "label": "GPT-5.4 mini",
+          "value": 60.0,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.4 nano",
+          "value": 46.3,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5 mini",
+          "value": 38.2
+        }
+      ]
+    },
+    {
+      "title": "OSWorld-Verified",
+      "desc": "컴퓨터 사용",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.4",
+          "value": 75.0
+        },
+        {
+          "label": "GPT-5.4 mini",
+          "value": 72.1,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5 mini",
+          "value": 42.0
+        },
+        {
+          "label": "GPT-5.4 nano",
+          "value": 39.0,
+          "highlight": true
+        }
+      ]
+    },
+    {
+      "title": "GPQA Diamond",
+      "desc": "대학원 수준 과학 문제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.4",
+          "value": 93.0
+        },
+        {
+          "label": "GPT-5.4 mini",
+          "value": 88.0,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.4 nano",
+          "value": 82.8,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5 mini",
+          "value": 81.6
+        }
+      ]
+    },
+    {
+      "title": "Toolathlon",
+      "desc": "여러 도구를 오가는 실무 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.4",
+          "value": 54.6
+        },
+        {
+          "label": "GPT-5.4 mini",
+          "value": 42.9,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.4 nano",
+          "value": 35.5,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5 mini",
+          "value": 26.9
+        }
+      ]
+    },
+    {
+      "title": "출력 가격",
+      "desc": "100만 토큰당 USD",
+      "type": "bar",
+      "unit": "$",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "GPT-5.4 nano",
+          "value": 1.25,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.4 mini",
+          "value": 4.5,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 15
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "mini는 GPT-5 mini보다 2배 이상 빠르고, OSWorld-Verified 72.1%로 GPT-5.4(75.0%)와 2.9%p 차이입니다.",
+    "Codex에서 mini는 GPT-5.4 사용량의 30%만 차감합니다.",
+    "nano는 API 전용이며 분류, 데이터 추출, 순위 매기기, 단순 보조 작업을 맡는 코딩 서브에이전트용입니다.",
+    "OpenAI는 mini의 쓰임새로 반응이 빨라야 하는 코딩 도우미, 보조 작업을 빠르게 끝내는 서브에이전트, 컴퓨터 사용 시스템을 꼽았습니다."
+  ],
+  "availability": [
+    "ChatGPT: Free·Go 사용자는 + 메뉴의 'Thinking'으로 GPT-5.4 mini 사용",
+    "Codex: 앱, CLI, IDE 확장, 웹에서 mini 사용",
+    "API: gpt-5.4-mini, gpt-5.4-nano (컨텍스트 400K)"
+  ],
+  "tips": [
+    {
+      "title": "계획은 GPT-5.4, 실행은 mini",
+      "body": "큰 모델이 작업을 나누고 검토하게 하고, 파일 검색·테스트 실행·요약 같은 보조 작업은 mini 서브에이전트에 맡기면 속도와 비용을 함께 줄일 수 있습니다."
+    },
+    {
+      "title": "nano는 답이 정해진 대량 작업에",
+      "body": "라벨 분류, 필드 추출, 순위 매기기처럼 출력 형식이 정해진 일을 대량으로 돌릴 때 적합합니다. 출력 형식을 한 줄로 못 박아 두면 결과가 안정적입니다."
+    },
+    {
+      "title": "화면 조작은 mini까지만",
+      "body": "OSWorld-Verified에서 mini는 72.1%지만 nano는 39.0%로 GPT-5 mini(42.0%)보다도 낮습니다. 컴퓨터 사용 과제에는 nano를 쓰지 마세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "서브에이전트에게 주는 좁은 작업",
+      "when": "mini에게 검색이나 확인 같은 보조 작업을 맡길 때",
+      "type": "prompt",
+      "text": "너는 코드 검색 담당 서브에이전트야.\n\n작업: 저장소에서 [함수명]을 호출하는 모든 위치를 찾아.\n출력 형식: 파일 경로:줄 번호 - 호출 맥락 한 줄\n\n- 코드를 수정하지 마\n- 찾은 결과만 보고하고 해석은 덧붙이지 마"
+    },
+    {
+      "title": "nano로 고객 문의 대량 분류 (Python)",
+      "when": "정해진 라벨로 많은 텍스트를 분류할 때",
+      "type": "code",
+      "text": "from openai import OpenAI\n\nclient = OpenAI()\nLABELS = [\"버그\", \"기능 요청\", \"질문\", \"기타\"]\n\ndef classify(text: str) -> str:\n    resp = client.responses.create(\n        model=\"gpt-5.4-nano\",\n        input=f\"다음 고객 문의를 {LABELS} 중 하나로만 분류해. 라벨만 출력해.\\n\\n{text}\",\n    )\n    return resp.output_text.strip()"
+    }
+  ],
+  "cautions": [
+    "nano는 ChatGPT에서 쓸 수 없고 API 전용입니다.",
+    "nano는 컴퓨터 사용(OSWorld-Verified 39.0%)에 맞지 않습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing GPT-5.4 mini and nano (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano/"
+    },
+    {
+      "title": "GPT-5.4 mini 모델 문서",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.4-mini"
+    },
+    {
+      "title": "GPT-5.4 nano 모델 문서",
+      "url": "https://developers.openai.com/api/docs/models/gpt-5.4-nano"
+    }
+  ]
+}

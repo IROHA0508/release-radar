@@ -1,0 +1,236 @@
+{
+  "id": "claude-opus-5",
+  "company": "anthropic",
+  "date": "2026-07-24",
+  "kind": "모델 출시",
+  "title": "Claude Opus 5",
+  "headline": "Fable 5에 가까운 지능을 절반 가격에, Max 플랜 새 기본 모델",
+  "tldr": "Anthropic이 Claude Opus 5를 공개했습니다. Fable 5에 가까운 지능을 절반 가격에 제공하며, Frontier-Bench와 GDPval-AA에서 새 최고 기록을 세웠습니다. CursorBench 3.2에서는 max effort로 Fable 5 최고점의 0.5% 이내 점수를 과제당 절반 비용으로 냈습니다. Max 플랜의 기본 모델이며, Mythos급과 달리 데이터 보존 요건이 없습니다.",
+  "models": [
+    {
+      "name": "Claude Opus 5",
+      "apiId": "claude-opus-5",
+      "input": "$5",
+      "output": "$25",
+      "cached": null
+    },
+    {
+      "name": "Claude Opus 5 (fast mode)",
+      "apiId": "claude-opus-5",
+      "input": "$10",
+      "output": "$50",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "CursorBench 3.2",
+      "value": "Fable 5의 0.5% 이내",
+      "note": "max effort 기준, 과제당 비용은 절반"
+    },
+    {
+      "label": "Terminal-Bench 4.0",
+      "value": "52.3%",
+      "note": "Fable 5 42.0%, 9월 Fable 5.1 발표 표 기준"
+    },
+    {
+      "label": "GDPval-AA v2",
+      "value": "1824",
+      "note": "Fable 5 1723"
+    },
+    {
+      "label": "가격",
+      "value": "$5 / $25",
+      "note": "Fable 5의 절반, Fast 모드는 2배"
+    }
+  ],
+  "chartSource": "Opus 5 발표문의 표는 이미지로만 공개돼, 9월 Anthropic Claude Fable 5.1 발표문의 비교표에 실린 Opus 5·Fable 5·GPT-5.6 Sol 수치로 그렸습니다.",
+  "charts": [
+    {
+      "title": "Terminal-Bench 4.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5",
+          "value": 52.3,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 42.0
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 37.3
+        }
+      ]
+    },
+    {
+      "title": "CursorBench 3.2.0",
+      "desc": "실제 Cursor 세션 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Fable 5",
+          "value": 70.5
+        },
+        {
+          "label": "Claude Opus 5",
+          "value": 70.0,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 67.2
+        }
+      ],
+      "note": "Opus 5 발표문도 max effort에서 Fable 5 최고점의 0.5% 이내이고 과제당 비용은 절반이라고 밝혔습니다."
+    },
+    {
+      "title": "AutomationBench",
+      "desc": "업무 자동화 (Zapier)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5",
+          "value": 26.9,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 19.6
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 17.1
+        }
+      ]
+    },
+    {
+      "title": "Terminal-Bench-Science 0.1",
+      "desc": "과학 연구용 터미널 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5",
+          "value": 29.0,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 24.7
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 22.4
+        }
+      ]
+    },
+    {
+      "title": "GDPval-AA v2",
+      "desc": "전문직 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 5",
+          "value": 1824,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5",
+          "value": 1723
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 1711
+        }
+      ],
+      "note": "7월 OpenAI GPT-5.6 발표문 표에서는 Fable 5 1759.6, GPT-5.6 Sol 1747.8로 적혀 있어 표마다 값이 다릅니다."
+    }
+  ],
+  "changes": [
+    "Fable 5에 가까운 지능을 절반 가격에 제공합니다. CursorBench 3.2에서는 max effort로 Fable 5 최고점의 0.5% 이내 점수를 과제당 절반 비용으로 냈습니다.",
+    "Frontier-Bench와 GDPval-AA에서 새 최고 기록을 세웠고, Frontier-Bench v0.1에서는 Opus 4.8의 두 배 넘는 성능을 더 낮은 과제당 비용으로 냈습니다.",
+    "ARC-AGI 3 점수는 차점 모델의 3배, Zapier AutomationBench 통과율은 같은 과제당 비용에서 차점 모델의 약 1.5배입니다.",
+    "OSWorld 2.0에서는 어떤 비용 수준에서도 다른 모델보다 높았고, Fable 5의 최고 결과를 1/3을 조금 넘는 비용으로 넘어섰습니다.",
+    "Max 플랜의 새 기본 모델이자 Pro 플랜에서 쓸 수 있는 가장 강한 모델입니다.",
+    "일반 사용에는 데이터 보존 요건이 없습니다(Mythos급 모델은 30일 보존 필수).",
+    "Fast 모드는 기본 가격의 2배입니다."
+  ],
+  "availability": [
+    "Claude 앱(Max 기본, Pro에서 사용 가능), Claude Code, Claude API, 모든 플랫폼",
+    "API 모델명: claude-opus-5"
+  ],
+  "tips": [
+    {
+      "title": "검증 지시는 빼기",
+      "body": "프롬프팅 가이드에 따르면 Opus 5는 시키지 않아도 스스로 작업을 검증합니다. '마지막에 검증 단계를 넣어라', '서브에이전트로 검증하라' 같은 지시는 과잉 검증을 일으키므로 지우면 품질 손실 없이 토큰이 줄어듭니다."
+    },
+    {
+      "title": "간결함은 직접 요청",
+      "body": "Opus 5는 답이 길어지는 경향이 있습니다. 핵심 답에 집중하고 단서와 주의 문구는 짧게 하라고 시스템 프롬프트에 적어 두세요."
+    },
+    {
+      "title": "서브에이전트는 꼭 필요할 때만",
+      "body": "가이드는 서로 독립적이고 병렬로 나눌 수 있는 큰 작업에만 서브에이전트를 쓰고, 몇 번의 도구 호출로 끝낼 일이나 검증용으로는 쓰지 말라고 안내합니다."
+    },
+    {
+      "title": "thinking은 끄지 말고 effort를 낮추기",
+      "body": "대부분의 과제에서 thinking을 켜고 low effort로 두는 편이 비슷한 비용으로 thinking을 끈 것보다 성능이 좋습니다."
+    },
+    {
+      "title": "진행 보고 규칙 정하기",
+      "body": "에이전트 작업 중 설명이 많다면 첫 도구 호출 전 한 문장, 중요한 발견이나 방향 전환 때만 짧은 업데이트, 끝나면 결과부터 말하라는 규칙을 주세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "간결한 답변 규칙 (시스템 프롬프트)",
+      "when": "답이 너무 길게 느껴질 때 (공식 프롬프팅 가이드 문구 번역)",
+      "type": "prompt",
+      "text": "답은 핵심에 집중해 짧고 간결하게 써.\n주의 문구와 단서는 짧게 하고, 대부분의 분량을 핵심 답에 써.\n무언가를 설명해 달라는 요청에는 자세한 설명을 따로 요청받지 않는 한 큰 그림 위주로 요약해."
+    },
+    {
+      "title": "에이전트 진행 보고 규칙 (시스템 프롬프트)",
+      "when": "에이전트 작업 중 중간 설명을 줄이고 싶을 때 (공식 프롬프팅 가이드 문구 번역)",
+      "type": "prompt",
+      "text": "첫 도구 호출 전에 무엇을 할지 한 문장으로 말해.\n작업 중에는 중요한 것을 발견했거나 방향을 바꿀 때만 짧게 알려.\n끝나면 결과부터 말해. 첫 문장은 '무슨 일이 있었는지' 또는 '무엇을 찾았는지'에 답하고, 자세한 내용은 그 뒤에 붙여."
+    },
+    {
+      "title": "서브에이전트 사용 규칙 (시스템 프롬프트)",
+      "when": "서브에이전트를 너무 많이 띄울 때 (공식 프롬프팅 가이드 문구 번역)",
+      "type": "prompt",
+      "text": "서브에이전트에는 정말로 독립적이고 병렬로 나눌 수 있는 큰 작업(예: 여러 파일에 걸친 넓은 조사)만 맡겨.\n몇 번의 도구 호출로 직접 끝낼 수 있는 일은 맡기지 말고, 자기 작업을 검증하거나 재확인하는 데도 쓰지 마.\n서브에이전트 하나로 충분하면 하나만 쓰고, 띄우는 수를 적게 유지해."
+    }
+  ],
+  "cautions": [
+    "이전 모델용 프롬프트의 '검증하라', '다시 확인하라' 지시는 Opus 5에서 토큰 낭비를 일으키므로 지우세요.",
+    "Fast 모드는 기본 가격의 2배입니다.",
+    "그래프는 9월 Fable 5.1 발표문 표 기준이라 Opus 5 발표 당시 공개 수치와 다를 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Opus 5 (Anthropic)",
+      "url": "https://www.anthropic.com/news/claude-opus-5"
+    },
+    {
+      "title": "Prompting Claude Opus 5",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5"
+    },
+    {
+      "title": "Claude Fable 5.1·Mythos 5.1 (그래프 수치 출처, Anthropic)",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1"
+    }
+  ]
+}

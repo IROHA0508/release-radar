@@ -1,0 +1,260 @@
+{
+  "id": "claude-opus-4-7",
+  "company": "anthropic",
+  "date": "2026-04-16",
+  "kind": "모델 출시",
+  "title": "Claude Opus 4.7",
+  "headline": "지시를 더 정확히 따르는 Opus, 고해상도 이미지와 xhigh effort 추가",
+  "tldr": "Anthropic이 Claude Opus 4.7을 공개했습니다. 지시를 훨씬 정확하게 따르고, 긴 변 2,576픽셀(약 375만 화소)까지 이미지를 받으며, high와 max 사이에 xhigh effort가 생겼습니다. 새 토크나이저 때문에 같은 입력이 1.0~1.35배 토큰으로 계산될 수 있어 옮길 때 프롬프트와 비용을 다시 점검해야 합니다.",
+  "models": [
+    {
+      "name": "Claude Opus 4.7",
+      "apiId": "claude-opus-4-7",
+      "input": "$5",
+      "output": "$25",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "이미지 해상도",
+      "value": "2,576px",
+      "note": "긴 변 기준, 약 375만 화소"
+    },
+    {
+      "label": "새 effort",
+      "value": "xhigh",
+      "note": "high와 max 사이"
+    },
+    {
+      "label": "토큰 수 변화",
+      "value": "1.0~1.35배",
+      "note": "새 토크나이저, 내용에 따라 다름"
+    },
+    {
+      "label": "SWE-Bench Pro",
+      "value": "64.3%",
+      "note": "OpenAI GPT-5.5 발표문 표 기준"
+    }
+  ],
+  "chartSource": "Anthropic 발표문의 표는 이미지로만 공개돼, 일주일 뒤 나온 OpenAI GPT-5.5 발표문의 비교표에 실린 Opus 4.7 수치로 그렸습니다.",
+  "charts": [
+    {
+      "title": "SWE-Bench Pro",
+      "desc": "실제 저장소 이슈 해결",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 4.7",
+          "value": 64.3,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 58.6
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 57.7
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 54.2
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "MCP Atlas",
+      "desc": "MCP 도구 연동 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Claude Opus 4.7",
+          "value": 79.1,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 78.2
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 75.3
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 70.6
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "OSWorld-Verified",
+      "desc": "컴퓨터 사용",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.5",
+          "value": 78.7
+        },
+        {
+          "label": "Claude Opus 4.7",
+          "value": 78.0,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 75.0
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "GDPval",
+      "desc": "44개 직업군 실무 (승리 또는 무승부)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.5",
+          "value": 84.9
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 83.0
+        },
+        {
+          "label": "Claude Opus 4.7",
+          "value": 80.3,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 67.3
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "Terminal-Bench 2.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.5",
+          "value": 82.7
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 75.1
+        },
+        {
+          "label": "Claude Opus 4.7",
+          "value": 69.4,
+          "highlight": true
+        },
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 68.5
+        }
+      ],
+      "source": "OpenAI"
+    },
+    {
+      "title": "GPQA Diamond",
+      "desc": "대학원 수준 과학 문제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "Gemini 3.1 Pro",
+          "value": 94.3
+        },
+        {
+          "label": "Claude Opus 4.7",
+          "value": 94.2,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.5",
+          "value": 93.6
+        },
+        {
+          "label": "GPT-5.4",
+          "value": 92.8
+        }
+      ],
+      "source": "OpenAI"
+    }
+  ],
+  "changes": [
+    "지시를 훨씬 정확하게 따릅니다. 이전 모델이 느슨하게 해석하던 지시도 문자 그대로 따를 수 있어 기존 프롬프트를 다시 점검해야 합니다.",
+    "긴 변 2,576픽셀(약 375만 화소)까지 이미지를 받아 작은 글씨와 복잡한 화면을 더 잘 읽습니다.",
+    "high와 max 사이에 xhigh(extra high) effort가 생겼습니다.",
+    "토크나이저가 바뀌어 같은 입력이 내용에 따라 1.0~1.35배 토큰으로 계산됩니다.",
+    "파일 시스템 기반 메모리를 더 잘 쓰고, 토큰 사용을 안내하는 작업 예산(task budgets)이 공개 베타로 나왔습니다."
+  ],
+  "availability": [
+    "모든 Claude 제품과 Claude API",
+    "Amazon Bedrock, Google Cloud Vertex AI, Microsoft Foundry",
+    "API 모델명: claude-opus-4-7"
+  ],
+  "tips": [
+    {
+      "title": "옮기기 전에 프롬프트 다시 읽기",
+      "body": "지시를 더 문자 그대로 따르므로 '가능하면', '적당히' 같은 모호한 표현이나 서로 충돌하는 규칙이 있으면 예상과 다른 결과가 나옵니다. 마이그레이션 가이드를 보고 핵심 지시를 구체적으로 고치세요."
+    },
+    {
+      "title": "토큰 비용은 세 가지로 조절",
+      "body": "Anthropic은 effort 조정, 작업 예산 설정, 간결하게 답하라는 프롬프트로 토큰 사용을 조절할 수 있다고 안내합니다. 단가는 같아도 토큰 수가 늘 수 있으니 실제 청구액을 비교해 보세요."
+    },
+    {
+      "title": "화면·문서 이미지는 원본 해상도로",
+      "body": "해상도 한도가 올라갔으므로 스크린샷이나 스캔 문서를 미리 줄이지 말고 넣으세요. 작은 글씨 인식이 좋아집니다."
+    },
+    {
+      "title": "xhigh는 max 전 단계로",
+      "body": "max는 비용이 크게 늘 수 있습니다. 어려운 코딩·분석은 xhigh로 먼저 돌려 보고 부족할 때만 max를 쓰세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "모호한 지시를 구체적으로 바꾸기",
+      "when": "기존 프롬프트를 Opus 4.7로 옮길 때",
+      "type": "prompt",
+      "text": "아래 시스템 프롬프트를 Claude Opus 4.7용으로 고쳐줘.\n\n<prompt>\n[기존 시스템 프롬프트]\n</prompt>\n\n- 모호한 표현('가능하면', '적당히', '필요하면')을 찾아 구체적인 조건으로 바꿔\n- 서로 충돌하는 규칙이 있으면 알려주고 우선순위를 정해\n- 바꾼 부분마다 이유를 한 줄로 적어"
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "xhigh effort로 어려운 과제를 돌릴 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-opus-4-7\",\n    max_tokens=32000,\n    output_config={\"effort\": \"xhigh\"},\n    messages=[{\"role\": \"user\", \"content\": \"[어려운 과제]\"}],\n)"
+    }
+  ],
+  "cautions": [
+    "새 토크나이저 때문에 같은 작업의 토큰 수와 비용이 최대 35% 늘 수 있습니다.",
+    "지시를 더 엄격하게 따르므로 이전 모델에서 잘 되던 프롬프트도 결과가 달라질 수 있습니다.",
+    "그래프 수치는 OpenAI 표 기준이라 Anthropic 측정과 다를 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Opus 4.7 (Anthropic)",
+      "url": "https://www.anthropic.com/news/claude-opus-4-7"
+    },
+    {
+      "title": "Introducing GPT-5.5 (그래프 수치 출처, OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-5-5/"
+    }
+  ]
+}

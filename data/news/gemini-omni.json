@@ -1,0 +1,89 @@
+{
+  "id": "gemini-omni",
+  "company": "google",
+  "date": "2026-05-19",
+  "kind": "모델 출시",
+  "title": "Gemini Omni",
+  "headline": "무엇을 넣든 영상으로, 대화하듯 고쳐 가는 영상 생성 모델",
+  "tldr": "Google I/O에서 어떤 입력이든 영상으로 바꾸는 Gemini Omni가 공개됐습니다. 텍스트, 이미지, 영상 등을 넣으면 영상을 만들고, 대화하듯 편집을 이어 갈 수 있습니다. Google AI Plus·Pro·Ultra 구독자와 YouTube Shorts·YouTube Create에 먼저 나왔고, 6월 30일 API(gemini-omni-flash-preview)가 출력 영상 1초당 $0.10에 공개됐습니다.",
+  "models": [
+    {
+      "name": "Gemini Omni Flash (프리뷰)",
+      "apiId": "gemini-omni-flash-preview",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "API 가격",
+      "value": "$0.10/초",
+      "note": "출력 영상 1초당"
+    },
+    {
+      "label": "한 번 생성 길이",
+      "value": "10초",
+      "note": "API 기준"
+    },
+    {
+      "label": "연속 편집",
+      "value": "최대 3회",
+      "note": "API 기준"
+    }
+  ],
+  "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
+  "changes": [
+    "텍스트, 이미지, 영상 등 어떤 입력이든 영상으로 만듭니다.",
+    "대화하듯 수정 지시를 이어 가며 영상을 편집할 수 있습니다.",
+    "6월 30일 Gemini API에 gemini-omni-flash-preview가 나왔습니다. 한 번에 10초를 만들고 최대 3번까지 이어서 편집할 수 있습니다."
+  ],
+  "availability": [
+    "Gemini 앱·Google Flow: Google AI Plus·Pro·Ultra 구독자 (전 세계)",
+    "YouTube Shorts, YouTube Create",
+    "Gemini API·AI Studio: gemini-omni-flash-preview (6월 30일)"
+  ],
+  "tips": [
+    {
+      "title": "한 번에 하나씩 고치기",
+      "body": "API에서는 연속 편집이 3회까지입니다. 가장 중요한 수정부터 순서를 정해 한 번에 하나씩 요청하세요."
+    },
+    {
+      "title": "초 단위 비용 계산",
+      "body": "출력 1초당 $0.10이라 10초 영상 한 편은 $1입니다. 시안 단계에서는 길이를 짧게 잡으세요."
+    },
+    {
+      "title": "입력 자료를 섞어 쓰기",
+      "body": "제품 사진과 짧은 영상, 설명을 함께 넣으면 원하는 장면에 더 가깝게 나옵니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "제품 사진으로 짧은 광고 영상",
+      "when": "사진 한 장으로 영상 시안을 만들 때",
+      "type": "prompt",
+      "text": "첨부한 제품 사진으로 10초짜리 세로 광고 영상을 만들어줘.\n- 0~3초: 제품이 천천히 회전하며 등장\n- 3~7초: [사용 장면]\n- 7~10초: 화면 하단에 \"[문구]\"\n분위기: [밝고 경쾌한/고급스러운], 배경 음악 느낌: [장르]"
+    },
+    {
+      "title": "대화형 수정 요청",
+      "when": "만든 영상을 이어서 고칠 때",
+      "type": "prompt",
+      "text": "좋아. 이번에는 다른 건 그대로 두고 배경만 [장소]로 바꿔줘.\n카메라 움직임과 제품 위치는 유지해."
+    }
+  ],
+  "cautions": [
+    "API 모델은 프리뷰입니다.",
+    "API에서 연속 편집은 최대 3회입니다.",
+    "8월 27일 후속 모델 Gemini Omni 1.1 Flash가 나왔습니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini Omni (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/"
+    },
+    {
+      "title": "Gemini Omni Flash·Nano Banana 2 Lite API 공개 (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-flash-nano-banana-2-lite/"
+    }
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "id": "gpt-5-3-codex",
+  "company": "openai",
+  "date": "2026-02-05",
+  "kind": "모델 출시",
+  "title": "GPT-5.3-Codex",
+  "headline": "GPT-5.2-Codex의 코딩 실력과 GPT-5.2의 추론을 합친 Codex 모델, 25% 더 빠름",
+  "tldr": "OpenAI가 Codex용 에이전트 코딩 모델 GPT-5.3-Codex를 공개했습니다. GPT-5.2-Codex의 코딩 성능과 GPT-5.2의 추론·전문 지식을 한 모델에 합쳤고 25% 빨라졌습니다. 특히 터미널 작업(Terminal-Bench 2.0 77.3%)과 컴퓨터 사용(OSWorld-Verified 64.7%)이 크게 올랐습니다.",
+  "models": [
+    {
+      "name": "GPT-5.3-Codex",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Terminal-Bench 2.0",
+      "value": "77.3%",
+      "note": "GPT-5.2-Codex 64.0%"
+    },
+    {
+      "label": "OSWorld-Verified",
+      "value": "64.7%",
+      "note": "GPT-5.2-Codex 38.2%"
+    },
+    {
+      "label": "SWE-Bench Pro",
+      "value": "56.8%",
+      "note": "GPT-5.2-Codex 56.4%"
+    },
+    {
+      "label": "속도",
+      "value": "25% 향상",
+      "note": "OpenAI 발표 기준"
+    }
+  ],
+  "chartSource": "OpenAI GPT-5.3-Codex 발표문의 비교표 기준이며, 모두 xhigh 추론 설정 값입니다.",
+  "charts": [
+    {
+      "title": "Terminal-Bench 2.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.3-Codex",
+          "value": 77.3,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.2-Codex",
+          "value": 64.0
+        },
+        {
+          "label": "GPT-5.2",
+          "value": 62.2
+        }
+      ]
+    },
+    {
+      "title": "OSWorld-Verified",
+      "desc": "컴퓨터 사용",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.3-Codex",
+          "value": 64.7,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.2-Codex",
+          "value": 38.2
+        },
+        {
+          "label": "GPT-5.2",
+          "value": 37.9
+        }
+      ]
+    },
+    {
+      "title": "SWE-Bench Pro",
+      "desc": "실제 저장소 이슈 해결",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.3-Codex",
+          "value": 56.8,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.2-Codex",
+          "value": 56.4
+        },
+        {
+          "label": "GPT-5.2",
+          "value": 55.6
+        }
+      ]
+    },
+    {
+      "title": "Cybersecurity CTF",
+      "desc": "보안 CTF 문제 풀이",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.3-Codex",
+          "value": 77.6,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.2",
+          "value": 67.7
+        },
+        {
+          "label": "GPT-5.2-Codex",
+          "value": 67.4
+        }
+      ]
+    },
+    {
+      "title": "SWE-Lancer IC Diamond",
+      "desc": "프리랜서 개발 과제",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "rows": [
+        {
+          "label": "GPT-5.3-Codex",
+          "value": 81.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.2-Codex",
+          "value": 76.0
+        },
+        {
+          "label": "GPT-5.2",
+          "value": 74.6
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "GPT-5.2-Codex의 코딩 성능과 GPT-5.2의 추론·전문 지식을 한 모델로 합쳤습니다. GDPval(전문직 업무)도 GPT-5.2와 같은 70.9%입니다.",
+    "이전보다 25% 빠르게 동작합니다.",
+    "작업 중 진행 상황을 자주 알려 주고, 그사이 사용자가 실시간으로 방향을 바꿀 수 있습니다.",
+    "OSWorld-Verified가 38.2%에서 64.7%로 올라 코드 밖의 컴퓨터 작업도 크게 좋아졌습니다."
+  ],
+  "availability": [
+    "유료 ChatGPT 플랜의 Codex 앱, CLI, IDE 확장, 웹",
+    "API: 발표 시점에는 '곧 제공' 예정"
+  ],
+  "tips": [
+    {
+      "title": "중간에 방향을 틀어도 된다",
+      "body": "GPT-5.3-Codex는 작업 중 진행 상황을 자주 알려 줍니다. 처음부터 완벽한 지시를 쓰려 하기보다 업데이트를 보면서 잘못 가는 부분을 바로 바로잡으세요."
+    },
+    {
+      "title": "터미널 작업에 먼저 써 보기",
+      "body": "Terminal-Bench 2.0이 13%p 넘게 올랐습니다. 빌드·배포 스크립트 디버깅이나 개발 환경 설정처럼 셸 명령을 여러 번 오가는 일에서 차이가 가장 큽니다."
+    },
+    {
+      "title": "코드 다음 단계까지 맡기기",
+      "body": "추론과 전문 지식이 합쳐져 코드 수정 뒤에 이어지는 문서 정리, 변경 요약, 데이터 확인 같은 일도 한 흐름으로 맡길 수 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "진행 보고 규칙을 정한 작업 지시",
+      "when": "Codex에 기능 구현이나 버그 수정을 맡길 때",
+      "type": "prompt",
+      "text": "목표: [기능 또는 버그 설명]\n완료 조건: [통과해야 할 테스트나 확인 방법]\n\n- 먼저 관련 파일을 읽고 계획을 3~5줄로 알려줘\n- 큰 단계가 끝날 때마다 무엇을 바꿨는지 한두 줄로 보고해\n- 요구사항이 모호하면 추측하지 말고 멈춰서 물어봐\n- 마지막에 바뀐 파일 목록과 테스트 결과를 정리해"
+    },
+    {
+      "title": "CI에서만 실패하는 빌드 디버깅",
+      "when": "터미널 명령을 여러 번 오가야 하는 문제일 때",
+      "type": "prompt",
+      "text": "`npm run build`가 CI에서만 실패해. 로그는 아래와 같아.\n\n<log>\n[CI 로그]\n</log>\n\n로컬과 CI 환경 차이(Node 버전, 환경 변수, 캐시, 잠금 파일)를 하나씩 확인하면서 원인을 찾아줘.\n명령을 실행할 때마다 왜 그 명령을 실행하는지 한 줄로 설명해."
+    }
+  ],
+  "cautions": [
+    "벤치마크 수치는 xhigh 추론 설정 기준이라 기본 설정에서는 결과가 다를 수 있습니다.",
+    "발표 시점에는 API로 쓸 수 없어 Codex 제품 안에서만 사용할 수 있었습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing GPT-5.3-Codex (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-5-3-codex/"
+    }
+  ]
+}
