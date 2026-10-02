@@ -1,9 +1,16 @@
 {
-  "startedAt": "2026-10-03T01:07:47+09:00",
+  "startedAt": "2026-10-03T01:15:34+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1637,
+  "entries": 1638,
   "candidates": [
+    {
+      "title": "A model guide for the GPT-6 family",
+      "url": "https://openai.com/index/practical-guide-building-gpt-6",
+      "company": "openai",
+      "date": "2026-10-02",
+      "relatedId": null
+    },
     {
       "title": "How Albertsons Companies is reimagining retail from the inside out",
       "url": "https://openai.com/index/albertsons-reimagining-retail",
@@ -61,6 +68,13 @@
       "relatedId": null
     },
     {
+      "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
+      "url": "https://openai.com/index/ringg",
+      "company": "openai",
+      "date": "2026-09-23",
+      "relatedId": null
+    },
+    {
       "title": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
       "url": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
       "company": "openai",
@@ -73,13 +87,6 @@
       "company": "openai",
       "date": "2026-09-23",
       "relatedId": "gpt-6-astra"
-    },
-    {
-      "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
-      "url": "https://openai.com/index/ringg",
-      "company": "openai",
-      "date": "2026-09-23",
-      "relatedId": null
     },
     {
       "title": "ChatGPT Ads expands to Southeast Asia and Taiwan",
@@ -113,28 +120,8 @@
   "added": [],
   "updated": [],
   "skipped": [],
-  "failed": [
-    {
-      "url": "https://openai.com/index/albertsons-reimagining-retail",
-      "error": "RuntimeError: claude CLI 실패(1): l_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":401,\"result\":\"Failed to authenticate. API Error: 401 Invalid bearer token\",\"type\":\"result\",\"duration_ms\":1850,\"uuid\":\"3ee98ebd-231b-4c2a-8d07-bb7e97f60abb\",\"queued_turn_count\":0,\"result_index\":0}\n"
-    },
-    {
-      "url": "https://openai.com/index/the-den-family-social",
-      "error": "RuntimeError: claude CLI 실패(1): l_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":401,\"result\":\"Failed to authenticate. API Error: 401 Invalid bearer token\",\"type\":\"result\",\"duration_ms\":1784,\"uuid\":\"6ab57e93-91d0-491b-be67-0bff1bf78283\",\"queued_turn_count\":0,\"result_index\":0}\n"
-    },
-    {
-      "url": "https://www.anthropic.com/news/barclays-scales-claude",
-      "error": "RuntimeError: claude CLI 실패(1): l_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":401,\"result\":\"Failed to authenticate. API Error: 401 Invalid bearer token\",\"type\":\"result\",\"duration_ms\":1922,\"uuid\":\"f2a6c3f6-bf3b-4b09-b608-fd3198ee3af9\",\"queued_turn_count\":0,\"result_index\":0}\n"
-    },
-    {
-      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
-      "error": "RuntimeError: claude CLI 실패(1): l_5m_input_tokens\":0},\"inference_geo\":\"\",\"iterations\":[],\"speed\":\"standard\",\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":401,\"result\":\"Failed to authenticate. API Error: 401 Invalid bearer token\",\"type\":\"result\",\"duration_ms\":2075,\"uuid\":\"5a2dc6ca-5195-41f7-b14b-0196d8eab9d4\",\"queued_turn_count\":0,\"result_index\":0}\n"
-    },
-    {
-      "url": "https://openai.com/form/codex-originals",
-      "error": "RuntimeError: 원문을 읽지 못함: https://openai.com/form/codex-originals (본문이 너무 짧음(276자); reader 403 Client Error: Forbidden for url: https://r.jina.ai/https://openai.com/form/codex-originals)"
-    }
-  ],
+  "failed": [],
   "guardNotes": {},
-  "note": "요약 엔진: Claude Code CLI(구독)"
+  "note": "요약 엔진: Claude Code CLI(구독) | Claude 인증 실패: 토큰(또는 API 키)이 잘못됐거나 만료됨. 새로 만들어 GitHub Secret을 바꿔 주세요.",
+  "authError": true
 }
