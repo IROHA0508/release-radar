@@ -213,6 +213,13 @@ def run_selftest() -> tuple[bool, list[str]]:
                     or c.extra.get("relatedId") == newest["id"]), None)
         if hit:
             lines.append(f"OK   감지 시험 {company}: '{newest['id']}'을 지웠다고 가정 → '{hit.title}' 감지 ({hit.url})")
+            try:
+                art = fetch_article(hit.url)
+                lines.append(f"OK   원문 읽기 {company}: {art.via}, 본문 {len(art.text)}자, 표 {len(art.tables)}개, "
+                             f"링크 {len(art.links)}개, 발표일 {art.published}")
+            except Exception as exc:  # noqa: BLE001
+                ok = False
+                lines.append(f"FAIL 원문 읽기 {company}: {hit.url} ({exc})")
         else:
             ok = False
             lines.append(f"FAIL 감지 시험 {company}: '{newest['id']}'을 찾지 못함 (후보 {len(cands)}개)")
