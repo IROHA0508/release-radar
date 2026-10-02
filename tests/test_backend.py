@@ -262,3 +262,9 @@ def test_same_model_same_day_counts_as_known(site):
     dup = feeds.Entry("Gemini 4 Argon: our next era of frontier intelligence", "https://deepmind.google/blog/argon-x",
                       "google", "d", date(2026, 9, 30))
     assert detect.find_candidates([dup], idx, {"urls": {}}, date(2026, 10, 2)) == []
+
+
+def test_similar_titles_from_one_source_stay_separate():
+    a = feeds.Entry("Introducing Claude Opus 5.5", "https://www.anthropic.com/claude-opus-5-5", "anthropic", "n", date(2026, 9, 22), priority=2)
+    b = feeds.Entry("Introducing Claude Sonnet 5.5", "https://www.anthropic.com/claude-sonnet-5-5", "anthropic", "n", date(2026, 9, 28), priority=2)
+    assert len(detect.dedupe([a, b])) == 2

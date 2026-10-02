@@ -91,10 +91,20 @@ def same_item(entry: Entry, site: SiteIndex, exclude: set[str]) -> str | None:
 
 def dedupe(entries: list[Entry]) -> list[Entry]:
     """Same article on two blogs (blog.google and deepmind.google): keep the higher-priority source."""
+    def same_post(o: Entry, e: Entry) -> bool:
+        if o.key == e.key:
+            return True
+        # Title match only across different sources, near-identical titles, and close dates:
+        # "Introducing Claude Opus 5.5" and "Introducing Claude Sonnet 5.5" must stay separate.
+        if o.source == e.source or o.company != e.company:
+            return False
+        if o.published and e.published and abs((o.published - e.published).days) > 1:
+            return False
+        return SequenceMatcher(None, _norm_title(o.title), _norm_title(e.title)).ratio() >= 0.95
+
     out: list[Entry] = []
     for e in sorted(entries, key=lambda x: -x.priority):
-        dup = next((o for o in out if o.key == e.key or (
-            o.company == e.company and SequenceMatcher(None, _norm_title(o.title), _norm_title(e.title)).ratio() > 0.85)), None)
+        dup = next((o for o in out if same_post(o, e)), None)
         if dup is None:
             out.append(e)
         else:
