@@ -1,0 +1,122 @@
+{
+  "id": "gpt-6-model-guide",
+  "company": "openai",
+  "date": "2026-10-02",
+  "kind": "활용 팁",
+  "title": "A model guide for the GPT-6 family",
+  "headline": "GPT-6 Astra·Sol·Luna 중 무엇을 고르고 어떻게 지시할지 정리한 공식 가이드",
+  "tldr": "OpenAI가 GPT-6 계열을 작업에 맞게 고르고, 지시문을 쓰고, 오래 걸리는 작업을 관리하고, 운영에 올리는 방법을 정리했습니다. 가장 어려운 추론에는 Astra, 복잡한 코딩·리서치·컴퓨터 사용에는 Sol, 목표가 분명한 반복 업무에는 Luna를 권합니다. 캐싱과 컴팩션으로 비용을 관리하라는 내용도 포함돼 있습니다.",
+  "models": [
+    {
+      "name": "GPT-6 Astra",
+      "apiId": "gpt-6-astra",
+      "input": "$10",
+      "output": "$50",
+      "cached": "$1"
+    },
+    {
+      "name": "GPT-6.1 Sol",
+      "apiId": "gpt-6.1-sol",
+      "input": "$2",
+      "output": "$10",
+      "cached": "$0.10"
+    },
+    {
+      "name": "GPT-6 Luna",
+      "apiId": "gpt-6-luna",
+      "input": "$0.10",
+      "output": "$0.50",
+      "cached": "$0.01"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "캐시 입력 토큰 할인",
+      "value": "최대 95%",
+      "note": "캐시되지 않은 입력 토큰보다 저렴하며 모델에 따라 다름"
+    },
+    {
+      "label": "GPT-6 Astra 가격",
+      "value": "$10 / $50",
+      "note": "입력 / 출력, 1M 토큰당. 캐시 입력은 $1"
+    },
+    {
+      "label": "GPT-6.1 Sol 가격",
+      "value": "$2 / $10",
+      "note": "Astra와 비슷한 지능을 5분의 1 가격에 제공한다고 소개. 캐시 입력은 $0.10"
+    },
+    {
+      "label": "GPT-6 Luna 가격",
+      "value": "$0.10 / $0.50",
+      "note": "대량의 일상 업무용. 캐시 입력은 $0.01"
+    }
+  ],
+  "charts": [],
+  "chartNote": "이 글은 사용 가이드로, 텍스트로 확인되는 벤치마크 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "모델 선택 기준을 제시합니다. Astra는 최대 지능이 필요한 어려운 추론, Sol은 복잡한 코딩·리서치·컴퓨터 사용, Luna는 송장 항목 추출이나 요청 분류 같은 대량 반복 업무에 맞습니다.",
+    "추론 수준은 Low(사실 추출, 간단한 수정), Medium(계획, 선택지 비교), High(어려운 디버깅, 심층 분석)로 나눠 안내합니다. Extra high/Max는 High로 부족할 때만 시험해 보라고 합니다.",
+    "API에서는 대화 중간에 reasoning effort를 바꿔도 캐시가 깨지지 않습니다.",
+    "속도 옵션으로 API의 Fast mode와, Codex와 API에서 쓰는 Ultrafast(GPT-6 Astra 대상)를 소개합니다. Fast mode는 Standard보다 토큰당 비용이 높습니다.",
+    "장기 작업용 기능으로 Responses WebSocket API의 mid-turn steering, 비동기 도구 호출, GPT-6.1 Sol의 멀티 에이전트 워크플로(베타)를 안내합니다.",
+    "Astra, Sol, Luna는 컴퓨터 사용으로 API가 없는 웹사이트와 데스크톱 앱도 직접 조작할 수 있습니다."
+  ],
+  "availability": [
+    "API: Fast mode, 추론 수준 조정, steering, 비동기 도구 호출 사용 가능",
+    "GPT-6.1 Sol의 Responses API 멀티 에이전트 워크플로는 현재 베타",
+    "Ultrafast는 Codex와 API에서 GPT-6 Astra에 제공",
+    "Codex: GPT-6 Astra는 작업 중 확인 질문을 할 수 있고, 진행 중인 작업에 새 정보를 줘서 방향을 바꿀 수 있음",
+    "컴퓨터 사용: GPT-6 Astra, GPT-6.1 Sol, GPT-6 Luna"
+  ],
+  "tips": [
+    {
+      "title": "모델과 추론 수준을 함께 고르세요",
+      "body": "모델 선택과 추론 수준을 지능과 가격 사이의 절충으로 보라고 합니다. 기본값에서 시작해 단순한 작업은 낮추고, 깊은 분석이 필요할 때만 올리세요. 대표 작업으로 성공률, 지연 시간, 성공 건당 비용을 재 보고 정하는 것이 좋습니다."
+    },
+    {
+      "title": "지시는 구체적인 레시피보다 분명한 임무로",
+      "body": "최근 모델은 뉘앙스와 모호함을 잘 이해해서 지나치게 구체적인 지침이 오히려 결과를 해칠 수 있다고 합니다. 원하는 결과, 대상 독자, 맥락과 제약, 끝났다고 볼 기준을 먼저 쓰세요. 스킬 설명은 짧게 쓰고 언제 실행할지 명확히 하세요."
+    },
+    {
+      "title": "결정 권한의 경계를 정해 주세요",
+      "body": "AGENTS.md에는 어떤 문서와 테스트가 언제 관련되는지, 안전한 반복 작업(예: 임시 데이터로 로컬 테스트, 운영 접근 없음)을 허용하는지 적으세요. 무조건 묻게 하는 규칙 대신 스스로 진행할 일과 승인이 필요한 일을 구분하는 편이 낫습니다. '끝'에는 구현, 실행, 결과 확인, 실패 수정이 들어간다고 명시하세요."
+    },
+    {
+      "title": "캐시가 잘 맞도록 프롬프트를 배치하세요",
+      "body": "고정된 지침과 참고 자료를 앞에 두고 바뀌는 작업 내용을 뒤에 두세요. 도구 정의도 일관되게 유지해야 합니다. 비용을 추정할 때는 캐시 쓰기와 긴 컨텍스트 요금도 포함하세요. 긴 대화는 컴팩션으로 컨텍스트를 줄일 수 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "임무·권한·완료 기준을 담은 작업 지시",
+      "when": "Codex나 API 에이전트에 오래 걸리는 작업을 맡길 때",
+      "type": "prompt",
+      "text": "목표: [원하는 결과]\n대상: [결과를 쓸 사람]\n맥락과 제약: [관련 정보, 지켜야 할 조건]\n\n스스로 결정해도 되는 것: [예: 요약 구성 방식, 로컬 테스트 실행]\n먼저 물어봐야 하는 것: [예: 프로젝트 범위 변경, 운영 환경 접근]\n\n완료 기준: 변경을 구현하고, 실행해서 결과를 확인하고, 실패하면 고친 뒤 끝내줘.\n마지막에 바뀐 점, 확인한 것, 아직 살펴볼 것을 짧게 정리해서 알려줘."
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "비용을 줄이려고 Luna로 반복 업무를 돌릴 때(추론 수준 파라미터는 공식 문서 확인)",
+      "type": "code",
+      "text": "from openai import OpenAI\n\nclient = OpenAI()\n\nresponse = client.responses.create(\n    model=\"gpt-6-luna\",\n    input=\"[고정 지침과 참고 자료]\\n\\n[이번 요청: 송장 항목 추출]\",\n)\nprint(response.output_text)"
+    }
+  ],
+  "cautions": [
+    "Max 등 높은 추론 수준은 High로 부족할 때만 시험하고, 개선 폭이 추가 시간과 비용을 정당화할 때만 쓰세요.",
+    "Mid-turn steering으로 보낸 수정은 대기열에 쌓일 뿐, 실행 중인 도구를 취소하거나 이미 끝난 작업을 되돌리지 않습니다.",
+    "비동기 도구 호출에서는 결과를 받은 뒤에 그 결과에 의존하는 작업을 시작해야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "A model guide for the GPT-6 family (OpenAI)",
+      "url": "https://openai.com/index/practical-guide-building-gpt-6"
+    },
+    {
+      "title": "GPT-6.1 Sol 모델 문서",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+    },
+    {
+      "title": "Prompt caching 가이드",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-caching"
+    }
+  ]
+}
