@@ -334,3 +334,5 @@ def test_cli_token_whitespace_is_removed(monkeypatch):
 
     monkeypatch.setenv("CLAUDE_CODE_OAUTH_TOKEN", "  sk-ant-oat01-abc\r\ndef ghi \n")
     assert summ.ClaudeCodeCLI().env["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-abcdefghi"
+    monkeypatch.setenv("CLAUDE_CODE_OAUTH_TOKEN", "│ sk-ant-oat01-ab_C-d │\n│ ef9 │")
+    assert summ.ClaudeCodeCLI().env["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-ab_C-def9"

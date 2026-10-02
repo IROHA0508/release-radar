@@ -126,9 +126,10 @@ class ClaudeCodeCLI:
 
         self.binary = shutil.which(binary) or binary
         self.env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
-        # A token copied from a terminal often picks up line breaks or spaces; the real token has none.
+        # A token copied from a terminal often picks up line breaks, spaces or box-drawing borders
+        # (│). The real token only has letters, digits, "-" and "_", so drop everything else.
         if self.env.get("CLAUDE_CODE_OAUTH_TOKEN"):
-            self.env["CLAUDE_CODE_OAUTH_TOKEN"] = re.sub(r"\s+", "", self.env["CLAUDE_CODE_OAUTH_TOKEN"])
+            self.env["CLAUDE_CODE_OAUTH_TOKEN"] = re.sub(r"[^A-Za-z0-9_-]", "", self.env["CLAUDE_CODE_OAUTH_TOKEN"])
 
     def json_call(self, *, model: str, system: str, user: str, schema: dict, max_tokens: int) -> dict:
         import subprocess

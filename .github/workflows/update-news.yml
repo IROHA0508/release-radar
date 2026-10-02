@@ -49,6 +49,8 @@ jobs:
       HAS_SUBSCRIPTION_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main   # "Re-run"도 항상 최신 main에서 시작
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -84,7 +86,8 @@ jobs:
           added=$(python -c "import json;r=json.load(open('backend/state/last-run.json'));print(', '.join(a['title'] for a in r['added']))")
           if [ -n "$added" ]; then msg="새 소식: $added"; else msg="마지막 확인 날짜 갱신"; fi
           git commit -m "$msg"
-          git pull --rebase origin main
+          # 그사이 다른 실행이 올린 상태 파일과 겹치면 이번 실행 결과를 우선
+          git pull --rebase -X theirs origin main
           git push origin HEAD:main
       - name: Claude 인증 확인
         if: github.event.inputs.command != 'detect' && github.event.inputs.command != 'selftest'
