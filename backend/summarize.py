@@ -1,0 +1,147 @@
+"""Claude API calls: (1) triage feed entries, (2) write one news item in the site's JSON format."""
+from __future__ import annotations
+
+import json
+import logging
+import os
+import re
+from datetime import date
+
+from . import config
+from .extract import Article
+from .feeds import Entry
+
+log = logging.getLogger(__name__)
+
+STR = {"type": "string"}
+STR_LIST = {"type": "array", "items": STR}
+
+
+def _obj(props: dict, required: list[str] | None = None) -> dict:
+    return {"type": "object", "properties": props, "required": required or list(props), "additionalProperties": False}
+
+
+CHART = _obj({
+    "title": STR, "desc": STR,
+    "type": {"type": "string", "enum": ["bar", "dot"]},
+    "unit": {"type": "string", "enum": ["%", "$", "×", "Elo", ""]},
+    "lowerIsBetter": {"type": "boolean"},
+    "source": STR, "note": STR,
+    "rows": {"type": "array", "items": _obj({"label": STR, "value": {"type": "number"}, "highlight": {"type": "boolean"}})},
+})
+
+ITEM = _obj({
+    "id": STR,
+    "kind": {"type": "string", "enum": ["모델 출시", "모델 업데이트", "모델 발표", "활용 팁"]},
+    "title": STR, "headline": STR, "tldr": STR,
+    "models": {"type": "array", "items": _obj({"name": STR, "apiId": STR, "input": STR, "output": STR, "cached": STR})},
+    "numbers": {"type": "array", "items": _obj({"label": STR, "value": STR, "note": STR})},
+    "chartSource": STR, "charts": {"type": "array", "items": CHART}, "chartNote": STR,
+    "changes": STR_LIST, "availability": STR_LIST,
+    "tips": {"type": "array", "items": _obj({"title": STR, "body": STR})},
+    "prompts": {"type": "array", "items": _obj({"title": STR, "when": STR,
+                                                 "type": {"type": "string", "enum": ["prompt", "code"]}, "text": STR})},
+    "cautions": STR_LIST,
+    "sources": {"type": "array", "items": _obj({"title": STR, "url": STR})},
+})
+
+RESULT = _obj({
+    "decision": {"type": "string", "enum": ["new", "update", "skip"]},
+    "reason": STR,
+    "updateId": STR,
+    "item": ITEM,
+    "update": _obj({"changes": STR_LIST, "availability": STR_LIST,
+                    "sources": {"type": "array", "items": _obj({"title": STR, "url": STR})}}),
+})
+
+TRIAGE = _obj({"results": {"type": "array", "items": _obj({
+    "index": {"type": "integer"},
+    "relevant": {"type": "boolean"},
+    "reason": STR,
+})}})
+
+RULES = """\
+너는 '릴리스 레이더' 사이트의 편집자다. 이 사이트는 OpenAI(ChatGPT/GPT), Anthropic(Claude), Google(Gemini)의 공식 발표를
+뉴스별로 한국어로 요약하고, 성능 그래프, 모델을 더 잘 쓰는 법, 추천 프롬프트를 정리한다.
+
+판단 기준
+- 포함(decision "new"): 새 모델 출시·발표, 모델 버전 업데이트, 가격이나 사용 가능 범위의 큰 변경, 공식 모델 활용 가이드.
+- 제외(decision "skip"): 기업 파트너십, 고객 사례, 정책·규제 글, 모델 출시와 무관한 연구·안전 보고서, 행사 홍보.
+- 이미 사이트에 있는 모델의 후속 소식(가용성 확대, 새 모드 등)은 decision "update", updateId에 기존 id를 쓰고
+  update 필드에 덧붙일 changes/availability/sources만 쓴다. 이 경우 item은 빈 값으로 채워도 된다.
+
+작성 원칙
+- 반드시 아래 원문에 있는 내용만 근거로 쓴다. 원문에 없는 수치·가격·모델 ID는 지어내지 말고 빈 문자열로 둔다.
+- 모델 ID(apiId)는 원문 본문이나 링크 URL에 글자 그대로 있는 것만 쓴다.
+- 성능 그래프(charts)는 원문의 표(TABLES)나 본문 문장에 숫자로 직접 나온 비교 수치만 쓴다. 벤치마크마다 차트 하나,
+  3~8개. 이 소식의 모델 행에 highlight true. Elo처럼 0이 의미 없는 점수는 type "dot", 낮을수록 좋은 지표는
+  lowerIsBetter true. 수치가 이미지로만 있어 텍스트로 확인할 수 없으면 charts는 빈 배열, chartNote에 그 사실을 쓴다.
+  charts를 쓰면 chartSource에 수치 출처를 쓴다. 각 수치가 무엇과 비교한 값인지(이전 모델 대비인지, 측정 기관) 원문대로 쓴다.
+- 이 단계 뒤에 프로그램이 모든 그래프 값·핵심 수치·모델 ID·가격을 원문과 대조해, 원문에 없는 값은 지운다.
+- 문체: 자연스럽고 간결한 한국어 존댓말 서술. 과장 금지. title은 공식 모델명 그대로.
+- numbers는 핵심 수치 3~4개, changes 3~6개, tips 2~4개, prompts 2개(바로 붙여 쓸 수 있는 한국어, 바꿀 부분은 [대괄호],
+  API 예시는 type "code"), cautions 1~3개, sources는 원문 URL을 첫 번째로.
+- id는 소문자 영문·숫자·하이픈(예: claude-haiku-5-5). guide, prices는 쓰지 않는다.
+- 빈 값은 빈 문자열/빈 배열로 둔다(null 금지).
+"""
+
+
+class Claude:
+    def __init__(self, api_key: str | None = None):
+        import anthropic  # imported lazily so detection-only runs don't need the key
+
+        self.client = anthropic.Anthropic(api_key=api_key or os.environ["ANTHROPIC_API_KEY"], max_retries=3)
+        self.bad_request = anthropic.BadRequestError
+
+    def json_call(self, *, model: str, system: str, user: str, schema: dict, max_tokens: int) -> dict:
+        """Ask for schema-shaped JSON. Falls back to plain JSON text if structured output is rejected."""
+        try:
+            msg = self.client.messages.create(
+                model=model, max_tokens=max_tokens, system=system,
+                messages=[{"role": "user", "content": user}],
+                output_config={"format": {"type": "json_schema", "schema": schema}},
+            )
+        except self.bad_request as exc:  # model or schema not supported for structured output
+            log.warning("structured output rejected (%s); retrying with plain JSON", exc)
+            msg = self.client.messages.create(
+                model=model, max_tokens=max_tokens, system=system + "\n\n출력은 JSON 객체 하나만, 다른 글 없이.",
+                messages=[{"role": "user", "content": user + "\n\nJSON 스키마:\n" + json.dumps(schema, ensure_ascii=False)}],
+            )
+        text = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
+        return parse_json(text)
+
+
+def parse_json(text: str) -> dict:
+    text = text.strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+    start, end = text.find("{"), text.rfind("}")
+    return json.loads(text[start:end + 1])
+
+
+def triage(claude: Claude, entries: list[Entry], site_lines: list[str]) -> dict[int, tuple[bool, str]]:
+    listing = "\n".join(
+        f"[{i}] {e.company} | {e.published or '날짜 미상'} | {e.title} | {e.summary[:200]} | {e.url}"
+        for i, e in enumerate(entries))
+    user = (f"사이트에 이미 있는 소식:\n" + "\n".join(site_lines[:60]) +
+            f"\n\n새로 올라온 글 목록:\n{listing}\n\n각 글이 사이트에 실을 '모델 소식'(새 모델, 모델 업데이트, 가격·사용 범위 변경, "
+            "공식 활용 가이드, 또는 이미 있는 모델의 의미 있는 후속 소식)인지 판단해 results에 index별로 답해라.")
+    out = claude.json_call(model=config.TRIAGE_MODEL, system=RULES, user=user, schema=TRIAGE, max_tokens=2000)
+    return {r["index"]: (bool(r["relevant"]), r.get("reason", "")) for r in out.get("results", [])}
+
+
+def write_item(claude: Claude, entry: Entry, article: Article, site_lines: list[str], today: date) -> dict:
+    schema_doc = config.SCHEMA_DOC.read_text(encoding="utf-8") if config.SCHEMA_DOC.exists() else ""
+    example = config.STYLE_EXAMPLE.read_text(encoding="utf-8") if config.STYLE_EXAMPLE.exists() else ""
+    tables = "\n\n".join(article.tables) or "(텍스트로 된 표 없음)"
+    links = "\n".join(l for l in article.links if re.search(r"model|api|docs|pricing|aistudio|platform", l, re.I))[:4000]
+    system = RULES + "\n\n# 데이터 형식\n" + schema_doc + "\n\n# 문체·구성 예시 (다른 소식)\n" + example
+    user = (
+        f"오늘(Asia/Seoul): {today.isoformat()}\n회사: {entry.company}\n원문 제목: {article.title or entry.title}\n"
+        f"원문 URL: {entry.url}\n발표일: {(article.published or entry.published or today).isoformat()}\n"
+        f"관련 있어 보이는 기존 소식 id: {entry.extra.get('relatedId') or '없음'}\n\n"
+        f"사이트에 이미 있는 소식:\n" + "\n".join(site_lines[:80]) +
+        f"\n\n# 원문 본문\n{article.text}\n\n# TABLES (원문 표를 셀 그대로 옮김)\n{tables}\n\n# 원문 링크 일부\n{links}\n\n"
+        "위 원문으로 decision과 item(또는 update)을 작성해라."
+    )
+    return claude.json_call(model=config.SUMMARY_MODEL, system=system, user=user, schema=RESULT, max_tokens=16000)

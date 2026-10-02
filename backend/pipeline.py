@@ -1,0 +1,221 @@
+"""Run the whole update: detect -> triage -> read article -> write -> check -> save."""
+from __future__ import annotations
+
+import json
+import logging
+import os
+from dataclasses import dataclass, field
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
+
+from . import config, detect, feeds, guard, store
+from .extract import Article, fetch_article
+
+log = logging.getLogger(__name__)
+
+
+def today_kst() -> date:
+    return datetime.now(ZoneInfo(config.TIMEZONE)).date()
+
+
+def annotate(level: str, title: str, message: str) -> None:
+    """Print a GitHub Actions annotation (shown on the run page and readable through the API)."""
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        msg = message.replace("%", "%25").replace("\r", "").replace("\n", "%0A")
+        print(f"::{level} title={title}::{msg}", flush=True)
+
+
+@dataclass
+class RunReport:
+    startedAt: str
+    mode: str
+    sourceErrors: dict = field(default_factory=dict)
+    entries: int = 0
+    candidates: list = field(default_factory=list)
+    added: list = field(default_factory=list)
+    updated: list = field(default_factory=list)
+    skipped: list = field(default_factory=list)
+    failed: list = field(default_factory=list)
+    guardNotes: dict = field(default_factory=dict)
+    note: str = ""
+
+    def save(self) -> None:
+        path = config.STATE_FILE.parent / "last-run.json"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(self.__dict__, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def _fail(state: dict, e: feeds.Entry, today: date, report: RunReport, error: str) -> None:
+    """Record a failure; after 3 failed runs the article is given up on so it is not retried forever."""
+    report.failed.append({"url": e.url, "error": error})
+    attempts = state.setdefault("attempts", {})
+    attempts[e.key] = attempts.get(e.key, 0) + 1
+    if attempts[e.key] >= 3:
+        detect.mark(state, e, "failed", today, error=error[:300])
+        attempts.pop(e.key, None)
+
+
+def _fill_dates(cands: list[feeds.Entry], cache: dict[str, Article], cutoff: date, state: dict, today: date,
+                report: RunReport) -> list[feeds.Entry]:
+    """Listing pages have no dates: read up to N article pages to get them and drop old ones."""
+    out, fetched = [], 0
+    for e in cands:
+        if e.published is None:
+            if fetched >= config.MAX_LISTING_FETCHES:
+                continue
+            fetched += 1
+            try:
+                art = fetch_article(e.url)
+            except Exception as exc:  # noqa: BLE001
+                report.failed.append({"url": e.url, "error": str(exc)})
+                continue
+            cache[e.key] = art
+            e.published = art.published
+            if art.title and len(art.title) > len(e.title):
+                e.title = art.title
+            if e.published is None:
+                report.failed.append({"url": e.url, "error": "발표일을 찾지 못함"})
+                continue
+        if e.published < cutoff:
+            detect.mark(state, e, "old", today)
+            continue
+        out.append(e)
+    return out
+
+
+def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunReport:
+    today = today_kst()
+    report = RunReport(datetime.now(ZoneInfo(config.TIMEZONE)).isoformat(timespec="seconds"),
+                       "dry-run" if dry_run else "update")
+    site = detect.load_site()
+    state = detect.load_state()
+    entries, report.sourceErrors = feeds.fetch_all()
+    report.entries = len(entries)
+    for name, err in report.sourceErrors.items():
+        annotate("warning", f"소스 실패: {name}", err)
+
+    cutoff = min(site.newest or today, today) - timedelta(days=config.LOOKBACK_DAYS)
+    cache: dict[str, Article] = {}
+    cands = detect.find_candidates(entries, site, state, today)
+    cands = _fill_dates(cands, cache, cutoff, state, today, report)
+    report.candidates = [{"title": e.title, "url": e.url, "company": e.company,
+                          "date": e.published.isoformat() if e.published else None,
+                          "relatedId": e.extra.get("relatedId")} for e in cands]
+    for c in report.candidates:
+        annotate("notice", "새 글 후보", f"{c['company']} {c['date']} {c['title']} {c['url']}")
+
+    api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
+    if dry_run or not api_key:
+        report.note = "dry-run" if dry_run else "ANTHROPIC_API_KEY가 없어 감지만 하고 요약은 하지 않았습니다."
+        if not dry_run:
+            config.PENDING_FILE.parent.mkdir(parents=True, exist_ok=True)
+            config.PENDING_FILE.write_text(json.dumps(report.candidates, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            store.touch_last_checked(today)
+            detect.save_state(state)
+            report.save()
+        return report
+
+    from .summarize import Claude, triage, write_item
+
+    claude = Claude(api_key)
+    site_lines = site.summary_lines()
+    if cands:
+        verdicts = triage(claude, cands, site_lines)
+        keep = []
+        for i, e in enumerate(cands):
+            ok, why = verdicts.get(i, (True, "판단 없음"))
+            if ok:
+                keep.append(e)
+            else:
+                detect.mark(state, e, "skipped", today, reason=why)
+                report.skipped.append({"title": e.title, "url": e.url, "reason": why})
+        cands = keep
+
+    for e in cands[: config.MAX_NEW_ITEMS]:
+        try:
+            art = cache.get(e.key) or fetch_article(e.url)
+            draft = write_item(claude, e, art, site_lines, today)
+        except Exception as exc:  # noqa: BLE001 - try again next run
+            log.exception("failed: %s", e.url)
+            _fail(state, e, today, report, f"{type(exc).__name__}: {exc}")
+            annotate("warning", "요약 실패", f"{e.url} {exc}")
+            continue
+        decision = draft.get("decision")
+        if decision == "skip":
+            detect.mark(state, e, "skipped", today, reason=draft.get("reason", ""))
+            report.skipped.append({"title": e.title, "url": e.url, "reason": draft.get("reason", "")})
+            continue
+        if decision == "update":
+            target = store.slugify(draft.get("updateId") or e.extra.get("relatedId") or "")
+            target_path = config.NEWS_DIR / f"{target}.json"
+            before = target_path.read_text(encoding="utf-8") if target_path.exists() else None
+            if before is not None and store.apply_update(target, draft.get("update") or {}):
+                ok, out = store.validate()
+                if ok:
+                    detect.mark(state, e, "updated", today, id=target)
+                    report.updated.append({"id": target, "url": e.url})
+                    annotate("notice", "기존 소식 보강", f"{target} ← {e.url}")
+                    continue
+                target_path.write_text(before, encoding="utf-8")
+                _fail(state, e, today, report, "검증 실패: " + out)
+            else:
+                detect.mark(state, e, "skipped", today, reason="보강할 내용 없음")
+            continue
+
+        day = e.published or art.published or today
+        item = store.normalize_item(draft.get("item") or {}, company=e.company, day=day, url=e.url, title_hint=e.title)
+        source_text = "\n".join([art.title, art.text, *art.tables])
+        notes = guard.check_item(item, source_text, "\n".join(art.links))
+        item = store.normalize_item(item, company=e.company, day=day, url=e.url, title_hint=e.title)
+        if notes:
+            report.guardNotes[item["id"]] = notes
+        path = store.write_news(item)
+        store.add_to_manifest(item["id"])
+        ok, out = store.validate()
+        if not ok:
+            path.unlink(missing_ok=True)
+            store.remove_from_manifest(item["id"])
+            _fail(state, e, today, report, "검증 실패: " + out)
+            annotate("warning", "검증 실패", f"{e.url}\n{out}")
+            continue
+        detect.mark(state, e, "added", today, id=item["id"])
+        report.added.append({"id": item["id"], "title": item["title"], "url": e.url, "charts": len(item.get("charts", []))})
+        annotate("notice", "새 소식 추가", f"{item['id']} | {item['title']} | 그래프 {len(item.get('charts', []))}개")
+
+    store.touch_last_checked(today)
+    detect.save_state(state)
+    report.save()
+    return report
+
+
+def run_selftest() -> tuple[bool, list[str]]:
+    """No API calls. For each company, hide the newest known article and check the detector finds it."""
+    lines, ok = [], True
+    today = today_kst()
+    site = detect.load_site()
+    entries, errors = feeds.fetch_all()
+    for src in config.SOURCES:
+        got = [e for e in entries if e.source == src.name]
+        dated = [e for e in got if e.published]
+        if src.name in errors or not got:
+            ok = False
+            lines.append(f"FAIL {src.name}: {errors.get(src.name, '항목 0개')}")
+        else:
+            lines.append(f"OK   {src.name}: {len(got)}개 (날짜 있음 {len(dated)}개, 최신 {max((e.published for e in dated), default=None)})")
+    for company in ("openai", "anthropic", "google"):
+        newest = next((i for i in site.items if i["company"] == company), None)
+        if not newest:
+            continue
+        cands = detect.find_candidates(entries, site, {"urls": {}}, today, pretend_missing={newest["id"]})
+        own = {u for u, i in site.known_urls.items() if i == newest["id"]}
+        hit = next((c for c in cands if c.key in own or any(feeds.normalize_url(u) in own for u in c.extra.get("alsoAt", []))), None)
+        if hit:
+            lines.append(f"OK   감지 시험 {company}: '{newest['id']}'을 지웠다고 가정 → '{hit.title}' 감지")
+        else:
+            ok = False
+            lines.append(f"FAIL 감지 시험 {company}: '{newest['id']}'을 찾지 못함 (후보 {len(cands)}개: "
+                         + "; ".join(c.title for c in cands[:5]) + ")")
+    for line in lines:
+        print(line, flush=True)
+        annotate("notice" if line.startswith("OK") else "error", "자가 시험", line)
+    return ok, lines
