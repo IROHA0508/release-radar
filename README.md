@@ -47,9 +47,9 @@ python3 -m http.server 8000
 ```
 감지  OpenAI RSS, Google Gemini 블로그·DeepMind RSS, Anthropic 뉴스룸 페이지·사이트맵
   ↓   사이트에 이미 있는 출처 URL·이전 실행 기록과 비교, 최근 7일 이내 + 모델 관련 글만 후보
-분류  Claude API(작은 모델)가 후보 중 '모델 소식'만 고름 (고객 사례·정책 글 등 제외)
+분류  Claude(작은 모델)가 후보 중 '모델 소식'만 고름 (고객 사례·정책 글 등 제외)
 읽기  원문 페이지 본문, 표(셀 그대로), 링크 추출. 막히면 r.jina.ai 리더로 재시도
-작성  Claude API가 data/news/<id>.json 형식으로 한국어 요약·팁·프롬프트·그래프 작성
+작성  Claude가 data/news/<id>.json 형식으로 한국어 요약·팁·프롬프트·그래프 작성
 검사  그래프 값, 핵심 수치, 모델 ID, 가격을 원문과 프로그램으로 대조해 원문에 없는 값은 삭제
 반영  manifest 갱신 → scripts/validate_data.py 통과 시에만 저장 → 커밋·푸시 → Vercel 배포
 ```
@@ -59,7 +59,7 @@ python3 -m http.server 8000
 | `backend/feeds.py` | 소스 수집(RSS·뉴스룸 HTML) |
 | `backend/detect.py` | 새 글 판정, 같은 글 중복 제거, 실행 기록(`backend/state/seen.json`) |
 | `backend/extract.py` | 원문 본문·표·링크·발표일 추출 |
-| `backend/summarize.py` | Claude API 호출(분류, 기사 작성) |
+| `backend/summarize.py` | Claude 호출(분류, 기사 작성) — 구독 토큰이면 Claude Code CLI, API 키면 Claude API |
 | `backend/guard.py` | 원문 대조로 지어낸 수치 제거 |
 | `backend/store.py` | 파일·manifest 저장과 검증 |
 | `backend/pipeline.py` | 전체 흐름, 실행 보고서(`backend/state/last-run.json`) |
@@ -67,11 +67,28 @@ python3 -m http.server 8000
 
 ### 처음 한 번 설정
 
-1. Anthropic Console(https://console.anthropic.com)에서 API 키를 만듭니다.
-2. GitHub 저장소 **Settings → Secrets and variables → Actions → New repository secret**에서 이름 `ANTHROPIC_API_KEY`로 키를 저장합니다.
-3. (선택) 같은 화면의 **Variables** 탭에서 `RR_MODEL`(기사 작성 모델, 기본 `claude-sonnet-5-5`), `RR_TRIAGE_MODEL`(분류 모델, 기본 `claude-haiku-4-5-20251001`)을 바꿀 수 있습니다.
+요약을 쓰려면 Claude 인증 정보가 하나 필요합니다. 둘 중 하나만 넣으면 되고, 둘 다 있으면 구독 토큰을 먼저 씁니다.
 
-키가 없으면 감지만 하고 후보 목록을 `backend/state/pending.json`에 남깁니다. 기사 작성 비용은 기본 모델 기준 소식 1건당 약 0.1달러(입력 2~3만, 출력 5천 토큰 안팎)이고, 실행당 최대 5건으로 제한합니다(`RR_MAX_ITEMS`).
+**방법 A. Claude 구독(Pro·Max) 토큰 — 추가 결제 없음 (권장)**
+
+1. 내 컴퓨터에 Claude Code를 설치합니다(설치 안내: https://code.claude.com/docs/en/setup).
+2. 터미널에서 `claude setup-token`을 실행하고 브라우저에서 로그인하면 긴 토큰이 출력됩니다.
+3. GitHub 저장소 **Settings → Secrets and variables → Actions → New repository secret**에서 이름 `CLAUDE_CODE_OAUTH_TOKEN`으로 그 토큰을 저장합니다.
+
+이 방식은 워크플로가 Claude Code CLI를 설치해 구독 사용량으로 요약합니다. 사용량은 claude.ai·Claude Code와 같은 한도를 함께 씁니다. 한도를 넘었을 때 돈이 나가지 않게 하려면 claude.ai 설정의 사용량 크레딧(extra usage)을 꺼 두세요. 토큰은 비밀번호처럼 다루고 저장소 파일에는 절대 넣지 마세요.
+
+**방법 B. Claude API 키 — 사용한 만큼 별도 과금**
+
+1. Claude Console(https://platform.claude.com)에서 API 키를 만들고 크레딧을 충전합니다.
+2. 같은 화면에서 이름 `ANTHROPIC_API_KEY`로 저장합니다.
+
+기본 모델 기준 소식 1건당 약 0.1달러(입력 2~3만, 출력 5천 토큰 안팎)이며, 구독 요금과는 따로 청구됩니다.
+
+**공통**
+
+- (선택) **Variables** 탭에서 `RR_MODEL`(기사 작성 모델, 기본 `claude-sonnet-5-5`), `RR_TRIAGE_MODEL`(분류 모델, 기본 `claude-haiku-4-5-20251001`)을 바꿀 수 있습니다.
+- 인증 정보가 없으면 감지만 하고 후보 목록을 `backend/state/pending.json`에 남깁니다.
+- 실행당 최대 5건만 요약합니다(`RR_MAX_ITEMS`).
 
 ### 직접 실행
 
@@ -79,7 +96,8 @@ python3 -m http.server 8000
 pip install -r backend/requirements.txt
 python -m backend detect     # 새 글 후보만 출력 (파일 변경 없음, API 키 불필요)
 python -m backend selftest   # 회사마다 가장 최근 소식을 지웠다고 가정하고 다시 찾는지 확인
-ANTHROPIC_API_KEY=... python -m backend update   # 실제 갱신
+CLAUDE_CODE_OAUTH_TOKEN=... python -m backend update   # 실제 갱신 (구독 사용, claude CLI 필요)
+ANTHROPIC_API_KEY=... python -m backend update         # 실제 갱신 (API 과금)
 python -m pytest tests -q    # 오프라인 테스트
 ```
 

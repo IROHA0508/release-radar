@@ -102,9 +102,12 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
     for c in report.candidates:
         annotate("notice", "새 글 후보", f"{c['company']} {c['date']} {c['title']} {c['url']}")
 
-    api_key = api_key or os.environ.get("ANTHROPIC_API_KEY")
-    if dry_run or not api_key:
-        report.note = "dry-run" if dry_run else "ANTHROPIC_API_KEY가 없어 감지만 하고 요약은 하지 않았습니다."
+    from . import summarize
+
+    backend = "api" if api_key else summarize.llm_available()
+    if dry_run or not backend:
+        report.note = "dry-run" if dry_run else (
+            "CLAUDE_CODE_OAUTH_TOKEN(구독 토큰)이나 ANTHROPIC_API_KEY가 없어 감지만 하고 요약은 하지 않았습니다.")
         if not dry_run:
             config.PENDING_FILE.parent.mkdir(parents=True, exist_ok=True)
             config.PENDING_FILE.write_text(json.dumps(report.candidates, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -113,12 +116,18 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
             report.save()
         return report
 
-    from .summarize import Claude, triage, write_item
+    from .summarize import Claude, make_llm, triage, write_item
 
-    claude = Claude(api_key)
+    claude = Claude(api_key) if api_key else make_llm()
+    report.note = f"요약 엔진: {'Claude Code CLI(구독)' if backend == 'cli' else 'Claude API'}"
     site_lines = site.summary_lines()
     if cands:
-        verdicts = triage(claude, cands, site_lines)
+        try:
+            verdicts = triage(claude, cands, site_lines)
+        except Exception as exc:  # noqa: BLE001 - the writing step can still skip non-model posts
+            log.warning("triage failed (%s); sending every candidate to the writing step", exc)
+            annotate("warning", "분류 단계 실패", str(exc)[:500])
+            verdicts = {}
         keep = []
         for i, e in enumerate(cands):
             ok, why = verdicts.get(i, (True, "판단 없음"))

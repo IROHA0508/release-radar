@@ -1,4 +1,7 @@
-"""Claude API calls: (1) triage feed entries, (2) write one news item in the site's JSON format."""
+"""Claude calls: (1) triage feed entries, (2) write one news item in the site's JSON format.
+
+Two backends: the Claude Code CLI with a Pro/Max subscription token (no API billing), or the
+Claude API with an API key (pay-as-you-go)."""
 from __future__ import annotations
 
 import json
@@ -111,6 +114,57 @@ class Claude:
         return parse_json(text)
 
 
+class ClaudeCodeCLI:
+    """Run the Claude Code CLI headless with a subscription token (CLAUDE_CODE_OAUTH_TOKEN).
+
+    Usage counts against the Claude Pro/Max plan's limits instead of API billing. The API key is
+    removed from the child environment on purpose: if it were set, Claude Code would bill the API.
+    """
+
+    def __init__(self, binary: str = "claude"):
+        import shutil
+
+        self.binary = shutil.which(binary) or binary
+        self.env = {k: v for k, v in os.environ.items() if k != "ANTHROPIC_API_KEY"}
+
+    def json_call(self, *, model: str, system: str, user: str, schema: dict, max_tokens: int) -> dict:
+        import subprocess
+
+        prompt = (f"# 작업 지시\n{system}\n\n# 입력\n{user}\n\n"
+                  "결과는 주어진 JSON 스키마에 맞는 JSON 객체 하나로만 답해라.")
+        cmd = [self.binary, "-p", "--output-format", "json", "--json-schema", json.dumps(schema, ensure_ascii=False),
+               "--model", model, "--tools", "", "--no-session-persistence",
+               "--system-prompt", "너는 JSON만 출력하는 편집 도우미다. 도구를 쓰지 않는다."]
+        proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True, env=self.env, timeout=900)
+        if proc.returncode != 0:
+            raise RuntimeError(f"claude CLI 실패({proc.returncode}): {(proc.stderr or proc.stdout)[-800:]}")
+        envelope = json.loads(proc.stdout)
+        if envelope.get("is_error"):
+            raise RuntimeError(f"claude CLI 오류: {str(envelope.get('result'))[:800]}")
+        if isinstance(envelope.get("structured_output"), dict):
+            return envelope["structured_output"]
+        return parse_json(envelope.get("result") or "")
+
+
+def make_llm():
+    """Pick the model backend. RR_LLM=cli|api forces one; otherwise a subscription token wins over an
+    API key so a Pro/Max plan is used before any pay-as-you-go API billing."""
+    choice = os.environ.get("RR_LLM", "").lower()
+    if choice == "cli" or (choice != "api" and os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")):
+        return ClaudeCodeCLI()
+    return Claude()
+
+
+def llm_available() -> str | None:
+    """Return which backend can run ("cli" or "api"), or None when neither credential is set."""
+    choice = os.environ.get("RR_LLM", "").lower()
+    if os.environ.get("CLAUDE_CODE_OAUTH_TOKEN") and choice != "api":
+        return "cli"
+    if os.environ.get("ANTHROPIC_API_KEY") and choice != "cli":
+        return "api"
+    return None
+
+
 def parse_json(text: str) -> dict:
     text = text.strip()
     if text.startswith("```"):
@@ -119,7 +173,7 @@ def parse_json(text: str) -> dict:
     return json.loads(text[start:end + 1])
 
 
-def triage(claude: Claude, entries: list[Entry], site_lines: list[str]) -> dict[int, tuple[bool, str]]:
+def triage(claude, entries: list[Entry], site_lines: list[str]) -> dict[int, tuple[bool, str]]:
     listing = "\n".join(
         f"[{i}] {e.company} | {e.published or '날짜 미상'} | {e.title} | {e.summary[:200]} | {e.url}"
         for i, e in enumerate(entries))
@@ -130,7 +184,7 @@ def triage(claude: Claude, entries: list[Entry], site_lines: list[str]) -> dict[
     return {r["index"]: (bool(r["relevant"]), r.get("reason", "")) for r in out.get("results", [])}
 
 
-def write_item(claude: Claude, entry: Entry, article: Article, site_lines: list[str], today: date) -> dict:
+def write_item(claude, entry: Entry, article: Article, site_lines: list[str], today: date) -> dict:
     schema_doc = config.SCHEMA_DOC.read_text(encoding="utf-8") if config.SCHEMA_DOC.exists() else ""
     example = config.STYLE_EXAMPLE.read_text(encoding="utf-8") if config.STYLE_EXAMPLE.exists() else ""
     tables = "\n\n".join(article.tables) or "(텍스트로 된 표 없음)"

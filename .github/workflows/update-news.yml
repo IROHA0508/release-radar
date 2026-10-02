@@ -45,6 +45,8 @@ jobs:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    env:
+      HAS_SUBSCRIPTION_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -53,12 +55,19 @@ jobs:
           cache: pip
           cache-dependency-path: backend/requirements.txt
       - run: pip install -r backend/requirements.txt
+      - name: Claude Code CLI 설치 (구독 토큰을 쓰는 경우)
+        if: env.HAS_SUBSCRIPTION_TOKEN == 'true'
+        run: npm install -g @anthropic-ai/claude-code
       - name: 실행
         env:
+          # 구독 토큰이 있으면 Claude Pro/Max 사용량으로 요약(API 과금 없음). 없을 때만 API 키 사용.
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           RR_MODEL: ${{ vars.RR_MODEL }}
           RR_TRIAGE_MODEL: ${{ vars.RR_TRIAGE_MODEL }}
         run: |
+          [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ] && unset CLAUDE_CODE_OAUTH_TOKEN
+          [ -z "$ANTHROPIC_API_KEY" ] && unset ANTHROPIC_API_KEY
           [ -z "$RR_MODEL" ] && unset RR_MODEL
           [ -z "$RR_TRIAGE_MODEL" ] && unset RR_TRIAGE_MODEL
           python -m backend "${{ github.event.inputs.command || 'update' }}"

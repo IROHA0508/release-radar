@@ -210,6 +210,7 @@ def test_full_update_writes_verified_item(site, monkeypatch):
 
 def test_without_api_key_only_detects(site, monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("CLAUDE_CODE_OAUTH_TOKEN", raising=False)
     monkeypatch.setattr(feeds, "fetch_all", lambda sources=None: (feeds.parse_rss(RSS, OPENAI), {}))
     before = sorted(p.name for p in (site / "data/news").glob("*.json"))
     report = pipeline.run_update()
@@ -268,3 +269,42 @@ def test_similar_titles_from_one_source_stay_separate():
     a = feeds.Entry("Introducing Claude Opus 5.5", "https://www.anthropic.com/claude-opus-5-5", "anthropic", "n", date(2026, 9, 22), priority=2)
     b = feeds.Entry("Introducing Claude Sonnet 5.5", "https://www.anthropic.com/claude-sonnet-5-5", "anthropic", "n", date(2026, 9, 28), priority=2)
     assert len(detect.dedupe([a, b])) == 2
+
+
+def test_cli_backend_uses_subscription_not_api(monkeypatch):
+    import subprocess
+    import backend.summarize as summ
+
+    monkeypatch.setenv("CLAUDE_CODE_OAUTH_TOKEN", "sub-token")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "should-not-leak")
+    monkeypatch.delenv("RR_LLM", raising=False)
+    assert summ.llm_available() == "cli"
+    llm = summ.make_llm()
+    assert isinstance(llm, summ.ClaudeCodeCLI)
+    seen = {}
+
+    def fake_run(cmd, input, capture_output, text, env, timeout):
+        seen.update(cmd=cmd, env=env, input=input)
+        out = json.dumps({"type": "result", "is_error": False, "result": "", "structured_output": {"results": []}})
+        return subprocess.CompletedProcess(cmd, 0, out, "")
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+    assert llm.json_call(model="claude-sonnet-5-5", system="규칙", user="내용", schema=summ.TRIAGE, max_tokens=100) == {"results": []}
+    assert "ANTHROPIC_API_KEY" not in seen["env"] and seen["env"]["CLAUDE_CODE_OAUTH_TOKEN"] == "sub-token"
+    assert "--json-schema" in seen["cmd"] and seen["cmd"][seen["cmd"].index("--tools") + 1] == ""
+    assert "규칙" in seen["input"] and "내용" in seen["input"]
+
+    # text result without structured_output is parsed too
+    monkeypatch.setattr(subprocess, "run", lambda cmd, **k: subprocess.CompletedProcess(
+        cmd, 0, json.dumps({"is_error": False, "result": "```json\n{\"results\": [1]}\n```"}), ""))
+    assert llm.json_call(model="m", system="", user="", schema={}, max_tokens=1) == {"results": [1]}
+
+
+def test_api_key_alone_selects_api(monkeypatch):
+    import backend.summarize as summ
+
+    monkeypatch.delenv("CLAUDE_CODE_OAUTH_TOKEN", raising=False)
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "k")
+    assert summ.llm_available() == "api"
+    monkeypatch.delenv("ANTHROPIC_API_KEY")
+    assert summ.llm_available() is None
