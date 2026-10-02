@@ -235,3 +235,30 @@ def test_update_decision_appends_to_existing(site, monkeypatch):
     assert report.updated == [{"id": "gpt-6-1-sol", "url": "https://openai.com/index/gpt-6-1-sol-eu"}]
     d = json.loads((site / "data/news/gpt-6-1-sol.json").read_text())
     assert d["changes"][-1] == "EU에서도 쓸 수 있게 됐습니다."
+
+
+SITEMAP = """<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>https://www.anthropic.com/news/claude-haiku-5-5</loc><lastmod>2026-10-01T10:00:00.000Z</lastmod></url>
+<url><loc>https://www.anthropic.com/news/100k-context-windows</loc><lastmod>2026-09-09T19:42:51.000Z</lastmod></url>
+<url><loc>https://www.anthropic.com/careers</loc><lastmod>2026-10-01T10:00:00.000Z</lastmod></url>
+</urlset>"""
+
+
+def test_sitemap_and_slug_matching(site):
+    entries = feeds.parse_sitemap(SITEMAP, config.SOURCES[2])
+    assert [e.url for e in entries] == ["https://www.anthropic.com/news/claude-haiku-5-5",
+                                        "https://www.anthropic.com/news/100k-context-windows"]
+    assert entries[0].extra["lastmod"] == date(2026, 10, 1)
+    idx = detect.load_site()
+    # /news/claude-sonnet-5-5 is the same page as the known /claude-sonnet-5-5
+    moved = feeds.Entry("Introducing Claude Sonnet 5.5", "https://www.anthropic.com/news/claude-sonnet-5-5", "anthropic", "x",
+                        date(2026, 9, 28))
+    cands = detect.find_candidates(entries + [moved], idx, {"urls": {}}, date(2026, 10, 2))
+    assert [c.url for c in cands] == ["https://www.anthropic.com/news/claude-haiku-5-5"]   # old lastmod and known slug dropped
+
+
+def test_same_model_same_day_counts_as_known(site):
+    idx = detect.load_site()
+    dup = feeds.Entry("Gemini 4 Argon: our next era of frontier intelligence", "https://deepmind.google/blog/argon-x",
+                      "google", "d", date(2026, 9, 30))
+    assert detect.find_candidates([dup], idx, {"urls": {}}, date(2026, 10, 2)) == []

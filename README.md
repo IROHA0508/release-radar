@@ -45,7 +45,7 @@ python3 -m http.server 8000
 `backend/`의 Python 코드가 GitHub Actions에서 매일 아침(한국 시간 8시 17분) 실행됩니다. 사이트는 정적 파일이라 서버가 따로 없고, 이 작업이 `data/`를 고쳐 커밋하면 Vercel이 자동으로 다시 배포합니다.
 
 ```
-감지  OpenAI RSS, Google Gemini 블로그 RSS, Google DeepMind RSS, Anthropic 뉴스룸 페이지
+감지  OpenAI RSS, Google Gemini 블로그·DeepMind RSS, Anthropic 뉴스룸 페이지·사이트맵
   ↓   사이트에 이미 있는 출처 URL·이전 실행 기록과 비교, 최근 7일 이내 + 모델 관련 글만 후보
 분류  Claude API(작은 모델)가 후보 중 '모델 소식'만 고름 (고객 사례·정책 글 등 제외)
 읽기  원문 페이지 본문, 표(셀 그대로), 링크 추출. 막히면 r.jina.ai 리더로 재시도

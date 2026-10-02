@@ -112,12 +112,33 @@ def parse_listing(html: str, source: config.Source) -> list[Entry]:
     return entries
 
 
+def parse_sitemap(xml: bytes | str, source: config.Source) -> list[Entry]:
+    """Article URLs from a sitemap. The title is guessed from the slug; lastmod only bounds the date."""
+    soup = BeautifulSoup(xml, "xml")
+    entries = []
+    for node in soup.find_all("url"):
+        loc = node.find("loc")
+        if not loc:
+            continue
+        url = loc.get_text(strip=True)
+        path = urlsplit(url).path
+        if not config.ANTHROPIC_ARTICLE_RE.match(path):
+            continue
+        lastmod = node.find("lastmod")
+        slug = path.rstrip("/").rsplit("/", 1)[-1]
+        entries.append(Entry(slug.replace("-", " "), url, source.company, source.name, None, "", source.priority,
+                             {"lastmod": parse_date(lastmod.get_text(strip=True)) if lastmod else None, "titleFromSlug": True}))
+    return entries
+
+
 def fetch_source(source: config.Source) -> list[Entry]:
-    resp = http_get(source.url, accept="application/rss+xml,application/xml,text/xml,*/*" if source.kind == "rss" else
-                    "text/html,*/*")
+    resp = http_get(source.url, accept="text/html,*/*" if source.kind == "listing" else
+                    "application/rss+xml,application/xml,text/xml,*/*")
     resp.raise_for_status()
     if source.kind == "rss":
         entries = parse_rss(resp.content, source)
+    elif source.kind == "sitemap":
+        entries = parse_sitemap(resp.content, source)
     else:
         entries = parse_listing(resp.text, source)
     log.info("%s: %d entries", source.name, len(entries))

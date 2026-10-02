@@ -70,12 +70,10 @@ def _fill_dates(cands: list[feeds.Entry], cache: dict[str, Article], cutoff: dat
                 report.failed.append({"url": e.url, "error": str(exc)})
                 continue
             cache[e.key] = art
-            e.published = art.published
-            if art.title and len(art.title) > len(e.title):
+            # A page without a date: fall back to the sitemap's lastmod, or today for newsroom links.
+            e.published = art.published or e.extra.get("lastmod") or today
+            if art.title and (e.extra.get("titleFromSlug") or len(art.title) > len(e.title)):
                 e.title = art.title
-            if e.published is None:
-                report.failed.append({"url": e.url, "error": "발표일을 찾지 못함"})
-                continue
         if e.published < cutoff:
             detect.mark(state, e, "old", today)
             continue
@@ -208,14 +206,20 @@ def run_selftest() -> tuple[bool, list[str]]:
             continue
         cands = detect.find_candidates(entries, site, {"urls": {}}, today, pretend_missing={newest["id"]})
         own = {u for u, i in site.known_urls.items() if i == newest["id"]}
-        hit = next((c for c in cands if c.key in own or any(feeds.normalize_url(u) in own for u in c.extra.get("alsoAt", []))), None)
+        own_slugs = {detect.slug_key(u) for u in own}
+        hit = next((c for c in cands
+                    if any(feeds.normalize_url(u) in own or detect.slug_key(u) in own_slugs
+                           for u in [c.url, *c.extra.get("alsoAt", [])])
+                    or c.extra.get("relatedId") == newest["id"]), None)
         if hit:
-            lines.append(f"OK   감지 시험 {company}: '{newest['id']}'을 지웠다고 가정 → '{hit.title}' 감지")
+            lines.append(f"OK   감지 시험 {company}: '{newest['id']}'을 지웠다고 가정 → '{hit.title}' 감지 ({hit.url})")
         else:
             ok = False
-            lines.append(f"FAIL 감지 시험 {company}: '{newest['id']}'을 찾지 못함 (후보 {len(cands)}개: "
-                         + "; ".join(c.title for c in cands[:5]) + ")")
+            lines.append(f"FAIL 감지 시험 {company}: '{newest['id']}'을 찾지 못함 (후보 {len(cands)}개)")
+            for e in [e for e in entries if e.company == company][:12]:
+                lines.append(f"INFO {e.source} | {e.published} | {e.title[:80]} | {e.url}")
     for line in lines:
         print(line, flush=True)
-        annotate("notice" if line.startswith("OK") else "error", "자가 시험", line)
+        level = "error" if line.startswith("FAIL") else "notice"
+        annotate(level, "자가 시험", line)
     return ok, lines

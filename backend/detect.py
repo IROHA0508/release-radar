@@ -73,6 +73,22 @@ def related_item(entry: Entry, site: SiteIndex) -> str | None:
     return best[0] if best else None
 
 
+def slug_key(url: str) -> str:
+    """host + last path segment, so /news/claude-x and /claude-x count as the same page."""
+    norm = normalize_url(url)
+    host = norm.split("/")[2]
+    return host + "/" + norm.rstrip("/").rsplit("/", 1)[-1]
+
+
+def same_item(entry: Entry, site: SiteIndex, exclude: set[str]) -> str | None:
+    """An existing item about the same model published within a day of this entry."""
+    rid = related_item(entry, site)
+    if not rid or rid in exclude or entry.published is None:
+        return None
+    item = next(i for i in site.items if i["id"] == rid)
+    return rid if abs((date.fromisoformat(item["date"]) - entry.published).days) <= 1 else None
+
+
 def dedupe(entries: list[Entry]) -> list[Entry]:
     """Same article on two blogs (blog.google and deepmind.google): keep the higher-priority source."""
     out: list[Entry] = []
@@ -94,6 +110,7 @@ def find_candidates(entries: list[Entry], site: SiteIndex, state: dict, today: d
     each source still finds an article we already know about.
     """
     known = {u: i for u, i in site.known_urls.items() if i not in pretend_missing}
+    known_slugs = {slug_key(u) for u in known}
     seen = state.get("urls", {})
     base = site.newest or today
     if pretend_missing:
@@ -104,17 +121,23 @@ def find_candidates(entries: list[Entry], site: SiteIndex, state: dict, today: d
     for e in dedupe(entries):
         urls = [e.url, *e.extra.get("alsoAt", [])]
         keys = [normalize_url(u) for u in urls]
-        if any(k in known for k in keys):
+        if any(k in known for k in keys) or any(slug_key(u) in known_slugs for u in urls):
             continue
         if not pretend_missing and any(k in seen for k in keys):
             continue
         if e.published and e.published < cutoff:
             continue
+        lastmod = e.extra.get("lastmod")
+        if e.published is None and lastmod and lastmod < cutoff:
+            continue
         if not config.RELEVANT_RE.search(f"{e.title} {e.summary}"):
+            continue
+        if same_item(e, site, set(pretend_missing)):
             continue
         e.extra["relatedId"] = related_item(e, site)
         out.append(e)
-    out.sort(key=lambda x: (x.published or today), reverse=True)
+    # Dated entries first (newest first), then undated ones from sitemaps.
+    out.sort(key=lambda x: (x.published is not None, x.published or x.extra.get("lastmod") or today), reverse=True)
     return out
 
 

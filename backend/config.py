@@ -46,7 +46,7 @@ HTTP_TIMEOUT = 30
 class Source:
     name: str
     company: str          # openai | anthropic | google
-    kind: str             # rss | listing
+    kind: str             # rss | listing | sitemap
     url: str
     base: str = ""        # for listing pages: prefix for relative links
     priority: int = 0     # higher wins when two sources carry the same article
@@ -56,6 +56,8 @@ SOURCES = [
     Source("OpenAI News", "openai", "rss", "https://openai.com/news/rss.xml", priority=2),
     Source("Anthropic News", "anthropic", "listing", "https://www.anthropic.com/news",
            base="https://www.anthropic.com", priority=2),
+    Source("Anthropic sitemap", "anthropic", "sitemap", "https://www.anthropic.com/sitemap.xml",
+           base="https://www.anthropic.com", priority=1),
     Source("Google Gemini models blog", "google", "rss",
            "https://blog.google/innovation-and-ai/models-and-research/gemini-models/rss/", priority=2),
     Source("Google DeepMind blog", "google", "rss", "https://deepmind.google/blog/rss.xml", priority=1),
