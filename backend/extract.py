@@ -115,25 +115,41 @@ def _markdown_tables(md: str):
         yield block
 
 
+def fetch_reader(url: str) -> Article:
+    resp = http_get(config.READER_PREFIX + url, accept="text/plain,*/*")
+    resp.raise_for_status()
+    return parse_reader(resp.text, url)
+
+
 def fetch_article(url: str) -> Article:
-    error = None
+    """Read the page directly; use the reader when the page is blocked, too short, or has no
+    HTML tables (some sites draw benchmark tables with divs, which the reader turns into tables)."""
+    error, direct = None, None
     try:
         resp = http_get(url)
         if resp.status_code == 200:
-            art = parse_html(resp.text, url)
-            if len(art.text) >= 800:
-                return art
-            error = f"본문이 너무 짧음({len(art.text)}자)"
+            direct = parse_html(resp.text, url)
+            if len(direct.text) < 800:
+                error, direct = f"본문이 너무 짧음({len(direct.text)}자)", None
         else:
             error = f"HTTP {resp.status_code}"
     except Exception as exc:  # noqa: BLE001
         error = f"{type(exc).__name__}: {exc}"
-    if not config.READER_FALLBACK:
+    if direct is not None and (direct.tables or not config.READER_FALLBACK):
+        return direct
+    if direct is None and not config.READER_FALLBACK:
         raise RuntimeError(f"원문을 읽지 못함: {url} ({error})")
-    log.info("direct fetch failed for %s (%s), trying reader", url, error)
-    resp = http_get(config.READER_PREFIX + url, accept="text/plain,*/*")
-    resp.raise_for_status()
-    art = parse_reader(resp.text, url)
-    if len(art.text) < 800:
-        raise RuntimeError(f"원문을 읽지 못함: {url} ({error}; reader {len(art.text)}자)")
-    return art
+    try:
+        reader = fetch_reader(url)
+    except Exception as exc:  # noqa: BLE001
+        if direct is not None:
+            return direct
+        raise RuntimeError(f"원문을 읽지 못함: {url} ({error}; reader {exc})") from exc
+    if direct is not None:
+        # Keep the direct page (dates, links) and add the reader's tables.
+        direct.tables = reader.tables
+        direct.via = "direct+reader" if reader.tables else "direct"
+        return direct
+    if len(reader.text) < 800:
+        raise RuntimeError(f"원문을 읽지 못함: {url} ({error}; reader {len(reader.text)}자)")
+    return reader

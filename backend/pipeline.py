@@ -216,7 +216,9 @@ def run_selftest() -> tuple[bool, list[str]]:
             try:
                 art = fetch_article(hit.url)
                 lines.append(f"OK   원문 읽기 {company}: {art.via}, 본문 {len(art.text)}자, 표 {len(art.tables)}개, "
-                             f"링크 {len(art.links)}개, 발표일 {art.published}")
+                             f"링크 {len(art.links)}개, 페이지 발표일 {art.published}")
+                if art.tables:
+                    lines.append(f"INFO 첫 표 앞부분: {art.tables[0][:160]}")
             except Exception as exc:  # noqa: BLE001
                 ok = False
                 lines.append(f"FAIL 원문 읽기 {company}: {hit.url} ({exc})")
@@ -227,6 +229,8 @@ def run_selftest() -> tuple[bool, list[str]]:
                 lines.append(f"INFO {e.source} | {e.published} | {e.title[:80]} | {e.url}")
     for line in lines:
         print(line, flush=True)
-        level = "error" if line.startswith("FAIL") else "notice"
-        annotate(level, "자가 시험", line)
+        if line.startswith("FAIL"):
+            annotate("error", "자가 시험 실패", line)
+    # One annotation with every line: GitHub shows at most 10 notices per step.
+    annotate("notice", "자가 시험 결과", "\n".join(lines))
     return ok, lines
