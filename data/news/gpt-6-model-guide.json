@@ -3,7 +3,7 @@
   "company": "openai",
   "date": "2026-10-02",
   "kind": "활용 팁",
-  "title": "A model guide for the GPT-6 family",
+  "title": "GPT-6 모델 가이드: Astra·Sol·Luna 고르고 지시하는 법",
   "headline": "GPT-6 Astra·Sol·Luna 중 무엇을 고르고 어떻게 지시할지 정리한 공식 가이드",
   "tldr": "OpenAI가 GPT-6 계열을 작업에 맞게 고르고, 지시문을 쓰고, 오래 걸리는 작업을 관리하고, 운영에 올리는 방법을 정리했습니다. 가장 어려운 추론에는 Astra, 복잡한 코딩·리서치·컴퓨터 사용에는 Sol, 목표가 분명한 반복 업무에는 Luna를 권합니다. 캐싱과 컴팩션으로 비용을 관리하라는 내용도 포함돼 있습니다.",
   "models": [

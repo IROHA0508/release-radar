@@ -2,7 +2,7 @@
   "id": "gemini-4-argon",
   "company": "google",
   "date": "2026-09-30",
-  "kind": "모델 발표",
+  "kind": "모델 출시",
   "title": "Gemini 4 Argon",
   "headline": "구글의 차세대 프런티어 모델, 출력 한도 100만 토큰",
   "tldr": "실전 소프트웨어 엔지니어링, 법률·재무 같은 기업 지식 업무, 사이버 방어에 초점을 둔 새 프런티어 모델입니다. 지금은 Fairwind 프로그램의 신뢰된 사이버 방어자에게만 배포 중이고, 이후 유료 API 고객과 Google AI Ultra 구독자부터 열릴 예정입니다.",

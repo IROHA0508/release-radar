@@ -2,7 +2,7 @@
   "id": "claude-mythos-preview",
   "company": "anthropic",
   "date": "2026-04-07",
-  "kind": "모델 발표",
+  "kind": "모델 출시",
   "title": "Claude Mythos Preview · Project Glasswing",
   "headline": "일반 공개 없이 보안 파트너에게만 제공하는 최상위 모델, SWE-bench Verified 93.9%",
   "tldr": "Anthropic이 새 최상위 모델 Claude Mythos Preview를 공개하고, 이를 핵심 소프트웨어의 보안 취약점을 찾아 고치는 데 쓰는 Project Glasswing을 시작했습니다. AWS, Apple, Google, Microsoft, NVIDIA 등 11개 파트너와 40여 개 조직이 참여하며, 일반 공개 계획은 없습니다. CyberGym 83.1%, SWE-bench Verified 93.9%로 Opus 4.6을 크게 앞섰습니다.",

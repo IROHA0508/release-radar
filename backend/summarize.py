@@ -35,7 +35,7 @@ CHART = _obj({
 
 ITEM = _obj({
     "id": STR,
-    "kind": {"type": "string", "enum": ["모델 출시", "모델 업데이트", "모델 발표", "활용 팁"]},
+    "kind": {"type": "string", "enum": ["모델 출시", "모델 업데이트", "활용 팁"]},
     "title": STR, "headline": STR, "tldr": STR,
     "models": {"type": "array", "items": _obj({"name": STR, "apiId": STR, "input": STR, "output": STR, "cached": STR})},
     "numbers": {"type": "array", "items": _obj({"label": STR, "value": STR, "note": STR})},
@@ -68,8 +68,13 @@ RULES = """\
 뉴스별로 한국어로 요약하고, 성능 그래프, 모델을 더 잘 쓰는 법, 추천 프롬프트를 정리한다.
 
 판단 기준
-- 포함(decision "new"): 새 모델 출시·발표, 모델 버전 업데이트, 가격이나 사용 가능 범위의 큰 변경, 공식 모델 활용 가이드.
-- 제외(decision "skip"): 기업 파트너십, 고객 사례, 정책·규제 글, 모델 출시와 무관한 연구·안전 보고서, 행사 홍보.
+- 포함(decision "new"): 새 모델 출시·발표, 모델 버전 업데이트, 가격이나 사용 가능 범위의 큰 변경, 그리고 공식 활용 팁
+  (특정 모델이나 ChatGPT·Codex·Claude·Claude Code·Gemini 앱·Gemini API 같은 공식 도구를 더 잘 쓰는 법,
+  프롬프트 가이드, 모범 사례처럼 독자가 바로 따라 할 수 있는 실전 조언이 중심인 글).
+- 제외(decision "skip"): 기업 파트너십, 고객 사례, 정책·규제 글, 모델 출시와 무관한 연구·안전 보고서, 행사 홍보,
+  모델과 무관한 제품·영업 공지(정부·기업 요금제 출시, 통합 발표 등), 실전 조언이 거의 없는 기능 소개.
+- kind는 셋 중 하나: "모델 출시"(새 모델 출시·발표), "모델 업데이트"(기존 모델의 기능·가격·가용성 변경, 지원 종료),
+  "활용 팁"(위의 공식 활용 팁).
 - 이미 사이트에 있는 모델의 후속 소식(가용성 확대, 새 모드 등)은 decision "update", updateId에 기존 id를 쓰고
   update 필드에 덧붙일 changes/availability/sources만 쓴다. 이 경우 item은 빈 값으로 채워도 된다.
 
@@ -81,7 +86,10 @@ RULES = """\
   lowerIsBetter true. 수치가 이미지로만 있어 텍스트로 확인할 수 없으면 charts는 빈 배열, chartNote에 그 사실을 쓴다.
   charts를 쓰면 chartSource에 수치 출처를 쓴다. 각 수치가 무엇과 비교한 값인지(이전 모델 대비인지, 측정 기관) 원문대로 쓴다.
 - 이 단계 뒤에 프로그램이 모든 그래프 값·핵심 수치·모델 ID·가격을 원문과 대조해, 원문에 없는 값은 지운다.
-- 문체: 자연스럽고 간결한 한국어 존댓말 서술. 과장 금지. title은 공식 모델명 그대로.
+- 문체: 자연스럽고 간결한 한국어 존댓말 서술. 과장 금지. title은 모델 출시·업데이트면 공식 모델명 그대로,
+  활용 팁이면 핵심을 담은 짧은 한국어 제목(예: "API 설정 두 개로 점수 3배: 추론 유지와 컴팩션").
+- 활용 팁에서 changes는 원문의 핵심 내용, tips는 바로 따라 할 행동, prompts는 원문 예시를 옮긴 것 위주로 쓴다.
+  성능 비교 수치가 없으면 charts는 빈 배열로 둔다.
 - numbers는 핵심 수치 3~4개, changes 3~6개, tips 2~4개, prompts 2개(바로 붙여 쓸 수 있는 한국어, 바꿀 부분은 [대괄호],
   API 예시는 type "code"), cautions 1~3개, sources는 원문 URL을 첫 번째로.
 - id는 소문자 영문·숫자·하이픈(예: claude-haiku-5-5). guide, prices는 쓰지 않는다.
@@ -191,8 +199,9 @@ def triage(claude, entries: list[Entry], site_lines: list[str]) -> dict[int, tup
         f"[{i}] {e.company} | {e.published or '날짜 미상'} | {e.title} | {e.summary[:200]} | {e.url}"
         for i, e in enumerate(entries))
     user = (f"사이트에 이미 있는 소식:\n" + "\n".join(site_lines[:60]) +
-            f"\n\n새로 올라온 글 목록:\n{listing}\n\n각 글이 사이트에 실을 '모델 소식'(새 모델, 모델 업데이트, 가격·사용 범위 변경, "
-            "공식 활용 가이드, 또는 이미 있는 모델의 의미 있는 후속 소식)인지 판단해 results에 index별로 답해라.")
+            f"\n\n새로 올라온 글 목록:\n{listing}\n\n각 글이 사이트에 실을 글(새 모델, 모델 업데이트, 가격·사용 범위 변경, "
+            "공식 활용 팁·프롬프트 가이드·모범 사례, 또는 이미 있는 모델의 의미 있는 후속 소식)인지 위 판단 기준대로 "
+            "판단해 results에 index별로 답해라.")
     out = claude.json_call(model=config.TRIAGE_MODEL, system=RULES, user=user, schema=TRIAGE, max_tokens=2000)
     return {r["index"]: (bool(r["relevant"]), r.get("reason", "")) for r in out.get("results", [])}
 
@@ -200,9 +209,11 @@ def triage(claude, entries: list[Entry], site_lines: list[str]) -> dict[int, tup
 def write_item(claude, entry: Entry, article: Article, site_lines: list[str], today: date) -> dict:
     schema_doc = config.SCHEMA_DOC.read_text(encoding="utf-8") if config.SCHEMA_DOC.exists() else ""
     example = config.STYLE_EXAMPLE.read_text(encoding="utf-8") if config.STYLE_EXAMPLE.exists() else ""
+    tip_example = config.TIP_EXAMPLE.read_text(encoding="utf-8") if config.TIP_EXAMPLE.exists() else ""
     tables = "\n\n".join(article.tables) or "(텍스트로 된 표 없음)"
     links = "\n".join(l for l in article.links if re.search(r"model|api|docs|pricing|aistudio|platform", l, re.I))[:4000]
-    system = RULES + "\n\n# 데이터 형식\n" + schema_doc + "\n\n# 문체·구성 예시 (다른 소식)\n" + example
+    system = (RULES + "\n\n# 데이터 형식\n" + schema_doc + "\n\n# 문체·구성 예시: 모델 출시 (다른 소식)\n" + example
+              + "\n\n# 문체·구성 예시: 활용 팁 (다른 소식)\n" + tip_example)
     user = (
         f"오늘(Asia/Seoul): {today.isoformat()}\n회사: {entry.company}\n원문 제목: {article.title or entry.title}\n"
         f"원문 URL: {entry.url}\n발표일: {(article.published or entry.published or today).isoformat()}\n"

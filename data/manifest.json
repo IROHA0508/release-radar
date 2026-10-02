@@ -45,6 +45,23 @@
     "gpt-5-3-codex",
     "claude-opus-4-6",
     "openai-retire-gpt-4o",
-    "veo-3-1-ingredients"
+    "veo-3-1-ingredients",
+    "claude-5-context-engineering",
+    "claude-code-session-value-tips",
+    "claude-code-skills-lessons",
+    "claude-computer-use-best-practices",
+    "claude-fable-5-cowork-tips",
+    "claude-opus-5-5-task-costs",
+    "gemini-3-1-flash-tts-prompting",
+    "gemini-3-5-flash-developer-guide",
+    "gemini-token-efficient-coding",
+    "lyria-3-prompting-tips",
+    "nano-banana-prompting-guide",
+    "openai-gpt-5-4-frontend-design",
+    "openai-gpt-5-6-builders-guide",
+    "openai-gpt-6-astra-skills-prompts",
+    "openai-gpt-image-prompting-guide",
+    "openai-prompting-fundamentals",
+    "openai-skills-shell-compaction-tips"
   ]
 }

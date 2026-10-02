@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 import shutil
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 import pytest
@@ -56,8 +56,10 @@ def site(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "PENDING_FILE", tmp_path / "backend" / "state" / "pending.json")
     monkeypatch.setattr(config, "SCHEMA_DOC", tmp_path / "docs" / "DATA_SCHEMA.md")
     monkeypatch.setattr(config, "STYLE_EXAMPLE", tmp_path / "data" / "news" / "claude-sonnet-5-5.json")
+    monkeypatch.setattr(config, "TIP_EXAMPLE", tmp_path / "data" / "news" / "openai-retained-reasoning-compaction.json")
     monkeypatch.setattr(config, "VALIDATOR", tmp_path / "scripts" / "validate_data.py")
     monkeypatch.setattr(pipeline, "today_kst", lambda: date(2026, 10, 2))
+    monkeypatch.setattr(pipeline, "now_kst", lambda: datetime(2026, 10, 2, 6, 3))
     return tmp_path
 
 
@@ -78,6 +80,23 @@ def test_parse_rss_and_listing():
     assert urls == ["https://www.anthropic.com/claude-sonnet-5-5", "https://www.anthropic.com/news/barclays-scales-claude",
                     "https://www.anthropic.com/news/claude-haiku-5-5"]
     assert listing[0].published == date(2026, 9, 28) and listing[0].title == "Introducing Claude Sonnet 5.5"
+
+
+def test_listing_with_own_article_pattern():
+    blog = next(s for s in config.SOURCES if s.name == "Claude blog")
+    html = """<a href="/blog/maximizing-the-value-of-your-claude-code-sessions">Maximizing the value</a>
+    <a href="/blog/category/claude-code">Claude Code</a><a href="https://claude.com/blog/build-plugins-for-claude">Plugins</a>
+    <a href="https://www.anthropic.com/news/x">elsewhere</a><a href="/pricing">Pricing</a>"""
+    urls = [e.url for e in feeds.parse_listing(html, blog)]
+    assert urls == ["https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions",
+                    "https://claude.com/blog/build-plugins-for-claude"]
+    assert all(e.company == "anthropic" for e in feeds.parse_listing(html, blog))
+
+
+def test_tip_titles_pass_keyword_filter():
+    for title in ("Shell + Skills + Compaction: Tips for long-running agents that do real work",
+                  "Prompting fundamentals", "6 tips for prompting Lyria 3 in the Gemini app"):
+        assert config.RELEVANT_RE.search(title), title
 
 
 def test_parse_article_keeps_tables_and_links():
@@ -194,7 +213,7 @@ def test_full_update_writes_verified_item(site, monkeypatch):
     assert [n["label"] for n in item["numbers"]] == ["Terminal-Bench 4.0"]
     assert item["models"][0]["cached"] is None
     manifest = json.loads((site / "data/manifest.json").read_text())
-    assert manifest["news"][0] == "gpt-7-nova" and manifest["lastChecked"] == "2026-10-02"
+    assert manifest["news"][0] == "gpt-7-nova" and manifest["lastChecked"] == "2026-10-02 06:03"
     ok, out = store.validate()
     assert ok, out
     state = json.loads((site / "backend/state/seen.json").read_text())

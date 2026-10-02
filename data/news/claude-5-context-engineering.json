@@ -1,0 +1,104 @@
+{
+  "id": "claude-5-context-engineering",
+  "company": "anthropic",
+  "date": "2026-07-24",
+  "kind": "활용 팁",
+  "title": "Claude 5 세대 컨텍스트 엔지니어링: 규칙은 줄이고 함정만 남기기",
+  "headline": "Claude Code 팀이 시스템 프롬프트를 80% 넘게 지운 이유와 CLAUDE.md·스킬 정리법",
+  "tldr": "Anthropic Claude Code 팀의 Thariq Shihipar가 Claude Opus 5, Claude Fable 5 같은 모델을 위해 Claude Code 시스템 프롬프트의 80% 이상을 걷어낸 경험을 정리한 글입니다. 새 모델은 판단력이 좋아 명시적 규칙 없이도 잘 결정하므로, 시스템 프롬프트·CLAUDE.md·스킬도 단순하게 줄이고 토큰은 코드베이스의 함정(gotchas)에 쓰라고 권합니다.",
+  "models": [
+    {
+      "name": "Claude Opus 5",
+      "apiId": "claude-opus-5",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Claude Fable 5",
+      "apiId": "claude-fable-5",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "지운 시스템 프롬프트",
+      "value": "80% 이상",
+      "note": "Claude Opus 5, Claude Fable 5 같은 모델용 Claude Code 시스템 프롬프트에서"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문의 수치가 '80% 이상' 하나뿐이라 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Claude Code 팀은 시스템 프롬프트와 CLAUDE.md, 스킬 모두에서 Claude Code를 과하게 제약하고 있었다고 말합니다. 새 모델은 판단력이 좋아져 이런 결정을 명시적 규칙 없이도 잘 처리합니다.",
+    "예를 들어 예전 시스템 프롬프트는 '주석은 기본적으로 쓰지 말고, 여러 줄 docstring은 금지' 같은 세부 규칙을 나열했습니다. 새 프롬프트는 '주변 코드처럼 읽히게 쓰고, 주석 밀도·이름·관용구를 맞추라'는 한 문장으로 대신합니다.",
+    "최신 모델에서는 예시를 주면 오히려 특정 탐색 범위에 갇힌다고 합니다. 예시 대신 도구, 스크립트, 파일 설계에 신경 쓰고, Claude가 받는 파라미터를 더 표현력 있게 만들라고 권합니다.",
+    "Claude Code는 점진적 공개(progressive disclosure), 즉 필요한 시점에 필요한 컨텍스트를 불러오는 데 능숙해졌습니다. 그래서 모든 것을 미리 적기보다 제때 불러올 수 있는 파일 트리를 두는 편이 낫습니다.",
+    "스펙은 문서만이 아닙니다. 자세한 테스트 스위트나 Claude가 이식할 다른 코드베이스의 함수도 스펙이 될 수 있고, 디자인은 설명이나 스크린샷보다 HTML 목업이 대체로 더 좋은 결과를 냅니다."
+  ],
+  "availability": [
+    "Claude Code (CLAUDE.md, 스킬)",
+    "Claude 5 세대 모델용 시스템 프롬프트"
+  ],
+  "tips": [
+    {
+      "title": "CLAUDE.md는 가볍게, 토큰은 함정에",
+      "body": "레포가 무엇을 위한 것인지는 짧게만 적고, 대부분의 토큰은 코드베이스 안의 함정(gotchas)에 쓰세요."
+    },
+    {
+      "title": "뻔한 내용은 빼기",
+      "body": "파일 시스템이나 레포를 보면 Claude가 알 수 있는 내용은 적지 마세요."
+    },
+    {
+      "title": "스킬은 가벼운 안내서로",
+      "body": "스킬은 Claude가 필요할 때 정보를 찾게 돕는 가벼운 가이드로 쓰고, 과도하게 제약하지 마세요. 검증 스킬을 하나 만들어 CLAUDE.md에서 참조하는 방식을 권합니다."
+    },
+    {
+      "title": "예시보다 도구 설계",
+      "body": "예시 대신 도구, 스크립트, 파일의 설계를 다듬으세요. Claude가 어떤 파라미터를 받는지, 그것을 더 표현력 있게 만들 수 있는지 살펴보세요."
+    },
+    {
+      "title": "참고 자료는 @멘션으로",
+      "body": "파일을 @멘션해 참고 자료로 넣을 수 있습니다. 디자인은 말로 설명하거나 스크린샷을 주기보다 HTML 목업을, 동작은 테스트 스위트를 스펙으로 주세요."
+    },
+    {
+      "title": "기존 설정도 다시 단순하게",
+      "body": "시스템 프롬프트, 스킬, CLAUDE.md 모두 Claude Code 팀처럼 단순하게 줄여야 할 수 있습니다. 예전 모델에 맞춰 쓴 규칙이 새 모델을 묶고 있지 않은지 점검하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Anthropic이 새 시스템 프롬프트에 쓴 코드 스타일 문장",
+      "when": "코드 스타일 규칙을 길게 나열하는 대신 시스템 프롬프트나 CLAUDE.md에 한 줄로 쓸 때",
+      "type": "prompt",
+      "text": "Write code that reads like the surrounding code: match its comment density, naming, and idiom."
+    },
+    {
+      "title": "CLAUDE.md와 스킬 다이어트",
+      "when": "예전 모델 시절에 쌓인 규칙을 정리할 때",
+      "type": "prompt",
+      "text": "이 레포의 CLAUDE.md와 [.claude/skills 폴더]를 검토해 줘. 파일 시스템이나 레포를 보면 알 수 있는 뻔한 내용, 너무 세세한 규칙, 예시를 지울 후보로 정리하고, 남길 내용은 코드베이스 안의 함정(gotchas) 위주로 제안해 줘."
+    },
+    {
+      "title": "목업과 테스트를 스펙으로",
+      "when": "구현할 기능의 모습과 동작이 이미 정해져 있을 때",
+      "type": "prompt",
+      "text": "@[mockup.html]의 디자인과 @[tests/feature.test.ts]의 테스트를 스펙으로 삼아 [기능 이름]을 구현해 줘."
+    }
+  ],
+  "cautions": [
+    "이 글은 Claude Opus 5, Claude Fable 5 같은 Claude 5 세대 모델 기준입니다. 규칙을 줄여도 되는 근거로 원문은 새 모델의 판단력이 좋아졌다는 점을 듭니다."
+  ],
+  "sources": [
+    {
+      "title": "The new rules of context engineering for Claude 5 generation models (Anthropic)",
+      "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
+    },
+    {
+      "title": "Effective context engineering for AI agents (Anthropic)",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+    }
+  ]
+}

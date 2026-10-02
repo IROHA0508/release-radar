@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -90,13 +91,14 @@ def parse_rss(xml: bytes | str, source: config.Source) -> list[Entry]:
 def parse_listing(html: str, source: config.Source) -> list[Entry]:
     """Pull article links (in page order) from a newsroom page. Dates are read later from each article."""
     soup = BeautifulSoup(html, "lxml")
+    article_re = re.compile(source.pattern) if source.pattern else config.ANTHROPIC_ARTICLE_RE
     seen, entries = set(), []
     for a in soup.find_all("a", href=True):
         href = a["href"].split("#")[0].split("?")[0]
         path = urlsplit(href).path if href.startswith("http") else href
         if href.startswith("http") and urlsplit(href).netloc.removeprefix("www.") != urlsplit(source.base).netloc.removeprefix("www."):
             continue
-        if not config.ANTHROPIC_ARTICLE_RE.match(path):
+        if not article_re.match(path):
             continue
         url = urljoin(source.base + "/", path.lstrip("/"))
         if normalize_url(url) in seen:

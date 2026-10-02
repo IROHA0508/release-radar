@@ -18,6 +18,10 @@ def today_kst() -> date:
     return datetime.now(ZoneInfo(config.TIMEZONE)).date()
 
 
+def now_kst() -> datetime:
+    return datetime.now(ZoneInfo(config.TIMEZONE))
+
+
 def annotate(level: str, title: str, message: str) -> None:
     """Print a GitHub Actions annotation (shown on the run page and readable through the API)."""
     if os.environ.get("GITHUB_ACTIONS") == "true":
@@ -112,7 +116,7 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
         if not dry_run:
             config.PENDING_FILE.parent.mkdir(parents=True, exist_ok=True)
             config.PENDING_FILE.write_text(json.dumps(report.candidates, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            store.touch_last_checked(today)
+            store.touch_last_checked(now_kst())
             detect.save_state(state)
             report.save()
         return report
@@ -131,7 +135,7 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
                 report.authError = True
                 report.note += " | Claude 인증 실패: 토큰(또는 API 키)이 잘못됐거나 만료됨. 새로 만들어 GitHub Secret을 바꿔 주세요."
                 annotate("error", "Claude 인증 실패", str(exc)[-400:])
-                store.touch_last_checked(today)
+                store.touch_last_checked(now_kst())
                 detect.save_state(state)
                 report.save()
                 return report
@@ -204,7 +208,7 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
         report.added.append({"id": item["id"], "title": item["title"], "url": e.url, "charts": len(item.get("charts", []))})
         annotate("notice", "새 소식 추가", f"{item['id']} | {item['title']} | 그래프 {len(item.get('charts', []))}개")
 
-    store.touch_last_checked(today)
+    store.touch_last_checked(now_kst())
     detect.save_state(state)
     report.save()
     return report

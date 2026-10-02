@@ -6,12 +6,12 @@
 
 ```json
 {
-  "lastChecked": "2026-10-02",
+  "lastChecked": "2026-10-03 06:02",
   "news": ["gemini-4-argon", "gpt-6-1-sol"]
 }
 ```
 
-- `lastChecked`: 마지막으로 공식 소스를 확인한 날짜(Asia/Seoul). 상단 "마지막 확인"과 NEW 배지(7일 이내)의 기준입니다.
+- `lastChecked`: 마지막으로 공식 소스를 확인한 시각 `YYYY-MM-DD HH:MM`(Asia/Seoul). 상단 "Update"에 표시되고, 날짜 부분이 NEW 배지(7일 이내)의 기준입니다. 날짜만 있는 `YYYY-MM-DD`도 허용합니다.
 - `news`: 사이트에 보여 줄 소식 id 목록. 순서와 관계없이 화면에서는 날짜 역순으로 정렬됩니다.
 
 ## data/news/&lt;id&gt;.json
@@ -21,7 +21,7 @@
 | `id` | 문자열 | 파일 이름과 같음. 소문자·숫자·하이픈만. `guide`, `prices`는 예약어 |
 | `company` | `openai` \| `anthropic` \| `google` | 발표한 회사 |
 | `date` | `YYYY-MM-DD` | 공식 발표일 |
-| `kind` | `모델 출시` \| `모델 업데이트` \| `모델 발표` \| `활용 팁` | 소식 종류 |
+| `kind` | `모델 출시` \| `모델 업데이트` \| `활용 팁` | 소식 종류. 화면의 종류 필터와 같음. 새 모델 출시·발표는 `모델 출시`, 기존 모델의 기능·가격·가용성 변경과 지원 종료는 `모델 업데이트`, 공식 사용 가이드·프롬프트 팁은 `활용 팁` |
 | `title`, `headline`, `tldr` | 문자열 | 제목, 한 줄 헤드라인, 2~3문장 요약 |
 | `models` | 배열 | `{name, apiId, input, output, cached}` — 가격은 1M 토큰당 USD 문자열, 모르면 `null` |
 | `numbers` | 배열 | `{label, value, note}` 핵심 수치 3~4개 |

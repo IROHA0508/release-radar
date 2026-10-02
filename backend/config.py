@@ -14,6 +14,7 @@ STATE_FILE = ROOT / "backend" / "state" / "seen.json"
 PENDING_FILE = ROOT / "backend" / "state" / "pending.json"
 SCHEMA_DOC = ROOT / "docs" / "DATA_SCHEMA.md"
 STYLE_EXAMPLE = NEWS_DIR / "claude-sonnet-5-5.json"
+TIP_EXAMPLE = NEWS_DIR / "openai-retained-reasoning-compaction.json"
 VALIDATOR = ROOT / "scripts" / "validate_data.py"
 
 TIMEZONE = "Asia/Seoul"
@@ -26,7 +27,7 @@ TRIAGE_MODEL = os.environ.get("RR_TRIAGE_MODEL", "claude-haiku-4-5-20251001")
 # Safety limits per run.
 MAX_NEW_ITEMS = int(os.environ.get("RR_MAX_ITEMS", "5"))
 LOOKBACK_DAYS = int(os.environ.get("RR_LOOKBACK_DAYS", "7"))
-MAX_LISTING_FETCHES = int(os.environ.get("RR_MAX_LISTING_FETCHES", "15"))
+MAX_LISTING_FETCHES = int(os.environ.get("RR_MAX_LISTING_FETCHES", "30"))
 PAGE_TEXT_LIMIT = 60_000
 
 # When a page blocks scripted requests, retry through the Jina Reader proxy (r.jina.ai).
@@ -50,6 +51,7 @@ class Source:
     url: str
     base: str = ""        # for listing pages: prefix for relative links
     priority: int = 0     # higher wins when two sources carry the same article
+    pattern: str = ""     # listing pages: regex for article paths (default: ANTHROPIC_ARTICLE_RE)
 
 
 SOURCES = [
@@ -61,6 +63,14 @@ SOURCES = [
     Source("Google Gemini models blog", "google", "rss",
            "https://blog.google/innovation-and-ai/models-and-research/gemini-models/rss/", priority=2),
     Source("Google DeepMind blog", "google", "rss", "https://deepmind.google/blog/rss.xml", priority=1),
+    # Official usage tips and prompting guides usually appear on these blogs, not the main newsrooms.
+    Source("OpenAI Developers blog", "openai", "listing", "https://developers.openai.com/blog",
+           base="https://developers.openai.com", priority=1, pattern=r"^/blog/(?!topic/|tag/|page/)[a-z0-9-]+/?$"),
+    Source("Claude blog", "anthropic", "listing", "https://claude.com/blog",
+           base="https://claude.com", priority=1, pattern=r"^/blog/(?!category/|tag/|page/)[a-z0-9-]+/?$"),
+    Source("Google Gemini app blog", "google", "rss", "https://blog.google/products/gemini/rss/", priority=1),
+    Source("Google Developers blog", "google", "rss", "https://developers.googleblog.com/feeds/posts/default"),
+    Source("Google Cloud AI blog", "google", "rss", "https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/"),
 ]
 
 # Anthropic's newsroom links to article pages under /news/ and to launch pages at the top level
@@ -72,5 +82,6 @@ ANTHROPIC_ARTICLE_RE = re.compile(
 # Cheap first filter before any API call: the title or summary must mention something model-like.
 RELEVANT_RE = re.compile(
     r"(?i)\b(gpt[-‑ ]?\d|o\d\b|codex|sora|chatgpt|gpt|claude|opus|sonnet|haiku|fable|mythos|gemini|gemma|veo|imagen|"
-    r"lyria|nano banana|omni|model|models|api|prompting|realtime|tts|transcribe|reasoning|agent)\b"
+    r"lyria|nano banana|omni|models?|api|prompt(?:s|ing)?|realtime|tts|transcribe|reasoning|agents?|"
+    r"tips?|guide|best practices|skills?|antigravity|ai studio)\b"
 )

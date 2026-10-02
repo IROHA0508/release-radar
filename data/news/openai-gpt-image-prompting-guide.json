@@ -1,0 +1,108 @@
+{
+  "id": "openai-gpt-image-prompting-guide",
+  "company": "openai",
+  "date": "2026-04-21",
+  "kind": "활용 팁",
+  "title": "이미지 생성 프롬프트 공식 가이드: gpt-image-2",
+  "headline": "OpenAI가 gpt-image-2로 이미지를 생성·편집할 때의 프롬프트 원칙과 파라미터 사용법을 정리했습니다",
+  "tldr": "OpenAI Cookbook의 이미지 생성 모델 프롬프트 가이드로, gpt-image-2를 중심으로 인포그래픽, 로고, 광고, 사진 편집 등 사례별 프롬프트와 코드를 보여 줍니다. 핵심은 장면, 주제, 세부, 제약 순서로 쓰고 용도를 밝히며, 한 번에 다 넣기보다 작은 수정으로 반복하라는 것입니다.",
+  "models": [
+    {
+      "name": "gpt-image-2",
+      "apiId": "gpt-image-2",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "안정적인 해상도 상한",
+      "value": "2560x1440 (3,686,400픽셀)",
+      "note": "이보다 큰 출력은 결과가 더 들쭉날쭉할 수 있어 실험적으로 취급"
+    },
+    {
+      "label": "size의 총 픽셀 범위",
+      "value": "655,360 ~ 8,294,400픽셀",
+      "note": "gpt-image-2 기준. 두 변은 16의 배수, 긴 변과 짧은 변의 비율은 3:1 이하"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 같은 지표로 비교할 수 있는 성능 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "프롬프트는 배경/장면 → 주제 → 핵심 세부 → 제약 순서로 일정하게 쓰고, 광고·UI 목업·인포그래픽 같은 용도를 밝혀 모델의 '모드'와 완성도 수준을 정합니다. 요청이 복잡하면 긴 문단 하나 대신 짧은 라벨 구획이나 줄바꿈을 씁니다.",
+    "형식은 유지하기 쉬운 쪽이면 됩니다. 짧은 프롬프트, 서술형 문단, JSON 비슷한 구조, 태그 방식 모두 의도와 제약이 분명하면 잘 동작하며, 운영 시스템에서는 영리한 문법보다 훑어보기 쉬운 템플릿을 우선하라고 권합니다.",
+    "지연에 민감하거나 대량으로 만드는 경우 quality=\"low\"로 시작해 충분한지 평가합니다. 작은 글자, 정보가 빽빽한 인포그래픽, 인물 클로즈업, 신원이 중요한 편집, 고해상도 출력은 출시 전에 medium이나 high와 비교합니다.",
+    "사진 같은 결과를 원하면 프롬프트에 'photorealistic'을 직접 넣으면 사실적 모드가 강하게 작동합니다. 세밀한 카메라 사양은 느슨하게 해석될 수 있어 전체적인 느낌과 구도용으로 쓰는 것이 좋습니다.",
+    "편집할 때는 'X만 바꾸고 나머지는 모두 그대로'라고 말하고, 보존할 목록을 매 반복마다 다시 적어 결과가 조금씩 달라지는 것을 줄입니다. 여러 입력 이미지는 번호와 설명으로 구분합니다(예: 'Image 1: 제품 사진, Image 2: 스타일 참고').",
+    "투명 배경은 gpt-image-2에서 프리뷰 기능입니다. background=\"transparent\"를 output_format=\"png\"(기본값)나 \"webp\"와 함께 쓰며, jpeg는 투명도를 지원하지 않습니다."
+  ],
+  "availability": [
+    "OpenAI Image API (images.generate, images.edit)",
+    "gpt-image-2"
+  ],
+  "tips": [
+    {
+      "title": "순서를 정하고 용도를 밝히기",
+      "body": "장면 → 주제 → 세부 → 제약 순서로 쓰고, '광고용', '인포그래픽' 같은 용도를 넣으세요. 용도에 따라 모델이 완성도 수준을 맞춥니다."
+    },
+    {
+      "title": "quality는 low부터 비교",
+      "body": "대량·저지연 작업은 quality=\"low\"로 시작하세요. 작은 글자나 인물 클로즈업처럼 정밀함이 필요한 결과는 medium·high와 비교한 뒤 정하세요."
+    },
+    {
+      "title": "이미지 속 글자는 따옴표와 철자로",
+      "body": "넣을 문구는 따옴표나 대문자로 감싸고 서체 스타일, 크기, 색, 위치를 제약으로 적으세요. 브랜드명처럼 까다로운 단어는 한 글자씩 철자를 풀어 쓰면 정확도가 올라갑니다."
+    },
+    {
+      "title": "원치 않는 요소는 명시적으로 빼기",
+      "body": "'워터마크 없음', '추가 텍스트 없음', '로고·상표 없음'처럼 제외할 것과 유지할 것을 분명히 적으세요."
+    },
+    {
+      "title": "한 번에 몰아넣지 말고 작은 수정으로",
+      "body": "깔끔한 기본 프롬프트로 시작한 뒤 '조명을 더 따뜻하게', '여분의 나무를 지워'처럼 한 번에 하나씩 고치세요. 중요한 세부가 흐트러지면 다시 명시하세요."
+    },
+    {
+      "title": "size 제약 지키기",
+      "body": "gpt-image-2는 두 변이 16의 배수이고 긴 변과 짧은 변의 비율이 3:1 이하이며 총 픽셀이 655,360~8,294,400이면 어떤 해상도든 받습니다. 2560x1440을 넘으면 실험적으로 취급하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "인포그래픽 생성 (원문 예시, Python)",
+      "when": "작동 원리나 흐름을 한 장으로 설명하는 이미지를 만들 때",
+      "type": "code",
+      "text": "from openai import OpenAI\n\nclient = OpenAI()\n\nprompt = \"\"\"\n[대상, 예: Jura 같은 전자동 커피 머신]의 작동 원리와 흐름을 보여 주는 상세한 인포그래픽을 만들어 주세요.\n[흐름, 예: 원두 통 → 분쇄 → 계량 → 물탱크 → 보일러] 순서로,\n기술적으로도 시각적으로도 흐름을 이해할 수 있게 해 주세요.\n\"\"\"\n\nresult = client.images.generate(\n    model=\"gpt-image-2\",\n    prompt=prompt,\n    size=\"1024x1536\",\n    quality=\"medium\",\n)"
+    },
+    {
+      "title": "이미지 속 글자만 번역하기 (원문 예시, Python)",
+      "when": "기존 이미지의 다른 부분은 그대로 두고 글자만 바꿀 때",
+      "type": "code",
+      "text": "prompt = \"\"\"\n인포그래픽 속 글자를 [언어]로 번역하세요.\n이미지의 다른 부분은 바꾸지 마세요.\n\"\"\"\n\nresult = client.images.edit(\n    model=\"gpt-image-2\",\n    image=[\n        open(\"[원본 이미지 경로].png\", \"rb\"),\n    ],\n    prompt=prompt,\n    size=\"1024x1536\",\n    quality=\"medium\",\n)"
+    },
+    {
+      "title": "글자가 들어간 광고 이미지 (원문 예시 응용)",
+      "when": "광고판, 포스터처럼 정확한 문구가 필요한 이미지를 만들 때",
+      "type": "prompt",
+      "text": "[장면, 예: 도심 광고판]에 들어갈 [제품] 광고 이미지를 만들어 주세요.\n광고판 문구(정확히, 글자 그대로, 다른 글자 추가 금지): \"[문구]\"\n타이포그래피: 굵은 산세리프, 높은 대비, 가운데 정렬, 깔끔한 자간.\n워터마크, 추가 텍스트, 로고·상표는 넣지 마세요."
+    }
+  ],
+  "cautions": [
+    "이 글은 gpt-image-2 기준입니다. 2026년 9월 ChatGPT Images 2.5가 나왔고, 현재 Image generation 문서는 gpt-image-2.5-sunburst와 gpt-image-2.5-flare를 안내하니 최신 모델은 공식 문서를 함께 확인하세요.",
+    "2560x1440을 넘는 출력은 실험적이고, 투명 배경은 gpt-image-2에서 프리뷰 기능입니다. gpt-image-2에서는 input_fidelity가 작동하지 않습니다(기본 출력이 이미 고충실도)."
+  ],
+  "sources": [
+    {
+      "title": "GPT Image Generation Models Prompting Guide (OpenAI Cookbook)",
+      "url": "https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide"
+    },
+    {
+      "title": "Image prompting 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/image-prompting"
+    },
+    {
+      "title": "Image generation 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/image-generation"
+    }
+  ]
+}

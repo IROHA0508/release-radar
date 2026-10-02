@@ -13,10 +13,11 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
 COMPANIES = {"openai", "anthropic", "google"}
-KINDS = {"모델 출시", "모델 업데이트", "모델 발표", "활용 팁"}
+KINDS = {"모델 출시", "모델 업데이트", "활용 팁"}
 RESERVED_IDS = {"guide", "prices"}
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+CHECKED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$")
 REQUIRED = ["id", "company", "date", "kind", "title", "headline", "tldr", "models", "numbers",
             "changes", "availability", "tips", "prompts", "cautions", "sources"]
 
@@ -89,8 +90,8 @@ def main():
     ids = [i for i in ids if i]
     if manifest is not None:
         listed = manifest.get("news", [])
-        if not DATE_RE.match(str(manifest.get("lastChecked", ""))):
-            err("data/manifest.json", "lastChecked는 YYYY-MM-DD")
+        if not CHECKED_RE.match(str(manifest.get("lastChecked", ""))):
+            err("data/manifest.json", "lastChecked는 'YYYY-MM-DD HH:MM'(한국 시간) 또는 YYYY-MM-DD")
         if len(listed) != len(set(listed)):
             err("data/manifest.json", "news에 중복 id가 있음")
         for i in listed:

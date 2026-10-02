@@ -1,0 +1,157 @@
+{
+  "id": "claude-opus-5-5-task-costs",
+  "company": "anthropic",
+  "date": "2026-09-22",
+  "kind": "활용 팁",
+  "title": "Opus 5.5 작업 비용 계산법: effort·모델·캐시로 줄이기",
+  "headline": "Anthropic이 Opus 5.5 정가로 Claude Code 작업 비용을 계산하고 줄이는 법을 설명합니다",
+  "tldr": "Addy Osmani가 Claude Opus 5.5 API 정가(100만 토큰당 입력 $4, 출력 $20, 캐시 읽기 $0.20)로 Claude Code 작업 비용을 계산해 보인 글입니다. 일상 작업은 medium effort로 하다 막히면 high, 조회는 Sonnet·Haiku 서브에이전트에 맡기고 결과가 중요할 때만 Fable 5.1로 올리라고 권합니다. 캐시 쓰기 1번이 읽기 25번 값이라 세션을 끊지 않고 이어 가는 것도 중요합니다.",
+  "models": [
+    {
+      "name": "Claude Opus 5.5",
+      "apiId": "claude-opus-5-5",
+      "input": "$4",
+      "output": "$20",
+      "cached": "$0.20"
+    },
+    {
+      "name": "Claude Fable 5.1",
+      "apiId": "claude-fable-5-1",
+      "input": "$10",
+      "output": "$50",
+      "cached": "$0.25"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "입출력 토큰 가격",
+      "value": "20% 인하",
+      "note": "Opus 5 대비 (캐시 읽기는 60% 인하)"
+    },
+    {
+      "label": "캐시 쓰기 vs 읽기",
+      "value": "$0.60 vs $0.02",
+      "note": "Opus 5.5, 120K 토큰 컨텍스트에서 5분 캐시 쓰기 1번과 읽기 1번. 쓰기 1번 = 읽기 25번"
+    },
+    {
+      "label": "high effort 추가 비용",
+      "value": "$0.40",
+      "note": "high가 작업 전체에 사고 토큰 20K를 더한다고 가정한 Opus 5.5 예시"
+    },
+    {
+      "label": "개발자 1인 평균",
+      "value": "약 $13 / 활동일",
+      "note": "Claude Code 비용 문서의 엔터프라이즈 배포 평균. 사용자 90%는 활동일당 $30 미만"
+    }
+  ],
+  "chartSource": "Anthropic Claude 블로그 원문의 API 정가와 예시 계산 기준입니다.",
+  "charts": [
+    {
+      "title": "100만 토큰당 출력 가격",
+      "desc": "API 정가",
+      "type": "bar",
+      "unit": "$",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "Opus 5.5",
+          "value": 20,
+          "highlight": true
+        },
+        {
+          "label": "Fable 5.1",
+          "value": 50
+        }
+      ],
+      "keepOrder": true
+    },
+    {
+      "title": "캐시 쓰기 vs 읽기 1번 비용",
+      "desc": "Opus 5.5, 120K 토큰 컨텍스트, 5분 캐시",
+      "type": "bar",
+      "unit": "$",
+      "lowerIsBetter": true,
+      "rows": [
+        {
+          "label": "캐시 쓰기",
+          "value": 0.6
+        },
+        {
+          "label": "캐시 읽기",
+          "value": 0.02,
+          "highlight": true
+        }
+      ],
+      "keepOrder": true
+    }
+  ],
+  "changes": [
+    "Opus 5.5는 Opus 5보다 입력·출력 토큰이 20%, 캐시 읽기가 60% 저렴합니다. 원문 계산은 100만 토큰당 입력 $4, 출력 $20, 캐시 읽기 $0.20인 API 정가를 씁니다.",
+    "Fable 5.1은 입력 $10, 출력 $50으로 Opus 5.5의 2.5배입니다. 하지만 캐시 읽기는 입력 가격의 0.025배로 청구되어 $0.25, Opus 5.5의 1.25배에 그칩니다.",
+    "effort가 낮으면 도구 호출이 적고 짧아집니다. high가 작업 전체에 사고 토큰 20K를 더한다고 하면 Opus 5.5에서는 $0.40입니다.",
+    "120K 토큰 컨텍스트에서 5분 캐시 쓰기는 약 $0.60, 읽기는 약 $0.02라서 쓰기 1번이 읽기 25번과 같습니다. API 키에서는 몇 분만 쉬어도 다음 읽기가 쓰기로 바뀝니다.",
+    "범위가 잘 정해진 작업에서는 Opus 5와 Opus 5.5가 비슷한 턴 수로 끝나므로 이득은 가격 인하분입니다."
+  ],
+  "availability": [
+    "Claude Code",
+    "Claude API (Opus 5.5·Fable 5.1 정가 기준)"
+  ],
+  "tips": [
+    {
+      "title": "기계적 작업은 low",
+      "body": "이름 바꾸기나 이미 아는 패턴을 여러 파일에 적용하는 일은 low effort로 충분합니다."
+    },
+    {
+      "title": "일상 작업은 medium, 막히면 high",
+      "body": "범위가 분명한 일상 작업은 medium으로 시작하고, medium이 막히면 /effort high로 올리세요."
+    },
+    {
+      "title": "조회는 Sonnet·Haiku 서브에이전트로",
+      "body": "검색이나 로그 읽기 같은 조회는 서브에이전트 정의에 model: haiku 또는 model: sonnet을 지정해 작은 모델에 맡기세요. 작은 모델은 실수가 쉽게 드러나는 일에 두고, 판단이 필요한 일은 메인 모델에 남기라고 권합니다."
+    },
+    {
+      "title": "결과가 더 중요하면 Fable 5.1",
+      "body": "토큰 가격보다 결과가 더 중요한 작업이라면 Fable 5.1로 올리세요."
+    },
+    {
+      "title": "세션을 이어 가 캐시를 따뜻하게",
+      "body": "긴 세션은 멈추지 않고 이어 가야 캐시가 유지됩니다. 원문의 120K 컨텍스트 예시에서는 캐시가 만료되면 다음 요청이 $0.02짜리 읽기 대신 $0.60짜리 쓰기가 됩니다."
+    },
+    {
+      "title": "작업이 끝나면 /usage",
+      "body": "세션에서 /usage를 실행하면 Session 블록에 토큰 사용량과 예상 비용이 나옵니다(/cost도 같습니다). CLAUDE.md는 비용 문서 권고대로 200줄 미만으로 유지하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "조회 전용 서브에이전트를 작은 모델로",
+      "when": "검색·로그 읽기를 메인 모델 대신 Haiku에 맡길 때 (정의 파일 위치와 필드는 서브에이전트 문서 참고)",
+      "type": "code",
+      "text": "---\nname: [log-reader]\ndescription: [로그와 검색 결과를 읽고 찾은 내용만 요약해 돌려준다]\nmodel: haiku\n---\n[이 서브에이전트가 할 일에 대한 지시]"
+    },
+    {
+      "title": "effort와 비용 확인 명령",
+      "when": "작업 성격에 맞게 effort를 고르고 비용을 확인할 때",
+      "type": "code",
+      "text": "/effort low      # 이름 바꾸기 같은 기계적 작업\n/effort medium   # 범위가 분명한 일상 작업\n/effort high     # medium이 막힐 때\n/model [별칭 또는 모델 이름]   # 모델 전환\n/usage           # 작업 후 토큰 사용량과 예상 비용 확인"
+    }
+  ],
+  "cautions": [
+    "원문은 이 계산들이 'best effort' 예시라며, 공식 문서와 직접 계산으로 확인하라고 말합니다.",
+    "가격은 API 정가 기준입니다. 범위가 잘 정해진 작업에서는 Opus 5 대비 이득이 가격 인하분에 그친다고 원문은 밝힙니다."
+  ],
+  "sources": [
+    {
+      "title": "What a task costs on Opus 5.5 (Anthropic)",
+      "url": "https://claude.com/blog/what-a-task-costs-on-opus-5-5"
+    },
+    {
+      "title": "Manage costs effectively (Claude Code Docs)",
+      "url": "https://code.claude.com/docs/en/costs"
+    },
+    {
+      "title": "Create custom subagents (Claude Code Docs)",
+      "url": "https://code.claude.com/docs/en/sub-agents"
+    }
+  ]
+}

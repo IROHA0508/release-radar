@@ -96,6 +96,9 @@ a { color: inherit; }
 .chip { font: 500 var(--s-sm)/1 var(--f-body); padding: 8px 13px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
 .chip:hover { border-color: var(--ink); }
 .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.filter-rows { display: grid; gap: 10px; margin: 18px 0 6px; }
+.filter-rows .filters { margin: 0; align-items: center; }
+.f-label { font: 600 12px/1 var(--f-body); color: var(--faint); min-width: 2.6em; }
 
 /* company tag */
 .co { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: var(--s-xs); letter-spacing: 0.02em; }
@@ -146,6 +149,9 @@ a { color: inherit; }
 .tldr { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px 20px; }
 .label { font: 600 12.5px/1 var(--f-body); letter-spacing: 0.02em; color: var(--faint); margin: 0 0 10px; }
 .tldr p { margin: 0; font-size: 17px; line-height: 1.75; }
+.tldr-src { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
+.tldr .tldr-src .label { font-size: 12.5px; line-height: 1; margin: 0 0 10px; }
+.tldr-src .sources a { font-weight: 500; }
 
 .sec { margin-top: 40px; }
 .sec h2 { font-size: var(--s-lg); margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line-strong); display: flex; align-items: baseline; gap: 10px; }
@@ -271,7 +277,7 @@ pre.code { overflow-x: auto; white-space: pre; }
       <p class="tagline">ChatGPT, Claude, Gemini의 공식 발표를 뉴스별로 요약하고, 모델을 더 잘 쓰는 법과 추천 프롬프트까지 정리합니다.</p>
     </div>
     <div class="meta-box" id="meta">
-      <div>마지막 확인 <b id="checked">—</b></div>
+      <div title="공식 소스를 마지막으로 확인한 시각 (한국 시간)">Update <b id="checked">—</b></div>
       <div class="counts" id="counts"></div>
     </div>
   </header>
@@ -283,14 +289,14 @@ pre.code { overflow-x: auto; white-space: pre; }
   </nav>
 
   <main id="view">
-    <div class="filters" aria-hidden="true"><span class="chip">전체</span><span class="chip">OpenAI</span><span class="chip">Anthropic</span><span class="chip">Google</span></div>
+    <div class="filter-rows" aria-hidden="true"><div class="filters"><span class="chip">전체</span><span class="chip">OpenAI</span><span class="chip">Anthropic</span><span class="chip">Google</span></div><div class="filters"><span class="chip">전체</span><span class="chip">모델 출시</span><span class="chip">모델 업데이트</span><span class="chip">활용 팁</span></div></div>
     <div class="month"><h2>최근 소식을 불러오는 중</h2></div>
     <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
   </main>
 
   <footer class="foot">
     <span>비공식 요약입니다. 수치와 가격은 각 사 공식 발표 시점 기준이며, 정확한 내용은 각 소식의 출처 링크에서 확인하세요.</span>
-    <span>매일 아침 OpenAI, Anthropic, Google의 공식 페이지를 확인해 새 모델 소식을 추가합니다.</span>
+    <span>6시간마다(한국 시간 0시·6시·12시·18시) OpenAI, Anthropic, Google의 공식 페이지를 확인해 새 모델 소식과 활용 팁을 추가합니다.</span>
   </footer>
 </div>
 
@@ -304,10 +310,12 @@ pre.code { overflow-x: auto; white-space: pre; }
     google: { name: "Google", product: "Gemini" }
   };
   var ORDER = ["openai", "anthropic", "google"];
+  var KINDS = ["모델 출시", "모델 업데이트", "활용 팁"];
   var WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
-  var state = { manifest: null, news: [], byId: {}, guides: null, error: null, loaded: false, filter: "all" };
+  var state = { manifest: null, news: [], byId: {}, guides: null, error: null, loaded: false, filter: "all", kind: "all" };
   try { var f = localStorage.getItem("rr-filter"); if (f && (f === "all" || COMPANIES[f])) state.filter = f; } catch (e) {}
+  try { var k = localStorage.getItem("rr-kind"); if (k && (k === "all" || KINDS.indexOf(k) >= 0)) state.kind = k; } catch (e) {}
 
   var view = document.getElementById("view");
 
@@ -330,6 +338,11 @@ pre.code { overflow-x: auto; white-space: pre; }
   }
   function parseDate(s) { var p = String(s).split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
   function fmtDate(s) { var p = String(s).split("-"); return p[0] + "." + p[1] + "." + p[2]; }
+  function fmtChecked(s) {
+    var m = String(s).match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?/);
+    if (!m) return String(s);
+    return m[1] + "." + m[2] + "." + m[3] + (m[4] ? " " + m[4] + ":" + m[5] : "");
+  }
   function mmdd(s) { var p = String(s).split("-"); return p[1] + "." + p[2]; }
   function weekday(s) { return WEEK[parseDate(s).getDay()]; }
   function monthKey(s) { var p = String(s).split("-"); return p[0] + "년 " + (+p[1]) + "월"; }
@@ -340,7 +353,7 @@ pre.code { overflow-x: auto; white-space: pre; }
   }
   function isNew(item) {
     if (!state.manifest || !state.manifest.lastChecked) return false;
-    var diff = (parseDate(state.manifest.lastChecked) - parseDate(item.date)) / 86400000;
+    var diff = (parseDate(String(state.manifest.lastChecked).slice(0, 10)) - parseDate(item.date)) / 86400000;
     return diff >= 0 && diff <= 7;
   }
   function section(title, en, body) {
@@ -440,7 +453,7 @@ pre.code { overflow-x: auto; white-space: pre; }
   /* ---------- header ---------- */
   function renderHeader() {
     var m = state.manifest;
-    document.getElementById("checked").textContent = m && m.lastChecked ? fmtDate(m.lastChecked) : "—";
+    document.getElementById("checked").textContent = m && m.lastChecked ? fmtChecked(m.lastChecked) : "—";
     var counts = document.getElementById("counts");
     counts.textContent = "";
     ORDER.forEach(function (c) {
@@ -459,10 +472,10 @@ pre.code { overflow-x: auto; white-space: pre; }
   function renderList() {
     setNav("news");
     var frag = document.createDocumentFragment();
-    var filters = h("div", { class: "filters", role: "group", "aria-label": "회사별 보기" });
+    var companyRow = h("div", { class: "filters", role: "group", "aria-label": "회사별 보기" }, [h("span", { class: "f-label", text: "회사" })]);
     [["all", "전체"]].concat(ORDER.map(function (c) { return [c, COMPANIES[c].name]; })).forEach(function (pair) {
       var key = pair[0];
-      filters.appendChild(h("button", {
+      companyRow.appendChild(h("button", {
         class: "chip" + (key !== "all" ? " c-" + key : ""), type: "button", "aria-pressed": String(state.filter === key),
         onclick: function () {
           state.filter = key;
@@ -471,11 +484,25 @@ pre.code { overflow-x: auto; white-space: pre; }
         }
       }, [key !== "all" ? h("span", { class: "sw", "aria-hidden": "true" }) : null, pair[1]]));
     });
-    frag.appendChild(filters);
+    var kindRow = h("div", { class: "filters", role: "group", "aria-label": "종류별 보기" }, [h("span", { class: "f-label", text: "종류" })]);
+    [["all", "전체"]].concat(KINDS.map(function (k) { return [k, k]; })).forEach(function (pair) {
+      var key = pair[0];
+      kindRow.appendChild(h("button", {
+        class: "chip", type: "button", "aria-pressed": String(state.kind === key),
+        onclick: function () {
+          state.kind = key;
+          try { localStorage.setItem("rr-kind", key); } catch (e) {}
+          renderList();
+        }
+      }, [pair[1]]));
+    });
+    frag.appendChild(h("div", { class: "filter-rows" }, [companyRow, kindRow]));
 
-    var items = sortedNews().filter(function (x) { return state.filter === "all" || x.company === state.filter; });
+    var items = sortedNews().filter(function (x) {
+      return (state.filter === "all" || x.company === state.filter) && (state.kind === "all" || x.kind === state.kind);
+    });
     if (!items.length) {
-      frag.appendChild(h("p", { class: "state", text: "아직 이 회사의 소식이 없습니다." }));
+      frag.appendChild(h("p", { class: "state", text: "조건에 맞는 소식이 아직 없습니다." }));
     }
     var currentMonth = null, ul = null;
     items.forEach(function (item) {
@@ -517,7 +544,14 @@ pre.code { overflow-x: auto; white-space: pre; }
     art.appendChild(h("div", { class: "a-meta" }, [coTag(item.company), h("span", { class: "pill", text: item.kind }), h("span", { class: "when", text: fmtDate(item.date) + " (" + weekday(item.date) + ")" }), isNew(item) ? h("span", { class: "new", text: "NEW" }) : null]));
     art.appendChild(h("h1", { class: "a-title", text: item.title }));
     art.appendChild(h("p", { class: "a-head", text: item.headline }));
-    art.appendChild(h("div", { class: "tldr" }, [h("p", { class: "label", text: "한 줄 요약" }), h("p", { text: item.tldr })]));
+    var isTip = item.kind === "활용 팁";
+    var srcList = (item.sources && item.sources.length) ? h("div", { class: "tldr-src" }, [
+      h("p", { class: "label", text: "공식 출처 · 원문에서 직접 확인하세요" }),
+      h("ul", { class: "sources" }, item.sources.map(function (s) {
+        return h("li", null, [h("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title }), h("span", { class: "host", text: host(s.url) })]);
+      }))
+    ]) : null;
+    art.appendChild(h("div", { class: "tldr" }, [h("p", { class: "label", text: "한 줄 요약" }), h("p", { text: item.tldr }), srcList]));
 
     if (item.numbers && item.numbers.length) {
       art.appendChild(section("숫자로 보기", "key numbers", [
@@ -528,17 +562,17 @@ pre.code { overflow-x: auto; white-space: pre; }
     }
 
     if (item.charts && item.charts.length) {
-      art.appendChild(section("성능 그래프", "benchmarks", [
+      art.appendChild(section(isTip ? "그래프로 보기" : "성능 그래프", isTip ? "charts" : "benchmarks", [
         item.chartSource ? h("p", { class: "chart-src", text: item.chartSource }) : null,
         h("div", { class: "charts" }, item.charts.map(function (c) { return chartBlock(c, item.company); }))
       ]));
-    } else if (item.chartNote) {
+    } else if (item.chartNote && !isTip) {
       art.appendChild(section("성능 그래프", "benchmarks", [h("p", { class: "chart-empty", text: item.chartNote })]));
     }
 
     var models = (item.models || []);
     if (models.length) {
-      art.appendChild(section("모델 사양", "models · USD / 1M tokens", [
+      art.appendChild(section(isTip ? "다루는 모델" : "모델 사양", "models · USD / 1M tokens", [
         h("div", { class: "tbl-wrap" }, [h("table", null, [
           h("thead", null, [h("tr", null, [h("th", { text: "모델" }), h("th", { text: "API ID" }), h("th", { class: "r", text: "입력" }), h("th", { class: "r", text: "출력" }), h("th", { class: "r", text: "캐시 입력" })])]),
           h("tbody", null, models.map(function (m) {
@@ -555,10 +589,10 @@ pre.code { overflow-x: auto; white-space: pre; }
     }
 
     if (item.changes && item.changes.length) {
-      art.appendChild(section("무엇이 바뀌었나", "what's new", [h("ul", { class: "list" }, item.changes.map(function (c) { return h("li", { text: c }); }))]));
+      art.appendChild(section(isTip ? "핵심 내용" : "무엇이 바뀌었나", isTip ? "key points" : "what's new", [h("ul", { class: "list" }, item.changes.map(function (c) { return h("li", { text: c }); }))]));
     }
     if (item.availability && item.availability.length) {
-      art.appendChild(section("어디서 쓸 수 있나", "availability", [h("ul", { class: "list" }, item.availability.map(function (c) { return h("li", { text: c }); }))]));
+      art.appendChild(section(isTip ? "어디에 적용하나" : "어디서 쓸 수 있나", isTip ? "applies to" : "availability", [h("ul", { class: "list" }, item.availability.map(function (c) { return h("li", { text: c }); }))]));
     }
     if (item.tips && item.tips.length) {
       art.appendChild(section("이렇게 쓰면 더 좋다", "how to use it well", [h("div", { class: "tips" }, item.tips.map(function (t) {
@@ -570,11 +604,6 @@ pre.code { overflow-x: auto; white-space: pre; }
     }
     if (item.cautions && item.cautions.length) {
       art.appendChild(section("주의할 점", "caveats", [h("ul", { class: "list caution" }, item.cautions.map(function (c) { return h("li", { text: c }); }))]));
-    }
-    if (item.sources && item.sources.length) {
-      art.appendChild(section("출처", "official sources", [h("ul", { class: "sources" }, item.sources.map(function (s) {
-        return h("li", null, [h("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title }), h("span", { class: "host", text: host(s.url) })]);
-      }))]));
     }
 
     art.appendChild(h("nav", { class: "pager", "aria-label": "다른 소식" }, [
@@ -620,6 +649,7 @@ pre.code { overflow-x: auto; white-space: pre; }
     setNav("prices");
     var rows = [];
     sortedNews().forEach(function (item) {
+      if (item.kind === "활용 팁") return; // 가이드 글이 다시 적은 가격은 발표 소식과 겹치므로 제외
       (item.models || []).forEach(function (m) {
         if (m.input || m.output) rows.push({ company: item.company, m: m, item: item });
       });

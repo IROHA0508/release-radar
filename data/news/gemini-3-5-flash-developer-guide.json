@@ -1,0 +1,114 @@
+{
+  "id": "gemini-3-5-flash-developer-guide",
+  "company": "google",
+  "date": "2026-05-19",
+  "kind": "활용 팁",
+  "title": "Gemini 3.5 Flash로 옮길 때 바꿀 설정: 공식 개발자 가이드",
+  "headline": "Google AI가 Gemini 3.5 Flash의 바뀐 기본값과 마이그레이션 체크리스트를 정리했습니다",
+  "tldr": "Google AI 개발자 관계팀이 Gemini 3.5 Flash(gemini-3.5-flash)를 쓰는 개발자를 위해 바뀐 기본값과 권장 설정을 정리한 가이드입니다. 기본 사고 수준이 high에서 medium으로 바뀌었고, temperature·top_p·top_k는 요청에서 빼라는 것이 가장 먼저 챙길 변화입니다.",
+  "models": [
+    {
+      "name": "Gemini 3.5 Flash",
+      "apiId": "gemini-3.5-flash",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "컨텍스트 창",
+      "value": "1M 토큰",
+      "note": "최대 출력은 65k 토큰"
+    },
+    {
+      "label": "기본 사고 수준",
+      "value": "high → medium",
+      "note": "Gemini 3 Flash Preview의 기본값과 비교"
+    },
+    {
+      "label": "권장 SDK",
+      "value": "google-genai v2.0.0 이상",
+      "note": "원문이 강하게 권하는 업데이트 기준"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 같은 지표로 비교할 수 있는 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "기본 사고 수준(thinking_level)이 Gemini 3 Flash Preview의 high에서 medium으로 바뀌었습니다. medium은 대부분의 작업에서 가장 좋은 품질을 내며 복잡한 코드와 에이전트 작업에도 권장됩니다.",
+    "수준별 용도는 이렇습니다. minimal은 응답 속도 우선(채팅형, 짧은 사실 질문, 단순한 도구 호출), low는 지연이 짧고 단계가 적은 코드·에이전트 작업, high는 복잡한 추론, 어려운 수학, 가장 어려운 코드나 에이전트 작업에 맞습니다.",
+    "temperature, top_p, top_k는 모든 Gemini 3.x 모델에서 더 이상 권장되지 않습니다. 추론 능력이 기본값에 맞춰 최적화되어 있어 요청에서 빼라고 합니다.",
+    "함수 호출 결과를 돌려줄 때는 모든 FunctionResponse에 해당 FunctionCall의 id를 넣고 name을 일치시켜야 합니다. 이미지 같은 멀티모달 내용은 함수 응답 파트 안에 넣으라고 권합니다.",
+    "멀티턴 대화에서 모델의 중간 추론이 자동으로 유지됩니다(thought preservation).",
+    "공식 문서는 프롬프트를 간결하게 쓰라고 권합니다. Gemini 3.x는 직접적이고 명확한 지시에 가장 잘 반응하며, 예전 모델용 장황한 프롬프트 기법은 오히려 과하게 분석하게 만들 수 있습니다."
+  ],
+  "availability": [
+    "Gemini API",
+    "google-genai SDK (Interactions API)"
+  ],
+  "tips": [
+    {
+      "title": "사고 수준은 medium부터",
+      "body": "대부분의 작업은 medium으로 시작하세요. 더 빠르고 저렴하게 하려면 low, 복잡한 추론이나 어려운 수학, 까다로운 코딩이면 high로 올립니다."
+    },
+    {
+      "title": "샘플링 파라미터 지우기",
+      "body": "기존 코드에 있던 temperature, top_p, top_k를 모든 요청에서 제거하세요. 공식 문서는 기본값을 바꾸지 말라고 강하게 권합니다."
+    },
+    {
+      "title": "thinking_budget을 thinking_level로",
+      "body": "예전 thinking_budget 설정은 thinking_level로 바꾸세요. 기본값이 high에서 medium으로 바뀌었으니 기존 프롬프트의 결과도 다시 테스트해야 합니다."
+    },
+    {
+      "title": "FunctionResponse에 id와 name",
+      "body": "모든 FunctionResponse에 대응하는 FunctionCall의 id를 넣고 name을 똑같이 맞추세요. 멀티모달 내용은 함수 응답 바깥이 아니라 안에 넣습니다."
+    },
+    {
+      "title": "도구를 너무 많이 부르면 수준 낮추기",
+      "body": "도구 호출이 과하면 먼저 사고 수준을 medium, low, minimal 순으로 낮추세요. 사고 수준이 높을수록 도구를 더 많이 쓰는 경향이 있습니다. 그래도 계속되면 시스템 지시로 도구 사용을 제한합니다."
+    },
+    {
+      "title": "큰 데이터 뒤에 질문 두기",
+      "body": "긴 문서나 큰 데이터셋을 넣을 때는 구체적인 지시나 질문을 데이터 뒤, 프롬프트 맨 끝에 두세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Interactions API로 호출하기 (Python)",
+      "when": "Gemini 3.5 Flash를 기본 설정으로 처음 호출할 때",
+      "type": "code",
+      "text": "from google import genai\n\nclient = genai.Client()\n\ninteraction = client.interactions.create(\n    model=\"gemini-3.5-flash\",\n    input=\"[요청 내용]\",\n)\nprint(interaction.output_text)"
+    },
+    {
+      "title": "사고 수준 지정하기 (Python)",
+      "when": "복잡한 추론이나 어려운 수학처럼 high가 필요한 요청일 때",
+      "type": "code",
+      "text": "from google import genai\n\nclient = genai.Client()\n\ninteraction = client.interactions.create(\n    model=\"gemini-3.5-flash\",\n    input=\"[복잡한 추론이 필요한 요청]\",\n    generation_config={\"thinking_level\": \"high\"},\n)\nprint(interaction.output_text)"
+    },
+    {
+      "title": "데이터 먼저, 지시는 마지막에",
+      "when": "긴 문서나 데이터셋을 함께 넣고 질문할 때",
+      "type": "prompt",
+      "text": "[분석할 데이터나 문서 전체]\n\n위 데이터를 바탕으로 [구체적인 질문이나 지시]"
+    }
+  ],
+  "cautions": [
+    "이 가이드는 Gemini 3 Flash Preview에서 Gemini 3.5 Flash로 옮기는 경우를 기준으로 합니다. 5월 게시 당시에는 Computer Use를 지원하지 않는다고 적었지만, 2026-09-23에 갱신된 공식 문서는 Gemini 3.5 Flash가 Computer Use를 포함한 Gemini 3 계열 기능을 모두 이어받는다고 안내합니다.",
+    "이미지 분할(image segmentation)은 Gemini 3.x에서 지원되지 않습니다. 공식 문서는 이 작업에는 thinking을 끈 Gemini 2.5 Flash를 계속 쓰라고 안내합니다.",
+    "원문은 Google AI 공식 계정이 dev.to에 게시한 글입니다. 같은 내용은 Gemini API 문서의 'What's new in Gemini 3.5 Flash'에서 최신 상태로 확인할 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 3.5 Flash Developer Guide (Google AI)",
+      "url": "https://dev.to/googleai/gemini-35-flash-developer-guide-1i46"
+    },
+    {
+      "title": "What's new in Gemini 3.5 Flash (Gemini API)",
+      "url": "https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.5"
+    },
+    {
+      "title": "Gemini 3 developer guide (Gemini API)",
+      "url": "https://ai.google.dev/gemini-api/docs/gemini-3"
+    }
+  ]
+}

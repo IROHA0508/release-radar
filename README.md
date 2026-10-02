@@ -16,7 +16,7 @@ scripts/validate_data.py  커밋 전 데이터 검증
 vercel.json             Vercel 설정 (데이터 캐시 끄기, 깔끔한 URL)
 backend/                새 소식 감지·요약·반영 Python 코드 (GitHub Actions에서 실행)
 tests/                  backend 오프라인 테스트
-.github/workflows/      매일 실행하는 GitHub Actions 워크플로
+.github/workflows/      6시간마다 실행하는 GitHub Actions 워크플로
 .vercelignore           배포에서 backend·tests 등 제외
 ```
 
@@ -42,12 +42,13 @@ python3 -m http.server 8000
 
 ## 자동 업데이트 (Python 백엔드)
 
-`backend/`의 Python 코드가 GitHub Actions에서 매일 아침(한국 시간 8시 17분) 실행됩니다. 사이트는 정적 파일이라 서버가 따로 없고, 이 작업이 `data/`를 고쳐 커밋하면 Vercel이 자동으로 다시 배포합니다.
+`backend/`의 Python 코드가 GitHub Actions에서 6시간마다(한국 시간 0시·6시·12시·18시) 실행됩니다. GitHub 사정으로 몇 분 늦게 시작할 수 있습니다. 사이트는 정적 파일이라 서버가 따로 없고, 이 작업이 `data/`를 고쳐 커밋하면 Vercel이 자동으로 다시 배포합니다.
 
 ```
-감지  OpenAI RSS, Google Gemini 블로그·DeepMind RSS, Anthropic 뉴스룸 페이지·사이트맵
-  ↓   사이트에 이미 있는 출처 URL·이전 실행 기록과 비교, 최근 7일 이내 + 모델 관련 글만 후보
-분류  Claude(작은 모델)가 후보 중 '모델 소식'만 고름 (고객 사례·정책 글 등 제외)
+감지  모델 발표: OpenAI 뉴스 RSS, Anthropic 뉴스룸·사이트맵, Google Gemini 모델 블로그·DeepMind RSS
+      활용 팁:   OpenAI 개발자 블로그, Claude 블로그, Google Gemini 앱 블로그·Developers 블로그·Cloud AI 블로그
+  ↓   사이트에 이미 있는 출처 URL·이전 실행 기록과 비교, 최근 7일 이내 + 모델·활용 관련 글만 후보
+분류  Claude(작은 모델)가 후보 중 모델 출시·모델 업데이트·활용 팁만 고름 (고객 사례·정책·영업 공지 등 제외)
 읽기  원문 페이지 본문, 표(셀 그대로), 링크 추출. 막히면 r.jina.ai 리더로 재시도
 작성  Claude가 data/news/<id>.json 형식으로 한국어 요약·팁·프롬프트·그래프 작성
 검사  그래프 값, 핵심 수치, 모델 ID, 가격을 원문과 프로그램으로 대조해 원문에 없는 값은 삭제
@@ -56,6 +57,7 @@ python3 -m http.server 8000
 
 | 파일 | 역할 |
 |---|---|
+| `backend/config.py` | 감시할 소스 목록(`SOURCES`), 모델·실행 한도 설정 |
 | `backend/feeds.py` | 소스 수집(RSS·뉴스룸 HTML) |
 | `backend/detect.py` | 새 글 판정, 같은 글 중복 제거, 실행 기록(`backend/state/seen.json`) |
 | `backend/extract.py` | 원문 본문·표·링크·발표일 추출 |
@@ -63,7 +65,7 @@ python3 -m http.server 8000
 | `backend/guard.py` | 원문 대조로 지어낸 수치 제거 |
 | `backend/store.py` | 파일·manifest 저장과 검증 |
 | `backend/pipeline.py` | 전체 흐름, 실행 보고서(`backend/state/last-run.json`) |
-| `.github/workflows/update-news.yml` | 매일 실행, 코드가 바뀌면 테스트와 소스 자가 시험 |
+| `.github/workflows/update-news.yml` | 6시간마다 실행, 코드가 바뀌면 테스트와 소스 자가 시험 |
 
 ### 처음 한 번 설정
 
@@ -102,6 +104,12 @@ python -m pytest tests -q    # 오프라인 테스트
 ```
 
 GitHub **Actions → 새 소식 자동 업데이트 → Run workflow**에서 `update`/`detect`/`selftest`를 골라 바로 실행할 수도 있습니다. 실행 결과는 run 페이지의 알림(annotation)과 `backend/state/last-run.json`에 남습니다.
+
+### 화면 표시
+
+- 상단 **Update**: 마지막으로 공식 소스를 확인한 한국 시간(`data/manifest.json`의 `lastChecked`, `YYYY-MM-DD HH:MM`). 새 소식이 없어도 실행할 때마다 갱신됩니다.
+- 필터: 회사(OpenAI·Anthropic·Google)와 종류(모델 출시·모델 업데이트·활용 팁)를 함께 고를 수 있습니다.
+- 소식 상세의 공식 출처는 한 줄 요약 바로 아래에 있습니다.
 
 ## 소식 직접 추가하기
 

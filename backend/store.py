@@ -5,7 +5,7 @@ import json
 import re
 import subprocess
 import sys
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 from . import config
@@ -118,9 +118,10 @@ def remove_from_manifest(news_id: str) -> None:
     save_manifest(m)
 
 
-def touch_last_checked(today: date) -> None:
+def touch_last_checked(when: date | datetime) -> None:
+    """Record when the sources were last checked: "YYYY-MM-DD HH:MM" in Korean time (the site shows it as Update)."""
     m = load_manifest()
-    m["lastChecked"] = today.isoformat()
+    m["lastChecked"] = when.strftime("%Y-%m-%d %H:%M") if isinstance(when, datetime) else when.isoformat()
     save_manifest(m)
 
 
