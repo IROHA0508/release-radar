@@ -66,6 +66,29 @@ def meta_date(soup: BeautifulSoup) -> date | None:
     return None
 
 
+MONTHS = "jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec"
+TEXT_DATE_RE = re.compile(
+    rf"(?i)\b(?:({MONTHS})[a-z]*\.?\s+(\d{{1,2}}),?\s+(20\d\d)|(\d{{1,2}})\s+({MONTHS})[a-z]*\.?\s+(20\d\d)|(20\d\d)-(\d\d)-(\d\d))\b")
+
+
+def text_date(text: str) -> date | None:
+    """A date written near the top of the article ("August 14, 2026", "JAN. 28, 2026", "14 Aug 2026").
+    Only the first part of the text is searched, where the byline usually is."""
+    m = TEXT_DATE_RE.search(text[:2000])
+    if not m:
+        return None
+    try:
+        if m.group(1):
+            month, day, year = m.group(1)[:3].lower(), int(m.group(2)), int(m.group(3))
+        elif m.group(5):
+            month, day, year = m.group(5)[:3].lower(), int(m.group(4)), int(m.group(6))
+        else:
+            return date(int(m.group(7)), int(m.group(8)), int(m.group(9)))
+        return date(year, ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"].index(month) + 1, day)
+    except ValueError:
+        return None
+
+
 def parse_html(html: str, url: str) -> Article:
     soup = BeautifulSoup(html, "lxml")
     published = meta_date(soup)
@@ -84,6 +107,7 @@ def parse_html(html: str, url: str) -> Article:
     text = re.sub(r"\n{3,}", "\n\n", text)
     if alts:
         text += "\n\n[이미지 대체 텍스트]\n" + "\n".join(alts)
+    published = published or text_date(text)
     return Article(url, title, published, text[: config.PAGE_TEXT_LIMIT], tables, links)
 
 
@@ -97,6 +121,7 @@ def parse_reader(markdown: str, url: str) -> Article:
     if m:
         published = parse_date(m.group(1).strip())
     body = markdown.split("Markdown Content:", 1)[-1]
+    published = published or text_date(body)
     tables = ["\n".join(block) for block in _markdown_tables(body)]
     links = sorted(set(re.findall(r"\((https?://[^)\s]+)\)", body)))
     return Article(url, title, published, body[: config.PAGE_TEXT_LIMIT], tables, links, via="reader")

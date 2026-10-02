@@ -76,7 +76,12 @@ def _fill_dates(cands: list[feeds.Entry], cache: dict[str, Article], cutoff: dat
                 continue
             cache[e.key] = art
             # A page without a date: fall back to the sitemap's lastmod, or today for newsroom links.
-            e.published = art.published or e.extra.get("lastmod") or today
+            # Blog listings (tips) have many old posts, so an undated one there is skipped instead.
+            src = next((s for s in config.SOURCES if s.name == e.source), None)
+            e.published = art.published or e.extra.get("lastmod") or (today if src is None or src.undated_is_new else None)
+            if e.published is None:
+                detect.mark(state, e, "nodate", today)
+                continue
             if art.title and (e.extra.get("titleFromSlug") or len(art.title) > len(e.title)):
                 e.title = art.title
         if e.published < cutoff:

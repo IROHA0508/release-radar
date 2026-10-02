@@ -52,14 +52,18 @@ class Source:
     base: str = ""        # for listing pages: prefix for relative links
     priority: int = 0     # higher wins when two sources carry the same article
     pattern: str = ""     # listing pages: regex for article paths (default: ANTHROPIC_ARTICLE_RE)
+    # If an article from this source has no readable date, treat it as published today. Only for the
+    # Anthropic newsroom, whose new links appear at the top; elsewhere an undated post is skipped so
+    # old blog posts are never mistaken for new ones.
+    undated_is_new: bool = False
 
 
 SOURCES = [
     Source("OpenAI News", "openai", "rss", "https://openai.com/news/rss.xml", priority=2),
     Source("Anthropic News", "anthropic", "listing", "https://www.anthropic.com/news",
-           base="https://www.anthropic.com", priority=2),
+           base="https://www.anthropic.com", priority=2, undated_is_new=True),
     Source("Anthropic sitemap", "anthropic", "sitemap", "https://www.anthropic.com/sitemap.xml",
-           base="https://www.anthropic.com", priority=1),
+           base="https://www.anthropic.com", priority=1, undated_is_new=True),
     Source("Google Gemini models blog", "google", "rss",
            "https://blog.google/innovation-and-ai/models-and-research/gemini-models/rss/", priority=2),
     Source("Google DeepMind blog", "google", "rss", "https://deepmind.google/blog/rss.xml", priority=1),

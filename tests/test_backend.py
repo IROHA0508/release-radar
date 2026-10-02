@@ -93,6 +93,27 @@ def test_listing_with_own_article_pattern():
     assert all(e.company == "anthropic" for e in feeds.parse_listing(html, blog))
 
 
+def test_text_date_from_byline():
+    assert extract.text_date("Lydia Hallie | August 14, 2026 | 5 min read") == date(2026, 8, 14)
+    assert extract.text_date("Edi Palencia\nJAN. 28, 2026\nHooks are scripts") == date(2026, 1, 28)
+    assert extract.text_date("Posted 14 Aug 2026") == date(2026, 8, 14)
+    assert extract.text_date("Plan a trip for September 2026.") is None
+
+
+def test_undated_blog_post_is_skipped_not_dated_today(site, monkeypatch):
+    blog = next(s for s in config.SOURCES if s.name == "Claude blog")
+    undated = feeds.Entry("Old Claude tips", "https://claude.com/blog/old-claude-tips", "anthropic", blog.name, None, "", 1)
+    newsroom = feeds.Entry("Introducing Claude Haiku 5.5", "https://www.anthropic.com/news/claude-haiku-5-5", "anthropic",
+                           "Anthropic News", None, "", 2)
+    page = "<html><body><article><p>" + "tips " * 300 + "</p></article></body></html>"
+    monkeypatch.setattr(pipeline, "fetch_article", lambda url: extract.parse_html(page, url))
+    state = {"urls": {}}
+    out = pipeline._fill_dates([undated, newsroom], {}, date(2026, 9, 25), state, date(2026, 10, 2),
+                               pipeline.RunReport("t", "update"))
+    assert [e.url for e in out] == [newsroom.url]
+    assert state["urls"][undated.key]["status"] == "nodate"
+
+
 def test_tip_titles_pass_keyword_filter():
     for title in ("Shell + Skills + Compaction: Tips for long-running agents that do real work",
                   "Prompting fundamentals", "6 tips for prompting Lyria 3 in the Gemini app"):
