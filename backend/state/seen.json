@@ -40,6 +40,270 @@
       "status": "skipped",
       "title": "See what 4 builders are making with Gemini 3.8 Flash"
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live": {
+      "checkedAt": "2026-10-03",
+      "company": "google",
+      "date": "2026-10-01",
+      "reason": "실전 조언이 없는 기능 소개",
+      "status": "skipped",
+      "title": "Guided Vision in Gemini Live: built for accessibility"
+    },
+    "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills": {
+      "checkedAt": "2026-10-03",
+      "company": "google",
+      "date": "2026-09-30",
+      "reason": "기능 소개만 있고 구체적인 활용 팁이 명확하지 않음",
+      "status": "skipped",
+      "title": "Let skills in Gemini tackle your most repetitive tasks"
+    },
+    "https://blog.google/products-and-platforms/products/gemini/edys-grocer-gemini": {
+      "checkedAt": "2026-10-03",
+      "company": "google",
+      "date": "2026-09-28",
+      "reason": "고객 사례 (Edy's Grocer의 Gemini 활용)",
+      "status": "skipped",
+      "title": "3 ways this grocer cooks for 200 guests with Gemini"
+    },
+    "https://claude.com/blog/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-09-29",
+      "reason": "고객 사례 (Asana의 Claude 활용)",
+      "status": "skipped",
+      "title": "Agents you can coach: how Asana builds human-agent teams with Claude | Claude by Anthropic"
+    },
+    "https://claude.com/blog/build-plugins-for-claude": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-09-25",
+      "reason": "모델 출시·업데이트나 실전 활용 팁이 아니라, 개발자용 플러그인 제출 포털과 디렉터리 운영을 알리는 제품 공지입니다.",
+      "status": "skipped",
+      "title": "Build plugins for Claude with the directory submission portal | Claude by Anthropic"
+    },
+    "https://claude.com/blog/claude-code-mods": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-10-01",
+      "reason": "Claude Code mods를 소개하는 제품 기능 발표입니다. 새 모델 출시나 모델 업데이트가 아니고, 가격이나 가용성의 큰 변경도 없습니다. 독자가 바로 따라 할 실전 조언이나 프롬프트 가이드도 거의 없어서 제외합니다.",
+      "status": "skipped",
+      "title": "Customize Claude Code with mods in TypeScript | Claude by Anthropic"
+    },
+    "https://claude.com/blog/claude-for-government-is-now-generally-available": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-09-30",
+      "reason": "정부용 버전 출시 (모델과 무관한 제품·영업 공지)",
+      "status": "skipped",
+      "title": "Claude for Government is now generally available | Claude by Anthropic"
+    },
+    "https://claude.com/blog/claude-opus-5-5-built-for-coding-sessions-that-use-more-context": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-09-24",
+      "status": "old",
+      "title": "Coding sessions are longer and use more context. Claude Opus 5.5 is built with that in mind. | Claude by Anthropic"
+    },
+    "https://claude.com/blog/claude-tag-now-supports-personal-connectors-in-channels": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-09-24",
+      "status": "old",
+      "title": "Claude Tag now supports personal connectors in channels | Claude by Anthropic"
+    },
+    "https://claude.com/blog/giving-companies-more-control-over-their-ai-agents-with-nvidia": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-09-28",
+      "reason": "기업 파트너십 (Anthropic과 NVIDIA의 협력)",
+      "status": "skipped",
+      "title": "Giving companies more control over their AI agents, with NVIDIA | Claude by Anthropic"
+    },
+    "https://claude.com/blog/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-09-30",
+      "reason": "Anthropic 회사 내부 사례",
+      "status": "skipped",
+      "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents | Claude by Anthropic"
+    },
+    "https://claude.com/blog/how-coderabbit-power-digital-and-thoughtspot-scale-with-snowflake-and-vercel-on-claude-marketplace": {
+      "checkedAt": "2026-10-03",
+      "company": "anthropic",
+      "date": "2026-09-23",
+      "status": "old",
+      "title": "How CodeRabbit, Power Digital, and ThoughtSpot scale with Snowflake and Vercel on Claude Marketplace"
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview": {
+      "checkedAt": "2026-10-03",
+      "company": "google",
+      "date": "2026-09-30",
+      "reason": "모델과 무관한 개발자 도구 (Google Cloud CLI MCP 서버)",
+      "status": "skipped",
+      "title": "Empower your agents with the Google Cloud CLI remote MCP server"
+    },
+    "https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models": {
+      "checkedAt": "2026-10-03",
+      "company": "google",
+      "date": "2026-09-25",
+      "reason": "모델 출시·업데이트와 무관한 기술 가이드 (RL 커스터마이징)",
+      "status": "skipped",
+      "title": "Best practices guide for customizing Gemini models via Reinforcement Learning (RL)"
+    },
+    "https://cloud.google.com/blog/topics/startups/why-your-startup-needs-open-models-alongside-frontier-apis": {
+      "checkedAt": "2026-10-03",
+      "company": "google",
+      "date": "2026-09-28",
+      "reason": "모델 출시·업데이트와 무관한 일반 의견",
+      "status": "skipped",
+      "title": "Why your startup needs open models alongside frontier APIs"
+    },
+    "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Feb 4 15 lessons learned building ChatGPT Apps And how we incorporated them into a Codex Skill to help you build ChatGPT Apps 10x faster. Apps SDK"
+    },
+    "https://developers.openai.com/blog/automating-repetitive-work-at-openai-with-codex": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Aug 25 Automating repetitive work at OpenAI with Codex How Runme and WebMCP turn recurring engineering tasks into reviewable, reusable workflows. Codex"
+    },
+    "https://developers.openai.com/blog/bringing-my-led-display-to-life": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Bringing my LED display to life with GPT-Live-1 and Codex"
+    },
+    "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Feb 26 Building frontend UIs with Codex and Figma Use Codex and Figma to bring real, running interfaces into Figma, refine them, and bring changes back to Codex. Codex"
+    },
+    "https://developers.openai.com/blog/codex-as-a-platform": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Aug 19 Codex as a platform: build on the open agent harness Build Codex into the products and workflows your users already know. Codex"
+    },
+    "https://developers.openai.com/blog/codex-at-devday": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Oct 10 How Codex ran OpenAI DevDay 2025 Learn how Codex helped us build experiences, demos, products, and more Codex"
+    },
+    "https://developers.openai.com/blog/codex-for-documentation-dagster": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Oct 27 Using Codex for education at Dagster Labs Learn how Dagster uses Codex in their open-source projects to accelerate documentation, translate content across mediums, and even measure how complete"
+    },
+    "https://developers.openai.com/blog/custom-code-review-rules-for-codex": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Jul 20 Custom Code Review rules for Codex Provide more detailed rules for Codex to spot issues and better adhere your conventions during code review. Codex"
+    },
+    "https://developers.openai.com/blog/eval-skills": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Jan 22 Testing Agent Skills Systematically with Evals A practical guide to turning agent skills into something you can test, score, and improve over time. Codex"
+    },
+    "https://developers.openai.com/blog/mastering-codex-remote-for-engineering": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Jun 23 Mastering remote engineering work from your phone Use Remote in the ChatGPT mobile app to start, steer, review, and organize engineering work. Codex"
+    },
+    "https://developers.openai.com/blog/one-year-of-responses": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Mar 11 From prompts to products: One year of Responses Five stories from developers building agentic products with the Responses API in its first year. API"
+    },
+    "https://developers.openai.com/blog/openai-for-developers-2025": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Dec 30 OpenAI for Developers in 2025 A year-end roundup of the biggest model, API, and platform shifts for building production-grade agents. General"
+    },
+    "https://developers.openai.com/blog/realtime-api": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Sep 12 Developer notes on the Realtime API Details worth noticing in recent realtime speech-to-speech updates Audio"
+    },
+    "https://developers.openai.com/blog/realtime-perplexity-computer": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Mar 25 How Perplexity Brought Voice Search to Millions Using the Realtime API Lessons from how Perplexity Computer's voice agent was built with the Realtime API. Audio"
+    },
+    "https://developers.openai.com/blog/responses-api": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Sep 22 Why we built the Responses API How the Responses API unlocks persistent reasoning, hosted tools, and multimodal workflows for GPT-5. API"
+    },
+    "https://developers.openai.com/blog/run-long-horizon-tasks-with-codex": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Feb 23 Run long horizon tasks with Codex Codex"
+    },
+    "https://developers.openai.com/blog/scaling-cyber-defenders-with-daybreak": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Aug 21 Scaling cyber defenders with Daybreak Use ChatGPT, Codex Security, and open-source tools to investigate threats, validate vulnerabilities, and move from findings to reviewed, verified fixes. Co"
+    },
+    "https://developers.openai.com/blog/skills-agents-sdk": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": "2025-12-01",
+      "status": "old",
+      "title": "Mar 9 Using skills to accelerate OSS maintenance Using skills and GitHub Actions to optimize Codex workflows in the OpenAI Agents SDK repos. Codex"
+    },
+    "https://developers.openai.com/blog/skyscanner-codex-jetbrains-mcp": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Jan 11 Supercharging Codex with JetBrains MCP at Skyscanner How Skyscanner integrated Codex CLI with JetBrains IDEs to speed up debugging, testing, and development workflows. Codex"
+    },
+    "https://developers.openai.com/blog/updates-audio-models": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": "2025-12-15",
+      "status": "old",
+      "title": "Dec 22 Updates for developers building with voice New audio model snapshots and broader access to Custom Voices for production voice apps. Audio"
+    },
+    "https://developers.openai.com/blog/what-makes-a-great-chatgpt-app": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": null,
+      "status": "nodate",
+      "title": "Nov 24 What makes a great ChatGPT app How to build capabilities that make conversations better. Apps SDK"
+    },
     "https://openai.com/form/codex-originals": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -79,6 +343,14 @@
       "reason": "서비스 지역 확대, 모델 자체 업데이트 아님",
       "status": "skipped",
       "title": "ChatGPT Ads expands to Southeast Asia and Taiwan"
+    },
+    "https://openai.com/index/chatham-financial": {
+      "checkedAt": "2026-10-03",
+      "company": "openai",
+      "date": "2026-10-02",
+      "reason": "고객 사례 (Chatham Financial의 OpenAI 모델 활용 사례)",
+      "status": "skipped",
+      "title": "Chatham scales its capital markets expertise with OpenAI"
     },
     "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign": {
       "checkedAt": "2026-10-03",

@@ -1,206 +1,168 @@
 {
-  "startedAt": "2026-10-03T01:24:22+09:00",
+  "startedAt": "2026-10-03T09:02:56+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1638,
+  "entries": 1755,
   "candidates": [
     {
-      "title": "A model guide for the GPT-6 family",
-      "url": "https://openai.com/index/practical-guide-building-gpt-6",
+      "title": "Chatham scales its capital markets expertise with OpenAI",
+      "url": "https://openai.com/index/chatham-financial",
       "company": "openai",
       "date": "2026-10-02",
       "relatedId": null
     },
     {
-      "title": "How Albertsons Companies is reimagining retail from the inside out",
-      "url": "https://openai.com/index/albertsons-reimagining-retail",
-      "company": "openai",
+      "title": "Guided Vision in Gemini Live: built for accessibility",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/",
+      "company": "google",
       "date": "2026-10-01",
       "relatedId": null
     },
     {
-      "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
-      "url": "https://openai.com/index/the-den-family-social",
-      "company": "openai",
-      "date": "2026-10-01",
-      "relatedId": null
-    },
-    {
-      "title": "Oct 1, 2026 Announcements Barclays scales Claude to upgrade operations and improve client experience",
-      "url": "https://www.anthropic.com/news/barclays-scales-claude",
-      "company": "anthropic",
-      "date": "2026-10-01",
-      "relatedId": null
-    },
-    {
-      "title": "Disrupting a coordinated model-distillation campaign",
-      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
-      "company": "openai",
+      "title": "Let skills in Gemini tackle your most repetitive tasks",
+      "url": "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/",
+      "company": "google",
       "date": "2026-09-30",
       "relatedId": null
     },
     {
-      "title": "Are you a Codex Original?",
-      "url": "https://openai.com/form/codex-originals",
-      "company": "openai",
+      "title": "Empower your agents with the Google Cloud CLI remote MCP server",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview/",
+      "company": "google",
+      "date": "2026-09-30",
+      "relatedId": null
+    },
+    {
+      "title": "3 ways this grocer cooks for 200 guests with Gemini",
+      "url": "https://blog.google/products-and-platforms/products/gemini/edys-grocer-gemini/",
+      "company": "google",
       "date": "2026-09-28",
       "relatedId": null
     },
     {
-      "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra",
-      "url": "https://openai.com/index/basis-tax-workbook-with-astra",
-      "company": "openai",
-      "date": "2026-09-28",
-      "relatedId": "gpt-6-astra"
-    },
-    {
-      "title": "See what 4 builders are making with Gemini 3.8 Flash",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-flash-developers/",
+      "title": "Why your startup needs open models alongside frontier APIs",
+      "url": "https://cloud.google.com/blog/topics/startups/why-your-startup-needs-open-models-alongside-frontier-apis/",
       "company": "google",
       "date": "2026-09-28",
-      "relatedId": "gemini-3-8-flash"
+      "relatedId": null
     },
     {
-      "title": "Proaction boosts sales 60% and saves 75+ hours with Codex",
-      "url": "https://openai.com/index/proaction",
-      "company": "openai",
+      "title": "Best practices guide for customizing Gemini models via Reinforcement Learning (RL)",
+      "url": "https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models/",
+      "company": "google",
       "date": "2026-09-25",
       "relatedId": null
     },
     {
-      "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
-      "url": "https://openai.com/index/ringg",
-      "company": "openai",
-      "date": "2026-09-23",
-      "relatedId": null
-    },
-    {
-      "title": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
-      "url": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
-      "company": "openai",
-      "date": "2026-09-23",
-      "relatedId": "gpt-6-astra"
-    },
-    {
-      "title": "How invideo improves color grading 3x with GPT‑6 Astra",
-      "url": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
-      "company": "openai",
-      "date": "2026-09-23",
-      "relatedId": "gpt-6-astra"
-    },
-    {
-      "title": "ChatGPT Ads expands to Southeast Asia and Taiwan",
-      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan",
-      "company": "openai",
-      "date": "2026-09-23",
-      "relatedId": null
-    },
-    {
-      "title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
-      "url": "https://openai.com/index/airbnb-gpt-6-astra",
-      "company": "openai",
-      "date": "2026-09-23",
-      "relatedId": "gpt-6-astra"
-    },
-    {
-      "title": "Sep 23, 2026 Science Claude discovers a novel enzyme system with CRISPR-like repeats",
-      "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
+      "title": "Customize Claude Code with mods in TypeScript | Claude by Anthropic",
+      "url": "https://claude.com/blog/claude-code-mods",
       "company": "anthropic",
-      "date": "2026-09-23",
+      "date": "2026-10-01",
       "relatedId": null
     },
     {
-      "title": "Claude Corps",
-      "url": "https://www.anthropic.com/claude-corps",
+      "title": "Claude for Government is now generally available | Claude by Anthropic",
+      "url": "https://claude.com/blog/claude-for-government-is-now-generally-available",
       "company": "anthropic",
-      "date": "2026-10-03",
+      "date": "2026-09-30",
+      "relatedId": null
+    },
+    {
+      "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents | Claude by Anthropic",
+      "url": "https://claude.com/blog/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents",
+      "company": "anthropic",
+      "date": "2026-09-30",
+      "relatedId": null
+    },
+    {
+      "title": "Agents you can coach: how Asana builds human-agent teams with Claude | Claude by Anthropic",
+      "url": "https://claude.com/blog/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude",
+      "company": "anthropic",
+      "date": "2026-09-29",
+      "relatedId": null
+    },
+    {
+      "title": "Giving companies more control over their AI agents, with NVIDIA | Claude by Anthropic",
+      "url": "https://claude.com/blog/giving-companies-more-control-over-their-ai-agents-with-nvidia",
+      "company": "anthropic",
+      "date": "2026-09-28",
+      "relatedId": null
+    },
+    {
+      "title": "Build plugins for Claude with the directory submission portal | Claude by Anthropic",
+      "url": "https://claude.com/blog/build-plugins-for-claude",
+      "company": "anthropic",
+      "date": "2026-09-25",
       "relatedId": null
     }
   ],
-  "added": [
-    {
-      "id": "gpt-6-model-guide",
-      "title": "A model guide for the GPT-6 family",
-      "url": "https://openai.com/index/practical-guide-building-gpt-6",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [
     {
-      "title": "How Albertsons Companies is reimagining retail from the inside out",
-      "url": "https://openai.com/index/albertsons-reimagining-retail",
-      "reason": "기업 파트너십/고객 사례"
+      "title": "Chatham scales its capital markets expertise with OpenAI",
+      "url": "https://openai.com/index/chatham-financial",
+      "reason": "고객 사례 (Chatham Financial의 OpenAI 모델 활용 사례)"
     },
     {
-      "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work",
-      "url": "https://openai.com/index/the-den-family-social",
-      "reason": "고객 사례"
+      "title": "Guided Vision in Gemini Live: built for accessibility",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/",
+      "reason": "실전 조언이 없는 기능 소개"
     },
     {
-      "title": "Oct 1, 2026 Announcements Barclays scales Claude to upgrade operations and improve client experience",
-      "url": "https://www.anthropic.com/news/barclays-scales-claude",
-      "reason": "기업 파트너십 사례"
+      "title": "Let skills in Gemini tackle your most repetitive tasks",
+      "url": "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/",
+      "reason": "기능 소개만 있고 구체적인 활용 팁이 명확하지 않음"
     },
     {
-      "title": "Disrupting a coordinated model-distillation campaign",
-      "url": "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign",
-      "reason": "모델 출시와 무관한 보안 보고서"
+      "title": "Empower your agents with the Google Cloud CLI remote MCP server",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview/",
+      "reason": "모델과 무관한 개발자 도구 (Google Cloud CLI MCP 서버)"
     },
     {
-      "title": "Are you a Codex Original?",
-      "url": "https://openai.com/form/codex-originals",
-      "reason": "프로그램/행사 홍보"
+      "title": "3 ways this grocer cooks for 200 guests with Gemini",
+      "url": "https://blog.google/products-and-platforms/products/gemini/edys-grocer-gemini/",
+      "reason": "고객 사례 (Edy's Grocer의 Gemini 활용)"
     },
     {
-      "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra",
-      "url": "https://openai.com/index/basis-tax-workbook-with-astra",
-      "reason": "고객 사례"
+      "title": "Why your startup needs open models alongside frontier APIs",
+      "url": "https://cloud.google.com/blog/topics/startups/why-your-startup-needs-open-models-alongside-frontier-apis/",
+      "reason": "모델 출시·업데이트와 무관한 일반 의견"
     },
     {
-      "title": "See what 4 builders are making with Gemini 3.8 Flash",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-flash-developers/",
-      "reason": "개발자 쇼케이스"
+      "title": "Best practices guide for customizing Gemini models via Reinforcement Learning (RL)",
+      "url": "https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models/",
+      "reason": "모델 출시·업데이트와 무관한 기술 가이드 (RL 커스터마이징)"
     },
     {
-      "title": "Proaction boosts sales 60% and saves 75+ hours with Codex",
-      "url": "https://openai.com/index/proaction",
-      "reason": "고객 사례"
+      "title": "Claude for Government is now generally available | Claude by Anthropic",
+      "url": "https://claude.com/blog/claude-for-government-is-now-generally-available",
+      "reason": "정부용 버전 출시 (모델과 무관한 제품·영업 공지)"
     },
     {
-      "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI",
-      "url": "https://openai.com/index/ringg",
-      "reason": "고객 사례"
+      "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents | Claude by Anthropic",
+      "url": "https://claude.com/blog/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents",
+      "reason": "Anthropic 회사 내부 사례"
     },
     {
-      "title": "Harvey turns legal context into stronger drafts with GPT-6 Astra",
-      "url": "https://openai.com/index/harvey-from-context-to-confidence-with-astra",
-      "reason": "고객 사례"
+      "title": "Agents you can coach: how Asana builds human-agent teams with Claude | Claude by Anthropic",
+      "url": "https://claude.com/blog/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude",
+      "reason": "고객 사례 (Asana의 Claude 활용)"
     },
     {
-      "title": "How invideo improves color grading 3x with GPT‑6 Astra",
-      "url": "https://openai.com/index/invideo-builds-with-gpt-6-astra",
-      "reason": "고객 사례"
+      "title": "Giving companies more control over their AI agents, with NVIDIA | Claude by Anthropic",
+      "url": "https://claude.com/blog/giving-companies-more-control-over-their-ai-agents-with-nvidia",
+      "reason": "기업 파트너십 (Anthropic과 NVIDIA의 협력)"
     },
     {
-      "title": "ChatGPT Ads expands to Southeast Asia and Taiwan",
-      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan",
-      "reason": "서비스 지역 확대, 모델 자체 업데이트 아님"
+      "title": "Customize Claude Code with mods in TypeScript | Claude by Anthropic",
+      "url": "https://claude.com/blog/claude-code-mods",
+      "reason": "Claude Code mods를 소개하는 제품 기능 발표입니다. 새 모델 출시나 모델 업데이트가 아니고, 가격이나 가용성의 큰 변경도 없습니다. 독자가 바로 따라 할 실전 조언이나 프롬프트 가이드도 거의 없어서 제외합니다."
     },
     {
-      "title": "Airbnb widens access to GPT-6 Astra and OpenAI frontier models",
-      "url": "https://openai.com/index/airbnb-gpt-6-astra",
-      "reason": "고객 사례"
-    },
-    {
-      "title": "Sep 23, 2026 Science Claude discovers a novel enzyme system with CRISPR-like repeats",
-      "url": "https://www.anthropic.com/news/claude-discovers-novel-enzyme-system",
-      "reason": "모델 출시와 무관한 연구 사례"
-    },
-    {
-      "title": "Claude Corps",
-      "url": "https://www.anthropic.com/claude-corps",
-      "reason": "원문 설명이 없어 판단 불가"
+      "title": "Build plugins for Claude with the directory submission portal | Claude by Anthropic",
+      "url": "https://claude.com/blog/build-plugins-for-claude",
+      "reason": "모델 출시·업데이트나 실전 활용 팁이 아니라, 개발자용 플러그인 제출 포털과 디렉터리 운영을 알리는 제품 공지입니다."
     }
   ],
   "failed": [],
