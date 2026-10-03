@@ -1,98 +1,14 @@
 {
-  "startedAt": "2026-10-03T09:02:56+09:00",
+  "startedAt": "2026-10-03T17:38:57+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1755,
   "candidates": [
     {
-      "title": "Chatham scales its capital markets expertise with OpenAI",
-      "url": "https://openai.com/index/chatham-financial",
-      "company": "openai",
-      "date": "2026-10-02",
-      "relatedId": null
-    },
-    {
-      "title": "Guided Vision in Gemini Live: built for accessibility",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/",
-      "company": "google",
-      "date": "2026-10-01",
-      "relatedId": null
-    },
-    {
-      "title": "Let skills in Gemini tackle your most repetitive tasks",
-      "url": "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/",
+      "title": "Accelerating Spatio-Temporal Attention for Video Diffusion on TPUs- Google Developers Blog",
+      "url": "https://developers.googleblog.com/accelerating-spatio-temporal-attention-for-video-diffusion-on-tpus/",
       "company": "google",
       "date": "2026-09-30",
-      "relatedId": null
-    },
-    {
-      "title": "Empower your agents with the Google Cloud CLI remote MCP server",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview/",
-      "company": "google",
-      "date": "2026-09-30",
-      "relatedId": null
-    },
-    {
-      "title": "3 ways this grocer cooks for 200 guests with Gemini",
-      "url": "https://blog.google/products-and-platforms/products/gemini/edys-grocer-gemini/",
-      "company": "google",
-      "date": "2026-09-28",
-      "relatedId": null
-    },
-    {
-      "title": "Why your startup needs open models alongside frontier APIs",
-      "url": "https://cloud.google.com/blog/topics/startups/why-your-startup-needs-open-models-alongside-frontier-apis/",
-      "company": "google",
-      "date": "2026-09-28",
-      "relatedId": null
-    },
-    {
-      "title": "Best practices guide for customizing Gemini models via Reinforcement Learning (RL)",
-      "url": "https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models/",
-      "company": "google",
-      "date": "2026-09-25",
-      "relatedId": null
-    },
-    {
-      "title": "Customize Claude Code with mods in TypeScript | Claude by Anthropic",
-      "url": "https://claude.com/blog/claude-code-mods",
-      "company": "anthropic",
-      "date": "2026-10-01",
-      "relatedId": null
-    },
-    {
-      "title": "Claude for Government is now generally available | Claude by Anthropic",
-      "url": "https://claude.com/blog/claude-for-government-is-now-generally-available",
-      "company": "anthropic",
-      "date": "2026-09-30",
-      "relatedId": null
-    },
-    {
-      "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents | Claude by Anthropic",
-      "url": "https://claude.com/blog/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents",
-      "company": "anthropic",
-      "date": "2026-09-30",
-      "relatedId": null
-    },
-    {
-      "title": "Agents you can coach: how Asana builds human-agent teams with Claude | Claude by Anthropic",
-      "url": "https://claude.com/blog/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude",
-      "company": "anthropic",
-      "date": "2026-09-29",
-      "relatedId": null
-    },
-    {
-      "title": "Giving companies more control over their AI agents, with NVIDIA | Claude by Anthropic",
-      "url": "https://claude.com/blog/giving-companies-more-control-over-their-ai-agents-with-nvidia",
-      "company": "anthropic",
-      "date": "2026-09-28",
-      "relatedId": null
-    },
-    {
-      "title": "Build plugins for Claude with the directory submission portal | Claude by Anthropic",
-      "url": "https://claude.com/blog/build-plugins-for-claude",
-      "company": "anthropic",
-      "date": "2026-09-25",
       "relatedId": null
     }
   ],
@@ -100,69 +16,9 @@
   "updated": [],
   "skipped": [
     {
-      "title": "Chatham scales its capital markets expertise with OpenAI",
-      "url": "https://openai.com/index/chatham-financial",
-      "reason": "고객 사례 (Chatham Financial의 OpenAI 모델 활용 사례)"
-    },
-    {
-      "title": "Guided Vision in Gemini Live: built for accessibility",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live/",
-      "reason": "실전 조언이 없는 기능 소개"
-    },
-    {
-      "title": "Let skills in Gemini tackle your most repetitive tasks",
-      "url": "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills/",
-      "reason": "기능 소개만 있고 구체적인 활용 팁이 명확하지 않음"
-    },
-    {
-      "title": "Empower your agents with the Google Cloud CLI remote MCP server",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview/",
-      "reason": "모델과 무관한 개발자 도구 (Google Cloud CLI MCP 서버)"
-    },
-    {
-      "title": "3 ways this grocer cooks for 200 guests with Gemini",
-      "url": "https://blog.google/products-and-platforms/products/gemini/edys-grocer-gemini/",
-      "reason": "고객 사례 (Edy's Grocer의 Gemini 활용)"
-    },
-    {
-      "title": "Why your startup needs open models alongside frontier APIs",
-      "url": "https://cloud.google.com/blog/topics/startups/why-your-startup-needs-open-models-alongside-frontier-apis/",
-      "reason": "모델 출시·업데이트와 무관한 일반 의견"
-    },
-    {
-      "title": "Best practices guide for customizing Gemini models via Reinforcement Learning (RL)",
-      "url": "https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models/",
-      "reason": "모델 출시·업데이트와 무관한 기술 가이드 (RL 커스터마이징)"
-    },
-    {
-      "title": "Claude for Government is now generally available | Claude by Anthropic",
-      "url": "https://claude.com/blog/claude-for-government-is-now-generally-available",
-      "reason": "정부용 버전 출시 (모델과 무관한 제품·영업 공지)"
-    },
-    {
-      "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents | Claude by Anthropic",
-      "url": "https://claude.com/blog/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents",
-      "reason": "Anthropic 회사 내부 사례"
-    },
-    {
-      "title": "Agents you can coach: how Asana builds human-agent teams with Claude | Claude by Anthropic",
-      "url": "https://claude.com/blog/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude",
-      "reason": "고객 사례 (Asana의 Claude 활용)"
-    },
-    {
-      "title": "Giving companies more control over their AI agents, with NVIDIA | Claude by Anthropic",
-      "url": "https://claude.com/blog/giving-companies-more-control-over-their-ai-agents-with-nvidia",
-      "reason": "기업 파트너십 (Anthropic과 NVIDIA의 협력)"
-    },
-    {
-      "title": "Customize Claude Code with mods in TypeScript | Claude by Anthropic",
-      "url": "https://claude.com/blog/claude-code-mods",
-      "reason": "Claude Code mods를 소개하는 제품 기능 발표입니다. 새 모델 출시나 모델 업데이트가 아니고, 가격이나 가용성의 큰 변경도 없습니다. 독자가 바로 따라 할 실전 조언이나 프롬프트 가이드도 거의 없어서 제외합니다."
-    },
-    {
-      "title": "Build plugins for Claude with the directory submission portal | Claude by Anthropic",
-      "url": "https://claude.com/blog/build-plugins-for-claude",
-      "reason": "모델 출시·업데이트나 실전 활용 팁이 아니라, 개발자용 플러그인 제출 포털과 디렉터리 운영을 알리는 제품 공지입니다."
+      "title": "Accelerating Spatio-Temporal Attention for Video Diffusion on TPUs- Google Developers Blog",
+      "url": "https://developers.googleblog.com/accelerating-spatio-temporal-attention-for-video-diffusion-on-tpus/",
+      "reason": "모델 출시와 무관한 연구 기술 글. Sparse VideoGen은 비디오 확산 모델의 기술 최적화에 관한 개발자 블로그 글이며, 새로운 모델 출시, 기존 모델 업데이트, 가격·가용성 변경, 또는 사용자가 바로 따라 할 수 있는 실전 활용 팁이 아닙니다."
     }
   ],
   "failed": [],
