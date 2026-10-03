@@ -1,26 +1,12 @@
 {
-  "startedAt": "2026-10-03T17:38:57+09:00",
+  "startedAt": "2026-10-03T23:01:00+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1755,
-  "candidates": [
-    {
-      "title": "Accelerating Spatio-Temporal Attention for Video Diffusion on TPUs- Google Developers Blog",
-      "url": "https://developers.googleblog.com/accelerating-spatio-temporal-attention-for-video-diffusion-on-tpus/",
-      "company": "google",
-      "date": "2026-09-30",
-      "relatedId": null
-    }
-  ],
+  "candidates": [],
   "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Accelerating Spatio-Temporal Attention for Video Diffusion on TPUs- Google Developers Blog",
-      "url": "https://developers.googleblog.com/accelerating-spatio-temporal-attention-for-video-diffusion-on-tpus/",
-      "reason": "모델 출시와 무관한 연구 기술 글. Sparse VideoGen은 비디오 확산 모델의 기술 최적화에 관한 개발자 블로그 글이며, 새로운 모델 출시, 기존 모델 업데이트, 가격·가용성 변경, 또는 사용자가 바로 따라 할 수 있는 실전 활용 팁이 아닙니다."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
