@@ -1,12 +1,50 @@
 {
-  "startedAt": "2026-10-05T18:42:20+09:00",
+  "startedAt": "2026-10-06T06:42:33+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1755,
-  "candidates": [],
+  "entries": 1757,
+  "candidates": [
+    {
+      "title": "Building advertising for the way people use AI",
+      "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+      "company": "openai",
+      "date": "2026-10-05",
+      "relatedId": null
+    },
+    {
+      "title": "Wayfair boosts catalog accuracy and support speed with OpenAI",
+      "url": "https://openai.com/index/wayfair",
+      "company": "openai",
+      "date": "2026-09-25",
+      "relatedId": null
+    },
+    {
+      "title": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK | Claude by Anthropic",
+      "url": "https://claude.com/blog/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk",
+      "company": "anthropic",
+      "date": "2026-10-05",
+      "relatedId": null
+    }
+  ],
   "added": [],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "Building advertising for the way people use AI",
+      "url": "https://openai.com/index/new-chatgpt-ads-format-and-measurement",
+      "reason": "광고 플랫폼 기능 확대 공지로, 모델과 무관한 제품·영업 소식에 해당합니다. 사용자가 모델을 더 잘 쓰는 공식 활용 팁이 아닙니다."
+    },
+    {
+      "title": "Wayfair boosts catalog accuracy and support speed with OpenAI",
+      "url": "https://openai.com/index/wayfair",
+      "reason": "Wayfair의 고객 사례로, 제외 기준의 '고객 사례'에 해당합니다. 새 모델 출시나 모델 업데이트, 공식 활용 팁이 아닙니다."
+    },
+    {
+      "title": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK | Claude by Anthropic",
+      "url": "https://claude.com/blog/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk",
+      "reason": "Cresta의 기업 파트너십 사례로, 제외 기준의 '기업 파트너십'에 해당합니다. Claude Agent SDK는 이미 알려진 도구이며, 특정 기업의 구현 사례일 뿐입니다."
+    }
+  ],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",

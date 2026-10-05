@@ -140,6 +140,14 @@
       "status": "old",
       "title": "How CodeRabbit, Power Digital, and ThoughtSpot scale with Snowflake and Vercel on Claude Marketplace"
     },
+    "https://claude.com/blog/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk": {
+      "checkedAt": "2026-10-06",
+      "company": "anthropic",
+      "date": "2026-10-05",
+      "reason": "Cresta의 기업 파트너십 사례로, 제외 기준의 '기업 파트너십'에 해당합니다. Claude Agent SDK는 이미 알려진 도구이며, 특정 기업의 구현 사례일 뿐입니다.",
+      "status": "skipped",
+      "title": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK | Claude by Anthropic"
+    },
     "https://claude.com/blog/salesforce-in-claude": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -517,6 +525,14 @@
       "status": "skipped",
       "title": "How invideo improves color grading 3x with GPT‑6 Astra"
     },
+    "https://openai.com/index/new-chatgpt-ads-format-and-measurement": {
+      "checkedAt": "2026-10-06",
+      "company": "openai",
+      "date": "2026-10-05",
+      "reason": "광고 플랫폼 기능 확대 공지로, 모델과 무관한 제품·영업 소식에 해당합니다. 사용자가 모델을 더 잘 쓰는 공식 활용 팁이 아닙니다.",
+      "status": "skipped",
+      "title": "Building advertising for the way people use AI"
+    },
     "https://openai.com/index/practical-guide-building-gpt-6": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -548,6 +564,14 @@
       "reason": "고객 사례",
       "status": "skipped",
       "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work"
+    },
+    "https://openai.com/index/wayfair": {
+      "checkedAt": "2026-10-06",
+      "company": "openai",
+      "date": "2026-09-25",
+      "reason": "Wayfair의 고객 사례로, 제외 기준의 '고객 사례'에 해당합니다. 새 모델 출시나 모델 업데이트, 공식 활용 팁이 아닙니다.",
+      "status": "skipped",
+      "title": "Wayfair boosts catalog accuracy and support speed with OpenAI"
     }
   }
 }
