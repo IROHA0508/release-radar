@@ -1,0 +1,102 @@
+{
+  "id": "embeddinggemma-2",
+  "company": "google",
+  "date": "2026-10-06",
+  "kind": "모델 출시",
+  "title": "EmbeddingGemma 2",
+  "headline": "텍스트·이미지·영상 프레임·오디오를 하나의 벡터 공간에 담는 온디바이스 멀티모달 임베딩 모델",
+  "tldr": "Google DeepMind가 공개한 오픈 웨이트 멀티모달 임베딩 모델입니다. 740M 파라미터로 텍스트, 이미지, 영상 프레임, 오디오를 하나의 벡터 공간에 매핑해, 이미지 캡션·음성 인식·텍스트 임베딩 모델을 따로 이어 붙이던 지연과 메모리 부담을 줄입니다. Google AI Edge 팀은 Gallery·Foresight 데모와 MediaPipe, LiteRT 활용법을 함께 소개했습니다.",
+  "models": [
+    {
+      "name": "EmbeddingGemma 2",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "파라미터",
+      "value": "740M",
+      "note": "텍스트·비전·오디오를 아우르는 모델 규모"
+    },
+    {
+      "label": "활성 RAM (Pixel 11 Pro)",
+      "value": "약 191MB / 약 567MB",
+      "note": "텍스트 전용 가중치 / 전체 멀티모달 모델"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에는 모델 간 벤치마크 비교 수치가 없고, 평가는 Google DeepMind 블로그와 Hugging Face 모델 카드에 있다고만 안내합니다. 기기별 지연 표는 이미지로만 제공되어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "텍스트, 이미지, 영상 프레임, 오디오를 하나의 통합 벡터 공간에 매핑하는 오픈 웨이트 멀티모달 임베딩 모델입니다.",
+    "텍스트 인코더만 쓰거나 비전·오디오 인코더를 필요할 때만 불러오는 모듈형 구조입니다.",
+    "양자화 인식 학습(QAT)으로 가중치를 INT4와 INT8로 압축해 중급 소비자 하드웨어에서도 쓸 수 있습니다.",
+    "Matryoshka Representation Learning으로 출력 차원을 즉석에서 줄여 저장·인덱스 크기를 최대 8배 줄입니다. MediaPipe는 768차원(또는 128~512차원으로 줄인) 벡터를 반환합니다.",
+    "학습이나 파인튜닝 없이 입력을 분류 라벨·설명과 직접 매칭해 제로샷 의도 라우팅을 수 ms 안에 수행할 수 있습니다.",
+    "Google AI Edge Gallery에 Instant Media Search와 Video Moments Finder 데모가 추가됐고, Mac용 실험 앱 Google AI Edge Foresight가 공개됐습니다."
+  ],
+  "availability": [
+    "Google AI Edge Gallery 앱(Google Play, App Store)에서 데모 체험",
+    "Google AI Edge Foresight Mac 앱 (실험 버전)",
+    "MediaPipe Tasks: Embedder와 Semantic Retriever에 EmbeddingGemma 2 지원 추가, iOS·macOS·Windows·Linux·웹 대응",
+    "LiteRT: Hugging Face LiteRT Community에서 사전 양자화된 .litertlm 번들 다운로드",
+    "Android ML Kit 서비스는 앞으로 몇 주 안에 제공 예정(NPU 가속 포함)"
+  ],
+  "tips": [
+    {
+      "title": "필요한 인코더만 불러오기",
+      "body": "사진·영상 검색이면 텍스트+비전만 로드하고, 음성 메모가 생길 때 오디오 인코더를 켜면 메모리 부담을 줄일 수 있습니다."
+    },
+    {
+      "title": "벡터 차원과 비전 토큰 예산 조절",
+      "body": "MRL 슬라이싱으로 차원을 줄이면 저장·인덱스 크기가 줄고, 비전 토큰 예산을 조절하면 지연과 정밀도 균형을 맞출 수 있습니다."
+    },
+    {
+      "title": "크로스플랫폼은 MediaPipe, 세밀한 제어는 LiteRT",
+      "body": "MediaPipe의 Universal Embedder와 Semantic Retriever는 전처리와 벡터 검색을 대신 처리합니다. 처리와 가속을 직접 제어해야 하면 LiteRT-LM 개발자 가이드를 따르세요."
+    },
+    {
+      "title": "분류기 대신 Decision Task로 라우팅",
+      "body": "파인튜닝 없이 라벨과 설명만으로 이미지·텍스트·오디오 입력을 분류해 온디바이스 라우팅이나 행동 예측에 쓸 수 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "자연어 사진 검색 (Gallery 데모)",
+      "when": "Instant Media Search에서 내 사진을 찾을 때",
+      "type": "prompt",
+      "text": "[찾고 싶은 장면 설명, 예: 키보드 위에서 자는 고양이]"
+    },
+    {
+      "title": "영상 속 순간 찾기 (Gallery 데모)",
+      "when": "Video Moments Finder에서 로컬 영상의 특정 장면을 찾을 때",
+      "type": "prompt",
+      "text": "[찾을 장면 설명, 예: 생일 케이크 촛불을 끄는 사람]"
+    }
+  ],
+  "cautions": [
+    "Android ML Kit 서비스는 아직 출시 전이며 앞으로 몇 주 안에 제공될 예정입니다.",
+    "Foresight는 실험적인 Mac 앱입니다.",
+    "모델 아키텍처와 평가는 Google DeepMind 블로그와 Hugging Face 모델 카드에서 확인해야 하며, 이 글에는 비교 수치가 없습니다."
+  ],
+  "sources": [
+    {
+      "title": "Bring multimodal semantic search to the edge with EmbeddingGemma 2 (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2/"
+    },
+    {
+      "title": "MediaPipe Universal Embedder",
+      "url": "https://developers.google.com/edge/mediapipe/solutions/retrieval/universal_embedder"
+    },
+    {
+      "title": "MediaPipe Semantic Retriever",
+      "url": "https://developers.google.com/edge/mediapipe/solutions/retrieval/semantic_retriever"
+    },
+    {
+      "title": "MediaPipe Decision Maker",
+      "url": "https://developers.google.com/edge/mediapipe/solutions/decision/decision_maker"
+    }
+  ]
+}

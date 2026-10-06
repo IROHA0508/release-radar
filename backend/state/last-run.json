@@ -1,14 +1,72 @@
 {
-  "startedAt": "2026-10-06T18:31:50+09:00",
+  "startedAt": "2026-10-07T04:53:23+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1757,
-  "candidates": [],
-  "added": [],
+  "entries": 1736,
+  "candidates": [
+    {
+      "title": "Advancing computer use with Ironclad",
+      "url": "https://openai.com/index/advancing-computer-use-with-ironclad",
+      "company": "openai",
+      "date": "2026-10-06",
+      "relatedId": null
+    },
+    {
+      "title": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
+      "url": "https://openai.com/index/atlassian-partnership",
+      "company": "openai",
+      "date": "2026-10-06",
+      "relatedId": null
+    },
+    {
+      "title": "Bring multimodal semantic search to the edge with EmbeddingGemma 2- Google Developers Blog",
+      "url": "https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2/",
+      "company": "google",
+      "date": "2026-10-06",
+      "relatedId": null
+    },
+    {
+      "title": "EmbeddingGemma 2: The Developer Guide- Google Developers Blog",
+      "url": "https://developers.googleblog.com/embeddinggemma-2-the-developer-guide/",
+      "company": "google",
+      "date": "2026-10-06",
+      "relatedId": null
+    }
+  ],
+  "added": [
+    {
+      "id": "embeddinggemma-2",
+      "title": "EmbeddingGemma 2",
+      "url": "https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2/",
+      "charts": 0
+    },
+    {
+      "id": "embeddinggemma-2-2",
+      "title": "EmbeddingGemma 2",
+      "url": "https://developers.googleblog.com/embeddinggemma-2-the-developer-guide/",
+      "charts": 0
+    }
+  ],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "Advancing computer use with Ironclad",
+      "url": "https://openai.com/index/advancing-computer-use-with-ironclad",
+      "reason": "고객 사례 및 기업 파트너십 소식. 새 모델 출시나 공식 활용 팁이 아님"
+    },
+    {
+      "title": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
+      "url": "https://openai.com/index/atlassian-partnership",
+      "reason": "기업 파트너십 확대 발표. 제외 대상(기업 파트너십)"
+    }
+  ],
   "failed": [],
-  "guardNotes": {},
+  "guardNotes": {
+    "embeddinggemma-2": [
+      "핵심 수치 '이미지 임베딩 지연: 37.3ms' 원문에서 확인 안 됨 → 제외",
+      "핵심 수치 '인덱스 저장 공간: 최대 8배 절감' 원문에서 확인 안 됨 → 제외"
+    ]
+  },
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false
 }

@@ -243,12 +243,28 @@
       "status": "old",
       "title": "Driving Developer Excellence: Inside the Program Sprints- Google Developers Blog"
     },
+    "https://developers.googleblog.com/embeddinggemma-2-the-developer-guide": {
+      "checkedAt": "2026-10-07",
+      "company": "google",
+      "date": "2026-10-06",
+      "id": "embeddinggemma-2-2",
+      "status": "added",
+      "title": "EmbeddingGemma 2: The Developer Guide- Google Developers Blog"
+    },
     "https://developers.googleblog.com/enterprise-grade-precision-for-long-context-multimodal-embedding-inference-on-cloud-tpu": {
       "checkedAt": "2026-10-03",
       "company": "google",
       "date": "2026-08-26",
       "status": "old",
       "title": "Enterprise-Grade Precision for Long-Context Multimodal Embedding Inference on Cloud TPU- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2": {
+      "checkedAt": "2026-10-07",
+      "company": "google",
+      "date": "2026-10-06",
+      "id": "embeddinggemma-2",
+      "status": "added",
+      "title": "Bring multimodal semantic search to the edge with EmbeddingGemma 2- Google Developers Blog"
     },
     "https://developers.googleblog.com/heygen-x-google-cloud-bringing-avatar-iv-to-tpus": {
       "checkedAt": "2026-10-03",
@@ -461,6 +477,14 @@
       "status": "skipped",
       "title": "Are you a Codex Original?"
     },
+    "https://openai.com/index/advancing-computer-use-with-ironclad": {
+      "checkedAt": "2026-10-07",
+      "company": "openai",
+      "date": "2026-10-06",
+      "reason": "고객 사례 및 기업 파트너십 소식. 새 모델 출시나 공식 활용 팁이 아님",
+      "status": "skipped",
+      "title": "Advancing computer use with Ironclad"
+    },
     "https://openai.com/index/airbnb-gpt-6-astra": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -476,6 +500,14 @@
       "reason": "기업 파트너십/고객 사례",
       "status": "skipped",
       "title": "How Albertsons Companies is reimagining retail from the inside out"
+    },
+    "https://openai.com/index/atlassian-partnership": {
+      "checkedAt": "2026-10-07",
+      "company": "openai",
+      "date": "2026-10-06",
+      "reason": "기업 파트너십 확대 발표. 제외 대상(기업 파트너십)",
+      "status": "skipped",
+      "title": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action"
     },
     "https://openai.com/index/basis-tax-workbook-with-astra": {
       "checkedAt": "2026-10-03",
