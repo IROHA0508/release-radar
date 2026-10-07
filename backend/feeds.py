@@ -202,7 +202,8 @@ def fetch_source(source: config.Source) -> list[Entry]:
     if source.kind == "listing" and not entries and config.READER_FALLBACK:
         # Some blogs render the list in the browser or block scripted requests; the reader sees the links.
         reader = http_get(config.READER_PREFIX + source.url, accept="text/plain,*/*")
-        reader.raise_for_status()
+        if reader.status_code != 200:
+            raise RuntimeError(f"목록에 글 링크 없음 — 직접: {describe(resp, source)} / 리더: HTTP {reader.status_code}")
         entries = parse_reader_listing(reader.text, source)
     if not entries and source.kind in ("listing", "sitemap"):
         raise RuntimeError("항목 0개 — " + describe(resp, source))
