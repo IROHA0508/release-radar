@@ -529,3 +529,19 @@ def test_byline_date_in_article_header():
     html = ("<html><body><article><header><h1>Rethinking skills</h1><p>Sep 11, 2026</p></header>"
             "<p>Coding agents have come a long way.</p>" + "<p>more</p>" * 100 + "</article></body></html>")
     assert extract.parse_html(html, "u").published == date(2026, 9, 11)
+
+
+def test_blog_list_dates_without_year():
+    assert feeds.month_day("Rethinking skills Sep 11", date(2026, 10, 7)) == date(2026, 9, 11)
+    assert feeds.month_day("Year in review Dec 30", date(2026, 10, 7)) == date(2025, 12, 30)
+    assert feeds.month_day("Sep 11, 2026") is None          # full dates are handled elsewhere
+    dev = next(s for s in config.SOURCES if s.name == "OpenAI Developers blog")
+    html = '<div><a href="/blog/rethinking-skills"><h3>Rethinking skills</h3><span>Sep 11</span></a></div>'
+    assert feeds.parse_listing(html, dev)[0].published.month == 9
+
+
+def test_listing_links_from_page_data():
+    blog = next(s for s in config.SOURCES if s.name == "Claude blog")
+    html = '<script>self.__next_f.push([1,"{\\"href\\":\\"/blog/cowork-is-now-claude\\"},{\\"href\\":\\"/blog/category/news\\"}"])</script><a href="https://example.com/blog/elsewhere">x</a>'
+    got = feeds.parse_listing(html, blog)
+    assert [e.url for e in got] == ["https://claude.com/blog/cowork-is-now-claude"]

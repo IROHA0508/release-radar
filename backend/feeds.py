@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 import re
 from dataclasses import dataclass, field
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
@@ -110,8 +110,41 @@ def parse_listing(html: str, source: config.Source) -> list[Entry]:
             title = heading.get_text(" ", strip=True)
         time_tag = a.find("time")
         published = parse_date(time_tag.get("datetime") or time_tag.get_text(strip=True)) if time_tag else None
+        if published is None and source.pattern:
+            # Blog lists often show "Sep 23" without a year next to each link.
+            published = month_day(a.get_text(" ", strip=True)) or month_day(a.parent.get_text(" ", strip=True)[:300])
         entries.append(Entry(title[:200], url, source.company, source.name, published, "", source.priority))
+    if not entries and source.pattern:
+        # Lists drawn by the browser keep their links in the page's data, not in <a> tags.
+        for path in re.findall(r"[\"'=](?:https?://(?:www\.)?" + re.escape(urlsplit(source.base).netloc.removeprefix("www."))
+                               + r")?(/[a-z0-9/_-]+)", html):
+            if not article_re.match(path):
+                continue
+            url = urljoin(source.base + "/", path.lstrip("/"))
+            if normalize_url(url) in seen:
+                continue
+            seen.add(normalize_url(url))
+            slug = path.rstrip("/").rsplit("/", 1)[-1]
+            entries.append(Entry(slug.replace("-", " "), url, source.company, source.name, None, "", source.priority,
+                                 {"titleFromSlug": True}))
     return entries
+
+
+MONTH_DAY_RE = re.compile(r"(?i)\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})\b(?!,?\s*\d)")
+
+
+def month_day(text: str, today: date | None = None) -> date | None:
+    """'Sep 23' -> the most recent Sep 23 that is not in the future."""
+    m = MONTH_DAY_RE.search(text or "")
+    if not m:
+        return None
+    today = today or datetime.now(timezone.utc).date()
+    month = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"].index(m.group(1)[:3].lower()) + 1
+    try:
+        d = date(today.year, month, int(m.group(2)))
+    except ValueError:
+        return None
+    return d if d <= today + timedelta(days=1) else d.replace(year=today.year - 1)
 
 
 def parse_sitemap(xml: bytes | str, source: config.Source) -> list[Entry]:

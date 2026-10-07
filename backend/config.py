@@ -70,8 +70,8 @@ SOURCES = [
     # Official usage tips and prompting guides usually appear on these blogs, not the main newsrooms.
     Source("OpenAI Developers blog", "openai", "listing", "https://developers.openai.com/blog",
            base="https://developers.openai.com", priority=1, pattern=r"^/blog/(?!topic/|tag/|page/)[a-z0-9-]+/?$"),
-    # claude.com/blog refuses scripted requests (and the reader) from GitHub's servers; its sitemap is open.
-    Source("Claude blog", "anthropic", "sitemap", "https://claude.com/sitemap.xml",
+    # claude.com's sitemap has no /blog/ posts; the list page is read (links in <a> tags or page data).
+    Source("Claude blog", "anthropic", "listing", "https://claude.com/blog",
            base="https://claude.com", priority=1, pattern=r"^/blog/(?!category/|tag/|page/)[a-z0-9-]+/?$"),
     Source("Google Gemini app blog", "google", "rss", "https://blog.google/products/gemini/rss/", priority=1),
     Source("Google Developers blog", "google", "rss", "https://developers.googleblog.com/feeds/posts/default"),

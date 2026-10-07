@@ -303,7 +303,8 @@ def run_selftest() -> tuple[bool, list[str]]:
         if not known:
             continue
         try:
-            art = fetch_article(sorted(known)[-1])
+            known.sort(key=lambda u: ("/blog/" in u or "/index/" in u, u))
+            art = fetch_article(known[-1])
             lines.append(f"OK   원문 읽기 {src.name}: {art.via}, 본문 {len(art.text)}자, 발표일 {art.published}")
         except Exception as exc:  # noqa: BLE001
             lines.append(f"WARN 원문 읽기 {src.name}: {exc}")

@@ -107,8 +107,8 @@ def parse_html(html: str, url: str) -> Article:
     links = sorted({a["href"] for a in soup.find_all("a", href=True) if a["href"].startswith("http")})
     tables = [t for t in (table_to_text(tb) for tb in soup.find_all("table")) if t]
     # The byline date often sits in the article's <header>, which is dropped below with the menus.
-    top = soup.find("article") or soup.find("main") or soup.body or soup
-    byline_date = text_date(top.get_text("\n", strip=True))
+    byline_date = next((d for d in (text_date(el.get_text("\n", strip=True))
+                                     for el in (soup.find("article"), soup.find("main"), soup.body) if el) if d), None)
     for tag in soup.find_all(DROP_TAGS):
         tag.decompose()
     for tb in soup.find_all("table"):
