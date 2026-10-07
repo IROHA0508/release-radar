@@ -106,6 +106,9 @@ def parse_html(html: str, url: str) -> Article:
     title = clean_title((og.get("content") if og else None) or (soup.title.get_text(strip=True) if soup.title else ""))
     links = sorted({a["href"] for a in soup.find_all("a", href=True) if a["href"].startswith("http")})
     tables = [t for t in (table_to_text(tb) for tb in soup.find_all("table")) if t]
+    # The byline date often sits in the article's <header>, which is dropped below with the menus.
+    top = soup.find("article") or soup.find("main") or soup.body or soup
+    byline_date = text_date(top.get_text("\n", strip=True))
     for tag in soup.find_all(DROP_TAGS):
         tag.decompose()
     for tb in soup.find_all("table"):
@@ -117,7 +120,7 @@ def parse_html(html: str, url: str) -> Article:
     text = re.sub(r"\n{3,}", "\n\n", text)
     if alts:
         text += "\n\n[이미지 대체 텍스트]\n" + "\n".join(alts)
-    published = published or text_date(text)
+    published = published or byline_date or text_date(text)
     return Article(url, title, published, text[: config.PAGE_TEXT_LIMIT], tables, links)
 
 

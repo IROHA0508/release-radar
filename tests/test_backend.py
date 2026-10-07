@@ -523,3 +523,9 @@ def test_blog_lastmod_is_not_taken_as_publish_date(site, monkeypatch):
     state = {"urls": {}}
     out = pipeline._fill_dates([e], {}, date(2026, 9, 29), state, date(2026, 10, 7), pipeline.RunReport("t", "update"))
     assert out == [] and state["urls"][e.key]["status"] == "nodate"
+
+
+def test_byline_date_in_article_header():
+    html = ("<html><body><article><header><h1>Rethinking skills</h1><p>Sep 11, 2026</p></header>"
+            "<p>Coding agents have come a long way.</p>" + "<p>more</p>" * 100 + "</article></body></html>")
+    assert extract.parse_html(html, "u").published == date(2026, 9, 11)

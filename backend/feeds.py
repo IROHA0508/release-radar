@@ -171,8 +171,20 @@ def fetch_source(source: config.Source) -> list[Entry]:
         reader = http_get(config.READER_PREFIX + source.url, accept="text/plain,*/*")
         reader.raise_for_status()
         entries = parse_reader_listing(reader.text, source)
+    if not entries and source.kind in ("listing", "sitemap"):
+        raise RuntimeError("항목 0개 — " + describe(resp, source))
     log.info("%s: %d entries", source.name, len(entries))
     return entries
+
+
+def describe(resp, source: config.Source) -> str:
+    """What the server actually sent, for the run report when a source yields nothing."""
+    body = resp.text or ""
+    title = re.search(r"<title[^>]*>(.*?)</title>", body, re.S | re.I)
+    first = re.findall(r"<loc>([^<]+)</loc>|href=\"([^\"]+)\"", body)[:4]
+    return (f"HTTP {resp.status_code}, {resp.headers.get('content-type', '?')}, {len(resp.content)}바이트, "
+            f"최종 주소 {resp.url}, 제목 {title.group(1).strip()[:80] if title else '-'}, "
+            f"'/blog/' {body.count('/blog/')}회, 첫 링크 {[a or b for a, b in first]}")
 
 
 def fetch_all(sources=None) -> tuple[list[Entry], dict[str, str]]:
