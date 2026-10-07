@@ -260,7 +260,9 @@ def run_selftest() -> tuple[bool, list[str]]:
             ok = False
             lines.append(f"FAIL {src.name}: {errors.get(src.name, '항목 0개')}")
         else:
-            lines.append(f"OK   {src.name}: {len(got)}개 (날짜 있음 {len(dated)}개, 최신 {max((e.published for e in dated), default=None)})")
+            via = " · 리더 경유" if any(e.extra.get("via") == "reader" for e in got) else ""
+            lines.append(f"OK   {src.name}: {len(got)}개 (날짜 있음 {len(dated)}개, "
+                         f"최신 {max((e.published for e in dated), default=None)}{via})")
     for company in ("openai", "anthropic", "google"):
         newest = next((i for i in site.items if i["company"] == company), None)
         if not newest:

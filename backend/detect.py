@@ -162,7 +162,9 @@ def find_candidates(entries: list[Entry], site: SiteIndex, state: dict, today: d
     seen = state.get("urls", {})
     base = site.newest or today
     if pretend_missing:
-        dates = [date.fromisoformat(i["date"]) for i in site.items if i["id"] not in pretend_missing]
+        # Self-test: act as if it were the day the hidden items came out. (Newer items from other
+        # companies must not push them out of the look-back window.)
+        dates = [date.fromisoformat(i["date"]) for i in site.items if i["id"] in pretend_missing]
         base = max(dates) if dates else today
     cutoff = min(base, today) - timedelta(days=config.LOOKBACK_DAYS)
     out = []

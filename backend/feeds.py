@@ -133,16 +133,43 @@ def parse_sitemap(xml: bytes | str, source: config.Source) -> list[Entry]:
     return entries
 
 
+def parse_reader_listing(markdown: str, source: config.Source) -> list[Entry]:
+    """Article links from the Jina Reader's markdown of a listing page ([title](url) pairs)."""
+    article_re = re.compile(source.pattern) if source.pattern else config.ANTHROPIC_ARTICLE_RE
+    host = urlsplit(source.base).netloc.removeprefix("www.")
+    seen, entries = set(), []
+    for title, url in re.findall(r"\[([^\]]{3,300})\]\((https?://[^)\s]+)\)", markdown):
+        parts = urlsplit(url)
+        if parts.netloc.removeprefix("www.") != host or not article_re.match(parts.path):
+            continue
+        key = normalize_url(url)
+        if key in seen:
+            continue
+        seen.add(key)
+        title = re.sub(r"!\[[^\]]*\]\([^)]*\)|[#*_`]", "", title).strip()
+        entries.append(Entry(title[:200], url.split("#")[0].split("?")[0], source.company, source.name, None, "",
+                             source.priority, {"via": "reader"}))
+    return entries
+
+
 def fetch_source(source: config.Source) -> list[Entry]:
     resp = http_get(source.url, accept="text/html,*/*" if source.kind == "listing" else
                     "application/rss+xml,application/xml,text/xml,*/*")
-    resp.raise_for_status()
-    if source.kind == "rss":
-        entries = parse_rss(resp.content, source)
-    elif source.kind == "sitemap":
-        entries = parse_sitemap(resp.content, source)
+    if source.kind == "listing" and resp.status_code != 200 and config.READER_FALLBACK:
+        entries = []                       # blocked: try the reader below
     else:
-        entries = parse_listing(resp.text, source)
+        resp.raise_for_status()
+        if source.kind == "rss":
+            entries = parse_rss(resp.content, source)
+        elif source.kind == "sitemap":
+            entries = parse_sitemap(resp.content, source)
+        else:
+            entries = parse_listing(resp.text, source)
+    if source.kind == "listing" and not entries and config.READER_FALLBACK:
+        # Some blogs render the list in the browser or block scripted requests; the reader sees the links.
+        reader = http_get(config.READER_PREFIX + source.url, accept="text/plain,*/*")
+        reader.raise_for_status()
+        entries = parse_reader_listing(reader.text, source)
     log.info("%s: %d entries", source.name, len(entries))
     return entries
 

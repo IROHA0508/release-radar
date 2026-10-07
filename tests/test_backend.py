@@ -479,3 +479,25 @@ def test_site_name_suffix_removed_from_titles():
     assert extract.clean_title("EmbeddingGemma 2: The Developer Guide- Google Developers Blog") == \
         "EmbeddingGemma 2: The Developer Guide"
     assert extract.clean_title("Gemini 3.5 Flash - our fastest model") == "Gemini 3.5 Flash - our fastest model"
+
+
+def test_listing_falls_back_to_reader_links():
+    blog = next(s for s in config.SOURCES if s.name == "Claude blog")
+    md = ("Title: Blog\nMarkdown Content:\n[Cowork is now Claude](https://claude.com/blog/cowork-is-now-claude) "
+          "[All posts](https://claude.com/blog/category/news) [Docs](https://code.claude.com/docs/en/overview)\n"
+          "[**Artifacts in Claude Code**](https://claude.com/blog/artifacts-in-claude-code?x=1)")
+    got = feeds.parse_reader_listing(md, blog)
+    assert [e.url for e in got] == ["https://claude.com/blog/cowork-is-now-claude",
+                                    "https://claude.com/blog/artifacts-in-claude-code"]
+    assert got[1].title == "Artifacts in Claude Code" and got[0].extra["via"] == "reader"
+
+
+def test_selftest_window_follows_hidden_item(site):
+    idx = detect.load_site()
+    old = feeds.Entry("Introducing Claude Vector 1", "https://www.anthropic.com/vectorclaude-1", "anthropic",
+                      "Anthropic News", date(2026, 9, 1), "", 2)
+    idx.items.insert(0, {"id": "vectorclaude-1", "company": "anthropic", "date": "2026-09-01",
+                         "title": "VectorClaude 1", "kind": "모델 출시", "models": []})
+    idx.known_urls[feeds.normalize_url(old.url)] = "vectorclaude-1"
+    cands = detect.find_candidates([old], idx, {"urls": {}}, date(2026, 10, 7), pretend_missing={"vectorclaude-1"})
+    assert [c.url for c in cands] == [old.url]

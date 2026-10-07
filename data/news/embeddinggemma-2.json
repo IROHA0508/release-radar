@@ -122,6 +122,10 @@
       "url": "https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2/"
     },
     {
+      "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model (Google DeepMind)",
+      "url": "https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/"
+    },
+    {
       "title": "EmbeddingGemma 문서 (Gemma)",
       "url": "https://ai.google.dev/gemma/docs/embeddinggemma"
     },
