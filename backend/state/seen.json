@@ -557,6 +557,14 @@
       "status": "skipped",
       "title": "How invideo improves color grading 3x with GPT‑6 Astra"
     },
+    "https://openai.com/index/jump-trading": {
+      "checkedAt": "2026-10-07",
+      "company": "openai",
+      "date": "2026-10-06",
+      "reason": "고객 사례(기업 파트너십): Jump Trading의 ChatGPT 활용 사례로, 새 모델 출시, 모델 업데이트, 공식 활용 팁에 해당하지 않습니다.",
+      "status": "skipped",
+      "title": "How Jump Trading is scaling quant research with ChatGPT"
+    },
     "https://openai.com/index/new-chatgpt-ads-format-and-measurement": {
       "checkedAt": "2026-10-06",
       "company": "openai",
@@ -588,6 +596,14 @@
       "reason": "고객 사례",
       "status": "skipped",
       "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI"
+    },
+    "https://openai.com/index/sharing-ai-progress-in-mathematics": {
+      "checkedAt": "2026-10-07",
+      "company": "openai",
+      "date": "2026-10-06",
+      "reason": "모델 출시와 무관한 연구 보고서: 수학 분야 AI 연구 진전에 관한 내용으로, 특정 모델의 새로운 버전이나 기능 변경, 독자가 따라 할 수 있는 실전 조언이 아닙니다.",
+      "status": "skipped",
+      "title": "Sharing AI progress in mathematics"
     },
     "https://openai.com/index/the-den-family-social": {
       "checkedAt": "2026-10-03",
