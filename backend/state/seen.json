@@ -162,6 +162,70 @@
       "status": "old",
       "title": "Working at the frontier: How Balyasny Asset Management evaluates and governs Claude Fable 5 | Claude by Anthropic"
     },
+    "https://claude.com/resources/articles/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude": {
+      "checkedAt": "2026-10-07",
+      "company": "anthropic",
+      "date": "2026-09-29",
+      "reason": "Asana의 human-agent 팀 구축 경험. 고객 사례로 판단 기준의 제외 대상.",
+      "status": "skipped",
+      "title": "Agents you can coach: how Asana builds human-agent teams with Claude"
+    },
+    "https://claude.com/resources/articles/claude-code-mods": {
+      "checkedAt": "2026-10-07",
+      "company": "anthropic",
+      "date": "2026-10-01",
+      "reason": "Claude Code의 mods 기능을 소개하는 제품 발표입니다. 모델 출시나 업데이트, 가격·가용성 변경이 아니고, 독자가 바로 따라 할 실전 조언도 거의 없습니다. 실제 사용법은 별도의 'building your first mod' 가이드에 있어서 제외합니다.",
+      "status": "skipped",
+      "title": "Customize Claude Code with mods"
+    },
+    "https://claude.com/resources/articles/claude-for-government-is-now-generally-available": {
+      "checkedAt": "2026-10-07",
+      "company": "anthropic",
+      "date": "2026-09-30",
+      "reason": "Claude for Government 일반 공개. 정부·기업 요금제 출시로 분류되는 모델과 무관한 제품 공시.",
+      "status": "skipped",
+      "title": "Claude for Government is now generally available"
+    },
+    "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides": {
+      "checkedAt": "2026-10-07",
+      "company": "anthropic",
+      "date": "2026-10-06",
+      "reason": "기존 Claude에 Google 도구 통합이 추가되는 단순 기능 공지. 실전 조언이 거의 없는 기능 소개에 해당.",
+      "status": "skipped",
+      "title": "Claude now works with Google Docs, Sheets, and Slides"
+    },
+    "https://claude.com/resources/articles/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents": {
+      "checkedAt": "2026-10-07",
+      "company": "anthropic",
+      "date": "2026-09-30",
+      "reason": "Anthropic sales team의 Claude Managed Agents 활용 사례. 특정 기업·팀의 경험으로 일반화 어려운 기업 사례.",
+      "status": "skipped",
+      "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents"
+    },
+    "https://claude.com/resources/articles/how-comcast-booz-allen-use-claude-mythos-to-secure-their-codebases": {
+      "checkedAt": "2026-10-07",
+      "company": "anthropic",
+      "date": "2026-10-06",
+      "reason": "Comcast와 Booz Allen의 Claude Mythos 사용 경험. 고객 사례로 판단 기준의 제외 대상.",
+      "status": "skipped",
+      "title": "How Comcast and Booz Allen use Claude Mythos to find exploit chains and secure their codebases"
+    },
+    "https://claude.com/resources/articles/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk": {
+      "checkedAt": "2026-10-07",
+      "company": "anthropic",
+      "date": "2026-10-05",
+      "reason": "Cresta의 Claude Agent SDK 활용 경험. 고객 사례로 판단 기준의 제외 대상.",
+      "status": "skipped",
+      "title": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK"
+    },
+    "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build": {
+      "checkedAt": "2026-10-07",
+      "company": "anthropic",
+      "date": "2026-10-06",
+      "reason": "Claude Startups 프로그램 확대. 모델 출시·업데이트와 무관한 프로그램 홍보.",
+      "status": "skipped",
+      "title": "We’re expanding the Claude Startups program to help founders build"
+    },
     "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview": {
       "checkedAt": "2026-10-03",
       "company": "google",
