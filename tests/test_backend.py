@@ -376,3 +376,106 @@ def test_cli_token_whitespace_is_removed(monkeypatch):
     assert summ.ClaudeCodeCLI().env["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-abcdefghi"
     monkeypatch.setenv("CLAUDE_CODE_OAUTH_TOKEN", "│ sk-ant-oat01-ab_C-d │\n│ ef9 │")
     assert summ.ClaudeCodeCLI().env["CLAUDE_CODE_OAUTH_TOKEN"] == "sk-ant-oat01-ab_C-def9"
+
+
+# ---- two posts about one launch in the same run (EmbeddingGemma 2, 2026-10-06) ----
+
+GOOGLE_RSS = """<?xml version="1.0"?><rss version="2.0"><channel><title>Dev</title>
+<item><title>Bring multimodal semantic search to the edge with VectorGemma 9</title>
+<link>https://developers.googleblog.com/edge-with-vectorgemma-9/</link><pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate></item>
+<item><title>VectorGemma 9: The Developer Guide</title>
+<link>https://developers.googleblog.com/vectorgemma-9-developer-guide/</link><pubDate>Fri, 02 Oct 2026 16:00:00 GMT</pubDate></item>
+</channel></rss>"""
+
+GOOGLE = next(s for s in config.SOURCES if s.name == "Google Developers blog")
+VG_PAGE = ("<html><body><article><h1>VectorGemma 9</h1><p>VectorGemma 9 is a 740M embedding model.</p>"
+           + "<p>more text</p>" * 200 + "</article></body></html>")
+
+
+def vg_draft(url, kind="모델 출시", title="VectorGemma 9", model="VectorGemma 9"):
+    return {"decision": "new", "reason": "", "updateId": "", "update": {"changes": [], "availability": [], "sources": []},
+            "item": {"id": "vectorgemma-9", "kind": kind, "title": title, "headline": "h", "tldr": "t",
+                     "models": [{"name": model, "apiId": "", "input": "", "output": "", "cached": ""}],
+                     "numbers": [], "charts": [], "chartNote": "n", "chartSource": "", "changes": ["c"],
+                     "availability": ["a"], "tips": [{"title": "x", "body": "y"}],
+                     "prompts": [{"title": "p", "when": "w", "type": "prompt", "text": "t"}],
+                     "cautions": ["z"], "sources": [{"title": "s", "url": url}]}}
+
+
+def run_two_posts(site, monkeypatch, rss, draft_for):
+    import backend.summarize as summ
+
+    calls = []
+    def fake_write(claude, entry, art, site_lines, today, update_of=None):
+        calls.append((entry.url, update_of["id"] if update_of else None))
+        if update_of:
+            return {"decision": "update", "updateId": update_of["id"], "reason": "",
+                    "update": {"changes": ["개발자 가이드의 새 내용"], "availability": [], "sources": []}}
+        return draft_for(entry.url)
+
+    monkeypatch.setattr(feeds, "fetch_all", lambda sources=None: (feeds.parse_rss(rss, GOOGLE), {}))
+    monkeypatch.setattr(pipeline, "fetch_article", lambda url: extract.parse_html(VG_PAGE, url))
+    monkeypatch.setattr(summ, "Claude", FakeClaude)
+    monkeypatch.setattr(summ, "triage", lambda c, cands, lines: {i: (True, "") for i, _ in enumerate(cands)})
+    monkeypatch.setattr(summ, "write_item", fake_write)
+    return pipeline.run_update(api_key="test"), calls
+
+
+def test_second_post_about_same_launch_updates_instead_of_duplicating(site, monkeypatch):
+    report, calls = run_two_posts(site, monkeypatch, GOOGLE_RSS, vg_draft)
+    assert [a["id"] for a in report.added] == ["vectorgemma-9"]
+    assert [u["id"] for u in report.updated] == ["vectorgemma-9"]
+    assert calls[1][1] == "vectorgemma-9"                 # the second post was written as an update
+    assert not (site / "data/news/vectorgemma-9-2.json").exists()
+    item = json.loads((site / "data/news/vectorgemma-9.json").read_text())
+    urls = [s["url"] for s in item["sources"]]
+    assert "https://developers.googleblog.com/vectorgemma-9-developer-guide/" in urls
+    assert "개발자 가이드의 새 내용" in item["changes"]
+    manifest = json.loads((site / "data/manifest.json").read_text())
+    assert manifest["news"].count("vectorgemma-9") == 1 and "vectorgemma-9-2" not in manifest["news"]
+
+
+def test_duplicate_launch_caught_even_when_title_hides_model_name(site, monkeypatch):
+    rss = GOOGLE_RSS.replace("VectorGemma 9: The Developer Guide", "A new open embedding model for developers")
+    report, calls = run_two_posts(site, monkeypatch, rss, vg_draft)
+    assert len(report.added) == 1 and len(report.updated) == 1
+    assert calls[1][1] is None and calls[2][1] == "vectorgemma-9"   # drafted as new, caught, rewritten as update
+
+
+def test_writer_ignoring_update_request_still_adds_no_second_item(site, monkeypatch):
+    import backend.summarize as summ
+
+    rss = GOOGLE_RSS.replace("VectorGemma 9: The Developer Guide", "A new open embedding model for developers")
+    report, _ = run_two_posts(site, monkeypatch, rss, vg_draft)  # warm-up run adds the item
+    assert len(report.added) == 1
+    # a stubborn writer that always answers "new"
+    monkeypatch.setattr(summ, "write_item", lambda *a, **k: vg_draft(a[1].url))
+    state = json.loads((site / "backend/state/seen.json").read_text())
+    state["urls"].clear()
+    (site / "backend/state/seen.json").write_text(json.dumps(state))
+    item_path = site / "data/news/vectorgemma-9.json"
+    item = json.loads(item_path.read_text())
+    item["sources"] = item["sources"][:1]
+    item_path.write_text(json.dumps(item, ensure_ascii=False))
+    report2 = pipeline.run_update(api_key="test")
+    assert report2.added == [] and [u["id"] for u in report2.updated] == ["vectorgemma-9"]
+    assert not (site / "data/news/vectorgemma-9-2.json").exists()
+    urls = [s["url"] for s in json.loads(item_path.read_text())["sources"]]
+    assert "https://developers.googleblog.com/vectorgemma-9-developer-guide/" in urls   # kept as a source
+
+
+def test_tip_about_launched_model_stays_separate(site):
+    idx = detect.load_site()
+    idx.add({"id": "vectorgemma-9", "company": "google", "date": "2026-10-02", "kind": "모델 출시",
+             "title": "VectorGemma 9", "models": [{"name": "VectorGemma 9"}], "sources": []})
+    tip = {"company": "google", "date": "2026-10-03", "kind": "활용 팁", "title": "VectorGemma 9 검색 팁",
+           "models": [{"name": "VectorGemma 9"}]}
+    assert detect.duplicate_launch(tip, idx) is None
+    launch = {**tip, "kind": "모델 출시", "title": "VectorGemma 9 (preview)"}
+    assert detect.duplicate_launch(launch, idx) == "vectorgemma-9"
+
+
+def test_site_name_suffix_removed_from_titles():
+    assert extract.clean_title("EmbeddingGemma 2: The Developer Guide- Google Developers Blog") == \
+        "EmbeddingGemma 2: The Developer Guide"
+    assert extract.clean_title("Gemini 3.5 Flash - our fastest model") == "Gemini 3.5 Flash - our fastest model"

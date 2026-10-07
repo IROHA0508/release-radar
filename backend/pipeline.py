@@ -60,6 +60,11 @@ def _fail(state: dict, e: feeds.Entry, today: date, report: RunReport, error: st
         attempts.pop(e.key, None)
 
 
+def _load_item(news_id: str | None) -> dict | None:
+    path = config.NEWS_DIR / f"{news_id}.json"
+    return json.loads(path.read_text(encoding="utf-8")) if news_id and path.exists() else None
+
+
 def _fill_dates(cands: list[feeds.Entry], cache: dict[str, Article], cutoff: date, state: dict, today: date,
                 report: RunReport) -> list[feeds.Entry]:
     """Listing pages have no dates: read up to N article pages to get them and drop old ones."""
@@ -158,9 +163,21 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
         cands = keep
 
     for e in cands[: config.MAX_NEW_ITEMS]:
+        # Another post about news the site already has, including an item added earlier in this run
+        # (e.g. two blog posts about one launch on the same day): only add its new details there.
+        same = detect.same_item(e, site, set())
         try:
             art = cache.get(e.key) or fetch_article(e.url)
-            draft = write_item(claude, e, art, site_lines, today)
+            draft = write_item(claude, e, art, site_lines, today, update_of=_load_item(same) if same else None)
+            if draft.get("decision") == "new" and not same:
+                probe = {**(draft.get("item") or {}), "company": e.company,
+                         "date": (e.published or art.published or today).isoformat()}
+                probe.pop("id", None)
+                dup = detect.duplicate_launch(probe, site)
+                if dup:
+                    same = dup
+                    annotate("notice", "중복 소식 방지", f"{e.url} → 기존 '{dup}'에 덧붙임")
+                    draft = write_item(claude, e, art, site_lines, today, update_of=_load_item(dup))
         except Exception as exc:  # noqa: BLE001 - try again next run
             log.exception("failed: %s", e.url)
             if is_auth_error(exc):
@@ -172,6 +189,14 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
             annotate("warning", "요약 실패", f"{e.url} {exc}")
             continue
         decision = draft.get("decision")
+        if same:
+            # Never a second item for the same news: whatever the draft says, this post is at least
+            # another official source of the existing item.
+            upd = (draft.get("update") or {}) if decision == "update" else {}
+            draft = {"decision": "update", "updateId": same, "update": {
+                "changes": upd.get("changes") or [], "availability": upd.get("availability") or [],
+                "sources": [{"title": art.title or e.title, "url": e.url}, *(upd.get("sources") or [])]}}
+            decision = "update"
         if decision == "skip":
             detect.mark(state, e, "skipped", today, reason=draft.get("reason", ""))
             report.skipped.append({"title": e.title, "url": e.url, "reason": draft.get("reason", "")})
@@ -185,12 +210,13 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
                 if ok:
                     detect.mark(state, e, "updated", today, id=target)
                     report.updated.append({"id": target, "url": e.url})
+                    site.known_urls[feeds.normalize_url(e.url)] = target
                     annotate("notice", "기존 소식 보강", f"{target} ← {e.url}")
                     continue
                 target_path.write_text(before, encoding="utf-8")
                 _fail(state, e, today, report, "검증 실패: " + out)
             else:
-                detect.mark(state, e, "skipped", today, reason="보강할 내용 없음")
+                detect.mark(state, e, "skipped", today, reason="보강할 내용 없음", id=target)
             continue
 
         day = e.published or art.published or today
@@ -210,6 +236,8 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
             annotate("warning", "검증 실패", f"{e.url}\n{out}")
             continue
         detect.mark(state, e, "added", today, id=item["id"])
+        site.add(item)                      # later candidates in this run must see it
+        site_lines = site.summary_lines()
         report.added.append({"id": item["id"], "title": item["title"], "url": e.url, "charts": len(item.get("charts", []))})
         annotate("notice", "새 소식 추가", f"{item['id']} | {item['title']} | 그래프 {len(item.get('charts', []))}개")
 

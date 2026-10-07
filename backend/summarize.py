@@ -206,7 +206,10 @@ def triage(claude, entries: list[Entry], site_lines: list[str]) -> dict[int, tup
     return {r["index"]: (bool(r["relevant"]), r.get("reason", "")) for r in out.get("results", [])}
 
 
-def write_item(claude, entry: Entry, article: Article, site_lines: list[str], today: date) -> dict:
+def write_item(claude, entry: Entry, article: Article, site_lines: list[str], today: date,
+               update_of: dict | None = None) -> dict:
+    """Draft one news item. With update_of (an existing item), only an update to that item is asked for:
+    the article is another post about news the site already has."""
     schema_doc = config.SCHEMA_DOC.read_text(encoding="utf-8") if config.SCHEMA_DOC.exists() else ""
     example = config.STYLE_EXAMPLE.read_text(encoding="utf-8") if config.STYLE_EXAMPLE.exists() else ""
     tip_example = config.TIP_EXAMPLE.read_text(encoding="utf-8") if config.TIP_EXAMPLE.exists() else ""
@@ -222,4 +225,14 @@ def write_item(claude, entry: Entry, article: Article, site_lines: list[str], to
         f"\n\n# 원문 본문\n{article.text}\n\n# TABLES (원문 표를 셀 그대로 옮김)\n{tables}\n\n# 원문 링크 일부\n{links}\n\n"
         "위 원문으로 decision과 item(또는 update)을 작성해라."
     )
+    if update_of:
+        existing = {k: update_of.get(k) for k in ("id", "title", "tldr", "numbers", "changes", "availability")}
+        user += (
+            "\n\n# 중요: 이미 사이트에 있는 소식\n"
+            f"이 원문은 이미 사이트에 있는 소식 '{update_of['id']}'와 같은 모델·같은 발표를 다룬 다른 글이다. "
+            "새 소식을 만들지 말고 decision은 반드시 \"update\", updateId는 "
+            f"\"{update_of['id']}\"로 써라. update.changes와 update.availability에는 아래 기존 내용에 없는 "
+            "새 사실만 짧게(각 0~3개) 쓰고, update.sources에는 이 원문 URL을 넣어라. item은 빈 값으로 둔다.\n"
+            + json.dumps(existing, ensure_ascii=False, indent=1)
+        )
     return claude.json_call(model=config.SUMMARY_MODEL, system=system, user=user, schema=RESULT, max_tokens=16000)

@@ -247,8 +247,8 @@
       "checkedAt": "2026-10-07",
       "company": "google",
       "date": "2026-10-06",
-      "id": "embeddinggemma-2-2",
-      "status": "added",
+      "id": "embeddinggemma-2",
+      "status": "updated",
       "title": "EmbeddingGemma 2: The Developer Guide- Google Developers Blog"
     },
     "https://developers.googleblog.com/enterprise-grade-precision-for-long-context-multimodal-embedding-inference-on-cloud-tpu": {

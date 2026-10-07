@@ -89,11 +89,21 @@ def text_date(text: str) -> date | None:
         return None
 
 
+SITE_SUFFIX_RE = re.compile(
+    r"\s*[-–—|]\s*(Google Developers Blog|Google Cloud Blog|Google DeepMind|Google Blog|The Keyword|"
+    r"OpenAI( Developers)?|Anthropic|Claude)\s*$")
+
+
+def clean_title(title: str) -> str:
+    """'EmbeddingGemma 2: The Developer Guide- Google Developers Blog' -> 'EmbeddingGemma 2: The Developer Guide'."""
+    return SITE_SUFFIX_RE.sub("", title or "").strip()
+
+
 def parse_html(html: str, url: str) -> Article:
     soup = BeautifulSoup(html, "lxml")
     published = meta_date(soup)
     og = soup.find("meta", attrs={"property": "og:title"})
-    title = (og.get("content") if og else None) or (soup.title.get_text(strip=True) if soup.title else "")
+    title = clean_title((og.get("content") if og else None) or (soup.title.get_text(strip=True) if soup.title else ""))
     links = sorted({a["href"] for a in soup.find_all("a", href=True) if a["href"].startswith("http")})
     tables = [t for t in (table_to_text(tb) for tb in soup.find_all("table")) if t]
     for tag in soup.find_all(DROP_TAGS):
@@ -116,7 +126,7 @@ def parse_reader(markdown: str, url: str) -> Article:
     title, published = "", None
     m = re.search(r"^Title:\s*(.+)$", markdown, re.M)
     if m:
-        title = m.group(1).strip()
+        title = clean_title(m.group(1).strip())
     m = re.search(r"^Published Time:\s*(.+)$", markdown, re.M)
     if m:
         published = parse_date(m.group(1).strip())

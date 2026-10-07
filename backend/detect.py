@@ -23,6 +23,16 @@ class SiteIndex:
     def summary_lines(self) -> list[str]:
         return [f"{i['id']} | {i['company']} | {i['date']} | {i['title']}" for i in self.items]
 
+    def add(self, item: dict) -> None:
+        """Register an item written during this run, so later candidates in the same run see it."""
+        self.items.insert(0, {"id": item["id"], "company": item["company"], "date": item["date"],
+                              "title": item["title"], "kind": item.get("kind", ""),
+                              "models": [m.get("name") for m in item.get("models", [])]})
+        for s in item.get("sources", []):
+            self.known_urls[normalize_url(s["url"])] = item["id"]
+        day = date.fromisoformat(item["date"])
+        self.newest = day if self.newest is None or day > self.newest else self.newest
+
 
 def load_site() -> SiteIndex:
     items, known = [], {}
@@ -30,7 +40,7 @@ def load_site() -> SiteIndex:
     for path in sorted(config.NEWS_DIR.glob("*.json")):
         d = json.loads(path.read_text(encoding="utf-8"))
         items.append({"id": d["id"], "company": d["company"], "date": d["date"], "title": d["title"],
-                      "models": [m.get("name") for m in d.get("models", [])]})
+                      "kind": d.get("kind", ""), "models": [m.get("name") for m in d.get("models", [])]})
         for s in d.get("sources", []):
             known[normalize_url(s["url"])] = d["id"]
         day = date.fromisoformat(d["date"])
@@ -87,6 +97,34 @@ def same_item(entry: Entry, site: SiteIndex, exclude: set[str]) -> str | None:
         return None
     item = next(i for i in site.items if i["id"] == rid)
     return rid if abs((date.fromisoformat(item["date"]) - entry.published).days) <= 1 else None
+
+
+def model_key(name: str | None) -> str:
+    """'EmbeddingGemma 2', 'embeddinggemma-2', 'Gemini 3.1 Flash TTS (프리뷰)' -> comparable keys."""
+    return re.sub(r"[^a-z0-9.]+", "", re.sub(r"\(.*?\)", "", (name or "").lower()))
+
+
+def duplicate_launch(item: dict, site: SiteIndex, window_days: int = 14) -> str | None:
+    """An existing item announcing the same model (or with the same title) as a freshly written one.
+
+    A model is launched once: two "모델 출시" items from one company sharing a model name within
+    two weeks are the same news. Tips and updates about a launched model stay separate items.
+    """
+    day = date.fromisoformat(item["date"])
+    names = {model_key(m.get("name")) for m in item.get("models", [])} - {""}
+    title = model_key(item.get("title"))
+    for other in site.items:
+        if other["company"] != item["company"] or other["id"] == item.get("id"):
+            continue
+        if abs((date.fromisoformat(other["date"]) - day).days) > window_days:
+            continue
+        same_kind = other.get("kind") == item.get("kind")
+        if same_kind and title and model_key(other["title"]) == title:
+            return other["id"]
+        if item.get("kind") == "모델 출시" and other.get("kind") == "모델 출시" and \
+                names & {model_key(n) for n in other.get("models", [])}:
+            return other["id"]
+    return None
 
 
 def dedupe(entries: list[Entry]) -> list[Entry]:

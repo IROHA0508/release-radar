@@ -4,12 +4,12 @@
   "date": "2026-10-06",
   "kind": "모델 출시",
   "title": "EmbeddingGemma 2",
-  "headline": "텍스트·이미지·영상 프레임·오디오를 하나의 벡터 공간에 담는 온디바이스 멀티모달 임베딩 모델",
-  "tldr": "Google DeepMind가 공개한 오픈 웨이트 멀티모달 임베딩 모델입니다. 740M 파라미터로 텍스트, 이미지, 영상 프레임, 오디오를 하나의 벡터 공간에 매핑해, 이미지 캡션·음성 인식·텍스트 임베딩 모델을 따로 이어 붙이던 지연과 메모리 부담을 줄입니다. Google AI Edge 팀은 Gallery·Foresight 데모와 MediaPipe, LiteRT 활용법을 함께 소개했습니다.",
+  "headline": "텍스트·코드·이미지·영상·오디오를 하나의 768차원 공간에 담는 1B 미만 오픈 임베딩 모델",
+  "tldr": "EmbeddingGemma 2는 Gemma 4를 기반으로 한 Apache 2.0 라이선스의 소형 오픈 모델입니다. 텍스트, 코드, 이미지, 영상, 오디오를 하나의 768차원 벡터 공간에 매핑합니다. MTEB(Code) 점수는 EmbeddingGemma 1보다 14% 높습니다. 필요한 인코더만 골라 올리면 270M에서 740M 파라미터까지 메모리를 조절할 수 있습니다. Google AI Edge 팀은 같은 날 MediaPipe·LiteRT로 기기에서 쓰는 방법과 Gallery 앱 데모도 함께 공개했습니다.",
   "models": [
     {
       "name": "EmbeddingGemma 2",
-      "apiId": null,
+      "apiId": "google/embeddinggemma-2",
       "input": null,
       "output": null,
       "cached": null
@@ -17,9 +17,19 @@
   ],
   "numbers": [
     {
-      "label": "파라미터",
-      "value": "740M",
-      "note": "텍스트·비전·오디오를 아우르는 모델 규모"
+      "label": "MTEB (Code)",
+      "value": "14% 향상",
+      "note": "EmbeddingGemma 1 대비"
+    },
+    {
+      "label": "모델 크기",
+      "value": "270M ~ 740M",
+      "note": "텍스트·코드 270M, 전체 멀티모달 740M"
+    },
+    {
+      "label": "임베딩 차원",
+      "value": "768 (최소 128까지 축소)",
+      "note": "Matryoshka(MRL)로 512·256·128 차원 지원"
     },
     {
       "label": "활성 RAM (Pixel 11 Pro)",
@@ -28,16 +38,22 @@
     }
   ],
   "charts": [],
-  "chartNote": "원문에는 모델 간 벤치마크 비교 수치가 없고, 평가는 Google DeepMind 블로그와 Hugging Face 모델 카드에 있다고만 안내합니다. 기기별 지연 표는 이미지로만 제공되어 그래프를 만들지 않았습니다.",
+  "chartNote": "원문에는 모델 간 비교 수치가 표나 텍스트로 없고, EmbeddingGemma 1 대비 MTEB(Code) 14% 향상이라는 상대 수치만 있습니다. 벤치마크와 기기별 지연은 이미지로만 제공되어 그래프를 만들지 않았습니다.",
   "changes": [
-    "텍스트, 이미지, 영상 프레임, 오디오를 하나의 통합 벡터 공간에 매핑하는 오픈 웨이트 멀티모달 임베딩 모델입니다.",
-    "텍스트 인코더만 쓰거나 비전·오디오 인코더를 필요할 때만 불러오는 모듈형 구조입니다.",
+    "텍스트, 코드, 이미지, 영상, 오디오를 하나의 공유 768차원 공간에 임베딩해 모달리티를 넘나드는 검색이 가능합니다.",
+    "코드 검색과 기술 문서 검색에서 EmbeddingGemma 1보다 크게 좋아졌고, MTEB(Code) 점수는 14% 높습니다. 다국어 텍스트 정확도는 EmbeddingGemma 1 수준을 유지합니다.",
+    "모듈식 구조라 270M(텍스트·코드), 440M(텍스트+비전), 570M(텍스트+오디오), 740M(전체)로 필요한 인코더만 불러올 수 있습니다. 네 구성은 같은 벡터 공간을 공유합니다.",
+    "MRL로 768차원을 512·256·128차원으로 줄일 수 있습니다. 256차원은 텍스트·코드 품질 대부분과 이미지·영상·음성 검색 품질 약 95%를 유지하고, 저장 공간은 1/3입니다.",
+    "Gemma 4와 텍스트 토크나이저, 오디오 인코더 구조를 공유해 온디바이스 RAG에서 전체 메모리 사용량을 줄일 수 있습니다.",
     "양자화 인식 학습(QAT)으로 가중치를 INT4와 INT8로 압축해 중급 소비자 하드웨어에서도 쓸 수 있습니다.",
-    "Matryoshka Representation Learning으로 출력 차원을 즉석에서 줄여 저장·인덱스 크기를 최대 8배 줄입니다. MediaPipe는 768차원(또는 128~512차원으로 줄인) 벡터를 반환합니다.",
     "학습이나 파인튜닝 없이 입력을 분류 라벨·설명과 직접 매칭해 제로샷 의도 라우팅을 수 ms 안에 수행할 수 있습니다.",
     "Google AI Edge Gallery에 Instant Media Search와 Video Moments Finder 데모가 추가됐고, Mac용 실험 앱 Google AI Edge Foresight가 공개됐습니다."
   ],
   "availability": [
+    "Hugging Face에서 가중치를 내려받을 수 있습니다(Apache 2.0 라이선스).",
+    "sentence-transformers v6.1.0 이상에서 사용할 수 있습니다.",
+    "vLLM, Hugging Face Transformers, SGLang, MLX, Ollama, LMStudio, LiteRT에서 실행할 수 있습니다.",
+    "Unsloth로 파인튜닝할 수 있습니다.",
     "Google AI Edge Gallery 앱(Google Play, App Store)에서 데모 체험",
     "Google AI Edge Foresight Mac 앱 (실험 버전)",
     "MediaPipe Tasks: Embedder와 Semantic Retriever에 EmbeddingGemma 2 지원 추가, iOS·macOS·Windows·Linux·웹 대응",
@@ -46,12 +62,20 @@
   ],
   "tips": [
     {
-      "title": "필요한 인코더만 불러오기",
-      "body": "사진·영상 검색이면 텍스트+비전만 로드하고, 음성 메모가 생길 때 오디오 인코더를 켜면 메모리 부담을 줄일 수 있습니다."
+      "title": "필요한 인코더만 로드하기",
+      "body": "텍스트만 쓴다면 config_kwargs에서 vision_config와 audio_config를 None으로 설정하세요. 비활성화한 인코더는 메모리에 올라가지 않아 270M 구성으로 돌릴 수 있습니다. 나중에 이미지나 오디오를 추가해도 이미 계산한 임베딩은 다시 만들 필요가 없습니다."
     },
     {
-      "title": "벡터 차원과 비전 토큰 예산 조절",
-      "body": "MRL 슬라이싱으로 차원을 줄이면 저장·인덱스 크기가 줄고, 비전 토큰 예산을 조절하면 지연과 정밀도 균형을 맞출 수 있습니다."
+      "title": "검색에는 질의와 문서에 다른 태스크 프롬프트 사용",
+      "body": "encode()의 prompt_name에 질의는 \"SearchQuery\", 문서는 \"Document\"를 지정하세요. 이미지·영상·오디오는 프롬프트 없이 딕셔너리로 넘깁니다."
+    },
+    {
+      "title": "차원은 저장 공간과 재현율 사이에서 고르기",
+      "body": "멀티모달·시각 문서 검색이나 재현율이 중요하면 768 또는 512차원을 쓰세요. 저장 공간이 부족하면 256차원이 좋은 절충안입니다. 128차원은 큰 텍스트 전용 인덱스나 리랭킹 전 1차 후보 추리기에 적합합니다."
+    },
+    {
+      "title": "질의와 문서의 차원을 맞추기",
+      "body": "truncate_dim을 쓸 때는 normalize_embeddings=True를 함께 지정하고, 질의와 문서에 같은 차원을 사용해야 합니다."
     },
     {
       "title": "크로스플랫폼은 MediaPipe, 세밀한 제어는 LiteRT",
@@ -64,27 +88,42 @@
   ],
   "prompts": [
     {
+      "title": "모델 로드와 검색 임베딩 (Python)",
+      "when": "텍스트 전용 270M 구성으로 질의와 문서를 비교할 때",
+      "type": "code",
+      "text": "from sentence_transformers import SentenceTransformer\n\nMODEL_ID = \"google/embeddinggemma-2\"\n\n# 텍스트만 사용 (270M)\nmodel = SentenceTransformer(\n    MODEL_ID,\n    config_kwargs={\"vision_config\": None, \"audio_config\": None},\n)\n\nquery_emb = model.encode(\"[검색 질의]\", prompt_name=\"SearchQuery\")\ndoc_emb = model.encode(\"[문서 내용]\", prompt_name=\"Document\")\n\nprint(model.similarity(query_emb, doc_emb))"
+    },
+    {
+      "title": "텍스트로 이미지 검색 + 256차원 축소 (Python)",
+      "when": "전체 멀티모달 모델로 교차 모달 검색을 하면서 저장 공간을 줄일 때",
+      "type": "code",
+      "text": "from sentence_transformers import SentenceTransformer\n\nmodel = SentenceTransformer(\"google/embeddinggemma-2\")\n\nimage_emb = model.encode(\n    {\"image\": \"[이미지 파일 경로]\"},\n    truncate_dim=256,\n    normalize_embeddings=True,\n)\nquery_emb = model.encode(\n    \"[검색 질의]\",\n    prompt_name=\"SearchQuery\",\n    truncate_dim=256,\n    normalize_embeddings=True,\n)\n\nprint(model.similarity(query_emb, image_emb))"
+    },
+    {
       "title": "자연어 사진 검색 (Gallery 데모)",
       "when": "Instant Media Search에서 내 사진을 찾을 때",
       "type": "prompt",
       "text": "[찾고 싶은 장면 설명, 예: 키보드 위에서 자는 고양이]"
-    },
-    {
-      "title": "영상 속 순간 찾기 (Gallery 데모)",
-      "when": "Video Moments Finder에서 로컬 영상의 특정 장면을 찾을 때",
-      "type": "prompt",
-      "text": "[찾을 장면 설명, 예: 생일 케이크 촛불을 끄는 사람]"
     }
   ],
   "cautions": [
+    "128차원으로 줄이면 텍스트·코드 품질은 약 90%를 유지하지만 이미지·영상·음성 검색 품질은 약 75%로 떨어집니다. 멀티모달 질의에 쓰기 전에 직접 데이터로 검증하세요.",
+    "모든 모달리티가 8,192 토큰 컨텍스트 창을 공유합니다. 영상은 기본 초당 1프레임으로 샘플링하고, 오디오는 16kHz 모노여야 합니다.",
     "Android ML Kit 서비스는 아직 출시 전이며 앞으로 몇 주 안에 제공될 예정입니다.",
-    "Foresight는 실험적인 Mac 앱입니다.",
-    "모델 아키텍처와 평가는 Google DeepMind 블로그와 Hugging Face 모델 카드에서 확인해야 하며, 이 글에는 비교 수치가 없습니다."
+    "원문에 모델 간 비교 벤치마크 수치가 거의 없습니다. 확인되는 개선 폭은 MTEB(Code) 14% 향상뿐이며, 자세한 평가는 Google DeepMind 블로그와 Hugging Face 모델 카드에서 확인하세요."
   ],
   "sources": [
     {
+      "title": "EmbeddingGemma 2: The Developer Guide (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/embeddinggemma-2-the-developer-guide/"
+    },
+    {
       "title": "Bring multimodal semantic search to the edge with EmbeddingGemma 2 (Google Developers Blog)",
       "url": "https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2/"
+    },
+    {
+      "title": "EmbeddingGemma 문서 (Gemma)",
+      "url": "https://ai.google.dev/gemma/docs/embeddinggemma"
     },
     {
       "title": "MediaPipe Universal Embedder",

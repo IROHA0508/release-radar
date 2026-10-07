@@ -85,7 +85,7 @@ ANTHROPIC_ARTICLE_RE = re.compile(
 
 # Cheap first filter before any API call: the title or summary must mention something model-like.
 RELEVANT_RE = re.compile(
-    r"(?i)\b(gpt[-‑ ]?\d|o\d\b|codex|sora|chatgpt|gpt|claude|opus|sonnet|haiku|fable|mythos|gemini|gemma|veo|imagen|"
+    r"(?i)\b(gpt[-‑ ]?\d|o\d\b|codex|sora|chatgpt|gpt|claude|opus|sonnet|haiku|fable|mythos|gemini|[a-z]*gemma|veo|imagen|"
     r"lyria|nano banana|omni|models?|api|prompt(?:s|ing)?|realtime|tts|transcribe|reasoning|agents?|"
     r"tips?|guide|best practices|skills?|antigravity|ai studio)\b"
 )
