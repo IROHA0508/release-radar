@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 from dataclasses import dataclass, field
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -76,14 +77,16 @@ def _fill_dates(cands: list[feeds.Entry], cache: dict[str, Article], cutoff: dat
             fetched += 1
             try:
                 art = fetch_article(e.url)
-            except Exception as exc:  # noqa: BLE001
-                report.failed.append({"url": e.url, "error": str(exc)})
+            except Exception as exc:  # noqa: BLE001 - counted, given up after 3 runs
+                _fail(state, e, today, report, f"원문 읽기 실패: {exc}")
                 continue
             cache[e.key] = art
-            # A page without a date: fall back to the sitemap's lastmod, or today for newsroom links.
-            # Blog listings (tips) have many old posts, so an undated one there is skipped instead.
+            # A page without a date: fall back to the sitemap's lastmod, or today, for the Anthropic
+            # newsroom only. Blogs have many old posts (and their lastmod changes on every site
+            # rebuild), so an undated post there is skipped instead of being taken as new.
             src = next((s for s in config.SOURCES if s.name == e.source), None)
-            e.published = art.published or e.extra.get("lastmod") or (today if src is None or src.undated_is_new else None)
+            trusted = src is None or src.undated_is_new
+            e.published = art.published or ((e.extra.get("lastmod") or today) if trusted else None)
             if e.published is None:
                 detect.mark(state, e, "nodate", today)
                 continue
@@ -290,6 +293,20 @@ def run_selftest() -> tuple[bool, list[str]]:
             lines.append(f"FAIL 감지 시험 {company}: '{newest['id']}'을 찾지 못함 (후보 {len(cands)}개)")
             for e in [e for e in entries if e.company == company][:12]:
                 lines.append(f"INFO {e.source} | {e.published} | {e.title[:80]} | {e.url}")
+    # Tip blogs: can an article page we already link to still be read from here? (warning only)
+    for src in config.SOURCES:
+        host = feeds.urlsplit(src.base or src.url).netloc.removeprefix("www.")
+        if src.name in ("OpenAI News", "Anthropic News", "Anthropic sitemap", "Google Gemini models blog"):
+            continue
+        known = [u for u in site.known_urls if feeds.urlsplit(u).netloc.removeprefix("www.") == host
+                 and (not src.pattern or re.match(src.pattern, feeds.urlsplit(u).path))]
+        if not known:
+            continue
+        try:
+            art = fetch_article(sorted(known)[-1])
+            lines.append(f"OK   원문 읽기 {src.name}: {art.via}, 본문 {len(art.text)}자, 발표일 {art.published}")
+        except Exception as exc:  # noqa: BLE001
+            lines.append(f"WARN 원문 읽기 {src.name}: {exc}")
     for line in lines:
         print(line, flush=True)
         if line.startswith("FAIL"):

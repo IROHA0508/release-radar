@@ -501,3 +501,25 @@ def test_selftest_window_follows_hidden_item(site):
     idx.known_urls[feeds.normalize_url(old.url)] = "vectorclaude-1"
     cands = detect.find_candidates([old], idx, {"urls": {}}, date(2026, 10, 7), pretend_missing={"vectorclaude-1"})
     assert [c.url for c in cands] == [old.url]
+
+
+def test_claude_blog_sitemap_keeps_only_posts():
+    blog = next(s for s in config.SOURCES if s.name == "Claude blog")
+    xml = """<?xml version="1.0"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>https://claude.com/blog/cowork-is-now-claude</loc><lastmod>2026-10-06T10:00:00Z</lastmod></url>
+    <url><loc>https://claude.com/blog/category/news</loc><lastmod>2026-10-06T10:00:00Z</lastmod></url>
+    <url><loc>https://claude.com/pricing</loc></url></urlset>"""
+    got = feeds.parse_sitemap(xml, blog)
+    assert [e.url for e in got] == ["https://claude.com/blog/cowork-is-now-claude"]
+    assert got[0].extra["lastmod"] == date(2026, 10, 6) and got[0].company == "anthropic"
+
+
+def test_blog_lastmod_is_not_taken_as_publish_date(site, monkeypatch):
+    blog = next(s for s in config.SOURCES if s.name == "Claude blog")
+    e = feeds.Entry("old tips", "https://claude.com/blog/old-tips", "anthropic", blog.name, None, "", 1,
+                    {"lastmod": date(2026, 10, 6), "titleFromSlug": True})
+    page = "<html><body><article><p>" + "tips " * 300 + "</p></article></body></html>"
+    monkeypatch.setattr(pipeline, "fetch_article", lambda url: extract.parse_html(page, url))
+    state = {"urls": {}}
+    out = pipeline._fill_dates([e], {}, date(2026, 9, 29), state, date(2026, 10, 7), pipeline.RunReport("t", "update"))
+    assert out == [] and state["urls"][e.key]["status"] == "nodate"

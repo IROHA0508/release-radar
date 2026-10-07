@@ -117,6 +117,7 @@ def parse_listing(html: str, source: config.Source) -> list[Entry]:
 def parse_sitemap(xml: bytes | str, source: config.Source) -> list[Entry]:
     """Article URLs from a sitemap. The title is guessed from the slug; lastmod only bounds the date."""
     soup = BeautifulSoup(xml, "xml")
+    article_re = re.compile(source.pattern) if source.pattern else config.ANTHROPIC_ARTICLE_RE
     entries = []
     for node in soup.find_all("url"):
         loc = node.find("loc")
@@ -124,7 +125,7 @@ def parse_sitemap(xml: bytes | str, source: config.Source) -> list[Entry]:
             continue
         url = loc.get_text(strip=True)
         path = urlsplit(url).path
-        if not config.ANTHROPIC_ARTICLE_RE.match(path):
+        if not article_re.match(path):
             continue
         lastmod = node.find("lastmod")
         slug = path.rstrip("/").rsplit("/", 1)[-1]
