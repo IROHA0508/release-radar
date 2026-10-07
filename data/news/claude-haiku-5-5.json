@@ -1,0 +1,272 @@
+{
+  "id": "claude-haiku-5-5",
+  "company": "anthropic",
+  "date": "2026-10-07",
+  "kind": "모델 출시",
+  "title": "Claude Haiku 5.5",
+  "headline": "Haiku 4.5보다 평균 약 75% 저렴하고 가장 빠른 소형 모델",
+  "tldr": "Claude Haiku 5.5는 대량·비용 민감 작업을 위한 소형 모델입니다. 요약, 컴팩션, 데이터베이스 쿼리, 분류 같은 반복 작업과 코딩 서브에이전트, 실시간 고객 지원, 브라우저 사용에 적합합니다. Haiku 급 모델 최초로 effort 설정을 지원합니다. 같은 날 Sonnet 5.5 캐시 읽기 가격 인하와 Max·Team 구독자용 월간 API 크레딧도 발표됐습니다.",
+  "models": [
+    {
+      "name": "Claude Haiku 5.5",
+      "apiId": "claude-haiku-5-5",
+      "input": "$0.10 (100k 이하) / $0.50 (100k 초과)",
+      "output": "$0.50 (100k 이하) / $2.50 (100k 초과)",
+      "cached": "$0.01 (100k 이하) / $0.05 (100k 초과)"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "가격 인하",
+      "value": "평균 약 75%",
+      "note": "Haiku 4.5 대비. 100k 토큰 이하 요청은 90%, 초과는 50% 인하(토크나이저 변경 반영)"
+    },
+    {
+      "label": "OSWorld 2.1 (오프라인 부분 집합)",
+      "value": "72.4%",
+      "note": "Haiku 4.5는 15.7%, GPT-6 Luna는 48.9%"
+    },
+    {
+      "label": "GDPval-AA v2.1",
+      "value": "1620",
+      "note": "Haiku 4.5는 735, GPT-6 Luna는 1437"
+    },
+    {
+      "label": "Terminal-Bench 4.0",
+      "value": "39.2%",
+      "note": "Haiku 4.5는 0.0%, Sonnet 5.5는 70.6%"
+    }
+  ],
+  "chartSource": "Anthropic Claude Haiku 5.5 발표문의 비교표 기준입니다. Sonnet 5.5는 참고용 수치입니다.",
+  "charts": [
+    {
+      "title": "GDPval-AA v2.1",
+      "desc": "44개 직업군 실무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Anthropic (Artificial Analysis 평가)",
+      "note": "Sonnet 5.5는 참고용",
+      "rows": [
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 1840
+        },
+        {
+          "label": "Claude Haiku 5.5",
+          "value": 1620,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Luna",
+          "value": 1437
+        },
+        {
+          "label": "Claude Haiku 4.5",
+          "value": 735
+        }
+      ]
+    },
+    {
+      "title": "AA-Briefcase v1.1",
+      "desc": "지식 업무 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Anthropic",
+      "note": "Sonnet 5.5는 참고용",
+      "rows": [
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 1824
+        },
+        {
+          "label": "Claude Haiku 5.5",
+          "value": 1578,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Luna",
+          "value": 1336
+        },
+        {
+          "label": "Claude Haiku 4.5",
+          "value": 614
+        }
+      ]
+    },
+    {
+      "title": "OSWorld 2.1",
+      "desc": "컴퓨터 사용 (오프라인 부분 집합)",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "Anthropic",
+      "note": "Sonnet 5.5는 참고용",
+      "rows": [
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 83.9
+        },
+        {
+          "label": "Claude Haiku 5.5",
+          "value": 72.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Luna",
+          "value": 48.9
+        },
+        {
+          "label": "Claude Haiku 4.5",
+          "value": 15.7
+        }
+      ]
+    },
+    {
+      "title": "Humanity's Last Exam (도구 없이)",
+      "desc": "다학제 추론",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "Anthropic",
+      "note": "Sonnet 5.5는 참고용. 도구 사용 시 Haiku 5.5 57.4%, Haiku 4.5 18.7%, Sonnet 5.5 64.5%",
+      "rows": [
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 56.9
+        },
+        {
+          "label": "Claude Haiku 5.5",
+          "value": 45.9,
+          "highlight": true
+        },
+        {
+          "label": "Claude Haiku 4.5",
+          "value": 10.2
+        }
+      ]
+    },
+    {
+      "title": "Terminal-Bench 4.0",
+      "desc": "터미널 기반 에이전트 코딩",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "Anthropic",
+      "note": "Sonnet 5.5는 참고용",
+      "rows": [
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 70.6
+        },
+        {
+          "label": "Claude Haiku 5.5",
+          "value": 39.2,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Luna",
+          "value": 16.4
+        },
+        {
+          "label": "Claude Haiku 4.5",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "title": "Chartography (도구 없이)",
+      "desc": "차트 인식",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "Anthropic",
+      "note": "Sonnet 5.5는 참고용",
+      "rows": [
+        {
+          "label": "Claude Sonnet 5.5",
+          "value": 61.6
+        },
+        {
+          "label": "Claude Haiku 5.5",
+          "value": 46.4,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Luna",
+          "value": 29.1
+        },
+        {
+          "label": "Claude Haiku 4.5",
+          "value": 6.4
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "Haiku 4.5보다 평균 약 75% 저렴합니다. 100k 토큰 이하 요청은 90%, 초과 요청은 50% 낮은 가격입니다.",
+    "Haiku 급 모델 최초로 조절 가능한 effort 설정을 지원해 비용과 지능 사이에서 고를 수 있습니다.",
+    "표준 속도 기준 역대 가장 빠른 모델입니다. 다만 Fast Mode의 Opus 모델보다는 느립니다.",
+    "업데이트된 토크나이저(Sonnet 5.5·Opus 5.5와 비슷)를 써서 작업당 토큰을 약간 더 씁니다.",
+    "Sonnet 5.5의 캐시 읽기 가격이 $0.20에서 $0.10으로 50% 내려, 대부분의 에이전트 작업 비용이 약 20% 줄었습니다.",
+    "Max·Team 구독자에게 월간 API 크레딧이 제공됩니다(Max 5x $100, Max 20x $200, Team 최대 $500, 팀 내 공유)."
+  ],
+  "availability": [
+    "AWS, Google Cloud, Microsoft Azure를 포함한 모든 플랫폼",
+    "Claude Platform API 모델명: claude-haiku-5-5",
+    "Python·TypeScript SDK에 컴퓨터 유즈·브라우저 유즈 베타 지원 추가",
+    "월간 API 크레딧은 이번 주 중 Max·Team 구독자에게 순차 적용되며 모든 모델에 쓸 수 있습니다"
+  ],
+  "tips": [
+    {
+      "title": "좁은 범위의 반복 작업에 배치",
+      "body": "요약, 컴팩션, 분류, 데이터베이스 쿼리처럼 범위가 분명한 대량 작업에 쓰면 비용 효율이 가장 좋습니다."
+    },
+    {
+      "title": "복잡한 코딩은 큰 모델에, Haiku는 서브에이전트로",
+      "body": "복잡한 에이전트 코딩은 Sonnet 5.5나 Opus 5.5가 더 낫습니다. Haiku 5.5는 이들과 함께 서브에이전트로 쓰기를 권합니다."
+    },
+    {
+      "title": "effort로 비용과 정확도 조절",
+      "body": "Haiku 5.5는 effort 설정을 지원하므로 속도와 비용이 중요하면 낮게, 정확도가 중요하면 높게 조절하세요."
+    },
+    {
+      "title": "100k 토큰 이하 프롬프트에서 가장 유리",
+      "body": "100k 토큰 이하 요청에서 가격 이점이 가장 큽니다. 이전 Haiku 요청의 약 90%가 이 구간이었습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "문서 요약 서브에이전트",
+      "when": "큰 모델이 작업하는 동안 긴 문서에서 필요한 수치만 뽑을 때",
+      "type": "prompt",
+      "text": "아래 문서에서 [찾을 항목]만 찾아 한 줄로 정리해줘.\n\n<document>\n[문서 내용]\n</document>\n\n- 문서에 없는 내용은 추측하지 말고 '없음'이라고 써\n- 근거가 된 문장을 따옴표로 함께 보여줘"
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "Claude Platform에서 Haiku 5.5를 호출할 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-haiku-5-5\",\n    max_tokens=2000,\n    messages=[{\"role\": \"user\", \"content\": \"[요청]\"}],\n)"
+    }
+  ],
+  "cautions": [
+    "복잡한 에이전트 코딩은 Sonnet 5.5·Opus 5.5가 더 적합합니다. Terminal-Bench 4.0에서 Haiku 5.5는 39.2%, Sonnet 5.5는 70.6%입니다.",
+    "사이버보안 보호 장치가 Haiku 4.5보다 엄격합니다. 침투 테스트 등은 막히며, 더 넓은 활동은 Cyber Verification Program을 신청해야 합니다.",
+    "새 토크나이저 때문에 같은 작업에서 토큰을 약간 더 씁니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Haiku 5.5 (Anthropic)",
+      "url": "https://www.anthropic.com/claude-haiku-5-5"
+    },
+    {
+      "title": "Haiku 5.5 마이그레이션 가이드",
+      "url": "https://platform.claude.com/docs/en/models/haiku-5-5/migration-guide"
+    },
+    {
+      "title": "Browser use SDK 문서",
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/browser-use-sdk"
+    }
+  ]
+}

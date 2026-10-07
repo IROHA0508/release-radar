@@ -1,108 +1,74 @@
 {
-  "startedAt": "2026-10-07T18:27:12+09:00",
+  "startedAt": "2026-10-08T05:15:42+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1745,
+  "entries": 1748,
   "candidates": [
     {
-      "title": "Claude now works with Google Docs, Sheets, and Slides",
-      "url": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides",
-      "company": "anthropic",
-      "date": "2026-10-06",
+      "title": "Helping teens learn, plan, and shape the future of AI",
+      "url": "https://openai.com/index/teens-learn-and-plan",
+      "company": "openai",
+      "date": "2026-10-07",
       "relatedId": null
     },
     {
-      "title": "How Comcast and Booz Allen use Claude Mythos to find exploit chains and secure their codebases",
-      "url": "https://claude.com/resources/articles/how-comcast-booz-allen-use-claude-mythos-to-secure-their-codebases",
-      "company": "anthropic",
-      "date": "2026-10-06",
+      "title": "Radisson Hotel Group brings hotel discovery into ChatGPT",
+      "url": "https://openai.com/index/radisson",
+      "company": "openai",
+      "date": "2026-10-07",
+      "relatedId": "openai-prompting-fundamentals"
+    },
+    {
+      "title": "GPT-6 and Intelligent UI for everyone",
+      "url": "https://openai.com/index/gpt-6-for-everyone",
+      "company": "openai",
+      "date": "2026-10-07",
       "relatedId": null
     },
     {
-      "title": "We’re expanding the Claude Startups program to help founders build",
-      "url": "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build",
+      "title": "Introducing Claude Haiku 5.5",
+      "url": "https://www.anthropic.com/claude-haiku-5-5",
       "company": "anthropic",
-      "date": "2026-10-06",
+      "date": "2026-10-07",
       "relatedId": null
     },
     {
-      "title": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK",
-      "url": "https://claude.com/resources/articles/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk",
-      "company": "anthropic",
-      "date": "2026-10-05",
-      "relatedId": null
-    },
-    {
-      "title": "Customize Claude Code with mods",
-      "url": "https://claude.com/resources/articles/claude-code-mods",
-      "company": "anthropic",
-      "date": "2026-10-01",
-      "relatedId": null
-    },
-    {
-      "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents",
-      "url": "https://claude.com/resources/articles/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents",
-      "company": "anthropic",
-      "date": "2026-09-30",
-      "relatedId": null
-    },
-    {
-      "title": "Claude for Government is now generally available",
-      "url": "https://claude.com/resources/articles/claude-for-government-is-now-generally-available",
-      "company": "anthropic",
-      "date": "2026-09-30",
-      "relatedId": null
-    },
-    {
-      "title": "Agents you can coach: how Asana builds human-agent teams with Claude",
-      "url": "https://claude.com/resources/articles/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude",
-      "company": "anthropic",
-      "date": "2026-09-29",
+      "title": "Supercharge your development with the Google Developer Knowledge API ecosystem",
+      "url": "https://developers.googleblog.com/supercharge-your-development-with-the-google-developer-knowledge-api-ecosystem/",
+      "company": "google",
+      "date": "2026-10-07",
       "relatedId": null
     }
   ],
-  "added": [],
-  "updated": [],
+  "added": [
+    {
+      "id": "claude-haiku-5-5",
+      "title": "Claude Haiku 5.5",
+      "url": "https://www.anthropic.com/claude-haiku-5-5",
+      "charts": 6
+    }
+  ],
+  "updated": [
+    {
+      "id": "gpt-6-sol-luna",
+      "url": "https://openai.com/index/gpt-6-for-everyone"
+    }
+  ],
   "skipped": [
     {
-      "title": "Claude now works with Google Docs, Sheets, and Slides",
-      "url": "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides",
-      "reason": "기존 Claude에 Google 도구 통합이 추가되는 단순 기능 공지. 실전 조언이 거의 없는 기능 소개에 해당."
+      "title": "Helping teens learn, plan, and shape the future of AI",
+      "url": "https://openai.com/index/teens-learn-and-plan",
+      "reason": "ChatGPT for Teens의 기능 추가(대학 계획 도구, 플래시카드, 퀴즈)로, 모델 출시나 버전 업데이트, 가격 변경이 아니며 실전 조언이 거의 없는 기능 소개에 해당"
     },
     {
-      "title": "How Comcast and Booz Allen use Claude Mythos to find exploit chains and secure their codebases",
-      "url": "https://claude.com/resources/articles/how-comcast-booz-allen-use-claude-mythos-to-secure-their-codebases",
-      "reason": "Comcast와 Booz Allen의 Claude Mythos 사용 경험. 고객 사례로 판단 기준의 제외 대상."
+      "title": "Radisson Hotel Group brings hotel discovery into ChatGPT",
+      "url": "https://openai.com/index/radisson",
+      "reason": "Radisson 호텔 그룹과의 파트너십 및 ChatGPT 플러그인 통합 사례로, 지침상 기업 파트너십과 고객 사례는 제외 대상"
     },
     {
-      "title": "We’re expanding the Claude Startups program to help founders build",
-      "url": "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build",
-      "reason": "Claude Startups 프로그램 확대. 모델 출시·업데이트와 무관한 프로그램 홍보."
-    },
-    {
-      "title": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK",
-      "url": "https://claude.com/resources/articles/how-cresta-turned-cx-expertise-into-an-agent-builder-on-the-claude-agent-sdk",
-      "reason": "Cresta의 Claude Agent SDK 활용 경험. 고객 사례로 판단 기준의 제외 대상."
-    },
-    {
-      "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents",
-      "url": "https://claude.com/resources/articles/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents",
-      "reason": "Anthropic sales team의 Claude Managed Agents 활용 사례. 특정 기업·팀의 경험으로 일반화 어려운 기업 사례."
-    },
-    {
-      "title": "Claude for Government is now generally available",
-      "url": "https://claude.com/resources/articles/claude-for-government-is-now-generally-available",
-      "reason": "Claude for Government 일반 공개. 정부·기업 요금제 출시로 분류되는 모델과 무관한 제품 공시."
-    },
-    {
-      "title": "Agents you can coach: how Asana builds human-agent teams with Claude",
-      "url": "https://claude.com/resources/articles/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude",
-      "reason": "Asana의 human-agent 팀 구축 경험. 고객 사례로 판단 기준의 제외 대상."
-    },
-    {
-      "title": "Customize Claude Code with mods",
-      "url": "https://claude.com/resources/articles/claude-code-mods",
-      "reason": "Claude Code의 mods 기능을 소개하는 제품 발표입니다. 모델 출시나 업데이트, 가격·가용성 변경이 아니고, 독자가 바로 따라 할 실전 조언도 거의 없습니다. 실제 사용법은 별도의 'building your first mod' 가이드에 있어서 제외합니다."
+      "title": "Supercharge your development with the Google Developer Knowledge API ecosystem",
+      "url": "https://developers.googleblog.com/supercharge-your-development-with-the-google-developer-knowledge-api-ecosystem/",
+      "reason": "Google Developer Knowledge API와 MCP Server 출시로, AI 모델 자체가 아닌 개발자 도구 API이므로 모델과 무관한 제품 공지로 분류되어 제외 대상"
     }
   ],
   "failed": [],

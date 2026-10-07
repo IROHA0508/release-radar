@@ -50,13 +50,25 @@
     "사실성 평가에서 Sol의 오류가 이전 모델의 약 절반으로 줄었고, Luna도 높은 강도에서 GPT-5.6 Sol과 비슷한 정확도를 약 1/100 비용으로 냅니다.",
     "Astra의 대화 스타일을 이어받아 전문용어와 불필요한 디테일이 줄고 답변이 조금 짧아졌습니다.",
     "프롬프트 캐싱 개선: 기본 캐시 적중률이 올라갔고 캐시 읽기는 90% 할인됩니다. 대화 중 추론 강도를 바꾸거나 도구를 켜고 꺼도 캐시가 유지되며, 명시적 브레이크포인트로 캐시할 접두부의 끝을 지정할 수 있습니다.",
-    "캐시 사용량을 보여주는 Prompt Caching Dashboard와, 캐시가 빗나간 이유를 알려주는 진단 도구가 추가됐습니다."
+    "캐시 사용량을 보여주는 Prompt Caching Dashboard와, 캐시가 빗나간 이유를 알려주는 진단 도구가 추가됐습니다.",
+    "2026-10-07: ChatGPT의 Chat 경험에 GPT-6가 적용됩니다. 매주 ChatGPT를 쓰는 12억 명 이상을 위한 모델이라고 OpenAI는 설명합니다.",
+    "Intelligent UI: GPT-6가 텍스트, 그래픽, 누를 수 있는 버튼, 양식, 차트, 상호작용 요소를 질문에 맞게 조합해 답합니다. 단순한 텍스트 답이 가장 좋을 때는 텍스트로 답합니다.",
+    "계산기, 더치페이 계산기, 대화 안에서 하는 게임처럼 작업에 맞는 도구를 요청만으로 만들 수 있습니다.",
+    "스트리밍 가능한 네이티브 컴포넌트 라이브러리와, 모델이 생성하는 동안 인터페이스를 처리하는 컴파일러로 화면이 점진적으로 나타납니다.",
+    "생각하면서 답하기: 생각을 멈추고 기다리게 하는 대신 부분 답변을 이어 가며 답을 완성합니다. 내부 평가에서 GPT-6 Extra High는 GPT-5.6 Medium과 같은 시간에 답을 시작하면서 GPT-5.6 Extra High보다 높은 종합 점수를 냈습니다.",
+    "웹 검색이 필요한 질문에서 GPT-6 Instant는 GPT-5.6 Instant보다 평균 44% 빨리 답하기 시작합니다. 검색 시점 판단과 근거 탐색도 개선됐다고 합니다.",
+    "안전성: GPT-6 Sol 이전 세대(GPT-5.6 Sol) 대비 우회 시도에 대한 저항, 안전장치 준수, 한계 설명이 나아졌다고 OpenAI는 밝혔습니다."
   ],
   "availability": [
     "ChatGPT Work와 Codex: Plus, Pro, Business, Enterprise, Edu 사용자",
     "Free·Go 사용자: 데스크톱 앱에서 GPT-6 Luna 사용 가능",
     "일반 ChatGPT 채팅(Chat)에서는 아직 선택할 수 없습니다",
-    "API 모델명: gpt-6-sol, gpt-6-luna"
+    "API 모델명: gpt-6-sol, gpt-6-luna",
+    "2026-10-07부터 ChatGPT Plus, Pro, Business, Enterprise의 Chat 탭에 전 세계 순차 적용",
+    "2026-10-08부터 Free, Go 요금제로 확대",
+    "Plus·Pro·Business·Enterprise는 GPT-6 Sol, Free·Go는 GPT-6 Luna가 구동하며 둘 다 일상 대화에 맞춰 조정됨",
+    "Enterprise는 워크스페이스 관리자 설정에 따라 사용 가능 여부가 달라짐",
+    "ChatGPT의 Chat 경험에만 적용되며 Work와 Codex를 구동하는 모델은 이번에 바뀌지 않음"
   ],
   "tips": [
     {
@@ -98,6 +110,10 @@
     {
       "title": "Prompt caching 가이드 (OpenAI API)",
       "url": "https://developers.openai.com/api/docs/guides/prompt-caching"
+    },
+    {
+      "title": "GPT-6 and Intelligent UI for everyone (OpenAI)",
+      "url": "https://openai.com/index/gpt-6-for-everyone"
     }
   ],
   "chartSource": "OpenAI GPT-6 Sol·Luna 발표문 기준입니다. 괄호 안은 추론 강도입니다.",
