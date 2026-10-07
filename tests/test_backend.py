@@ -545,3 +545,14 @@ def test_listing_links_from_page_data():
     html = '<script>self.__next_f.push([1,"{\\"href\\":\\"/blog/cowork-is-now-claude\\"},{\\"href\\":\\"/blog/category/news\\"}"])</script><a href="https://example.com/blog/elsewhere">x</a>'
     got = feeds.parse_listing(html, blog)
     assert [e.url for e in got] == ["https://claude.com/blog/cowork-is-now-claude"]
+
+
+def test_claude_articles_page_and_old_blog_links_are_same_post(site):
+    blog = next(s for s in config.SOURCES if s.name == "Claude blog")
+    html = ('<a href="/resources/articles/maximizing-the-value-of-your-claude-code-sessions"><h3>Maximizing</h3>'
+            '<span>Aug 14, 2026</span></a><a href="/resources/articles/claude-code-mods"><h3>Customize Claude Code with mods</h3>'
+            '<span>Oct 1, 2026</span></a>')
+    got = feeds.parse_listing(html, blog)
+    assert [e.published for e in got] == [date(2026, 8, 14), date(2026, 10, 1)]
+    cands = detect.find_candidates(got, detect.load_site(), {"urls": {}}, date(2026, 10, 2))
+    assert [c.url for c in cands] == ["https://claude.com/resources/articles/claude-code-mods"]  # the other is on the site as /blog/

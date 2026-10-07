@@ -70,9 +70,10 @@ SOURCES = [
     # Official usage tips and prompting guides usually appear on these blogs, not the main newsrooms.
     Source("OpenAI Developers blog", "openai", "listing", "https://developers.openai.com/blog",
            base="https://developers.openai.com", priority=1, pattern=r"^/blog/(?!topic/|tag/|page/)[a-z0-9-]+/?$"),
-    # claude.com's sitemap has no /blog/ posts; the list page is read (links in <a> tags or page data).
-    Source("Claude blog", "anthropic", "listing", "https://claude.com/blog",
-           base="https://claude.com", priority=1, pattern=r"^/blog/(?!category/|tag/|page/)[a-z0-9-]+/?$"),
+    # The Claude blog moved from claude.com/blog to claude.com/resources/articles (Oct 2026); old /blog/
+    # links still redirect, and the slug is the same, so posts already on the site are still recognized.
+    Source("Claude blog", "anthropic", "listing", "https://claude.com/resources/articles", base="https://claude.com",
+           priority=1, pattern=r"^/(?:resources/articles|blog)/(?!category/|tag/|page/)[a-z0-9-]+/?$"),
     Source("Google Gemini app blog", "google", "rss", "https://blog.google/products/gemini/rss/", priority=1),
     Source("Google Developers blog", "google", "rss", "https://developers.googleblog.com/feeds/posts/default"),
     Source("Google Cloud AI blog", "google", "rss", "https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/"),

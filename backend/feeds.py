@@ -111,8 +111,9 @@ def parse_listing(html: str, source: config.Source) -> list[Entry]:
         time_tag = a.find("time")
         published = parse_date(time_tag.get("datetime") or time_tag.get_text(strip=True)) if time_tag else None
         if published is None and source.pattern:
-            # Blog lists often show "Sep 23" without a year next to each link.
-            published = month_day(a.get_text(" ", strip=True)) or month_day(a.parent.get_text(" ", strip=True)[:300])
+            # Blog lists show "Oct 6, 2026" or just "Sep 23" next to each link.
+            near = [a.get_text(" ", strip=True), a.parent.get_text(" ", strip=True)[:300]]
+            published = next((d for d in (full_date(t) or month_day(t) for t in near) if d), None)
         entries.append(Entry(title[:200], url, source.company, source.name, published, "", source.priority))
     if not entries and source.pattern:
         # Lists drawn by the browser keep their links in the page's data, not in <a> tags.
@@ -128,6 +129,14 @@ def parse_listing(html: str, source: config.Source) -> list[Entry]:
             entries.append(Entry(slug.replace("-", " "), url, source.company, source.name, None, "", source.priority,
                                  {"titleFromSlug": True}))
     return entries
+
+
+FULL_DATE_RE = re.compile(r"(?i)\b(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+\d{1,2},\s*20\d\d\b")
+
+
+def full_date(text: str) -> date | None:
+    m = FULL_DATE_RE.search(text or "")
+    return parse_date(re.sub(r"(?i)^sept", "Sep", m.group(0)).replace(".", "")) if m else None
 
 
 MONTH_DAY_RE = re.compile(r"(?i)\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?\s+(\d{1,2})\b(?!,?\s*\d)")
