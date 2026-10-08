@@ -202,6 +202,14 @@
       "status": "skipped",
       "title": "Claude now works with Google Docs, Sheets, and Slides"
     },
+    "https://claude.com/resources/articles/dashboards-and-motion": {
+      "checkedAt": "2026-10-09",
+      "company": "anthropic",
+      "date": "2026-10-08",
+      "reason": "Claude Dashboards·Motion 베타 출시와 Docs·Slides·Design 정식 전환을 알리는 제품 기능 공지입니다. 새 모델이나 모델 가격·가용성 변경이 아니고, 따라 할 만한 실전 조언도 거의 없습니다. 시작 예시 문장 몇 개와 Design 이전 안내가 있는 정도입니다.",
+      "status": "skipped",
+      "title": "Build live dashboards and animate explainers with Claude"
+    },
     "https://claude.com/resources/articles/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -241,6 +249,22 @@
       "reason": "모델과 무관한 개발자 도구 (Google Cloud CLI MCP 서버)",
       "status": "skipped",
       "title": "Empower your agents with the Google Cloud CLI remote MCP server"
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026": {
+      "checkedAt": "2026-10-09",
+      "company": "google",
+      "date": "2026-10-08",
+      "reason": "Gemini at Work 2026 키노트 요약으로, 기업용 Gemini 에이전트 제품 소개와 고객 사례, 거버넌스·비용 통제 기능 발표가 중심입니다. 새 모델 출시나 모델 가격·가용성 변경이 아니고, 독자가 바로 따라 할 실전 활용 팁도 없습니다. 제품·영업 공지와 고객 사례로 보고 제외합니다.",
+      "status": "skipped",
+      "title": "Welcome to Gemini at Work 2026: Introducing the Gemini agent"
+    },
+    "https://cloud.google.com/blog/topics/customers/ireland-innovation-companies-startups-governments-scale-with-gemini": {
+      "checkedAt": "2026-10-09",
+      "company": "google",
+      "date": "2026-10-08",
+      "reason": "고객 사례로, 제외 기준의 '기업 파트너십, 고객 사례'에 해당합니다.",
+      "status": "skipped",
+      "title": "Innovation in Ireland: How Irish brands scale with Gemini Enterprise"
     },
     "https://cloud.google.com/blog/topics/developers-practitioners/best-practices-guide-for-customizing-gemini-models": {
       "checkedAt": "2026-10-03",
@@ -380,6 +404,14 @@
       "date": "2026-09-09",
       "status": "old",
       "title": "The Anatomy of Harness Engineering: How to Evaluate, Iterate, and Guard AI Coding Agents- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/the-outer-loop-insights-first-an-ambient-quality-agent-that-diagnoses-your-production-agent": {
+      "checkedAt": "2026-10-09",
+      "company": "google",
+      "date": "2026-10-08",
+      "reason": "모델 출시와 무관한 오픈소스 도구 발표로, 실전 조언이 아닙니다.",
+      "status": "skipped",
+      "title": "The Outer Loop, Insights First: An Ambient Quality Agent That Diagnoses Your Production Agent"
     },
     "https://developers.googleblog.com/turn-your-rest-apis-into-mcp-tools-with-google-cloud-api-gateway": {
       "checkedAt": "2026-10-03",
@@ -660,6 +692,22 @@
       "reason": "광고 플랫폼 기능 확대 공지로, 모델과 무관한 제품·영업 소식에 해당합니다. 사용자가 모델을 더 잘 쓰는 공식 활용 팁이 아닙니다.",
       "status": "skipped",
       "title": "Building advertising for the way people use AI"
+    },
+    "https://openai.com/index/oracle": {
+      "checkedAt": "2026-10-09",
+      "company": "openai",
+      "date": "2026-10-08",
+      "reason": "고객 사례로, 제외 기준의 '기업 파트너십, 고객 사례'에 해당합니다.",
+      "status": "skipped",
+      "title": "How Oracle turns days of work into minutes with ChatGPT and Codex"
+    },
+    "https://openai.com/index/pollo-ai": {
+      "checkedAt": "2026-10-09",
+      "company": "openai",
+      "date": "2026-10-08",
+      "reason": "고객 사례로, 제외 기준의 '기업 파트너십, 고객 사례'에 해당합니다.",
+      "status": "skipped",
+      "title": "Pollo AI turns creative ideas into campaigns with OpenAI"
     },
     "https://openai.com/index/practical-guide-building-gpt-6": {
       "checkedAt": "2026-10-03",
