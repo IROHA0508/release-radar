@@ -1,76 +1,12 @@
 {
-  "startedAt": "2026-10-08T05:15:42+09:00",
+  "startedAt": "2026-10-08T09:31:08+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1748,
-  "candidates": [
-    {
-      "title": "Helping teens learn, plan, and shape the future of AI",
-      "url": "https://openai.com/index/teens-learn-and-plan",
-      "company": "openai",
-      "date": "2026-10-07",
-      "relatedId": null
-    },
-    {
-      "title": "Radisson Hotel Group brings hotel discovery into ChatGPT",
-      "url": "https://openai.com/index/radisson",
-      "company": "openai",
-      "date": "2026-10-07",
-      "relatedId": "openai-prompting-fundamentals"
-    },
-    {
-      "title": "GPT-6 and Intelligent UI for everyone",
-      "url": "https://openai.com/index/gpt-6-for-everyone",
-      "company": "openai",
-      "date": "2026-10-07",
-      "relatedId": null
-    },
-    {
-      "title": "Introducing Claude Haiku 5.5",
-      "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "company": "anthropic",
-      "date": "2026-10-07",
-      "relatedId": null
-    },
-    {
-      "title": "Supercharge your development with the Google Developer Knowledge API ecosystem",
-      "url": "https://developers.googleblog.com/supercharge-your-development-with-the-google-developer-knowledge-api-ecosystem/",
-      "company": "google",
-      "date": "2026-10-07",
-      "relatedId": null
-    }
-  ],
-  "added": [
-    {
-      "id": "claude-haiku-5-5",
-      "title": "Claude Haiku 5.5",
-      "url": "https://www.anthropic.com/claude-haiku-5-5",
-      "charts": 6
-    }
-  ],
-  "updated": [
-    {
-      "id": "gpt-6-sol-luna",
-      "url": "https://openai.com/index/gpt-6-for-everyone"
-    }
-  ],
-  "skipped": [
-    {
-      "title": "Helping teens learn, plan, and shape the future of AI",
-      "url": "https://openai.com/index/teens-learn-and-plan",
-      "reason": "ChatGPT for Teens의 기능 추가(대학 계획 도구, 플래시카드, 퀴즈)로, 모델 출시나 버전 업데이트, 가격 변경이 아니며 실전 조언이 거의 없는 기능 소개에 해당"
-    },
-    {
-      "title": "Radisson Hotel Group brings hotel discovery into ChatGPT",
-      "url": "https://openai.com/index/radisson",
-      "reason": "Radisson 호텔 그룹과의 파트너십 및 ChatGPT 플러그인 통합 사례로, 지침상 기업 파트너십과 고객 사례는 제외 대상"
-    },
-    {
-      "title": "Supercharge your development with the Google Developer Knowledge API ecosystem",
-      "url": "https://developers.googleblog.com/supercharge-your-development-with-the-google-developer-knowledge-api-ecosystem/",
-      "reason": "Google Developer Knowledge API와 MCP Server 출시로, AI 모델 자체가 아닌 개발자 도구 API이므로 모델과 무관한 제품 공지로 분류되어 제외 대상"
-    }
-  ],
+  "entries": 1747,
+  "candidates": [],
+  "added": [],
+  "updated": [],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
