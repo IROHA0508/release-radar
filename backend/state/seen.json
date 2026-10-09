@@ -218,6 +218,14 @@
       "status": "skipped",
       "title": "How Anthropic's sales team rebuilt inbound with Claude Managed Agents"
     },
+    "https://claude.com/resources/articles/how-block-orchestrates-claude-fable-across-thousands-of-pull-requests": {
+      "checkedAt": "2026-10-09",
+      "company": "anthropic",
+      "date": "2026-10-08",
+      "reason": "고객 사례: Block의 Claude Fable 운영 현황을 소개한 글로, 공식 활용 팁이나 모델 업데이트가 아님",
+      "status": "skipped",
+      "title": "How Block orchestrates Claude Fable across thousands of pull requests"
+    },
     "https://claude.com/resources/articles/how-comcast-booz-allen-use-claude-mythos-to-secure-their-codebases": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -684,6 +692,14 @@
       "reason": "고객 사례(기업 파트너십): Jump Trading의 ChatGPT 활용 사례로, 새 모델 출시, 모델 업데이트, 공식 활용 팁에 해당하지 않습니다.",
       "status": "skipped",
       "title": "How Jump Trading is scaling quant research with ChatGPT"
+    },
+    "https://openai.com/index/legalon-halves-codex-costs": {
+      "checkedAt": "2026-10-09",
+      "company": "openai",
+      "date": "2026-10-08",
+      "reason": "고객 사례: LegalOn의 Codex 비용 절감 경험을 소개한 글로, 공식 활용 팁이나 모델 출시·업데이트가 아님",
+      "status": "skipped",
+      "title": "LegalOn halves Codex costs while maintaining development speed"
     },
     "https://openai.com/index/new-chatgpt-ads-format-and-measurement": {
       "checkedAt": "2026-10-06",

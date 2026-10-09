@@ -1,48 +1,20 @@
 {
-  "startedAt": "2026-10-09T05:18:07+09:00",
+  "startedAt": "2026-10-09T09:45:35+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1753,
+  "entries": 1754,
   "candidates": [
     {
-      "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
-      "url": "https://openai.com/index/oracle",
-      "company": "openai",
-      "date": "2026-10-08",
-      "relatedId": "openai-prompting-fundamentals"
-    },
-    {
-      "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
-      "url": "https://openai.com/index/pollo-ai",
+      "title": "LegalOn halves Codex costs while maintaining development speed",
+      "url": "https://openai.com/index/legalon-halves-codex-costs",
       "company": "openai",
       "date": "2026-10-08",
       "relatedId": null
     },
     {
-      "title": "Build live dashboards and animate explainers with Claude",
-      "url": "https://claude.com/resources/articles/dashboards-and-motion",
+      "title": "How Block orchestrates Claude Fable across thousands of pull requests",
+      "url": "https://claude.com/resources/articles/how-block-orchestrates-claude-fable-across-thousands-of-pull-requests",
       "company": "anthropic",
-      "date": "2026-10-08",
-      "relatedId": null
-    },
-    {
-      "title": "Innovation in Ireland: How Irish brands scale with Gemini Enterprise",
-      "url": "https://cloud.google.com/blog/topics/customers/ireland-innovation-companies-startups-governments-scale-with-gemini/",
-      "company": "google",
-      "date": "2026-10-08",
-      "relatedId": null
-    },
-    {
-      "title": "Welcome to Gemini at Work 2026: Introducing the Gemini agent",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026/",
-      "company": "google",
-      "date": "2026-10-08",
-      "relatedId": null
-    },
-    {
-      "title": "The Outer Loop, Insights First: An Ambient Quality Agent That Diagnoses Your Production Agent",
-      "url": "https://developers.googleblog.com/the-outer-loop-insights-first-an-ambient-quality-agent-that-diagnoses-your-production-agent/",
-      "company": "google",
       "date": "2026-10-08",
       "relatedId": null
     }
@@ -51,34 +23,14 @@
   "updated": [],
   "skipped": [
     {
-      "title": "How Oracle turns days of work into minutes with ChatGPT and Codex",
-      "url": "https://openai.com/index/oracle",
-      "reason": "고객 사례로, 제외 기준의 '기업 파트너십, 고객 사례'에 해당합니다."
+      "title": "LegalOn halves Codex costs while maintaining development speed",
+      "url": "https://openai.com/index/legalon-halves-codex-costs",
+      "reason": "고객 사례: LegalOn의 Codex 비용 절감 경험을 소개한 글로, 공식 활용 팁이나 모델 출시·업데이트가 아님"
     },
     {
-      "title": "Pollo AI turns creative ideas into campaigns with OpenAI",
-      "url": "https://openai.com/index/pollo-ai",
-      "reason": "고객 사례로, 제외 기준의 '기업 파트너십, 고객 사례'에 해당합니다."
-    },
-    {
-      "title": "Innovation in Ireland: How Irish brands scale with Gemini Enterprise",
-      "url": "https://cloud.google.com/blog/topics/customers/ireland-innovation-companies-startups-governments-scale-with-gemini/",
-      "reason": "고객 사례로, 제외 기준의 '기업 파트너십, 고객 사례'에 해당합니다."
-    },
-    {
-      "title": "The Outer Loop, Insights First: An Ambient Quality Agent That Diagnoses Your Production Agent",
-      "url": "https://developers.googleblog.com/the-outer-loop-insights-first-an-ambient-quality-agent-that-diagnoses-your-production-agent/",
-      "reason": "모델 출시와 무관한 오픈소스 도구 발표로, 실전 조언이 아닙니다."
-    },
-    {
-      "title": "Build live dashboards and animate explainers with Claude",
-      "url": "https://claude.com/resources/articles/dashboards-and-motion",
-      "reason": "Claude Dashboards·Motion 베타 출시와 Docs·Slides·Design 정식 전환을 알리는 제품 기능 공지입니다. 새 모델이나 모델 가격·가용성 변경이 아니고, 따라 할 만한 실전 조언도 거의 없습니다. 시작 예시 문장 몇 개와 Design 이전 안내가 있는 정도입니다."
-    },
-    {
-      "title": "Welcome to Gemini at Work 2026: Introducing the Gemini agent",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026/",
-      "reason": "Gemini at Work 2026 키노트 요약으로, 기업용 Gemini 에이전트 제품 소개와 고객 사례, 거버넌스·비용 통제 기능 발표가 중심입니다. 새 모델 출시나 모델 가격·가용성 변경이 아니고, 독자가 바로 따라 할 실전 활용 팁도 없습니다. 제품·영업 공지와 고객 사례로 보고 제외합니다."
+      "title": "How Block orchestrates Claude Fable across thousands of pull requests",
+      "url": "https://claude.com/resources/articles/how-block-orchestrates-claude-fable-across-thousands-of-pull-requests",
+      "reason": "고객 사례: Block의 Claude Fable 운영 현황을 소개한 글로, 공식 활용 팁이나 모델 업데이트가 아님"
     }
   ],
   "failed": [],
