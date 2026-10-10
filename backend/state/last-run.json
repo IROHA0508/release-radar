@@ -1,26 +1,12 @@
 {
-  "startedAt": "2026-10-10T04:52:27+09:00",
+  "startedAt": "2026-10-10T09:22:30+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1783,
-  "candidates": [
-    {
-      "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
-      "url": "https://openai.com/index/asana-browser-agent",
-      "company": "openai",
-      "date": "2026-10-09",
-      "relatedId": "gpt-6-1-sol"
-    }
-  ],
+  "candidates": [],
   "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol",
-      "url": "https://openai.com/index/asana-browser-agent",
-      "reason": "고객 사례: 기업 고객(Asana)의 특정 성과를 소개하는 글로, 판단 기준의 제외 대상(기업 파트너십, 고객 사례)입니다."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
