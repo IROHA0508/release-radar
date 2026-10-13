@@ -43,13 +43,37 @@
     "차트 분석, 긴 영상 속 세부 찾기, 여러 문서를 보고 행동하기처럼 시각 정보가 필요한 지식 업무에 강합니다.",
     "사이버 방어: 취약점을 스스로 찾고 검증하고 패치합니다. CWE-bench v1에서 68%로 GPT-6 Astra와 공동 1위이며, Wiz는 다른 프런티어 모델이 놓친 병원용 소프트웨어의 치명적 취약점을 찾았다고 밝혔습니다.",
     "구글 내부 활용: Fuchsia Zircon 커널(80만 줄 이상)까지 C/C++ 코드를 Rust로 옮기는 작업을 감사·검토하며 진행 중이고, libgav1 Rust 포트를 2.7배 빠르게 최적화했으며, 데이터센터 전체에서 300TiB 이상의 메모리를 확보하는 최적화를 찾아 적용했습니다.",
-    "안전: 사고 과정(chain-of-thought)과 행동을 모니터링해 사용자 의도를 벗어나면 실행을 멈추고, Gray Swan 간접 프롬프트 인젝션 평가에서 선두입니다."
+    "안전: 사고 과정(chain-of-thought)과 행동을 모니터링해 사용자 의도를 벗어나면 실행을 멈추고, Gray Swan 간접 프롬프트 인젝션 평가에서 선두입니다.",
+    "10월 13일부터 개발자가 Gemini 4 Argon으로 개발할 수 있습니다. Google은 실제 소프트웨어 엔지니어링, 기업 지식 업무, 사이버보안 방어의 복잡한 워크플로를 위한 최상위 모델이라고 소개합니다.",
+    "코드 마이그레이션과 최전선 연구처럼 깊은 추론과 구조적 정밀함이 필요한 장기 워크플로를 겨냥한 모델입니다.",
+    "Gemini API 개발자 가이드, Antigravity 블로그, Android Studio 블로그, 로보틱스 활용 글이 함께 공개됐습니다.",
+    "10월 13일 Gemini 4 Argon이 Gemini 앱에 도입됐습니다. Argon은 질문에 더 직접적으로 답하고, 얼버무리는 표현과 불필요한 반복, 상투적인 표현을 줄였다고 Google은 설명합니다.",
+    "긴 작업에서는 진행 상황을 더 자주, 더 효과적으로 공유해 사용자가 흐름을 놓치지 않게 합니다.",
+    "코딩 성능이 크게 좋아져, Google Antigravity의 에이전트형 코딩 인터페이스를 Gemini macOS 앱에서 바로 쓸 수 있습니다.",
+    "메인 채팅 창에서 채팅과 tasks를 전환하는 토글이 생겼습니다. tasks를 고르면 컴퓨터 앞에 없을 때도 Gemini가 Google 앱 등에서 작업을 대신 처리합니다.",
+    "Gemini가 Instacart, OpenTable, Adobe, Shopify 등 40개 넘는 앱과 연결돼 식료품 주문, 식당 예약, 비즈니스 디자인·구축 같은 일을 도와줍니다.",
+    "10월 13일 Gemini 4 Argon이 Google Cloud에서 제공되기 시작했습니다. Google은 긴 다단계 작업에서 맥락을 유지하도록 깊이와 정밀도를 함께 훈련했다고 설명합니다.",
+    "Vals Index(금융·코딩·법률·세무 업무의 경제적 영향을 측정)에서 선두이고, Harvey의 Legal Agent Benchmark 같은 법률 평가에서도 앞선다고 Google은 밝혔습니다.",
+    "보안 취약점 수정 평가인 CWE-Bench v1에서 68%로 공동 1위입니다.",
+    "간접 프롬프트 주입에 가장 강한 모델이라고 하며, Gray Swan Indirect Prompt Injection 벤치마크에서 15번의 적응형 공격 후 공격 성공률을 0.7%로 낮췄습니다.",
+    "오픈소스 ADK에서 Argon이 밤새 자율적으로 찾아낸 최적화로 긴 세션의 인메모리 세션 준비 시간이 40% 줄고 콜드 임포트가 21% 빨라졌습니다.",
+    "Google Antigravity를 쓰는 내부 엔지니어링 팀은 에이전트 코드 제출이 35% 이상 늘고 코드 롤백은 거의 3분의 1 줄었습니다. Chrome 팀은 Chromium 코드베이스에서 수백 개 파일에 걸친 구조 리팩터링을 몇 주 만에 마쳤습니다.",
+    "Argon은 불법적일 수 있는 공격 작업(침투 테스트, 익스플로잇)을 막는 사이버 보호 장치를 갖추고 있으며, Fairwind Program으로 검증된 방어 조직에는 보호 장치 없는 버전을 제공합니다."
   ],
   "availability": [
     "현재: Fairwind 프로그램의 신뢰된 사이버 방어자 (사이버 가드레일 없이 제공)",
     "다음 단계: 유료 API 고객과 Google AI Ultra 구독자부터 확대 예정 (일정 미공개)",
     "도입가 $2 / $10(1M 토큰), 캐시 입력은 95% 할인. 도입 기간 후 $4 / $20",
-    "API 모델 ID와 컨텍스트 창 크기는 아직 공개되지 않았습니다"
+    "API 모델 ID와 컨텍스트 창 크기는 아직 공개되지 않았습니다",
+    "Google AI Studio와 Android Studio에서 Gemini API 유료 티어로 사용할 수 있습니다.",
+    "Google AI Ultra 구독자는 AI Studio와 에이전트 중심 개발 플랫폼 Google Antigravity에서 사용해 볼 수 있습니다.",
+    "Gemini 앱: Google AI Pro 및 Ultra 구독자가 오늘(10월 13일)부터 Gemini 4 Argon과 tasks 사용 가능",
+    "Antigravity 코딩 인터페이스: Gemini macOS 앱",
+    "Gemini for business(웹·데스크톱·모바일)에서 오늘부터 사용할 수 있습니다.",
+    "API는 Gemini platform에서 모델 ID gemini-4-argon으로 쓸 수 있고, Google AI Studio와 Google Antigravity에서도 제공됩니다.",
+    "도입 가격은 2026년 11월 30일까지 입력 100만 토큰당 $2, 출력 $10이며, 캐시 입력 토큰은 95% 할인됩니다.",
+    "12월 1일부터는 표준 가격인 입력 $4, 출력 $20이 적용됩니다.",
+    "사이버 방어 조직은 Fairwind Program을 통해 보호 장치 없는 Argon을 제공받을 수 있습니다."
   ],
   "tips": [
     {
@@ -96,6 +120,38 @@
     {
       "title": "Gemini 모델 페이지 (Google DeepMind) — Argon 비교표",
       "url": "https://deepmind.google/models/gemini/"
+    },
+    {
+      "title": "Gemini 4 Argon is now available for developers (Google)",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/"
+    },
+    {
+      "title": "Gemini 4 Argon 개발자 가이드 (AI Studio)",
+      "url": "https://aistudio.google.com/learn/gemini-4-argon-developer-guide"
+    },
+    {
+      "title": "Gemini 4 Argon in Google Antigravity",
+      "url": "https://antigravity.google/blog/gemini-4-argon-in-google-antigravity"
+    },
+    {
+      "title": "Gemini 4 Argon comes to the Gemini app (Google)",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/"
+    },
+    {
+      "title": "Introducing Gemini 4 Argon (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/"
+    },
+    {
+      "title": "Gemini 4 Argon available on Google Cloud (Google Cloud Blog)",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud/"
+    },
+    {
+      "title": "Gemini 4 Argon 개발자 가이드",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/guides/gemini-4-argon"
+    },
+    {
+      "title": "Gemini 4 Argon 모델 문서",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-argon"
     }
   ],
   "chartSource": "Google DeepMind 모델 페이지(deepmind.google/models/gemini)의 Gemini 4 Argon 비교표 기준입니다. 강점과 약점을 함께 보도록 뒤지는 항목도 넣었습니다.",

@@ -1,0 +1,120 @@
+{
+  "id": "gemini-4-argon-overnight-codebase",
+  "company": "google",
+  "date": "2026-10-13",
+  "kind": "활용 팁",
+  "title": "Gemini 4 Argon으로 밤새 코드베이스 최적화: skills와 /goal 모드",
+  "headline": "규칙 파일 하나와 /goal 한 줄로 11시간 무인 작업을 맡기는 법",
+  "tldr": "Google은 Gemini 4 Argon에 약 20만 줄 규모의 google/adk-python 성능 최적화를 밤새 맡겼습니다. 저장소 규칙을 .agents/skills에 넣고 Google Antigravity의 /goal 모드를 켜자 11시간 동안 사람 없이 작업해 PR을 만들었습니다. 제안 6개 중 2개만 코드 리뷰를 통과해 반영됐고, 그 결과 인메모리 세션 준비 시간이 긴 세션에서 약 40% 줄었으며 패키지 import는 21% 빨라졌습니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "세션 준비 시간",
+      "value": "약 40% 감소",
+      "note": "긴 세션(50턴·150턴 시점)의 InMemorySessionService 기준"
+    },
+    {
+      "label": "import google.adk",
+      "value": "21% 빨라짐",
+      "note": "새 프로세스에서 첫 요청까지 걸리는 시간은 3.07초에서 3.09초로 그대로"
+    },
+    {
+      "label": "158턴 전체 실행",
+      "value": "65.6초 → 56.1초",
+      "note": "프레임워크 오버헤드 약 10초 감소"
+    },
+    {
+      "label": "리뷰 통과",
+      "value": "6개 중 2개",
+      "note": "제안 6개 중 4개는 코드 리뷰에서 기각"
+    }
+  ],
+  "chartSource": "Google 개발자 블로그 본문에 적힌 수치입니다. 보류 벤치마크(bench_turn.py)에서 6~12회 실행한 중앙값이며, 병합된 커밋을 이전 릴리스와 비교했습니다.",
+  "charts": [
+    {
+      "title": "158턴 전체 실행 시간",
+      "desc": "ADK 프레임워크 오버헤드 포함 실행 시간(초, 낮을수록 좋음). 이전 릴리스 대비",
+      "type": "bar",
+      "unit": "",
+      "lowerIsBetter": true,
+      "source": "Google",
+      "note": "모델과 도구는 즉시 응답하도록 한 벤치마크라 시간 전부가 ADK 자체 오버헤드입니다.",
+      "rows": [
+        {
+          "label": "이전 릴리스",
+          "value": 65.6
+        },
+        {
+          "label": "Argon 변경 후",
+          "value": 56.1,
+          "highlight": true
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "1라운드는 저장소 지침 없이 한 단락짜리 프롬프트만 주고 약 2시간 돌렸습니다. 실제 병목은 찾았지만 메인테이너 규칙을 몰라 공개 JSON 스키마를 바꾸고, 단위 테스트를 216개만 돌렸으며, PR 설명에 벤치마크 수치도 빠뜨렸습니다.",
+    "2라운드에서는 팀 가이드라인을 .agents/skills에 넣었습니다. 짧은 SKILL.md 색인이 필요할 때만 references/ 파일을 가리키게 해 컨텍스트를 아꼈습니다.",
+    "Google Antigravity의 /goal 모드를 켜서 컨텍스트가 압축돼도 목표가 유지되게 했습니다. 목표에는 '메인테이너가 승인할 PR 하나, 전후 수치 포함, 병합하지 말 것'을 덧붙였습니다.",
+    "Argon은 코드를 건드리기 전에 가이드라인 파일 12개를 읽고 4개 워크로드의 기준 벤치마크를 돌렸습니다. 끝나기 3분 전에도 자기 diff를 점검해 멀티 에이전트 캐시 버그를 잡고 단위 테스트 16,892개를 다시 돌린 뒤 스스로 멈췄습니다.",
+    "PR은 32개 파일에 최적화 6개를 제안했습니다. 세션 기록을 복사하기 전에 필터링하는 변경과 무거운 패키지를 지연 로딩하는 변경만 반영됐고, 나머지 4개는 취약한 상태 의존, 비공개 내부 속성 사용, 합성 벤치마크에서만 나는 효과 때문에 기각됐습니다.",
+    "최종 변경은 22개 파일에 새 테스트 함수 17개를 더한 형태로 main에 병합됐고, 커밋 메모에 'Argon generated these changes.'가 남았습니다."
+  ],
+  "availability": [
+    "Gemini 4 Argon API 모델 ID: gemini-4-argon (Gemini platform)",
+    "Google AI Studio와 Google Antigravity에서도 사용 가능",
+    "/goal 모드는 Google Antigravity 기능",
+    "병합된 PR과 .agents/skills 구성은 google/adk-python 저장소에서 확인 가능"
+  ],
+  "tips": [
+    {
+      "title": "규칙은 .agents/skills에 넣기",
+      "body": "새 엔지니어 온보딩 문서처럼 비공개 모듈 규칙, 지연 로딩 점검, CI 규칙을 적어 두세요. SKILL.md는 짧은 색인으로 두고 세부 내용은 references/ 파일로 나누면 매 턴 컨텍스트를 채우지 않습니다."
+    },
+    {
+      "title": "결과를 정의하고 /goal로 고정하기",
+      "body": "방법 대신 달성할 결과, 공개 API 불변 같은 제약, 회귀를 잡는 테스트 요구를 적으세요. 'PR 하나를 열고 전후 수치를 넣되 병합하지 말 것'까지 쓰면 아침에 바로 검토할 수 있습니다."
+    },
+    {
+      "title": "독립된 보류 벤치마크를 미리 준비하기",
+      "body": "에이전트가 보지 못하는 벤치마크를 따로 만들어 두면 결과를 객관적으로 검증할 수 있습니다. 합성 벤치마크에서만 좋아지는 변경은 걸러내세요."
+    },
+    {
+      "title": "에이전트는 탐색, 사람은 덜어내기",
+      "body": "Google은 '에이전트가 탐색하고 메인테이너가 뺀다'는 분업을 권합니다. 호환성을 깨거나 코드를 읽기 어렵게 만드는 제안은 리뷰에서 과감히 기각하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "밤샘 최적화 /goal 프롬프트",
+      "when": "Antigravity에서 성능 개선을 무인으로 맡길 때 (원문 예시를 응용)",
+      "type": "prompt",
+      "text": "/goal [대상 서비스]가 [시작 시점, 긴 세션, 멀티 에이전트 같은 상황]에서 눈에 띄는 오버헤드를 만들지 않게 해줘.\n모델이 받는 입력과 공개 API는 바꾸지 말고, 각 변경마다 회귀를 잡아내는 테스트를 붙여.\nmain 기준으로 메인테이너가 승인할 만한 PR을 하나 열고, 설명에 전후 수치를 넣어. 병합하지는 마."
+    },
+    {
+      "title": "저장소 규칙 색인 만들기",
+      "when": "에이전트가 팀 컨벤션을 먼저 읽게 하고 싶을 때",
+      "type": "prompt",
+      "text": ".agents/skills 아래에 [규칙 이름] 스킬을 만들어줘.\nSKILL.md는 짧은 색인으로 두고, 세부 규칙([비공개 모듈 규칙], [지연 로딩 점검] 등)은 references/ 파일로 나눠서 필요할 때만 읽게 해줘."
+    }
+  ],
+  "cautions": [
+    "이 결과는 ADK의 InMemorySessionService 기준입니다. 외부 DB, SQLite, Firestore, Redis 세션 저장소는 메모리 복사를 하지 않아 읽기 시간이 달라지지 않습니다.",
+    "지연 로딩 때문에 새 프로세스에서 첫 모델 요청까지의 시간은 그대로입니다. 운영 서버에서는 실제 트래픽을 받기 전에 워밍업 요청을 보내세요.",
+    "에이전트가 낸 변경은 반드시 사람이 리뷰해야 합니다. 이번에도 6개 중 4개가 기각됐고, 단순 import 삭제는 내부 테스트 25개를 깨뜨렸습니다."
+  ],
+  "sources": [
+    {
+      "title": "Optimizing a 200,000-line Python codebase overnight with Gemini 4 Argon (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon/"
+    },
+    {
+      "title": "Gemini 4 Argon 개발자 가이드 (Google Cloud)",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/guides/gemini-4-argon"
+    },
+    {
+      "title": "Python Quickstart for ADK",
+      "url": "https://google.github.io/adk-docs/get-started/quickstart/"
+    }
+  ]
+}

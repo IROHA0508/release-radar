@@ -48,6 +48,22 @@
       "status": "skipped",
       "title": "See what 4 builders are making with Gemini 3.8 Flash"
     },
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "reason": "기존 모델의 일반적 마케팅 소개",
+      "status": "skipped",
+      "title": "Gemini 4 Argon: Built to solve your hardest problems"
+    },
+    "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "id": "gemini-4-argon",
+      "status": "updated",
+      "title": "Gemini 4 Argon comes to the Gemini app."
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -55,6 +71,22 @@
       "reason": "실전 조언이 없는 기능 소개",
       "status": "skipped",
       "title": "Guided Vision in Gemini Live: built for accessibility"
+    },
+    "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "id": "gemini-4-argon",
+      "status": "updated",
+      "title": "Gemini 4 Argon is now available for developers."
+    },
+    "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "reason": "모델 출시와 무관한 안전·책임 보고서",
+      "status": "skipped",
+      "title": "Developing Gemini 4 Argon responsibly and safely"
     },
     "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills": {
       "checkedAt": "2026-10-03",
@@ -250,6 +282,14 @@
       "status": "skipped",
       "title": "We’re expanding the Claude Startups program to help founders build"
     },
+    "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "id": "gemini-4-argon",
+      "status": "updated",
+      "title": "Gemini 4 Argon available on Google Cloud, built to help solve your business’ hardest problems"
+    },
     "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -289,6 +329,30 @@
       "reason": "모델 출시·업데이트와 무관한 일반 의견",
       "status": "skipped",
       "title": "Why your startup needs open models alongside frontier APIs"
+    },
+    "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "reason": "모델 출시와 무관한 안전·책임 보고서",
+      "status": "skipped",
+      "title": "Developing Gemini 4 Argon responsibly and safely"
+    },
+    "https://deepmind.google/blog/gemini-4-argon-for-robotics": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "reason": "응용 사례로 실전 조언 부족",
+      "status": "skipped",
+      "title": "Gemini 4 Argon for Robotics"
+    },
+    "https://deepmind.google/blog/introducing-gemini-4-argon": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "reason": "기존 모델의 일반적 마케팅 소개",
+      "status": "skipped",
+      "title": "Gemini 4 Argon: Built to solve your hardest problems"
     },
     "https://developers.googleblog.com/4-engineering-patterns-behind-the-strongest-ai-agents-challenge-submissions": {
       "checkedAt": "2026-10-03",
@@ -362,6 +426,14 @@
       "status": "old",
       "title": "Enterprise-Grade Precision for Long-Context Multimodal Embedding Inference on Cloud TPU- Google Developers Blog"
     },
+    "https://developers.googleblog.com/gemini-4-argon-for-robotics": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "reason": "응용 사례로 실전 조언 부족",
+      "status": "skipped",
+      "title": "Gemini 4 Argon for Robotics"
+    },
     "https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2": {
       "checkedAt": "2026-10-07",
       "company": "google",
@@ -390,6 +462,14 @@
       "date": "2026-09-23",
       "status": "old",
       "title": "Introducing Support for Local AI Models in the Antigravity SDK- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon": {
+      "checkedAt": "2026-10-14",
+      "company": "google",
+      "date": "2026-10-13",
+      "id": "gemini-4-argon-overnight-codebase",
+      "status": "added",
+      "title": "Optimizing a 200,000-line Python codebase overnight with Gemini 4 Argon"
     },
     "https://developers.googleblog.com/reproducing-olmo-3-7b-pre-training-in-maxtext-case-study-of-large-scale-training-on-tpus": {
       "checkedAt": "2026-10-03",
@@ -684,6 +764,14 @@
       "reason": "고객 사례",
       "status": "skipped",
       "title": "Harvey turns legal context into stronger drafts with GPT-6 Astra"
+    },
+    "https://openai.com/index/higgsfield-longer-videos-voice": {
+      "checkedAt": "2026-10-14",
+      "company": "openai",
+      "date": "2026-10-13",
+      "reason": "고객 기업 파트너십 및 사례 소개",
+      "status": "skipped",
+      "title": "Higgsfield takes AI video from 1 minute to over 10"
     },
     "https://openai.com/index/invideo-builds-with-gpt-6-astra": {
       "checkedAt": "2026-10-03",
