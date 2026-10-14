@@ -1,26 +1,12 @@
 {
-  "startedAt": "2026-10-14T17:05:40+09:00",
+  "startedAt": "2026-10-14T23:07:21+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1784,
-  "candidates": [
-    {
-      "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
-      "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
-      "company": "google",
-      "date": "2026-10-14",
-      "relatedId": null
-    }
-  ],
+  "entries": 1786,
+  "candidates": [],
   "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection",
-      "url": "https://deepmind.google/blog/on-device-ai-scam-detection-mddi/",
-      "reason": "기업 파트너십 및 고객 사례성 콘텐츠. 새 모델 출시·업데이트나 공식 활용 팁·프롬프트 가이드가 없음."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
