@@ -1,110 +1,12 @@
 {
-  "startedAt": "2026-10-14T05:25:00+09:00",
+  "startedAt": "2026-10-14T09:00:19+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1784,
-  "candidates": [
-    {
-      "title": "Higgsfield takes AI video from 1 minute to over 10",
-      "url": "https://openai.com/index/higgsfield-longer-videos-voice",
-      "company": "openai",
-      "date": "2026-10-13",
-      "relatedId": null
-    },
-    {
-      "title": "Developing Gemini 4 Argon responsibly and safely",
-      "url": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/",
-      "company": "google",
-      "date": "2026-10-13",
-      "relatedId": "gemini-4-argon"
-    },
-    {
-      "title": "Gemini 4 Argon is now available for developers.",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/",
-      "company": "google",
-      "date": "2026-10-13",
-      "relatedId": "gemini-4-argon"
-    },
-    {
-      "title": "Gemini 4 Argon: Built to solve your hardest problems",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
-      "company": "google",
-      "date": "2026-10-13",
-      "relatedId": "gemini-4-argon"
-    },
-    {
-      "title": "Gemini 4 Argon for Robotics",
-      "url": "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
-      "company": "google",
-      "date": "2026-10-13",
-      "relatedId": "gemini-4-argon"
-    },
-    {
-      "title": "Gemini 4 Argon comes to the Gemini app.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/",
-      "company": "google",
-      "date": "2026-10-13",
-      "relatedId": "gemini-4-argon"
-    },
-    {
-      "title": "Gemini 4 Argon available on Google Cloud, built to help solve your business’ hardest problems",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud/",
-      "company": "google",
-      "date": "2026-10-13",
-      "relatedId": "gemini-4-argon"
-    },
-    {
-      "title": "Optimizing a 200,000-line Python codebase overnight with Gemini 4 Argon",
-      "url": "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon/",
-      "company": "google",
-      "date": "2026-10-13",
-      "relatedId": "gemini-4-argon"
-    }
-  ],
-  "added": [
-    {
-      "id": "gemini-4-argon-overnight-codebase",
-      "title": "Gemini 4 Argon으로 밤새 코드베이스 최적화: skills와 /goal 모드",
-      "url": "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon/",
-      "charts": 1
-    }
-  ],
-  "updated": [
-    {
-      "id": "gemini-4-argon",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon/"
-    },
-    {
-      "id": "gemini-4-argon",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability/"
-    },
-    {
-      "id": "gemini-4-argon",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud/"
-    }
-  ],
-  "skipped": [
-    {
-      "title": "Higgsfield takes AI video from 1 minute to over 10",
-      "url": "https://openai.com/index/higgsfield-longer-videos-voice",
-      "reason": "고객 기업 파트너십 및 사례 소개"
-    },
-    {
-      "title": "Developing Gemini 4 Argon responsibly and safely",
-      "url": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/",
-      "reason": "모델 출시와 무관한 안전·책임 보고서"
-    },
-    {
-      "title": "Gemini 4 Argon: Built to solve your hardest problems",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/",
-      "reason": "기존 모델의 일반적 마케팅 소개"
-    },
-    {
-      "title": "Gemini 4 Argon for Robotics",
-      "url": "https://deepmind.google/blog/gemini-4-argon-for-robotics/",
-      "reason": "응용 사례로 실전 조언 부족"
-    }
-  ],
+  "candidates": [],
+  "added": [],
+  "updated": [],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
