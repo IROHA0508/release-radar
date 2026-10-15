@@ -617,6 +617,14 @@
       "status": "nodate",
       "title": "Jan 22 Testing Agent Skills Systematically with Evals A practical guide to turning agent skills into something you can test, score, and improve over time. Codex"
     },
+    "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family": {
+      "checkedAt": "2026-10-15",
+      "company": "openai",
+      "date": "2026-10-14",
+      "id": "openai-codex-gpt-6-software-maintenance",
+      "status": "added",
+      "title": "Maintaining software with the GPT-6 family"
+    },
     "https://developers.openai.com/blog/mastering-codex-remote-for-engineering": {
       "checkedAt": "2026-10-03",
       "company": "openai",

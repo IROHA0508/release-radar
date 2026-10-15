@@ -1,10 +1,25 @@
 {
-  "startedAt": "2026-10-15T08:31:27+09:00",
+  "startedAt": "2026-10-15T16:47:27+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1792,
-  "candidates": [],
-  "added": [],
+  "entries": 1793,
+  "candidates": [
+    {
+      "title": "Maintaining software with the GPT-6 family",
+      "url": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
+      "company": "openai",
+      "date": "2026-10-14",
+      "relatedId": null
+    }
+  ],
+  "added": [
+    {
+      "id": "openai-codex-gpt-6-software-maintenance",
+      "title": "Codex로 코드베이스 정리하기: 죽은 코드·낡은 실험·CI",
+      "url": "https://developers.openai.com/blog/maintaining-software-with-the-gpt-6-family",
+      "charts": 3
+    }
+  ],
   "updated": [],
   "skipped": [],
   "failed": [],
