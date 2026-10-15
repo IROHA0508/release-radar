@@ -1,86 +1,24 @@
 {
-  "startedAt": "2026-10-16T03:44:35+09:00",
+  "startedAt": "2026-10-16T08:22:34+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1795,
+  "entries": 1797,
   "candidates": [
     {
-      "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
-      "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
-      "company": "google",
-      "date": "2026-10-15",
-      "relatedId": null
-    },
-    {
-      "title": "How Visko streams real-time world models on Google Cloud TPUs",
-      "url": "https://cloud.google.com/blog/products/media-entertainment/how-visko-streams-real-time-world-models-on-google-cloud-tpus/",
-      "company": "google",
-      "date": "2026-10-15",
-      "relatedId": null
-    },
-    {
-      "title": "What the Gemini agent means for startups",
-      "url": "https://cloud.google.com/blog/topics/startups/what-the-gemini-agent-means-for-startups/",
-      "company": "google",
-      "date": "2026-10-15",
-      "relatedId": null
-    },
-    {
-      "title": "Evaluating AI agents: moving past the vibe check",
-      "url": "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/",
-      "company": "google",
-      "date": "2026-10-15",
-      "relatedId": null
-    },
-    {
-      "title": "Three layers, one repo: a tour of google/adk-recipes",
-      "url": "https://developers.googleblog.com/three-layers-one-repo-a-tour-of-googleadk-recipes/",
-      "company": "google",
-      "date": "2026-10-15",
-      "relatedId": null
-    },
-    {
-      "title": "Announcing DPoP Support for Google OAuth: Securing Refresh Tokens",
-      "url": "https://developers.googleblog.com/announcing-dpop-support-for-google-oauth-securing-refresh-tokens/",
-      "company": "google",
+      "title": "Bringing GPT-Rosalind to academic research labs",
+      "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
+      "company": "openai",
       "date": "2026-10-15",
       "relatedId": null
     }
   ],
-  "added": [
-    {
-      "id": "google-agent-evaluation-beyond-vibe-check",
-      "title": "AI 에이전트 평가하기: 눈대중 점검에서 벗어나는 법",
-      "url": "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [
     {
-      "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
-      "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
-      "reason": "모델 출시·업데이트와 무관한 연구 보고서"
-    },
-    {
-      "title": "How Visko streams real-time world models on Google Cloud TPUs",
-      "url": "https://cloud.google.com/blog/products/media-entertainment/how-visko-streams-real-time-world-models-on-google-cloud-tpus/",
-      "reason": "고객 사례"
-    },
-    {
-      "title": "What the Gemini agent means for startups",
-      "url": "https://cloud.google.com/blog/topics/startups/what-the-gemini-agent-means-for-startups/",
-      "reason": "구체적인 모델 사용법을 다루지 않는 기업 블로그 글"
-    },
-    {
-      "title": "Announcing DPoP Support for Google OAuth: Securing Refresh Tokens",
-      "url": "https://developers.googleblog.com/announcing-dpop-support-for-google-oauth-securing-refresh-tokens/",
-      "reason": "AI 모델과 무관한 OAuth 보안 공지"
-    },
-    {
-      "title": "Three layers, one repo: a tour of google/adk-recipes",
-      "url": "https://developers.googleblog.com/three-layers-one-repo-a-tour-of-googleadk-recipes/",
-      "reason": "google/adk-recipes 저장소를 소개하는 둘러보기 글입니다. 새 모델 출시나 모델 업데이트가 아니고, 가격이나 사용 가능 범위가 크게 바뀐 내용도 없습니다. Gemini 앱이나 Gemini API 같은 공식 도구를 더 잘 쓰는 법이나 프롬프트 가이드도 아닙니다. 저장소 구조와 설치 명령을 보여 주는 개발자 도구 소개이고, 원문도 공식 지원 제품이 아니라 시연용 시작점이라고 밝힙니다."
+      "title": "Bringing GPT-Rosalind to academic research labs",
+      "url": "https://openai.com/index/introducing-the-rosalind-academic-plan",
+      "reason": "기업 파트너십과 학술 기관용 요금제 출시 공지로, 새 모델 출시·업데이트도 아니고 실전 활용 팁도 아닙니다. 제외 기준의 '모델과 무관한 제품·영업 공지(정부·기업 요금제 출시)'에 해당합니다."
     }
   ],
   "failed": [],

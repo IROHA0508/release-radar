@@ -40,6 +40,13 @@
       "status": "skipped",
       "title": "Sep 23, 2026 Science Claude discovers a novel enzyme system with CRISPR-like repeats"
     },
+    "https://anthropic.com/news/offering-expanded-claude-access-across-all-three-branches-of-government": {
+      "checkedAt": "2026-10-16",
+      "company": "anthropic",
+      "date": "2025-08-12",
+      "status": "old",
+      "title": "Offering expanded Claude access across all three branches of government"
+    },
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-flash-developers": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -868,6 +875,14 @@
       "reason": "고객 기업 파트너십 및 사례 소개",
       "status": "skipped",
       "title": "Higgsfield takes AI video from 1 minute to over 10"
+    },
+    "https://openai.com/index/introducing-the-rosalind-academic-plan": {
+      "checkedAt": "2026-10-16",
+      "company": "openai",
+      "date": "2026-10-15",
+      "reason": "기업 파트너십과 학술 기관용 요금제 출시 공지로, 새 모델 출시·업데이트도 아니고 실전 활용 팁도 아닙니다. 제외 기준의 '모델과 무관한 제품·영업 공지(정부·기업 요금제 출시)'에 해당합니다.",
+      "status": "skipped",
+      "title": "Bringing GPT-Rosalind to academic research labs"
     },
     "https://openai.com/index/invideo-builds-with-gpt-6-astra": {
       "checkedAt": "2026-10-03",
