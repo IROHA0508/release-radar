@@ -1,12 +1,88 @@
 {
-  "startedAt": "2026-10-15T22:45:40+09:00",
+  "startedAt": "2026-10-16T03:44:35+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1793,
-  "candidates": [],
-  "added": [],
+  "entries": 1795,
+  "candidates": [
+    {
+      "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
+      "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
+      "company": "google",
+      "date": "2026-10-15",
+      "relatedId": null
+    },
+    {
+      "title": "How Visko streams real-time world models on Google Cloud TPUs",
+      "url": "https://cloud.google.com/blog/products/media-entertainment/how-visko-streams-real-time-world-models-on-google-cloud-tpus/",
+      "company": "google",
+      "date": "2026-10-15",
+      "relatedId": null
+    },
+    {
+      "title": "What the Gemini agent means for startups",
+      "url": "https://cloud.google.com/blog/topics/startups/what-the-gemini-agent-means-for-startups/",
+      "company": "google",
+      "date": "2026-10-15",
+      "relatedId": null
+    },
+    {
+      "title": "Evaluating AI agents: moving past the vibe check",
+      "url": "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/",
+      "company": "google",
+      "date": "2026-10-15",
+      "relatedId": null
+    },
+    {
+      "title": "Three layers, one repo: a tour of google/adk-recipes",
+      "url": "https://developers.googleblog.com/three-layers-one-repo-a-tour-of-googleadk-recipes/",
+      "company": "google",
+      "date": "2026-10-15",
+      "relatedId": null
+    },
+    {
+      "title": "Announcing DPoP Support for Google OAuth: Securing Refresh Tokens",
+      "url": "https://developers.googleblog.com/announcing-dpop-support-for-google-oauth-securing-refresh-tokens/",
+      "company": "google",
+      "date": "2026-10-15",
+      "relatedId": null
+    }
+  ],
+  "added": [
+    {
+      "id": "google-agent-evaluation-beyond-vibe-check",
+      "title": "AI 에이전트 평가하기: 눈대중 점검에서 벗어나는 법",
+      "url": "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/",
+      "charts": 0
+    }
+  ],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "Accelerating the search for antimicrobial peptides with Google Antigravity",
+      "url": "https://deepmind.google/blog/accelerating-antimicrobial-discovery/",
+      "reason": "모델 출시·업데이트와 무관한 연구 보고서"
+    },
+    {
+      "title": "How Visko streams real-time world models on Google Cloud TPUs",
+      "url": "https://cloud.google.com/blog/products/media-entertainment/how-visko-streams-real-time-world-models-on-google-cloud-tpus/",
+      "reason": "고객 사례"
+    },
+    {
+      "title": "What the Gemini agent means for startups",
+      "url": "https://cloud.google.com/blog/topics/startups/what-the-gemini-agent-means-for-startups/",
+      "reason": "구체적인 모델 사용법을 다루지 않는 기업 블로그 글"
+    },
+    {
+      "title": "Announcing DPoP Support for Google OAuth: Securing Refresh Tokens",
+      "url": "https://developers.googleblog.com/announcing-dpop-support-for-google-oauth-securing-refresh-tokens/",
+      "reason": "AI 모델과 무관한 OAuth 보안 공지"
+    },
+    {
+      "title": "Three layers, one repo: a tour of google/adk-recipes",
+      "url": "https://developers.googleblog.com/three-layers-one-repo-a-tour-of-googleadk-recipes/",
+      "reason": "google/adk-recipes 저장소를 소개하는 둘러보기 글입니다. 새 모델 출시나 모델 업데이트가 아니고, 가격이나 사용 가능 범위가 크게 바뀐 내용도 없습니다. Gemini 앱이나 Gemini API 같은 공식 도구를 더 잘 쓰는 법이나 프롬프트 가이드도 아닙니다. 저장소 구조와 설치 명령을 보여 주는 개발자 도구 소개이고, 원문도 공식 지원 제품이 아니라 시연용 시작점이라고 밝힙니다."
+    }
+  ],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",

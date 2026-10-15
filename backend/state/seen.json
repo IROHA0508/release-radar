@@ -322,6 +322,14 @@
       "status": "skipped",
       "title": "Predictable AI spend in BigQuery: Introducing cost management for generative AI functions"
     },
+    "https://cloud.google.com/blog/products/media-entertainment/how-visko-streams-real-time-world-models-on-google-cloud-tpus": {
+      "checkedAt": "2026-10-16",
+      "company": "google",
+      "date": "2026-10-15",
+      "reason": "고객 사례",
+      "status": "skipped",
+      "title": "How Visko streams real-time world models on Google Cloud TPUs"
+    },
     "https://cloud.google.com/blog/topics/customers/ireland-innovation-companies-startups-governments-scale-with-gemini": {
       "checkedAt": "2026-10-09",
       "company": "google",
@@ -338,6 +346,14 @@
       "status": "skipped",
       "title": "Best practices guide for customizing Gemini models via Reinforcement Learning (RL)"
     },
+    "https://cloud.google.com/blog/topics/startups/what-the-gemini-agent-means-for-startups": {
+      "checkedAt": "2026-10-16",
+      "company": "google",
+      "date": "2026-10-15",
+      "reason": "구체적인 모델 사용법을 다루지 않는 기업 블로그 글",
+      "status": "skipped",
+      "title": "What the Gemini agent means for startups"
+    },
     "https://cloud.google.com/blog/topics/startups/why-your-startup-needs-open-models-alongside-frontier-apis": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -345,6 +361,14 @@
       "reason": "모델 출시·업데이트와 무관한 일반 의견",
       "status": "skipped",
       "title": "Why your startup needs open models alongside frontier APIs"
+    },
+    "https://deepmind.google/blog/accelerating-antimicrobial-discovery": {
+      "checkedAt": "2026-10-16",
+      "company": "google",
+      "date": "2026-10-15",
+      "reason": "모델 출시·업데이트와 무관한 연구 보고서",
+      "status": "skipped",
+      "title": "Accelerating the search for antimicrobial peptides with Google Antigravity"
     },
     "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely": {
       "checkedAt": "2026-10-14",
@@ -407,6 +431,14 @@
       "status": "old",
       "title": "Announcing ADK for Kotlin 1.0: Building Production-Ready AI Agents in Kotlin, Android, and Beyond- Google Developers Blog"
     },
+    "https://developers.googleblog.com/announcing-dpop-support-for-google-oauth-securing-refresh-tokens": {
+      "checkedAt": "2026-10-16",
+      "company": "google",
+      "date": "2026-10-15",
+      "reason": "AI 모델과 무관한 OAuth 보안 공지",
+      "status": "skipped",
+      "title": "Announcing DPoP Support for Google OAuth: Securing Refresh Tokens"
+    },
     "https://developers.googleblog.com/announcing-mcp-support-in-apigee-hybrid-agentic-tools-that-run-in-your-own-cluster": {
       "checkedAt": "2026-10-15",
       "company": "google",
@@ -457,6 +489,14 @@
       "date": "2026-08-26",
       "status": "old",
       "title": "Enterprise-Grade Precision for Long-Context Multimodal Embedding Inference on Cloud TPU- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check": {
+      "checkedAt": "2026-10-16",
+      "company": "google",
+      "date": "2026-10-15",
+      "id": "google-agent-evaluation-beyond-vibe-check",
+      "status": "added",
+      "title": "Evaluating AI agents: moving past the vibe check"
     },
     "https://developers.googleblog.com/gemini-4-argon-for-robotics": {
       "checkedAt": "2026-10-14",
@@ -532,6 +572,14 @@
       "reason": "모델 출시와 무관한 오픈소스 도구 발표로, 실전 조언이 아닙니다.",
       "status": "skipped",
       "title": "The Outer Loop, Insights First: An Ambient Quality Agent That Diagnoses Your Production Agent"
+    },
+    "https://developers.googleblog.com/three-layers-one-repo-a-tour-of-googleadk-recipes": {
+      "checkedAt": "2026-10-16",
+      "company": "google",
+      "date": "2026-10-15",
+      "reason": "google/adk-recipes 저장소를 소개하는 둘러보기 글입니다. 새 모델 출시나 모델 업데이트가 아니고, 가격이나 사용 가능 범위가 크게 바뀐 내용도 없습니다. Gemini 앱이나 Gemini API 같은 공식 도구를 더 잘 쓰는 법이나 프롬프트 가이드도 아닙니다. 저장소 구조와 설치 명령을 보여 주는 개발자 도구 소개이고, 원문도 공식 지원 제품이 아니라 시연용 시작점이라고 밝힙니다.",
+      "status": "skipped",
+      "title": "Three layers, one repo: a tour of google/adk-recipes"
     },
     "https://developers.googleblog.com/turn-your-rest-apis-into-mcp-tools-with-google-cloud-api-gateway": {
       "checkedAt": "2026-10-03",
