@@ -1004,6 +1004,14 @@
       "status": "skipped",
       "title": "Sharing AI progress in mathematics"
     },
+    "https://openai.com/index/stack-overflow-chatgpt-plugin": {
+      "checkedAt": "2026-10-17",
+      "company": "openai",
+      "date": "2026-10-16",
+      "reason": "기업 파트너십과 고객 사례로, 새 모델 출시·업데이트, 가격·가용성 변경, 공식 활용 팁에 해당하지 않음",
+      "status": "skipped",
+      "title": "Stack Overflow for Agents triples signups with ChatGPT plugin"
+    },
     "https://openai.com/index/teens-learn-and-plan": {
       "checkedAt": "2026-10-08",
       "company": "openai",
