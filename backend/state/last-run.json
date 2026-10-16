@@ -1,12 +1,62 @@
 {
-  "startedAt": "2026-10-16T22:35:18+09:00",
+  "startedAt": "2026-10-17T03:29:26+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1798,
-  "candidates": [],
+  "candidates": [
+    {
+      "title": "How an Anthropic Japan BDR runs his day with a fleet of Claude agents",
+      "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
+      "company": "anthropic",
+      "date": "2026-10-16",
+      "relatedId": null
+    },
+    {
+      "title": "Architecting autonomy: A design pattern for high-compute, governed agents in biotech",
+      "url": "https://cloud.google.com/blog/topics/healthcare-life-sciences/architecting-scalable-agentic-biotech-workloads/",
+      "company": "google",
+      "date": "2026-10-16",
+      "relatedId": null
+    },
+    {
+      "title": "Four evaluation engineering lessons learned from building agent plugins",
+      "url": "https://cloud.google.com/blog/topics/developers-practitioners/four-eval-engineering-lessons/",
+      "company": "google",
+      "date": "2026-10-16",
+      "relatedId": null
+    },
+    {
+      "title": "Designing failover across OpenAI model providers",
+      "url": "https://developers.openai.com/blog/designing-failover-across-openai-model-providers",
+      "company": "openai",
+      "date": "2026-10-14",
+      "relatedId": null
+    }
+  ],
   "added": [],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "How an Anthropic Japan BDR runs his day with a fleet of Claude agents",
+      "url": "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day",
+      "reason": "Anthropic 직원의 개인적인 Claude 활용 사례로, 기업 고객 사례에 해당합니다."
+    },
+    {
+      "title": "Architecting autonomy: A design pattern for high-compute, governed agents in biotech",
+      "url": "https://cloud.google.com/blog/topics/healthcare-life-sciences/architecting-scalable-agentic-biotech-workloads/",
+      "reason": "바이오테크 분야의 일반적인 AI 에이전트 아키텍처 설계 패턴으로, 특정 모델(Claude, GPT, Gemini)의 활용 팁이 아닙니다."
+    },
+    {
+      "title": "Four evaluation engineering lessons learned from building agent plugins",
+      "url": "https://cloud.google.com/blog/topics/developers-practitioners/four-eval-engineering-lessons/",
+      "reason": "AI 에이전트 평가 방법론으로, 비슷한 주제의 글이 이미 사이트에 있습니다(google-agent-evaluation-beyond-vibe-check, 2026-10-15)."
+    },
+    {
+      "title": "Designing failover across OpenAI model providers",
+      "url": "https://developers.openai.com/blog/designing-failover-across-openai-model-providers",
+      "reason": "여러 AI 모델 프로바이더 간의 failover 설계로, 특정 모델(Claude, GPT, Gemini)의 활용 팁이라기보다 범용 기술 가이드에 해당합니다."
+    }
+  ],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",

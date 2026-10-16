@@ -257,6 +257,14 @@
       "status": "skipped",
       "title": "Build live dashboards and animate explainers with Claude"
     },
+    "https://claude.com/resources/articles/how-an-anthropic-japan-business-development-representative-runs-his-day": {
+      "checkedAt": "2026-10-17",
+      "company": "anthropic",
+      "date": "2026-10-16",
+      "reason": "Anthropic 직원의 개인적인 Claude 활용 사례로, 기업 고객 사례에 해당합니다.",
+      "status": "skipped",
+      "title": "How an Anthropic Japan BDR runs his day with a fleet of Claude agents"
+    },
     "https://claude.com/resources/articles/how-anthropics-sales-team-rebuilt-inbound-with-claude-managed-agents": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -352,6 +360,22 @@
       "reason": "모델 출시·업데이트와 무관한 기술 가이드 (RL 커스터마이징)",
       "status": "skipped",
       "title": "Best practices guide for customizing Gemini models via Reinforcement Learning (RL)"
+    },
+    "https://cloud.google.com/blog/topics/developers-practitioners/four-eval-engineering-lessons": {
+      "checkedAt": "2026-10-17",
+      "company": "google",
+      "date": "2026-10-16",
+      "reason": "AI 에이전트 평가 방법론으로, 비슷한 주제의 글이 이미 사이트에 있습니다(google-agent-evaluation-beyond-vibe-check, 2026-10-15).",
+      "status": "skipped",
+      "title": "Four evaluation engineering lessons learned from building agent plugins"
+    },
+    "https://cloud.google.com/blog/topics/healthcare-life-sciences/architecting-scalable-agentic-biotech-workloads": {
+      "checkedAt": "2026-10-17",
+      "company": "google",
+      "date": "2026-10-16",
+      "reason": "바이오테크 분야의 일반적인 AI 에이전트 아키텍처 설계 패턴으로, 특정 모델(Claude, GPT, Gemini)의 활용 팁이 아닙니다.",
+      "status": "skipped",
+      "title": "Architecting autonomy: A design pattern for high-compute, governed agents in biotech"
     },
     "https://cloud.google.com/blog/topics/startups/what-the-gemini-agent-means-for-startups": {
       "checkedAt": "2026-10-16",
@@ -664,6 +688,14 @@
       "date": null,
       "status": "nodate",
       "title": "Jul 20 Custom Code Review rules for Codex Provide more detailed rules for Codex to spot issues and better adhere your conventions during code review. Codex"
+    },
+    "https://developers.openai.com/blog/designing-failover-across-openai-model-providers": {
+      "checkedAt": "2026-10-17",
+      "company": "openai",
+      "date": "2026-10-14",
+      "reason": "여러 AI 모델 프로바이더 간의 failover 설계로, 특정 모델(Claude, GPT, Gemini)의 활용 팁이라기보다 범용 기술 가이드에 해당합니다.",
+      "status": "skipped",
+      "title": "Designing failover across OpenAI model providers"
     },
     "https://developers.openai.com/blog/eval-skills": {
       "checkedAt": "2026-10-03",
