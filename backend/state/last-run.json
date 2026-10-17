@@ -1,26 +1,12 @@
 {
-  "startedAt": "2026-10-17T16:15:27+09:00",
+  "startedAt": "2026-10-17T21:31:46+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1801,
-  "candidates": [
-    {
-      "title": "Benefit Street Partners answers questions faster with Codex",
-      "url": "https://openai.com/index/benefit-street-partners",
-      "company": "openai",
-      "date": "2026-10-16",
-      "relatedId": null
-    }
-  ],
+  "candidates": [],
   "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Benefit Street Partners answers questions faster with Codex",
-      "url": "https://openai.com/index/benefit-street-partners",
-      "reason": "고객 사례. 제외 기준(기업 파트너십, 고객 사례)에 해당. 새 모델 출시·업데이트·가격 변경 없고, 실전 조언 없는 단순 도구 활용 사례."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
