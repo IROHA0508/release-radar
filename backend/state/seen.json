@@ -860,6 +860,14 @@
       "status": "skipped",
       "title": "Basis completes a tax workbook 2x faster with GPT-6 Astra"
     },
+    "https://openai.com/index/benefit-street-partners": {
+      "checkedAt": "2026-10-17",
+      "company": "openai",
+      "date": "2026-10-16",
+      "reason": "고객 사례. 제외 기준(기업 파트너십, 고객 사례)에 해당. 새 모델 출시·업데이트·가격 변경 없고, 실전 조언 없는 단순 도구 활용 사례.",
+      "status": "skipped",
+      "title": "Benefit Street Partners answers questions faster with Codex"
+    },
     "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan": {
       "checkedAt": "2026-10-03",
       "company": "openai",
