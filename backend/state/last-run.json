@@ -1,12 +1,38 @@
 {
-  "startedAt": "2026-10-20T16:58:55+09:00",
+  "startedAt": "2026-10-20T22:55:31+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1802,
-  "candidates": [],
+  "candidates": [
+    {
+      "title": "Introducing Gemini for government services",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services/",
+      "company": "google",
+      "date": "2026-10-20",
+      "relatedId": null
+    },
+    {
+      "title": "Unifying Edge AI: How Coral NPU’s open standard brings portable, energy-viable intelligence from model to silicon",
+      "url": "https://developers.googleblog.com/unifying-edge-ai-how-coral-npus-open-standard-brings-portable-energy-viable-intelligence-from-model-to-silicon/",
+      "company": "google",
+      "date": "2026-10-20",
+      "relatedId": null
+    }
+  ],
   "added": [],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "Introducing Gemini for government services",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services/",
+      "reason": "정부 부문 특화 버전으로 보이는 기업 파트너십 또는 정책·규제 영역 관련 글. ChatGPT·Gemini 같은 공식 도구를 더 잘 쓰는 실전 조언이나 새 모델 출시가 아님."
+    },
+    {
+      "title": "Unifying Edge AI: How Coral NPU’s open standard brings portable, energy-viable intelligence from model to silicon",
+      "url": "https://developers.googleblog.com/unifying-edge-ai-how-coral-npus-open-standard-brings-portable-energy-viable-intelligence-from-model-to-silicon/",
+      "reason": "Coral NPU 하드웨어 아키텍처에 관한 기술 공지. 모델 출시·업데이트와 무관한 제품·인프라 관련 연구이며, 모델을 더 잘 쓰는 실전 조언이 없음."
+    }
+  ],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",

@@ -321,6 +321,14 @@
       "status": "updated",
       "title": "Gemini 4 Argon available on Google Cloud, built to help solve your business’ hardest problems"
     },
+    "https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services": {
+      "checkedAt": "2026-10-20",
+      "company": "google",
+      "date": "2026-10-20",
+      "reason": "정부 부문 특화 버전으로 보이는 기업 파트너십 또는 정책·규제 영역 관련 글. ChatGPT·Gemini 같은 공식 도구를 더 잘 쓰는 실전 조언이나 새 모델 출시가 아님.",
+      "status": "skipped",
+      "title": "Introducing Gemini for government services"
+    },
     "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -650,6 +658,14 @@
       "date": "2026-09-24",
       "status": "old",
       "title": "Turn your REST APIs into MCP tools with Google Cloud API Gateway- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/unifying-edge-ai-how-coral-npus-open-standard-brings-portable-energy-viable-intelligence-from-model-to-silicon": {
+      "checkedAt": "2026-10-20",
+      "company": "google",
+      "date": "2026-10-20",
+      "reason": "Coral NPU 하드웨어 아키텍처에 관한 기술 공지. 모델 출시·업데이트와 무관한 제품·인프라 관련 연구이며, 모델을 더 잘 쓰는 실전 조언이 없음.",
+      "status": "skipped",
+      "title": "Unifying Edge AI: How Coral NPU’s open standard brings portable, energy-viable intelligence from model to silicon"
     },
     "https://developers.googleblog.com/why-client-sdk-generation-belongs-in-the-open": {
       "checkedAt": "2026-10-03",
