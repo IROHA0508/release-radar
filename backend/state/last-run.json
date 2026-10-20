@@ -1,19 +1,33 @@
 {
-  "startedAt": "2026-10-20T22:55:31+09:00",
+  "startedAt": "2026-10-21T03:48:01+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1802,
+  "entries": 1822,
   "candidates": [
     {
-      "title": "Introducing Gemini for government services",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services/",
+      "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
+      "url": "https://openai.com/index/ted-taylor-restaurant",
+      "company": "openai",
+      "date": "2026-10-20",
+      "relatedId": "openai-prompting-fundamentals"
+    },
+    {
+      "title": "New Gemini tools for small business owners",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
       "company": "google",
       "date": "2026-10-20",
       "relatedId": null
     },
     {
-      "title": "Unifying Edge AI: How Coral NPU’s open standard brings portable, energy-viable intelligence from model to silicon",
-      "url": "https://developers.googleblog.com/unifying-edge-ai-how-coral-npus-open-standard-brings-portable-energy-viable-intelligence-from-model-to-silicon/",
+      "title": "Bringing Visual Graph Debugging to Custom Edge Compilers with Model Explorer",
+      "url": "https://developers.googleblog.com/bringing-visual-graph-debugging-to-custom-edge-compilers-with-model-explorer/",
+      "company": "google",
+      "date": "2026-10-20",
+      "relatedId": null
+    },
+    {
+      "title": "Integrating TorchTPU into TorchTitan and Optimizing Models for TPU",
+      "url": "https://developers.googleblog.com/integrating-torchtpu-into-torchtitan-and-optimizing-models-for-tpu/",
       "company": "google",
       "date": "2026-10-20",
       "relatedId": null
@@ -23,14 +37,24 @@
   "updated": [],
   "skipped": [
     {
-      "title": "Introducing Gemini for government services",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-government-services/",
-      "reason": "정부 부문 특화 버전으로 보이는 기업 파트너십 또는 정책·규제 영역 관련 글. ChatGPT·Gemini 같은 공식 도구를 더 잘 쓰는 실전 조언이나 새 모델 출시가 아님."
+      "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
+      "url": "https://openai.com/index/ted-taylor-restaurant",
+      "reason": "고객 사례(Schlotzsky's 프랜차이지의 ChatGPT Work 사용 성과). 기업 파트너십/고객 사례에 해당하므로 제외."
     },
     {
-      "title": "Unifying Edge AI: How Coral NPU’s open standard brings portable, energy-viable intelligence from model to silicon",
-      "url": "https://developers.googleblog.com/unifying-edge-ai-how-coral-npus-open-standard-brings-portable-energy-viable-intelligence-from-model-to-silicon/",
-      "reason": "Coral NPU 하드웨어 아키텍처에 관한 기술 공지. 모델 출시·업데이트와 무관한 제품·인프라 관련 연구이며, 모델을 더 잘 쓰는 실전 조언이 없음."
+      "title": "New Gemini tools for small business owners",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
+      "reason": "Gemini 앱의 일반적인 기능 소개(이미지 스타일 생성, 커스터마이징, 템플릿 콘텐츠 생성). 특정 모델 출시/업데이트가 아니며, 실전 조언이 거의 없는 기능 소개에 해당하므로 제외."
+    },
+    {
+      "title": "Bringing Visual Graph Debugging to Custom Edge Compilers with Model Explorer",
+      "url": "https://developers.googleblog.com/bringing-visual-graph-debugging-to-custom-edge-compilers-with-model-explorer/",
+      "reason": "Model Explorer 개발 도구의 기술 업데이트. 모델 출시나 모델 사용 팁과 무관한 개발 도구 관련 글이므로 제외."
+    },
+    {
+      "title": "Integrating TorchTPU into TorchTitan and Optimizing Models for TPU",
+      "url": "https://developers.googleblog.com/integrating-torchtpu-into-torchtitan-and-optimizing-models-for-tpu/",
+      "reason": "TorchTPU/TorchTitan 개발 인프라 통합 소식. 모델 자체와 무관한 개발 프레임워크 기술에 관한 글이므로 제외."
     }
   ],
   "failed": [],
