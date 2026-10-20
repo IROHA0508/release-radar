@@ -1,0 +1,95 @@
+{
+  "id": "google-adk-voice-agent-streaming-tools",
+  "company": "google",
+  "date": "2026-10-19",
+  "kind": "활용 팁",
+  "title": "침묵 없는 음성 에이전트: ADK 스트리밍 도구와 response_scheduling",
+  "headline": "return을 yield로 바꾸면 첫 응답까지 14.4초가 1.2초로 줄어듭니다",
+  "tldr": "라이브 음성 대화에서 느린 도구가 실행되는 동안 에이전트가 말이 없으면 사용자는 통화가 끊겼다고 생각합니다. Google은 ADK의 스트리밍 도구와 백그라운드 실행, response_scheduling을 조합해 이를 해결하라고 안내합니다. gemini-3.8-live 벤치마크 워크플로에서 스트리밍 도구로 바꾸자 에이전트의 첫 발화까지 시간이 14.4초에서 1.2초로 줄었습니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "에이전트 첫 발화까지 시간",
+      "value": "14.4초 → 1.2초",
+      "note": "gemini-3.8-live 벤치마크 영업 보고서 워크플로에서 블로킹 도구를 스트리밍 도구로 교체"
+    },
+    {
+      "label": "예시 쿼리 대기 시간",
+      "value": "13초",
+      "note": "블로킹 도구면 13초간 무음이 되지만, 백엔드 실행 시간 자체는 줄지 않음"
+    },
+    {
+      "label": "스케줄링 모드",
+      "value": "3가지",
+      "note": "WHEN_IDLE, INTERRUPT, SILENT"
+    },
+    {
+      "label": "필요 프레임워크 버전",
+      "value": "google-adk >= 2.10.0",
+      "note": "스트리밍 도구와 라이브 스케줄링은 run_live 양방향 세션 필요"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 비교 벤치마크 수치가 없어 그래프는 만들지 않았습니다.",
+  "changes": [
+    "일반 도구(async def가 값을 한 번 return)는 블로킹 호출이라, 도구가 끝날 때까지 모델 턴이 멈춰 무음이 됩니다. '작업 중이라고 말해줘' 같은 프롬프트 지시로는 해결되지 않습니다.",
+    "스트리밍 도구: 함수를 AsyncGenerator로 만들고 return을 yield로 바꾸면 ADK가 도구를 NON_BLOCKING으로 표시하고 즉시 상태 응답을 모델에 보냅니다. 에이전트가 바로 말을 시작하고 yield마다 진행 상황을 풀어서 말합니다.",
+    "백그라운드 실행(단일 yield): 완료 시점에 한 번만 yield하면 즉시 확인 발화만 하고 계산 중에는 조용히 있다가 결과가 나오면 전달합니다.",
+    "백그라운드 실행(FunctionTool): 일반 코루틴을 FunctionTool로 감싸고 response_scheduling을 설정합니다. 이 경우 모델은 함수가 끝날 때까지 페이로드를 받지 못해 사용자가 계속 말하지 않으면 처음 확인 발화를 하지 않을 수 있습니다.",
+    "response_scheduling은 결과가 들어왔을 때 모델이 언제 반응할지를 정합니다. WHEN_IDLE은 진행 중인 턴을 끊지 않고 다음 자연스러운 쉼에 말하고, INTERRUPT는 말하는 중에도 끼어들며, SILENT는 대화 기록에만 추가합니다.",
+    "스트리밍 도구에 response_scheduling을 설정하면 모든 부분 업데이트에 적용됩니다. ADK 2.8 이상에서는 types.FunctionResponse를 yield해 업데이트마다 스케줄링을 다르게 지정할 수 있습니다."
+  ],
+  "availability": [
+    "프레임워크: google-adk >= 2.10.0 (오픈소스 ADK)",
+    "모델: Gemini Enterprise의 gemini-3.8-live",
+    "스트리밍 도구와 라이브 스케줄링은 양방향 라이브 세션(run_live)에서만 동작",
+    "ADK 2.10 이상에서는 tool.behavior = types.Behavior.NON_BLOCKING으로도 백그라운드 실행 가능"
+  ],
+  "tips": [
+    {
+      "title": "진행 단계에 이야기가 있으면 스트리밍",
+      "body": "연결, 조회, 취합처럼 단계가 있는 작업은 return을 yield로 바꿔 진행 상황을 말하게 하세요. 인스트럭션에도 '요청을 바로 확인하고 진행 업데이트를 짧게 풀어서 말하라'고 적어 두면 좋습니다."
+    },
+    {
+      "title": "그냥 기다리는 작업은 백그라운드로",
+      "body": "사용자가 보고서를 요청하고 곧바로 다른 주제로 넘어가는 경우 계속 상태를 알리면 거슬립니다. 한 번만 yield하는 제너레이터를 쓰거나 WHEN_IDLE로 결과를 다음 쉼에 전달하세요."
+    },
+    {
+      "title": "스트리밍 도구는 한 번만 호출되게",
+      "body": "모델이 같은 도구를 다시 부를 수 있으니 docstring에 'Call this ONCE'를 명시하고, 운영 환경에서는 메모리 래치나 멱등성 키를 두세요. 도구를 중단할 수 있게 stop_streaming(function_name: str) 함수를 tools에 넣을 수도 있습니다."
+    },
+    {
+      "title": "결과 전달 시점을 용도별로 고르기",
+      "body": "일반 결과는 WHEN_IDLE, 긴급 알림은 INTERRUPT, 조용히 맥락만 갱신할 때는 SILENT를 쓰세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "스트리밍 도구 에이전트 (Python)",
+      "when": "느린 도구의 진행 상황을 음성으로 알려 주는 에이전트를 만들 때",
+      "type": "code",
+      "text": "import asyncio\nfrom typing import AsyncGenerator\nfrom google.adk.agents import Agent\n\nasync def query_sales_database(region: str) -> AsyncGenerator[str, None]:\n    \"\"\"Runs the quarterly sales report. Call this ONCE; it pushes updates automatically.\"\"\"\n    stages = [\n        (\"Connecting to the sales warehouse...\", 1.5),\n        (\"Scanning order records...\", 3.5),\n        (\"Aggregating revenue by product line...\", 3.5),\n        (\"Formatting the report...\", 1.5),\n    ]\n    for message, delay in stages:\n        yield f\"PROGRESS: {message}\"\n        await asyncio.sleep(delay)\n    yield f\"DONE: [최종 결과 요약]\"\n\nagent = Agent(\n    name=\"sales_analyst\",\n    model=\"gemini-3.8-live\",\n    tools=[query_sales_database],\n    instruction=(\n        \"You are a helpful sales assistant. When the user asks about sales data, \"\n        \"call query_sales_database once. Acknowledge the request immediately, \"\n        \"briefly paraphrase each progress update, and present the final figures \"\n        \"when completed. Keep answers conversational and concise.\"\n    ),\n)"
+    },
+    {
+      "title": "일반 도구를 WHEN_IDLE로 백그라운드 실행 (Python)",
+      "when": "진행 멘트 없이 결과를 다음 자연스러운 쉼에 전달하고 싶을 때",
+      "type": "code",
+      "text": "from google.adk.tools import FunctionTool\nfrom google.genai import types\n\nsales_tool = FunctionTool(query_sales_database)\nsales_tool.response_scheduling = types.FunctionResponseScheduling.WHEN_IDLE"
+    }
+  ],
+  "cautions": [
+    "비블로킹 도구는 백엔드 실행 시간을 줄이지 않습니다. 13초 쿼리는 여전히 13초 걸리고, 바뀌는 것은 에이전트의 대화 존재감입니다.",
+    "사용자가 말을 끊어도(barge-in) 실행 중인 스트리밍·백그라운드 도구는 취소되지 않고 결과가 그대로 전달됩니다. 중단하려면 모델이 stop_streaming을 호출해야 합니다.",
+    "스트리밍 도구의 진행 멘트는 실제 도구 진행보다 몇 초 늦을 수 있습니다. 수치는 Google의 벤치마크 워크플로 기준입니다."
+  ],
+  "sources": [
+    {
+      "title": "Step by Step guide: Build a Voice Agent That Never Goes Silent using ADK (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/step-by-step-guide-build-a-voice-agent-that-never-goes-silent-using-adk/"
+    },
+    {
+      "title": "Gemini Enterprise Agent Platform 모델 문서",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/google-models"
+    }
+  ]
+}

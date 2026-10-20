@@ -111,6 +111,14 @@
       "status": "skipped",
       "title": "3 ways this grocer cooks for 200 guests with Gemini"
     },
+    "https://blog.google/products-and-platforms/products/gemini/stylist-outfit-tips-gemini": {
+      "checkedAt": "2026-10-20",
+      "company": "google",
+      "date": "2026-10-19",
+      "reason": "의류 스타일링이라는 특정 분야의 사용 사례로, 광범위한 기술적 활용 팁이 아님",
+      "status": "skipped",
+      "title": "4 tips for styling outfits with Gemini"
+    },
     "https://claude.com/blog/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -320,6 +328,14 @@
       "reason": "모델과 무관한 개발자 도구 (Google Cloud CLI MCP 서버)",
       "status": "skipped",
       "title": "Empower your agents with the Google Cloud CLI remote MCP server"
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/google-named-leader-in-2026-idc-marketscape-for-agentic-ai-platforms": {
+      "checkedAt": "2026-10-20",
+      "company": "google",
+      "date": "2026-10-19",
+      "reason": "기업 수상 및 마켓플레이스 순위 발표로, 모델 기능·가격·가용성 변화가 없음",
+      "status": "skipped",
+      "title": "Google named a Leader in the 2026 IDC MarketScape for Agentic AI Platforms"
     },
     "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026": {
       "checkedAt": "2026-10-09",
@@ -566,6 +582,14 @@
       "status": "old",
       "title": "Introducing Support for Local AI Models in the Antigravity SDK- Google Developers Blog"
     },
+    "https://developers.googleblog.com/native-model-authoring-for-edge-with-litert-tensor-api": {
+      "checkedAt": "2026-10-20",
+      "company": "google",
+      "date": "2026-10-19",
+      "reason": "모델과 무관한 LiteRT 인프라 도구 소개로, ChatGPT·Claude·Gemini 모델 뉴스가 아님",
+      "status": "skipped",
+      "title": "Native Model Authoring for Edge with LiteRT Tensor API"
+    },
     "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon": {
       "checkedAt": "2026-10-14",
       "company": "google",
@@ -580,6 +604,14 @@
       "date": "2026-09-24",
       "status": "old",
       "title": "Reproducing Olmo 3 7B Pre-training in MaxText: case study of large scale training on TPUs- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/step-by-step-guide-build-a-voice-agent-that-never-goes-silent-using-adk": {
+      "checkedAt": "2026-10-20",
+      "company": "google",
+      "date": "2026-10-19",
+      "id": "google-adk-voice-agent-streaming-tools",
+      "status": "added",
+      "title": "Step by Step guide: Build a Voice Agent That Never Goes Silent using ADK"
     },
     "https://developers.googleblog.com/supercharge-your-development-with-the-google-developer-knowledge-api-ecosystem": {
       "checkedAt": "2026-10-08",
@@ -947,6 +979,14 @@
       "reason": "고객 사례: LegalOn의 Codex 비용 절감 경험을 소개한 글로, 공식 활용 팁이나 모델 출시·업데이트가 아님",
       "status": "skipped",
       "title": "LegalOn halves Codex costs while maintaining development speed"
+    },
+    "https://openai.com/index/low-resource-programming-languages": {
+      "checkedAt": "2026-10-20",
+      "company": "openai",
+      "date": "2026-10-19",
+      "reason": "새로운 평가 벤치마크 소개로, 모델 출시와 무관한 연구에 해당함",
+      "status": "skipped",
+      "title": "Advancing coding in low‑resource programming languages"
     },
     "https://openai.com/index/new-chatgpt-ads-format-and-measurement": {
       "checkedAt": "2026-10-06",
