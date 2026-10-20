@@ -16,6 +16,13 @@
       "status": "added",
       "title": "Introducing Claude Haiku 5.5"
     },
+    "https://anthropic.com/news/3-5-models-and-computer-use": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2024-10-22",
+      "status": "old",
+      "title": "Computer use, Claude 3.5 Sonnet, and Claude 3.5 Haiku"
+    },
     "https://anthropic.com/news/a-new-initiative-for-developing-third-party-model-evaluations": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
@@ -94,6 +101,27 @@
       "status": "old",
       "title": "Claude 3 Haiku: our fastest model yet"
     },
+    "https://anthropic.com/news/claude-4": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2025-05-22",
+      "status": "old",
+      "title": "Introducing Claude 4"
+    },
+    "https://anthropic.com/news/claude-brazil": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2024-08-01",
+      "status": "old",
+      "title": "Claude is now available in Brazil"
+    },
+    "https://anthropic.com/news/claude-code-security": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-02-20",
+      "status": "old",
+      "title": "Making frontier cybersecurity capabilities available to defenders"
+    },
     "https://anthropic.com/news/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -124,6 +152,20 @@
       "status": "old",
       "title": "Claude is now available in the EU"
     },
+    "https://anthropic.com/news/claude-for-financial-services": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2025-07-15",
+      "status": "old",
+      "title": "Claude for Financial Services"
+    },
+    "https://anthropic.com/news/claude-for-life-sciences": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2025-10-20",
+      "status": "old",
+      "title": "Claude for Life Sciences"
+    },
     "https://anthropic.com/news/claude-for-nonprofits": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
@@ -137,6 +179,13 @@
       "date": "2026-05-13",
       "status": "old",
       "title": "Introducing Claude for Small Business"
+    },
+    "https://anthropic.com/news/claude-for-teachers": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-07-14",
+      "status": "old",
+      "title": "Introducing Claude for Teachers"
     },
     "https://anthropic.com/news/claude-gov-models-for-u-s-national-security-customers": {
       "checkedAt": "2026-10-21",
@@ -152,12 +201,47 @@
       "status": "old",
       "title": "Claude in Amazon Bedrock: FedRAMP High and DoD IL4/5"
     },
+    "https://anthropic.com/news/claude-in-xcode": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2025-09-15",
+      "status": "old",
+      "title": "Claude is now generally available in Xcode"
+    },
+    "https://anthropic.com/news/claude-is-a-space-to-think": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-02-04",
+      "status": "old",
+      "title": "Claude is a space to think"
+    },
+    "https://anthropic.com/news/claude-new-constitution": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-01-22",
+      "status": "old",
+      "title": "Claude's new constitution"
+    },
     "https://anthropic.com/news/claude-opus-4-1": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
       "date": "2025-08-05",
       "status": "old",
       "title": "Claude Opus 4.1"
+    },
+    "https://anthropic.com/news/claude-opus-4-5": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2025-11-24",
+      "status": "old",
+      "title": "Introducing Claude Opus 4.5"
+    },
+    "https://anthropic.com/news/claude-science-ai-workbench": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-06-30",
+      "status": "old",
+      "title": "Claude Science, an AI workbench for scientists"
     },
     "https://anthropic.com/news/claude-sonnet-4-5": {
       "checkedAt": "2026-10-21",
@@ -173,6 +257,13 @@
       "status": "old",
       "title": "How Claude's text watermarking works"
     },
+    "https://anthropic.com/news/deprecation-updates-opus-3": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-02-25",
+      "status": "old",
+      "title": "Model deprecation update for Claude Opus 3"
+    },
     "https://anthropic.com/news/detecting-and-countering-malicious-uses-of-claude-march-2025": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
@@ -186,6 +277,13 @@
       "date": "2025-09-29",
       "status": "old",
       "title": "Enabling Claude Code to work more autonomously"
+    },
+    "https://anthropic.com/news/fable-safeguards-jailbreak-framework": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-07-02",
+      "status": "old",
+      "title": "Fable 5's cyber safeguards and our jailbreak framework"
     },
     "https://anthropic.com/news/federal-government-departments-and-agencies-can-now-purchase-claude-through-the-gsa-schedule": {
       "checkedAt": "2026-10-21",
@@ -208,12 +306,33 @@
       "status": "old",
       "title": "Frontier model security"
     },
+    "https://anthropic.com/news/improving-fable-5-s-biology-safeguards": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-08-07",
+      "status": "old",
+      "title": "Improving Fable 5's safeguards"
+    },
     "https://anthropic.com/news/introducing-claude": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
       "date": "2023-03-14",
       "status": "old",
       "title": "Introducing Claude"
+    },
+    "https://anthropic.com/news/introducing-claude-for-education": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2025-04-02",
+      "status": "old",
+      "title": "Introducing Claude for education"
+    },
+    "https://anthropic.com/news/introducing-claude-to-canada": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2024-06-05",
+      "status": "old",
+      "title": "Introducing Claude to Canada"
     },
     "https://anthropic.com/news/model-hardware-standard-research-preview": {
       "checkedAt": "2026-10-21",
@@ -236,12 +355,54 @@
       "status": "old",
       "title": "Offering expanded Claude access across all three branches of government"
     },
+    "https://anthropic.com/news/prompt-engineering-for-business-performance": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2024-02-29",
+      "status": "old",
+      "title": "Prompt engineering for business performance"
+    },
+    "https://anthropic.com/news/prompting-long-context": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2023-09-23",
+      "status": "old",
+      "title": "Prompting Claude's long context window"
+    },
+    "https://anthropic.com/news/redeploying-fable-5": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-06-30",
+      "status": "old",
+      "title": "Redeploying Claude Fable 5"
+    },
+    "https://anthropic.com/news/reflect-with-claude": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-07-09",
+      "status": "old",
+      "title": "A new way to reflect on how you use Claude"
+    },
     "https://anthropic.com/news/releasing-claude-instant-1-2": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
       "date": "2023-08-09",
       "status": "old",
       "title": "Releasing Claude Instant 1.2"
+    },
+    "https://anthropic.com/news/servicenow-anthropic-claude": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-01-28",
+      "status": "old",
+      "title": "ServiceNow chooses Claude"
+    },
+    "https://anthropic.com/news/ust-claude": {
+      "checkedAt": "2026-10-21",
+      "company": "anthropic",
+      "date": "2026-07-09",
+      "status": "old",
+      "title": "UST is bringing Claude to physical AI"
     },
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-flash-developers": {
       "checkedAt": "2026-10-03",
@@ -516,6 +677,14 @@
       "reason": "Claude Startups 프로그램 확대. 모델 출시·업데이트와 무관한 프로그램 홍보.",
       "status": "skipped",
       "title": "We’re expanding the Claude Startups program to help founders build"
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity": {
+      "checkedAt": "2026-10-21",
+      "company": "google",
+      "date": "2026-10-20",
+      "id": "google-antigravity-multi-model-patterns",
+      "status": "added",
+      "title": "Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity"
     },
     "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud": {
       "checkedAt": "2026-10-14",

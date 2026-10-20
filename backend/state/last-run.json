@@ -1,62 +1,27 @@
 {
-  "startedAt": "2026-10-21T03:48:01+09:00",
+  "startedAt": "2026-10-21T08:31:00+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1822,
+  "entries": 1823,
   "candidates": [
     {
-      "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
-      "url": "https://openai.com/index/ted-taylor-restaurant",
-      "company": "openai",
-      "date": "2026-10-20",
-      "relatedId": "openai-prompting-fundamentals"
-    },
-    {
-      "title": "New Gemini tools for small business owners",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
-      "company": "google",
-      "date": "2026-10-20",
-      "relatedId": null
-    },
-    {
-      "title": "Bringing Visual Graph Debugging to Custom Edge Compilers with Model Explorer",
-      "url": "https://developers.googleblog.com/bringing-visual-graph-debugging-to-custom-edge-compilers-with-model-explorer/",
-      "company": "google",
-      "date": "2026-10-20",
-      "relatedId": null
-    },
-    {
-      "title": "Integrating TorchTPU into TorchTitan and Optimizing Models for TPU",
-      "url": "https://developers.googleblog.com/integrating-torchtpu-into-torchtitan-and-optimizing-models-for-tpu/",
+      "title": "Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity/",
       "company": "google",
       "date": "2026-10-20",
       "relatedId": null
     }
   ],
-  "added": [],
+  "added": [
+    {
+      "id": "google-antigravity-multi-model-patterns",
+      "title": "Antigravity에서 모델 섞어 쓰기: 교차 검증과 Flash 서브에이전트",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity/",
+      "charts": 0
+    }
+  ],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Franchisee reconciles cash in 94% less time with ChatGPT Work",
-      "url": "https://openai.com/index/ted-taylor-restaurant",
-      "reason": "고객 사례(Schlotzsky's 프랜차이지의 ChatGPT Work 사용 성과). 기업 파트너십/고객 사례에 해당하므로 제외."
-    },
-    {
-      "title": "New Gemini tools for small business owners",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
-      "reason": "Gemini 앱의 일반적인 기능 소개(이미지 스타일 생성, 커스터마이징, 템플릿 콘텐츠 생성). 특정 모델 출시/업데이트가 아니며, 실전 조언이 거의 없는 기능 소개에 해당하므로 제외."
-    },
-    {
-      "title": "Bringing Visual Graph Debugging to Custom Edge Compilers with Model Explorer",
-      "url": "https://developers.googleblog.com/bringing-visual-graph-debugging-to-custom-edge-compilers-with-model-explorer/",
-      "reason": "Model Explorer 개발 도구의 기술 업데이트. 모델 출시나 모델 사용 팁과 무관한 개발 도구 관련 글이므로 제외."
-    },
-    {
-      "title": "Integrating TorchTPU into TorchTitan and Optimizing Models for TPU",
-      "url": "https://developers.googleblog.com/integrating-torchtpu-into-torchtitan-and-optimizing-models-for-tpu/",
-      "reason": "TorchTPU/TorchTitan 개발 인프라 통합 소식. 모델 자체와 무관한 개발 프레임워크 기술에 관한 글이므로 제외."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
