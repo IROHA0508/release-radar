@@ -705,6 +705,14 @@
       "status": "skipped",
       "title": "Introducing Gemini for government services"
     },
+    "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-brings-openai-models-to-customers": {
+      "checkedAt": "2026-10-21",
+      "company": "google",
+      "date": "2026-10-21",
+      "reason": "기업 파트너십: Google Cloud의 OpenAI 모델 탑재 발표로, 모델 출시·업데이트나 공식 활용 팁이 아닌 분배 협력",
+      "status": "skipped",
+      "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers"
+    },
     "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-cli-remote-mcp-server-in-preview": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1308,6 +1316,22 @@
       "status": "skipped",
       "title": "Benefit Street Partners answers questions faster with Codex"
     },
+    "https://openai.com/index/building-chatgpt-ad-stack": {
+      "checkedAt": "2026-10-21",
+      "company": "openai",
+      "date": "2026-10-21",
+      "reason": "모델과 무관한 기술 글: ChatGPT의 광고 시스템 아키텍처 설명으로, 모델 사용 방법이나 공식 활용 팁이 아닌 인프라 기술 문서",
+      "status": "skipped",
+      "title": "How we built ChatGPT’s novel ad stack for user trust and relevance"
+    },
+    "https://openai.com/index/chatgpt-ads-expands-26-new-countries": {
+      "checkedAt": "2026-10-21",
+      "company": "openai",
+      "date": "2026-10-21",
+      "reason": "모델과 무관한 제품 영업: ChatGPT Ads 서비스의 국가 확대 공지로, 모델 자체나 사용 방법과 무관",
+      "status": "skipped",
+      "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform"
+    },
     "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -1404,6 +1428,14 @@
       "status": "skipped",
       "title": "Building advertising for the way people use AI"
     },
+    "https://openai.com/index/openai-models-google-cloud": {
+      "checkedAt": "2026-10-21",
+      "company": "openai",
+      "date": "2026-10-21",
+      "reason": "기업 파트너십: OpenAI와 Google Cloud의 통합 발표로, 모델 출시·업데이트나 공식 활용 팁이 아닌 분배 채널 협력",
+      "status": "skipped",
+      "title": "OpenAI models are coming to Google Cloud"
+    },
     "https://openai.com/index/oracle": {
       "checkedAt": "2026-10-09",
       "company": "openai",
@@ -1452,6 +1484,14 @@
       "status": "skipped",
       "title": "Ringg’s AI agents resolve up to 65% of customer calls with OpenAI"
     },
+    "https://openai.com/index/scaling-ai-research-for-complex-biological-data": {
+      "checkedAt": "2026-10-21",
+      "company": "openai",
+      "date": "2026-10-21",
+      "reason": "고객 사례: PerturbAI와 Scripps Research의 생물학 데이터 분석 사례로, 모델 출시·업데이트나 실전 조언이 아닌 고객 활용 사례",
+      "status": "skipped",
+      "title": "Using thousands of AI agents to uncover new leads in biological data"
+    },
     "https://openai.com/index/sharing-ai-progress-in-mathematics": {
       "checkedAt": "2026-10-07",
       "company": "openai",
@@ -1483,6 +1523,14 @@
       "reason": "ChatGPT for Teens의 기능 추가(대학 계획 도구, 플래시카드, 퀴즈)로, 모델 출시나 버전 업데이트, 가격 변경이 아니며 실전 조언이 거의 없는 기능 소개에 해당",
       "status": "skipped",
       "title": "Helping teens learn, plan, and shape the future of AI"
+    },
+    "https://openai.com/index/terminal-x": {
+      "checkedAt": "2026-10-21",
+      "company": "openai",
+      "date": "2026-10-20",
+      "reason": "고객 사례: Terminal X의 투자 평가 시스템 사례로, 모델 출시·업데이트나 실전 조언이 아닌 특정 고객의 활용 사례",
+      "status": "skipped",
+      "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1"
     },
     "https://openai.com/index/the-den-family-social": {
       "checkedAt": "2026-10-03",

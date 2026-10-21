@@ -1,9 +1,44 @@
 {
-  "startedAt": "2026-10-21T17:03:26+09:00",
+  "startedAt": "2026-10-21T23:12:09+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1825,
+  "entries": 1829,
   "candidates": [
+    {
+      "title": "OpenAI models are coming to Google Cloud",
+      "url": "https://openai.com/index/openai-models-google-cloud",
+      "company": "openai",
+      "date": "2026-10-21",
+      "relatedId": null
+    },
+    {
+      "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
+      "url": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+      "company": "openai",
+      "date": "2026-10-21",
+      "relatedId": "openai-prompting-fundamentals"
+    },
+    {
+      "title": "Using thousands of AI agents to uncover new leads in biological data",
+      "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+      "company": "openai",
+      "date": "2026-10-21",
+      "relatedId": null
+    },
+    {
+      "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+      "url": "https://openai.com/index/building-chatgpt-ad-stack",
+      "company": "openai",
+      "date": "2026-10-21",
+      "relatedId": "openai-prompting-fundamentals"
+    },
+    {
+      "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-brings-openai-models-to-customers/",
+      "company": "google",
+      "date": "2026-10-21",
+      "relatedId": null
+    },
     {
       "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1",
       "url": "https://openai.com/index/terminal-x",
@@ -14,13 +49,39 @@
   ],
   "added": [],
   "updated": [],
-  "skipped": [],
-  "failed": [
+  "skipped": [
     {
+      "title": "OpenAI models are coming to Google Cloud",
+      "url": "https://openai.com/index/openai-models-google-cloud",
+      "reason": "기업 파트너십: OpenAI와 Google Cloud의 통합 발표로, 모델 출시·업데이트나 공식 활용 팁이 아닌 분배 채널 협력"
+    },
+    {
+      "title": "ChatGPT Ads expands to 26 new countries as over 100,000 advertisers have used the platform",
+      "url": "https://openai.com/index/chatgpt-ads-expands-26-new-countries",
+      "reason": "모델과 무관한 제품 영업: ChatGPT Ads 서비스의 국가 확대 공지로, 모델 자체나 사용 방법과 무관"
+    },
+    {
+      "title": "Using thousands of AI agents to uncover new leads in biological data",
+      "url": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+      "reason": "고객 사례: PerturbAI와 Scripps Research의 생물학 데이터 분석 사례로, 모델 출시·업데이트나 실전 조언이 아닌 고객 활용 사례"
+    },
+    {
+      "title": "How we built ChatGPT’s novel ad stack for user trust and relevance",
+      "url": "https://openai.com/index/building-chatgpt-ad-stack",
+      "reason": "모델과 무관한 기술 글: ChatGPT의 광고 시스템 아키텍처 설명으로, 모델 사용 방법이나 공식 활용 팁이 아닌 인프라 기술 문서"
+    },
+    {
+      "title": "Google Cloud expands model choice and flexibility, bringing OpenAI models to customers",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-brings-openai-models-to-customers/",
+      "reason": "기업 파트너십: Google Cloud의 OpenAI 모델 탑재 발표로, 모델 출시·업데이트나 공식 활용 팁이 아닌 분배 협력"
+    },
+    {
+      "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1",
       "url": "https://openai.com/index/terminal-x",
-      "error": "RuntimeError: claude CLI 실패(1): ,\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":429,\"api_error_origin\":\"first_party\",\"api_error\":\"usage_limit_reached\",\"result\":\"You've hit your session limit · resets 9:50am (UTC)\",\"type\":\"result\",\"duration_ms\":477,\"uuid\":\"83566847-fc88-4e5a-98e3-bcba70b910ed\",\"queued_turn_count\":0,\"result_index\":0}\n"
+      "reason": "고객 사례: Terminal X의 투자 평가 시스템 사례로, 모델 출시·업데이트나 실전 조언이 아닌 특정 고객의 활용 사례"
     }
   ],
+  "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
