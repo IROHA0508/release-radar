@@ -2,7 +2,7 @@
 
 **사이트: https://release-radar-ten.vercel.app**
 
-ChatGPT(OpenAI), Claude(Anthropic), Gemini(Google)의 공식 발표를 뉴스별로 한국어로 요약하는 정적 웹사이트입니다. 소식마다 핵심 수치, 성능 그래프, 모델 사양, 활용 팁, 추천 프롬프트, 공식 출처를 정리하고, 세 회사의 프롬프트 가이드와 API 가격표, AI를 활용하는 기술(학습 경로와 최신 활용 기술) 정리를 함께 제공합니다.
+ChatGPT(OpenAI), Claude(Anthropic), Gemini(Google)의 공식 발표를 뉴스별로 한국어로 요약하는 정적 웹사이트입니다. 소식마다 핵심 수치, 성능 그래프, 모델 사양, 활용 팁, 추천 프롬프트, 공식 출처를 정리하고, 세 회사의 프롬프트 가이드와 API 가격표, 최신 AI 활용 기술(AI 활용 기술 탭)과 기초부터 익히는 학습 경로(AI 활용 LAB 탭)를 함께 제공합니다.
 
 ## 구조
 
@@ -11,7 +11,7 @@ index.html              화면 전체(HTML·CSS·JS 한 파일, 빌드 없음)
 data/manifest.json      사이트에 보여 줄 소식 id 목록과 마지막 확인 날짜
 data/news/<id>.json     소식 한 건 = 파일 한 개
 data/guides.json        프롬프트 가이드 탭 내용
-data/tech.json          AI 활용 기술 탭 내용 (학습 경로·최신 활용 기술)
+data/tech.json          AI 활용 기술 탭(최신 활용 기술)·AI 활용 LAB 탭(학습 경로) 내용
 docs/DATA_SCHEMA.md     데이터 형식 설명
 docs/GUIDELINES.md      프로젝트 지침 (목표·원칙·로드맵)
 CLAUDE.md               AI와 작업할 때 먼저 읽는 요약 지침
@@ -132,7 +132,8 @@ API 가격표    세 회사 공식 가격 페이지를 읽고, 사이트에서 �
 ### 화면 표시
 
 - 상단 **Update**: 마지막으로 공식 소스를 확인한 한국 시간(`data/manifest.json`의 `lastChecked`, `YYYY-MM-DD HH:MM`). 새 소식이 없어도 실행할 때마다 갱신됩니다.
-- 필터: 회사(OpenAI·Anthropic·Google)와 종류(모델 출시·모델 업데이트·활용 팁)를 함께 고를 수 있습니다.
+- 필터: 회사(OpenAI·Anthropic·Google), 종류(모델 출시·모델 업데이트·활용 팁), 기간(연도·월)을 함께 고를 수 있습니다. 기간 버튼은 다시 누르면 전체 기간으로 돌아갑니다.
+- 목록은 10건씩 보여 주고, 아래로 스크롤하거나 '더 보기'를 누르면 다음 10건을 이어서 보여 줍니다.
 - 소식 상세의 공식 출처는 한 줄 요약 바로 아래에 있습니다.
 
 ## 소식 직접 추가하기

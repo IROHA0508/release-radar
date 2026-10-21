@@ -14,7 +14,7 @@ DATA = ROOT / "data"
 
 COMPANIES = {"openai", "anthropic", "google"}
 KINDS = {"모델 출시", "모델 업데이트", "활용 팁"}
-RESERVED_IDS = {"guide", "prices", "tech"}
+RESERVED_IDS = {"guide", "prices", "tech", "lab"}
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 CHECKED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$")
@@ -202,6 +202,12 @@ def check_tech(t, news_ids):
     where = "data/tech.json"
     if t is None:
         return
+    groups = {g.get("key"): g for g in t.get("groups") or []}
+    if set(groups) != TECH_GROUPS:
+        err(where, f"groups에는 {sorted(TECH_GROUPS)}가 하나씩 있어야 함")
+    for k, g in groups.items():
+        if not g.get("title") or not g.get("intro"):
+            err(where, f"groups.{k}에 title과 intro가 필요함")
     items = t.get("items") or []
     ids = [i.get("id") for i in items]
     if len(ids) != len(set(ids)):

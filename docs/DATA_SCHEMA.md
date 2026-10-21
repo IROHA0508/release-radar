@@ -124,15 +124,19 @@
 - 가격은 기본 등급 텍스트 토큰, 100만 토큰당 USD. 공식 가격 페이지 문구 그대로 씁니다.
 - 매일 한 번 공식 가격 페이지를 읽어 확인합니다. 가격 페이지에서 두 번 연속 보이지 않는 모델은 `unlisted`가 됩니다.
 
-## data/tech.json (AI 활용 기술 탭)
+## data/tech.json (AI 활용 기술 탭 · AI 활용 LAB 탭)
 
-학습 경로(`group: "path"`)와 최신 활용 기술(`group: "radar"`)을 한 파일에 담습니다. 화면 주소는 목록 `#tech`, 상세 `#tech/<id>`입니다.
+학습 경로(`group: "path"`)와 최신 활용 기술(`group: "radar"`)을 한 파일에 담고, 화면에서는 두 탭으로 나눠 보여 줍니다.
+
+| 탭 | group | 목록 | 상세 |
+|---|---|---|---|
+| AI 활용 기술 | `radar` | `#tech` | `#tech/<id>` |
+| AI 활용 LAB | `path` | `#lab` | `#lab/<id>` |
 
 ```json
 {
   "updatedAt": "2026-10-21",
-  "intro": "탭 맨 위 소개 문장",
-  "groups": [{ "key": "path", "title": "학습 경로", "en": "learning path", "desc": "..." }],
+  "groups": [{ "key": "path", "title": "학습 경로", "en": "learning path", "intro": "탭 맨 위 소개 문장", "desc": "목록 제목 아래 설명" }],
   "items": [{
     "id": "tool-use", "group": "path", "order": 3,
     "name": "도구 호출", "en": "Tool use · Function calling", "level": "기초",
@@ -156,4 +160,5 @@
 - `sources`: 공식 출처 1개 이상 필수(https).
 - radar 항목 전용: `status`(`관찰`·`시도`·`랩`·`보관`), `companies`(이 기술을 다룬 회사), `status`가 `랩`이면 `lab`에 학습 경로 항목 id
 - radar 항목 중 `관찰` 단계이면서 두 회사 이상이 다루거나 근거 소식이 3건 이상이면 화면에 '시도 추천'이 붙습니다(지침 9.1).
-- `tech`는 소식 id 예약어입니다.
+- `groups`에는 `path`와 `radar`가 하나씩 있어야 하고, 각각 `title`과 `intro`가 필요합니다.
+- `tech`, `lab`은 소식 id 예약어입니다.
