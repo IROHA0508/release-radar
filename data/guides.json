@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-21",
-  "checkedAt": "2026-10-21 17:03",
+  "updatedAt": "2026-10-22",
+  "checkedAt": "2026-10-22 04:01",
   "common": [
     {
       "title": "결과와 완료 기준을 먼저 쓰기",
@@ -440,6 +440,75 @@
             }
           ],
           "addedAt": "2026-10-21"
+        },
+        {
+          "id": "openai-memory-sources",
+          "category": "앱 기능과 설정",
+          "title": "개인화된 답에는 '출처'를 열어 어떤 기억이 쓰였는지 확인하기",
+          "body": "ChatGPT가 관련 있는 개인 맥락을 쓰면 답변 아래에 Sources(출처)가 나타날 수 있습니다. 여기서 개인화에 쓰인 지난 대화, 저장된 메모리, 맞춤 지시, 파일, 연결된 이메일을 확인할 수 있습니다. 출처와 제공되는 제어에 따라 출처 열기, 저장된 메모리 수정·삭제, 참조된 대화 삭제, 출처를 관련 있음/없음으로 표시하기를 할 수 있습니다. 다만 Sources가 답에 영향을 준 모든 요인을 보여 주지는 않으며, 공유 링크로 대화를 공유하면 메모리 출처는 포함되지 않습니다. 답이 엉뚱하게 개인화됐다고 느껴질 때 먼저 확인해 보세요.",
+          "models": [
+            "ChatGPT"
+          ],
+          "source": {
+            "title": "Memory in ChatGPT",
+            "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "openai-event-triggered-tasks",
+          "category": "앱 기능과 설정",
+          "title": "시각이 아니라 앱 활동에 반응해야 하면 이벤트 트리거 작업 쓰기",
+          "body": "정해진 시각에 실행할 일은 일정으로, 새 메일이나 풀 리퀘스트 활동처럼 앱에서 일어나는 일에 반응할 일은 이벤트 트리거 작업으로 만드세요. 이 작업은 Work에서 실행되고 Gmail, Slack, GitHub 활동을 지원하며 Plus 이상 요금제에서 쓸 수 있습니다(Free·Go는 만들 수 없음). Settings > Apps에서 계정을 연결하고, Work에 이벤트와 ChatGPT가 할 행동을 적은 뒤 Trigger, Condition, Prompt를 검토하세요. 플러그인을 설치하거나 앱을 연결하는 것만으로는 작업이 만들어지지 않습니다. 작업이 멈추면 Scheduled에서 일시 정지나 승인 대기 여부를 확인하고 앱 계정 연결이 유효한지 보세요.",
+          "before": "새 메일이 오면 알려 줘.",
+          "after": "[보낸 사람]에게서 제목에 [키워드]가 포함된 새 Gmail 메시지가 오면, 핵심 내용을 세 줄로 요약해 알려 주세요.",
+          "source": {
+            "title": "Scheduled tasks in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "openai-share-scheduled-task",
+          "category": "앱 기능과 설정",
+          "title": "예약 작업을 공유할 땐 제목과 지시문에 민감 정보 빼기",
+          "body": "Scheduled에서 작업의 더보기(•••) > Share > Copy link로 링크를 만들면 다른 사람이 지시문을 검토하고 별도 사본을 만들 수 있습니다. 링크에는 제목, 지시문, 일정, 원래 시간대의 스냅샷이 담기고, 링크를 열 수 있는 사람은 지시문 전체를 읽을 수 있습니다. 그래서 제목과 지시문에 건강·금융 정보, 비밀번호, 계좌번호 같은 민감한 정보를 넣지 마세요. 원래 작업을 고쳐도 기존 링크는 자동으로 바뀌지 않으니 Share task에서 Copy link를 다시 눌러 갱신하세요. 링크를 지워도 이미 만들어진 사본은 삭제되지 않습니다.",
+          "source": {
+            "title": "Scheduled tasks in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "openai-custom-instructions-privacy",
+          "category": "앱 기능과 설정",
+          "title": "맞춤 지시에는 민감한 정보를 넣지 않기",
+          "body": "맞춤 지시는 모든 대화에 바로 적용되고, 공유 링크로 대화를 보는 사람에게는 공유되지 않습니다. 다만 서드파티 플러그인을 쓰면 모델이 지시문 속 관련 정보를 플러그인 개발자에게 줄 수 있다고 OpenAI는 설명합니다. 믿을 수 있는 플러그인만 쓰고, 개발자에게 알려 주고 싶지 않은 정보는 맞춤 지시에 적지 마세요. 지시를 고치거나 끈 내용은 이후 대화에만 반영되며, 이전 대화 기록에 남은 내용은 그 대화를 지워야 사라집니다.",
+          "before": "내 이름, 회사 내부 정보, 계좌번호를 맞춤 지시에 모두 적어 둔다.",
+          "after": "답변 말투와 형식에 관한 선호만 맞춤 지시에 적고, 개인·내부 정보는 [필요한 대화에서만 직접 입력]한다.",
+          "models": [
+            "ChatGPT"
+          ],
+          "source": {
+            "title": "ChatGPT custom instructions",
+            "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "openai-custom-instructions-api-system",
+          "category": "도구와 API 설정",
+          "title": "API에서는 맞춤 지시 대신 system 메시지 쓰기",
+          "body": "ChatGPT 맞춤 지시에 해당하는 API는 따로 없다고 OpenAI 도움말은 설명합니다. 비슷한 효과를 내려면 Chat Completions API의 system 메시지를 사용하세요. 앱에서는 설정의 개인 맞춤 설정에서 'Enable customization'이 켜져 있어야 맞춤 지시가 적용됩니다.",
+          "models": [
+            "ChatGPT",
+            "Chat Completions API"
+          ],
+          "source": {
+            "title": "ChatGPT custom instructions",
+            "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+          },
+          "addedAt": "2026-10-22"
         }
       ],
       "templates": [
@@ -484,80 +553,84 @@
         {
           "title": "Using GPT-6 (모델별 프롬프트·마이그레이션 가이드)",
           "url": "https://developers.openai.com/api/docs/guides/latest-model",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "31e2fb0898f0811f"
         },
         {
           "title": "Prompt engineering (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "faa9f929eb1e3d8d"
         },
         {
           "title": "Image prompting (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/image-prompting",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "ac32104ec887dadf"
         },
         {
           "title": "Voice prompting (Realtime API)",
           "url": "https://developers.openai.com/api/docs/guides/voice-prompting",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "bce0fa3c42897646"
         },
         {
           "title": "Prompting GPT-Live (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/live-prompting",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "b7eec6ea6041b8bc"
         },
         {
           "title": "Prompting (ChatGPT Learn)",
           "url": "https://learn.chatgpt.com/docs/prompting",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "a5482cef89036684"
         },
         {
           "title": "ChatGPT Enterprise Prompting Guide",
           "url": "https://learn.chatgpt.com/cookbook/examples/chatgpt/chatgpt_prompt_guide/chatgpt_prompt_guide",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "6cdc64d5460294b7"
         },
         {
           "title": "Memory in ChatGPT",
           "url": "https://help.openai.com/en/articles/8590148-memory-faq",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "728b9737640a853a"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "5242978476559c07",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Deep research in ChatGPT",
           "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "cb1826a303248616"
         },
         {
           "title": "Scheduled tasks in ChatGPT",
           "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "5343008984ffb822"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "1416b827c6dfa2e4",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Writing blocks and code blocks in ChatGPT",
           "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "8237b8da7cbb3bad"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "924afab37fcfee17",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Projects in ChatGPT",
           "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "c5aa55c2e410e466"
         },
         {
           "title": "ChatGPT custom instructions",
           "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "8b422d2275397489"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "26b8bb1f1f9f85b9",
+          "changedAt": "2026-10-22"
         }
       ]
     },
@@ -949,6 +1022,256 @@
             "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"
           },
           "addedAt": "2026-10-21"
+        },
+        {
+          "id": "anthropic-role",
+          "category": "기본 작성법",
+          "title": "시스템 프롬프트에 역할을 한 문장으로 정해 주기",
+          "body": "시스템 프롬프트에 역할을 정해 주면 Claude의 행동과 말투가 쓰임새에 맞게 모입니다. 원문은 한 문장만 써도 차이가 난다고 말합니다. 역할은 user 메시지가 아니라 system 파라미터에 넣으세요.",
+          "before": "파이썬 딕셔너리 리스트를 키로 정렬하는 방법 알려줘.",
+          "after": "[시스템 프롬프트] 당신은 파이썬을 전문으로 하는 친절한 코딩 도우미입니다.\n[질문] 파이썬 딕셔너리 리스트를 키로 정렬하는 방법 알려줘.",
+          "code": "client = anthropic.Anthropic()\nmessage = client.messages.create(\n    model=\"claude-opus-5-5\",\n    max_tokens=1024,\n    system=\"You are a helpful coding assistant specializing in Python.\",\n    messages=[{\"role\": \"user\", \"content\": \"How do I sort a list of dictionaries by key?\"}],\n)",
+          "models": [
+            "Claude Opus 5.5"
+          ],
+          "source": {
+            "title": "Prompting best practices (Claude Platform Docs)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-parallel-tools",
+          "category": "도구와 API 설정",
+          "title": "독립적인 도구 호출은 한꺼번에 하도록 지시하기",
+          "body": "최신 모델은 서로 의존하지 않는 도구 호출을 이미 병렬로 실행하며, 프롬프트 없이도 성공률이 높습니다. 원문은 아래 <use_parallel_tool_calls> 블록을 넣으면 100%에 가깝게 높일 수 있다고 말합니다. 반대로 안정성을 위해 순차 실행을 원하면 '각 단계 사이에 잠깐 쉬며 순서대로 실행하라'고 지시하세요. 앞선 호출 결과가 다음 호출의 값에 필요하면 병렬로 부르지 말라는 조건도 함께 들어 있습니다.",
+          "before": "파일 세 개를 읽고 비교해 줘.",
+          "after": "<use_parallel_tool_calls>\n서로 의존하지 않는 도구 호출이 여러 개라면 모두 동시에 호출하세요. 예를 들어 파일 3개를 읽을 때는 도구 호출 3개를 병렬로 실행하세요. 다만 앞선 호출의 결과가 매개변수에 필요한 호출은 병렬로 하지 말고 순서대로 호출하세요. 자리표시자나 추측한 값으로 매개변수를 채우지 마세요.\n</use_parallel_tool_calls>",
+          "source": {
+            "title": "Prompting best practices (Claude Platform Docs)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-reversible-actions",
+          "category": "에이전트와 코딩",
+          "title": "되돌리기 어려운 작업은 먼저 물어보게 하기",
+          "body": "원문에 따르면 Claude Opus 4.6은 지침이 없으면 파일 삭제, 강제 푸시, 외부 서비스 게시처럼 되돌리기 어렵거나 공유 시스템에 영향을 주는 행동을 할 수 있습니다. 파일 편집이나 테스트 실행 같은 로컬의 되돌릴 수 있는 작업은 자유롭게 하게 하고, 파괴적이거나 남에게 보이는 작업은 진행 전에 사용자에게 묻도록 시스템 프롬프트에 적으세요. 장애물을 만났을 때 --no-verify로 안전 검사를 우회하거나 낯선 파일을 버리는 지름길을 쓰지 말라는 문장도 함께 넣습니다.",
+          "before": "배포 전에 불필요한 브랜치랑 파일을 정리해 줘.",
+          "after": "행동의 되돌릴 수 있는 정도와 영향을 먼저 따져 주세요. 파일 편집이나 테스트 실행처럼 로컬에서 되돌릴 수 있는 작업은 자유롭게 하세요. 파일·브랜치 삭제, git push --force, git reset --hard처럼 되돌리기 어렵거나 공유 시스템에 영향을 주는 작업은 진행 전에 저에게 물어봐 주세요. 막히더라도 --no-verify로 검사를 우회하거나 작업 중일 수 있는 낯선 파일을 버리지 마세요.",
+          "models": [
+            "Claude Opus 4.6"
+          ],
+          "source": {
+            "title": "Prompting best practices (Claude Platform Docs)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-unattended-continue",
+          "category": "에이전트와 코딩",
+          "title": "무인 에이전트는 텍스트만 있는 턴 종료를 '완료'로 보지 않기",
+          "body": "Claude Opus 5.5는 여러 부분으로 된 긴 작업에서 진행 상황을 알리다가 도구 호출 없이 텍스트로 턴을 끝낼 때가 있습니다(stop_reason: \"end_turn\"). 무인 에이전트 루프가 이를 작업 끝으로 보면 그 자리에서 멈춥니다. 할 일을 체크리스트(할 일 도구나 파일)로 관리하고, 열린 항목이 남았는데 막힌 이유도 없으면 남은 항목을 짚는 짧은 사용자 메시지를 보내 이어 가게 하세요. 같은 작업에서 자동 재개는 두세 번까지만 하고, 백그라운드 명령이나 서브에이전트가 아직 돌고 있으면 끝날 때까지 기다리세요. 위험하거나 되돌릴 수 없는 작업의 확인 단계는 그대로 두어야 합니다.",
+          "after": "작업 목록에 아직 열린 항목이 있습니다: [남은 작업]을 마저 진행해 주세요. 막힌 항목이 있다면 무엇이 막고 있는지 알려 주세요.",
+          "models": [
+            "Claude Opus 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Opus 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-explore-multiapp",
+          "category": "에이전트와 코딩",
+          "title": "여러 앱을 쓰는 작업은 행동 전에 넓게 살펴보게 하기",
+          "body": "이메일·문서·스프레드시트·CRM을 오가는 자동화에서는 작업에 필요한 정보가 요청에 언급되지 않은 곳(예전 메일 스레드의 정책, 다른 시트 탭의 규칙 등)에 있을 때가 많습니다. Claude Opus 5.5는 빠르게 일에 착수하는 편이라, 시스템 프롬프트에 한 문장을 넣어 행동 전에 관련 자료를 먼저 찾아보게 하면 좋습니다. Anthropic 테스트에서 medium과 max effort 모두 정답 완료율이 올랐고 도구 호출과 토큰은 조금 늘었습니다. 찾은 내용을 근거로 행동하므로 검색 대상 기록에 믿을 수 없는 내용이 들어가지 않게 하세요.",
+          "after": "Before taking any action, explore broadly with tool calls: list and open the emails, documents, spreadsheet tabs and records across the available apps that could be relevant to this task, including ones the task does not explicitly mention, and use what you find.",
+          "models": [
+            "Claude Opus 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Opus 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-time-budget",
+          "category": "에이전트와 코딩",
+          "title": "멀티에이전트는 경과 시간을 알려 더 빨리 끝내게 하기",
+          "body": "Claude Opus 5.5는 경과 시간 정보에 민감해서, 리드 에이전트가 서브에이전트에게 일을 나누는 구성에서 병렬화를 높여 작업을 앞당길 수 있습니다. 작업 시간을 가늠할 수 있다면 하네스가 매 메시지 끝에 'elapsed 340s / 1200s'처럼 경과 시간과 예산을 초 단위로 붙이세요. 예산은 실제 원하는 시간보다 조금 넉넉히 잡고 내 작업 샘플로 조정합니다. 예산을 모르겠다면 경과 시간만 보여 주고 아래 문장을 시스템 프롬프트에 넣으세요. 예산은 권고일 뿐 모델을 멈추지 않으니 강제 종료가 필요하면 자체 타임아웃을 두고, 시간 압박으로 검색·검증이 줄 수 있으니 답변 품질도 확인하세요.",
+          "after": "Time matters here: do not spend time that can be avoided, and the earlier a correct result is obtained, the better.",
+          "models": [
+            "Claude Opus 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Opus 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-json-think-first",
+          "category": "추론과 effort",
+          "title": "단계별 계산이 필요한 JSON 답은 '먼저 생각하라'는 한 줄 넣기",
+          "body": "Sonnet 5.5는 문서 속 수치 합산, 규칙 적용, 순위 매기기처럼 몇 단계 계산이 필요한 일을 JSON으로 답할 때, 특히 low·medium effort에서 생각 없이 바로 답해 틀릴 수 있습니다. adaptive thinking을 켜고 시스템 프롬프트 맨 끝에 아래 한 줄을 넣으면 먼저 생각하는 비율이 올라갑니다. 원문에 따르면 high effort에서는 정확도가 xhigh에 가까워지고, 출력 토큰은 조금 늘어납니다. 도구가 없는 요청에서 between_tools를 쓰면 이 줄이 효과가 없으니 adaptive thinking을 쓰세요. 구조화 출력(structured outputs)을 쓰는 경우 stop_reason이 \"max_tokens\"인 응답은 JSON이 멀쩡해 보여도 실패로 보고 다시 요청하세요.",
+          "after": "Think the problem through before you answer.",
+          "models": [
+            "Claude Sonnet 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Sonnet 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-json-parse-last",
+          "category": "구조와 형식",
+          "title": "구조화 출력을 못 쓰면 응답에서 마지막 JSON 값만 읽기",
+          "body": "구조화 출력을 쓸 수 없어 프롬프트로 JSON을 요청하면, Sonnet 5.5가 풀이를 응답 본문에 쓴 뒤 끝에 JSON을 붙이는 일이 흔해서 전체가 JSON이라고 가정한 파서는 실패합니다. text 블록만 읽고, 각 { 또는 [에서 JSON 값을 파싱해 성공하면 그 값의 끝에서 이어 가며 마지막으로 찾은 값을 쓰세요. 첫 { 부터 마지막 }까지를 통째로 자르면 초안과 최종 JSON이 함께 들어갈 수 있습니다. 필요한 필드가 있는지 확인하고, 없으면 한 번 다시 요청하세요. 원문 테스트에서는 이렇게 하면 정확도 변화 없이 거의 모든 응답을 쓸 수 있었습니다.",
+          "models": [
+            "Claude Sonnet 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Sonnet 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-progress-updates",
+          "category": "에이전트와 코딩",
+          "title": "긴 에이전트 턴이 조용해 보이면 진행 알림 표시를 켜기",
+          "body": "Sonnet 5.5는 도구 호출 사이에 방금 알아낸 것과 다음에 할 일을 알립니다. 한두 문장보다 긴 알림은 progress-update thinking 블록으로 오는데, 기본 설정에서는 그 텍스트가 비어 있어 text 블록만 그리는 화면은 긴 턴 동안 멈춘 것처럼 보입니다. 알림을 보이려면 display: \"updates\"(베타, thinking-display-updates-2026-08-18 헤더)를 설정하세요. between_tools에서는 요약 텍스트가 함께 오므로 display가 필요 없고, display·budget_tokens·block_binding을 같이 보내면 400 오류가 납니다. '결과는 마지막에 한꺼번에 알려라' 같은 예전 지시는 지우고, 첫 도구 호출 전 계획 한 줄과 끝의 짧은 요약처럼 원하는 시점이 있으면 시스템 프롬프트에 적으세요.",
+          "models": [
+            "Claude Sonnet 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Sonnet 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-mannered-prose",
+          "category": "기본 작성법",
+          "title": "글이 빽빽하면 '꾸민 문체'를 빼 달라고 정의해서 요청하기",
+          "body": "Claude Fable 5.1은 상투적인 표현과 설명 없는 전문용어가 적지만, 경우에 따라 Fable 5보다 문장이 길고 문단 나눔이 적어 글이 빽빽해질 수 있습니다. 원문은 '꾸민 문체(mannered prose)'가 무엇인지 정의하는 지시를 권합니다. 직접 말해야 할 곳에 은유와 수사를 쓰는 문체이고, 글쓴이를 드러내려는 표현이라 독자가 더 애써야 하며 정확하지도 않다는 설명입니다. 사용자 메시지에 넣는 쪽을 권하고, 시스템 프롬프트에 넣어도 됩니다. 짧게 'Please remove all mannered prose.'만 써도 대체로 통한다고 합니다.",
+          "before": "글이 너무 빽빽해. 읽기 쉽게 써 줘.",
+          "after": "[글 종류]를 써 줘. 은유나 수사로 멋을 내지 말고, 직접 쓸 수 있는 표현이 있으면 그대로 써 줘. Please remove all mannered prose.",
+          "models": [
+            "Claude Fable 5.1"
+          ],
+          "source": {
+            "title": "Prompting Claude Fable 5.1",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-compaction-preserve",
+          "category": "긴 문서와 자료",
+          "title": "클라이언트에서 대화를 압축할 때는 남길 항목을 번호로 지정하기",
+          "body": "긴 대화를 압축(compaction)할 때 요약에 무엇을 남길지 명시하면 Claude Fable 5.1이 잘 따릅니다. 서버 쪽 compaction은 이미 이렇게 합니다. 클라이언트에서 직접 압축한다면 요약을 <summary> 태그 안에 쓰게 하고, 겪은 문제와 해결, 시도하거나 접어 둔 방법과 이유, 요청·결정·제약(정확한 표현 그대로), 현재 상태, 아직 열린 일, 복원하기 어려운 구체적 정보(이름·숫자·날짜·링크)를 빠뜨리지 말라고 적으세요. 사용자의 말은 원래 표현에 가깝게 남기고 모델 자신의 설명은 훨씬 줄여도 된다고 원문은 안내합니다.",
+          "before": "지금까지 대화를 짧게 요약해 줘.",
+          "after": "지금까지의 대화를 <summary></summary> 태그 안에 요약해 줘. 새 컨텍스트에서 이어 가도 같은 일을 다시 하거나 제약을 다시 듣지 않도록, 겪은 문제와 해결, 결정·제약(정확한 표현 그대로), 현재 상태, 아직 열린 일, 이름·숫자·날짜 같은 세부 정보는 길어져도 빠짐없이 남겨 줘. 그 외 내용은 간결하게 써 줘.",
+          "models": [
+            "Claude Fable 5.1"
+          ],
+          "source": {
+            "title": "Prompting Claude Fable 5.1",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-batch-agent-loop",
+          "category": "에이전트와 코딩",
+          "title": "코딩·컴퓨터 사용 루프에서는 독립적인 호출을 한 응답에 몰아 달라고 한 줄 덧붙이기",
+          "body": "Claude Fable 5.1은 가져올 것을 요청에 명시하면 도구를 병렬로 부릅니다. 다만 코딩이나 컴퓨터 사용 루프처럼 다음 독립 호출이 작업에서 암시만 될 때는 턴마다 하나씩 부를 수 있고, 답 품질에는 영향이 없어도 턴이 늘수록 토큰과 시간이 듭니다. 현재 요청 끝에 '다음에 필요한 것을 먼저 속으로 나열한 뒤, 서로 결과에 의존하지 않는 항목은 이 응답 한 번에 모두 요청하라'는 문장을 붙이세요. 도구 결과를 돌려보낼 때마다 이 문장을 새로 붙이되, 베타 헤더 mid-conversation-system-clear-at-2026-08-21과 clear_at: \"next_user_message\"를 단 role: \"system\" 항목으로 넣을 수 있습니다. 이전 사본은 지우거나 고치지 말고 그대로 두세요. 베타를 쓰지 않으면 같은 user 메시지의 tool_result 블록 뒤에 text 블록으로 넣습니다.",
+          "after": "First privately list what you need next; then request every item that doesn't depend on another's result in this one response.",
+          "models": [
+            "Claude Fable 5.1"
+          ],
+          "source": {
+            "title": "Prompting Claude Fable 5.1",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-haiku-search-date",
+          "category": "도구와 API 설정",
+          "title": "검색 도구를 줄 때는 오늘 날짜를 함께 알려 주기",
+          "body": "Claude Haiku 5.5에 검색 도구를 줄 때 오늘 날짜도 알려 주면 최근 검색 결과에 근거해 답했다고 Anthropic 테스트는 말합니다. 날짜는 시스템 프롬프트나 검색 도구 설명에 넣고, 대화가 시작될 때 한 번만 채우세요. 시스템 프롬프트가 길거나 low effort일 때는 검색을 건너뛰는 일이 있어, 날짜 바로 뒤에 아래 문단을 덧붙이면 답이 바뀐 질문에서 검색 비율이 올랐습니다. '확신이 들어도 무조건 검색하라'는 식의 포괄 지시는 검색이 필요 없는 질문의 절반에서도 검색하게 하니 피하세요.",
+          "before": "최신 버전이 뭐야? 검색해서 알려 줘.",
+          "after": "The current date is [오늘 날짜].\nYour training data ends well before today's date. Records, office holders, prices, versions, rules and anything \"latest\" may have changed since then, so search for those before you answer, even when you feel sure. Facts that can't change need no search. When the answer depends on where the user is, put the user's country or region in the search query.",
+          "models": [
+            "Claude Haiku 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Haiku 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-haiku-json-tools",
+          "category": "도구와 API 설정",
+          "title": "JSON 출력과 직접 만든 도구를 함께 쓸 때는 adaptive thinking 쓰기",
+          "body": "Claude Haiku 5.5는 thinking을 끈 채 구조화 출력(structured outputs)으로 JSON을 요청하면, 필요한 도구 호출을 건너뛸 수 있습니다. thinking 필드를 생략하거나 {\"type\": \"adaptive\"}를 보내고, 도구를 꼭 불러야 하는 요청에서는 output_config.format을 빼거나 tool_choice로 호출을 강제하세요. 강제하면 호출 전에 텍스트는 쓰지 않습니다. thinking을 꼭 꺼야 한다면 시스템 프롬프트에 아래 문장을 넣으면 low·medium effort에서 완전하고 올바른 JSON 비율이 올랐습니다.",
+          "after": "The JSON output format applies to your final answer only. When you need a tool, call it first, with no text before the call, and write the JSON once you have the results.",
+          "models": [
+            "Claude Haiku 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Haiku 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-haiku-midturn-user",
+          "category": "에이전트와 코딩",
+          "title": "작업 중 사용자가 보낸 메시지는 tool_result 밖의 user 턴으로 넣기",
+          "body": "Claude Haiku 5.5는 도구 결과를 통한 프롬프트 인젝션에 저항하도록 학습돼, tool_result 블록 안이나 그 바로 뒤의 mid-conversation system message로 들어온 사용자 메시지를 믿을 수 없는 텍스트로 보고 무시할 수 있습니다. 사용자 글을 tool_result 안에 넣지 말고, 같은 user 메시지에서 마지막 tool_result 뒤에 text 블록으로 덧붙이세요. 리마인더 같은 하네스 공지는 별도의 mid-conversation system message에 두고, 공지와 사용자 말을 같은 블록에 섞지 마세요.",
+          "models": [
+            "Claude Haiku 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Haiku 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-chat-search",
+          "category": "앱 기능과 설정",
+          "title": "이어 가고 싶은 지난 대화는 주제를 말해 채팅 검색으로 찾게 하기",
+          "body": "유료 요금제(Pro·Max·Team·Enterprise)에서는 웹, 데스크톱, 모바일 앱에서 Claude에게 지난 대화를 찾아 참고하게 할 수 있습니다. 주제를 넣어 자연스럽게 물어보면 Claude가 검색(RAG)으로 관련 맥락을 모아 오고, 이 검색은 대화에 도구 호출로 표시됩니다. 검색 범위는 프로젝트 밖의 모든 대화와 각 프로젝트 안의 대화이며, 프로젝트 대화는 해당 프로젝트 안에서만 검색됩니다. 검색을 끄려면 설정 > 메모리에서 '채팅 검색 및 참조(Search and reference chats)'를 끄고, 특정 대화를 검색에서 빼려면 시크릿 채팅을 쓰세요.",
+          "before": "지난번에 얘기한 거 이어서 해 줘.",
+          "after": "[주제]에 대해 우리가 이전에 나눈 대화를 찾아서, 거기서 이어서 진행해 줘.",
+          "source": {
+            "title": "Use Claude's chat search and memory",
+            "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
+          },
+          "addedAt": "2026-10-22"
+        },
+        {
+          "id": "anthropic-memory-sensitive",
+          "category": "앱 기능과 설정",
+          "title": "민감한 주제까지 기억시키려면 설정에서 직접 켜기",
+          "body": "Claude는 기본적으로 건강, 인종, 종교, 정치, 성 정체성처럼 개인적이거나 민감한 주제는 메모리에 저장하지 않습니다. 매번 다시 설명하기 번거롭다면 설정 > 메모리에서 '메모리에 민감한 주제 포함'을 켜세요. 켠 뒤의 내용부터 저장되며 이전 대화는 소급되지 않습니다. 민감한 항목이 저장될 때마다 입력창 위에 알림이 뜨고, 알림을 거절하거나 설정을 끄면 이미 저장된 민감 항목은 지워집니다. 정부 발급 신분증 번호, 범죄 이력, 금융 계좌번호, 이민 신분은 요청해도 저장되지 않습니다.",
+          "source": {
+            "title": "Use Claude's chat search and memory",
+            "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
+          },
+          "addedAt": "2026-10-22"
         }
       ],
       "templates": [
@@ -993,67 +1316,73 @@
         {
           "title": "Prompting best practices (Claude Platform Docs)",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "8e2578ec184ffc32"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "7cecf91e393541ff",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Prompting Claude Opus 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "74edb2d9d4de2b98"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "9672a04cdebbfcf8",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Prompting Claude Sonnet 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "f75de52ef73b3b50"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "3af9eb0efb9e1194",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Prompting Claude Fable 5.1",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "2d52b95257bb5d3c"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "468513e60359a408",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Prompting Claude Haiku 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "42de5de8ea7a0d39"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "df029f547efe2bb1",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Best practices for Claude Code",
           "url": "https://code.claude.com/docs/en/best-practices",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "b1e5e2a2a1dba4d5"
         },
         {
           "title": "Use Claude's chat search and memory",
           "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
-          "checkedAt": "2026-10-21 17:03",
-          "hash": "ce1b0947719a4d9e"
+          "checkedAt": "2026-10-22 04:01",
+          "hash": "6b1df9aa952a8d8e",
+          "changedAt": "2026-10-22"
         },
         {
           "title": "Use research on Claude",
           "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "f917ff4f942f01b8"
         },
         {
           "title": "What are artifacts and how do I use them?",
           "url": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "c2d08703f12f25db"
         },
         {
           "title": "Schedule recurring tasks in Claude Cowork",
           "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "233b644f3ec24f0b"
         },
         {
           "title": "How can I create and manage projects?",
           "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "714c0919cd3a891b"
         }
       ]
@@ -1519,85 +1848,85 @@
         {
           "title": "Prompt design strategies (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "c5b55a63c8d373cb"
         },
         {
           "title": "What's new in Gemini 4 Argon (Gemini API 최신 모델 가이드)",
           "url": "https://ai.google.dev/gemini-api/docs/latest-model",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "ad815531790a31ca"
         },
         {
           "title": "Thinking (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/thinking",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "8aa826721ab389f3"
         },
         {
           "title": "Nano Banana image generation: Prompting guide and strategies (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/image-generation",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "3f0ff37ca5598d70"
         },
         {
           "title": "Speech generation (TTS) 프롬프트 가이드 (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "a472f10b560a2e23"
         },
         {
           "title": "How to create effective prompts with Gemini Omni (Google DeepMind)",
           "url": "https://deepmind.google/models/gemini-omni/prompt-guide",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "45c324719246326a"
         },
         {
           "title": "Write effective skills (Gemini Apps Help)",
           "url": "https://support.google.com/gemini/answer/17102773?hl=en",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "b5e912109515d1c7"
         },
         {
           "title": "Customize Gemini's responses with your instructions",
           "url": "https://support.google.com/gemini/answer/16598625?hl=en",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "54518d8532eb8812"
         },
         {
           "title": "Memory of your past Gemini chats",
           "url": "https://support.google.com/gemini/answer/16598469?hl=en",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "66767b60a55d9e7a"
         },
         {
           "title": "Organize your projects with notebooks in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/16972047?hl=en",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "0dd39511812610f0"
         },
         {
           "title": "Use Deep Research in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/15719111?hl=en",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "1fef63dc283bdc74"
         },
         {
           "title": "Create docs, apps & more with Canvas",
           "url": "https://support.google.com/gemini/answer/16047321?hl=en",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "ece3ee46b1dee329"
         },
         {
           "title": "Manage your tasks & workflows in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/17094507?hl=en",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "983def975456c530"
         },
         {
           "title": "Schedule actions in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/16316416?hl=en",
-          "checkedAt": "2026-10-21 17:03",
+          "checkedAt": "2026-10-22 04:01",
           "hash": "e2a15a25c619dc3b"
         }
       ]
@@ -1712,7 +2041,7 @@
   "appFeatures": {
     "title": "태그 말고 앱에 있는 기능들: 세 앱 대응표",
     "intro": "태그는 프롬프트 안에서 구조를 만드는 방법이고, 아래 기능들은 지시·자료·기억을 프롬프트 밖에 두거나 결과물을 다루는 방법입니다. 이름은 달라도 하는 일은 비슷하니, 쓰는 앱의 칸을 보고 '방법 보기'에서 자세한 사용법과 예시를 확인하세요. 칸마다 근거가 된 공식 도움말을 달았고, 그 페이지가 바뀌면 이 표도 다시 확인합니다. 요금제·나이·지역에 따라 쓸 수 없는 기능이 있습니다.",
-    "checkedAt": "2026-10-21",
+    "checkedAt": "2026-10-22",
     "rows": [
       {
         "key": "instructions",
@@ -1848,8 +2177,8 @@
         "what": "문서·코드·앱을 대화와 나란히 두고 부분만 고치기",
         "cells": {
           "openai": {
-            "name": "캔버스 · 글쓰기 블록",
-            "note": "고칠 부분만 골라 수정을 요청하고, 최근 AI 수정은 되돌릴 수 있습니다. 코드 블록은 미리보기·실행도 됩니다.",
+            "name": "글쓰기 블록 · 코드 블록",
+            "note": "대화창 안에서 초안을 직접 고치거나, 선택한 부분 또는 전체 수정을 요청할 수 있고 최근 AI 수정은 되돌릴 수 있습니다. 지원되는 코드 블록은 미리보기와 Python 실행이 됩니다.",
             "sources": [
               {
                 "title": "Writing blocks and code blocks in ChatGPT",
@@ -1860,7 +2189,8 @@
                 "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
               }
             ],
-            "methodId": "openai-writing-blocks"
+            "methodId": "openai-writing-blocks",
+            "updatedAt": "2026-10-22"
           },
           "anthropic": {
             "name": "아티팩트",
@@ -1976,6 +2306,7 @@
       "메모리는 편하지만 오래된 정보가 섞일 수 있습니다. 가끔 '나에 대해 무엇을 기억하고 있어?'라고 물어 확인하고, 남기지 않을 대화는 임시·시크릿 채팅을 쓰세요.",
       "딥 리서치류 기능은 시간이 오래 걸리고 사용 한도가 따로 있거나 빨리 줄어듭니다. 간단한 사실 확인은 일반 대화가 더 빠릅니다.",
       "예약 작업은 사람이 지켜보지 않을 때 실행되므로, 지시에 무엇을 언제 어떤 형식으로 알려 줄지까지 적어 두세요."
-    ]
+    ],
+    "updatedAt": "2026-10-22"
   }
 }

@@ -625,6 +625,14 @@
       "status": "skipped",
       "title": "Claude now works with Google Docs, Sheets, and Slides"
     },
+    "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes": {
+      "checkedAt": "2026-10-22",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "reason": "실전 조언이 거의 없는 기능 소개. 사용자가 바로 따라 할 수 있는 구체적인 활용 가이드 부족.",
+      "status": "skipped",
+      "title": "Claude Security now scans continuously and tracks fixes"
+    },
     "https://claude.com/resources/articles/dashboards-and-motion": {
       "checkedAt": "2026-10-09",
       "company": "anthropic",
@@ -1006,6 +1014,14 @@
       "status": "added",
       "title": "Optimizing a 200,000-line Python codebase overnight with Gemini 4 Argon"
     },
+    "https://developers.googleblog.com/powering-the-agent-development-lifecycle-with-any-framework-from-adk-to-langchain-and-beyond": {
+      "checkedAt": "2026-10-22",
+      "company": "google",
+      "date": "2026-10-21",
+      "id": "google-agents-cli-extension-system",
+      "status": "added",
+      "title": "Powering the Agent Development Lifecycle with any framework, from ADK to LangChain and beyond"
+    },
     "https://developers.googleblog.com/reproducing-olmo-3-7b-pre-training-in-maxtext-case-study-of-large-scale-training-on-tpus": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1347,6 +1363,14 @@
       "reason": "고객 사례 (Chatham Financial의 OpenAI 모델 활용 사례)",
       "status": "skipped",
       "title": "Chatham scales its capital markets expertise with OpenAI"
+    },
+    "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities": {
+      "checkedAt": "2026-10-22",
+      "company": "openai",
+      "date": "2026-10-21",
+      "reason": "모델과 무관한 보안 정책·파트너십 이니셔티브. 새 모델 출시, 모델 업데이트, 공식 활용 팁이 아님.",
+      "status": "skipped",
+      "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities"
     },
     "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign": {
       "checkedAt": "2026-10-03",

@@ -1,15 +1,57 @@
 {
-  "startedAt": "2026-10-21T23:12:39+09:00",
+  "startedAt": "2026-10-22T04:01:58+09:00",
   "prices": {
-    "checked": [],
-    "changes": [],
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "changes": [
+      "가격 변경: GPT-Realtime-2 입력 $32.00 → $4.00",
+      "가격 변경: GPT-Realtime-2 출력 $64.00 → $24.00"
+    ],
     "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 0,
-    "changed": [],
-    "changes": [],
+    "checked": 38,
+    "changed": [
+      "https://help.openai.com/en/articles/8590148-memory-faq",
+      "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5",
+      "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
+    ],
+    "changes": [
+      "가이드 추가: [openai] 개인화된 답에는 '출처'를 열어 어떤 기억이 쓰였는지 확인하기",
+      "가이드 추가: [openai] 시각이 아니라 앱 활동에 반응해야 하면 이벤트 트리거 작업 쓰기",
+      "가이드 추가: [openai] 예약 작업을 공유할 땐 제목과 지시문에 민감 정보 빼기",
+      "대응표 수정: [openai] 결과물을 옆에 띄워 함께 고치기 → 글쓰기 블록 · 코드 블록",
+      "가이드 추가: [openai] 맞춤 지시에는 민감한 정보를 넣지 않기",
+      "가이드 추가: [openai] API에서는 맞춤 지시 대신 system 메시지 쓰기",
+      "가이드 추가: [anthropic] 시스템 프롬프트에 역할을 한 문장으로 정해 주기",
+      "가이드 추가: [anthropic] 독립적인 도구 호출은 한꺼번에 하도록 지시하기",
+      "가이드 추가: [anthropic] 되돌리기 어려운 작업은 먼저 물어보게 하기",
+      "가이드 추가: [anthropic] 무인 에이전트는 텍스트만 있는 턴 종료를 '완료'로 보지 않기",
+      "가이드 추가: [anthropic] 여러 앱을 쓰는 작업은 행동 전에 넓게 살펴보게 하기",
+      "가이드 추가: [anthropic] 멀티에이전트는 경과 시간을 알려 더 빨리 끝내게 하기",
+      "가이드 추가: [anthropic] 단계별 계산이 필요한 JSON 답은 '먼저 생각하라'는 한 줄 넣기",
+      "가이드 추가: [anthropic] 구조화 출력을 못 쓰면 응답에서 마지막 JSON 값만 읽기",
+      "가이드 추가: [anthropic] 긴 에이전트 턴이 조용해 보이면 진행 알림 표시를 켜기",
+      "가이드 추가: [anthropic] 글이 빽빽하면 '꾸민 문체'를 빼 달라고 정의해서 요청하기",
+      "가이드 추가: [anthropic] 클라이언트에서 대화를 압축할 때는 남길 항목을 번호로 지정하기",
+      "가이드 추가: [anthropic] 코딩·컴퓨터 사용 루프에서는 독립적인 호출을 한 응답에 몰아 달라고 한 줄 덧붙이기",
+      "가이드 추가: [anthropic] 검색 도구를 줄 때는 오늘 날짜를 함께 알려 주기",
+      "가이드 추가: [anthropic] JSON 출력과 직접 만든 도구를 함께 쓸 때는 adaptive thinking 쓰기",
+      "가이드 추가: [anthropic] 작업 중 사용자가 보낸 메시지는 tool_result 밖의 user 턴으로 넣기",
+      "가이드 추가: [anthropic] 이어 가고 싶은 지난 대화는 주제를 말해 채팅 검색으로 찾게 하기",
+      "가이드 추가: [anthropic] 민감한 주제까지 기억시키려면 설정에서 직접 켜기"
+    ],
     "errors": {}
   },
   "authError": false,
