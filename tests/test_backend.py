@@ -737,3 +737,42 @@ def test_maintenance_rolls_back_invalid_changes(site, monkeypatch):
     report = pipeline.run_maintenance()
     assert "되돌림" in report["note"] and (site / "data/prices.json").read_text() == before
     assert json.loads((site / "backend/state/maintenance-run.json").read_text())["note"] == report["note"]
+
+
+class FeatureClaude:
+    def __init__(self, update):
+        self.calls, self.update = 0, update
+
+    def json_call(self, **kw):
+        self.calls += 1
+        if kw.get("schema") is guides.FEATURE_UPDATE:
+            return {"update": self.update, "reason": ""}
+        return {"add": [], "update": [], "reason": ""}
+
+
+def test_changed_help_page_rechecks_feature_map_cells(site):
+    url = "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt"
+    data = json.loads(json.dumps(GUIDE))
+    data["vendors"][0]["watch"] = [{"title": "Tasks", "url": url, "hash": "old"}]
+    cell = {"name": "예약 작업", "note": "Plus는 5개까지.", "sources": [{"title": "t", "url": url}]}
+    other = {"name": "x", "note": "y", "sources": [{"title": "t", "url": "https://example.com/other"}]}
+    data["appFeatures"] = {"title": "대응표", "rows": [
+        {"key": "schedule", "label": "예약", "cells": {"openai": cell}},
+        {"key": "memory", "label": "기억", "cells": {"openai": other}}]}
+    (site / "data/guides.json").write_text(json.dumps(data, ensure_ascii=False))
+    page = extract.Article(url, "Tasks", None, "Plus: 8 active tasks. Pro: 15. " * 40, [], [])
+    claude = FeatureClaude([{"key": "schedule", "name": "예약 작업", "note": "Plus는 8개까지."},
+                            {"key": "memory", "name": "x", "note": "다른 페이지 칸은 못 고침"}])
+    r = guides.check_watch(claude, date(2026, 10, 22), "2026-10-22 06:05", fetch=lambda u: page)
+    saved = json.loads((site / "data/guides.json").read_text())["appFeatures"]
+    assert saved["rows"][0]["cells"]["openai"]["note"] == "Plus는 8개까지."
+    assert saved["rows"][0]["cells"]["openai"]["updatedAt"] == "2026-10-22"
+    assert saved["rows"][1]["cells"]["openai"]["note"] == "y"
+    assert any(c.startswith("대응표 수정") for c in r["changes"])
+    # a number the page does not show is refused
+    wrapped = {"appFeatures": saved}
+    pairs = guides.feature_cells(wrapped, "openai", url)
+    out = guides.apply_feature_updates(wrapped, "openai", pairs,
+                                       {"update": [{"key": "schedule", "name": "예약 작업", "note": "Plus는 12개까지."}]},
+                                       page.text, date(2026, 10, 23))
+    assert out and out[0].startswith("제외") and pairs[0][1]["note"] == "Plus는 8개까지."

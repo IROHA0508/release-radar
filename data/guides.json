@@ -380,6 +380,66 @@
             }
           ],
           "addedAt": "2026-10-21"
+        },
+        {
+          "id": "openai-memory",
+          "category": "앱 기능과 설정",
+          "title": "기억해 둔 것은 직접 확인·수정하고, 남기지 않을 대화는 임시 채팅으로",
+          "body": "ChatGPT 메모리에는 사용자가 저장한 내용을 참고하는 '저장된 메모리 참고'와 지난 대화를 참고하는 '채팅 기록 참고' 두 설정이 있고, 설정 > 개인 맞춤 설정 > 메모리에서 켜고 끕니다. 대화에서 무엇을 기억하고 있는지 물어볼 수 있고, 틀리거나 오래된 내용은 바로잡아 달라고 하거나 쓰지 말라고 할 수 있습니다. 다만 이렇게 말하면 답에 쓰는 방식만 바뀌고 원래 자료는 지워지지 않으니, 저장된 메모리를 없애려면 잊어 달라고 하거나 설정에서 삭제하세요. 대화를 지워도 관련 저장 메모리가 함께 지워지지는 않습니다. 임시 채팅은 메모리를 만들거나 바꾸지 않고, 시작하기 전에 기존 메모리·맞춤 지시를 쓸지 고를 수 있습니다. 쓸 수 있는 설정은 요금제·지역·기기에 따라 다릅니다.",
+          "after": "나에 대해 기억하고 있는 내용을 항목별로 보여 줘. 그중 [이제 맞지 않는 내용]은 저장된 메모리에서 지워 줘.",
+          "models": [],
+          "source": {
+            "title": "Memory in ChatGPT",
+            "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+          },
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "openai-deep-research",
+          "category": "앱 기능과 설정",
+          "title": "딥 리서치는 질문·원하는 결과·제약을 쓰고, 계획을 고친 뒤 시작하기",
+          "body": "딥 리서치는 프롬프트에 /Deepresearch를 입력하거나 도구 메뉴(+)에서 고릅니다. OpenAI 도움말은 좋은 딥 리서치 프롬프트가 질문, 원하는 결과, 관련 제약을 분명히 쓴다고 설명합니다. 시작하기 전에 확인 질문을 하거나 조사 계획을 제안하면, 계획을 검토하고 고쳐 보고서가 목표에 맞게 하세요. 특정 출처가 필요하면 Sites > Manage sites에서 조사할 도메인만 쓰게 하거나 우선순위를 줄 수 있고, 업로드한 파일과 연결한 앱(읽기만 함)도 쓸 수 있습니다. 결과는 인용이 달린 보고서로 나오며 Markdown·Word·PDF로 내려받을 수 있습니다. 여러 출처를 읽느라 일반 검색보다 오래 걸리므로, 간단한 조회는 일반 대화가 더 빠릅니다.",
+          "before": "전기차 배터리 조사해 줘.",
+          "after": "질문: [2026년 국내 전기차 배터리 재활용 시장]은 어떤 업체가 주도하고 있나?\n원하는 결과: [투자 검토 회의]에 쓸 보고서. 결론을 맨 앞에 세 줄로 쓰고, 업체별 기술·최근 발표·고객사를 표로 정리해 줘.\n제약: [2025년 이후] 자료만 쓰고 공식 발표와 정부 통계를 우선해 줘. 추정한 수치는 추정이라고 표시해 줘.",
+          "models": [],
+          "source": {
+            "title": "Deep research in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt"
+          },
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "openai-scheduled-tasks",
+          "category": "앱 기능과 설정",
+          "title": "예약 작업은 '언제, 무엇을, 어떤 형식으로'를 한 번에 쓰기",
+          "body": "Scheduled에서 일정을 정하고 할 일을 요청하면 예약 작업이 만들어집니다(도움말 예: '택배가 도착하면 알려 줘'). 만든 작업은 Scheduled 페이지나 설정 > 알림 > 작업 관리에서 수정·일시 정지·삭제하고, 알림은 푸시·이메일 중에서 고릅니다. 동시에 켜 둘 수 있는 작업은 Free·Go 3개, Plus 5개, Business·Edu 10개, Pro·Enterprise 15개입니다. 무료 요금제는 하루 한 번까지만 반복할 수 있고, 매시간·정확한 시각 예약은 유료 요금제가 필요합니다. 프로젝트 안에서 만든 작업은 그 프로젝트에 올린 파일을 쓰지 못하니 필요한 내용은 지시에 직접 쓰세요. 음성 대화와 GPT에서는 쓸 수 없습니다. 공유한 작업 링크로는 제목과 지시 전체가 보이므로 민감한 정보는 넣지 마세요.",
+          "before": "AI 소식 알려 줘.",
+          "after": "매일 아침 8시에 [관심 분야]의 새 소식을 찾아 다섯 줄로 요약해 줘. 줄마다 출처 링크를 달고, 전날 알려 준 소식은 빼 줘.",
+          "models": [],
+          "source": {
+            "title": "Scheduled tasks in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt"
+          },
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "openai-writing-blocks",
+          "category": "앱 기능과 설정",
+          "title": "다시 고칠 글은 글쓰기 블록·캔버스에서 고칠 부분만 골라 요청하기",
+          "body": "ChatGPT는 이메일·메시지·게시글·문서처럼 다시 고치거나 재사용할 가능성이 큰 글을 '글쓰기 블록'으로 만들 수 있습니다. 블록 안의 글을 직접 고치거나, 고칠 부분을 선택해 그 부분만 바꿔 달라고 하거나, 초안 전체를 고쳐 달라고 할 수 있고, 최근 AI 수정은 되돌리거나 다시 적용할 수 있습니다. 코드 블록은 직접 편집하고, HTML·React·SVG·Mermaid 같은 코드를 미리 보거나 Python을 실행해 볼 수 있습니다. 캔버스는 ChatGPT와 함께 글을 쓰고 고치거나 코드를 디버깅하는 작업 공간입니다. 고친 내용은 잠시 뒤 대화에 저장되어 이어지는 질문에 최신 판이 쓰이지만, 임시 채팅에서는 남지 않을 수 있습니다.",
+          "after": "(고칠 문단을 선택한 뒤) 이 문단만 더 짧게, [받는 사람]이 바로 이해하도록 결론부터 써 줘. 나머지는 그대로 둬.",
+          "models": [],
+          "source": {
+            "title": "Writing blocks and code blocks in ChatGPT",
+            "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt"
+          },
+          "alsoSources": [
+            {
+              "title": "ChatGPT capabilities overview",
+              "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
+            }
+          ],
+          "addedAt": "2026-10-21"
         }
       ],
       "templates": [
@@ -448,6 +508,30 @@
         {
           "title": "ChatGPT Enterprise Prompting Guide",
           "url": "https://learn.chatgpt.com/cookbook/examples/chatgpt/chatgpt_prompt_guide/chatgpt_prompt_guide"
+        },
+        {
+          "title": "Memory in ChatGPT",
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+        },
+        {
+          "title": "Deep research in ChatGPT",
+          "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt"
+        },
+        {
+          "title": "Scheduled tasks in ChatGPT",
+          "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt"
+        },
+        {
+          "title": "Writing blocks and code blocks in ChatGPT",
+          "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt"
+        },
+        {
+          "title": "Projects in ChatGPT",
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+        },
+        {
+          "title": "ChatGPT custom instructions",
+          "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
         }
       ]
     },
@@ -786,6 +870,59 @@
             }
           ],
           "addedAt": "2026-10-21"
+        },
+        {
+          "id": "anthropic-memory",
+          "category": "앱 기능과 설정",
+          "title": "메모리는 설정에서 주제별로 고치고, 남기지 않을 대화는 끄거나 시크릿으로",
+          "body": "Claude 메모리는 대화에서 주제를 저장해 다음 대화에 이어 씁니다. 설정 > 메모리의 주제 목록에서 항목을 골라 고치거나 지울 수 있고, 대화 중에 무엇을 기억하거나 바꾸거나 잊을지 직접 말해도 됩니다. 한 대화만 메모리에서 빼려면 첫 메시지를 보내기 전에 '+' 메뉴에서 메모리를 끄고, 기록·메모리·검색에 모두 남기지 않으려면 시크릿 채팅(유령 아이콘)을 쓰세요. 프로젝트마다 메모리가 따로 있습니다. 지난 대화를 찾아 참고하는 채팅 검색은 유료 요금제(Pro·Max·Team·Enterprise)에서 쓰고, 같은 설정 화면의 'Search and reference chats'로 끕니다. 메모리는 Free·Pro·Max에서 기본으로 켜져 있고, Team·Enterprise는 관리자가 허용한 뒤 각자 켭니다.",
+          "after": "앞으로 이것을 기억해 줘: [답은 결론부터 쓰고, 예시는 코드로 보여 줘]. 그리고 [예전 프로젝트 이름]에 관한 내용은 이제 맞지 않으니 잊어 줘.",
+          "models": [],
+          "source": {
+            "title": "Use Claude's chat search and memory",
+            "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
+          },
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "anthropic-research",
+          "category": "앱 기능과 설정",
+          "title": "Research는 켠 다음, 쓸 자료(웹·연결한 도구)를 이름으로 지정하기",
+          "body": "입력창 왼쪽 아래 '+'에서 Research를 고르면 켜지고, 웹 검색도 켜 두어야 합니다. Research는 웹과 함께 Gmail·Google 캘린더·Google Docs 같은 Google Workspace와 그 대화에서 켠 커넥터를 매번 승인을 묻지 않고 검색합니다. 조사를 하지 않는 것 같으면 'Claude, please use the research tool to…'처럼 분명히 요청하고, 연결한 자료를 쓰지 않으면 '[사내 자료 이름]에서 관련 맥락을 가져와 줘'처럼 출처를 지정하라고 도움말은 권합니다. 모바일에서 시작한 Research는 커넥터 없이 웹만 찾으므로 연결한 자료가 필요하면 웹이나 데스크톱 앱에서 시작하세요. 유료 요금제에서 쓸 수 있고, 많은 자료를 찾기 때문에 사용 한도가 더 빨리 줄 수 있습니다.",
+          "before": "경쟁사 조사해 줘.",
+          "after": "Research 도구를 써서 [경쟁 제품 세 곳]의 최근 변화를 조사해 줘. 먼저 [Google Drive의 기획 문서 이름]에서 우리 제품 관련 맥락을 가져오고, 웹에서는 [2026년 이후] 공식 발표를 찾아 비교해 줘. 결과는 결론, 비교 표, 출처 목록 순서로 정리해 줘.",
+          "models": [],
+          "source": {
+            "title": "Use research on Claude",
+            "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude"
+          },
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "anthropic-artifacts",
+          "category": "앱 기능과 설정",
+          "title": "다시 쓸 결과물은 아티팩트로 만들고, 고칠 곳은 직접 선택해 요청하기",
+          "body": "아티팩트는 문서·슬라이드·디자인·대시보드·작은 도구처럼 남에게 보여 줄 결과물을 대화 옆에 띄워 두고 고치고 공유하는 기능입니다. 보통 15줄이 넘고, 대화 없이도 이해되며, 고치거나 다시 쓸 내용일 때 만들어지고, 직접 만들어 달라고 해도 됩니다. 문서나 Markdown 파일의 특정 부분을 고치려면 그 부분을 말로 설명하기보다 텍스트를 선택한 뒤 'Edit with Claude'를 눌러 요청하라고 도움말은 권합니다. 앞선 메시지를 고치면 새 갈래가 생겨 이전에 만든 결과물은 그대로 남습니다. 아티팩트를 쓰려면 설정 > 기능에서 'Cloud code execution and file creation'이 켜져 있어야 합니다.",
+          "after": "[주간 회의] 안건을 정리하는 한 쪽짜리 문서를 아티팩트로 만들어 줘. 맨 위에 결정할 일 세 가지를 쓰고, 아래에 담당자와 마감일 표를 넣어 줘.",
+          "models": [],
+          "source": {
+            "title": "What are artifacts and how do I use them?",
+            "url": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+          },
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "anthropic-scheduled-tasks",
+          "category": "앱 기능과 설정",
+          "title": "예약 작업은 할 일과 주기를 함께 말하고, 제안된 지시를 확인하기",
+          "body": "왼쪽의 Scheduled에서 New task를 누르거나, 새 Claude 화면에서는 아무 대화에서나 할 일과 주기를 말하면 됩니다. Claude가 확인 질문을 한 뒤 작업 이름·일정·설명을 제안하고, 확인하면 작업이 만들어집니다. 직접 만들 때는 이름, 프롬프트, 승인 방식, 주기(매시간·매일·매주·평일·수동), 필요하면 모델과 작업 폴더를 정합니다. 예약 작업은 원격으로 실행되어 컴퓨터가 잠자기 상태이거나 앱이 닫혀 있어도 돌아가지만, 내 컴퓨터의 파일이나 앱이 필요한 작업은 컴퓨터에서만 실행됩니다. 실행할 때마다 따로 작업 세션이 생기고, 일반 작업처럼 커넥터·스킬·플러그인을 쓸 수 있습니다. 유료 요금제(Pro·Max·Team·Enterprise)에서 쓸 수 있습니다.",
+          "after": "매주 월요일 오전 9시에 지난주 [Slack 채널 이름]의 주요 논의를 요약해 줘. 결정된 일, 남은 질문, 담당자를 나눠서 정리해 줘.",
+          "models": [],
+          "source": {
+            "title": "Schedule recurring tasks in Claude Cowork",
+            "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"
+          },
+          "addedAt": "2026-10-21"
         }
       ],
       "templates": [
@@ -850,6 +987,26 @@
         {
           "title": "Best practices for Claude Code",
           "url": "https://code.claude.com/docs/en/best-practices"
+        },
+        {
+          "title": "Use Claude's chat search and memory",
+          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
+        },
+        {
+          "title": "Use research on Claude",
+          "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude"
+        },
+        {
+          "title": "What are artifacts and how do I use them?",
+          "url": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+        },
+        {
+          "title": "Schedule recurring tasks in Claude Cowork",
+          "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"
+        },
+        {
+          "title": "How can I create and manage projects?",
+          "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
         }
       ]
     },
@@ -1186,6 +1343,90 @@
             }
           ],
           "addedAt": "2026-10-21"
+        },
+        {
+          "id": "google-instructions-memory",
+          "category": "앱 기능과 설정",
+          "title": "답변 방식은 'Gemini에 대한 지시'에 두고, 기억을 지울 때는 그 대화를 삭제하기",
+          "body": "모든 채팅에 적용할 답변 방식은 설정 및 도움말 > Personal Intelligence > Instructions for Gemini에서 추가·수정하거나 끌 수 있습니다. 도움말의 예시는 '답을 짧은 요약으로 시작해 줘', '긴 문단은 글머리표로 써 줘' 같은 문장입니다. Memory를 켜 두면 Gemini가 지난 대화를 참고합니다. 지난 대화를 썼는지는 직접 물어보면 되고, 틀린 내용은 대화에서 바로잡으세요. 어떤 내용을 기억에서 없애려면 그 내용이 담긴 대화를 Gemini 앱 활동에서 모두 지워야 하며, 잊어 달라고 말하는 것만으로는 완벽하게 되지 않습니다. 개인 Google 계정에서만 쓸 수 있고(지난 대화 기억은 만 18세 이상, Gemini 앱 활동 유지 설정 필요), Gem에서는 지시와 지난 대화 기억이 쓰이지 않습니다.",
+          "after": "답은 짧은 요약으로 시작하고, 긴 설명은 글머리표로 나눠 줘. [전문 용어]는 처음 나올 때 한 줄로 풀어 줘.",
+          "models": [],
+          "source": {
+            "title": "Customize Gemini's responses with your instructions",
+            "url": "https://support.google.com/gemini/answer/16598625?hl=en"
+          },
+          "alsoSources": [
+            {
+              "title": "Memory of your past Gemini chats",
+              "url": "https://support.google.com/gemini/answer/16598469?hl=en"
+            }
+          ],
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "google-notebooks",
+          "category": "앱 기능과 설정",
+          "title": "한 주제의 자료와 대화는 노트북에 모으고, 노트북 지시로 형식 정하기",
+          "body": "Gemini 앱의 노트북은 자료·지시·대화를 한곳에 두고 이어 가는 프로젝트 공간입니다. 웹이나 Mac 앱의 사이드바에서 Notebooks > New notebook으로 만들거나, 채팅에서 '@Gemini Notebook'을 붙여 만들어 달라고 할 수 있습니다. 자료로는 기기의 파일, Google Drive 파일, 웹사이트 URL, 복사한 텍스트를 넣고(요금제에 따라 최대 600개), 기존 채팅도 옮겨 올 수 있습니다. 형식이나 말투는 노트북 설정의 맞춤 지시로 정하세요. 노트북은 Gemini Notebook(2026년 7월 NotebookLM에서 이름이 바뀜)과 동기화되어 어느 쪽에서 고쳐도 반영됩니다. 노트북을 지우면 그 안에 넣은 자료와 채팅도 함께 지워집니다.",
+          "after": "이 노트북의 답은 [수업 이름] 강의 자료에 있는 내용만 근거로 해 줘. 자료에 없는 내용은 '자료에 없음'이라고 표시하고, 답 끝에 근거가 된 자료 이름을 적어 줘.",
+          "models": [],
+          "source": {
+            "title": "Organize your projects with notebooks in Gemini Apps",
+            "url": "https://support.google.com/gemini/answer/16972047?hl=en"
+          },
+          "alsoSources": [
+            {
+              "title": "NotebookLM is now Gemini Notebook (Workspace Updates)",
+              "url": "https://workspaceupdates.googleblog.com/2026/07/notebooklm-now-gemini-notebook.html"
+            }
+          ],
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "google-deep-research",
+          "category": "앱 기능과 설정",
+          "title": "Deep Research는 계획을 열어 고친 뒤 시작하고, 조사할 자료 범위를 정하기",
+          "body": "Deep Research를 고르고 질문을 보내면 Gemini가 먼저 조사 계획을 만듭니다. 'Edit plan'으로 계획을 고친 다음 'Start research'를 누르세요. Google 검색이 기본으로 포함되며, 선택을 해제해 업로드한 파일, Gmail·Drive(Workspace를 연결했을 때), NotebookLM 노트북 같은 다른 자료로만 조사하게 할 수 있습니다. 보고서는 보통 5~10분 걸리고, 그동안 다른 일을 해도 끝나면 알려 줍니다. 완성된 보고서는 캔버스에서 오디오 개요나 시각화로 바꾸거나 Docs로 내보낼 수 있습니다. 만 18세 이상이 쓸 수 있고, 하루 요청 수와 동시 요청 수에 한도가 있습니다.",
+          "before": "AI 반도체 조사해 줘.",
+          "after": "[국내 AI 반도체 스타트업]의 2026년 현황을 조사해 줘. 업체별 주력 제품, 투자 유치, 주요 고객사를 표로 정리하고, 마지막에 앞으로 1년의 쟁점 세 가지를 써 줘. 업로드한 [업계 보고서]를 먼저 참고하고, 웹 자료는 공식 발표와 언론 보도를 구분해 표시해 줘.",
+          "models": [],
+          "source": {
+            "title": "Use Deep Research in Gemini Apps",
+            "url": "https://support.google.com/gemini/answer/15719111?hl=en"
+          },
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "google-canvas",
+          "category": "앱 기능과 설정",
+          "title": "캔버스는 만들 형식을 프롬프트에 쓰고, 고칠 곳만 선택해 요청하기",
+          "body": "캔버스는 문서·앱·슬라이드·코드를 만들고 고치는 작업 공간입니다. 도움말은 프롬프트에 원하는 형식이나 문서 종류(예: 슬라이드)를 넣으라고 하며, '…에 대한 슬라이드 발표를 만들어 줘', '…에 대해 나를 시험할 퀴즈를 만들어 줘'를 예로 듭니다. 고칠 부분을 선택하고 프롬프트를 입력하면 그 부분만 고치고(Select & ask), 문서는 수정 제안·길이 바꾸기·말투 바꾸기를 쓰며 이전·다음 버전을 오갈 수 있습니다. 문서에서 Create 버튼으로 슬라이드·오디오 개요·퀴즈·인포그래픽·웹페이지를 만들 수 있고, Docs·Slides로 내보내거나 Python 코드는 Colab으로 보낼 수 있습니다. 앱을 링크로 공유하면 링크를 가진 누구나 관련 데이터를 보고 고칠 수 있으니 주의하세요.",
+          "after": "캔버스에서 [동아리 신입생 설명회]용 슬라이드 발표를 만들어 줘. 첫 장은 한 문장 소개, 마지막 장은 가입 방법으로 하고, 장마다 핵심 문장 하나만 크게 넣어 줘.",
+          "models": [],
+          "source": {
+            "title": "Create docs, apps & more with Canvas",
+            "url": "https://support.google.com/gemini/answer/16047321?hl=en"
+          },
+          "addedAt": "2026-10-21"
+        },
+        {
+          "id": "google-tasks-schedules",
+          "category": "앱 기능과 설정",
+          "title": "예약은 '언제(조건) + 무엇을(작업)'으로 나눠 쓰기",
+          "body": "Gemini 도움말의 작업(Task) 예시는 '매일 오전 8시에(조건) AI 소식을 알려 줘(작업)', '비행기가 지연되면(조건) 알려 주고 일정 변경안을 제안해 줘(작업)'처럼 조건과 작업을 나눠 씁니다. 작업은 입력창 아래의 Task를 눌러 시작하고, '@'로 스킬을 고르거나 파일을 붙일 수 있으며, 동시에 최대 15개까지 실행됩니다. Google AI Pro·Ultra 구독, 만 18세 이상의 개인 계정, Gemini 앱 활동 유지와 Personal Intelligence 동의가 필요하고, EEA·영국 등 일부 지역에서는 쓸 수 없습니다. 일반 채팅에서도 언제·얼마나 자주 실행할지 프롬프트에 적으면 예약 작업이 만들어지며 최대 10개까지 켜 둘 수 있습니다. 예약 작업은 내용을 미리 준비하므로 주가처럼 빨리 바뀌는 정보는 전달될 때 최신이 아닐 수 있습니다.",
+          "after": "매주 금요일 오후 5시에(조건) 이번 주 받은 메일 중 답장이 필요한 것을 골라 정리해 줘(작업). 보낸 사람, 요청 내용, 마감일을 표로 보여 줘.",
+          "models": [],
+          "source": {
+            "title": "Manage your tasks & workflows in Gemini Apps",
+            "url": "https://support.google.com/gemini/answer/17094507?hl=en"
+          },
+          "alsoSources": [
+            {
+              "title": "Schedule actions in Gemini Apps",
+              "url": "https://support.google.com/gemini/answer/16316416?hl=en"
+            }
+          ],
+          "addedAt": "2026-10-21"
         }
       ],
       "templates": [
@@ -1254,6 +1495,34 @@
         {
           "title": "Write effective skills (Gemini Apps Help)",
           "url": "https://support.google.com/gemini/answer/17102773?hl=en"
+        },
+        {
+          "title": "Customize Gemini's responses with your instructions",
+          "url": "https://support.google.com/gemini/answer/16598625?hl=en"
+        },
+        {
+          "title": "Memory of your past Gemini chats",
+          "url": "https://support.google.com/gemini/answer/16598469?hl=en"
+        },
+        {
+          "title": "Organize your projects with notebooks in Gemini Apps",
+          "url": "https://support.google.com/gemini/answer/16972047?hl=en"
+        },
+        {
+          "title": "Use Deep Research in Gemini Apps",
+          "url": "https://support.google.com/gemini/answer/15719111?hl=en"
+        },
+        {
+          "title": "Create docs, apps & more with Canvas",
+          "url": "https://support.google.com/gemini/answer/16047321?hl=en"
+        },
+        {
+          "title": "Manage your tasks & workflows in Gemini Apps",
+          "url": "https://support.google.com/gemini/answer/17094507?hl=en"
+        },
+        {
+          "title": "Schedule actions in Gemini Apps",
+          "url": "https://support.google.com/gemini/answer/16316416?hl=en"
         }
       ]
     }
@@ -1322,7 +1591,7 @@
         "company": "google",
         "recommended": "API 문서: <context>, <task> 같은 XML식 태그나 마크다운 제목으로 구분하되, 한 프롬프트에서는 한 방식만 쓰라고 권합니다. Google Cloud 문서는 'TASK:' 같은 접두사(콜론을 붙인 라벨)나 XML 태그로 프롬프트의 각 부분을 나누라고 합니다.",
         "inApp": "Gemini 앱·Workspace 가이드에는 태그 권고가 없습니다. 다른 사람에게 말하듯 완전한 문장으로 쓰기, Persona·Task·Context·Format, 채울 곳을 표시하는 [대괄호], '@파일 이름'으로 자료 지정하기를 권합니다. 입력창에 태그를 써도 되지만 앱에서의 효과는 공식 문서로 확인되지 않습니다.",
-        "saveIn": "Gem 지시문(Persona·Task·Context·Format 틀, 지식 파일 추가). 개인 계정은 2026년 11월부터 Gem이 스킬로 바뀌고, 스킬 지시에는 구조 템플릿·예시·주의 사항 섹션을 넣으라고 권합니다. 개인 맥락(저장된 정보)도 있습니다.",
+        "saveIn": "Gem 지시문(Persona·Task·Context·Format 틀, 지식 파일 추가). 개인 계정은 2026년 11월부터 Gem이 스킬로 바뀌고, 스킬 지시에는 구조 템플릿·예시·주의 사항 섹션을 넣으라고 권합니다. 모든 채팅에 적용할 답변 방식은 'Gemini에 대한 지시'(설정 및 도움말 > Personal Intelligence)에 저장하며, 이 지시는 Gem에는 적용되지 않습니다.",
         "sources": [
           {
             "title": "Prompt design strategies (API)",
@@ -1345,8 +1614,8 @@
             "url": "https://support.google.com/gemini/answer/18560919?hl=en"
           },
           {
-            "title": "저장된 정보·개인 맥락",
-            "url": "https://support.google.com/gemini/answer/16413516"
+            "title": "Gemini에 대한 지시",
+            "url": "https://support.google.com/gemini/answer/16598625?hl=en"
           }
         ]
       }
@@ -1363,5 +1632,274 @@
       "when": "긴 자료나 여러 문서를 붙여 넣고 일을 맡길 때. Claude 공식 예시는 태그 방식이고, Gemini API 문서는 태그와 마크다운 제목 예시를 모두 싣습니다. ChatGPT 가이드는 아래 # 제목 방식과 같습니다. Gemini 문서는 한 프롬프트에서 한 방식만 쓰라고 하니, 특히 Gemini에서는 둘 중 하나를 골라 쓰세요.",
       "text": "(태그 방식)\n<instructions>\n[할 일]을 해 줘. [누가, 어디에 쓸지]를 위한 결과물이야.\n</instructions>\n\n<documents>\n<document index=\"1\">\n[첫 번째 자료]\n</document>\n<document index=\"2\">\n[두 번째 자료]\n</document>\n</documents>\n\n<example>\n[원하는 결과 형식의 짧은 예]\n</example>\n\n위 자료를 바탕으로 [구체적인 질문이나 지시]\n\n(# 제목 방식)\n# Context\n[배경과 붙여 넣을 자료]\n\n# Instructions\n[할 일과 결과물의 쓰임]\n\n# Additional Information / Constraints\n[형식, 길이, 지켜야 할 것]"
     }
+  },
+  "appFeatures": {
+    "title": "태그 말고 앱에 있는 기능들: 세 앱 대응표",
+    "intro": "태그는 프롬프트 안에서 구조를 만드는 방법이고, 아래 기능들은 지시·자료·기억을 프롬프트 밖에 두거나 결과물을 다루는 방법입니다. 이름은 달라도 하는 일은 비슷하니, 쓰는 앱의 칸을 보고 '방법 보기'에서 자세한 사용법과 예시를 확인하세요. 칸마다 근거가 된 공식 도움말을 달았고, 그 페이지가 바뀌면 이 표도 다시 확인합니다. 요금제·나이·지역에 따라 쓸 수 없는 기능이 있습니다.",
+    "checkedAt": "2026-10-21",
+    "rows": [
+      {
+        "key": "instructions",
+        "label": "매번 쓰는 지시 저장",
+        "what": "모든 대화에 적용할 답변 방식과 선호",
+        "cells": {
+          "openai": {
+            "name": "맞춤 지시",
+            "note": "설정의 개인 맞춤 설정에서 저장합니다. Free·Go는 1,500자, 그 밖의 요금제는 5,000자까지.",
+            "sources": [
+              {
+                "title": "ChatGPT custom instructions",
+                "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+              }
+            ],
+            "methodId": "openai-custom-instructions-projects"
+          },
+          "anthropic": {
+            "name": "Claude 지시 · 스타일",
+            "note": "모든 대화에 적용할 지시는 설정의 개인 맞춤 설정에, 문체는 스타일에 저장합니다.",
+            "sources": [
+              {
+                "title": "Understanding Claude's personalization features",
+                "url": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features"
+              },
+              {
+                "title": "Configure and use styles",
+                "url": "https://support.claude.com/en/articles/10181068"
+              }
+            ],
+            "methodId": "anthropic-projects-styles"
+          },
+          "google": {
+            "name": "Gemini에 대한 지시",
+            "note": "설정 및 도움말 > Personal Intelligence > Instructions for Gemini에서 추가·수정하거나 끕니다. 개인 Google 계정만 쓸 수 있고 Gem에는 적용되지 않습니다.",
+            "sources": [
+              {
+                "title": "Customize Gemini's responses with your instructions",
+                "url": "https://support.google.com/gemini/answer/16598625?hl=en"
+              }
+            ],
+            "methodId": "google-instructions-memory"
+          }
+        }
+      },
+      {
+        "key": "projects",
+        "label": "주제별로 자료·지시 묶기",
+        "what": "한 업무의 대화·파일·지시를 한곳에",
+        "cells": {
+          "openai": {
+            "name": "프로젝트",
+            "note": "관련 대화·파일·지시를 한곳에 모읍니다. 프로젝트 지시문은 그 안에서만 적용되고 맞춤 지시보다 우선합니다.",
+            "sources": [
+              {
+                "title": "Projects in ChatGPT",
+                "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+              }
+            ],
+            "methodId": "openai-custom-instructions-projects"
+          },
+          "anthropic": {
+            "name": "프로젝트",
+            "note": "프로젝트 지시와 프로젝트 지식이 그 안의 모든 대화에 쓰이고, 메모리도 프로젝트마다 따로 있습니다.",
+            "sources": [
+              {
+                "title": "How can I create and manage projects?",
+                "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+              }
+            ],
+            "methodId": "anthropic-projects-styles"
+          },
+          "google": {
+            "name": "노트북",
+            "note": "채팅·자료·맞춤 지시를 한곳에 둡니다. 요금제에 따라 자료를 최대 600개까지 넣을 수 있고, Gemini Notebook(옛 NotebookLM)과 동기화됩니다.",
+            "sources": [
+              {
+                "title": "Organize your projects with notebooks in Gemini Apps",
+                "url": "https://support.google.com/gemini/answer/16972047?hl=en"
+              },
+              {
+                "title": "NotebookLM is now Gemini Notebook (Workspace Updates)",
+                "url": "https://workspaceupdates.googleblog.com/2026/07/notebooklm-now-gemini-notebook.html"
+              }
+            ],
+            "methodId": "google-notebooks"
+          }
+        }
+      },
+      {
+        "key": "memory",
+        "label": "지난 대화 기억",
+        "what": "말해 둔 정보와 지난 대화를 다음 대화에 이어 쓰기",
+        "cells": {
+          "openai": {
+            "name": "메모리",
+            "note": "'저장된 메모리 참고'와 '채팅 기록 참고' 두 설정이 있습니다. 설정에서 확인·수정하고, 임시 채팅은 메모리를 만들지 않습니다.",
+            "sources": [
+              {
+                "title": "Memory in ChatGPT",
+                "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+              }
+            ],
+            "methodId": "openai-memory"
+          },
+          "anthropic": {
+            "name": "메모리 · 채팅 검색",
+            "note": "설정 > 메모리에서 주제별로 고치거나 지웁니다. 대화마다 끌 수 있고 시크릿 채팅도 있습니다. 채팅 검색은 유료 요금제에서 씁니다.",
+            "sources": [
+              {
+                "title": "Use Claude's chat search and memory",
+                "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
+              }
+            ],
+            "methodId": "anthropic-memory"
+          },
+          "google": {
+            "name": "지난 대화 기억(Memory)",
+            "note": "Personal Intelligence에서 켜고 끕니다. 기억을 지우려면 그 내용이 담긴 대화를 Gemini 앱 활동에서 삭제합니다. 만 18세 이상, Gem·Live에서는 쓰지 않습니다.",
+            "sources": [
+              {
+                "title": "Memory of your past Gemini chats",
+                "url": "https://support.google.com/gemini/answer/16598469?hl=en"
+              }
+            ],
+            "methodId": "google-instructions-memory"
+          }
+        }
+      },
+      {
+        "key": "canvas",
+        "label": "결과물을 옆에 띄워 함께 고치기",
+        "what": "문서·코드·앱을 대화와 나란히 두고 부분만 고치기",
+        "cells": {
+          "openai": {
+            "name": "캔버스 · 글쓰기 블록",
+            "note": "고칠 부분만 골라 수정을 요청하고, 최근 AI 수정은 되돌릴 수 있습니다. 코드 블록은 미리보기·실행도 됩니다.",
+            "sources": [
+              {
+                "title": "Writing blocks and code blocks in ChatGPT",
+                "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt"
+              },
+              {
+                "title": "ChatGPT capabilities overview",
+                "url": "https://help.openai.com/en/articles/9260256-chatgpt-capabilities-overview"
+              }
+            ],
+            "methodId": "openai-writing-blocks"
+          },
+          "anthropic": {
+            "name": "아티팩트",
+            "note": "문서·슬라이드·대시보드처럼 따로 다시 쓸 결과물을 대화 옆에 띄웁니다. 문서는 문장을 선택해 'Edit with Claude'로 고칩니다.",
+            "sources": [
+              {
+                "title": "What are artifacts and how do I use them?",
+                "url": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+              }
+            ],
+            "methodId": "anthropic-artifacts"
+          },
+          "google": {
+            "name": "캔버스",
+            "note": "문서·앱·슬라이드·코드를 만듭니다. 부분을 선택해 수정을 요청하고(Select & ask), Docs·Slides로 내보냅니다.",
+            "sources": [
+              {
+                "title": "Create docs, apps & more with Canvas",
+                "url": "https://support.google.com/gemini/answer/16047321?hl=en"
+              }
+            ],
+            "methodId": "google-canvas"
+          }
+        }
+      },
+      {
+        "key": "research",
+        "label": "여러 자료를 찾아 보고서 만들기",
+        "what": "많은 출처를 읽고 인용이 달린 보고서로 정리",
+        "cells": {
+          "openai": {
+            "name": "딥 리서치",
+            "note": "제안된 조사 계획을 고친 뒤 시작합니다. 조사할 사이트를 제한하거나 우선 지정할 수 있고, 보고서는 Markdown·Word·PDF로 내려받습니다.",
+            "sources": [
+              {
+                "title": "Deep research in ChatGPT",
+                "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt"
+              }
+            ],
+            "methodId": "openai-deep-research"
+          },
+          "anthropic": {
+            "name": "Research",
+            "note": "'+' 메뉴에서 켭니다(웹 검색도 켜야 함). 웹과 연결한 커넥터를 함께 찾고, 모바일에서는 웹만 찾습니다. 유료 요금제.",
+            "sources": [
+              {
+                "title": "Use research on Claude",
+                "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude"
+              }
+            ],
+            "methodId": "anthropic-research"
+          },
+          "google": {
+            "name": "Deep Research",
+            "note": "조사 계획을 'Edit plan'으로 고친 뒤 시작합니다. Google 검색을 빼고 내 자료만으로도 조사할 수 있고, 보통 5~10분 걸립니다.",
+            "sources": [
+              {
+                "title": "Use Deep Research in Gemini Apps",
+                "url": "https://support.google.com/gemini/answer/15719111?hl=en"
+              }
+            ],
+            "methodId": "google-deep-research"
+          }
+        }
+      },
+      {
+        "key": "schedule",
+        "label": "정해진 때에 알아서 실행",
+        "what": "매일·매주 또는 조건이 맞을 때 할 일을 실행",
+        "cells": {
+          "openai": {
+            "name": "예약 작업",
+            "note": "동시에 켜 둘 수 있는 작업은 Free·Go 3개, Plus 5개, Business·Edu 10개, Pro·Enterprise 15개입니다. 무료는 하루 한 번까지 반복합니다.",
+            "sources": [
+              {
+                "title": "Scheduled tasks in ChatGPT",
+                "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt"
+              }
+            ],
+            "methodId": "openai-scheduled-tasks"
+          },
+          "anthropic": {
+            "name": "예약 작업",
+            "note": "Scheduled에서 만들거나 대화에서 주기와 함께 요청합니다. 매시간·매일·매주·평일·수동 중 고르고, 보통 컴퓨터가 꺼져 있어도 실행됩니다. 유료 요금제.",
+            "sources": [
+              {
+                "title": "Schedule recurring tasks in Claude Cowork",
+                "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"
+              }
+            ],
+            "methodId": "anthropic-scheduled-tasks"
+          },
+          "google": {
+            "name": "작업(Task) · 예약 작업",
+            "note": "'언제(조건) + 무엇을(작업)'으로 요청합니다. 채팅의 예약 작업은 최대 10개, 작업(Task)은 Google AI Pro·Ultra 구독이 필요합니다.",
+            "sources": [
+              {
+                "title": "Manage your tasks & workflows in Gemini Apps",
+                "url": "https://support.google.com/gemini/answer/17094507?hl=en"
+              },
+              {
+                "title": "Schedule actions in Gemini Apps",
+                "url": "https://support.google.com/gemini/answer/16316416?hl=en"
+              }
+            ],
+            "methodId": "google-tasks-schedules"
+          }
+        }
+      }
+    ],
+    "notes": [
+      "API의 시스템 지시에 해당하는 자리는 앱에서 맞춤 지시·프로젝트·Gem(스킬)·노트북 지시가 대신합니다. 여기에 넣는 지시문 안에서도 제목이나 태그로 구획을 나눌 수 있습니다.",
+      "메모리는 편하지만 오래된 정보가 섞일 수 있습니다. 가끔 '나에 대해 무엇을 기억하고 있어?'라고 물어 확인하고, 남기지 않을 대화는 임시·시크릿 채팅을 쓰세요.",
+      "딥 리서치류 기능은 시간이 오래 걸리고 사용 한도가 따로 있거나 빨리 줄어듭니다. 간단한 사실 확인은 일반 대화가 더 빠릅니다.",
+      "예약 작업은 사람이 지켜보지 않을 때 실행되므로, 지시에 무엇을 언제 어떤 형식으로 알려 줄지까지 적어 두세요."
+    ]
   }
 }

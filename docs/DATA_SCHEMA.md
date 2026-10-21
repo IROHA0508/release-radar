@@ -78,12 +78,31 @@
     }],
     "templates": [{ "title": "...", "when": "...", "text": "...", "source": { "title": "...", "url": "https://..." } }],
     "watch": [{ "title": "...", "url": "https://...", "hash": "(자동)", "checkedAt": "(자동)", "changedAt": "(자동)" }]
-  }]
+  }],
+  "structure": {
+    "title": "태그·구분자는 웹 앱에서도 쓸 수 있나요?", "answer": "...",
+    "rows": [{ "company": "openai", "recommended": "...", "inApp": "...", "saveIn": "...", "sources": [{ "title": "...", "url": "https://..." }] }],
+    "notes": ["..."], "example": { "title": "...", "when": "...", "text": "..." }
+  },
+  "appFeatures": {
+    "title": "태그 말고 앱에 있는 기능들: 세 앱 대응표", "intro": "...", "checkedAt": "(자동)", "updatedAt": "(자동)",
+    "rows": [{
+      "key": "memory", "label": "지난 대화 기억", "what": "...",
+      "cells": {
+        "openai": { "name": "메모리", "note": "...", "sources": [{ "title": "...", "url": "https://..." }],
+                    "methodId": "openai-memory", "updatedAt": "(자동)" },
+        "anthropic": { "...": "..." }, "google": { "...": "..." }
+      }
+    }],
+    "notes": ["..."]
+  }
 }
 ```
 
-- `category`: `기본 작성법`, `구조와 형식`, `예시 활용`, `추론과 effort`, `긴 문서와 자료`, `에이전트와 코딩`, `도구와 API 설정`, `이미지·영상·음성` 중 하나
+- `category`: `기본 작성법`, `구조와 형식`, `앱 기능과 설정`, `예시 활용`, `추론과 effort`, `긴 문서와 자료`, `에이전트와 코딩`, `도구와 API 설정`, `이미지·영상·음성` 중 하나
 - `watch`: 매일 내용을 확인하는 공식 프롬프트 가이드 페이지. 본문이 바뀌면 Claude가 새 권고만 골라 `methods`에 추가하거나 고칩니다.
+- `structure`: '공통 원칙' 탭의 '태그·구분자는 웹 앱에서도 쓸 수 있나요?' 회사별 비교표.
+- `appFeatures`: '공통 원칙' 탭의 앱 기능 대응표(지시 저장, 프로젝트·노트북, 메모리, 캔버스·아티팩트, 딥 리서치, 예약 작업). 줄마다 `cells`에 세 회사 칸이 모두 있어야 하고, 칸마다 공식 도움말 `sources`가 필요합니다. `methodId`가 있으면 '방법 보기'로 그 회사 탭의 방법 카드로 이동합니다. 칸의 근거 페이지가 `watch`에 있고 본문이 바뀌면, Claude가 그 칸이 아직 맞는지 다시 확인해 고칩니다(고친 칸의 숫자는 모두 원문에 있어야 반영).
 - `addedAt`이 14일 이내인 방법은 화면에 NEW로 표시됩니다.
 - `before`는 흔한 덜 좋은 요청(사이트가 쓴 예), `after`는 개선한 요청입니다. `exampleFromSource: true`는 `after`가 원문 예시를 옮긴 것이라는 뜻이며 화면에 '원문 예시'로 표시됩니다. `before`에는 적용되지 않습니다.
 

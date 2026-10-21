@@ -124,6 +124,30 @@ def check_guides(g, news_ids):
         for w in v.get("watch", []):
             if not str(w.get("url", "")).startswith("https://"):
                 err(where, f"{co}: watch url은 https로 시작해야 함")
+    af = g.get("appFeatures")
+    if af is not None:
+        if not af.get("title") or not af.get("rows"):
+            err(where, "appFeatures에 title/rows 없음")
+        keys = set()
+        for r in af.get("rows", []):
+            key = r.get("key", "")
+            if not ID_RE.match(key) or key in keys:
+                err(where, f"appFeatures key 형식 오류 또는 중복: '{key}'")
+            keys.add(key)
+            if not r.get("label"):
+                err(where, f"appFeatures {key}: label 없음")
+            cells = r.get("cells") or {}
+            if set(cells) != COMPANIES:
+                err(where, f"appFeatures {key}: cells는 openai/anthropic/google 세 칸이어야 함")
+            for co, c in cells.items():
+                if not c.get("name") or not c.get("note"):
+                    err(where, f"appFeatures {key}.{co}: name/note 없음")
+                if not c.get("sources") or not all(str(s_.get("url", "")).startswith("https://") for s_ in c["sources"]):
+                    err(where, f"appFeatures {key}.{co}: 근거(sources) URL이 없거나 https가 아님")
+                if c.get("methodId") and c["methodId"] not in seen:
+                    err(where, f"appFeatures {key}.{co}: methodId '{c['methodId']}' 방법이 없음")
+                if c.get("updatedAt") and not DATE_RE.match(c["updatedAt"]):
+                    err(where, f"appFeatures {key}.{co}: updatedAt은 YYYY-MM-DD")
     st = g.get("structure")
     if st is not None:
         if not st.get("title") or not st.get("rows"):

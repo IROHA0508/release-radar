@@ -3,7 +3,9 @@
 Two ways new guidance gets in:
 1. Every day the official prompting guide pages listed under each company's "watch" are read. When a
    page's text changed since the last check, Claude compares it with the methods we already show and
-   proposes a few additions or corrections, which are checked and merged.
+   proposes a few additions or corrections, which are checked and merged. If the page is the source of
+   cells in the app feature map ("appFeatures": ChatGPT/Claude/Gemini features side by side), those cells
+   are re-checked against the new text too; every number in a corrected cell must be on the page.
 2. When the news pipeline adds a "활용 팁" item, Claude picks out up to two prompting methods from that
    article for the company's guide.
 Every new or changed method keeps its source link and a date, so the page can mark it as new.
@@ -43,6 +45,23 @@ GUIDE_UPDATE = {
         "reason": STR,
     },
 }
+
+FEATURE_UPDATE = {
+    "type": "object", "additionalProperties": False, "required": ["update", "reason"],
+    "properties": {
+        "update": {"type": "array", "items": {
+            "type": "object", "additionalProperties": False, "required": ["key", "name", "note"],
+            "properties": {"key": STR, "name": STR, "note": STR}}},
+        "reason": STR,
+    },
+}
+
+FEATURE_RULES = """\
+너는 '릴리스 레이더' 사이트의 '앱 기능 대응표'를 관리한다. 표의 칸마다 한 회사 앱 기능의 이름(name)과 1~2문장 설명(note)이 있다.
+아래 공식 도움말 페이지가 바뀌었다. 이 페이지를 근거로 한 칸 중 원문과 맞지 않게 된 칸만 update에 넣어라(key는 그대로).
+- 원문에 있는 사실만 쓴다. 수치·요금제·메뉴 이름을 지어내지 않는다. 기능 이름이 바뀌었으면 name도 고친다.
+- 맞는 칸은 넣지 않는다. 고칠 것이 없으면 빈 배열. note는 자연스러운 한국어 존댓말 서술, 200자 이내.
+"""
 
 RULES = """\
 너는 '릴리스 레이더' 사이트의 프롬프트 가이드 편집자다. 가이드는 회사별로 '방법(method)' 카드를 모아 둔다.
@@ -171,12 +190,60 @@ def check_watch(claude, today: date, now_text: str, force: bool = False, fetch=N
                             "이 공식 가이드 페이지 내용이 지난 확인 이후 바뀌었다. 새로 생긴 권고나 바뀐 권고만 반영해라.")
             report["changed"].append(w["url"])
             report["changes"] += merge(vendor, proposal, source, text, today)
+            report["changes"] += refresh_features(claude, data, vendor["company"], w["url"], text, today)
             w["hash"], w["changedAt"] = h, today.isoformat()
     if report["checked"]:
         data["updatedAt"] = today.isoformat() if report["changes"] else data.get("updatedAt", "")
         data["checkedAt"] = now_text
         save(data)
     return report
+
+
+def feature_cells(data: dict, company: str, url: str) -> list[tuple[dict, dict]]:
+    """(row, cell) pairs of the app feature map that cite this page for this company."""
+    out = []
+    for row in (data.get("appFeatures") or {}).get("rows", []):
+        c = (row.get("cells") or {}).get(company)
+        if c and any(s.get("url") == url for s in c.get("sources", [])):
+            out.append((row, c))
+    return out
+
+
+def refresh_features(claude, data: dict, company: str, url: str, page_text: str, today: date) -> list[str]:
+    """When a watched help page changed, re-check the feature map cells that cite it."""
+    pairs = feature_cells(data, company, url)
+    if not pairs:
+        return []
+    cells = [{"key": r["key"], "label": r.get("label", ""), "name": c["name"], "note": c["note"]} for r, c in pairs]
+    user = (f"회사: {company}\n원문: {url}\n\n# 이 페이지를 근거로 한 칸\n{json.dumps(cells, ensure_ascii=False, indent=1)}\n\n"
+            f"# 원문\n{page_text[:50000]}")
+    proposal = claude.json_call(model=config.SUMMARY_MODEL, system=FEATURE_RULES, user=user, schema=FEATURE_UPDATE,
+                                max_tokens=2000)
+    return apply_feature_updates(data, company, pairs, proposal, page_text, today)
+
+
+def apply_feature_updates(data: dict, company: str, pairs, proposal: dict, page_text: str, today: date) -> list[str]:
+    pool = guard.numbers_in(page_text)
+    by_key = {r["key"]: (r, c) for r, c in pairs}
+    changes = []
+    for u in (proposal.get("update") or [])[:len(pairs)]:
+        hit = by_key.get(u.get("key"))
+        name, note = (u.get("name") or "").strip(), (u.get("note") or "").strip()
+        if hit is None or not name or not note or len(note) > 300:
+            continue
+        row, c = hit
+        if (name, note) == (c["name"], c["note"]):
+            continue
+        # Limits and counts matter here (character limits, task counts), so every number must be on the page.
+        if not all(any(abs(n - p) < 1e-6 for p in pool) for n in guard.numbers_in(f"{name} {note}")):
+            changes.append(f"제외(원문에 없는 수치): 대응표 [{company}] {row.get('label')}")
+            continue
+        c.update(name=name, note=note, updatedAt=today.isoformat())
+        data["appFeatures"]["updatedAt"] = today.isoformat()
+        changes.append(f"대응표 수정: [{company}] {row.get('label')} → {name}")
+    if pairs:
+        data["appFeatures"]["checkedAt"] = today.isoformat()
+    return changes
 
 
 def from_tip(claude, item: dict, article, today: date) -> list[str]:
