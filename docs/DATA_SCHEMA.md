@@ -156,9 +156,10 @@
 - `level`: `기초`, `중급`, `심화`
 - `example.type`: `code`(코드, 가로 스크롤), `prompt`(프롬프트), `scene`(구성 예시)
 - `prerequisites`, `related`: 같은 파일의 다른 기술 id. 화면에서 링크로 표시됩니다.
-- `news`: 이 기술을 다룬 사이트 소식 id. radar 항목은 이 소식 날짜로 '최근 언급'을 계산합니다.
+- `news`: 이 기술을 다룬 사이트 소식 id(관련 소식 링크).
 - `sources`: 공식 출처 1개 이상 필수(https).
-- radar 항목 전용: `status`(`관찰`·`시도`·`랩`·`보관`), `companies`(이 기술을 다룬 회사), `status`가 `랩`이면 `lab`에 학습 경로 항목 id
+- radar 항목 전용: `date`(공식적으로 처음 소개된 날, `YYYY-MM-DD`, 2025-01-01 이후 필수), `dateNote`(선택, 날짜에 대한 안내), `status`(`관찰`·`시도`·`랩`·`보관`), `companies`(이 기술을 다룬 회사), `status`가 `랩`이면 `lab`에 학습 경로 항목 id
+- radar 목록은 `date` 최신순으로 보여 주고, 화면의 기간 선택(연도·월)도 `date` 기준입니다.
 - radar 항목 중 `관찰` 단계이면서 두 회사 이상이 다루거나 근거 소식이 3건 이상이면 화면에 '시도 추천'이 붙습니다(지침 9.1).
 - `groups`에는 `path`와 `radar`가 하나씩 있어야 하고, 각각 `title`과 `intro`가 필요합니다.
 - `tech`, `lab`은 소식 id 예약어입니다.

@@ -194,6 +194,7 @@ TECH_GROUPS = {"path", "radar"}
 TECH_LEVELS = {"기초", "중급", "심화"}
 TECH_STAGES = {"관찰", "시도", "랩", "보관"}
 TECH_EXAMPLE_TYPES = {"code", "prompt", "scene"}
+TECH_FIRST_DATE = "2025-01-01"  # 최신 활용 기술의 수집 범위 시작일
 TECH_REQUIRED = ["id", "group", "name", "en", "level", "definition", "why", "how", "effects", "example", "limits",
                  "prerequisites", "related", "sources", "news", "verifiedAt"]
 
@@ -259,6 +260,10 @@ def check_tech(t, news_ids):
                 err(w, f"status는 {sorted(TECH_STAGES)} 중 하나: {i.get('status')}")
             if not i.get("companies") or any(c not in COMPANIES for c in i["companies"]):
                 err(w, f"companies는 {sorted(COMPANIES)} 중 하나 이상")
+            if not DATE_RE.match(str(i.get("date", ""))) or str(i.get("date")) < TECH_FIRST_DATE:
+                err(w, f"radar 항목은 공식 소개일 date(YYYY-MM-DD, {TECH_FIRST_DATE} 이후)가 필요함: {i.get('date')}")
+            if "dateNote" in i and not str(i["dateNote"]).strip():
+                err(w, "dateNote가 비어 있음")
             if i.get("status") == "랩" and i.get("lab") not in known:
                 err(w, "status가 '랩'이면 lab에 학습 경로 항목 id가 필요함")
     if len(orders) != len(set(orders)):
