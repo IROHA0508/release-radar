@@ -123,3 +123,37 @@
 - `status`: `available`(표에 표시), `deprecated`(표에 '지원 종료 예정'으로 표시), `unlisted`(공식 가격 페이지에 없음 → 아래 별도 목록)
 - 가격은 기본 등급 텍스트 토큰, 100만 토큰당 USD. 공식 가격 페이지 문구 그대로 씁니다.
 - 매일 한 번 공식 가격 페이지를 읽어 확인합니다. 가격 페이지에서 두 번 연속 보이지 않는 모델은 `unlisted`가 됩니다.
+
+## data/tech.json (AI 활용 기술 탭)
+
+학습 경로(`group: "path"`)와 최신 활용 기술(`group: "radar"`)을 한 파일에 담습니다. 화면 주소는 목록 `#tech`, 상세 `#tech/<id>`입니다.
+
+```json
+{
+  "updatedAt": "2026-10-21",
+  "intro": "탭 맨 위 소개 문장",
+  "groups": [{ "key": "path", "title": "학습 경로", "en": "learning path", "desc": "..." }],
+  "items": [{
+    "id": "tool-use", "group": "path", "order": 3,
+    "name": "도구 호출", "en": "Tool use · Function calling", "level": "기초",
+    "definition": "정의 (필수)", "why": "왜 필요한가 (필수)",
+    "how": ["어떻게 활용하나 (필수)"], "effects": ["기대 효과 (필수)"],
+    "example": { "title": "...", "type": "code", "text": "..." },
+    "limits": ["한계와 주의점"],
+    "prerequisites": ["llm-api"], "related": ["agent-loop"],
+    "sources": [{ "title": "...", "url": "https://..." }],
+    "news": ["gemini-3-5-flash-developer-guide"],
+    "verifiedAt": "2026-10-21"
+  }]
+}
+```
+
+- `group`: `path`(학습 경로, `order` 정수 필수·중복 금지) 또는 `radar`(최신 활용 기술)
+- `level`: `기초`, `중급`, `심화`
+- `example.type`: `code`(코드, 가로 스크롤), `prompt`(프롬프트), `scene`(구성 예시)
+- `prerequisites`, `related`: 같은 파일의 다른 기술 id. 화면에서 링크로 표시됩니다.
+- `news`: 이 기술을 다룬 사이트 소식 id. radar 항목은 이 소식 날짜로 '최근 언급'을 계산합니다.
+- `sources`: 공식 출처 1개 이상 필수(https).
+- radar 항목 전용: `status`(`관찰`·`시도`·`랩`·`보관`), `companies`(이 기술을 다룬 회사), `status`가 `랩`이면 `lab`에 학습 경로 항목 id
+- radar 항목 중 `관찰` 단계이면서 두 회사 이상이 다루거나 근거 소식이 3건 이상이면 화면에 '시도 추천'이 붙습니다(지침 9.1).
+- `tech`는 소식 id 예약어입니다.

@@ -1,0 +1,1377 @@
+{
+  "updatedAt": "2026-10-21",
+  "intro": "AI를 활용하는 기술을 기초부터 차례로 정리한 '학습 경로'와, 세 회사의 공식 활용 팁에서 새로 떠오르는 기술을 모은 '최신 활용 기술'입니다. 각 기술은 정의, 필요한 이유, 활용 방법, 기대 효과를 공식 출처와 함께 정리했습니다.",
+  "groups": [
+    {
+      "key": "path",
+      "title": "학습 경로",
+      "en": "learning path",
+      "desc": "앞 기술이 뒤 기술의 재료가 되도록 번호 순서로 배치했습니다. 이미 아는 단계는 건너뛰어도 됩니다. 단계마다 직접 실행해 보는 랩을 차례로 추가할 예정입니다."
+    },
+    {
+      "key": "radar",
+      "title": "최신 활용 기술",
+      "en": "technique radar",
+      "desc": "사이트에 올라온 공식 '활용 팁' 소식에서 반복해 등장하는 기술입니다. 관찰은 지켜보는 단계, 시도는 직접 써 볼 단계, 랩은 학습 경로의 랩에 포함된 기술입니다."
+    }
+  ],
+  "items": [
+    {
+      "group": "path",
+      "order": 0,
+      "id": "setup",
+      "name": "실습 환경 격리와 복구",
+      "en": "Environment isolation & recovery",
+      "level": "기초",
+      "prerequisites": [],
+      "related": [
+        "llm-api"
+      ],
+      "definition": "실습에 쓰는 Python과 패키지를 내 컴퓨터의 다른 환경과 분리된 전용 공간(가상환경이나 컨테이너)에 두고, 코드는 git으로 관리해 언제든 처음 상태로 되돌릴 수 있게 만드는 작업 방식입니다.",
+      "why": "AI 실습은 SDK, 임베딩 라이브러리, 서버 도구처럼 설치할 패키지가 많고 버전도 자주 바뀝니다. 한 환경에 모두 설치하면 기존 딥러닝 환경이나 시스템 PATH와 충돌하고, 어디가 망가졌는지 찾기 어려워 실습 자체를 망설이게 됩니다. 망가지는 범위를 처음부터 좁혀 두면 오류가 나도 '지우고 다시 만들기'로 끝납니다.",
+      "how": [
+        "랩마다 requirements.txt를 두고 랩 전용 가상환경(venv·conda)에만 설치",
+        "실험 전에 git 커밋, 코드가 망가지면 git restore로 되돌리기",
+        "API 키는 .env에만 두고 .gitignore에 등록",
+        "환경째 꼬이면 지우고 requirements.txt로 다시 만들기, 더 깔끔하게 하려면 Dev Container나 Codespaces로 같은 환경 열기"
+      ],
+      "effects": [
+        "오류가 나도 몇 분 안에 처음 상태로 복구",
+        "기존 딥러닝용 환경과 시스템 설정을 건드리지 않음",
+        "링크를 받은 사람도 같은 환경을 그대로 재현"
+      ],
+      "example": {
+        "title": "랩 전용 환경 만들기와 되돌리기 (WSL2 Ubuntu)",
+        "type": "code",
+        "text": "# 랩 전용 환경 만들기\npython3 -m venv .venv && source .venv/bin/activate\npip install -r requirements.txt\nwhich python        # .venv 안의 python인지 확인\n\n# 환경이 꼬였을 때: 통째로 지우고 다시\ndeactivate && rm -rf .venv\npython3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt\n\n# 코드가 망가졌을 때: 마지막 커밋으로\ngit stash           # 지금 변경을 잠시 치워 두기 (나중에 git stash pop)"
+      },
+      "limits": [
+        "가상환경은 Python 패키지만 분리합니다. CUDA 같은 시스템 라이브러리 충돌까지 막으려면 컨테이너가 필요합니다.",
+        "git restore는 커밋하지 않은 변경을 되살릴 수 없게 지웁니다. 먼저 git stash로 치워 두는 편이 안전합니다.",
+        "Codespaces는 개인 Free 계정 기준 월 120시간 단위(2코어 머신은 실제 약 60시간)를 넘으면 결제 수단이 없을 때 사용이 차단됩니다."
+      ],
+      "sources": [
+        {
+          "title": "About GitHub Codespaces billing (GitHub Docs)",
+          "url": "https://docs.github.com/en/billing/concepts/product-billing/github-codespaces"
+        },
+        {
+          "title": "Google Colab FAQ",
+          "url": "https://research.google.com/colaboratory/faq.html"
+        }
+      ],
+      "news": [],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 1,
+      "id": "llm-api",
+      "name": "모델 API 기초",
+      "en": "LLM API basics",
+      "level": "기초",
+      "prerequisites": [
+        "setup"
+      ],
+      "related": [
+        "structured-output",
+        "context-eng",
+        "tokenomics"
+      ],
+      "definition": "코드에서 요청을 보내 모델에게 메시지를 주고 답을 받는 가장 기본 단위입니다. 요청에는 모델 ID, 지시(시스템 프롬프트), 대화 메시지, 최대 출력 토큰 같은 설정이 들어가고, 응답에는 답과 함께 사용한 입력·출력 토큰 수가 돌아옵니다.",
+      "why": "채팅 앱은 대화 기록 관리, 도구 연결, 비용 계산을 대신 해 줍니다. 에이전트, RAG, MCP는 모두 이 API 호출을 반복하고 조합한 것이라, API가 실제로 무엇을 주고받는지 알아야 뒤의 기술이 왜 그렇게 설계됐는지 이해할 수 있습니다. 특히 모델 자체는 요청 사이에 기억이 없어서, 대화를 이어 가려면 기록을 다시 보내거나(Anthropic Messages API) 서버에 저장된 이전 응답을 가리켜야(OpenAI Responses API) 한다는 점이 이후 모든 기술의 출발점입니다.",
+      "how": [
+        "채팅 앱 없이 내 프로그램에 요약·분류·번역 기능 붙이기",
+        "응답의 usage(토큰 수)로 호출 1회 비용 계산하기",
+        "스트리밍으로 긴 답을 생성되는 대로 화면에 표시",
+        "모델과 추론 수준을 바꿔 같은 질문의 품질·비용 비교"
+      ],
+      "effects": [
+        "채팅 앱이 숨기던 동작(기록 전송, 토큰 과금)을 직접 이해",
+        "작업에 맞는 모델을 비용 기준으로 고를 수 있음",
+        "이후 모든 랩의 공통 코드 뼈대 확보"
+      ],
+      "example": {
+        "title": "같은 질문을 두 회사 API로 보내기 (Python)",
+        "type": "code",
+        "text": "# Anthropic (Messages API) — ANTHROPIC_API_KEY 환경 변수 사용\nimport anthropic\nclient = anthropic.Anthropic()\nmsg = client.messages.create(\n    model=\"claude-haiku-5-5\",\n    max_tokens=300,\n    messages=[{\"role\": \"user\", \"content\": \"RAG를 한 문장으로 설명해 줘\"}],\n)\nprint(\"\".join(b.text for b in msg.content if b.type == \"text\"))\nprint(msg.usage.input_tokens, msg.usage.output_tokens)\n\n# OpenAI (Responses API) — OPENAI_API_KEY 환경 변수 사용\nfrom openai import OpenAI\nclient = OpenAI()\nresp = client.responses.create(model=\"gpt-6-luna\", input=\"RAG를 한 문장으로 설명해 줘\")\nprint(resp.output_text)\nprint(resp.usage.input_tokens, resp.usage.output_tokens)"
+      },
+      "limits": [
+        "키가 코드나 저장소에 들어가면 남이 대신 과금할 수 있습니다. 노출되면 바로 폐기하고 새로 발급하세요.",
+        "대화가 길어질수록 매 요청마다 보내는 입력 토큰이 늘어 비용이 커집니다.",
+        "같은 질문에도 답이 매번 조금씩 달라질 수 있습니다."
+      ],
+      "sources": [
+        {
+          "title": "Get started with Claude (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/get-started"
+        },
+        {
+          "title": "Developer quickstart (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/quickstart"
+        },
+        {
+          "title": "Conversation state 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/conversation-state"
+        }
+      ],
+      "news": [
+        "gpt-6-model-guide",
+        "openai-retained-reasoning-compaction"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 2,
+      "id": "structured-output",
+      "name": "구조화된 출력",
+      "en": "Structured outputs",
+      "level": "기초",
+      "prerequisites": [
+        "llm-api"
+      ],
+      "related": [
+        "tool-use",
+        "evals"
+      ],
+      "definition": "모델의 답을 자유로운 문장이 아니라 미리 정한 JSON 스키마(필드 이름, 타입, 필수 여부)에 맞는 데이터로 받는 기능입니다.",
+      "why": "프로그램은 '대략 이런 형식'인 문장을 안정적으로 처리하지 못합니다. 형식이 한 번만 어긋나도 파싱이 깨지고 그 뒤 단계가 모두 멈춥니다. 스키마를 강제하면 모델 출력을 일반 함수의 반환값처럼 다룰 수 있고, 이것이 도구 호출의 바탕이 됩니다.",
+      "how": [
+        "발표문·문서에서 날짜, 수치, 이름을 뽑아 표로 만들기",
+        "문의나 게시물을 정해진 라벨로 분류",
+        "이 사이트처럼 요약을 data/news/<id>.json 형식으로 작성",
+        "평가에서 심판 모델의 점수를 숫자 필드로 받기"
+      ],
+      "effects": [
+        "파싱 오류를 처리하는 코드가 줄어듦",
+        "저장·검증·화면 표시 같은 다음 단계로 바로 연결",
+        "검증 스크립트로 결과를 자동 점검"
+      ],
+      "example": {
+        "title": "발표문에서 모델 정보를 뽑을 때 쓰는 스키마",
+        "type": "code",
+        "text": "{\n  \"type\": \"object\",\n  \"properties\": {\n    \"company\": { \"type\": \"string\", \"enum\": [\"openai\", \"anthropic\", \"google\"] },\n    \"model\":   { \"type\": \"string\" },\n    \"date\":    { \"type\": \"string\", \"description\": \"YYYY-MM-DD\" },\n    \"input_price_per_1m\": { \"type\": [\"number\", \"null\"] }\n  },\n  \"required\": [\"company\", \"model\", \"date\", \"input_price_per_1m\"],\n  \"additionalProperties\": false\n}"
+      },
+      "limits": [
+        "형식이 맞아도 값이 맞다는 보장은 없습니다. 원문에 없는 수치를 채울 수 있어 따로 대조가 필요합니다(이 사이트의 guard.py가 하는 일).",
+        "지나치게 복잡한 스키마는 지원하지 않는 키워드가 있을 수 있어 각 사 문서의 지원 범위를 확인해야 합니다.",
+        "모르는 값까지 억지로 채우지 않도록 null을 허용하세요."
+      ],
+      "sources": [
+        {
+          "title": "Structured outputs (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs"
+        },
+        {
+          "title": "Structured output (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/structured-output"
+        }
+      ],
+      "news": [
+        "gemini-3-1-flash-lite"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 3,
+      "id": "tool-use",
+      "name": "도구 호출",
+      "en": "Tool use · Function calling",
+      "level": "기초",
+      "prerequisites": [
+        "llm-api",
+        "structured-output"
+      ],
+      "related": [
+        "agent-loop",
+        "mcp",
+        "programmatic-tool-calling"
+      ],
+      "definition": "모델에게 쓸 수 있는 함수의 이름, 설명, 입력 스키마를 알려 주면, 모델이 필요할 때 '이 함수를 이 인자로 불러 달라'는 요청을 돌려줍니다. 내 프로그램이 실제로 실행한 결과를 다시 모델에게 넘기면 모델이 그 결과를 보고 최종 답을 씁니다.",
+      "why": "모델은 학습 이후의 정보, 내 데이터베이스, 계산기, 파일을 직접 볼 수 없습니다. 도구 호출은 '무엇을 할지 판단'은 모델이, '실제 실행'은 내 코드가 맡도록 역할을 나눠 모델이 바깥 세계와 상호작용하게 합니다. 실행 주체가 내 코드라서 권한과 검증을 내가 통제할 수 있습니다.",
+      "how": [
+        "날씨, 환율, 사내 DB 같은 실시간 정보 조회",
+        "계산이나 코드 실행처럼 모델이 틀리기 쉬운 일을 함수에 맡기기",
+        "메일 초안 저장, 일정 등록 같은 행동 실행",
+        "이 사이트 가격표처럼 공식 페이지를 읽어 오는 함수 연결"
+      ],
+      "effects": [
+        "최신 정보와 내 데이터로 답할 수 있음",
+        "계산·조회 정확도 향상",
+        "에이전트와 MCP의 기본 단위를 이해"
+      ],
+      "example": {
+        "title": "도구 호출 한 번의 왕복 (Anthropic 형식)",
+        "type": "code",
+        "text": "# 1) 도구 정의를 요청에 함께 보낸다\ntools = [{\n    \"name\": \"get_price\",\n    \"description\": \"모델 API ID를 받아 100만 토큰당 입력·출력 가격(USD)을 돌려준다\",\n    \"input_schema\": {\"type\": \"object\",\n                     \"properties\": {\"api_id\": {\"type\": \"string\"}},\n                     \"required\": [\"api_id\"]},\n}]\n# 2) 모델이 stop_reason == \"tool_use\"와 함께 tool_use 블록 {id, name, input}을 돌려준다\n# 3) 내 코드가 get_price(**input)을 실행한다\n# 4) 결과를 tool_result 블록(tool_use_id=id)으로 다시 보내면 모델이 최종 답을 쓴다"
+      },
+      "limits": [
+        "모델은 함수를 '요청'만 합니다. 실행 전에 인자를 검증하지 않으면 잘못된 값이나 위험한 행동이 그대로 실행됩니다.",
+        "도구 설명이 모호하면 엉뚱한 도구를 고르거나 인자를 지어냅니다. 도구 설명이 곧 프롬프트입니다.",
+        "도구가 많을수록 정의가 매 요청 입력 토큰을 차지합니다.",
+        "회사마다 형식이 다릅니다. 예를 들어 Gemini는 함수 결과를 돌려줄 때 해당 호출의 id와 name을 맞춰 넣어야 합니다."
+      ],
+      "sources": [
+        {
+          "title": "Tool use with Claude (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"
+        },
+        {
+          "title": "Function calling (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/function-calling"
+        }
+      ],
+      "news": [
+        "gemini-3-5-flash-developer-guide",
+        "openai-gpt-5-6-builders-guide"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 4,
+      "id": "agent-loop",
+      "name": "AI 에이전트 만들기",
+      "en": "Agent loop",
+      "level": "중급",
+      "prerequisites": [
+        "tool-use"
+      ],
+      "related": [
+        "harness",
+        "context-eng",
+        "multi-agent",
+        "agent-trace-eval"
+      ],
+      "definition": "도구 호출을 한 번으로 끝내지 않고, 모델이 '도구 요청 → 실행 결과 확인 → 다음 행동 결정'을 목표를 이룰 때까지 스스로 반복하게 만든 프로그램입니다. 핵심은 반복문 하나와 종료 조건입니다.",
+      "why": "실제 일은 한 번의 조회로 끝나지 않습니다. 파일을 찾고, 읽고, 고치고, 테스트하고, 실패하면 다시 고치는 것처럼 앞 결과에 따라 다음 행동이 달라지는 일은 사람이 단계마다 지시하기 어렵습니다. 에이전트는 이 판단을 모델에게 맡겨 여러 단계짜리 작업을 처리합니다.",
+      "how": [
+        "코드베이스를 탐색해 버그를 찾아 고치고 테스트까지 실행",
+        "여러 웹페이지를 조사해 보고서 작성",
+        "이 사이트 백엔드처럼 감지 → 분류 → 요약 → 검사 흐름 자동화",
+        "공식 SDK(Claude Agent SDK, OpenAI Agents SDK, Google ADK)로 같은 루프를 더 적은 코드로 구현"
+      ],
+      "effects": [
+        "여러 단계 작업을 사람 개입 없이 처리",
+        "SDK 내부 동작을 이해해 문제를 직접 디버깅",
+        "하네스와 멀티 에이전트로 확장할 기반"
+      ],
+      "example": {
+        "title": "에이전트 루프의 뼈대 (의사 코드)",
+        "type": "code",
+        "text": "messages = [{\"role\": \"user\", \"content\": task}]\nfor step in range(MAX_STEPS):              # 종료 조건 1: 최대 반복\n    reply = call_model(messages, tools)\n    messages.append(reply.as_message())\n    calls = reply.tool_calls()\n    if not calls:                          # 종료 조건 2: 도구 요청 없음 = 완료\n        break\n    for c in calls:\n        result = run_tool(c.name, c.args)  # 실행은 내 코드가\n        messages.append(tool_result(c.id, result))"
+      },
+      "limits": [
+        "반복할 때마다 대화 기록이 쌓여 비용과 지연이 빠르게 늘어납니다(컨텍스트 엔지니어링이 필요한 이유).",
+        "종료 조건이 없으면 같은 도구를 계속 부르는 루프에 빠질 수 있습니다.",
+        "겉보기엔 멀쩡한 답을 내도 중간에 헛돌며 토큰을 낭비했을 수 있어, 실행 기록(트레이스)을 직접 읽어 봐야 합니다.",
+        "삭제, 전송, 결제처럼 되돌릴 수 없는 행동은 사람 확인을 거치게 해야 합니다."
+      ],
+      "sources": [
+        {
+          "title": "Function calling (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/function-calling"
+        },
+        {
+          "title": "Agent SDK overview (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/agent-sdk/overview"
+        },
+        {
+          "title": "OpenAI Agents SDK (Python)",
+          "url": "https://openai.github.io/openai-agents-python/"
+        },
+        {
+          "title": "Python Quickstart for ADK (Google)",
+          "url": "https://google.github.io/adk-docs/get-started/quickstart/"
+        }
+      ],
+      "news": [
+        "openai-retained-reasoning-compaction",
+        "google-adk-voice-agent-streaming-tools",
+        "google-agent-evaluation-beyond-vibe-check"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 5,
+      "id": "context-eng",
+      "name": "컨텍스트 엔지니어링",
+      "en": "Context engineering",
+      "level": "중급",
+      "prerequisites": [
+        "llm-api",
+        "agent-loop"
+      ],
+      "related": [
+        "compaction",
+        "harness",
+        "tokenomics",
+        "skills"
+      ],
+      "definition": "모델이 매 요청에서 보게 되는 모든 것(시스템 프롬프트, 도구 정의, 대화 기록, 불러온 문서, 도구 결과)을 한정된 자원으로 보고, 무엇을 넣고 무엇을 빼고 언제 요약할지 설계하는 일입니다. 프롬프트 문장을 다듬는 것을 넘어 입력 전체의 구성을 다룹니다.",
+      "why": "컨텍스트가 길어지면 비용과 지연이 늘고, 모델이 앞의 지시를 놓치거나 오래된 정보에 끌려갑니다. 에이전트는 반복할수록 도구 결과가 쌓이기 때문에 무엇을 남길지 정하지 않으면 긴 작업일수록 품질이 떨어집니다. Anthropic은 컨텍스트를 유한한 자원으로 보고, 원하는 결과를 낼 가능성이 가장 큰 정보만 최소한으로 담으라고 권합니다.",
+      "how": [
+        "고정 지시와 참고 자료는 앞에, 바뀌는 질문은 뒤에 둬 캐시 적중률 높이기",
+        "긴 작업은 오래된 기록을 버리지 않고 컴팩션으로 요약해 이어 가기",
+        "필요한 파일만 그때그때 불러오기(@멘션, 검색 도구)",
+        "출력이 많은 명령은 서브에이전트에서 실행하고 결론만 받기"
+      ],
+      "effects": [
+        "같은 작업을 더 적은 토큰으로 처리",
+        "긴 작업에서도 지시를 잊지 않음",
+        "캐시 할인으로 비용 절감(Claude Code 기준 캐시 읽기는 입력 가격의 0.1배)"
+      ],
+      "example": {
+        "title": "같은 작업, 다른 컨텍스트 구성",
+        "type": "scene",
+        "text": "[부풀린 구성]  매 턴: 긴 규칙 목록 + 전체 대화 원문 + 지금까지 읽은 파일 20개 + 테스트 로그 1만 줄\n[다듬은 구성]  매 턴: 짧은 지시(고정, 캐시됨) + 지금까지의 작업 요약 + 지금 고치는 파일 2개 + 실패한 테스트 3줄"
+      },
+      "limits": [
+        "요약(컴팩션)하면 세부 정보가 사라질 수 있어, 꼭 필요한 사실은 따로 파일에 적어 두는 편이 안전합니다.",
+        "작업 중간에 모델이나 설정을 바꾸면 캐시가 깨져 오히려 비용이 늘 수 있습니다.",
+        "예전 모델에 맞춰 쓴 긴 규칙이 새 세대 모델에는 방해가 될 수 있어 주기적으로 덜어 내야 합니다."
+      ],
+      "sources": [
+        {
+          "title": "Effective context engineering for AI agents (Anthropic)",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+        },
+        {
+          "title": "The new rules of context engineering for Claude 5 generation models (Anthropic)",
+          "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
+        },
+        {
+          "title": "Compaction 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/compaction"
+        },
+        {
+          "title": "Prompt caching 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-caching"
+        }
+      ],
+      "news": [
+        "claude-5-context-engineering",
+        "claude-code-session-value-tips",
+        "openai-retained-reasoning-compaction",
+        "gpt-6-model-guide"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 6,
+      "id": "harness",
+      "name": "하네스 엔지니어링",
+      "en": "Harness engineering",
+      "level": "심화",
+      "prerequisites": [
+        "agent-loop",
+        "context-eng"
+      ],
+      "related": [
+        "hooks",
+        "long-autonomy",
+        "evals",
+        "retained-reasoning"
+      ],
+      "definition": "모델을 반복 호출하고 모델의 도구 요청을 실제 실행 환경으로 연결하는 제어 루프와, 그 주변 장치(권한, 샌드박스, 컨텍스트 관리, 검증, 재시도, 기록)를 설계하는 일입니다. 같은 모델이라도 하네스에 따라 성능과 안전성이 크게 달라집니다.",
+      "why": "OpenAI는 같은 GPT-5.6 Sol도 API 설정(추론 유지와 컴팩션)을 바꾸자 ARC-AGI-3 공개 세트 점수가 약 3배 올랐다며, 벤치마크는 모델만이 아니라 하네스와 프롬프트까지 함께 측정한다고 지적했습니다. 모델을 고르는 것만큼 모델이 일하는 환경을 잘 만드는 것이 결과를 좌우합니다. Anthropic은 하네스에 '모델이 혼자 못 하는 일'에 대한 가정이 들어 있어, 모델이 좋아지면 그 가정이 낡을 수 있다고 설명합니다.",
+      "how": [
+        "도구 실행을 샌드박스와 허용 목록 안에서만 하도록 권한 경계 설정",
+        "작업 결과를 테스트·린터로 자동 검증하고, 실패하면 같은 루프에서 다시 시도",
+        "긴 작업의 중간 상태를 파일과 로그로 남겨 중단돼도 이어 가기",
+        "hooks로 꼭 지켜야 할 규칙(금지 명령, 보호 파일)을 강제"
+      ],
+      "effects": [
+        "같은 모델로 더 높은 성공률",
+        "파일 삭제, 비밀 유출 같은 사고 예방",
+        "실패 원인을 기록으로 추적"
+      ],
+      "example": {
+        "title": "하네스 설계 체크리스트",
+        "type": "scene",
+        "text": "반복 한도   최대 30스텝, 출력 토큰 상한\n권한       읽기 도구는 자동 허용 / 쓰기·삭제·네트워크는 확인 후 실행\n검증       '끝났다'고 하기 전에 테스트 실행 → 실패하면 같은 루프에서 수정\n컨텍스트    한도 근처에서 컴팩션, 결과물은 파일로 저장\n기록       모든 도구 호출과 결과를 트레이스로 남김"
+      },
+      "limits": [
+        "하네스를 촘촘하게 만들수록 새 모델에는 족쇄가 될 수 있어 모델이 바뀔 때마다 다시 점검해야 합니다.",
+        "검증이 약하면 '통과한 것처럼 보이는' 결과를 걸러내지 못합니다.",
+        "직접 만들면 코드가 많아지므로 SDK나 관리형 서비스가 대신해 주는 부분과 직접 할 부분을 구분해야 합니다."
+      ],
+      "sources": [
+        {
+          "title": "Scaling Managed Agents: Decoupling the brain from the hands (Anthropic, 2026-04-08)",
+          "url": "https://anthropic.com/engineering/managed-agents"
+        },
+        {
+          "title": "Effective context engineering for AI agents (Anthropic)",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+        },
+        {
+          "title": "Automate actions with hooks (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/hooks-guide"
+        }
+      ],
+      "news": [
+        "openai-retained-reasoning-compaction",
+        "openai-gpt-5-6-builders-guide",
+        "gemini-4-argon-overnight-codebase",
+        "openai-skills-shell-compaction-tips"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 7,
+      "id": "skills",
+      "name": "Skills (SKILL.md)",
+      "en": "Agent skills",
+      "level": "중급",
+      "prerequisites": [
+        "context-eng"
+      ],
+      "related": [
+        "agents-md-router",
+        "hooks",
+        "context-eng"
+      ],
+      "definition": "특정 작업의 절차, 규칙, 템플릿, 스크립트를 폴더 하나(SKILL.md와 보조 파일)에 묶어 두고, 평소에는 이름과 설명(description)만 모델에게 보여 주다가 관련 작업이 들어올 때만 전체 내용을 불러오게 하는 방식입니다.",
+      "why": "매번 같은 작업 설명을 프롬프트에 붙이면 토큰이 낭비되고, 시스템 프롬프트에 모두 넣으면 상관없는 작업에서도 컨텍스트를 차지합니다. 스킬은 '필요할 때만 펼쳐 보는 사용 설명서'라서 지식은 많이 두되 매 요청의 부담은 작게 유지합니다. OpenAI, Anthropic, Google 모두 SKILL.md 형식의 스킬을 공식 문서와 사례로 안내하고 있습니다.",
+      "how": [
+        "팀의 코드 리뷰 체크리스트나 배포 절차를 스킬로 만들기",
+        "보고서·문서 템플릿을 시스템 프롬프트 대신 스킬 안에 두기",
+        "모델이 자주 틀리는 함정(Gotchas)을 스킬에 계속 쌓기",
+        "이 사이트 데이터 형식에 맞춰 소식을 쓰는 스킬 만들기"
+      ],
+      "effects": [
+        "반복 설명이 사라져 프롬프트가 짧아짐",
+        "필요할 때만 로드돼 토큰 절약",
+        "같은 절차를 여러 사람과 공유"
+      ],
+      "example": {
+        "title": "이 사이트용 스킬 예시 (SKILL.md)",
+        "type": "code",
+        "text": "---\nname: release-radar-news\ndescription: 릴리스 레이더에 새 소식 JSON을 추가하거나 고칠 때 사용. 가격표·가이드 수정에는 쓰지 않음.\n---\n# 소식 작성 절차\n1. docs/DATA_SCHEMA.md 형식을 따른다\n2. 수치는 원문에 있는 값만 쓴다\n3. python3 scripts/validate_data.py 통과 후 커밋\n\n## Gotchas\n- id는 소문자·숫자·하이픈만. guide, prices, tech는 예약어"
+      },
+      "limits": [
+        "description이 넓으면 관련 없는 작업에서도 불려 오고, 모호하면 필요할 때 안 불립니다. 내용 요약이 아니라 '언제 쓰는지'를 적어야 합니다.",
+        "스킬에 넣은 스크립트는 실제로 실행되므로 남이 만든 스킬은 내용을 확인하고 써야 합니다.",
+        "예전 모델에 맞춰 길게 쓴 규칙은 새 모델에서 방해가 될 수 있습니다."
+      ],
+      "sources": [
+        {
+          "title": "Extend Claude with skills (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/skills"
+        },
+        {
+          "title": "Skill authoring best practices (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices"
+        },
+        {
+          "title": "Skills 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/tools-skills"
+        }
+      ],
+      "news": [
+        "claude-code-skills-lessons",
+        "openai-gpt-6-astra-skills-prompts",
+        "openai-skills-shell-compaction-tips",
+        "gemini-4-argon-overnight-codebase"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 8,
+      "id": "mcp",
+      "name": "MCP 서버 만들기",
+      "en": "Model Context Protocol",
+      "level": "중급",
+      "prerequisites": [
+        "tool-use"
+      ],
+      "related": [
+        "tool-use",
+        "skills",
+        "agent-loop"
+      ],
+      "definition": "AI 앱이 외부 도구와 데이터에 연결하는 방법을 표준화한 개방형 프로토콜입니다. MCP 서버는 도구(Tools), 자료(Resources), 프롬프트 템플릿(Prompts)을 제공하고, AI 앱(호스트)은 서버마다 클라이언트를 하나씩 만들어 JSON-RPC 2.0 메시지로 주고받습니다.",
+      "why": "도구 호출만 쓰면 같은 도구를 앱마다 따로 연결해야 합니다. MCP 서버로 한 번 만들면 Claude Code, Claude 데스크톱 앱, VS Code처럼 MCP를 지원하는 여러 호스트에서 그대로 쓸 수 있습니다. 도구를 만드는 쪽과 쓰는 앱이 분리되는 것이 핵심입니다.",
+      "how": [
+        "내 노트, DB, 사내 API를 Claude Code에서 바로 조회",
+        "이 사이트 데이터(data/*.json)를 검색하는 MCP 서버로 소식과 가격 질의",
+        "로컬 파일·Git 작업을 정해진 범위 안에서만 제공",
+        "원격 서버(Streamable HTTP)로 만들어 여러 사람이 공유"
+      ],
+      "effects": [
+        "한 번 만든 도구를 여러 AI 앱에서 재사용",
+        "도구 목록이 바뀌면 알림으로 클라이언트에 반영",
+        "앱별 연동 코드 중복 제거"
+      ],
+      "example": {
+        "title": "호스트와 서버가 주고받는 메시지",
+        "type": "code",
+        "text": "// 1) 도구 목록 요청\n{ \"jsonrpc\": \"2.0\", \"id\": 2, \"method\": \"tools/list\" }\n\n// 2) 도구 실행\n{ \"jsonrpc\": \"2.0\", \"id\": 3, \"method\": \"tools/call\",\n  \"params\": { \"name\": \"search_news\", \"arguments\": { \"query\": \"Haiku 5.5\" } } }\n\n// 2026-07-28 규격부터는 요청마다 params._meta에 프로토콜 버전과 클라이언트 정보가 함께 들어간다"
+      },
+      "limits": [
+        "연결한 서버의 도구 정의는 매 요청 컨텍스트를 차지하므로 지금 필요 없는 서버는 꺼 두는 편이 좋습니다.",
+        "서버가 돌려주는 내용은 신뢰할 수 없는 입력으로 다뤄야 합니다(프롬프트 인젝션 위험).",
+        "규격이 빠르게 바뀝니다. 2026-07-28 버전에서 요청마다 필요한 정보를 담는 무상태 방식으로 바뀌었고 sampling은 지원 중단(deprecated)됐습니다."
+      ],
+      "sources": [
+        {
+          "title": "Architecture overview (Model Context Protocol)",
+          "url": "https://modelcontextprotocol.io/docs/learn/architecture"
+        }
+      ],
+      "news": [
+        "claude-code-session-value-tips",
+        "claude-opus-4-7"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 9,
+      "id": "rag",
+      "name": "RAG (검색 증강 생성)",
+      "en": "Retrieval-augmented generation",
+      "level": "중급",
+      "prerequisites": [
+        "llm-api"
+      ],
+      "related": [
+        "context-eng",
+        "evals",
+        "structured-output"
+      ],
+      "definition": "질문이 들어오면 먼저 내 문서 모음에서 관련 내용을 검색하고, 찾은 내용을 프롬프트에 함께 넣어 모델이 그 근거를 보고 답하게 하는 방식입니다. 보통 문서를 조각(청크)으로 나눠 임베딩 벡터로 바꿔 두었다가, 질문과 의미가 가까운 조각을 찾습니다.",
+      "why": "모델은 학습 이후의 정보나 내 개인 문서를 모릅니다. 모든 문서를 매번 통째로 넣으면 컨텍스트가 넘치고 비용이 커집니다. RAG는 '필요한 부분만 찾아서 넣기'로 최신·개인 정보에 근거한 답을 적은 비용으로 얻게 하고, 답에 출처를 붙일 수 있게 합니다.",
+      "how": [
+        "강의 노트나 논문 PDF에 질문하는 학습 도우미",
+        "이 사이트 소식 전체에서 특정 기술을 다룬 소식 찾기",
+        "사내 문서·매뉴얼 기반 질의응답",
+        "작은 임베딩 모델로 기기 안에서 도는 온디바이스 검색"
+      ],
+      "effects": [
+        "모델이 모르는 최신·개인 정보로 답변",
+        "근거 문서를 출처로 보여 줘 검증 가능",
+        "문서 전체를 넣는 것보다 비용 절감"
+      ],
+      "example": {
+        "title": "RAG 파이프라인 4단계 (숫자는 예시 값)",
+        "type": "scene",
+        "text": "1. 분할    문서 → 500~1,000자 조각\n2. 임베딩   조각마다 벡터로 바꿔 저장\n3. 검색    질문도 벡터로 바꿔 가장 가까운 조각 5개 찾기\n4. 생성    \"아래 자료만 근거로 답하고, 자료에 없으면 모른다고 하라\" + 조각 5개 + 질문"
+      },
+      "limits": [
+        "검색이 틀리면 답도 틀립니다. 품질 문제의 상당수는 생성이 아니라 검색 단계에서 생깁니다.",
+        "조각을 자르는 방식에 따라 문맥이 끊겨 엉뚱한 조각이 검색될 수 있습니다.",
+        "자료가 부족할 때 모델이 지어내지 않도록 '모르면 모른다고' 하는 지시와 평가가 필요합니다.",
+        "미리 벡터를 만드는 방식 외에, 에이전트가 검색 도구로 필요할 때 찾아 읽는 방식도 함께 쓰입니다."
+      ],
+      "sources": [
+        {
+          "title": "Embeddings (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/embeddings"
+        },
+        {
+          "title": "EmbeddingGemma 문서 (Google AI for Developers)",
+          "url": "https://ai.google.dev/gemma/docs/embeddinggemma"
+        },
+        {
+          "title": "Effective context engineering for AI agents (Anthropic)",
+          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+        }
+      ],
+      "news": [
+        "embeddinggemma-2"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 10,
+      "id": "evals",
+      "name": "평가 (Evals)",
+      "en": "Evaluations",
+      "level": "중급",
+      "prerequisites": [
+        "agent-loop"
+      ],
+      "related": [
+        "agent-trace-eval",
+        "harness",
+        "structured-output"
+      ],
+      "definition": "프롬프트, 모델, 도구를 바꿨을 때 결과가 실제로 좋아졌는지 정해진 테스트 묶음으로 반복 측정하는 방법입니다. 테스트 케이스(과제), 여러 번 실행(시행), 채점 로직(채점기), 실행 전체 기록(트랜스크립트)으로 구성됩니다.",
+      "why": "AI 결과는 매번 조금씩 다르고, 몇 번 써 보고 '좋아진 것 같다'고 판단하면 놓치는 문제가 많습니다. Google은 수동 점검에서 똑똑해 보인 변경이 측정해 보니 지연 시간 2배, 도구 호출 환각 15% 증가로 드러날 수 있다고 경고합니다. 고정된 테스트로 숫자를 비교해야 변경의 효과를 믿을 수 있습니다.",
+      "how": [
+        "모델을 바꿀 때 기존 모델과 같은 테스트로 비교",
+        "프롬프트·스킬 수정 전후의 성공률 비교",
+        "LLM 심판으로 대량 채점하되 사람이 직접 매긴 결과와 대조",
+        "CI에 넣어 점수가 떨어지면 반영을 막기"
+      ],
+      "effects": [
+        "'느낌'이 아닌 숫자로 결정",
+        "이전보다 나빠지는 변경(회귀)을 반영 전에 발견",
+        "비용·지연까지 함께 비교해 가성비 좋은 설정 선택"
+      ],
+      "example": {
+        "title": "작은 평가 루프 (의사 코드)",
+        "type": "code",
+        "text": "tests = load_golden_set(\"evals/golden.jsonl\")   # 고정 데이터셋, 튜닝 중에는 바꾸지 않기\nfor config in [baseline, candidate]:\n    scores = []\n    for t in tests:\n        for trial in range(3):                  # 답이 매번 달라 여러 번 실행\n            out = run(config, t.input)\n            scores.append(grade(t, out))        # 정답 비교 또는 LLM 심판\n    print(config.name, mean(scores), cost(config), latency(config))"
+      },
+      "limits": [
+        "테스트가 실제 사용과 다르면 점수만 좋아지고 실제 품질은 그대로일 수 있습니다.",
+        "LLM 심판도 틀립니다. 사람이 매긴 결과와 맞을 때까지 채점 기준을 조여야 합니다.",
+        "튜닝 중에 데이터셋을 바꾸면 기준선이 움직여 변화의 원인을 알 수 없습니다."
+      ],
+      "sources": [
+        {
+          "title": "Demystifying evals for AI agents (Anthropic, 2026-01-09)",
+          "url": "https://anthropic.com/engineering/demystifying-evals-for-ai-agents"
+        },
+        {
+          "title": "Evaluating AI agents: moving past the vibe check (Google Developers Blog)",
+          "url": "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/"
+        }
+      ],
+      "news": [
+        "google-agent-evaluation-beyond-vibe-check",
+        "openai-retained-reasoning-compaction"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "path",
+      "order": 11,
+      "id": "multi-agent",
+      "name": "서브에이전트와 모델 섞어 쓰기",
+      "en": "Subagents & multi-agent",
+      "level": "심화",
+      "prerequisites": [
+        "agent-loop",
+        "context-eng"
+      ],
+      "related": [
+        "subagent-crosscheck",
+        "tokenomics",
+        "evals"
+      ],
+      "definition": "메인 에이전트가 작업 일부를 별도 컨텍스트를 가진 하위 에이전트(서브에이전트)에게 맡기고 결과만 돌려받는 구조입니다. 서브에이전트마다 다른 모델, 도구, 권한을 줄 수 있습니다.",
+      "why": "한 에이전트가 모든 일을 하면 조회 결과와 로그가 메인 컨텍스트에 쌓여 비싸고 산만해집니다. 조회처럼 기계적인 일은 작고 싼 모델에, 판단이 필요한 일은 큰 모델에 나누면 비용과 지연이 줄고, 구현과 검증을 서로 다른 모델이 맡으면 서로의 실수를 잡을 수 있습니다.",
+      "how": [
+        "검색·로그 읽기는 작은 모델 서브에이전트에 맡기고 결론만 받기",
+        "읽기 도구만 가진 검증 전용 서브에이전트로 최종 변경 점검",
+        "구현은 한 계열 모델, 리뷰는 다른 계열 모델로 교차 검증",
+        "서로 독립적인 조사 여러 개를 병렬로 실행"
+      ],
+      "effects": [
+        "메인 컨텍스트가 깨끗하게 유지",
+        "작업별로 알맞은 모델을 써 비용 절감",
+        "교차 검증으로 놓친 오류 발견"
+      ],
+      "example": {
+        "title": "Claude Code 서브에이전트 정의 예시 (.claude/agents/log-reader.md)",
+        "type": "code",
+        "text": "---\nname: log-reader\ndescription: 테스트·빌드 로그를 읽고 실패 원인만 요약할 때 사용\ntools: Read, Grep\nmodel: haiku\n---\n로그에서 실패한 테스트 이름, 오류 메시지, 의심 파일만 5줄 이내로 보고한다."
+      },
+      "limits": [
+        "서브에이전트를 띄울 때마다 토큰이 추가로 듭니다. 언제 띄울지 지시하지 않으면 필요 없이 늘어날 수 있습니다.",
+        "요약된 결과만 돌아오므로 중요한 세부가 빠질 수 있습니다.",
+        "작은 모델은 실수가 쉽게 드러나는 일에만 맡기고 판단이 필요한 일은 메인 모델에 남기라는 것이 공식 권고입니다."
+      ],
+      "sources": [
+        {
+          "title": "Create custom subagents (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/sub-agents"
+        },
+        {
+          "title": "Multi-agent 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/responses-multi-agent"
+        },
+        {
+          "title": "Antigravity 지원 모델 문서 (Google)",
+          "url": "https://antigravity.google/docs/models/"
+        }
+      ],
+      "news": [
+        "google-antigravity-multi-model-patterns",
+        "claude-opus-5-5-task-costs",
+        "openai-gpt-5-6-builders-guide"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "compaction",
+      "name": "컴팩션",
+      "en": "Compaction",
+      "level": "중급",
+      "status": "랩",
+      "lab": "context-eng",
+      "companies": [
+        "openai",
+        "anthropic"
+      ],
+      "prerequisites": [
+        "llm-api"
+      ],
+      "related": [
+        "context-eng",
+        "retained-reasoning",
+        "hooks"
+      ],
+      "definition": "대화가 컨텍스트 한도에 가까워지면 오래된 기록을 잘라 버리는 대신 핵심을 요약한 형태로 압축해, 같은 작업을 끊기지 않고 이어 가게 하는 기능입니다.",
+      "why": "긴 에이전트 작업에서 기록을 단순히 잘라 내면 앞에서 정한 결정이나 실패 이유를 잊고 같은 실수를 반복합니다. 반대로 모두 유지하면 한도를 넘거나 비용이 크게 늘어납니다. 컴팩션은 그 사이의 절충이고, OpenAI는 이를 비상 수단이 아니라 기본값으로 두라고 권합니다.",
+      "how": [
+        "OpenAI Responses API의 컴팩션으로 긴 도구 루프를 이어 가기",
+        "Claude Code에서 자리를 비우기 전 /compact로 요약(캐시가 살아 있을 때 더 저렴)",
+        "직접 만든 에이전트에서 일정 토큰을 넘으면 요약 단계를 실행"
+      ],
+      "effects": [
+        "긴 작업에서도 앞선 결정을 유지",
+        "OpenAI 사례에서 추론 유지와 함께 쓰자 출력 토큰 6배 감소",
+        "한도 초과로 작업이 끊기는 일 방지"
+      ],
+      "example": {
+        "title": "컴팩션 전후의 컨텍스트",
+        "type": "scene",
+        "text": "[컴팩션 전]  메시지 180개, 도구 결과 원문 포함 → 한도 근처\n[컴팩션 후]  \"지금까지: A안 시도 실패(이유: X). B안으로 파일 3개 수정. 남은 일: 테스트 2개\"\n             + 최근 메시지 몇 개만 원문으로 유지"
+      },
+      "limits": [
+        "요약 과정에서 세부 정보가 빠질 수 있습니다. 반드시 지켜야 할 사실은 파일에 적어 두거나 컴팩션 뒤 다시 넣어 주는 편이 안전합니다(Claude Code는 hooks로 가능).",
+        "최근 몇 턴이 원치 않는 방향으로 갔다면 그대로 요약하지 말고 되돌린 뒤(Claude Code의 /rewind) 이어 가는 편이 낫습니다."
+      ],
+      "sources": [
+        {
+          "title": "Compaction 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/compaction"
+        },
+        {
+          "title": "Shell + Skills + Compaction: Tips for long-running agents (OpenAI)",
+          "url": "https://developers.openai.com/blog/skills-shell-tips"
+        },
+        {
+          "title": "Maximizing the value of your Claude Code sessions (Anthropic)",
+          "url": "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions"
+        },
+        {
+          "title": "Automate actions with hooks (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/hooks-guide"
+        }
+      ],
+      "news": [
+        "openai-skills-shell-compaction-tips",
+        "openai-retained-reasoning-compaction",
+        "claude-code-session-value-tips"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "retained-reasoning",
+      "name": "추론 유지",
+      "en": "Retained reasoning",
+      "level": "중급",
+      "status": "관찰",
+      "companies": [
+        "openai",
+        "google"
+      ],
+      "prerequisites": [
+        "llm-api",
+        "tool-use"
+      ],
+      "related": [
+        "compaction",
+        "harness",
+        "agent-loop"
+      ],
+      "definition": "추론 모델이 답하기 전에 한 내부 추론(생각 과정)을 다음 요청에도 이어 붙여, 멀티턴 대화나 도구 루프에서 모델이 앞선 생각을 처음부터 다시 하지 않게 하는 설정입니다.",
+      "why": "도구 호출이 반복되는 동안 매 턴 추론을 버리면 모델은 앞서 세운 계획과 근거를 다시 짜 맞춰야 해서 품질이 떨어지고 토큰이 낭비됩니다. OpenAI는 같은 GPT-5.6 Sol에서 추론 유지와 컴팩션을 켜자 ARC-AGI-3 공개 세트 점수가 13.3%에서 38.3%로 오르고 출력 토큰은 6배 줄었다고 밝혔습니다.",
+      "how": [
+        "OpenAI는 Chat Completions 대신 Responses API를 쓰고, 다음 요청에 이전 응답 ID를 넘기기",
+        "대화 기록을 직접 재구성할 때 추론 항목을 빠뜨리지 않기",
+        "Gemini 3.5 Flash는 멀티턴 대화에서 중간 추론이 자동으로 유지된다고 Google 개발자 가이드가 안내"
+      ],
+      "effects": [
+        "같은 모델로 에이전트 성공률 향상",
+        "출력 토큰 절감",
+        "모델을 비교할 때 공정한 조건 확보"
+      ],
+      "example": {
+        "title": "이전 응답을 가리켜 추론을 이어 가기 (OpenAI Responses API)",
+        "type": "code",
+        "text": "first = client.responses.create(model=\"gpt-6-luna\", input=task, tools=tools)\n# ... first.output에서 함수 호출(call_id)을 찾아 내 코드로 실행 ...\nnxt = client.responses.create(\n    model=\"gpt-6-luna\",\n    previous_response_id=first.id,      # 이전 추론과 기록을 이어 붙임\n    input=[{\"type\": \"function_call_output\", \"call_id\": call_id, \"output\": result}],\n    tools=tools,\n)"
+      },
+      "limits": [
+        "회사마다 방식이 다릅니다. 서버에 저장된 이전 응답을 가리키는 방식도 있고, 기록에 추론 블록을 그대로 넣어 보내는 방식도 있습니다.",
+        "서버 저장 방식을 쓰면 대화가 회사 서버에 보관되므로 데이터 보존 정책을 확인해야 합니다."
+      ],
+      "sources": [
+        {
+          "title": "Conversation state 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/conversation-state"
+        },
+        {
+          "title": "Reasoning models 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning"
+        },
+        {
+          "title": "Thinking (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/thinking"
+        }
+      ],
+      "news": [
+        "openai-retained-reasoning-compaction",
+        "gemini-3-5-flash-developer-guide"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "programmatic-tool-calling",
+      "name": "프로그래머틱 도구 호출",
+      "en": "Programmatic tool calling",
+      "level": "심화",
+      "status": "관찰",
+      "companies": [
+        "openai",
+        "anthropic"
+      ],
+      "prerequisites": [
+        "tool-use"
+      ],
+      "related": [
+        "tool-use",
+        "tokenomics",
+        "harness"
+      ],
+      "definition": "모델이 도구를 하나씩 호출하고 결과를 매번 받아 읽는 대신, 여러 도구 호출과 중간 처리(반복, 필터링, 집계)를 하는 코드를 작성하면 실행 환경이 그 코드를 돌려 최종 결과만 모델에게 돌려주는 방식입니다.",
+      "why": "공시 100건을 가져와 날짜로 거르고 관련 거래만 찾는 일처럼 중간 결과를 모델이 하나하나 읽을 필요가 없는 작업에서, 도구 결과가 모두 컨텍스트에 쌓이면 토큰과 시간이 크게 낭비됩니다. 코드로 처리하면 모델은 정리된 결과만 보면 됩니다. OpenAI가 소개한 사례에서 Rogo는 같은 품질로 입력 토큰을 21% 줄였습니다.",
+      "how": [
+        "대량 데이터를 조회한 뒤 필터링·집계",
+        "여러 API를 정해진 순서로 호출하는 처리",
+        "반복 계산을 모델 대신 코드에 맡기기"
+      ],
+      "effects": [
+        "입력 토큰 절감",
+        "도구 왕복 횟수가 줄어 지연 단축",
+        "계산 정확도 향상"
+      ],
+      "example": {
+        "title": "일반 도구 호출과 비교 (개념 예시)",
+        "type": "scene",
+        "text": "[일반 도구 호출]  모델 → get_filing(1) → 결과 읽기 → get_filing(2) → … 100번 왕복\n[프로그래머틱]    모델이 코드를 작성한다\n                  rows = [get_filing(i) for i in ids]\n                  hits = [r for r in rows if r.date >= \"2026-01-01\" and \"합병\" in r.text]\n                  print(summarize(hits))\n                  → 실행 환경이 코드를 돌리고 결과 몇 줄만 모델에게 돌려줌"
+      },
+      "limits": [
+        "모델이 작성한 코드를 실행하므로 격리된 실행 환경(샌드박스)이 필요합니다.",
+        "중간 결과를 모델이 보지 않으므로 단계마다 판단이 필요한 작업에는 맞지 않습니다.",
+        "회사마다 지원 방식과 지원 모델이 다르니 공식 문서로 확인해야 합니다."
+      ],
+      "sources": [
+        {
+          "title": "Programmatic tool calling (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling"
+        },
+        {
+          "title": "The builder's guide to GPT-5.6 (OpenAI)",
+          "url": "https://openai.com/index/builders-guide-to-gpt-5-6"
+        }
+      ],
+      "news": [
+        "openai-gpt-5-6-builders-guide"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "subagent-crosscheck",
+      "name": "교차 검증과 모델 라우팅",
+      "en": "Cross-model review & routing",
+      "level": "심화",
+      "status": "랩",
+      "lab": "multi-agent",
+      "companies": [
+        "openai",
+        "anthropic",
+        "google"
+      ],
+      "prerequisites": [
+        "agent-loop"
+      ],
+      "related": [
+        "multi-agent",
+        "tokenomics",
+        "agent-trace-eval"
+      ],
+      "definition": "한 작업 안에서 모델을 역할별로 나눠 쓰는 패턴입니다. 조회·로그 읽기 같은 기계적 작업은 작은 모델 서브에이전트에, 설계와 구현은 큰 모델에, 최종 검토는 다른 계열의 모델에 맡깁니다.",
+      "why": "2026년 들어 세 회사 모두 최상위 모델 하나로 모든 일을 하기보다 작업에 맞게 모델을 섞으라고 권하고 있습니다. 같은 모델이 구현과 검토를 모두 하면 자기 실수를 놓치기 쉽고, 단순 작업에 큰 모델을 쓰면 비용이 낭비되기 때문입니다.",
+      "how": [
+        "Antigravity에서 구현은 큰 모델, 테스트 실행·실패 분류는 flash 서브에이전트에 맡기기",
+        "Claude Code에서 조회용 서브에이전트에 model: haiku 또는 sonnet 지정",
+        "읽기 도구만 가진 검증 전용 서브에이전트로 최종 diff를 점검해 통과·실패 판정 받기"
+      ],
+      "effects": [
+        "비용과 지연 절감",
+        "교차 검증으로 회귀와 누락된 테스트 발견",
+        "메인 컨텍스트 정리"
+      ],
+      "example": {
+        "title": "검증 서브에이전트를 부르는 지시",
+        "type": "prompt",
+        "text": "구현이 끝나면 커밋하기 전에 reviewer 서브에이전트를 한 번 호출해.\nreviewer는 읽기 도구만 쓰고, 최종 diff를 회귀, 빠진 엣지 케이스 테스트,\n보안 문제 기준으로 보고 통과/실패와 그 이유만 돌려줘."
+      },
+      "limits": [
+        "서브에이전트마다 토큰이 추가로 들어 언제 띄울지 지시해야 합니다.",
+        "작은 모델은 실수가 쉽게 드러나는 일에만 맡기는 것이 좋습니다."
+      ],
+      "sources": [
+        {
+          "title": "Antigravity 지원 모델 문서 (Google)",
+          "url": "https://antigravity.google/docs/models/"
+        },
+        {
+          "title": "Create custom subagents (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/sub-agents"
+        },
+        {
+          "title": "Multi-agent 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/responses-multi-agent"
+        }
+      ],
+      "news": [
+        "google-antigravity-multi-model-patterns",
+        "claude-opus-5-5-task-costs",
+        "openai-gpt-5-6-builders-guide"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "agent-trace-eval",
+      "name": "에이전트 평가와 트레이스 리뷰",
+      "en": "Agent evaluation",
+      "level": "중급",
+      "status": "랩",
+      "lab": "evals",
+      "companies": [
+        "google",
+        "anthropic"
+      ],
+      "prerequisites": [
+        "agent-loop"
+      ],
+      "related": [
+        "evals",
+        "harness",
+        "subagent-crosscheck"
+      ],
+      "definition": "최종 답만 채점하지 않고, 에이전트가 거친 전체 과정(프롬프트, 중간 추론, 도구 인자, 도구 결과)을 기록한 트레이스를 읽고 평가하는 방법입니다. 사람이 먼저 트레이스를 읽어 문제 유형을 찾고, 그것을 자동 점검과 CI 게이트로 넓혀 갑니다.",
+      "why": "에이전트는 재시도 루프에 빠지거나 토큰을 낭비해도 겉보기엔 멀쩡한 답을 낼 수 있어서 최종 답만 보면 문제를 놓칩니다. Google은 이런 눈대중 점검에서 벗어나, 핵심 사용자 여정(CUJ)을 정의하고 단계적으로 평가를 자동화하라고 권합니다.",
+      "how": [
+        "붉은 펜 리뷰: 트레이스를 처음부터 끝까지 읽으며 망설임, 지어낸 인자, 잘못된 도구 선택 표시",
+        "사용자 시뮬레이터로 여러 대화를 자동 생성",
+        "LLM 심판 점수를 손으로 매긴 결과와 대조",
+        "프롬프트·모델·도구 설명을 바꿀 때마다 같은 테스트를 CI로 실행"
+      ],
+      "effects": [
+        "겉보기 정답 뒤에 숨은 낭비와 오류 발견",
+        "변경 효과를 숫자로 비교",
+        "운영 전에 회귀 차단"
+      ],
+      "example": {
+        "title": "트레이스 리뷰 표시 예",
+        "type": "scene",
+        "text": "step 3  search_docs(query=\"가격\")             ← 너무 넓은 검색어\nstep 4  search_docs(query=\"가격\")             ← 같은 호출 반복 (루프 징후)\nstep 5  get_price(api_id=\"claude-haiku-9\")    ← 존재하지 않는 ID (지어낸 인자)\n최종 답  \"Haiku 5.5 입력 가격은 $0.10입니다\"   ← 답은 맞지만 중간에 세 번 헛돎"
+      },
+      "limits": [
+        "트레이스를 직접 읽는 데 시간이 듭니다. 소수 사례로 시작해 점검 목록을 만든 뒤 자동화하세요.",
+        "심판 모델의 점수를 그대로 믿으면 안 됩니다."
+      ],
+      "sources": [
+        {
+          "title": "Evaluating AI agents: moving past the vibe check (Google Developers Blog)",
+          "url": "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/"
+        },
+        {
+          "title": "Demystifying evals for AI agents (Anthropic, 2026-01-09)",
+          "url": "https://anthropic.com/engineering/demystifying-evals-for-ai-agents"
+        }
+      ],
+      "news": [
+        "google-agent-evaluation-beyond-vibe-check"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "agents-md-router",
+      "name": "AGENTS.md·CLAUDE.md 라우터 설계",
+      "en": "Router-style agent docs",
+      "level": "기초",
+      "status": "관찰",
+      "companies": [
+        "openai",
+        "anthropic",
+        "google"
+      ],
+      "prerequisites": [
+        "context-eng"
+      ],
+      "related": [
+        "skills",
+        "context-eng",
+        "hooks"
+      ],
+      "definition": "저장소의 에이전트 지침 문서(AGENTS.md, CLAUDE.md)나 스킬의 루트 문서를 모든 내용을 담은 매뉴얼이 아니라, '어떤 상황에서 어떤 문서를 볼지' 알려 주는 짧은 안내판으로 쓰고 세부 내용은 조건부로 연결하는 설계입니다.",
+      "why": "지침 문서는 매 세션 컨텍스트에 들어가므로 길수록 비용이 들고, 지금 작업과 상관없는 규칙이 판단을 흐립니다. OpenAI와 Anthropic 모두 새 세대 모델은 판단력이 좋아져, 예전 모델 때문에 넣은 강한 금지 문구와 긴 규칙이 오히려 방해가 될 수 있다고 지적합니다. Google도 SKILL.md는 짧은 색인으로 두고 세부 내용은 references 파일로 나누라고 권합니다.",
+      "how": [
+        "CLAUDE.md에는 저장소 목적은 짧게, 대부분을 함정(gotchas)에 쓰기",
+        "'편집 전에 문서 3개를 읽어라' 대신 '가격표를 고칠 때는 docs/DATA_SCHEMA.md'처럼 조건부로 연결",
+        "로컬 테스트처럼 안전한 작업은 승인 없이 진행해도 된다고 명시",
+        "완료 기준(실행, 결과 확인, 실패 수정까지)을 명시"
+      ],
+      "effects": [
+        "매 세션 토큰 절감",
+        "모델이 필요한 문서를 스스로 찾아 읽음",
+        "불필요한 확인 질문 감소"
+      ],
+      "example": {
+        "title": "라우터형 CLAUDE.md 예시",
+        "type": "code",
+        "text": "# CLAUDE.md\n릴리스 레이더: GPT·Claude·Gemini 공식 소식을 요약하는 정적 사이트.\n\n## 상황별로 볼 문서\n- 소식·가격·가이드·기술 데이터를 고칠 때: docs/DATA_SCHEMA.md\n- 프로젝트 방향과 원칙이 궁금할 때: docs/GUIDELINES.md\n\n## 함정\n- data/를 고치면 반드시 python3 scripts/validate_data.py\n- 원문에 없는 수치는 쓰지 않는다 (backend/guard.py가 지움)"
+      },
+      "limits": [
+        "너무 줄이면 꼭 필요한 함정까지 빠집니다. 실제로 실수한 지점은 남겨 두세요.",
+        "모델 세대가 바뀔 때마다 다시 점검해야 합니다."
+      ],
+      "sources": [
+        {
+          "title": "Rethinking skills and prompts for GPT-6 Astra (OpenAI)",
+          "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"
+        },
+        {
+          "title": "The new rules of context engineering for Claude 5 generation models (Anthropic)",
+          "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
+        },
+        {
+          "title": "Manage Claude's memory (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/memory"
+        },
+        {
+          "title": "Optimizing a 200,000-line Python codebase overnight with Gemini 4 Argon (Google Developers Blog)",
+          "url": "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon/"
+        }
+      ],
+      "news": [
+        "openai-gpt-6-astra-skills-prompts",
+        "claude-5-context-engineering",
+        "gemini-4-argon-overnight-codebase"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "hooks",
+      "name": "Hooks 가드레일",
+      "en": "Hooks",
+      "level": "중급",
+      "status": "관찰",
+      "companies": [
+        "anthropic"
+      ],
+      "prerequisites": [
+        "agent-loop"
+      ],
+      "related": [
+        "harness",
+        "skills",
+        "compaction"
+      ],
+      "definition": "에이전트의 특정 시점(도구 실행 전후, 세션 시작, 작업 종료 등)에 사용자가 정한 셸 명령이 자동으로 실행되게 하는 장치입니다. 모델의 판단에 맡기지 않고 '항상' 실행되는 결정적인 규칙을 만듭니다.",
+      "why": "'이 파일은 고치지 마'를 프롬프트로만 쓰면 모델이 대부분 지키지만 항상 지킨다는 보장은 없습니다. 삭제 명령 차단, 비밀 파일 보호, 편집 후 자동 포맷처럼 반드시 지켜야 하는 규칙은 hooks로 강제해야 확실합니다.",
+      "how": [
+        "Bash 실행 전에 rm -rf, force-push 같은 위험 명령 차단",
+        ".env 같은 보호 파일의 편집 막기",
+        "파일 편집 후 포매터 자동 실행",
+        "컴팩션 뒤 꼭 필요한 맥락을 다시 넣기",
+        "스킬 사용 기록을 남겨 잘 쓰이지 않는 스킬 찾기"
+      ],
+      "effects": [
+        "사고를 확실하게 예방",
+        "반복 작업 자동화",
+        "규칙 위반 시 이유가 모델에게 피드백돼 스스로 고침"
+      ],
+      "example": {
+        "title": "보호 파일 편집을 막는 hook (Claude Code 설정)",
+        "type": "code",
+        "text": "// .claude/settings.json\n{\n  \"hooks\": {\n    \"PreToolUse\": [\n      {\n        \"matcher\": \"Edit|Write\",\n        \"hooks\": [\n          { \"type\": \"command\",\n            \"command\": \"\\\"$CLAUDE_PROJECT_DIR\\\"/.claude/hooks/protect-files.sh\" }\n        ]\n      }\n    ]\n  }\n}\n// protect-files.sh가 exit 2로 끝나면 편집이 막히고, stderr 메시지가 Claude에게 전달된다"
+      },
+      "limits": [
+        "hooks는 내 컴퓨터에서 셸 명령을 실행하므로 남이 만든 설정은 내용을 확인하고 써야 합니다.",
+        "늘 켜 두기엔 과한 규칙은 필요할 때만 켜는 스킬로 만드는 방법이 권장됩니다.",
+        "이 형태는 Claude Code의 기능이며 다른 도구는 방식이 다릅니다."
+      ],
+      "sources": [
+        {
+          "title": "Automate actions with hooks (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/hooks-guide"
+        },
+        {
+          "title": "Lessons from building Claude Code: How we use skills (Anthropic)",
+          "url": "https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills"
+        }
+      ],
+      "news": [
+        "claude-code-skills-lessons"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "long-autonomy",
+      "name": "장시간 자율 실행",
+      "en": "Long-running autonomous tasks",
+      "level": "심화",
+      "status": "관찰",
+      "companies": [
+        "google",
+        "openai"
+      ],
+      "prerequisites": [
+        "harness",
+        "evals"
+      ],
+      "related": [
+        "harness",
+        "agent-trace-eval",
+        "agents-md-router"
+      ],
+      "definition": "에이전트에게 방법이 아니라 달성할 결과, 제약, 완료 기준을 정해 고정해 두고, 사람이 지켜보지 않는 몇 시간 동안 스스로 작업하게 한 뒤 결과를 검토하는 작업 방식입니다.",
+      "why": "모델이 몇 시간짜리 작업을 혼자 이어 갈 수 있게 되면서, 사람의 역할이 '단계별 지시'에서 '목표 정의와 결과 검토'로 바뀌고 있습니다. Google은 Gemini 4 Argon에 약 20만 줄 코드베이스 최적화를 밤새 맡겼고, 에이전트는 11시간 동안 사람 없이 작업해 PR을 만들었습니다.",
+      "how": [
+        "결과, 제약(공개 API 불변 등), 테스트 요구를 적고 목표 모드(/goal)로 고정",
+        "'PR 하나를 열고 전후 수치를 넣되 병합하지 말 것'처럼 끝 상태를 명시",
+        "에이전트가 보지 못하는 별도 벤치마크로 결과를 검증"
+      ],
+      "effects": [
+        "사람이 없는 시간에도 탐색 작업 진행",
+        "사람은 결과 검토와 선별에 집중"
+      ],
+      "example": {
+        "title": "목표를 고정하는 지시",
+        "type": "prompt",
+        "text": "목표: 세션 준비 시간을 줄인다.\n제약: 공개 API는 바꾸지 않는다. 기존 테스트는 모두 통과해야 한다.\n검증: benchmarks/의 보류 벤치마크로 전후 수치를 잰다(이 폴더는 수정 금지).\n끝: PR 하나를 열고 전후 수치를 본문에 적는다. 병합하지 않는다."
+      },
+      "limits": [
+        "Google 사례에서도 제안 6개 중 2개만 코드 리뷰를 통과했습니다. 결과를 사람이 걸러내는 단계가 필수입니다.",
+        "합성 벤치마크에서만 좋아지는 변경을 걸러낼 독립 검증이 필요합니다.",
+        "되돌릴 수 없는 행동 권한은 주지 않아야 합니다."
+      ],
+      "sources": [
+        {
+          "title": "Optimizing a 200,000-line Python codebase overnight with Gemini 4 Argon (Google Developers Blog)",
+          "url": "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon/"
+        },
+        {
+          "title": "A model guide for the GPT-6 family (OpenAI)",
+          "url": "https://openai.com/index/practical-guide-building-gpt-6"
+        }
+      ],
+      "news": [
+        "gemini-4-argon-overnight-codebase",
+        "gpt-6-model-guide"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "computer-use",
+      "name": "컴퓨터 유즈 에이전트",
+      "en": "Computer use",
+      "level": "심화",
+      "status": "관찰",
+      "companies": [
+        "anthropic",
+        "openai"
+      ],
+      "prerequisites": [
+        "agent-loop"
+      ],
+      "related": [
+        "agent-loop",
+        "harness",
+        "tokenomics"
+      ],
+      "definition": "화면 스크린샷을 보고 마우스 클릭과 키보드 입력으로 프로그램이나 웹사이트를 직접 조작하는 에이전트입니다. API가 없는 프로그램도 사람처럼 다룰 수 있습니다.",
+      "why": "많은 업무 도구는 API를 제공하지 않아 도구 호출로 연결할 수 없습니다. 컴퓨터 유즈는 화면을 통해 이런 프로그램을 다뤄, 양식 입력, 기록 갱신, 프런트엔드 QA 같은 화면 작업을 맡길 수 있게 합니다.",
+      "how": [
+        "웹 양식 입력, CRM 기록 갱신",
+        "만든 웹페이지를 직접 클릭해 보는 QA",
+        "API가 없는 사내 프로그램의 반복 작업"
+      ],
+      "effects": [
+        "API 없는 프로그램도 자동화",
+        "사람이 하던 화면 작업을 위임"
+      ],
+      "example": {
+        "title": "권장 시작 설정 (Anthropic 가이드, 2026-05 기준)",
+        "type": "scene",
+        "text": "- 스크린샷은 1280x720부터, 모델이 준 좌표는 실제 화면 크기로 환산\n- 메시지에서 텍스트 지시를 스크린샷보다 앞에\n- 촘촘한 화면은 zoom으로 확대해 보기\n- 최근 스크린샷 몇 장만 원본으로 두고 오래된 것은 정리\n- 제출·구매·전송 전에는 멈추고 사람 확인"
+      },
+      "limits": [
+        "스크린샷이 계속 쌓여 비용이 큽니다.",
+        "화면 속 글자가 지시처럼 작동하는 프롬프트 인젝션 위험이 있습니다.",
+        "되돌릴 수 없는 행동 전에는 반드시 사람 확인이 필요합니다.",
+        "API로 할 수 있는 일이라면 API가 더 빠르고 정확합니다."
+      ],
+      "sources": [
+        {
+          "title": "Best practices for computer and browser use with Claude (Anthropic)",
+          "url": "https://claude.com/blog/best-practices-for-computer-and-browser-use-with-claude"
+        },
+        {
+          "title": "Computer use tool (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool"
+        }
+      ],
+      "news": [
+        "claude-computer-use-best-practices",
+        "gpt-6-astra"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "voice-agent",
+      "name": "실시간 음성 에이전트",
+      "en": "Realtime voice agents",
+      "level": "심화",
+      "status": "관찰",
+      "companies": [
+        "google",
+        "openai"
+      ],
+      "prerequisites": [
+        "agent-loop"
+      ],
+      "related": [
+        "agent-loop",
+        "tool-use"
+      ],
+      "definition": "사용자와 실시간으로 말을 주고받으면서 그 사이에 도구도 호출하는 에이전트입니다. 느린 도구가 도는 동안에도 진행 상황을 말하거나 대화를 이어 가 침묵을 줄이는 것이 핵심 설계 과제입니다.",
+      "why": "음성 대화에서는 몇 초만 말이 없어도 사용자가 통화가 끊겼다고 느낍니다. 텍스트 에이전트처럼 도구 결과를 다 기다린 뒤 답하면 경험이 크게 나빠집니다. Google 사례에서 스트리밍 도구로 바꾸자 에이전트의 첫 발화까지 걸린 시간이 14.4초에서 1.2초로 줄었습니다.",
+      "how": [
+        "단계가 있는 작업은 진행 상황을 스트리밍으로 말하기",
+        "오래 걸리는 작업은 백그라운드로 돌리고 다음 쉼에 결과 전달",
+        "긴급 알림은 대화를 끊고 전달, 조용한 맥락 갱신은 말없이 반영"
+      ],
+      "effects": [
+        "대화 중 침묵 감소",
+        "오래 걸리는 작업도 자연스러운 대화로 처리"
+      ],
+      "example": {
+        "title": "진행 상황을 흘려보내는 도구 (ADK 스트리밍 도구 개념 예시)",
+        "type": "code",
+        "text": "async def build_report(topic: str):\n    \"\"\"Call this ONCE. 보고서를 만들며 진행 상황을 알린다.\"\"\"\n    yield \"자료를 찾는 중이에요\"\n    data = await search(topic)\n    yield \"찾은 자료를 정리하고 있어요\"\n    yield await summarize(data)"
+      },
+      "limits": [
+        "모델이 같은 도구를 다시 부를 수 있어 한 번만 실행되게 막는 장치(멱등성 키 등)가 필요합니다.",
+        "진행 상황을 너무 자주 말하면 오히려 거슬립니다.",
+        "오디오 토큰은 텍스트보다 비쌉니다. 예를 들어 GPT-Realtime-2의 오디오 입력은 100만 토큰당 $32입니다(API 가격표 기준)."
+      ],
+      "sources": [
+        {
+          "title": "Build a Voice Agent That Never Goes Silent using ADK (Google Developers Blog)",
+          "url": "https://developers.googleblog.com/step-by-step-guide-build-a-voice-agent-that-never-goes-silent-using-adk/"
+        },
+        {
+          "title": "Voice prompting 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/voice-prompting"
+        },
+        {
+          "title": "Live API (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/live-api"
+        }
+      ],
+      "news": [
+        "google-adk-voice-agent-streaming-tools",
+        "gpt-realtime-2"
+      ],
+      "verifiedAt": "2026-10-21"
+    },
+    {
+      "group": "radar",
+      "id": "tokenomics",
+      "name": "비용 공학 (Tokenomics)",
+      "en": "Token efficiency",
+      "level": "기초",
+      "status": "관찰",
+      "companies": [
+        "openai",
+        "anthropic",
+        "google"
+      ],
+      "prerequisites": [
+        "llm-api"
+      ],
+      "related": [
+        "context-eng",
+        "subagent-crosscheck",
+        "evals"
+      ],
+      "definition": "모델 선택, 추론 수준(effort), 프롬프트 캐싱, 세션 관리, 작업 분배를 조절해 같은 결과를 더 적은 토큰과 비용으로 얻는 설계 방법입니다.",
+      "why": "실제 비용은 토큰 단가보다 작업 하나에 쓰는 토큰 수에 더 크게 좌우됩니다. 세 회사 모두 최상위 모델을 최고 추론으로 쓰기보다 기본 모델로 시작해 필요할 때만 올리라고 권합니다. OpenAI 사례에서 GPT-5.6 Luna(Extra High)는 GPT-5.5(Extra High)와 거의 같은 점수를 $33.27 대신 $1.33으로 냈습니다.",
+      "how": [
+        "작은 모델과 낮은 effort로 시작해 막힐 때만 올리기",
+        "고정 지시는 앞에, 바뀌는 내용은 뒤에 둬 캐시 적중률 높이기",
+        "작업이 바뀌면 새 세션, 같은 작업은 이어 가 캐시 유지",
+        "반복 설명은 스킬로, 조회는 작은 모델 서브에이전트로"
+      ],
+      "effects": [
+        "사례에 따라 같은 품질을 수십 분의 1 비용으로",
+        "지연 시간 단축"
+      ],
+      "example": {
+        "title": "설정별 비교표 만들기",
+        "type": "scene",
+        "text": "대표 작업 10개로 설정을 비교한다\n설정                      성공률   평균 지연   성공 1건당 비용\nClaude Haiku 5.5          ?        ?          ?\nClaude Sonnet 5.5 medium  ?        ?          ?\nGPT-6 Luna high           ?        ?          ?\n→ 성공률이 충분한 설정 중 가장 싼 것을 기본값으로"
+      },
+      "limits": [
+        "단가가 싼 모델이 토큰을 더 많이 쓰면 오히려 비쌀 수 있어 '성공 1건당 비용'으로 비교해야 합니다.",
+        "캐시는 일정 시간이 지나면 만료되고, 중간에 모델이나 설정을 바꾸면 깨집니다.",
+        "가격은 자주 바뀝니다. 최신 값은 이 사이트의 API 가격표에서 확인하세요."
+      ],
+      "sources": [
+        {
+          "title": "Guide to AI Tokenomics: Eleven Principles for Token Efficient Software Engineering (Google Cloud)",
+          "url": "https://cloud.google.com/blog/topics/developers-practitioners/guide-to-ai-tokenomics-eleven-principles-for-token-efficient-software-engineering"
+        },
+        {
+          "title": "What a task costs on Opus 5.5 (Anthropic)",
+          "url": "https://claude.com/blog/what-a-task-costs-on-opus-5-5"
+        },
+        {
+          "title": "Prompt caching 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-caching"
+        },
+        {
+          "title": "Manage costs effectively (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/costs"
+        }
+      ],
+      "news": [
+        "gemini-token-efficient-coding",
+        "claude-opus-5-5-task-costs",
+        "gpt-6-model-guide",
+        "openai-gpt-5-6-builders-guide",
+        "claude-code-session-value-tips"
+      ],
+      "verifiedAt": "2026-10-21"
+    }
+  ]
+}

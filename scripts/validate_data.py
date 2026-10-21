@@ -14,7 +14,7 @@ DATA = ROOT / "data"
 
 COMPANIES = {"openai", "anthropic", "google"}
 KINDS = {"모델 출시", "모델 업데이트", "활용 팁"}
-RESERVED_IDS = {"guide", "prices"}
+RESERVED_IDS = {"guide", "prices", "tech"}
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 CHECKED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$")
@@ -190,6 +190,75 @@ def check_prices(p, news_ids):
             err(where, f"pages.{co} 오류")
 
 
+TECH_GROUPS = {"path", "radar"}
+TECH_LEVELS = {"기초", "중급", "심화"}
+TECH_STAGES = {"관찰", "시도", "랩", "보관"}
+TECH_EXAMPLE_TYPES = {"code", "prompt", "scene"}
+TECH_REQUIRED = ["id", "group", "name", "en", "level", "definition", "why", "how", "effects", "example", "limits",
+                 "prerequisites", "related", "sources", "news", "verifiedAt"]
+
+
+def check_tech(t, news_ids):
+    where = "data/tech.json"
+    if t is None:
+        return
+    items = t.get("items") or []
+    ids = [i.get("id") for i in items]
+    if len(ids) != len(set(ids)):
+        err(where, "items에 중복 id가 있음")
+    known = set(ids)
+    orders = []
+    for i in items:
+        tid = i.get("id", "?")
+        w = f"{where} [{tid}]"
+        for key in TECH_REQUIRED:
+            if key not in i:
+                err(w, f"필수 필드 '{key}' 없음")
+        if not ID_RE.match(str(tid)):
+            err(w, "id는 소문자·숫자·하이픈만")
+        if i.get("group") not in TECH_GROUPS:
+            err(w, f"group은 {sorted(TECH_GROUPS)} 중 하나: {i.get('group')}")
+        if i.get("level") not in TECH_LEVELS:
+            err(w, f"level은 {sorted(TECH_LEVELS)} 중 하나: {i.get('level')}")
+        for key in ("definition", "why"):
+            if not str(i.get(key, "")).strip():
+                err(w, f"{key}가 비어 있음")
+        for key in ("how", "effects"):
+            if not i.get(key):
+                err(w, f"{key}는 항목이 하나 이상 있어야 함")
+        if not i.get("sources"):
+            err(w, "공식 출처(sources)가 하나 이상 있어야 함")
+        for s in i.get("sources", []):
+            if not s.get("title") or not str(s.get("url", "")).startswith("https://"):
+                err(w, f"출처 형식 오류(title, https url): {s}")
+        ex = i.get("example") or {}
+        if ex.get("type") not in TECH_EXAMPLE_TYPES or not ex.get("title") or not ex.get("text"):
+            err(w, f"example은 title, text와 type({sorted(TECH_EXAMPLE_TYPES)})이 필요함")
+        for key in ("prerequisites", "related"):
+            for r in i.get(key, []):
+                if r not in known:
+                    err(w, f"{key}의 '{r}' 기술이 없음")
+        for n in i.get("news", []):
+            if n not in news_ids:
+                err(w, f"news의 '{n}' 소식이 없음")
+        if not DATE_RE.match(str(i.get("verifiedAt", ""))):
+            err(w, "verifiedAt은 YYYY-MM-DD")
+        if i.get("group") == "path":
+            if not isinstance(i.get("order"), int):
+                err(w, "학습 경로 항목은 정수 order가 필요함")
+            else:
+                orders.append(i["order"])
+        if i.get("group") == "radar":
+            if i.get("status") not in TECH_STAGES:
+                err(w, f"status는 {sorted(TECH_STAGES)} 중 하나: {i.get('status')}")
+            if not i.get("companies") or any(c not in COMPANIES for c in i["companies"]):
+                err(w, f"companies는 {sorted(COMPANIES)} 중 하나 이상")
+            if i.get("status") == "랩" and i.get("lab") not in known:
+                err(w, "status가 '랩'이면 lab에 학습 경로 항목 id가 필요함")
+    if len(orders) != len(set(orders)):
+        err(where, "학습 경로 order가 중복됨")
+
+
 def main():
     manifest = load(DATA / "manifest.json")
     guides = load(DATA / "guides.json")
@@ -199,6 +268,9 @@ def main():
     ids = [i for i in ids if i]
     check_guides(guides, set(ids))
     check_prices(prices, set(ids))
+    tech_path = DATA / "tech.json"
+    tech = load(tech_path) if tech_path.exists() else None
+    check_tech(tech, set(ids))
     if manifest is not None:
         listed = manifest.get("news", [])
         if not CHECKED_RE.match(str(manifest.get("lastChecked", ""))):
@@ -216,7 +288,7 @@ def main():
         for e in errors:
             print(" -", e)
         sys.exit(1)
-    print(f"데이터 검증 통과: 소식 {len(ids)}건")
+    print(f"데이터 검증 통과: 소식 {len(ids)}건" + (f", 기술 {len(tech.get('items', []))}건" if tech else ""))
 
 
 if __name__ == "__main__":
