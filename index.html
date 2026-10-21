@@ -432,7 +432,7 @@ td.model { white-space: normal; min-width: 12em; }
   var KINDS = ["모델 출시", "모델 업데이트", "활용 팁"];
   var WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
-  var state = { manifest: null, news: [], byId: {}, guides: null, tech: null, techById: {}, error: null, loaded: false, filter: "all", kind: "all", period: "all", listKey: "", listShown: 0, view: "", listScroll: 0 };
+  var state = { manifest: null, news: [], byId: {}, guides: null, tech: null, techById: {}, error: null, loaded: false, filter: "all", kind: "all", period: "all", listKey: "", listShown: 0, view: "", listScroll: 0, techPeriod: "all", techKey: "", techShown: 0, techScroll: 0 };
   try { var f = localStorage.getItem("rr-filter"); if (f && (f === "all" || COMPANIES[f])) state.filter = f; } catch (e) {}
   state.guideTab = "common"; state.guideCat = "all";
   try { var gt = localStorage.getItem("rr-guide"); if (gt) state.guideTab = gt; } catch (e) {}
@@ -623,7 +623,7 @@ td.model { white-space: normal; min-width: 12em; }
     });
     if (state.period !== "all" && !filtered.some(function (x) { return x.date.slice(0, state.period.length) === state.period; })) state.period = "all";
     var items = filtered.filter(function (x) { return state.period === "all" || x.date.slice(0, state.period.length) === state.period; });
-    frag.appendChild(h("div", { class: "filter-rows" }, [companyRow, kindRow, periodRows(filtered)]));
+    frag.appendChild(h("div", { class: "filter-rows" }, [companyRow, kindRow, periodRows(sortedNews(), filtered, state.period, function (v) { state.period = v; renderList(); }, "소식")]));
 
     var all = sortedNews();
     var range = state.period === "all"
@@ -643,21 +643,22 @@ td.model { white-space: normal; min-width: 12em; }
     var key = [state.filter, state.kind, state.period].join("|");
     var start = state.listKey === key ? state.listShown : 0;
     state.listKey = key;
-    pagedNews(box, items, start);
+    pagedList(box, items, newsEntry, start, function (n) { state.listShown = n; }, "소식");
   }
 
   /* 기간 선택: '전체 기간' + 연도별 줄(연도 버튼 + 1~12월 버튼). 다시 누르면 전체로 돌아간다. */
   function periodName(p) { return p.length === 4 ? p + "년 전체" : p.slice(0, 4) + "년 " + (+p.slice(5)) + "월"; }
-  function periodRows(filtered) {
-    function pick(v) { state.period = state.period === v ? "all" : v; renderList(); }
+  // all: 연도 줄을 만들 전체 목록, filtered: 다른 필터를 통과한 목록(건수 기준), current: 지금 기간, set: 기간 바꾸기
+  function periodRows(all, filtered, current, set, noun) {
+    function pick(v) { set(current === v ? "all" : v); }
     var wrap = h("div", { class: "period", role: "group", "aria-label": "기간별 보기" });
     wrap.appendChild(h("div", { class: "filters" }, [
       h("span", { class: "f-label", text: "기간" }),
-      h("button", { class: "chip", type: "button", "aria-pressed": String(state.period === "all"), onclick: function () { state.period = "all"; renderList(); } },
+      h("button", { class: "chip", type: "button", "aria-pressed": String(current === "all"), onclick: function () { set("all"); } },
         ["전체 기간", h("span", { class: "n", text: String(filtered.length) })])
     ]));
     var years = [];
-    sortedNews().forEach(function (x) { var y = x.date.slice(0, 4); if (years.indexOf(y) < 0) years.push(y); });
+    all.forEach(function (x) { var y = x.date.slice(0, 4); if (years.indexOf(y) < 0) years.push(y); });
     years.sort().reverse().forEach(function (y) {
       var ny = filtered.filter(function (x) { return x.date.slice(0, 4) === y; }).length;
       var months = [];
@@ -665,19 +666,20 @@ td.model { white-space: normal; min-width: 12em; }
         var k = y + "-" + (m < 10 ? "0" : "") + m;
         var n = filtered.filter(function (x) { return x.date.slice(0, 7) === k; }).length;
         months.push(h("button", {
-          type: "button", class: "mchip", "aria-pressed": String(state.period === k),
-          disabled: n || state.period === k ? null : true, title: y + "년 " + m + "월 소식만 보기",
+          type: "button", class: "mchip", "aria-pressed": String(current === k),
+          disabled: n || current === k ? null : true, title: y + "년 " + m + "월 " + noun + "만 보기",
           onclick: (function (v) { return function () { pick(v); }; })(k)
         }, [m + "월", h("span", { class: "n", text: n ? String(n) : "" })]));
       }
       wrap.appendChild(h("div", { class: "yrow" }, [
-        h("button", { type: "button", class: "ychip", "aria-pressed": String(state.period === y), disabled: ny || state.period === y ? null : true,
-          title: y + "년 소식 전체 보기", onclick: function () { pick(y); } }, [y + "년", h("span", { class: "n", text: String(ny) })]),
+        h("button", { type: "button", class: "ychip", "aria-pressed": String(current === y), disabled: ny || current === y ? null : true,
+          title: y + "년 " + noun + " 전체 보기", onclick: function () { pick(y); } }, [y + "년", h("span", { class: "n", text: String(ny) })]),
         h("div", { class: "mgrid" }, months)
       ]));
     });
     return wrap;
   }
+  function inPeriod(x, p) { return p === "all" || x.date.slice(0, p.length) === p; }
 
   /* 소식 목록을 PAGE건씩 보여 주고, 끝에 가까워지면(또는 '더 보기'를 누르면) 다음 PAGE건을 붙인다.
      월 제목의 건수는 보이는 것만이 아니라 조건에 맞는 전체 기준. */
@@ -699,7 +701,8 @@ td.model { white-space: normal; min-width: 12em; }
       ])
     ]);
   }
-  function pagedNews(box, items, startShown) {
+  function pagedList(box, items, renderEntry, startShown, onShown, noun) {
+    var unit = noun === "기술" ? "개" : "건";
     var token = {};
     box.__pager = token;
     var perMonth = {};
@@ -712,9 +715,9 @@ td.model { white-space: normal; min-width: 12em; }
     function drawFoot() {
       foot.textContent = "";
       var left = items.length - shown;
-      foot.appendChild(h("span", { class: "more-count", text: shown + " / " + items.length + "건" }));
-      if (left > 0) foot.appendChild(h("button", { type: "button", class: "copy more-btn", onclick: function () { more(PAGE); }, text: "더 보기 (" + Math.min(PAGE, left) + "건)" }));
-      else if (items.length > PAGE) foot.appendChild(h("span", { class: "more-end", text: "마지막 소식입니다" }));
+      foot.appendChild(h("span", { class: "more-count", text: shown + " / " + items.length + unit }));
+      if (left > 0) foot.appendChild(h("button", { type: "button", class: "copy more-btn", onclick: function () { more(PAGE); }, text: "더 보기 (" + Math.min(PAGE, left) + unit + ")" }));
+      else if (items.length > PAGE) foot.appendChild(h("span", { class: "more-end", text: "마지막 " + noun + "입니다" }));
     }
     function more(n) {
       if (box.__pager !== token || shown >= items.length) return;
@@ -722,14 +725,14 @@ td.model { white-space: normal; min-width: 12em; }
         var k = item.date.slice(0, 7);
         if (k !== cur) {
           cur = k;
-          body.appendChild(h("div", { class: "month" }, [h("h2", { text: monthKey(item.date) }), h("span", { class: "cnt", text: perMonth[k] + "건" })]));
+          body.appendChild(h("div", { class: "month" }, [h("h2", { text: monthKey(item.date) }), h("span", { class: "cnt", text: perMonth[k] + unit })]));
           ul = h("ul", { class: "entries" });
           body.appendChild(ul);
         }
-        ul.appendChild(newsEntry(item));
+        ul.appendChild(renderEntry(item));
       });
       shown = Math.min(items.length, shown + n);
-      state.listShown = shown;
+      if (onShown) onShown(shown);
       drawFoot();
     }
     if ("IntersectionObserver" in window) {
@@ -1062,16 +1065,8 @@ td.model { white-space: normal; min-width: 12em; }
   function techItems(group) {
     var items = ((state.tech && state.tech.items) || []).filter(function (t) { return t.group === group; });
     if (group === "path") return items.sort(function (a, b) { return a.order - b.order; });
-    return items.sort(function (a, b) {
-      var la = lastSeen(a), lb = lastSeen(b);
-      return la < lb ? 1 : la > lb ? -1 : a.name < b.name ? -1 : 1;
-    });
+    return items.sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : a.name < b.name ? -1 : 1; });
   }
-  function newsDates(t) {
-    return (t.news || []).map(function (id) { return state.byId[id] && state.byId[id].date; }).filter(Boolean).sort();
-  }
-  function firstSeen(t) { var d = newsDates(t); return d.length ? d[0] : ""; }
-  function lastSeen(t) { var d = newsDates(t); return d.length ? d[d.length - 1] : ""; }
   // 지침 9.1: 두 회사 이상이 다루거나 근거 소식이 3건 이상이면 '시도' 단계로 올릴지 검토
   function suggestTrial(t) { return t.group === "radar" && t.status === "관찰" && ((t.companies || []).length >= 2 || (t.news || []).length >= 3); }
   function stageTag(t) {
@@ -1088,35 +1083,55 @@ td.model { white-space: normal; min-width: 12em; }
     ])]);
   }
 
+  function techEntry(t) {
+    var isPath = t.group === "path";
+    return h("li", null, [h("a", { class: "entry", href: techHref(t) }, [
+      isPath
+        ? h("div", { class: "date" }, [h("span", { class: "d step", text: String(t.order).padStart(2, "0") }), h("span", { class: "w", text: "단계" })])
+        : h("div", { class: "date" }, [h("span", { class: "d", text: mmdd(t.date) }), h("span", { class: "w", text: "소개" })]),
+      h("div", { class: "e-body" }, [
+        h("div", { class: "e-meta" }, [stageTag(t), suggestTrial(t) ? h("span", { class: "suggest", title: "두 회사 이상 또는 근거 소식 3건 이상", text: "시도 추천" }) : null,
+          h("span", { class: "pill", text: t.level })].concat(isPath ? [] : (t.companies || []).map(coTag))),
+        h("h3", { class: "e-title", text: t.name }),
+        h("p", { class: "t-en", text: t.en }),
+        h("p", { class: "e-tldr", text: t.definition })
+      ]),
+      h("span", { class: "arrow", "aria-hidden": "true", text: "→" })
+    ])]);
+  }
+
   function renderTech(group) {
     setNav(group === "path" ? "lab" : "tech");
     var tk = state.tech;
     var frag = document.createDocumentFragment();
     if (!tk) { frag.appendChild(h("p", { class: "state", text: "기술 목록을 불러오지 못했습니다." })); view.textContent = ""; view.appendChild(frag); return; }
-    (tk.groups || []).filter(function (g) { return g.key === group; }).forEach(function (g) {
-      frag.appendChild(h("p", { class: "lede", text: g.intro }));
-      var ul = h("ul", { class: "entries" }, techItems(g.key).map(function (t) {
-        var isPath = t.group === "path";
-        var ls = lastSeen(t);
-        return h("li", null, [h("a", { class: "entry", href: techHref(t) }, [
-          isPath
-            ? h("div", { class: "date" }, [h("span", { class: "d step", text: String(t.order).padStart(2, "0") }), h("span", { class: "w", text: "단계" })])
-            : h("div", { class: "date" }, [h("span", { class: "d", text: ls ? mmdd(ls) : "—" }), h("span", { class: "w", text: ls ? "최근 언급" : "" })]),
-          h("div", { class: "e-body" }, [
-            h("div", { class: "e-meta" }, [stageTag(t), suggestTrial(t) ? h("span", { class: "suggest", title: "두 회사 이상 또는 근거 소식 3건 이상", text: "시도 추천" }) : null,
-              h("span", { class: "pill", text: t.level })].concat(isPath ? [] : (t.companies || []).map(coTag))),
-            h("h3", { class: "e-title", text: t.name }),
-            h("p", { class: "t-en", text: t.en }),
-            h("p", { class: "e-tldr", text: t.definition })
-          ]),
-          h("span", { class: "arrow", "aria-hidden": "true", text: "→" })
-        ])]);
-      }));
-      frag.appendChild(section(g.title, g.en, [h("p", { class: "g-desc", text: g.desc }), ul]));
-    });
-    frag.appendChild(h("p", { class: "lede", style: "font-size:14px", text: "마지막 확인 " + fmtDate(tk.updatedAt) + ". 공식 문서와 사이트에 올라온 공식 소식을 근거로 정리했으며, 각 기술의 출처에서 원문을 확인할 수 있습니다." }));
-    view.textContent = "";
-    view.appendChild(frag);
+    var g = (tk.groups || []).filter(function (x) { return x.key === group; })[0] || { title: "", intro: "", desc: "" };
+    frag.appendChild(h("p", { class: "lede", text: g.intro }));
+    var foot = h("p", { class: "lede", style: "font-size:14px", text: "마지막 확인 " + fmtDate(tk.updatedAt) + ". 공식 문서와 공식 발표를 근거로 정리했으며, 각 기술의 출처에서 원문을 확인할 수 있습니다." });
+    if (group === "path") {
+      frag.appendChild(section(g.title, g.en, [h("p", { class: "g-desc", text: g.desc }), h("ul", { class: "entries" }, techItems("path").map(techEntry))]));
+      frag.appendChild(foot);
+      view.textContent = ""; view.appendChild(frag);
+      return;
+    }
+    // 최신 활용 기술: 새 소식과 같은 기간 선택 + 10건씩 이어 보기
+    var all = techItems("radar");
+    if (state.techPeriod !== "all" && !all.some(function (x) { return inPeriod(x, state.techPeriod); })) state.techPeriod = "all";
+    var items = all.filter(function (x) { return inPeriod(x, state.techPeriod); });
+    frag.appendChild(section(g.title, g.en, [h("p", { class: "g-desc", text: g.desc })]));
+    frag.appendChild(h("div", { class: "filter-rows" }, [periodRows(all, all, state.techPeriod, function (v) { state.techPeriod = v; renderTech("radar"); }, "기술")]));
+    var range = state.techPeriod === "all"
+      ? (all.length ? "전체 기간 " + fmtDate(all[all.length - 1].date) + " ~ " + fmtDate(all[0].date) : "")
+      : periodName(state.techPeriod);
+    frag.appendChild(h("p", { class: "result", "aria-live": "polite", text: all.length + "개 중 " + items.length + "개" + (range ? " · " + range : "") }));
+    var box = h("div");
+    frag.appendChild(box);
+    frag.appendChild(foot);
+    view.textContent = ""; view.appendChild(frag);
+    if (!items.length) { box.appendChild(h("p", { class: "state", text: "이 기간에 소개된 기술이 없습니다. 기간을 '전체'로 바꿔 보세요." })); return; }
+    var start = state.techKey === state.techPeriod ? state.techShown : 0;
+    state.techKey = state.techPeriod;
+    pagedList(box, items, techEntry, start, function (n) { state.techShown = n; }, "기술");
   }
 
   function renderTechItem(t) {
@@ -1132,7 +1147,8 @@ td.model { white-space: normal; min-width: 12em; }
     art.appendChild(h("div", { class: "a-meta" }, [
       h("span", { class: "pill", text: isPath ? "LAB " + String(t.order).padStart(2, "0") + "단계" : "최신 활용 기술" }),
       stageTag(t), suggestTrial(t) ? h("span", { class: "suggest", text: "시도 추천" }) : null,
-      h("span", { class: "pill", text: t.level })
+      h("span", { class: "pill", text: t.level }),
+      !isPath && t.date ? h("span", { class: "when", text: fmtDate(t.date) + " 소개" }) : null
     ].concat(isPath ? [] : (t.companies || []).map(coTag))));
     art.appendChild(h("h1", { class: "a-title", text: t.name }));
     art.appendChild(h("p", { class: "t-sub", text: t.en }));
@@ -1173,7 +1189,7 @@ td.model { white-space: normal; min-width: 12em; }
         return h("li", null, [h("a", { href: "#" + n.id }, [h("span", { class: "when", text: fmtDate(n.date) }), h("span", null, [coTag(n.company)]), h("b", { text: n.title })])]);
       }))]));
     }
-    art.appendChild(h("p", { class: "verified", text: "마지막 확인 " + fmtDate(t.verifiedAt) }));
+    art.appendChild(h("p", { class: "verified", text: (t.dateNote ? "날짜 안내: " + t.dateNote + " · " : "") + "마지막 확인 " + fmtDate(t.verifiedAt) }));
 
     art.appendChild(h("nav", { class: "pager", "aria-label": "다른 기술" }, [
       prev ? h("a", { href: techHref(prev) }, [h("small", { text: isPath ? "← 이전 단계" : "← 이전 기술" }), h("span", { text: prev.name })]) : h("span"),
@@ -1194,11 +1210,15 @@ td.model { white-space: normal; min-width: 12em; }
     var hash = (location.hash || "").replace(/^#/, "");
     var prev = state.view;
     if (prev === "list") state.listScroll = window.scrollY;
+    if (prev === "tech") state.techScroll = window.scrollY;
     var sub = hash.indexOf("/") > 0 ? hash.slice(hash.indexOf("/") + 1) : "";
     var t = sub && state.techById[sub];
     if (hash === "guide") { state.view = "guide"; renderGuide(); }
     else if (hash === "prices") { state.view = "prices"; renderPrices(); }
-    else if (hash === "tech") { state.view = "tech"; renderTech("radar"); }
+    else if (hash === "tech") {
+      state.view = "tech"; renderTech("radar");
+      if (prev === "techItem") { window.scrollTo(0, state.techScroll || 0); return; }
+    }
     else if (hash === "lab") { state.view = "lab"; renderTech("path"); }
     // 예전 주소(#tech/<학습 경로 id>)도 해당 페이지로 연다
     else if ((hash.indexOf("tech/") === 0 || hash.indexOf("lab/") === 0) && t) { state.view = "techItem"; renderTechItem(t); }
