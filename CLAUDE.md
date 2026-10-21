@@ -16,7 +16,7 @@ GPT·Claude·Gemini 공식 발표를 한국어로 요약하는 정적 사이트(
 
 ## 함정
 - 빌드 없는 정적 사이트다. 화면은 `index.html` 한 파일, 데이터는 `fetch`로 읽는다. 로컬 확인은 `python3 -m http.server 8000` (파일로 직접 열면 `data/`를 못 읽음).
-- 소식 id 예약어: `guide`, `prices`, `tech` (해시 라우팅과 겹침). 새 탭을 만들면 `scripts/validate_data.py`와 `backend/store.py`의 예약어에 함께 추가한다.
+- 소식 id 예약어: `guide`, `prices`, `tech`, `lab` (해시 라우팅과 겹침). 새 탭을 만들면 `scripts/validate_data.py`와 `backend/store.py`의 예약어에 함께 추가한다.
 - 그래프·핵심 수치는 원문 텍스트에 있는 값만. `backend/guard.py`가 원문에 없는 값을 지운다.
-- 'AI 활용 기술' 탭(`data/tech.json`)의 기술 페이지는 필수 항목(정의, 왜 필요한가, 어떻게 활용하나, 기대 효과)과 공식 출처가 있어야 검증을 통과한다.
+- 'AI 활용 기술' 탭(`#tech`, 최신 활용 기술)과 'AI 활용 LAB' 탭(`#lab`, 학습 경로)은 둘 다 `data/tech.json`을 `group`(`radar`/`path`)으로 나눠 쓴다. 기술 페이지는 필수 항목(정의, 왜 필요한가, 어떻게 활용하나, 기대 효과)과 공식 출처가 있어야 검증을 통과한다.
 - 랩은 대화하며 함께 작성하고, 저장소 주인이 직접 실행해 통과한 코드만 커밋한다. 오류를 도울 때는 고치기 전에 왜 났는지 먼저 설명한다.
