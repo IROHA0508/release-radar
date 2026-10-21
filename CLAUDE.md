@@ -12,6 +12,8 @@ GPT·Claude·Gemini 공식 발표를 한국어로 요약하는 정적 사이트(
 - 사실·수치·가격·모델 ID는 공식 출처에서만. 확인 못 한 내용은 쓰지 말고 "확인 필요"로 남긴다.
 - `data/`를 고치면 `python3 scripts/validate_data.py`, 코드를 고치면 `python -m pytest tests -q`. 둘 다 통과해야 커밋한다.
 - 큰 변경은 브랜치와 PR로. `main`에는 6시간마다 자동 커밋(`release-radar-bot`)이 올라오므로 직접 푸시하지 않는다.
+- 커밋 작성자는 저장소 주인의 GitHub 계정 이메일(`siwonl0508@naver.com`)로 한다(예: `git -c user.name=IROHA0508 -c user.email=siwonl0508@naver.com commit ...`). 그래야 커밋이 GitHub 계정에 연결돼 기록이 한 사람으로 모인다. 푸시 전에 `git log -1 --format='%ae'`로 확인한다.
+- Vercel 배포는 푸시 후 10~15분 늦게 시작될 때가 있다. 바로 안 보여도 GitHub 커밋의 Vercel 상태를 15분쯤 기다려 보고, 그래도 없을 때만 Vercel 대시보드에서 직접 배포한다.
 - 토큰·API 키는 GitHub Secrets나 로컬 `.env`에만. 사이트 자동화는 구독 토큰(`CLAUDE_CODE_OAUTH_TOKEN`)을 쓰고, 랩 실습용 API 키와 섞지 않는다.
 
 ## 함정
