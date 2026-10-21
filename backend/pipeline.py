@@ -326,11 +326,14 @@ def run_selftest() -> tuple[bool, list[str]]:
         try:
             art = price_mod.fetch_page(url)
             page = "\n".join([art.text, *art.tables]).lower()
-            ids = [m["apiId"] for m in tracked if m["company"] == company and m.get("status") == "available" and m.get("apiId")]
-            seen = [i for i in ids if i.lower() in page]
-            tag = "OK  " if len(art.text) >= 2000 and (not ids or seen) else "WARN"
-            lines.append(f"{tag} 가격 페이지 {company}: {art.via}, 본문 {len(art.text)}자, 표 {len(art.tables)}개, "
-                         f"가격표 모델 ID {len(seen)}/{len(ids)}개 보임")
+            live = [m for m in tracked if m["company"] == company and m.get("status") == "available"]
+            keys = re.sub(r"[^a-z0-9.]+", "", page)
+            # Anthropic's page names models ("Claude Opus 5.5") instead of listing their IDs.
+            seen = [m for m in live if (m.get("apiId") and m["apiId"].lower() in page)
+                    or detect.model_key(m.get("name")) in keys]
+            tag = "OK  " if len(art.text) >= 2000 and (not live or seen) else "WARN"
+            lines.append(f"{tag} 가격 페이지 {company}: {art.via}, 본문 {len(art.text)}자, "
+                         f"가격표 모델 {len(seen)}/{len(live)}개 보임(ID 또는 이름)")
         except Exception as exc:  # noqa: BLE001
             lines.append(f"WARN 가격 페이지 {company}: {exc}"[:300])
     try:
@@ -348,8 +351,15 @@ def run_selftest() -> tuple[bool, list[str]]:
         print(line, flush=True)
         if line.startswith("FAIL"):
             annotate("error", "자가 시험 실패", line)
-    # One annotation with every line: GitHub shows at most 10 notices per step.
-    annotate("notice", "자가 시험 결과", "\n".join(lines))
+    # A few annotations with every line: GitHub shows at most 10 notices per step and cuts long messages.
+    chunk: list[str] = []
+    for line in lines + [""]:
+        if line == "" or sum(len(x) + 1 for x in chunk) + len(line) > 3500:
+            if chunk:
+                annotate("notice", "자가 시험 결과", "\n".join(chunk))
+            chunk = []
+        if line:
+            chunk.append(line)
     return ok, lines
 
 
