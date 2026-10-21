@@ -1,50 +1,36 @@
 {
-  "startedAt": "2026-10-22T04:00:35+09:00",
+  "startedAt": "2026-10-22T08:46:14+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1832,
+  "entries": 1835,
   "candidates": [
     {
-      "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
-      "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
-      "company": "openai",
-      "date": "2026-10-21",
-      "relatedId": null
-    },
-    {
-      "title": "Claude Security now scans continuously and tracks fixes",
-      "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
+      "title": "Introducing Claude Duet",
+      "url": "https://claude.com/resources/articles/claude-duet",
       "company": "anthropic",
       "date": "2026-10-21",
       "relatedId": null
     },
     {
-      "title": "Powering the Agent Development Lifecycle with any framework, from ADK to LangChain and beyond",
-      "url": "https://developers.googleblog.com/powering-the-agent-development-lifecycle-with-any-framework-from-adk-to-langchain-and-beyond/",
-      "company": "google",
+      "title": "HCLTech joins the Claude Partner Network as a Global Premier partner",
+      "url": "https://claude.com/resources/articles/hcltech-joins-claude-partner-network",
+      "company": "anthropic",
       "date": "2026-10-21",
       "relatedId": null
     }
   ],
-  "added": [
-    {
-      "id": "google-agents-cli-extension-system",
-      "title": "Agents CLI 확장 시스템: ADK 없이 LangChain으로 배포하고 배포 정책 끼우기",
-      "url": "https://developers.googleblog.com/powering-the-agent-development-lifecycle-with-any-framework-from-adk-to-langchain-and-beyond/",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [
     {
-      "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities",
-      "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities",
-      "reason": "모델과 무관한 보안 정책·파트너십 이니셔티브. 새 모델 출시, 모델 업데이트, 공식 활용 팁이 아님."
+      "title": "HCLTech joins the Claude Partner Network as a Global Premier partner",
+      "url": "https://claude.com/resources/articles/hcltech-joins-claude-partner-network",
+      "reason": "기업 파트너십 뉴스로, 판단 기준의 제외 항목(기업 파트너십)에 명시적으로 해당"
     },
     {
-      "title": "Claude Security now scans continuously and tracks fixes",
-      "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
-      "reason": "실전 조언이 거의 없는 기능 소개. 사용자가 바로 따라 할 수 있는 구체적인 활용 가이드 부족."
+      "title": "Introducing Claude Duet",
+      "url": "https://claude.com/resources/articles/claude-duet",
+      "reason": "Claude Duet는 새 모델이 아니라 Opus 5.5 기반의 새 앱(리서치 프리뷰)을 소개하는 제품 발표입니다. 모델 출시나 버전 업데이트가 아니고 가격 변경도 없습니다. 독자가 바로 따라 할 실전 조언도 거의 없어서, 모델과 무관한 제품 공지이자 기능 소개로 보고 제외합니다."
     }
   ],
   "failed": [],
