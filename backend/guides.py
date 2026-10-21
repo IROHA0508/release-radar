@@ -20,7 +20,7 @@ from . import config, guard
 
 log = logging.getLogger(__name__)
 
-CATEGORIES = ["기본 작성법", "구조와 형식", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩",
+CATEGORIES = ["기본 작성법", "구조와 형식", "앱 기능과 설정", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩",
               "도구와 API 설정", "이미지·영상·음성"]
 MAX_ADD, MAX_UPDATE = 3, 3
 

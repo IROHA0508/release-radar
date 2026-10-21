@@ -248,6 +248,20 @@ pre.code { overflow-x: auto; white-space: pre; }
 /* guide: tabs, categories, method cards */
 .g-tabs { margin-top: 22px; }
 .g-meta { font-size: 13px; color: var(--faint); margin: 10px 0 0; }
+.st-answer { font-size: 16px; line-height: 1.75; max-width: 72ch; margin: 0 0 16px; }
+.st-table th, .st-table td { white-space: normal; vertical-align: top; line-height: 1.6; }
+.st-table td { min-width: 12em; }
+.st-table td:first-child { min-width: 7em; white-space: nowrap; }
+.st-src { display: block; margin-top: 6px; font-size: 12.5px; color: var(--faint); }
+.st-src a { color: var(--muted); }
+.st-notes { margin: 16px 0; }
+@media (max-width: 640px) {
+  .st-table thead { display: none; }
+  .st-table tr { display: block; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .st-table td { display: block; min-width: 0; border: 0; padding: 4px 14px; }
+  .st-table td::before { content: attr(data-label); display: block; font-size: 12px; color: var(--faint); margin-bottom: 2px; }
+  .st-table td:first-child::before { display: none; }
+}
 .g-cats { margin: 18px 0 4px; }
 .g-cats .chip { font-size: 13px; padding: 6px 11px; }
 .g-cats .n { font: 500 11.5px/1 var(--f-mono); color: var(--faint); }
@@ -723,11 +737,32 @@ td.model { white-space: normal; min-width: 12em; }
       frag.appendChild(section("세 회사 공통 원칙", "common ground", [h("div", { class: "common" }, (g.common || []).map(function (t) {
         return h("div", { class: "tip" }, [h("h3", { text: t.title }), h("p", { text: t.body })]);
       }))]));
+      var st = g.structure;
+      if (st && (st.rows || []).length) {
+        frag.appendChild(section(st.title, "tags in chat apps", [
+          st.answer ? h("p", { class: "st-answer", text: st.answer }) : null,
+          h("div", { class: "tbl-wrap" }, [h("table", { class: "st-table" }, [
+            h("thead", null, [h("tr", null, [h("th", { text: "회사" }), h("th", { text: "공식 문서가 권하는 구분 방식" }), h("th", { text: "웹·모바일 앱에서" }), h("th", { text: "자주 쓰는 지시를 저장해 두는 곳" })])]),
+            h("tbody", null, st.rows.map(function (r) {
+              return h("tr", null, [
+                h("td", { "data-label": "회사" }, [coTag(r.company)]),
+                h("td", { "data-label": "공식 문서가 권하는 구분 방식", text: r.recommended }),
+                h("td", { "data-label": "웹·모바일 앱에서", text: r.inApp }),
+                h("td", { "data-label": "자주 쓰는 지시를 저장해 두는 곳" }, [h("span", { text: r.saveIn }), (r.sources || []).length ? h("span", { class: "st-src" }, ["근거: "].concat(r.sources.map(function (s, i) {
+                  return h("span", null, [i ? " · " : "", h("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title })]);
+                }))) : null])
+              ]);
+            }))
+          ])]),
+          (st.notes || []).length ? h("ul", { class: "list st-notes" }, st.notes.map(function (n) { return h("li", { text: n }); })) : null,
+          st.example ? promptBlock({ title: st.example.title, when: st.example.when, text: st.example.text, type: "prompt" }) : null
+        ]));
+      }
     } else {
       var v = vendors.filter(function (x) { return x.company === state.guideTab; })[0];
       var methods = v.methods || [];
       var cats = []; methods.forEach(function (m) { if (cats.indexOf(m.category) < 0) cats.push(m.category); });
-      var order = ["기본 작성법", "구조와 형식", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩", "도구와 API 설정", "이미지·영상·음성"];
+      var order = ["기본 작성법", "구조와 형식", "앱 기능과 설정", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩", "도구와 API 설정", "이미지·영상·음성"];
       cats.sort(function (a, b) { return order.indexOf(a) - order.indexOf(b); });
       if (state.guideCat !== "all" && cats.indexOf(state.guideCat) < 0) state.guideCat = "all";
       var block = h("section", { class: "vendor c-" + v.company, id: "guide-" + v.company }, [

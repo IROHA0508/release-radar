@@ -82,7 +82,7 @@ def check_news(path):
     return nid
 
 
-GUIDE_CATEGORIES = {"기본 작성법", "구조와 형식", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩",
+GUIDE_CATEGORIES = {"기본 작성법", "구조와 형식", "앱 기능과 설정", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩",
                     "도구와 API 설정", "이미지·영상·음성"}
 PRICE_STATUS = {"available", "deprecated", "unlisted"}
 
@@ -124,6 +124,19 @@ def check_guides(g, news_ids):
         for w in v.get("watch", []):
             if not str(w.get("url", "")).startswith("https://"):
                 err(where, f"{co}: watch url은 https로 시작해야 함")
+    st = g.get("structure")
+    if st is not None:
+        if not st.get("title") or not st.get("rows"):
+            err(where, "structure에 title/rows 없음")
+        for r in st.get("rows", []):
+            if r.get("company") not in COMPANIES:
+                err(where, f"structure.rows.company 오류: {r.get('company')}")
+            for k in ("recommended", "inApp", "saveIn"):
+                if not r.get(k):
+                    err(where, f"structure {r.get('company')}: '{k}' 없음")
+            for s_ in r.get("sources", []):
+                if not str(s_.get("url", "")).startswith("https://"):
+                    err(where, f"structure {r.get('company')}: 근거 URL은 https로 시작해야 함")
 
 
 def check_prices(p, news_ids):
