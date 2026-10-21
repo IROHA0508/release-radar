@@ -2,7 +2,7 @@
 
 **사이트: https://release-radar-ten.vercel.app**
 
-ChatGPT(OpenAI), Claude(Anthropic), Gemini(Google)의 공식 발표를 뉴스별로 한국어로 요약하는 정적 웹사이트입니다. 소식마다 핵심 수치, 성능 그래프, 모델 사양, 활용 팁, 추천 프롬프트, 공식 출처를 정리하고, 세 회사의 프롬프트 가이드와 API 가격표를 함께 제공합니다.
+ChatGPT(OpenAI), Claude(Anthropic), Gemini(Google)의 공식 발표를 뉴스별로 한국어로 요약하는 정적 웹사이트입니다. 소식마다 핵심 수치, 성능 그래프, 모델 사양, 활용 팁, 추천 프롬프트, 공식 출처를 정리하고, 세 회사의 프롬프트 가이드와 API 가격표, AI를 활용하는 기술(학습 경로와 최신 활용 기술) 정리를 함께 제공합니다.
 
 ## 구조
 
@@ -11,7 +11,10 @@ index.html              화면 전체(HTML·CSS·JS 한 파일, 빌드 없음)
 data/manifest.json      사이트에 보여 줄 소식 id 목록과 마지막 확인 날짜
 data/news/<id>.json     소식 한 건 = 파일 한 개
 data/guides.json        프롬프트 가이드 탭 내용
+data/tech.json          AI 활용 기술 탭 내용 (학습 경로·최신 활용 기술)
 docs/DATA_SCHEMA.md     데이터 형식 설명
+docs/GUIDELINES.md      프로젝트 지침 (목표·원칙·로드맵)
+CLAUDE.md               AI와 작업할 때 먼저 읽는 요약 지침
 scripts/validate_data.py  커밋 전 데이터 검증
 vercel.json             Vercel 설정 (데이터 캐시 끄기, 깔끔한 URL)
 backend/                새 소식 감지·요약·반영 Python 코드 (GitHub Actions에서 실행)

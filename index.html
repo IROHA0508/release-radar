@@ -307,6 +307,31 @@ td.model { white-space: normal; min-width: 12em; }
 .unlisted li { display: grid; grid-template-columns: 9em minmax(0, 1fr); gap: 4px 14px; font-size: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
 .unlisted .why { color: var(--muted); }
 
+/* ---------- AI 활용 기술 ---------- */
+.date .d.step { font-size: var(--s-xl); }
+.stage { font: 600 11.5px/1 var(--f-body); padding: 4px 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--muted); white-space: nowrap; }
+.stage.s-trial { border-color: var(--ink); color: var(--ink); }
+.stage.s-lab { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.suggest { font: 600 11px/1 var(--f-body); padding: 4px 6px; border-radius: 3px; background: var(--mark); color: var(--mark-ink); white-space: nowrap; }
+.t-en { font: 500 12.5px/1.4 var(--f-mono); color: var(--faint); margin: 2px 0 6px; }
+.t-sub { font: 500 13px/1.4 var(--f-mono); color: var(--faint); margin: -2px 0 22px; }
+.g-desc { color: var(--muted); font-size: 14px; max-width: 70ch; margin: -4px 0 6px; }
+.def p { font-size: 17px; line-height: 1.75; }
+.why-text { margin: 0; max-width: 70ch; }
+.links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.links a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 14px; font-weight: 600; padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 999px; color: var(--ink); }
+.links a:hover { border-color: var(--ink); }
+.links .lv { font: 500 11.5px/1 var(--f-body); color: var(--faint); }
+.need { display: grid; grid-template-columns: 7em minmax(0, 1fr); gap: 12px 16px; margin: 0; align-items: start; }
+.need dt { font-size: 13px; color: var(--muted); font-weight: 600; padding-top: 6px; }
+.need dd { margin: 0; }
+.rel-news { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.rel-news li { border-bottom: 1px solid var(--line); }
+.rel-news a { display: grid; grid-template-columns: 6.5em 7.5em minmax(0, 1fr); gap: 12px; padding: 10px 0; text-decoration: none; color: inherit; align-items: baseline; font-size: 14px; }
+.rel-news a:hover b { text-decoration: underline; text-underline-offset: 3px; }
+.rel-news .when { font: 12.5px var(--f-mono); color: var(--faint); }
+.verified { margin-top: 28px; font-size: 13px; color: var(--faint); }
+
 .foot { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line-strong); color: var(--faint); font-size: 13px; display: grid; gap: 4px; }
 
 @media (max-width: 640px) {
@@ -323,6 +348,10 @@ td.model { white-space: normal; min-width: 12em; }
   .arrow { display: none; }
   .e-title { font-size: 21px; }
   .p-head { flex-direction: column; }
+  .date .d.step { font-size: var(--s-sm); }
+  .need { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .need dd { margin-bottom: 10px; }
+  .rel-news a { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .pager { grid-template-columns: 1fr; }
   .pager .next { text-align: left; }
   .row, .axis { grid-template-columns: minmax(0, 1fr) 5.2em; row-gap: 3px; }
@@ -350,6 +379,7 @@ td.model { white-space: normal; min-width: 12em; }
     <a href="#" data-nav="news">새 소식</a>
     <a href="#guide" data-nav="guide">프롬프트 가이드</a>
     <a href="#prices" data-nav="prices">API 가격표</a>
+    <a href="#tech" data-nav="tech">AI 활용 기술</a>
   </nav>
 
   <main id="view">
@@ -377,7 +407,7 @@ td.model { white-space: normal; min-width: 12em; }
   var KINDS = ["모델 출시", "모델 업데이트", "활용 팁"];
   var WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
-  var state = { manifest: null, news: [], byId: {}, guides: null, error: null, loaded: false, filter: "all", kind: "all" };
+  var state = { manifest: null, news: [], byId: {}, guides: null, tech: null, techById: {}, error: null, loaded: false, filter: "all", kind: "all" };
   try { var f = localStorage.getItem("rr-filter"); if (f && (f === "all" || COMPANIES[f])) state.filter = f; } catch (e) {}
   state.guideTab = "common"; state.guideCat = "all";
   try { var gt = localStorage.getItem("rr-guide"); if (gt) state.guideTab = gt; } catch (e) {}
@@ -911,6 +941,132 @@ td.model { white-space: normal; min-width: 12em; }
     view.appendChild(frag);
   }
 
+  /* ---------- AI 활용 기술 ---------- */
+  var STAGE_CLASS = { "관찰": "s-watch", "시도": "s-trial", "랩": "s-lab" };
+  var EX_LABEL = { code: "코드", prompt: "프롬프트", scene: "구성 예시" };
+  function techItems(group) {
+    var items = ((state.tech && state.tech.items) || []).filter(function (t) { return t.group === group; });
+    if (group === "path") return items.sort(function (a, b) { return a.order - b.order; });
+    return items.sort(function (a, b) {
+      var la = lastSeen(a), lb = lastSeen(b);
+      return la < lb ? 1 : la > lb ? -1 : a.name < b.name ? -1 : 1;
+    });
+  }
+  function newsDates(t) {
+    return (t.news || []).map(function (id) { return state.byId[id] && state.byId[id].date; }).filter(Boolean).sort();
+  }
+  function firstSeen(t) { var d = newsDates(t); return d.length ? d[0] : ""; }
+  function lastSeen(t) { var d = newsDates(t); return d.length ? d[d.length - 1] : ""; }
+  // 지침 9.1: 두 회사 이상이 다루거나 근거 소식이 3건 이상이면 '시도' 단계로 올릴지 검토
+  function suggestTrial(t) { return t.group === "radar" && t.status === "관찰" && ((t.companies || []).length >= 2 || (t.news || []).length >= 3); }
+  function stageTag(t) {
+    if (t.group !== "radar") return null;
+    return h("span", { class: "stage " + (STAGE_CLASS[t.status] || "s-watch"), title: "기술 레이더 단계", text: t.status });
+  }
+  function techLink(id) {
+    var t = state.techById[id];
+    if (!t) return null;
+    return h("li", null, [h("a", { href: "#tech/" + t.id }, [
+      t.group === "path" ? h("span", { class: "lv", text: String(t.order).padStart(2, "0") }) : null, t.name,
+      t.group === "radar" ? h("span", { class: "lv", text: t.status }) : null
+    ])]);
+  }
+
+  function renderTech() {
+    setNav("tech");
+    var tk = state.tech;
+    var frag = document.createDocumentFragment();
+    if (!tk) { frag.appendChild(h("p", { class: "state", text: "기술 목록을 불러오지 못했습니다." })); view.textContent = ""; view.appendChild(frag); return; }
+    frag.appendChild(h("p", { class: "lede", text: tk.intro }));
+    (tk.groups || []).forEach(function (g) {
+      var ul = h("ul", { class: "entries" }, techItems(g.key).map(function (t) {
+        var isPath = t.group === "path";
+        var ls = lastSeen(t);
+        return h("li", null, [h("a", { class: "entry", href: "#tech/" + t.id }, [
+          isPath
+            ? h("div", { class: "date" }, [h("span", { class: "d step", text: String(t.order).padStart(2, "0") }), h("span", { class: "w", text: "단계" })])
+            : h("div", { class: "date" }, [h("span", { class: "d", text: ls ? mmdd(ls) : "—" }), h("span", { class: "w", text: ls ? "최근 언급" : "" })]),
+          h("div", { class: "e-body" }, [
+            h("div", { class: "e-meta" }, [stageTag(t), suggestTrial(t) ? h("span", { class: "suggest", title: "두 회사 이상 또는 근거 소식 3건 이상", text: "시도 추천" }) : null,
+              h("span", { class: "pill", text: t.level })].concat(isPath ? [] : (t.companies || []).map(coTag))),
+            h("h3", { class: "e-title", text: t.name }),
+            h("p", { class: "t-en", text: t.en }),
+            h("p", { class: "e-tldr", text: t.definition })
+          ]),
+          h("span", { class: "arrow", "aria-hidden": "true", text: "→" })
+        ])]);
+      }));
+      frag.appendChild(section(g.title, g.en, [h("p", { class: "g-desc", text: g.desc }), ul]));
+    });
+    frag.appendChild(h("p", { class: "lede", style: "font-size:14px", text: "마지막 확인 " + fmtDate(tk.updatedAt) + ". 공식 문서와 사이트에 올라온 공식 소식을 근거로 정리했으며, 각 기술의 출처에서 원문을 확인할 수 있습니다." }));
+    view.textContent = "";
+    view.appendChild(frag);
+  }
+
+  function renderTechItem(t) {
+    setNav("tech");
+    var group = techItems(t.group);
+    var idx = group.indexOf(t);
+    var prev = idx > 0 ? group[idx - 1] : null;
+    var next = idx < group.length - 1 ? group[idx + 1] : null;
+    var isPath = t.group === "path";
+
+    var art = h("article", { class: "article" });
+    art.appendChild(h("a", { class: "back", href: "#tech" }, ["← AI 활용 기술"]));
+    art.appendChild(h("div", { class: "a-meta" }, [
+      h("span", { class: "pill", text: isPath ? "학습 경로 " + String(t.order).padStart(2, "0") + "단계" : "최신 활용 기술" }),
+      stageTag(t), suggestTrial(t) ? h("span", { class: "suggest", text: "시도 추천" }) : null,
+      h("span", { class: "pill", text: t.level })
+    ].concat(isPath ? [] : (t.companies || []).map(coTag))));
+    art.appendChild(h("h1", { class: "a-title", text: t.name }));
+    art.appendChild(h("p", { class: "t-sub", text: t.en }));
+
+    var srcList = (t.sources && t.sources.length) ? h("div", { class: "tldr-src" }, [
+      h("p", { class: "label", text: "공식 출처 · 원문에서 직접 확인하세요" }),
+      h("ul", { class: "sources" }, t.sources.map(function (s) {
+        return h("li", null, [h("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title }), h("span", { class: "host", text: host(s.url) })]);
+      }))
+    ]) : null;
+    art.appendChild(h("div", { class: "tldr def" }, [h("p", { class: "label", text: "정의" }), h("p", { text: t.definition }), srcList]));
+
+    art.appendChild(section("왜 필요한가", "why it matters", [h("p", { class: "why-text", text: t.why })]));
+    art.appendChild(section("어떻게 활용하나", "how to use it", [h("ul", { class: "list" }, t.how.map(function (x) { return h("li", { text: x }); }))]));
+    art.appendChild(section("기대 효과", "expected effects", [h("ul", { class: "list" }, t.effects.map(function (x) { return h("li", { text: x }); }))]));
+    if (t.example) {
+      var ex = t.example;
+      art.appendChild(section("짧은 예시", "example", [promptBlock({ title: ex.title, when: EX_LABEL[ex.type] || "", type: ex.type === "code" ? "code" : "prompt", text: ex.text })]));
+    }
+    if (t.limits && t.limits.length) {
+      art.appendChild(section("한계와 주의점", "limits", [h("ul", { class: "list caution" }, t.limits.map(function (x) { return h("li", { text: x }); }))]));
+    }
+
+    var prereq = (t.prerequisites || []).map(techLink).filter(Boolean);
+    var related = (t.related || []).map(techLink).filter(Boolean);
+    var labLink = t.lab ? techLink(t.lab) : null;
+    art.appendChild(section("난이도와 선행 지식", "level & prerequisites", [h("dl", { class: "need" }, [
+      h("dt", { text: "난이도" }), h("dd", null, [h("span", { class: "pill", text: t.level })]),
+      h("dt", { text: "먼저 알면 좋은 것" }), h("dd", null, [prereq.length ? h("ul", { class: "links" }, prereq) : h("span", { style: "color:var(--muted);font-size:14px", text: "없음 · 여기서 시작하면 됩니다" })]),
+      labLink ? h("dt", { text: "포함된 랩" }) : null, labLink ? h("dd", null, [h("ul", { class: "links" }, [labLink])]) : null
+    ])]));
+    if (related.length) art.appendChild(section("관련 기술", "related", [h("ul", { class: "links" }, related)]));
+
+    var rel = (t.news || []).map(function (id) { return state.byId[id]; }).filter(Boolean)
+      .sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+    if (rel.length) {
+      art.appendChild(section("관련 소식", "on this site", [h("ul", { class: "rel-news" }, rel.map(function (n) {
+        return h("li", null, [h("a", { href: "#" + n.id }, [h("span", { class: "when", text: fmtDate(n.date) }), h("span", null, [coTag(n.company)]), h("b", { text: n.title })])]);
+      }))]));
+    }
+    art.appendChild(h("p", { class: "verified", text: "마지막 확인 " + fmtDate(t.verifiedAt) }));
+
+    art.appendChild(h("nav", { class: "pager", "aria-label": "다른 기술" }, [
+      prev ? h("a", { href: "#tech/" + prev.id }, [h("small", { text: isPath ? "← 이전 단계" : "← 이전 기술" }), h("span", { text: prev.name })]) : h("span"),
+      next ? h("a", { class: "next", href: "#tech/" + next.id }, [h("small", { text: isPath ? "다음 단계 →" : "다음 기술 →" }), h("span", { text: next.name })]) : h("span")
+    ]));
+    view.textContent = "";
+    view.appendChild(art);
+  }
+
   function renderState(msg) {
     view.textContent = "";
     view.appendChild(h("div", { class: "state" }, [h("b", { text: msg.title }), h("p", { text: msg.body })]));
@@ -922,6 +1078,8 @@ td.model { white-space: normal; min-width: 12em; }
     var hash = (location.hash || "").replace(/^#/, "");
     if (hash === "guide") renderGuide();
     else if (hash === "prices") renderPrices();
+    else if (hash === "tech") renderTech();
+    else if (hash.indexOf("tech/") === 0 && state.techById[hash.slice(5)]) renderTechItem(state.techById[hash.slice(5)]);
     else if (hash && state.byId[hash]) renderArticle(state.byId[hash]);
     else renderList();
     if (hash) window.scrollTo(0, 0);
@@ -940,13 +1098,16 @@ td.model { white-space: normal; min-width: 12em; }
     return Promise.all([
       Promise.all(ids.map(function (id) { return getJSON("data/news/" + id + ".json").catch(function () { return null; }); })),
       getJSON("data/guides.json").catch(function () { return null; }),
-      getJSON("data/prices.json").catch(function () { return null; })
+      getJSON("data/prices.json").catch(function () { return null; }),
+      getJSON("data/tech.json").catch(function () { return null; })
     ]);
   }).then(function (res) {
     state.news = res[0].filter(Boolean);
     state.news.forEach(function (n) { state.byId[n.id] = n; });
     state.guides = res[1];
     state.prices = res[2];
+    state.tech = res[3];
+    ((state.tech && state.tech.items) || []).forEach(function (t) { state.techById[t.id] = t; });
     state.loaded = true;
     renderHeader();
     route();
