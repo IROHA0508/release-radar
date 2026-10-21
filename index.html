@@ -703,6 +703,9 @@ td.model { white-space: normal; min-width: 12em; }
     var src = m.source || {};
     kids.push(h("p", { class: "m-src" }, [
       "출처: ", h("a", { href: src.url, target: "_blank", rel: "noopener", text: src.title || host(src.url) }), " · " + host(src.url),
+      (m.alsoSources || []).length ? h("span", null, ["  함께 보기: "].concat(m.alsoSources.map(function (a, i) {
+        return h("span", null, [i ? " · " : "", h("a", { href: a.url, target: "_blank", rel: "noopener", text: a.title || host(a.url) })]);
+      }))) : null,
       m.newsId && state.byId[m.newsId] ? h("span", null, [" · ", h("a", { href: "#" + m.newsId, text: "관련 소식" })]) : null
     ]));
     return h("article", { class: "method c-" + company, id: "m-" + m.id }, kids);
