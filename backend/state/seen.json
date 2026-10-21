@@ -1,4 +1,7 @@
 {
+  "attempts": {
+    "https://openai.com/index/terminal-x": 1
+  },
   "urls": {
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",

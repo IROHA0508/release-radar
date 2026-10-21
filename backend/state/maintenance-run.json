@@ -1,0 +1,17 @@
+{
+  "startedAt": "2026-10-21T17:03:46+09:00",
+  "prices": {
+    "checked": [],
+    "changes": [],
+    "notes": [],
+    "errors": {}
+  },
+  "guides": {
+    "checked": 38,
+    "changed": [],
+    "changes": [],
+    "errors": {}
+  },
+  "authError": false,
+  "note": ""
+}

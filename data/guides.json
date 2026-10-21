@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-10-21",
-  "checkedAt": "2026-10-21 12:40",
+  "checkedAt": "2026-10-21 17:03",
   "common": [
     {
       "title": "결과와 완료 기준을 먼저 쓰기",
@@ -483,55 +483,81 @@
       "watch": [
         {
           "title": "Using GPT-6 (모델별 프롬프트·마이그레이션 가이드)",
-          "url": "https://developers.openai.com/api/docs/guides/latest-model"
+          "url": "https://developers.openai.com/api/docs/guides/latest-model",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "31e2fb0898f0811f"
         },
         {
           "title": "Prompt engineering (OpenAI API)",
-          "url": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+          "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "faa9f929eb1e3d8d"
         },
         {
           "title": "Image prompting (OpenAI API)",
-          "url": "https://developers.openai.com/api/docs/guides/image-prompting"
+          "url": "https://developers.openai.com/api/docs/guides/image-prompting",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "ac32104ec887dadf"
         },
         {
           "title": "Voice prompting (Realtime API)",
-          "url": "https://developers.openai.com/api/docs/guides/voice-prompting"
+          "url": "https://developers.openai.com/api/docs/guides/voice-prompting",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "bce0fa3c42897646"
         },
         {
           "title": "Prompting GPT-Live (OpenAI API)",
-          "url": "https://developers.openai.com/api/docs/guides/live-prompting"
+          "url": "https://developers.openai.com/api/docs/guides/live-prompting",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "b7eec6ea6041b8bc"
         },
         {
           "title": "Prompting (ChatGPT Learn)",
-          "url": "https://learn.chatgpt.com/docs/prompting"
+          "url": "https://learn.chatgpt.com/docs/prompting",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "a5482cef89036684"
         },
         {
           "title": "ChatGPT Enterprise Prompting Guide",
-          "url": "https://learn.chatgpt.com/cookbook/examples/chatgpt/chatgpt_prompt_guide/chatgpt_prompt_guide"
+          "url": "https://learn.chatgpt.com/cookbook/examples/chatgpt/chatgpt_prompt_guide/chatgpt_prompt_guide",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "6cdc64d5460294b7"
         },
         {
           "title": "Memory in ChatGPT",
-          "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "728b9737640a853a"
         },
         {
           "title": "Deep research in ChatGPT",
-          "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt"
+          "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "cb1826a303248616"
         },
         {
           "title": "Scheduled tasks in ChatGPT",
-          "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt"
+          "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "5343008984ffb822"
         },
         {
           "title": "Writing blocks and code blocks in ChatGPT",
-          "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt"
+          "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "8237b8da7cbb3bad"
         },
         {
           "title": "Projects in ChatGPT",
-          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+          "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "c5aa55c2e410e466"
         },
         {
           "title": "ChatGPT custom instructions",
-          "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+          "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "8b422d2275397489"
         }
       ]
     },
@@ -966,47 +992,69 @@
       "watch": [
         {
           "title": "Prompting best practices (Claude Platform Docs)",
-          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "8e2578ec184ffc32"
         },
         {
           "title": "Prompting Claude Opus 5.5",
-          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5"
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "74edb2d9d4de2b98"
         },
         {
           "title": "Prompting Claude Sonnet 5.5",
-          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5"
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "f75de52ef73b3b50"
         },
         {
           "title": "Prompting Claude Fable 5.1",
-          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1"
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "2d52b95257bb5d3c"
         },
         {
           "title": "Prompting Claude Haiku 5.5",
-          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5"
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "42de5de8ea7a0d39"
         },
         {
           "title": "Best practices for Claude Code",
-          "url": "https://code.claude.com/docs/en/best-practices"
+          "url": "https://code.claude.com/docs/en/best-practices",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "b1e5e2a2a1dba4d5"
         },
         {
           "title": "Use Claude's chat search and memory",
-          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
+          "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "ce1b0947719a4d9e"
         },
         {
           "title": "Use research on Claude",
-          "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude"
+          "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "f917ff4f942f01b8"
         },
         {
           "title": "What are artifacts and how do I use them?",
-          "url": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them"
+          "url": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "c2d08703f12f25db"
         },
         {
           "title": "Schedule recurring tasks in Claude Cowork",
-          "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"
+          "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "233b644f3ec24f0b"
         },
         {
           "title": "How can I create and manage projects?",
-          "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+          "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "714c0919cd3a891b"
         }
       ]
     },
@@ -1470,59 +1518,87 @@
       "watch": [
         {
           "title": "Prompt design strategies (Gemini API)",
-          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "c5b55a63c8d373cb"
         },
         {
           "title": "What's new in Gemini 4 Argon (Gemini API 최신 모델 가이드)",
-          "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+          "url": "https://ai.google.dev/gemini-api/docs/latest-model",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "ad815531790a31ca"
         },
         {
           "title": "Thinking (Gemini API)",
-          "url": "https://ai.google.dev/gemini-api/docs/thinking"
+          "url": "https://ai.google.dev/gemini-api/docs/thinking",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "8aa826721ab389f3"
         },
         {
           "title": "Nano Banana image generation: Prompting guide and strategies (Gemini API)",
-          "url": "https://ai.google.dev/gemini-api/docs/image-generation"
+          "url": "https://ai.google.dev/gemini-api/docs/image-generation",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "3f0ff37ca5598d70"
         },
         {
           "title": "Speech generation (TTS) 프롬프트 가이드 (Gemini API)",
-          "url": "https://ai.google.dev/gemini-api/docs/speech-generation"
+          "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "a472f10b560a2e23"
         },
         {
           "title": "How to create effective prompts with Gemini Omni (Google DeepMind)",
-          "url": "https://deepmind.google/models/gemini-omni/prompt-guide"
+          "url": "https://deepmind.google/models/gemini-omni/prompt-guide",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "45c324719246326a"
         },
         {
           "title": "Write effective skills (Gemini Apps Help)",
-          "url": "https://support.google.com/gemini/answer/17102773?hl=en"
+          "url": "https://support.google.com/gemini/answer/17102773?hl=en",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "b5e912109515d1c7"
         },
         {
           "title": "Customize Gemini's responses with your instructions",
-          "url": "https://support.google.com/gemini/answer/16598625?hl=en"
+          "url": "https://support.google.com/gemini/answer/16598625?hl=en",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "54518d8532eb8812"
         },
         {
           "title": "Memory of your past Gemini chats",
-          "url": "https://support.google.com/gemini/answer/16598469?hl=en"
+          "url": "https://support.google.com/gemini/answer/16598469?hl=en",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "66767b60a55d9e7a"
         },
         {
           "title": "Organize your projects with notebooks in Gemini Apps",
-          "url": "https://support.google.com/gemini/answer/16972047?hl=en"
+          "url": "https://support.google.com/gemini/answer/16972047?hl=en",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "0dd39511812610f0"
         },
         {
           "title": "Use Deep Research in Gemini Apps",
-          "url": "https://support.google.com/gemini/answer/15719111?hl=en"
+          "url": "https://support.google.com/gemini/answer/15719111?hl=en",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "1fef63dc283bdc74"
         },
         {
           "title": "Create docs, apps & more with Canvas",
-          "url": "https://support.google.com/gemini/answer/16047321?hl=en"
+          "url": "https://support.google.com/gemini/answer/16047321?hl=en",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "ece3ee46b1dee329"
         },
         {
           "title": "Manage your tasks & workflows in Gemini Apps",
-          "url": "https://support.google.com/gemini/answer/17094507?hl=en"
+          "url": "https://support.google.com/gemini/answer/17094507?hl=en",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "983def975456c530"
         },
         {
           "title": "Schedule actions in Gemini Apps",
-          "url": "https://support.google.com/gemini/answer/16316416?hl=en"
+          "url": "https://support.google.com/gemini/answer/16316416?hl=en",
+          "checkedAt": "2026-10-21 17:03",
+          "hash": "e2a15a25c619dc3b"
         }
       ]
     }

@@ -1,29 +1,28 @@
 {
-  "startedAt": "2026-10-21T08:31:00+09:00",
+  "startedAt": "2026-10-21T17:03:26+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1823,
+  "entries": 1825,
   "candidates": [
     {
-      "title": "Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity/",
-      "company": "google",
+      "title": "Terminal X matches senior investor judgment 88.6% with GPT-6.1",
+      "url": "https://openai.com/index/terminal-x",
+      "company": "openai",
       "date": "2026-10-20",
       "relatedId": null
     }
   ],
-  "added": [
-    {
-      "id": "google-antigravity-multi-model-patterns",
-      "title": "Antigravity에서 모델 섞어 쓰기: 교차 검증과 Flash 서브에이전트",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/claude-opus-55-and-claude-sonnet-55-available-in-antigravity/",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [],
-  "failed": [],
+  "failed": [
+    {
+      "url": "https://openai.com/index/terminal-x",
+      "error": "RuntimeError: claude CLI 실패(1): ,\"fallback_credit\":null},\"modelUsage\":{},\"permission_denials\":[],\"terminal_reason\":\"api_error\",\"fast_mode_state\":\"off\",\"fast_mode_disabled_reason\":\"sdk_opt_in_required\",\"subagent_stats\":{\"spawned\":0,\"requested\":{\"background\":0,\"foreground\":0,\"unset\":0},\"started_in_background\":0,\"max_depth\":0,\"spawned_by_subagents\":0,\"completed\":0,\"failed\":0,\"killed\":{\"parent\":0,\"user\":0,\"system\":0},\"refused\":{\"depth_limit\":0,\"concurrency_limit\":0,\"budget\":0},\"by_type\":{}},\"safety_stops\":0,\"is_error\":true,\"num_turns\":1,\"subtype\":\"success\",\"api_error_status\":429,\"api_error_origin\":\"first_party\",\"api_error\":\"usage_limit_reached\",\"result\":\"You've hit your session limit · resets 9:50am (UTC)\",\"type\":\"result\",\"duration_ms\":477,\"uuid\":\"83566847-fc88-4e5a-98e3-bcba70b910ed\",\"queued_turn_count\":0,\"result_index\":0}\n"
+    }
+  ],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
-  "authError": false
+  "authError": false,
+  "guideChanges": []
 }
