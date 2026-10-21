@@ -16,6 +16,20 @@ SCHEMA_DOC = ROOT / "docs" / "DATA_SCHEMA.md"
 STYLE_EXAMPLE = NEWS_DIR / "claude-sonnet-5-5.json"
 TIP_EXAMPLE = NEWS_DIR / "openai-retained-reasoning-compaction.json"
 VALIDATOR = ROOT / "scripts" / "validate_data.py"
+PRICES_FILE = DATA / "prices.json"
+GUIDES_FILE = DATA / "guides.json"
+MAINT_REPORT = ROOT / "backend" / "state" / "maintenance-run.json"
+
+# Official API pricing pages, read once a day to keep data/prices.json honest.
+# The markdown versions carry every model's row as plain text (the OpenAI HTML page hides most models
+# behind an "All models" toggle, and Google's HTML page is very long).
+PRICE_PAGES = {
+    "openai": "https://developers.openai.com/api/docs/pricing.md",
+    "anthropic": "https://platform.claude.com/docs/en/about-claude/pricing.md",
+    "google": "https://ai.google.dev/gemini-api/docs/pricing.md.txt",
+}
+# A model missing from its pricing page this many daily checks in a row leaves the price table.
+PRICE_MISSING_LIMIT = 2
 
 TIMEZONE = "Asia/Seoul"
 

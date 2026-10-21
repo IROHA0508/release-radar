@@ -27,7 +27,7 @@ LISTING = """<html><body>
 <a href="/claude-sonnet-5-5"><h3>Introducing Claude Sonnet 5.5</h3><time datetime="2026-09-28">Sep 28, 2026</time></a>
 <a href="/news/barclays-scales-claude"><h3>Barclays scales Claude</h3></a>
 <a href="/careers">Careers</a>
-<a href="https://www.anthropic.com/news/claude-haiku-5-5"><h3>Introducing Claude Haiku 5.5</h3></a>
+<a href="https://www.anthropic.com/news/claude-haiku-9-9"><h3>Introducing Claude Haiku 5.5</h3></a>
 </body></html>"""
 
 ARTICLE = """<html><head><title>x</title><meta property="og:title" content="Introducing GPT-7 Nova">
@@ -58,6 +58,9 @@ def site(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "STYLE_EXAMPLE", tmp_path / "data" / "news" / "claude-sonnet-5-5.json")
     monkeypatch.setattr(config, "TIP_EXAMPLE", tmp_path / "data" / "news" / "openai-retained-reasoning-compaction.json")
     monkeypatch.setattr(config, "VALIDATOR", tmp_path / "scripts" / "validate_data.py")
+    monkeypatch.setattr(config, "PRICES_FILE", tmp_path / "data" / "prices.json")
+    monkeypatch.setattr(config, "GUIDES_FILE", tmp_path / "data" / "guides.json")
+    monkeypatch.setattr(config, "MAINT_REPORT", tmp_path / "backend" / "state" / "maintenance-run.json")
     monkeypatch.setattr(pipeline, "today_kst", lambda: date(2026, 10, 2))
     monkeypatch.setattr(pipeline, "now_kst", lambda: datetime(2026, 10, 2, 6, 3))
     return tmp_path
@@ -78,7 +81,7 @@ def test_parse_rss_and_listing():
     listing = feeds.parse_listing(LISTING, ANTHROPIC)
     urls = [e.url for e in listing]
     assert urls == ["https://www.anthropic.com/claude-sonnet-5-5", "https://www.anthropic.com/news/barclays-scales-claude",
-                    "https://www.anthropic.com/news/claude-haiku-5-5"]
+                    "https://www.anthropic.com/news/claude-haiku-9-9"]
     assert listing[0].published == date(2026, 9, 28) and listing[0].title == "Introducing Claude Sonnet 5.5"
 
 
@@ -103,7 +106,7 @@ def test_text_date_from_byline():
 def test_undated_blog_post_is_skipped_not_dated_today(site, monkeypatch):
     blog = next(s for s in config.SOURCES if s.name == "Claude blog")
     undated = feeds.Entry("Old Claude tips", "https://claude.com/blog/old-claude-tips", "anthropic", blog.name, None, "", 1)
-    newsroom = feeds.Entry("Introducing Claude Haiku 5.5", "https://www.anthropic.com/news/claude-haiku-5-5", "anthropic",
+    newsroom = feeds.Entry("Introducing Claude Haiku 5.5", "https://www.anthropic.com/news/claude-haiku-9-9", "anthropic",
                            "Anthropic News", None, "", 2)
     page = "<html><body><article><p>" + "tips " * 300 + "</p></article></body></html>"
     monkeypatch.setattr(pipeline, "fetch_article", lambda url: extract.parse_html(page, url))
@@ -279,7 +282,7 @@ def test_update_decision_appends_to_existing(site, monkeypatch):
 
 
 SITEMAP = """<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://www.anthropic.com/news/claude-haiku-5-5</loc><lastmod>2026-10-01T10:00:00.000Z</lastmod></url>
+<url><loc>https://www.anthropic.com/news/claude-haiku-9-9</loc><lastmod>2026-10-01T10:00:00.000Z</lastmod></url>
 <url><loc>https://www.anthropic.com/news/100k-context-windows</loc><lastmod>2026-09-09T19:42:51.000Z</lastmod></url>
 <url><loc>https://www.anthropic.com/careers</loc><lastmod>2026-10-01T10:00:00.000Z</lastmod></url>
 </urlset>"""
@@ -287,7 +290,7 @@ SITEMAP = """<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sit
 
 def test_sitemap_and_slug_matching(site):
     entries = feeds.parse_sitemap(SITEMAP, config.SOURCES[2])
-    assert [e.url for e in entries] == ["https://www.anthropic.com/news/claude-haiku-5-5",
+    assert [e.url for e in entries] == ["https://www.anthropic.com/news/claude-haiku-9-9",
                                         "https://www.anthropic.com/news/100k-context-windows"]
     assert entries[0].extra["lastmod"] == date(2026, 10, 1)
     idx = detect.load_site()
@@ -295,7 +298,7 @@ def test_sitemap_and_slug_matching(site):
     moved = feeds.Entry("Introducing Claude Sonnet 5.5", "https://www.anthropic.com/news/claude-sonnet-5-5", "anthropic", "x",
                         date(2026, 9, 28))
     cands = detect.find_candidates(entries + [moved], idx, {"urls": {}}, date(2026, 10, 2))
-    assert [c.url for c in cands] == ["https://www.anthropic.com/news/claude-haiku-5-5"]   # old lastmod and known slug dropped
+    assert [c.url for c in cands] == ["https://www.anthropic.com/news/claude-haiku-9-9"]   # old lastmod and known slug dropped
 
 
 def test_same_model_same_day_counts_as_known(site):
@@ -556,3 +559,181 @@ def test_claude_articles_page_and_old_blog_links_are_same_post(site):
     assert [e.published for e in got] == [date(2026, 8, 14), date(2026, 10, 1)]
     cands = detect.find_candidates(got, detect.load_site(), {"urls": {}}, date(2026, 10, 2))
     assert [c.url for c in cands] == ["https://claude.com/resources/articles/claude-code-mods"]  # the other is on the site as /blog/
+
+
+# ---- price table upkeep ----
+
+from backend import guides, prices  # noqa: E402
+
+PRICE_PAGE = extract.Article(
+    "https://developers.openai.com/api/docs/pricing", "Pricing", None,
+    "Pricing per 1M tokens. " + "Standard tier. " * 200 +
+    "GPT-6.1 Sol gpt-6.1-sol Input $2.00 Cached input $0.20 Output $12.00\n"
+    "GPT-6 Luna gpt-6-luna Input $0.10 Cached input $0.01 Output $0.50\n", [], [])
+
+
+class PriceClaude:
+    def __init__(self, rows):
+        self.rows = rows
+
+    def json_call(self, **_):
+        return {"models": self.rows}
+
+
+def price_row(key, listed=True, **kw):
+    base = {"key": key, "listed": listed, "apiId": "", "input": "", "cached": "", "output": "", "note": "",
+            "deprecated": False, "evidence": ""}
+    base.update(kw)
+    return base
+
+
+def seed_prices(site, models):
+    (site / "data/prices.json").write_text(json.dumps({"checkedAt": "", "pages": {}, "models": models}, ensure_ascii=False))
+
+
+def entry(name, api, i, o, c=None, status="available", company="openai"):
+    return {"company": company, "name": name, "apiId": api, "input": i, "cached": c, "output": o, "note": "",
+            "status": status, "newsId": None, "verifiedAt": "2026-10-20", "missing": 0}
+
+
+def only_openai(monkeypatch):
+    monkeypatch.setattr(config, "PRICE_PAGES", {"openai": PRICE_PAGE.url})
+    monkeypatch.setattr(config, "NEWS_DIR", config.NEWS_DIR.parent / "no-news")
+    config.NEWS_DIR.mkdir(exist_ok=True)
+
+
+def test_price_change_is_applied_only_when_the_page_shows_it(site, monkeypatch):
+    only_openai(monkeypatch)
+    seed_prices(site, [entry("GPT-6.1 Sol", "gpt-6.1-sol", "$2", "$10", "$0.10"), entry("GPT-6 Luna", "gpt-6-luna", "$0.10", "$0.50", "$0.01")])
+    claude = PriceClaude([price_row("gpt-6.1-sol", apiId="gpt-6.1-sol", input="$2.00", cached="$0.20", output="$12.00"),
+                          price_row("gpt-6-luna", apiId="gpt-6-luna", input="$0.10", cached="$0.01", output="$0.70")])  # $0.70 not on page
+    r = prices.run(claude, date(2026, 10, 21), "2026-10-21 06:05", fetch=lambda url: PRICE_PAGE)
+    data = json.loads((site / "data/prices.json").read_text())
+    sol = next(m for m in data["models"] if m["apiId"] == "gpt-6.1-sol")
+    luna = next(m for m in data["models"] if m["apiId"] == "gpt-6-luna")
+    assert (sol["output"], sol["cached"], sol["verifiedAt"]) == ("$12.00", "$0.20", "2026-10-21")
+    assert luna["output"] == "$0.50"                                    # unverifiable value left alone
+    assert any("출력 $10 → $12.00" in c for c in r["changes"]) and r["notes"]
+    assert data["pages"]["openai"]["result"] == "확인"
+    # the same day nothing is read again
+    assert prices.run(claude, date(2026, 10, 21), "x", fetch=lambda url: pytest.fail("read twice"))["checked"] == []
+
+
+def test_model_missing_twice_leaves_the_table(site, monkeypatch):
+    only_openai(monkeypatch)
+    seed_prices(site, [entry("GPT-6.1 Sol", "gpt-6.1-sol", "$2.00", "$12.00"), entry("GPT-6 Luna", "gpt-6-luna", "$0.10", "$0.50"),
+                       entry("GPT-5.4 Pro", "gpt-5.4-pro", "$30", "$180")])
+    claude = PriceClaude([price_row("gpt-6.1-sol", input="$2.00", output="$12.00"), price_row("gpt-6-luna", input="$0.10", output="$0.50"),
+                          price_row("gpt-5.4-pro", listed=False)])
+    prices.run(claude, date(2026, 10, 21), "2026-10-21 06:05", fetch=lambda url: PRICE_PAGE)
+    pro = lambda: next(m for m in json.loads((site / "data/prices.json").read_text())["models"] if m["apiId"] == "gpt-5.4-pro")
+    assert pro()["status"] == "available" and pro()["missing"] == 1
+    r = prices.run(claude, date(2026, 10, 22), "2026-10-22 06:05", fetch=lambda url: PRICE_PAGE)
+    assert pro()["status"] == "unlisted" and any("가격표에서 뺌: GPT-5.4 Pro" in c for c in r["changes"])
+
+
+def test_half_the_table_vanishing_is_ignored(site, monkeypatch):
+    only_openai(monkeypatch)
+    seed_prices(site, [entry("GPT-6.1 Sol", "gpt-6.1-sol", "$2.00", "$12.00"), entry("GPT-6 Luna", "gpt-6-luna", "$0.10", "$0.50"),
+                       entry("GPT-5.4 Pro", "gpt-5.4-pro", "$30", "$180")])
+    claude = PriceClaude([price_row(k, listed=False) for k in ("gpt-6.1-sol", "gpt-6-luna", "gpt-5.4-pro")])
+    r = prices.run(claude, date(2026, 10, 21), "2026-10-21 06:05", fetch=lambda url: PRICE_PAGE)
+    assert all(m["missing"] == 0 for m in json.loads((site / "data/prices.json").read_text())["models"])
+    assert "반영하지 않음" in r["changes"][0]
+
+
+def test_newly_announced_model_is_checked_at_once(site, monkeypatch):
+    monkeypatch.setattr(config, "PRICE_PAGES", {"openai": PRICE_PAGE.url})
+    seed_prices(site, [])
+    news = site / "data/news/gpt-6-1-sol.json"
+    data = {"checkedAt": "", "pages": {"openai": {"url": "u", "checkedAt": "2026-10-21 00:05", "result": "확인"}}, "models": []}
+    (site / "data/prices.json").write_text(json.dumps(data))
+    rows = [price_row(k, input="$2.00", output="$12.00") if k == "gpt-6.1-sol" else price_row(k, listed=False)
+            for k in prices.candidates(prices.load()) if k == "gpt-6.1-sol" or k.startswith("gpt") or k.startswith("name:gpt")]
+    claude = PriceClaude(rows)
+    r = prices.run(claude, date(2026, 10, 21), "2026-10-21 06:05", fetch=lambda url: PRICE_PAGE)
+    assert "openai" in r["checked"]                                     # not due, but new models had no record
+    models = json.loads((site / "data/prices.json").read_text())["models"]
+    sol = next(m for m in models if m["apiId"] == "gpt-6.1-sol")
+    assert sol["status"] == "available" and sol["newsId"] == "gpt-6-1-sol" and news.exists()
+    assert all(m["status"] in ("available", "unlisted") for m in models)
+
+
+# ---- prompt guide upkeep ----
+
+GUIDE = {"updatedAt": "2026-10-01", "common": [], "vendors": [{
+    "company": "openai", "name": "OpenAI · GPT", "summary": "s",
+    "methods": [{"id": "openai-criteria", "category": "기본 작성법", "title": "완료 기준을 먼저 쓰기", "body": "b",
+                 "source": {"title": "t", "url": "https://developers.openai.com/api/docs/guides/prompting"}}],
+    "templates": [], "watch": [{"title": "Prompting", "url": "https://developers.openai.com/api/docs/guides/prompting"}]}]}
+
+GUIDE_PAGE = extract.Article("https://developers.openai.com/api/docs/guides/prompting", "Prompting", None,
+                             "Use reasoning effort low first. It cut latency by 40% in our tests. " * 30, [], [])
+
+
+class GuideClaude:
+    def __init__(self, add=(), update=()):
+        self.calls, self.add, self.update = 0, list(add), list(update)
+
+    def json_call(self, **_):
+        self.calls += 1
+        return {"add": self.add, "update": self.update, "reason": ""}
+
+
+def method(mid, title, body, **kw):
+    return {"id": mid, "category": kw.get("category", "추론과 effort"), "title": title, "body": body,
+            "before": kw.get("before", ""), "after": kw.get("after", ""), "code": "", "models": []}
+
+
+def test_guide_page_change_adds_checked_methods(site):
+    (site / "data/guides.json").write_text(json.dumps(GUIDE, ensure_ascii=False))
+    claude = GuideClaude(add=[method("openai-effort-low", "추론은 낮게 시작", "지연이 40% 줄었습니다.", after="[작업]을 해 줘."),
+                              method("openai-fake", "지어낸 수치", "정확도가 25% 올랐습니다."),
+                              method("openai-dup", "완료 기준을 먼저 쓰기", "같은 카드")])
+    page = GUIDE_PAGE
+    first = guides.check_watch(claude, date(2026, 10, 21), "2026-10-21 06:05", fetch=lambda u: page)
+    assert first["checked"] == 1 and claude.calls == 0                  # first look only remembers the page
+    changed = extract.Article(page.url, page.title, None, page.text + " New section about effort.", [], [])
+    r = guides.check_watch(claude, date(2026, 10, 22), "2026-10-22 06:05", fetch=lambda u: changed)
+    data = json.loads((site / "data/guides.json").read_text())
+    titles = [m["title"] for m in data["vendors"][0]["methods"]]
+    assert titles == ["완료 기준을 먼저 쓰기", "추론은 낮게 시작"]
+    added = data["vendors"][0]["methods"][1]
+    assert added["addedAt"] == "2026-10-22" and added["source"]["url"] == page.url and added["after"]
+    assert any("원문에 없는 수치" in c for c in r["changes"]) and claude.calls == 1
+    # unchanged page next day: no Claude call
+    guides.check_watch(claude, date(2026, 10, 23), "x", fetch=lambda u: changed)
+    assert claude.calls == 1
+
+
+def test_new_tip_item_feeds_the_guide(site):
+    (site / "data/guides.json").write_text(json.dumps(GUIDE, ensure_ascii=False))
+    claude = GuideClaude(add=[method("openai-skill-desc", "스킬 설명은 언제 쓰는지만", "설명이 짧을수록 고르기 쉽습니다.", category="에이전트와 코딩"),
+                              method("openai-b", "둘째", "두 번째"), method("openai-c", "셋째", "세 번째")])
+    item = {"id": "openai-tip", "company": "openai", "title": "팁", "sources": [{"title": "t", "url": "https://developers.openai.com/blog/x"}]}
+    art = extract.Article("https://developers.openai.com/blog/x", "x", None, "skills " * 300, [], [])
+    changes = guides.from_tip(claude, item, art, date(2026, 10, 21))
+    methods = json.loads((site / "data/guides.json").read_text())["vendors"][0]["methods"]
+    assert len(methods) == 3 and methods[1]["newsId"] == "openai-tip" and len(changes) == 2
+    assert guides.from_tip(claude, item, art, date(2026, 10, 21)) == []   # same article never twice
+
+
+def test_maintenance_rolls_back_invalid_changes(site, monkeypatch):
+    (site / "data/guides.json").write_text(json.dumps(GUIDE, ensure_ascii=False))
+    seed_prices(site, [entry("GPT-6.1 Sol", "gpt-6.1-sol", "$2", "$10")])
+    before = (site / "data/prices.json").read_text()
+    import backend.summarize as summ
+
+    def broken_run(*a, **k):
+        data = prices.load()
+        data["models"][0]["status"] = "maybe"           # the validator rejects this
+        prices.save(data)
+        return {"checked": ["openai"], "changes": [], "notes": [], "errors": {}}
+
+    monkeypatch.setattr(summ, "llm_available", lambda: "api")
+    monkeypatch.setattr(summ, "make_llm", lambda: object())
+    monkeypatch.setattr(prices, "run", broken_run)
+    monkeypatch.setattr(guides, "check_watch", lambda *a, **k: {"checked": 0, "changed": [], "changes": [], "errors": {}})
+    report = pipeline.run_maintenance()
+    assert "되돌림" in report["note"] and (site / "data/prices.json").read_text() == before
+    assert json.loads((site / "backend/state/maintenance-run.json").read_text())["note"] == report["note"]

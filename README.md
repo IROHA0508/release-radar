@@ -98,12 +98,32 @@ python3 -m http.server 8000
 pip install -r backend/requirements.txt
 python -m backend detect     # 새 글 후보만 출력 (파일 변경 없음, API 키 불필요)
 python -m backend selftest   # 회사마다 가장 최근 소식을 지웠다고 가정하고 다시 찾는지 확인
+python -m backend maintain --force   # API 가격표·프롬프트 가이드 지금 점검 (Claude 인증 필요)
 CLAUDE_CODE_OAUTH_TOKEN=... python -m backend update   # 실제 갱신 (구독 사용, claude CLI 필요)
 ANTHROPIC_API_KEY=... python -m backend update         # 실제 갱신 (API 과금)
 python -m pytest tests -q    # 오프라인 테스트
 ```
 
 GitHub **Actions → 새 소식 자동 업데이트 → Run workflow**에서 `update`/`detect`/`selftest`를 골라 바로 실행할 수도 있습니다. 실행 결과는 run 페이지의 알림(annotation)과 `backend/state/last-run.json`에 남습니다.
+
+### 하루 한 번 정기 점검 (API 가격표·프롬프트 가이드)
+
+6시간마다 실행할 때, 그날 처음 실행이면 `python -m backend maintain`이 이어서 돌아갑니다.
+
+```
+API 가격표    세 회사 공식 가격 페이지를 읽고, 사이트에서 다룬 모델이 실제로 API 가격표에 있는지와 현재 가격을 확인
+              → 원문에 있는 값만 반영(data/prices.json), 두 번 연속 안 보이는 모델은 'API 가격표에 없는 모델'로 이동
+              → 새 모델 소식이 추가되면 그 회사 가격 페이지는 그날 바로 다시 확인
+프롬프트 가이드 회사별 공식 프롬프트 가이드 페이지(guides.json의 watch)를 읽어 본문이 바뀌었으면 새 권고만 추가·수정
+              → 새 '활용 팁' 소식이 올라오면 그 글에서 프롬프트 방법을 최대 2개 골라 가이드에 추가
+```
+
+결과는 `backend/state/maintenance-run.json`과 Actions 실행 페이지 알림에 남습니다. Actions에서 `maintain`을 골라 바로 점검할 수도 있습니다.
+
+| 파일 | 역할 |
+|---|---|
+| `backend/prices.py` | 공식 가격 페이지 대조, `data/prices.json` 갱신 |
+| `backend/guides.py` | 공식 가이드 페이지 변경 감지, 활용 팁에서 방법 추출, `data/guides.json` 갱신 |
 
 ### 화면 표시
 

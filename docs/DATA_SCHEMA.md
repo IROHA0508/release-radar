@@ -60,3 +60,46 @@
 - 수치는 반드시 공식 발표의 텍스트·표·차트 대체 텍스트에 있는 값만 씁니다. 그래프가 이미지로만 공개된 경우 `charts`를 비우고 `chartNote`에 이유를 적습니다.
 
 검증: `python3 scripts/validate_data.py`
+
+## data/guides.json (프롬프트 가이드 탭)
+
+```json
+{
+  "updatedAt": "2026-10-21",
+  "checkedAt": "2026-10-21 06:05",
+  "common": [{ "title": "...", "body": "..." }],
+  "vendors": [{
+    "company": "openai", "name": "OpenAI · GPT", "summary": "...",
+    "methods": [{
+      "id": "openai-completion-criteria", "category": "기본 작성법",
+      "title": "...", "body": "...", "before": "(선택)", "after": "(선택)", "code": "(선택)",
+      "models": ["GPT-6 Astra"], "source": { "title": "...", "url": "https://..." },
+      "newsId": "(선택) 이 방법이 나온 활용 팁 소식", "addedAt": "(자동) YYYY-MM-DD", "updatedAt": "(자동)"
+    }],
+    "templates": [{ "title": "...", "when": "...", "text": "...", "source": { "title": "...", "url": "https://..." } }],
+    "watch": [{ "title": "...", "url": "https://...", "hash": "(자동)", "checkedAt": "(자동)", "changedAt": "(자동)" }]
+  }]
+}
+```
+
+- `category`: `기본 작성법`, `구조와 형식`, `예시 활용`, `추론과 effort`, `긴 문서와 자료`, `에이전트와 코딩`, `도구와 API 설정`, `이미지·영상·음성` 중 하나
+- `watch`: 매일 내용을 확인하는 공식 프롬프트 가이드 페이지. 본문이 바뀌면 Claude가 새 권고만 골라 `methods`에 추가하거나 고칩니다.
+- `addedAt`이 14일 이내인 방법은 화면에 NEW로 표시됩니다.
+
+## data/prices.json (API 가격표 탭)
+
+```json
+{
+  "checkedAt": "2026-10-21 06:05",
+  "pages": { "openai": { "url": "https://...", "checkedAt": "2026-10-21 06:05", "result": "확인" } },
+  "models": [{
+    "company": "openai", "name": "GPT-6.1 Sol", "apiId": "gpt-6.1-sol",
+    "input": "$2", "cached": "$0.10", "output": "$10", "note": "",
+    "status": "available", "newsId": "gpt-6-1-sol", "verifiedAt": "2026-10-21", "missing": 0, "since": "2026-10-21"
+  }]
+}
+```
+
+- `status`: `available`(표에 표시), `deprecated`(표에 '지원 종료 예정'으로 표시), `unlisted`(공식 가격 페이지에 없음 → 아래 별도 목록)
+- 가격은 기본 등급 텍스트 토큰, 100만 토큰당 USD. 공식 가격 페이지 문구 그대로 씁니다.
+- 매일 한 번 공식 가격 페이지를 읽어 확인합니다. 가격 페이지에서 두 번 연속 보이지 않는 모델은 `unlisted`가 됩니다.

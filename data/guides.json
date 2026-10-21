@@ -1,78 +1,1104 @@
 {
-  "updatedAt": "2026-10-02",
+  "updatedAt": "2026-10-21",
+  "checkedAt": "2026-10-21 12:40",
   "common": [
-    { "title": "결과와 완료 기준을 먼저 쓰기", "body": "무엇을 만들지, 어디까지 하면 끝인지를 첫머리에 적으세요. OpenAI는 GPT-6 Astra가 첫 구현 뒤 일찍 멈추는 경향이 있다며 완료 기준을 미리 정하라고 했고, Anthropic은 '새로 온 유능한 동료가 읽어도 헷갈리지 않을 만큼' 구체적으로 쓰라고 권합니다." },
-    { "title": "긴 자료는 위에, 질문은 맨 아래에", "body": "Anthropic과 Google 모두 긴 문서와 데이터를 프롬프트 앞에 두고 질문과 지시를 끝에 두라고 권합니다. Anthropic 테스트에서는 이렇게만 해도 응답 품질이 최대 30% 좋아졌습니다." },
-    { "title": "구분자로 구조 잡기", "body": "지시, 자료, 예시, 출력 형식을 <context>, <task> 같은 XML 태그나 마크다운 제목으로 나누세요. 한 프롬프트 안에서는 한 가지 방식만 일관되게 씁니다(Google 권고)." },
-    { "title": "예시는 3~5개, 형식은 똑같이", "body": "예시는 형식과 톤을 맞추는 가장 확실한 방법입니다. Anthropic은 3~5개를 <example> 태그로 감싸라고 하고, Google은 예시의 줄바꿈, 태그, 구분자까지 통일하라고 합니다." },
-    { "title": "추론 강도(effort)는 낮게 시작", "body": "세 회사 모두 추론 강도를 조절할 수 있습니다. 최신 모델은 낮거나 중간 설정에서도 이전 세대의 최고 설정을 넘는 경우가 많으니, 기본값이나 그보다 낮게 시작해 부족할 때만 올리세요." },
-    { "title": "예전 모델용 과잉 지시 정리", "body": "'CRITICAL', '반드시' 같은 강한 표현이나 매번 테스트하라는 지시는 최신 모델에서 과한 도구 호출과 불필요한 검증을 부를 수 있습니다. 모델을 바꿀 때마다 시스템 프롬프트와 AGENTS.md를 다시 읽어 보세요(OpenAI·Anthropic 공통 권고)." }
+    {
+      "title": "결과와 완료 기준을 먼저 쓰기",
+      "body": "무엇을 만들지, 어디까지 하면 끝인지를 첫머리에 적으세요. OpenAI는 GPT-6 Astra가 첫 구현 뒤 일찍 멈추는 경향이 있다며 완료 기준을 미리 정하라고 했고, Anthropic은 '새로 온 유능한 동료가 읽어도 헷갈리지 않을 만큼' 구체적으로 쓰라고 권합니다."
+    },
+    {
+      "title": "긴 자료는 위에, 질문은 맨 아래에",
+      "body": "Anthropic과 Google 모두 긴 문서와 데이터를 프롬프트 앞에 두고 질문과 지시를 끝에 두라고 권합니다. Anthropic 테스트에서는 이렇게만 해도 응답 품질이 최대 30% 좋아졌습니다."
+    },
+    {
+      "title": "구분자로 구조 잡기",
+      "body": "지시, 자료, 예시, 출력 형식을 <context>, <task> 같은 XML 태그나 마크다운 제목으로 나누세요. 한 프롬프트 안에서는 한 가지 방식만 일관되게 씁니다(Google 권고)."
+    },
+    {
+      "title": "예시는 3~5개, 형식은 똑같이",
+      "body": "예시는 형식과 톤을 맞추는 가장 확실한 방법입니다. Anthropic은 3~5개를 <example> 태그로 감싸라고 하고, Google은 예시의 줄바꿈, 태그, 구분자까지 통일하라고 합니다."
+    },
+    {
+      "title": "추론 강도(effort)는 낮게 시작",
+      "body": "세 회사 모두 추론 강도를 조절할 수 있습니다. 최신 모델은 낮거나 중간 설정에서도 이전 세대의 최고 설정을 넘는 경우가 많으니, 기본값이나 그보다 낮게 시작해 부족할 때만 올리세요."
+    },
+    {
+      "title": "예전 모델용 과잉 지시 정리",
+      "body": "'CRITICAL', '반드시' 같은 강한 표현이나 매번 테스트하라는 지시는 최신 모델에서 과한 도구 호출과 불필요한 검증을 부를 수 있습니다. 모델을 바꿀 때마다 시스템 프롬프트와 AGENTS.md를 다시 읽어 보세요(OpenAI·Anthropic 공통 권고)."
+    }
   ],
   "vendors": [
     {
       "company": "openai",
       "name": "OpenAI · GPT",
-      "summary": "GPT-6 세대는 스스로 검증하고 판단하는 폭이 넓어졌습니다. 지시를 늘리기보다 완료 기준과 경계를 명확히 하고, API는 Responses API의 기본 설정을 그대로 쓰는 것이 핵심입니다.",
-      "principles": [
-        { "title": "Responses API + 추론 유지 + 컴팩션", "body": "OpenAI는 레거시 Chat Completions 대신 Responses API를 쓰고, 이전 응답 ID로 추론을 이어 가며, 긴 작업은 잘라내기 대신 컴팩션을 쓰라고 권합니다. 이 설정만으로 ARC-AGI-3 점수가 약 3배가 됐습니다." },
-        { "title": "역할과 톤은 시스템 메시지, 과제는 사용자 메시지", "body": "전체 톤이나 역할 지침은 system(developer) 메시지에, 과제별 세부 내용과 예시는 user 메시지에 두라고 OpenAI 문서가 안내합니다." },
-        { "title": "완료 기준과 지속성을 명시", "body": "GPT-6 Astra는 첫 구현 뒤 검토를 받으러 일찍 돌아올 수 있습니다. '실행해 보고, 결과를 확인하고, 실패를 고칠 때까지'처럼 끝나는 조건을 넣고, 첫 구현 뒤 검토가 정말 필요한지도 다시 생각해 보세요." },
-        { "title": "AGENTS.md는 상황별로", "body": "'모든 수정 전에 문서 세 개를 읽어라' 대신 '스키마 변경 시 database.md를 보라'처럼 필요한 때만 참고하게 하세요. 테스트를 돌리라는 지시도 Astra에서는 과잉 검증을 부를 수 있습니다." },
-        { "title": "스킬 설명은 짧게, 루트 문서는 라우터로", "body": "스킬 설명에는 '언제 쓰는지'만 좁게 적고, 워크플로가 여럿인 스킬은 루트 문서가 하위 문서와 스크립트를 안내만 하게 하세요(점진적 공개)." },
-        { "title": "프롬프트는 코드로 관리", "body": "API의 재사용 프롬프트 객체(v1/prompts)는 2026년 11월 30일 종료 예정입니다. 프롬프트를 버전 관리되는 코드 모듈로 옮기고, 변수는 타입이 있는 함수 인자로, 변경은 PR 리뷰와 평가 테스트로 관리하라고 OpenAI가 권합니다." },
-        { "title": "캐시를 의식한 배치", "body": "매번 같은 지시, 도구 정의, 참고 문서는 앞에, 바뀌는 입력은 뒤에 두세요. GPT-6 계열은 대화 중 추론 강도나 도구 구성을 바꿔도 캐시가 유지되고, 명시적 브레이크포인트로 캐시 범위를 정할 수 있습니다." }
+      "summary": "GPT-6 세대는 모호한 지시도 잘 알아듣고 스스로 검증하는 폭이 넓어서, 단계별 절차서보다 원하는 결과·맥락·완료 기준·결정 경계를 분명히 주는 편이 잘 통합니다. 예전 모델을 붙잡으려고 쌓아 둔 강한 금지 문구와 과잉 지시는 걷어 내고, 문체와 승인 시점처럼 모델의 기본 성향과 다르게 원하는 부분만 직접 지정하세요. API에서는 Responses API, 작업에 맞춘 추론 강도, 캐시를 깨지 않는 프롬프트 배치가 기본입니다.",
+      "methods": [
+        {
+          "id": "openai-four-parts",
+          "category": "기본 작성법",
+          "title": "목표·맥락·출력·경계 네 가지로 요청하기",
+          "body": "ChatGPT 공식 프롬프트 가이드는 큰 작업일수록 목표(무엇을 할지), 맥락(어떤 정보와 자료가 도움이 되는지), 출력(형식·길이·자세함), 경계(바꾸면 안 되는 것, 피할 것, 행동 전에 확인받을 것) 네 부분으로 쓰라고 안내합니다. 세부 단계를 나열하기보다 원하는 결과부터 말하고, 결과를 어디에 쓸지 알려 주면 ChatGPT가 길이와 구조를 알맞게 고릅니다. 경계는 실제 문제를 막는 가장 중요한 한두 가지만 넣고, 중요한 작업이면 마지막 점검을 요청하세요. 특별한 문법은 필요 없으니 도움이 되는 부분만 골라 쓰면 됩니다.",
+          "before": "프로젝트 진행 상황 정리해 줘.",
+          "after": "월요일 경영진 회의에 쓸 한 페이지짜리 프로젝트 현황 보고를 준비해 주세요. Drive에 있는 최신 프로젝트 계획과, 프로젝트 Slack 채널의 관련 결정 사항과 업데이트를 사용하세요.\n경영진이 내려야 할 결정과 다음 단계를 맨 앞에 두고, 진행 상황, 위험, 담당자, 마감일을 요약해 주세요.\n승인된 날짜와 예산 수치는 바꾸지 마세요. 서로 충돌하거나 빠진 정보는 표시하고, 아무것도 보내거나 게시하지 마세요.\n끝내기 전에 모든 다음 단계에 담당자와 마감일이 있는지 확인해 주세요.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting (ChatGPT Learn, OpenAI)",
+            "url": "https://learn.chatgpt.com/docs/prompting"
+          }
+        },
+        {
+          "id": "openai-specific-followups",
+          "category": "기본 작성법",
+          "title": "다시 쓰라고 하지 말고 바꿀 점을 콕 집어 요청하기",
+          "body": "OpenAI는 자기 말로 시작해 결과를 확인한 뒤 후속 요청으로 다듬으라고 권합니다. 이때 처음부터 다시 시키기보다 원하는 변경을 구체적으로 말하는 것이 핵심입니다. 무엇을 유지하고, 무엇을 옮기고, 무엇을 바꿀지 적으면 좋은 부분은 지키면서 고칠 수 있습니다. Codex에서는 작업 중에 보낸 메시지를 현재 실행에 반영(Steer)하거나 다음 실행용으로 대기(Queue)시킬 수 있습니다.",
+          "before": "별로야. 다시 써 줘.",
+          "after": "도입부를 더 직설적으로 바꿔 줘. 근거는 그대로 두고, 권고안을 배경 설명 섹션보다 위로 올려 줘.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting (ChatGPT Learn, OpenAI)",
+            "url": "https://learn.chatgpt.com/docs/prompting"
+          }
+        },
+        {
+          "id": "openai-developer-message-structure",
+          "category": "구조와 형식",
+          "title": "개발자 메시지는 정체성 → 지시 → 예시 → 맥락 순서로",
+          "body": "OpenAI 프롬프트 엔지니어링 문서는 개발자 메시지를 대체로 정체성(목적, 말투, 큰 목표), 지시(규칙, 해야 할 것과 하지 말 것, 함수 호출 방법), 예시(입력과 원하는 출력), 맥락(추가 자료, 보통 끝쪽) 순서로 쓰라고 안내하며, 구획은 마크다운 제목과 목록으로, 참고 문서처럼 경계가 필요한 내용은 XML 태그로 나누라고 합니다. developer 메시지는 user 메시지보다 우선합니다. instructions 파라미터는 현재 요청에만 적용되므로, previous_response_id로 대화를 이어 가면 이전 턴의 instructions는 컨텍스트에 남지 않습니다. 또 API의 재사용 프롬프트 객체는 지원이 중단되어 v1/prompts가 2026년 11월 30일 종료될 예정이니, 운영 프롬프트는 애플리케이션 코드에 두라고 권합니다.",
+          "after": "# Identity\n너는 [서비스]의 [역할]이야. [말투]로 답하고, 목표는 [최종 목표]야.\n\n# Instructions\n* [반드시 지킬 규칙]\n* [하지 말아야 할 것]\n* [도구나 함수를 언제 어떻게 부를지]\n\n# Examples\n<user_query>\n[예시 입력]\n</user_query>\n<assistant_response>\n[원하는 출력]\n</assistant_response>\n\n# Context\n<reference_doc id=\"[문서 ID]\">\n[참고 자료]\n</reference_doc>",
+          "code": "from openai import OpenAI\n\nclient = OpenAI()\n\nresponse = client.responses.create(\n    model=\"gpt-6-astra\",\n    reasoning={\"effort\": \"low\"},\n    # 현재 요청에만 적용된다. previous_response_id로 이어 가도 이전 턴의 instructions는 남지 않는다\n    instructions=\"해적처럼 말해.\",\n    input=\"자바스크립트에서 세미콜론은 생략해도 되나요?\",\n)\nprint(response.output_text)",
+          "source": {
+            "title": "Prompt engineering (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+          }
+        },
+        {
+          "id": "openai-astra-writing-style",
+          "category": "구조와 형식",
+          "title": "원하는 문체를 직접 지정해 목록·표 과잉 막기",
+          "body": "OpenAI의 GPT-6 가이드에 따르면 GPT-6 Astra는 목록, 표, 마크다운을 많이 쓴 자세한 답을 내는 경향이 있으니 필요한 스타일을 명시하라고 합니다. 문서가 제공하는 문체 지시는 한 문단에 한 가지 생각, 정말 나란하거나 순서가 있는 정보에만 목록, 쉬운 말과 핵심 먼저, 도움이 되는 만큼만 전문 용어 쓰기를 담고 있습니다. 상투어와 끝맺음 요약 문장, 묻지 않은 대안을 끌어들이는 'X가 아니라 Y' 식 대비 표현도 피하게 합니다. 사용자에게 보이는 답이나 보고서의 문체를 맞출 때 개발자 메시지에 넣으세요.",
+          "before": "이번 변경 사항을 사용자에게 설명해 줘.",
+          "after": "이번 변경 사항을 사용자에게 설명해 줘.\n\n문체:\n- 기본은 명확하고 간결한 문단으로 쓰고, 한 문단에는 핵심 생각 하나만 담아.\n- 목록은 정보가 정말 나란하거나, 순서가 있거나, 비교하기 쉬울 때만 쓰고 중첩 목록은 피해.\n- 익숙한 단어, 구체적인 예, 정확한 동사로 쉽게 써. 능동태와 직접적인 문장을 우선해.\n- 핵심을 먼저 분명히 말한 뒤, 독자에게 필요한 설명과 세부를 덧붙여.\n- 전문 용어 대신 쉬운 말을 쓰고, 기술적 세부는 이해에 도움이 되는 만큼만 언급해.\n- 상투어나 군더더기 표현(원문 예: \"delve\", \"leverage\", \"it's worth noting\")과 끝맺음 요약 문장은 쓰지 마.\n- 묻지 않은 대안을 끌어들이는 'X가 아니라 Y' 식 대비 표현은 쓰지 마.",
+          "exampleFromSource": true,
+          "models": [
+            "GPT-6 Astra"
+          ],
+          "source": {
+            "title": "Using GPT-6 (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/latest-model"
+          }
+        },
+        {
+          "id": "openai-few-shot",
+          "category": "예시 활용",
+          "title": "예시는 다양한 입력에 같은 출력 형식으로",
+          "body": "OpenAI 문서는 파인튜닝 없이도 입력과 출력 예시 몇 개로 모델을 새 작업에 맞출 수 있다고 설명합니다(few-shot). 예시에는 가능한 입력을 다양하게 보여 주고, 원하는 출력 형식은 매번 똑같이 맞추세요. 예시는 보통 개발자 메시지에 넣으며, 원문처럼 입력과 출력을 XML 태그와 id로 짝지으면 경계가 분명해집니다. 분류나 라벨링처럼 출력이 정해진 작업에서 특히 효과적입니다.",
+          "before": "다음 상품 리뷰가 긍정인지 부정인지 알려 줘: [리뷰]",
+          "after": "# Identity\n\n너는 짧은 상품 리뷰를 Positive, Negative, Neutral 중 하나로 분류하는 도우미야.\n\n# Instructions\n\n* 추가 서식이나 설명 없이 단어 하나만 출력해.\n* 리뷰의 감정에 따라 \"Positive\", \"Negative\", \"Neutral\" 중 하나로만 답해.\n\n# Examples\n\n<product_review id=\"example-1\">\n이 헤드폰 정말 좋아요. 음질이 최고예요!\n</product_review>\n\n<assistant_response id=\"example-1\">\nPositive\n</assistant_response>\n\n<product_review id=\"example-2\">\n배터리는 괜찮은데 이어패드가 싸구려 같아요.\n</product_review>\n\n<assistant_response id=\"example-2\">\nNeutral\n</assistant_response>\n\n<product_review id=\"example-3\">\n고객 서비스가 최악이에요. 다시는 안 삽니다.\n</product_review>\n\n<assistant_response id=\"example-3\">\nNegative\n</assistant_response>",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompt engineering (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+          }
+        },
+        {
+          "id": "openai-effort-by-task",
+          "category": "추론과 effort",
+          "title": "추론 강도는 작업 난이도에 맞춰 고르기",
+          "body": "OpenAI의 GPT-6 모델 가이드는 사실 추출이나 작은 수정 같은 일상 작업은 low, 기능 계획이나 선택지 비교처럼 판단이 필요한 일은 medium, 어려운 디버깅·깊은 분석·꼼꼼한 검토는 high로 나눕니다. extra high나 max는 high로 부족할 때만 시험하고, 개선 폭이 추가 시간과 비용을 정당화할 때만 남기라고 합니다. 모델과 추론 강도는 지능·비용·지연 사이의 절충이니 배포 전에 대표 작업으로 성공률, 지연 시간, 성공 건당 비용을 재 보세요. API에서는 대화 도중 추론 강도를 바꿔도 캐시가 깨지지 않습니다.",
+          "code": "from openai import OpenAI\n\nclient = OpenAI()\n\nresponse = client.responses.create(\n    model=\"gpt-6.1-sol\",\n    reasoning={\"effort\": \"low\"},  # 일상 작업 low / 판단 medium / 어려운 디버깅·분석 high\n    input=\"다음 송장에서 날짜와 총액만 뽑아 줘.\\n\\n[송장 텍스트]\",\n)\nprint(response.output_text)",
+          "models": [
+            "GPT-6 Astra",
+            "GPT-6.1 Sol",
+            "GPT-6 Luna"
+          ],
+          "source": {
+            "title": "A model guide for the GPT-6 family (OpenAI)",
+            "url": "https://openai.com/index/practical-guide-building-gpt-6"
+          }
+        },
+        {
+          "id": "openai-chatgpt-thinking-slider",
+          "category": "추론과 effort",
+          "title": "ChatGPT에서는 '더 깊이 생각해' 대신 Thinking 슬라이더 쓰기",
+          "body": "ChatGPT 도움말에 따르면 모델 메뉴의 Thinking 슬라이더로 Instant, Medium, High, Extra High, Pro 중 생각의 양을 고릅니다. Plus·Pro 요금제에서 Instant는 복잡한 요청이라도 더 높은 단계로 자동 전환되지 않고, '더 열심히 생각해'나 '깊이 생각해'라고 써도 단계가 바뀌지 않습니다. 일상 질문은 Instant, 더 생각이 필요하면 Medium이나 High, GPT-6 Sol의 가장 높은 단계는 Extra High, 어렵고 오래 걸리는 작업은 Pro를 고르세요. Free·Go 사용자는 어려운 질문에 Think를 선택하면 됩니다.",
+          "before": "(Instant 상태에서) 이 두 대출 상품 중 뭐가 나은지 아주 깊이 생각해서 답해 줘.",
+          "after": "(모델 메뉴의 Thinking 슬라이더를 High로 바꾼 뒤)\n[대출 A]와 [대출 B]를 [5년] 동안 갚는다고 할 때 [월 상환액, 총이자, 중도상환 수수료] 기준으로 비교해 줘. 중요한 차이는 표로 보여 주고, 하나를 추천한 뒤 그 선택의 트레이드오프를 설명해 줘.",
+          "models": [
+            "GPT-6"
+          ],
+          "source": {
+            "title": "GPT-6 and other models in ChatGPT (OpenAI Help Center)",
+            "url": "https://help.openai.com/en/articles/20001354-gpt-6-and-other-models-in-chatgpt"
+          }
+        },
+        {
+          "id": "openai-attach-and-point",
+          "category": "긴 문서와 자료",
+          "title": "자료는 필요한 것만 붙이고, 각 자료에서 무엇을 쓸지 말하기",
+          "body": "ChatGPT 가이드는 중요한 자료만 첨부하고 각 자료에서 무엇을 가져올지 설명하라고 권합니다. 스크린샷이나 이미지는 이미지에만 맡기지 말고 중요한 영역을 짚어 주고, 최신 정보는 웹 검색을 쓰되 결과를 확인해야 하면 출처를 요청하세요. 연결된 소스가 있으면 어디서 무엇을 찾을지 이름을 대고(입력창에 @를 입력하면 특정 플러그인 선택), 관련 대화들이 같은 파일과 자료를 공유해야 하면 프로젝트를 쓰세요. 여러 대화에 공통으로 적용할 선호는 Settings > Personalization의 맞춤형 지침(custom instructions)에 넣으면 됩니다.",
+          "before": "이 파일들로 보고서랑 발표 자료 만들어 줘.",
+          "after": "첨부한 [분기 보고서들]로 경영진 브리핑과 [6]장짜리 발표 자료를 만들어 주세요.\n대상은 경영진입니다. 그들이 내려야 할 [세 가지] 결정을 먼저 제시하고, 보고된 사실과 당신의 분석을 구분하고, 모든 수치에 출처 파일을 달아 주세요.\n끝내기 전에 브리핑과 슬라이드의 내용이 서로 맞는지 확인해 주세요.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting (ChatGPT Learn, OpenAI)",
+            "url": "https://learn.chatgpt.com/docs/prompting"
+          }
+        },
+        {
+          "id": "openai-accuracy-checks",
+          "category": "긴 문서와 자료",
+          "title": "중요한 결과물엔 출처·불확실 표시·가정 목록 요구하기",
+          "body": "OpenAI의 ChatGPT Enterprise 프롬프트 가이드는 정확성이 중요하면 출처를 요청하거나 제공한 자료에서 직접 인용하게 하고, 불확실한 내용에는 '(확인 필요)'를 붙이고, 끝내기 전에 세운 가정을 나열하게 하라고 권합니다. 한 프롬프트에는 결과물 하나만 맡기고, 너무 많은 걸 담았다면 여러 프롬프트로 나누세요. 정확도를 시험할 때는 답을 이미 아는 질문 5~10개로 작은 평가를 돌려 보라고 합니다.",
+          "before": "첨부한 문서 요약해 줘.",
+          "after": "첨부한 문서를 [대상]이 바로 의사 결정에 쓸 수 있는 브리핑으로 정리해 주세요.\n- 세부 내용을 지어내지 마세요. 빠진 내용은 '명시되지 않음'으로 표시하거나 '열린 질문'에 넣어 주세요.\n- 가능하면 문서에서 직접 인용해 근거를 보여 주세요.\n- 불확실한 내용에는 (확인 필요)를 붙여 주세요.\n- 끝내기 전에 당신이 세운 가정을 나열해 주세요.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "ChatGPT Enterprise Prompting Guide (OpenAI Cookbook)",
+            "url": "https://learn.chatgpt.com/cookbook/examples/chatgpt/chatgpt_prompt_guide/chatgpt_prompt_guide"
+          }
+        },
+        {
+          "id": "openai-completion-criteria",
+          "category": "에이전트와 코딩",
+          "title": "시작 전에 완료 기준을 정해 주기",
+          "body": "OpenAI 개발자 블로그에 따르면 GPT-6 Astra는 멈출 시점에 더 조심스러워서, 할 일이 남았는데도 첫 구현 뒤 검토를 받으러 돌아올 수 있습니다. 구현을 실행하고, 결과를 확인하고, 실패를 고치는 것까지가 작업이라면 그 내용을 요청에 넣으세요. '첫 구현 뒤 멈추고 검토받아라'는 요구는 모델을 더 이른 정지 지점으로 끌어당기니 정말 필요한지 따져 보고, 첫 구현 너머까지 탐색하길 원하면 무엇을 탐색하고 어디서 멈출지 적어 주세요.",
+          "before": "[기능] 구현해 줘. 첫 버전 나오면 멈추고 리뷰 요청해.",
+          "after": "[기능]을 구현해 주세요.\n완료 기준: 구현이 실제로 실행되고, 결과를 직접 확인했고, 실패한 부분을 고친 상태입니다. 이 기준을 채울 때까지 계속 진행하세요.\n첫 구현 이후에는 [추가로 살펴볼 범위]를 탐색하되, [멈출 지점]에서 멈추세요.",
+          "models": [
+            "GPT-6 Astra"
+          ],
+          "source": {
+            "title": "Rethinking skills and prompts for GPT-6 Astra (OpenAI Developers)",
+            "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"
+          }
+        },
+        {
+          "id": "openai-act-then-approve",
+          "category": "에이전트와 코딩",
+          "title": "'해 줄 수 있어?'는 실행 요청으로, 승인은 결과물을 놓고 받기",
+          "body": "OpenAI의 GPT-6 가이드는 GPT-6 Astra가 이전 모델보다 확인 질문을 자주 해 작업이 일찍 멈출 수 있다고 설명합니다. 맥락에서 의도와 범위를 추론하고, 분명히 파괴적이거나 되돌릴 수 없는 일이 아니면 목표를 끝까지 이어 가라고 지시하세요. '~해 줄 수 있어?' 같은 표현은 실행 요청으로 다루게 하고, 승인은 배포·외부 쓰기·병합·게시 직전에 검토 가능한 구체적 결과물을 놓고 받게 하는 것이 요점입니다. 가상의 위험 때문에 요청하지 않은 경고나 승인 절차를 덧붙이지 말라는 문장도 함께 제공합니다.",
+          "before": "작업하기 전에 항상 사용자에게 먼저 물어보고 승인을 받아.",
+          "after": "사용자의 지시와 이전 대화 맥락에서 사용자의 의도와 작업 범위를 추론해. 행동하는 쪽으로 기울고, 사용자가 의도한 작업을 끝까지 완수하는 것이 네 일이야.\n\n사용자가 \"~해 줄 수 있어?\", \"~하고 싶어\", \"~ 도와줘\"처럼 말하면 일을 하라는 지시로 받아들여. 할 수 있다고 답하거나, 계획만 제안하거나, 계속할지 묻는 데서 멈추지 마.\n\n확인 질문을 하기 전에, 맥락상 이미 허락된 작업과 제안을 구체적이고 검토 가능하게 만드는 데 필요한 작업을 먼저 끝내. 배포, 외부 애플리케이션에 쓰기, PR 병합, 사이트 게시 전에는 필요한 작업을 모두 마쳐서 사용자 승인이 마지막 단계가 되게 해.\n\n되돌릴 수 있는 작업, 읽기 전용 작업, 리뷰나 수정, 앞서 허락됐거나 지시에서 강하게 암시된 일에는 허락이 필요 없어. 가상의 위험 때문에 요청하지 않은 경고, 면책 문구, 승인 절차, 안전·규정 체크리스트를 덧붙이지 마.",
+          "exampleFromSource": true,
+          "models": [
+            "GPT-6 Astra"
+          ],
+          "source": {
+            "title": "Using GPT-6 (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/latest-model"
+          }
+        },
+        {
+          "id": "openai-agents-md-conditional",
+          "category": "에이전트와 코딩",
+          "title": "AGENTS.md는 '언제 무엇을 볼지'로, 안전한 작업은 미리 허락",
+          "body": "OpenAI는 AGENTS.md의 지침마다 아직 필요한지 주기적으로 점검하라고 권합니다. 모든 편집 전에 문서를 다 읽게 하지 말고 작업 상황과 문서를 짝지어 주세요. 이제 모델이 알아서 하는 테스트 독려 문구는 빼고, 일회용 픽스처로 돌리는 로컬 테스트처럼 안전한 작업은 단계마다 승인 없이 진행해도 된다고 명시하세요. 예전 모델 때문에 넣은 '먼저 물어봐' 같은 강한 문구는 GPT-6 Astra가 지나치게 진지하게 받아들여 계속해도 될 지점에서 멈출 수 있으니 완화를 검토하세요.",
+          "before": "모든 편집 전에 architecture.md, database.md, deployment.md를 읽어라.\n무엇을 하든 반드시 먼저 물어보고 승인을 받아라.",
+          "after": "서비스 경계는 architecture.md, 스키마 변경은 database.md, 배포를 준비할 때는 deployment.md를 참고하세요.\n\n로컬 테스트는 일회용 픽스처를 쓰며 프로덕션에 접근하지 않습니다. 테스트를 실행하고, 요청한 변경 때문에 생긴 실패를 고친 뒤, 단계마다 승인을 묻지 말고 영향받은 테스트를 다시 실행하세요.",
+          "exampleFromSource": true,
+          "models": [
+            "GPT-6 Astra"
+          ],
+          "source": {
+            "title": "Rethinking skills and prompts for GPT-6 Astra (OpenAI Developers)",
+            "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"
+          }
+        },
+        {
+          "id": "openai-skill-description",
+          "category": "에이전트와 코딩",
+          "title": "스킬 설명은 짧게, '언제 쓰는지'를 좁게",
+          "body": "스킬이 많이 설치되면 설명이 줄어든 채로 컨텍스트에 실리기 때문에, 긴 설명은 잘리고 서로 겹치는 설명은 엉뚱한 스킬을 불러올 수 있습니다. OpenAI는 설명을 가능한 한 짧게 쓰되 언제 적용되는지를 분명히 하라고 권합니다. 워크플로가 여러 개인 스킬은 루트 문서를 최소한의 라우터로 두고 보조 문서와 스크립트를 가리키게 하며(점진적 공개), 지나치게 구체적인 단계별 절차는 피하세요. 스킬을 만들거나 고칠 때는 이런 실패 유형을 반영해 최근 갱신된 $skill-creator 스킬을 쓰면 됩니다.",
+          "before": "description: Postgres 스키마 마이그레이션을 만들고 검증합니다. 데이터베이스, 쿼리, 모델, 영속성 관련 작업을 할 때 사용하세요.",
+          "after": "description: Postgres 스키마 마이그레이션을 만들고 검증합니다. 마이그레이션을 추가하거나 변경할 때, 또는 그 롤아웃을 검토할 때 사용하세요.",
+          "exampleFromSource": true,
+          "models": [
+            "GPT-6 Astra"
+          ],
+          "source": {
+            "title": "Rethinking skills and prompts for GPT-6 Astra (OpenAI Developers)",
+            "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra"
+          }
+        },
+        {
+          "id": "openai-codex-bug-repro",
+          "category": "에이전트와 코딩",
+          "title": "Codex에 버그를 맡길 땐 재현 단계·제약·검증 방법까지",
+          "body": "ChatGPT Learn의 Codex 예시는 버그 증상, 재현 단계, 지켜야 할 제약, 수정 뒤 확인 방법을 한 요청에 담습니다. 먼저 로컬에서 재현한 뒤 패치를 제안하게 하고, 수정 후 lint와 가장 작은 관련 테스트를 돌려 실행한 명령과 결과를 보고하게 하면 결과를 검토하기 쉬워집니다. 여러 단계에 걸친 수정이라면 앱 입력창에 /plan을 입력해 Codex가 먼저 조사하고 계획을 세우게 할 수 있습니다.",
+          "before": "설정 저장이 안 되는 버그 고쳐 줘.",
+          "after": "버그: 설정 화면에서 \"Save\"를 누르면 가끔 \"Saved\"가 뜨지만 변경 사항이 저장되지 않습니다.\n\n재현:\n1) 앱 실행: npm run dev\n2) /settings로 이동\n3) \"Enable alerts\" 토글\n4) Save 클릭\n5) 페이지 새로고침: 토글이 원래대로 돌아감\n\n제약:\n- API 형태는 바꾸지 마세요.\n- 수정은 최소한으로 하고, 가능하면 회귀 테스트를 추가하세요.\n\n먼저 로컬에서 버그를 재현한 다음 패치를 제안하고 검사를 실행하세요.\n수정 후에는 lint와 가장 작은 관련 테스트 묶음을 실행하고, 실행한 명령과 결과를 보고하세요.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting (ChatGPT Learn, OpenAI)",
+            "url": "https://learn.chatgpt.com/docs/prompting"
+          }
+        },
+        {
+          "id": "openai-gpt6-api-params",
+          "category": "도구와 API 설정",
+          "title": "GPT-6로 옮길 때 API 파라미터부터 정리하기",
+          "body": "OpenAI의 GPT-6 가이드는 도구 호출을 Responses API로 옮기라고 합니다. GPT-6 Astra와 GPT-6.1 Sol은 reasoning effort none을 지원하지 않으므로 low로 바꾸고(GPT-6.1 Sol은 low, medium(기본값), high, xhigh, max), minimal을 쓰던 경우에도 low에서 시작해 대표 작업으로 비교하세요. 추론 강도가 none이 아니면 temperature, top_p, top_logprobs를 빼야 하고, GPT-5.5 이전 모델에서 옮겨 왔다면 prompt_cache_retention을 prompt_cache_options.ttl \"30m\"으로 바꿉니다. 모델이 승인을 받으려고 자주 멈추면 주도성 지시('해 줄 수 있어?'는 실행 요청으로)를 적용하라는 것도 마이그레이션 체크리스트에 들어 있습니다.",
+          "code": "from openai import OpenAI\n\nclient = OpenAI()\n\nresponse = client.responses.create(\n    model=\"gpt-6.1-sol\",                  # 또는 \"gpt-6-astra\", \"gpt-6-luna\"\n    reasoning={\"effort\": \"low\"},          # Astra·6.1 Sol은 none 미지원 → low\n    # effort가 none이 아니면 temperature, top_p, top_logprobs는 넣지 않는다\n    prompt_cache_options={\"ttl\": \"30m\"},  # 예전 prompt_cache_retention 대신\n    input=\"[요청]\",\n)\nprint(response.output_text)",
+          "models": [
+            "GPT-6 Astra",
+            "GPT-6.1 Sol",
+            "GPT-6 Luna"
+          ],
+          "source": {
+            "title": "Using GPT-6 (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/latest-model"
+          }
+        },
+        {
+          "id": "openai-cache-stable-prefix",
+          "category": "도구와 API 설정",
+          "title": "고정된 내용은 앞에, 바뀌는 내용은 뒤에 두어 캐시 지키기",
+          "body": "프롬프트 캐시는 렌더된 앞부분 전체가 같아야 재사용되므로, 고정된 개발자 지시와 공용 참고 자료를 앞에 두고 타임스탬프나 사용자별 정보처럼 바뀌는 내용은 끝에 두라고 OpenAI 문서가 안내합니다. 이전 턴은 고쳐 쓰지 말고 새 메시지를 덧붙이세요. GPT-6 계열에서 추론 강도를 바꿀 때는 최상위 reasoning.effort를 그대로 두고 다음 사용자 메시지 앞에 configuration_update 항목을 넣으며, 도구를 쓰지 않게 하려면 정의를 지우는 대신 tool_choice를 \"none\"으로, 호출 가능한 도구를 줄이려면 tools 목록은 그대로 두고 allowed_tools를 쓰세요. GPT-5.6 이후 모델은 보이는 입력이 1,024토큰 이상이어야 캐시됩니다.",
+          "code": "response = client.responses.create(\n    model=\"gpt-6.1-sol\",\n    reasoning={\"effort\": \"medium\"},  # 최상위 값은 바꾸지 않는다\n    tools=TOOLS,                      # 정의·순서·스키마를 매번 동일하게\n    input=[\n        {\"role\": \"developer\", \"content\": STATIC_INSTRUCTIONS},  # 고정 지시·참고 자료는 맨 앞\n        *history,                                               # 이전 턴은 고치지 않고 덧붙이기만\n        {\"type\": \"configuration_update\", \"reasoning\": {\"effort\": \"high\"}},  # 어려운 단계에서만 강도 올리기\n        {\"role\": \"user\", \"content\": \"[이번 요청]\"},              # 바뀌는 내용은 맨 뒤\n    ],\n)",
+          "models": [
+            "GPT-6 Astra",
+            "GPT-6.1 Sol",
+            "GPT-6 Luna"
+          ],
+          "source": {
+            "title": "Prompt caching (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/prompt-caching"
+          }
+        },
+        {
+          "id": "openai-keep-reasoning",
+          "category": "도구와 API 설정",
+          "title": "Responses API에서 추론을 다음 턴으로 넘기기",
+          "body": "OpenAI 추론 가이드는 추론 모델이 Responses API에서 더 잘 동작한다고 설명합니다. 대화를 이어 갈 때는 previous_response_id를 넘기는 것이 가장 짧은 방법이고, store: false나 무보존(ZDR) 환경이라면 output에 담긴 추론 항목(encrypted_content 포함)을 다음 요청에 다시 넣으세요. 함수 호출 중에는 마지막 함수 호출과 함께 온 추론 항목을 함수 결과와 함께 돌려주고, 여러 함수를 이어 불렀다면 마지막 사용자 메시지 이후의 추론·함수 호출·함수 결과 항목을 모두 돌려주라고 강하게 권합니다. 처음 실험할 때는 추론과 출력용으로 최소 25,000토큰을 확보하라고 합니다.",
+          "code": "first = client.responses.create(\n    model=\"gpt-6.1-sol\",\n    input=\"[첫 요청]\",\n    max_output_tokens=25000,  # 실험 초기엔 추론+출력 공간을 넉넉히\n)\n\n# 다음 턴: 이전 응답 ID를 넘기면 저장된 대화와 추론이 이어진다\nfollow_up = client.responses.create(\n    model=\"gpt-6.1-sol\",\n    previous_response_id=first.id,\n    input=\"[이어지는 요청]\",\n    max_output_tokens=25000,\n)",
+          "source": {
+            "title": "Reasoning models (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/reasoning"
+          }
+        },
+        {
+          "id": "openai-image-prompt-structure",
+          "category": "이미지·영상·음성",
+          "title": "이미지는 용도·장면·주제·세부·제약 순서로",
+          "body": "OpenAI 이미지 프롬프트 가이드는 먼저 결과를 정의하라고 합니다. 주제와 용도(제품 사진, 광고, 다이어그램 등), 구도와 화면비를 밝히고, 복잡한 요청은 장면·주제·세부·제약으로 라벨을 붙여 나누며, 재질·조명·색·매체를 적고 사진 같은 결과를 원하면 'photorealistic'이나 'real photograph'를 직접 요청하세요. 넣을 문구는 따옴표로 감싸 위치와 서체를 정하고, 다른 글자는 넣지 말라고 한 뒤 결과의 철자를 확인합니다. 새 작업은 속도가 중요하면 gpt-image-2.5-flare, 품질 요구가 까다로우면 gpt-image-2.5-sunburst로 시작하고, quality는 결과가 부족할 때만 올리되 충분하면 더 낮은 설정도 시험해 보라고 권합니다.",
+          "before": "샴푸 광고 이미지 만들어 줘.",
+          "after": "용도: [제품] 샴푸의 고속도로 옥외 광고판 시안, 세로 화면\n장면: 해 질 녘 고속도로 옆에 선 대형 광고판, photorealistic\n주제: 광고판 가운데에 크게 놓인 [제품] 샴푸 병\n세부: 따뜻한 역광, 병 표면의 광택과 물방울 질감, [브랜드 색] 위주의 배경\n문구: \"[태그라인]\"을 광고판 아래쪽에 굵은 산세리프로 정확히 한 번, 또렷하게\n제약: 그 밖의 글자, 로고, 워터마크는 넣지 마세요.",
+          "code": "import base64\nfrom openai import OpenAI\n\nclient = OpenAI()\n\nresult = client.images.generate(\n    model=\"gpt-image-2.5-flare\",  # 품질이 더 중요하면 \"gpt-image-2.5-sunburst\"\n    prompt=prompt,\n    size=\"1024x1536\",\n    quality=\"medium\",             # auto(기본), low, medium, high, xhigh, max\n)\nimage_base64 = result.data[0].b64_json\nwith open(\"ad.png\", \"wb\") as f:\n    f.write(base64.b64decode(image_base64))",
+          "models": [
+            "GPT Image 2.5 Flare",
+            "GPT Image 2.5 Sunburst"
+          ],
+          "source": {
+            "title": "Image prompting (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/image-prompting"
+          }
+        },
+        {
+          "id": "openai-image-edit-iterate",
+          "category": "이미지·영상·음성",
+          "title": "편집은 'X만 바꾸고 나머지는 유지', 한 번에 하나씩",
+          "body": "OpenAI 이미지 가이드는 편집할 때 'X만 바꿔'라고 말하고 신원, 형태, 레이아웃, 조명, 라벨처럼 지킬 요소를 나열하며, 원치 않는 글자·로고·워터마크도 명시해 빼라고 권합니다. 이전 결과를 다음 편집의 입력으로 넘기고 한 번에 한 가지만 바꾸되, 결과가 흐트러지면 핵심 제약을 다시 적으세요. 참고 이미지가 여러 장이면 번호와 역할(주제, 스타일, 옷, 배경)을 붙이고 어떻게 합칠지 설명합니다. 특정 영역이 원본과 똑같이 남아야 한다면 프롬프트에만 기대지 말고 승인된 편집 결과를 원본 이미지에 합성하라고 합니다.",
+          "before": "이 사진 좀 고쳐 줘. 손에 든 꽃 없애고, 겨울 분위기로 바꾸고, 강아지도 넣어 줘.",
+          "after": "1차: 남자 손에 든 꽃을 지워 주세요. 다른 것은 아무것도 바꾸지 마세요.\n\n2차 (1차 결과를 입력으로): 눈이 내리는 겨울 저녁처럼 보이게 해 주세요. 인물의 얼굴, 자세, 구도, 카메라 각도는 그대로 유지하세요.\n\n3차 (이미지 1: 2차 결과, 이미지 2: 강아지 사진): 두 번째 이미지의 강아지를 이미지 1의 장면 속 남자 바로 옆에 넣고, 조명·구도·배경 스타일을 똑같이 맞춰 주세요. 다른 것은 바꾸지 마세요.",
+          "exampleFromSource": true,
+          "models": [
+            "GPT Image 2.5 Flare",
+            "GPT Image 2.5 Sunburst"
+          ],
+          "source": {
+            "title": "Image prompting (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/image-prompting"
+          }
+        },
+        {
+          "id": "openai-voice-realtime",
+          "category": "이미지·영상·음성",
+          "title": "음성 에이전트는 짧은 라벨 구획으로, 확인 규칙은 범위를 좁혀서",
+          "body": "OpenAI 음성 프롬프트 가이드에 따르면 gpt-realtime-2는 이전 실시간 모델보다 지시를 더 문자 그대로 따르므로, '무엇을 하든 항상 확인을 받아' 대신 '사용자 데이터를 바꾸는 쓰기 작업은 도구 호출 전에 확인'처럼 범위를 좁혀야 합니다. 처음부터 과하게 지시하지 말고 짧은 라벨 구획(# Role and Objective, # Preambles, # Tools 등)으로 시작해 평가에서 실패한 행동에만 지시를 더하세요. 추론 강도는 대부분 low에서 시작하고, 프리앰블은 작업 중임을 알릴 때만 한 문장으로, 주문 번호 같은 정확한 값은 하나씩 받아 확인한 뒤에만 도구를 부르게 합니다. 언어와 억양은 따로 다뤄서, 억양만 보고 응답 언어를 추측하지 않게 하세요.",
+          "before": "# Rules\n무엇을 하든 항상 먼저 확인을 받아.\n고객 말투를 보고 알아서 언어를 맞춰.",
+          "after": "# Role and Objective\n너는 [회사]의 주문 상담 음성 에이전트야. [목표]를 돕는 것이 목적이야.\n\n# Language\n[한국어]로만 답해. 억양만 보고 언어를 추측하지 마.\n\n# Preambles\n작업이 진행 중이라는 걸 알려야 할 때만 짧은 프리앰블을 써. 한 문장으로 해. 예: \"지금 주문을 확인해 볼게요.\"\n\n# Verbosity\n바로 답할 수 있는 질문: 짧은 문장 1~2개.\n\n# Tools\n조회처럼 읽기만 하는 도구: 사용자의 의도가 분명하고 필요한 값이 모두 있으면 호출해.\n사용자 데이터를 바꾸는 쓰기 작업: 호출 전에 하려는 작업을 요약하고, 사용자가 분명히 확인하기 전에는 호출하지 마.\n\n# Unclear Audio\n분명하게 알아들은 음성이나 텍스트에만 답해. 불분명한 음성에서 사용자의 뜻을 추측하지 마.\n\n# Entity Capture\n주문 번호, 이메일, 전화번호는 한 번에 하나씩 받아. 값을 받고, 검증하고, 확인받기 전에는 그 값으로 도구를 호출하지 마.",
+          "exampleFromSource": true,
+          "models": [
+            "gpt-realtime-2"
+          ],
+          "source": {
+            "title": "Voice prompting (Realtime API, OpenAI)",
+            "url": "https://developers.openai.com/api/docs/guides/voice-prompting"
+          }
+        }
       ],
-      "templateTitle": "코딩 에이전트용 개발자 메시지",
-      "templateNote": "OpenAI가 GPT-6 Astra 평가(FrontierCode)에 사용했다고 공개한 Codex 개발자 메시지 일부를 번역했습니다.",
-      "template": "불필요한 테스트 파일을 만들지 마. 저장소 규칙상 필요하거나 기존 파일 중 알맞은 곳이 없을 때만 새 테스트 파일을 만들어.\n관련 없는 정리 작업과 불필요한 복잡성을 피하고, 쓸 만한 기존 유틸리티는 재사용해.\n관련 저장소 지침을 읽고 주변 코드, 테스트, 문서, CI를 살펴서 기존 규칙을 따라.\n목표는 깔끔하고 병합 가능한 코드야.",
-      "sources": [
-        { "title": "Rethinking skills and prompts for GPT-6 Astra", "url": "https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra" },
-        { "title": "Prompting 개요 (OpenAI API)", "url": "https://developers.openai.com/api/docs/guides/prompting" },
-        { "title": "How two settings tripled our ARC-AGI-3 scores", "url": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/" }
+      "templates": [
+        {
+          "title": "ChatGPT 요청 기본 틀 (목표·맥락·출력·경계)",
+          "when": "ChatGPT에 보고서, 계획, 비교처럼 결과물이 분명한 큰 작업을 맡길 때. 필요 없는 줄은 지우세요.",
+          "text": "목표: [무엇을 만들지]. [누가, 어디에 쓸지]를 위한 결과물입니다.\n맥락: [첨부 파일이나 연결된 소스 이름]을 사용하세요. [자료 A]에서는 [가져올 내용], [자료 B]에서는 [가져올 내용]을 참고하세요.\n출력: [형식, 길이, 자세함]. [가장 먼저 보여 줄 내용]을 맨 앞에 두세요.\n경계: [바꾸면 안 되는 수치나 내용]은 그대로 두세요. [하지 말아야 할 행동, 예: 보내기·게시]는 하지 마세요.\n끝내기 전에 [확인할 기준, 예: 모든 할 일에 담당자와 마감일이 있는지]를 점검해 주세요.",
+          "source": {
+            "title": "Prompting (ChatGPT Learn, OpenAI)",
+            "url": "https://learn.chatgpt.com/docs/prompting"
+          }
+        },
+        {
+          "title": "Codex 작업 요청 틀 (목표·맥락·제약·완료 조건)",
+          "when": "Codex에 기능 구현이나 버그 수정을 맡길 때. 공식 문서는 쓸 수 있으면 GPT-6.1 Sol을 클라이언트 기본 추론 강도로 쓰고, GPT-6 Luna는 High, GPT-6 Astra는 Light(설정값 low)에서 시작해 결과를 보며 조정하라고 안내합니다.",
+          "text": "목표: [바꾸거나 만들 것]\n\n맥락: [관련 파일·폴더·문서·예시·오류 메시지, 예: @[파일 경로]]\n\n제약: [따라야 할 표준·아키텍처·안전 요건·규칙, 예: 공개 API 형태는 바꾸지 않는다]\n\n완료 조건:\n- [작업이 끝나기 전에 참이어야 할 것, 예: 재현 절차로 더 이상 버그가 나타나지 않는다]\n- [실행할 검사, 예: lint와 가장 작은 관련 테스트 묶음 통과]\n- 실행한 명령과 결과를 마지막에 보고한다",
+          "source": {
+            "title": "Best practices (ChatGPT Learn, Codex)",
+            "url": "https://learn.chatgpt.com/guides/best-practices"
+          }
+        },
+        {
+          "title": "GPT-6 Astra 개발자 메시지 보정 블록",
+          "when": "API나 에이전트 하네스에서 GPT-6 Astra가 확인 질문으로 자주 멈추거나, 스킬 지침을 과하게 따르거나, 작은 변경에도 테스트를 과하게 돌릴 때. 필요한 단락만 골라 넣으세요.",
+          "text": "# 주도성\n사용자의 지시와 이전 대화 맥락에서 사용자의 의도와 작업 범위를 추론해. 행동하는 쪽으로 기울고, 사용자가 의도한 작업을 끝까지 완수해. 분명히 파괴적이거나 되돌릴 수 없는 일이 아니라면 목표를 향해 스스로 진행해.\n\n# 지침 우선순위\n사용자의 지시가 스킬의 지침보다 우선해. 명시적인 사용자 지시와 스킬 지침이 충돌하면 사용자 지시를 따라.\n스킬 때문에 허락이나 확인을 구하거나, 멈추거나, 요청받은 일을 끝내지 못하거나, 사용자 의도에서 벗어나게 되면 읽은 SKILL.md 파일의 정확한 이름과 링크를 밝히고, 해당 지시를 인용하고, 어떻게 적용되는지 짧게 설명해. 스킬의 명시적 요구와 지침에 대한 네 해석을 구분해.\n\n# 테스트와 검증\n되돌릴 수 있고 영향이 작으며 구현을 그대로 따라 하는 변경에는 테스트를 쓰지 마. 변경에 맞는 테스트를 실행하고 필요한 검사를 마쳐. 그것이 통과하면, 새 변경이나 실패, 해결되지 않은 우려가 있을 때만 테스트를 넓히거나 반복하고, 그렇지 않으면 작업 완료로 나아가.\n\n# 위임\n작업을 다른 에이전트에게 나눠 병렬로 처리해서 시간을 아끼거나 품질을 높일 수 있다면, 네가 루트든 서브에이전트든 협업 도구로 위임해. 다른 에이전트에게 보내는 메시지와 최종 답은 사람이 읽을 수 있으니 알아보기 쉽게 쓰고, 단어와 숫자 사이는 항상 제대로 띄어 써.",
+          "source": {
+            "title": "Using GPT-6 (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/latest-model"
+          }
+        },
+        {
+          "title": "GPT-Live 음성 대화 프롬프트 틀",
+          "when": "gpt-live-1로 음성 비서를 만들 때. 대화 프롬프트는 짧게 두고, 세부 워크플로는 백엔드에, 권한과 필수 확인은 애플리케이션 쪽에서 처리하라고 원문은 권합니다. 세 정책 라벨은 원문 그대로 두세요.",
+          "text": "너는 [서비스]의 차분하고 친절한 음성 비서 [이름]이야.\n서두르지 않는 속도로 따뜻하고 자연스럽게 말해. 분명하고 직접적으로 말하되, 지나치게 들뜨지는 마.\n사용자가 답답해하면 짧게 인정하고, 다음에 도움이 될 단계에 집중해.\n\nBackchannel policy: 맞장구는 적당히 써. 주된 응답과 겹치지 않게 자연스럽게 반응해.\n\nInterruption policy: 사용자가 끼어들면 말을 멈추고 그 말을 들어.\n\nDelegation policy:\nBackend tools:\n- [기능]: [백엔드가 할 수 있는 일]\n\nDelegate to the backend when:\n- 요청에 백엔드 기능이나 신중한 추론이 필요할 때\n- 정정 때문에 이미 요청한 작업이 바뀔 때\n\nDo not delegate to the backend when:\n- 대화 내용이나 아직 유효한 결과로 답할 수 있을 때\n- 요청을 이해하려고 짧게 되물어야 할 때\n\n백엔드 작업 결과에 달린 답은 먼저 위임한 뒤에 해. 기다리는 동안 결과를 추측하지 마.",
+          "source": {
+            "title": "Prompting GPT-Live (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/live-prompting"
+          }
+        }
+      ],
+      "watch": [
+        {
+          "title": "Using GPT-6 (모델별 프롬프트·마이그레이션 가이드)",
+          "url": "https://developers.openai.com/api/docs/guides/latest-model"
+        },
+        {
+          "title": "Prompt engineering (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-engineering"
+        },
+        {
+          "title": "Image prompting (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/image-prompting"
+        },
+        {
+          "title": "Voice prompting (Realtime API)",
+          "url": "https://developers.openai.com/api/docs/guides/voice-prompting"
+        },
+        {
+          "title": "Prompting GPT-Live (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/live-prompting"
+        },
+        {
+          "title": "Prompting (ChatGPT Learn)",
+          "url": "https://learn.chatgpt.com/docs/prompting"
+        }
       ]
     },
     {
       "company": "anthropic",
       "name": "Anthropic · Claude",
-      "summary": "Claude는 지시를 문자 그대로, 정확하게 따르는 쪽으로 학습됐습니다. 이유를 함께 설명하고, XML 태그로 구조를 나누고, 원하는 행동을 동사로 분명히 말할수록 결과가 좋아집니다.",
-      "principles": [
-        { "title": "명확하고 직접적으로", "body": "Claude를 '맥락을 모르는 유능한 신입 동료'라고 생각하세요. 맥락이 적은 동료에게 보여 줬을 때 헷갈릴 프롬프트라면 Claude도 헷갈립니다. 기대 이상을 원하면 '기본을 넘어 완성도 높게'처럼 직접 요청하세요." },
-        { "title": "지시에 이유를 붙이기", "body": "'말줄임표 쓰지 마'보다 '이 답은 음성 합성으로 읽히니 발음할 수 없는 말줄임표는 쓰지 마'가 낫습니다. Claude는 이유에서 일반화합니다." },
-        { "title": "XML 태그와 예시", "body": "<instructions>, <context>, <input>처럼 내용 종류별로 태그를 나누고, 예시는 3~5개를 <example> 태그로 감싸세요. 여러 문서는 <document> 안에 <source>와 <document_content>로 넣습니다." },
-        { "title": "긴 문서는 위, 질문은 끝, 인용부터", "body": "2만 토큰 이상의 자료는 프롬프트 맨 위에 두고 질문을 끝에 두세요. 긴 문서 과제는 관련 부분을 먼저 인용하게 한 뒤 답하게 하면 정확도가 올라갑니다." },
-        { "title": "하지 말 것 대신 할 것", "body": "'마크다운 쓰지 마'보다 '매끄러운 문단으로 써'가 잘 통합니다. 프롬프트 자체의 서식도 결과 서식에 영향을 줍니다." },
-        { "title": "행동을 원하면 동사로", "body": "'개선 방안을 제안해 줄래?'라고 하면 제안만 합니다. 바로 고치길 원하면 '이 함수를 성능 좋게 바꿔줘'처럼 말하세요." },
-        { "title": "effort와 thinking (API)", "body": "생각의 양은 effort 파라미터로 조절합니다. budget_tokens는 Claude 4.7 이후 모델에서 400 오류를 냅니다. Opus 5.5와 Fable 5.1은 thinking이 항상 켜져 있고, Sonnet 5.5의 가장 낮은 설정은 between_tools입니다." },
-        { "title": "대화 기록은 추가만, prefill은 없음", "body": "Opus 5.5, Fable 5.1, Sonnet 5.5에서는 thinking 블록 앞의 대화를 편집하면 오류가 납니다. 마지막 assistant 턴을 미리 채우는 prefill도 Claude 4.6 이후 지원되지 않으니, 형식은 지시와 구조화 출력으로 잡으세요." }
+      "summary": "Claude 최신 모델(Opus 5.5·Sonnet 5.5·Haiku 5.5·Fable 5.1)은 지시를 정확하게 따르고 생각의 양을 스스로 조절합니다. 맥락을 모르는 유능한 동료에게 설명하듯 목적과 이유를 분명히 쓰고, 예전 모델용으로 쌓아 둔 강한 규칙이나 '추론을 적어라' 같은 지시는 덜어 내세요. 생각의 깊이는 프롬프트보다 effort로 조절하고, 코딩 에이전트에는 직접 돌려 볼 수 있는 검증 수단을 주는 것이 핵심입니다.",
+      "methods": [
+        {
+          "id": "anthropic-clear-direct",
+          "category": "기본 작성법",
+          "title": "맥락 없는 신입 동료에게 말하듯 구체적으로 쓰기",
+          "body": "Claude를 우리 팀의 규칙과 업무 방식을 모르는, 똑똑하지만 새로 온 직원이라고 생각하세요. 맥락을 거의 모르는 동료에게 프롬프트를 보여 줬을 때 헷갈려 한다면 Claude도 헷갈립니다(Anthropic이 말하는 황금률). '기본 이상'의 결과를 원하면 모호한 요청에서 알아서 짐작하길 기대하지 말고 분명히 요청하세요. 단계의 순서나 빠짐없음이 중요하면 번호 목록으로 주는 것이 좋습니다.",
+          "before": "분석 대시보드 만들어 줘.",
+          "after": "분석 대시보드를 만들어 줘. 관련 있는 기능과 상호작용을 가능한 한 많이 넣어 줘. 기본을 넘어서, 모든 기능을 갖춘 완성도 높은 구현으로 만들어 줘.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-explain-why",
+          "category": "기본 작성법",
+          "title": "지시에 이유를 붙이기",
+          "body": "지시 뒤에 있는 목적이나 이유, 즉 왜 그 행동이 중요한지를 함께 알려 주면 Claude가 목표를 더 잘 이해하고 더 맞춤한 답을 냅니다. 원문은 'Claude는 설명에서 일반화할 만큼 똑똑하다'고 말합니다. 대문자로 '절대(NEVER)'만 외치기보다 그래야 하는 이유를 한 문장 덧붙이세요.",
+          "before": "말줄임표 절대 쓰지 마.",
+          "after": "이 답변은 음성 합성(TTS) 엔진이 소리 내어 읽을 거야. TTS 엔진은 말줄임표를 어떻게 읽어야 할지 모르니까 말줄임표는 절대 쓰지 마.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-action-verbs",
+          "category": "기본 작성법",
+          "title": "고치길 원하면 '제안해 줄래?' 대신 '바꿔 줘'",
+          "body": "Claude 최신 모델은 정확한 지시 이행에 맞춰 학습돼, '바꿀 방법을 제안해 줄래?'라고 물으면 실제로 고치길 원했더라도 제안만 할 때가 있습니다. 행동을 원하면 '이 함수를 성능이 좋아지게 바꿔 줘'처럼 직접 말하고, 늘 실행 쪽으로 기울게 하려면 시스템 프롬프트에 <default_to_action> 블록을, 반대로 분명한 지시가 있을 때만 움직이게 하려면 <do_not_act_before_instructions> 블록을 넣으세요. 예전 모델에서 도구가 잘 안 불리던 시절의 'CRITICAL: You MUST use this tool when...' 같은 강한 표현은 과잉 호출을 부를 수 있어 'Use this tool when...'처럼 보통 말투로 낮추라고 문서는 권합니다.",
+          "before": "이 함수 성능을 개선할 방법을 좀 제안해 줄래?",
+          "after": "이 함수를 성능이 좋아지도록 바꿔 줘.\n\n(항상 이렇게 동작하게 하려면 시스템 프롬프트에 추가)\n<default_to_action>\n기본적으로 변경 사항을 제안만 하지 말고 직접 구현해. 사용자의 의도가 분명하지 않으면 가장 유용할 법한 행동을 추론해서 진행하고, 빠진 정보는 추측하지 말고 도구로 찾아. 파일 수정이나 읽기 같은 도구 호출을 사용자가 의도했는지 추론해서 그에 맞게 행동해.\n</default_to_action>",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-iterate-feedback",
+          "category": "기본 작성법",
+          "title": "첫 답은 초안으로 보고 무엇을 바꿀지 구체적으로 말하기",
+          "body": "Anthropic 아카데미의 Claude 101은 첫 프롬프트를 한 번에 끝나는 요청이 아니라 대화의 시작으로 보고, 첫 결과는 출발점으로 삼아 구체적으로 피드백하라고 합니다. 답이 너무 일반적이면 대상·역할·제약을, 길이가 안 맞으면 원하는 분량을, 톤이 다르면 원하는 톤을 평이한 말로(또는 글 샘플로) 알려 주세요. 대화가 엉뚱한 방향으로 흘렀다면 더 분명한 프롬프트로 새 채팅을 시작하고, 중요한 일에 쓰는 핵심 사실은 직접 확인하거나 웹 검색을 켜서 최신 정보에 근거하게 하세요.",
+          "before": "음… 별로야. 다시 써 줘.",
+          "after": "첫 두 문단은 빼고, 결론은 더 행동 중심으로 바꿔 줘. 톤은 지금보다 대화체로 하고, 전체 길이는 100단어 이내로 줄여 줘.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Getting better results – Claude 101 (Anthropic)",
+            "url": "https://academy.claude.com/courses/claude-101/getting-better-results"
+          }
+        },
+        {
+          "id": "anthropic-xml-tags",
+          "category": "구조와 형식",
+          "title": "지시·맥락·입력을 XML 태그로 나누기",
+          "body": "지시, 맥락, 예시, 바뀌는 입력이 섞인 프롬프트는 내용 종류마다 <instructions>, <context>, <input> 같은 태그로 감싸면 Claude가 모호함 없이 해석하고 오해가 줄어듭니다. 태그 이름은 설명적으로 짓고 여러 프롬프트에서 같은 이름을 일관되게 쓰세요. 내용에 위계가 있으면 <documents> 안에 <document index=\"n\">을 두는 식으로 태그를 중첩합니다.",
+          "before": "아래 계약서 검토해서 위험한 조항 찾아 줘. 우리는 공급사 입장이고 결과는 표로. [계약서 내용]",
+          "after": "<input>\n[계약서 전문]\n</input>\n\n<context>\n우리 회사는 이 계약에서 공급사 입장이야. 검토 결과는 법무팀 회의 자료로 쓰여.\n</context>\n\n<instructions>\n1. <input>의 계약서에서 우리 회사에 불리하거나 위험한 조항을 모두 찾아.\n2. 조항마다 위험한 이유를 한두 문장으로 설명해.\n3. 결과는 조항 번호, 위험 내용, 이유를 열로 하는 표로 정리해.\n</instructions>",
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-say-what-to-do",
+          "category": "구조와 형식",
+          "title": "'하지 마' 대신 '이렇게 써'로 형식 지시하기",
+          "body": "형식을 잡을 때는 하지 말아야 할 것보다 해야 할 것을 말하세요. 원하는 형식을 XML 태그 이름으로 지정하는 방법도 통하고, 프롬프트 자체의 서식이 답의 서식에 영향을 주므로 마크다운을 줄이고 싶다면 프롬프트에서도 마크다운을 빼는 것이 도움이 됩니다. 단, Claude Fable 5.1은 이미 이전 모델보다 서식을 덜 써서 긴 마크다운 억제 블록을 넣으면 내용에 필요한 구조까지 없앨 수 있으니, 그런 블록은 지우거나 짧은 규칙으로 바꾸라고 문서는 안내합니다.",
+          "before": "답변에 마크다운 쓰지 마.",
+          "after": "답변은 매끄럽게 이어지는 산문 문단으로 써 줘. 산문 부분은 <smoothly_flowing_prose_paragraphs> 태그 안에 쓰고, 목록은 정말로 서로 독립된 항목을 보여 줄 때나 내가 목록을 요청할 때만 써.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-examples",
+          "category": "예시 활용",
+          "title": "예시는 3~5개, 관련 있고 다양하게, <example> 태그로",
+          "body": "예시는 Claude의 출력 형식·톤·구조를 잡는 가장 확실한 방법 중 하나입니다. 실제 사용 사례와 닮은 예시를 고르고, 엣지 케이스를 넣어 Claude가 의도하지 않은 패턴을 따라 하지 않을 만큼 다양하게 만든 뒤, <example> 태그(여러 개면 <examples>)로 감싸 지시와 구분하세요. 3~5개가 가장 좋으며, Claude에게 내 예시의 관련성과 다양성을 평가하게 하거나 처음 몇 개를 바탕으로 예시를 더 만들게 할 수도 있습니다.",
+          "before": "고객 문의를 배송, 환불, 기타 중 하나로 분류해 줘.\n[문의 내용]",
+          "after": "고객 문의를 배송, 환불, 기타 중 하나로 분류해 줘. 아래 예시와 같은 형식으로 분류 하나만 답해.\n\n<examples>\n<example>\n문의: 주문한 지 일주일이 지났는데 아직 안 왔어요.\n분류: 배송\n</example>\n<example>\n문의: 사이즈가 안 맞아서 돈으로 돌려받고 싶어요.\n분류: 환불\n</example>\n<example>\n문의: 배송이 너무 늦어서 그냥 취소하고 환불받을래요.\n분류: 환불\n</example>\n<example>\n문의: 매장 영업시간이 어떻게 되나요?\n분류: 기타\n</example>\n</examples>\n\n문의: [분류할 문의 내용]",
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-full-example",
+          "category": "예시 활용",
+          "title": "까다로운 행동은 '정답 응답' 예시 하나를 통째로 보여 주기",
+          "body": "Claude Fable 5.1은 문서를 요약할 때 원문 구절을 인용 표시 없이 그대로 옮겨 쓰는 경향이 Fable 5보다 큽니다. 문서는 이를 고치려면 시스템 프롬프트에 올바른 응답의 완전한 예시 하나, 즉 사용자의 요청, 응답, 그 응답이 왜 맞는지 설명하는 문장을 함께 넣으라고 권합니다. 예시 속 [web_search: ...] 두 줄은 실제 쓰는 도구 이름으로 바꿔야 모델이 이를 그대로 출력할 글이 아니라 도구 출력의 틀로 읽습니다.",
+          "before": "요약할 때 원문 문장을 그대로 베끼지 말고, 인용할 때는 인용 표시를 해.",
+          "after": "<example>\n<user>리버턴 레저와 코스트 디스패치가 하버 브리지 폐쇄를 각각 어떻게 보도했는지 찾아보고 비교해 줘</user>\n<response>\n[web_search: Harbor Bridge closure Riverton Ledger]\n[web_search: Harbor Bridge closure Coast Dispatch]\n두 매체는 기본 사실에서는 일치합니다. 다리는 점검에서 용접부 균열이 발견된 뒤 3월 3일 폐쇄됐고, 주 정부는 수리에 약 8개월이 걸릴 것으로 봅니다. 차이는 강조점입니다. 레저는 이 일을 지역 경제 이야기로 다룹니다. 디스패치는 예산 실패로 보며, 사설에서 이번 폐쇄를 \"충분히 예견할 수 있었던 일\"이라고 부릅니다. 함께 읽으면 레저는 지금 누가 영향을 받는지, 디스패치는 어떻게 여기까지 왔는지를 설명하며, 어느 한쪽만으로는 전체 그림이 나오지 않습니다.\n</response>\n<rationale>CORRECT: 응답은 두 기사를 차례로 훑지 않고 두 매체가 일치하는 점과 다른 점을 중심으로 짜여 있다. 각 매체의 보도는 어시스턴트 자신의 간접 화법으로 한두 문장에 담았다. 한 출처에서 짧은 구절 하나만 표시해 인용했고, 나머지 주장은 모두 바꿔 말했다. 그러면서도 응답은 구체적이고 완전하다.</rationale>\n</example>",
+          "exampleFromSource": true,
+          "models": [
+            "Claude Fable 5.1",
+            "Claude Mythos 5.1"
+          ],
+          "source": {
+            "title": "Prompting Claude Fable 5.1 (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1"
+          }
+        },
+        {
+          "id": "anthropic-effort",
+          "category": "추론과 effort",
+          "title": "생각의 양은 effort로, 모델별 기본값에서 시작해 직접 비교하기",
+          "body": "effort는 엄격한 토큰 예산이 아닌 행동 신호로, 답변·도구 호출·생각(thinking)을 포함한 응답의 모든 토큰에 영향을 주며 low·medium·high·xhigh·max 단계가 있습니다. 기본값은 Claude Opus 5.5와 Haiku 5.5가 medium, 그 밖의 모델은 high입니다. 출발점은 Fable 5.1이 high, Sonnet 5.5가 high(에이전트 코딩은 medium, 채팅처럼 지연에 민감하면 medium이나 low), Haiku 5.5가 medium(채팅·짧은 도구 작업은 low)이고, Opus 5.5는 예전 모델 설정을 가져오지 말고 내 평가로 단계를 비교하라고 합니다. 대화 도중 최상위 effort 값을 바꾸면 프롬프트 캐시가 깨지므로, 지원 모델에서는 캐시를 유지하는 메시지별 effort 변경(베타, mid-conversation-output-config-2026-07-01 헤더)을 쓰세요.",
+          "code": "client = anthropic.Anthropic()\n\nresponse = client.messages.create(\n    model=\"claude-opus-5-5\",\n    max_tokens=4096,\n    messages=[\n        {\n            \"role\": \"user\",\n            \"content\": \"Analyze the trade-offs between microservices and monolithic architectures\",\n        }\n    ],\n    output_config={\"effort\": \"medium\"},  # effort는 요청의 output_config.effort에 지정\n)",
+          "models": [
+            "Claude Opus 5.5",
+            "Claude Sonnet 5.5",
+            "Claude Haiku 5.5",
+            "Claude Fable 5.1"
+          ],
+          "source": {
+            "title": "Effort (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+          }
+        },
+        {
+          "id": "anthropic-thinking-not-text",
+          "category": "추론과 effort",
+          "title": "추론 과정을 '적어 보라'고 하지 말고 thinking에 맡기기",
+          "body": "최신 모델은 생각을 스스로 조절하며, 손으로 쓴 단계별 계획보다 '충분히 깊이 생각해' 같은 일반적인 지시가 더 나은 추론을 끌어낼 때가 많습니다. 추론을 답변에 쓰게 하는 수동 사고 사슬(CoT)은 thinking이 꺼져 있을 때의 대안이며, Fable 5.1·Fable 5·Opus 5.5·Opus 5·Sonnet 5.5에서는 <thinking> 태그 등에 추론을 적게 하는 프롬프트가 거절될 수 있으니 thinking에 맡기고 비용이나 지연이 걱정되면 effort를 낮추세요. 끝내기 전에 '[검증 기준]에 비추어 답을 확인해'라고 덧붙이면 특히 코딩과 수학에서 오류를 잘 잡지만, Opus 5는 스스로 잘 검증해 과잉 검증이 생길 수 있으므로 이런 지시를 빼라고 합니다.",
+          "before": "답하기 전에 <thinking> 태그 안에 1단계, 2단계, 3단계로 추론 과정을 빠짐없이 적고, 그다음 <answer> 태그에 답을 써.",
+          "after": "[문제]\n\n이 문제를 충분히 깊이 생각한 뒤 답해 줘. 끝내기 전에 [검증 기준, 예: 주어진 조건을 모두 만족하는지]에 비추어 답을 확인해 줘.",
+          "models": [
+            "Claude Fable 5.1",
+            "Claude Opus 5.5",
+            "Claude Sonnet 5.5"
+          ],
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-long-docs",
+          "category": "긴 문서와 자료",
+          "title": "긴 자료는 맨 위에, 질문은 맨 끝에, 인용부터 뽑게 하기",
+          "body": "2만 토큰이 넘는 문서나 데이터는 질문·지시·예시보다 위, 프롬프트 맨 앞에 두세요. Anthropic 테스트에서는 질문을 끝에 두는 것만으로 응답 품질이 최대 30% 좋아졌고, 여러 문서가 섞인 복잡한 입력에서 특히 효과가 컸습니다. 문서가 여러 개면 각각을 <document>로 감싸고 <source>, <document_content> 같은 하위 태그로 메타데이터와 본문을 나누세요. 긴 문서 과제는 관련 부분을 먼저 인용하게 한 뒤 작업하게 하면 Claude가 관련 내용에 집중하고 나머지를 무시합니다.",
+          "before": "연간 보고서랑 경쟁사 분석 보고 3분기에 뭐에 집중할지 추천해 줘.\n[연간 보고서 전문]\n[경쟁사 분석 전문]",
+          "after": "<documents>\n  <document index=\"1\">\n    <source>annual_report_2023.pdf</source>\n    <document_content>\n      [연간 보고서 내용]\n    </document_content>\n  </document>\n  <document index=\"2\">\n    <source>competitor_analysis_q2.xlsx</source>\n    <document_content>\n      [경쟁사 분석 내용]\n    </document_content>\n  </document>\n</documents>\n\n먼저 두 문서에서 이 과제와 관련된 부분을 찾아 <quotes> 태그 안에 인용해. 그다음 그 인용을 바탕으로 연간 보고서와 경쟁사 분석을 분석해서 우리의 전략적 강점을 짚고, 3분기에 집중할 분야를 추천해.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-verify",
+          "category": "에이전트와 코딩",
+          "title": "Claude가 직접 돌려 볼 수 있는 검증 수단 주기",
+          "body": "Claude는 일이 끝나 보이면 멈추는데, 실행할 수 있는 검사가 없으면 '끝나 보인다'가 유일한 신호가 되고 사람이 검증 루프가 됩니다. 테스트 스위트, 빌드 종료 코드, 린터, 디자인과 비교할 스크린샷처럼 통과·실패를 돌려주는 검사를 주면 Claude가 직접 실행하고 결과를 읽으며 통과할 때까지 반복합니다. 성공했다고 말하게 하지 말고 테스트 출력, 실행한 명령과 결과 같은 증거를 보여 달라고 하세요. 세션 전체에 걸쳐 강제하려면 /goal 조건이나 Stop hook을 쓸 수 있습니다.",
+          "before": "이메일 주소 검증하는 함수 구현해 줘.\n\n빌드가 실패해.",
+          "after": "validateEmail 함수를 작성해 줘. 테스트 예시: user@example.com은 true, invalid는 false, user@.com은 false. 구현한 뒤 테스트를 실행해 줘.\n\n빌드가 이 오류로 실패해: [오류 붙여 넣기]. 고친 뒤 빌드가 성공하는지 확인해 줘. 오류를 숨기지 말고 근본 원인을 해결해.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Best practices for Claude Code (Anthropic)",
+            "url": "https://code.claude.com/docs/en/best-practices"
+          }
+        },
+        {
+          "id": "anthropic-code-context",
+          "category": "에이전트와 코딩",
+          "title": "범위·출처·기존 패턴·증상을 짚어 주기",
+          "body": "Claude는 의도를 추론할 수 있지만 마음을 읽지는 못합니다. 어떤 파일·시나리오인지와 테스트 선호로 범위를 정하고, 답을 줄 수 있는 출처(예: git 기록)와 따라 할 기존 패턴(예: 비슷한 위젯 파일)을 알려 주고, 버그라면 증상·의심 위치·'고쳐졌다'의 기준을 함께 주세요. 파일은 위치를 말로 설명하기보다 @로 참조하고, 스크린샷은 붙여 넣고, 데이터는 cat error.log | claude -p \"explain this error\"처럼 파이프로 넘길 수 있습니다. 방향을 바꿀 여유가 있는 탐색 단계에서는 '이 파일에서 뭘 개선하겠어?' 같은 열린 질문도 쓸모가 있습니다.",
+          "before": "로그인 버그 고쳐 줘.",
+          "after": "사용자들이 세션 타임아웃 뒤에 로그인이 실패한다고 보고했어. src/auth/의 인증 흐름, 특히 토큰 갱신 부분을 확인해 줘. 먼저 이 문제를 재현하는 실패하는 테스트를 작성하고, 그다음 고쳐 줘.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Best practices for Claude Code (Anthropic)",
+            "url": "https://code.claude.com/docs/en/best-practices"
+          }
+        },
+        {
+          "id": "anthropic-claude-md-concrete",
+          "category": "에이전트와 코딩",
+          "title": "CLAUDE.md는 확인 가능한 구체적 지시로, 파일당 200줄 미만",
+          "body": "Claude Code는 CLAUDE.md를 강제 설정이 아니라 맥락으로 다루므로, 지켰는지 확인할 수 있을 만큼 구체적으로 써야 일관되게 따릅니다. 파일당 200줄 미만을 목표로 하고(길수록 맥락을 더 쓰고 지시 준수가 떨어짐), 관련 지시는 마크다운 제목과 글머리표로 묶으며, 코드베이스 일부에만 해당하는 지시는 paths 프런트매터를 단 .claude/rules/ 규칙 파일로 옮겨 해당 파일을 다룰 때만 로드되게 하세요. 서로 모순되는 지시가 있으면 Claude가 임의로 하나를 고를 수 있으니, /doctor prompt-audit(Claude Code v2.1.283 이상)로 예전 모델용 지시나 충돌을 정기적으로 점검하세요.",
+          "before": "- 코드를 제대로 포맷해\n- 변경 사항을 테스트해\n- 파일을 잘 정리해 둬",
+          "after": "# 코드 스타일\n- 들여쓰기는 2칸으로 해\n\n# 워크플로\n- 커밋하기 전에 `npm test`를 실행해\n\n# 구조\n- API 핸들러는 `src/api/handlers/`에 있어",
+          "exampleFromSource": true,
+          "source": {
+            "title": "How Claude remembers your project (Anthropic)",
+            "url": "https://code.claude.com/docs/en/memory"
+          }
+        },
+        {
+          "id": "anthropic-judgment-gotchas",
+          "category": "에이전트와 코딩",
+          "title": "규칙을 늘어놓지 말고 판단 기준 한 줄과 '함정'만 남기기",
+          "body": "Claude Code 팀은 Claude Opus 5, Claude Fable 5 같은 모델용 Claude Code 시스템 프롬프트를 80% 넘게 지우고도 코딩 평가에서 측정 가능한 손실이 없었다며, 시스템 프롬프트·CLAUDE.md·스킬이 Claude를 과하게 제약하고 있었다고 말합니다. 세세한 규칙 대신 판단 기준을 주고, CLAUDE.md는 레포가 무엇을 위한 것인지 짧게 적은 뒤 토큰 대부분을 코드베이스 속 함정(gotchas)에 쓰며, 파일 시스템이나 레포를 보면 알 수 있는 뻔한 내용은 빼세요. 최신 모델에서는 예시가 오히려 탐색 범위를 좁힌다며, 예시 대신 도구·스크립트·파일의 파라미터를 더 표현력 있게 설계하고 도구 사용법은 시스템 프롬프트가 아니라 도구 설명에 두라고 권합니다.",
+          "before": "코드에는 기본적으로 주석을 쓰지 마. 여러 문단짜리 docstring이나 여러 줄 주석 블록은 절대 쓰지 마.",
+          "after": "이 레포는 [무엇을 위한 레포인지 한 줄].\n\n주변 코드처럼 읽히는 코드를 써. 주석 밀도, 이름 짓기, 관용구를 주변 코드에 맞춰.\n\n# 함정\n- 타입은 [types 파일] 한 파일에만 두고 다른 곳에는 만들지 마.\n- 작업 검증 방법은 [verify] 스킬을 참고해.",
+          "exampleFromSource": true,
+          "models": [
+            "Claude Opus 5",
+            "Claude Fable 5"
+          ],
+          "source": {
+            "title": "The new rules of context engineering for Claude 5 generation models (Anthropic)",
+            "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
+          }
+        },
+        {
+          "id": "anthropic-finish-scope",
+          "category": "에이전트와 코딩",
+          "title": "끝까지 하되 요청 범위는 넘지 않게 시스템 프롬프트로 정하기",
+          "body": "Claude Sonnet 5.5는 low·medium effort의 에이전트 코딩 작업에서 일이 끝나기 전에 계획을 확인하거나, 스스로 답할 수 있는 질문을 하거나, 여러 부분 중 하나만 끝내고 계속할지 묻기도 합니다. 먼저 effort를 올려 보고, effort를 바꾸지 않으려면 아래 두 문단을 시스템 프롬프트에 넣으세요. 요청하지 않은 테스트·문서·파일이 덧붙는 것만 막고 싶다면 두 번째 문단만 넣으면 됩니다. 이 문단이 되돌리기 어렵거나 위험한 행동에 대한 기존 규칙을 대신하지는 않으니 그 규칙은 시스템 프롬프트에 그대로 두세요.",
+          "before": "막히거나 애매하면 언제든 나한테 확인받고 진행해. 하는 김에 관련된 부분도 알아서 개선해 줘.",
+          "after": "사용자가 요청한 모든 일이 끝날 때까지 계속 작업해. 사용자 없이는 더 진행할 수 없을 때나 위험한 단계 직전에만 멈춰서 물어봐.\n\n사용자가 요청한 작업이 끝나고 확인까지 마치면 멈추고 보고해. 요청하지 않은 기능, 테스트, 파일, 문서, 리팩터링은 추가하지 마. 도움이 될 것 같은 게 있으면 직접 하지 말고 마지막에 언급만 해.",
+          "exampleFromSource": true,
+          "models": [
+            "Claude Sonnet 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Sonnet 5.5 (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5"
+          }
+        },
+        {
+          "id": "anthropic-skill-description",
+          "category": "에이전트와 코딩",
+          "title": "스킬 description은 3인칭으로 '무엇을 하고 언제 쓰는지'",
+          "body": "스킬의 description은 시스템 프롬프트에 들어가며, Claude는 이를 보고 100개가 넘을 수도 있는 스킬 중 알맞은 것을 고릅니다. 시점이 섞이면 스킬을 찾는 데 문제가 생길 수 있으니 항상 3인칭으로 쓰고, 스킬이 하는 일과 함께 언제 쓰는지(구체적인 트리거와 핵심 용어)를 넣으세요. SKILL.md 본문은 500줄 미만으로 유지하고 넘칠 것 같으면 SKILL.md에서 한 단계 깊이로 링크한 별도 파일로 나누며, Claude가 이미 아는 설명은 빼세요. 스킬의 효과는 바탕 모델에 따라 달라지므로 쓸 모든 모델(Haiku, Sonnet, Opus)로 테스트하라고 권합니다.",
+          "before": "description: 문서 작업을 도와줌",
+          "after": "description: PDF 파일에서 텍스트와 표를 추출하고, 양식을 채우고, 문서를 병합한다. PDF 파일을 다루거나 사용자가 PDF, 양식, 문서 추출을 언급할 때 사용한다.\n\n(다른 스킬의 예)\ndescription: git diff를 분석해 설명적인 커밋 메시지를 만든다. 사용자가 커밋 메시지 작성이나 스테이징된 변경 사항 검토를 도와 달라고 할 때 사용한다.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Skill authoring best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices"
+          }
+        },
+        {
+          "id": "anthropic-thinking-migration",
+          "category": "도구와 API 설정",
+          "title": "budget_tokens·prefill을 걷어내고 대화 기록은 '추가만'",
+          "body": "Claude 4.6 이후 모델은 adaptive thinking(thinking: {type: \"adaptive\"})을 쓰고 4.7 이후 모델에서 budget_tokens를 설정하면 400 오류가 나므로, 생각의 깊이는 effort로 조절하세요(Sonnet 5.5는 thinking을 끌 수 없고 가장 낮은 설정이 between_tools). 마지막 assistant 턴을 미리 채우는 prefill도 Claude 4.6 모델부터 400 오류가 나니, 형식은 Structured Outputs나 '서론 없이 바로 답해' 같은 직접 지시로 잡습니다. Fable 5.1·Opus 5.5·Sonnet 5.5·Haiku 5.5에서는 assistant 턴을 thinking 블록까지 받은 그대로 이어 붙이고, 이전 메시지 편집·system이나 tools 재구성·이전 턴 요약처럼 thinking 블록 앞의 대화를 바꾸면 오류가 나거나 블록이 버려지므로 바뀐 지시는 대화 중간 system 메시지로 넣으세요. 응답이 thinking 블록으로 시작할 수 있으니 콘텐츠 블록은 위치가 아니라 type으로 고르세요.",
+          "code": "# 이전: 수동 예산을 쓰는 extended thinking (구형 모델)\nclient.messages.create(\n    model=\"claude-sonnet-4-5-20250929\",\n    max_tokens=16000,\n    thinking={\"type\": \"enabled\", \"budget_tokens\": 10000},\n    messages=[{\"role\": \"user\", \"content\": \"...\"}],\n)\n\n# 이후: adaptive thinking + effort\nclient.messages.create(\n    model=\"claude-opus-5-5\",\n    max_tokens=16000,\n    thinking={\"type\": \"adaptive\"},\n    output_config={\"effort\": \"high\"},\n    messages=[{\"role\": \"user\", \"content\": \"...\"}],\n)",
+          "models": [
+            "Claude Opus 5.5",
+            "Claude Sonnet 5.5",
+            "Claude Haiku 5.5",
+            "Claude Fable 5.1"
+          ],
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "id": "anthropic-search-current",
+          "category": "도구와 API 설정",
+          "title": "바뀌었을 수 있는 사실은 확신이 들어도 검색하게 하기",
+          "body": "Claude Sonnet 5.5는 채팅과 지식 업무에서 웹 검색이면 잡을 수 있는 바뀐 세부 사항(무엇이 허용·요구되는지, 얼마가 부과되는지 등)을 학습된 지식으로 답할 때가 있습니다. 먼저 프롬프트에서 '꼭 필요할 때만 도구를 써', '도구 호출을 최소화해'처럼 도구 사용을 막는 표현을 지우고, 검색 도구를 준다면 아래 문장을 시스템 프롬프트에 넣으세요. 답이 최신 정보에 달린 리서치·고객 지원 제품에서 특히 중요합니다.",
+          "before": "도구 호출은 최소화하고, 꼭 필요할 때만 써.",
+          "after": "학습 이후 바뀌었을 수 있는 구체적인 사항, 예를 들어 무엇이 허용되거나 요구되는지, 얼마가 부과되는지는 확신이 들더라도 검색 도구로 확인해. 보고서나 비교처럼 조사가 필요한 작업은 학습된 지식으로 쓰지 말고 최신 출처를 모아서 써.",
+          "exampleFromSource": true,
+          "models": [
+            "Claude Sonnet 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Sonnet 5.5 (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5"
+          }
+        },
+        {
+          "id": "anthropic-vision-order",
+          "category": "이미지·영상·음성",
+          "title": "이미지는 텍스트보다 먼저, 여러 장이면 번호 라벨을 붙여서",
+          "body": "긴 문서를 질문 앞에 두는 것처럼 Claude는 이미지가 텍스트보다 앞에 올 때 가장 잘 작동합니다(뒤에 오거나 섞여 있어도 잘 동작하지만 가능하면 이미지 다음 텍스트 순서를 권합니다). 여러 장을 보낼 때는 각 이미지 앞에 'Image 1:', 'Image 2:' 같은 짧은 텍스트 라벨을 붙여 프롬프트와 후속 질문에서 이름으로 부를 수 있게 하세요. 이미지는 흐리지 않게, 중요한 글자는 읽을 수 있는 크기로 넣고, claude.ai에서는 메시지당 최대 20장까지 올릴 수 있습니다. Claude는 이미지를 이해만 할 뿐 생성·편집은 하지 못하며, 사진 속 사람의 이름을 대는 요청은 거절합니다.",
+          "before": "어제랑 오늘 대시보드 캡처인데 뭐가 달라졌어? [이미지 2장 첨부]",
+          "after": "이미지 1: [어제 대시보드 캡처]\n이미지 2: [오늘 대시보드 캡처]\n\n이미지 1은 어제, 이미지 2는 오늘 대시보드야. 두 이미지는 어떻게 다른지 알려 줘.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Vision (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/vision"
+          }
+        }
       ],
-      "templateTitle": "시스템 프롬프트 기본 틀",
-      "templateNote": "Anthropic 프롬프팅 가이드의 원칙(역할, 이유, XML 구조, 예시, 긍정형 서식 지시)을 한 틀로 묶었습니다.",
-      "template": "너는 [역할]이야. 이 작업은 [누가 어디에 쓰는지]라서 [중요한 이유]가 중요해.\n\n<context>\n[배경 자료]\n</context>\n\n<instructions>\n1. [단계]\n2. [단계]\n3. 끝내기 전에 [검증 기준]에 맞는지 확인해\n</instructions>\n\n<examples>\n<example>\n[입력과 이상적인 출력 예시]\n</example>\n</examples>\n\n<output_format>\n결과는 매끄러운 문단으로 쓰고, 비교가 필요한 경우에만 표를 써.\n</output_format>",
-      "sources": [
-        { "title": "Prompting best practices (Claude Platform Docs)", "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" },
-        { "title": "Effort 파라미터", "url": "https://platform.claude.com/docs/en/build-with-claude/effort" }
+      "templates": [
+        {
+          "title": "API 프롬프트 기본 틀 (시스템 + 사용자 메시지)",
+          "when": "Claude API로 문서를 바탕으로 한 작업을 맡길 때. 역할은 시스템 프롬프트에, 긴 자료는 사용자 메시지 맨 위에, 질문은 맨 끝에 둡니다.",
+          "text": "[시스템 프롬프트]\n너는 [역할]이야.\n\n[사용자 메시지]\n<documents>\n  <document index=\"1\">\n    <source>[파일 이름]</source>\n    <document_content>\n      [긴 자료]\n    </document_content>\n  </document>\n</documents>\n\n<context>\n이 결과는 [누가 어디에 쓰는지]에 쓰여. 그래서 [중요한 이유]가 중요해.\n</context>\n\n<instructions>\n1. 먼저 문서에서 과제와 관련된 부분을 <quotes> 태그 안에 인용해.\n2. [단계]\n3. 끝내기 전에 [검증 기준]에 맞는지 확인해.\n</instructions>\n\n<examples>\n<example>\n[입력과 이상적인 출력 예시]\n</example>\n</examples>\n\n결과는 [원하는 형식, 예: 매끄럽게 이어지는 산문 문단]으로 써.\n\n[구체적인 질문이나 요청]",
+          "source": {
+            "title": "Prompting best practices (Anthropic)",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+          }
+        },
+        {
+          "title": "Claude 앱 요청 기본 틀 (내 역할·과제·규칙)",
+          "when": "Claude 앱이나 claude.ai에서 조사·분석·글쓰기를 맡길 때. Claude 101은 보내기 전에 상황(내 역할과 목표), 과제(원하는 행동), 규칙(스타일과 톤)을 생각해 보라고 합니다.",
+          "text": "나는 [내 역할]이고, [목표나 상황, 예: 시리즈 A 투자자용 피칭 자료]를 준비하고 있어. [구체적인 과제, 예: 독립 영화 스트리밍 시장의 현재 상황을 조사하고 핵심 트렌드, 경쟁사 포지셔닝, 성장 기회]를 찾아 줄래?\n[필요하면] 최신 웹 검색 결과를 출처와 함께 써 줘.\n결과는 [형식과 분량, 예: 최대 5쪽 분량의 전문 보고서]로 만들고, [구성, 예: 요약, 시장 분석, 경쟁 구도, 성장 기회]를 넣어 줘.\n톤은 [원하는 톤]으로 해 줘.",
+          "source": {
+            "title": "Your first conversation with Claude – Claude 101 (Anthropic)",
+            "url": "https://academy.claude.com/courses/claude-101/your-first-conversation-with-claude"
+          }
+        },
+        {
+          "title": "큰 일을 맡기기 전 인터뷰·방향 잡기 (Claude 앱·Cowork)",
+          "when": "복잡하거나 목표가 아직 흐릿한 작업을 맡기기 직전에. 결과를 받은 뒤에는 근거를 바로 물어 확인합니다.",
+          "text": "시작하기 전에, 이 일을 제대로 하는 데 필요한 것을 전부 나에게 물어봐 줘.\n[작업 설명]\n\n(원하는 결과가 아직 분명하지 않을 때)\n대략 이런 걸 원해: [원하는 것]. 이걸 풀어 갈 방법 세 가지를 각각 짧은 샘플과 함께 보여 줘.\n\n(결과를 검토할 때)\n이 수치는 어디서 나왔어?",
+          "source": {
+            "title": "Working with Claude Fable 5 in Claude Cowork (Anthropic)",
+            "url": "https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork"
+          }
+        },
+        {
+          "title": "기능 개발 전 인터뷰 → SPEC.md (Claude Code)",
+          "when": "Claude Code에서 큰 기능을 만들기 전에. 스펙이 완성되면 새 세션을 열어 깨끗한 컨텍스트에서 구현합니다.",
+          "text": "[간단한 설명]을 만들고 싶어. AskUserQuestion 도구를 써서 나를 자세히 인터뷰해 줘.\n\n기술적 구현, UI/UX, 엣지 케이스, 우려 사항, 트레이드오프에 대해 물어봐. 뻔한 질문은 하지 말고, 내가 미처 생각하지 못했을 어려운 부분을 파고들어 줘.\n\n모든 걸 다룰 때까지 인터뷰를 이어 가고, 끝나면 완전한 스펙을 SPEC.md에 써 줘.",
+          "source": {
+            "title": "Best practices for Claude Code (Anthropic)",
+            "url": "https://code.claude.com/docs/en/best-practices"
+          }
+        }
+      ],
+      "watch": [
+        {
+          "title": "Prompting best practices (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        },
+        {
+          "title": "Prompting Claude Opus 5.5",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5"
+        },
+        {
+          "title": "Prompting Claude Sonnet 5.5",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5"
+        },
+        {
+          "title": "Prompting Claude Fable 5.1",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1"
+        },
+        {
+          "title": "Prompting Claude Haiku 5.5",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5"
+        },
+        {
+          "title": "Best practices for Claude Code",
+          "url": "https://code.claude.com/docs/en/best-practices"
+        }
       ]
     },
     {
       "company": "google",
       "name": "Google · Gemini",
-      "summary": "Gemini 3 계열은 직접적이고 잘 구조화된 프롬프트에 가장 잘 반응하며, 기본 답변이 간결합니다. 핵심 제약은 맨 앞에, 긴 자료 뒤 질문은 맨 끝에, 샘플링 값은 기본값으로 두는 것이 요점입니다.",
-      "principles": [
-        { "title": "정확하고 직접적으로", "body": "목표를 짧고 분명하게 쓰고, 과하게 설득하는 표현은 빼세요. 모호한 용어나 파라미터는 직접 정의해 주세요." },
-        { "title": "핵심 제약은 맨 앞에", "body": "역할(페르소나), 꼭 지킬 제약, 출력 형식은 시스템 지시나 사용자 프롬프트의 맨 앞에 둡니다." },
-        { "title": "긴 컨텍스트는 자료 먼저, 질문은 끝", "body": "문서나 코드를 먼저 모두 넣고, 구체적인 질문은 맨 끝에 두세요. 자료 뒤에는 '위 정보를 바탕으로…' 같은 연결 문장을 넣으면 좋습니다." },
-        { "title": "분량은 명시적으로", "body": "Gemini 3는 기본적으로 직접적이고 짧게 답합니다. 대화체나 자세한 설명이 필요하면 분명히 요청하세요." },
-        { "title": "예시는 거의 항상", "body": "구글은 few-shot 예시를 항상 넣으라고 권합니다. 예시가 충분히 명확하면 지시 일부를 빼도 될 정도입니다. 단, 너무 많으면 예시에 과적합합니다." },
-        { "title": "temperature는 기본값(1.0)", "body": "Gemini 3.x에서 temperature를 1.0 아래로 내리면 반복 루프나 수학·추론 성능 저하가 생길 수 있어 기본값 유지를 강하게 권합니다." },
-        { "title": "도구로 환각 줄이기", "body": "최신이거나 드문 사실은 Google 검색 그라운딩을, 계산·집계는 코드 실행 도구를 켜세요." },
-        { "title": "추론은 짧은 한마디로", "body": "Gemini는 내부적으로 생각하므로 답변에 단계별 추론을 쓰게 할 필요가 없습니다. 어려운 문제에는 '답하기 전에 깊이 생각해'라는 한마디가 도움이 됩니다(토큰은 더 씀)." }
+      "summary": "Google의 공식 프롬프트 가이드는 Gemini 3 계열을 기준으로 '목표는 짧고 직접적으로, 역할·제약·형식은 맨 앞에, 긴 자료 뒤의 질문은 맨 끝에, 예시는 거의 항상'을 핵심으로 삼습니다. 최신 Gemini 4 Argon과 3.8 Flash는 기본 thinking_level이 medium이고 temperature 같은 샘플링 값을 무시하므로, 추론 깊이는 thinking_level로만 조절합니다. 이미지·영상·음성·음악은 Nano Banana, Gemini Omni, Gemini 3.8 TTS, Lyria 3.5용 가이드를 따로 따르는 것이 좋습니다.",
+      "methods": [
+        {
+          "id": "google-direct-concise",
+          "category": "기본 작성법",
+          "title": "목표는 짧고 직접적으로, 애매한 말은 정의하기",
+          "body": "Google 프롬프트 가이드는 목표를 분명하고 간결하게 쓰고, 불필요하거나 지나치게 설득하는 표현은 피하라고 권합니다. '짧게', '핵심만'처럼 해석이 갈리는 용어나 조건은 프롬프트 안에서 직접 정의해 주세요. '꼭 부탁해', '정말 중요해' 같은 설득성 표현은 빼고, 그 자리에 분량이나 판단 기준처럼 애매한 부분의 정의를 넣으면 됩니다.",
+          "before": "정말 중요한 일이니까 꼭 잘 부탁해! 이 보고서 좀 짧고 괜찮게 요약해 줄 수 있을까? 최대한 신경 써 주면 정말 고마울 것 같아.\n\n[보고서 본문]",
+          "after": "[보고서 본문]\n\n위 보고서를 바탕으로 요약해 줘.\n- 분량: 5줄 이내, 각 줄은 한 문장\n- '핵심'의 기준: 매출, 비용, 일정에 영향을 주는 결정 사항\n- 독자: 이 보고서를 읽지 않은 팀장\n- 보고서에 없는 내용은 덧붙이지 마",
+          "models": [
+            "Gemini 3 계열"
+          ],
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-ptcf-power-prompt",
+          "category": "기본 작성법",
+          "title": "앱에서는 역할·작업·맥락·형식을 담고, 막히면 '파워 프롬프트'로 다듬기",
+          "body": "Google Workspace 가이드는 좋은 프롬프트의 네 영역으로 Persona(역할), Task(작업), Context(맥락), Format(형식)을 꼽고, 매번 넷 다 쓸 필요는 없지만 몇 가지만 넣어도 도움이 된다고 설명합니다. 다른 사람에게 말하듯 완전한 문장으로, 짧지만 구체적으로 쓰고 전문 용어는 피하라고 권합니다. 결과가 기대에 못 미치면 후속 질문으로 다듬고, Gemini 앱에서 'Make this a power prompt: [원래 프롬프트]'로 시작해 개선안을 받은 뒤 그 프롬프트를 다시 붙여 넣는 방법도 안내합니다.",
+          "before": "프로그램 진행 상황 이메일 써 줘.",
+          "after": "너는 [업계]의 프로그램 매니저야.\n[받는 사람, 예: 경영진]에게 보낼 요약 이메일을 [관련 프로그램 문서의 세부 내용, 예: Drive의 '3분기 진행 현황' 문서]를 바탕으로 작성해 줘.\n글머리표로만 정리해 줘.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Writing Effective AI Prompts for Business (Google Workspace)",
+            "url": "https://workspace.google.com/resources/ai/writing-effective-prompts"
+          }
+        },
+        {
+          "id": "google-rephrase-split",
+          "category": "기본 작성법",
+          "title": "원하는 답이 안 나오면 바꿔 묻고, 나눠 묻기",
+          "body": "Google은 프롬프트를 다듬는 방법으로 표현 바꾸기, 비슷한 다른 과제로 바꾸기, 예시·맥락·입력의 순서 바꾸기를 제시합니다. 원문 예시에서 '오디세이는 어느 분류에 속하나'라고 묻자 정답은 맞혔지만 설명 문장을 덧붙이고 보기 밖으로 벗어났는데, 객관식 문제로 바꾸자 정답만 답했습니다. 복잡한 요청은 지시를 여러 프롬프트로 나누거나, 앞 단계의 결과를 다음 단계의 입력으로 이어 붙이는 방식도 권합니다.",
+          "before": "오디세이는 어느 분류에 속해? 스릴러, SF, 신화, 전기",
+          "after": "객관식 문제: 다음 중 책 『오디세이』를 설명하는 것은?\n선택지:\n- 스릴러\n- SF\n- 신화\n- 전기",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-critical-first",
+          "category": "구조와 형식",
+          "title": "역할·핵심 제약·출력 형식은 맨 앞에, 구분자는 한 가지로",
+          "body": "Google은 꼭 지켜야 할 행동 제약, 역할(페르소나), 출력 형식 요구를 시스템 지시나 사용자 프롬프트의 맨 앞에 두라고 권합니다. 지시와 자료는 <context>, <task> 같은 XML식 태그나 마크다운 제목으로 나누되, 한 프롬프트 안에서는 한 가지 방식만 일관되게 쓰세요. 또 Gemini 3 모델은 기본적으로 직접적이고 효율적인 답을 내므로, 대화체나 자세한 설명이 필요하면 지시에 분명히 요청해야 합니다.",
+          "before": "[코드]\n\n## 요청\n이 코드 리뷰해 줘.\n<참고>보안 문제 위주로</참고>\n아 그리고 결과는 표로 하고, 초보자도 알게 써 줘.",
+          "after": "<role>\n너는 [언어] 보안 코드 리뷰어야.\n</role>\n\n<constraints>\n- 보안 문제만 다룬다\n- 출력: 표 (위치 | 문제 | 위험도 | 수정 방법)\n- 분량: 초보 개발자도 이해하도록 항목마다 2~3문장으로 자세히 설명한다\n</constraints>\n\n<context>\n[코드]\n</context>\n\n<task>\n위 코드를 바탕으로 보안 문제를 찾아 표로 정리해 줘.\n</task>",
+          "models": [
+            "Gemini 3 계열"
+          ],
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-structured-output",
+          "category": "구조와 형식",
+          "title": "JSON이 필요하면 스키마로 정하고 description으로 안내하기",
+          "body": "복잡한 JSON이 필요하면 프롬프트로 형식을 부탁하기보다 response_format에 JSON 스키마를 넣는 structured output을 쓰세요. 공식 문서는 각 속성의 description 필드로 모델을 안내하고, integer·string·enum처럼 구체적인 타입을 쓰며, 프롬프트에는 모델이 할 일을 분명히 적으라고 권합니다. 출력은 문법적으로 올바른 JSON이지만 값이 맞는지는 앱에서 따로 검증해야 하고, minLength·maxLength 같은 제약은 무시되므로 Pydantic이나 Zod로 클라이언트에서 확인합니다.",
+          "code": "from typing import Literal\nfrom google import genai\nfrom pydantic import BaseModel, Field\n\nclass Recipe(BaseModel):\n    name: str = Field(description=\"요리 이름\")\n    minutes: int = Field(description=\"총 조리 시간(분)\")\n    level: Literal[\"쉬움\", \"보통\", \"어려움\"] = Field(description=\"난이도\")\n\nclient = genai.Client()\n\ninteraction = client.interactions.create(\n    model=\"gemini-3.8-flash\",\n    input=\"[레시피 원문]\\n\\n위 레시피에서 요리 이름, 총 조리 시간, 난이도를 뽑아 줘.\",\n    response_format={\n        \"type\": \"text\",\n        \"mime_type\": \"application/json\",\n        \"schema\": Recipe.model_json_schema()\n    },\n)\nprint(interaction.output_text)",
+          "source": {
+            "title": "Structured output (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/structured-output"
+          }
+        },
+        {
+          "id": "google-few-shot",
+          "category": "예시 활용",
+          "title": "예시는 거의 항상 넣고, 형식은 똑같이 맞추기",
+          "body": "Google 가이드는 프롬프트에 few-shot 예시를 항상 넣으라고 권하며, 예시가 충분히 분명하면 지시 일부를 빼도 된다고 설명합니다. 원문 예시에서 예시 없이 두 설명 중 하나를 고르게 하면 긴 설명을 골랐지만, 짧은 설명이 정답인 예시 두 개를 앞에 넣자 짧은 쪽을 골랐습니다. 예시가 너무 많으면 예시에 과적합할 수 있으니 개수는 적당히 실험하고, XML 태그·공백·줄바꿈·구분자 형식을 모든 예시에서 통일하세요.",
+          "before": "다음 질문에 가장 좋은 설명을 골라 줘.\n\n질문: 눈은 어떻게 만들어지나요?\n설명1: [수증기가 얼음 결정이 되고, 결정들이 서로 붙어 자라 눈으로 내리는 과정을 길게 쓴 설명]\n설명2: 수증기가 얼어 얼음 결정이 되면서 눈이 됩니다.\n답:",
+          "after": "아래는 질문, 설명, 답 형식을 보여 주는 예시야.\n\n질문: 하늘은 왜 파란가요?\n설명1: [짧은 파장의 파란빛이 더 많이 산란된다는 레일리 산란을 길게 쓴 설명]\n설명2: 레일리 산란 효과 때문입니다.\n답: 설명2\n\n질문: 지진은 왜 일어나나요?\n설명1: 지각에 쌓인 에너지가 갑자기 풀려나기 때문입니다.\n설명2: [판이 미끄러지거나 깨지며 에너지가 지진파로 퍼지는 과정을 길게 쓴 설명]\n답: 설명1\n\n이제 위 예시 형식에 맞춰 다음 질문에 답해 줘.\n질문: 눈은 어떻게 만들어지나요?\n설명1: [얼음 결정이 서로 붙어 자라는 과정을 길게 쓴 설명]\n설명2: 수증기가 얼어 얼음 결정이 되면서 눈이 됩니다.\n답:",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-thinking-level",
+          "category": "추론과 effort",
+          "title": "추론 깊이는 thinking_level로, 세 수준을 시험해 가장 낮은 것을 고르기",
+          "body": "Gemini 4 Argon의 thinking_level은 low, medium, high 세 가지이고, 기본값 medium은 복잡한 코드와 에이전트 작업을 포함한 대부분의 작업에 권장됩니다. Google은 세 수준 모두로 평가를 돌린 뒤 품질 기준을 넘는 가장 낮은 수준을 고르라고 권합니다. Argon은 이전 모델보다 출력 한도를 생각에 더 쓸 수 있어 기존 앱의 max_output_tokens는 32,768 이상으로 올리고, 토큰을 줄이고 싶으면 한도 대신 thinking_level을 낮추세요. temperature, top_p, top_k는 무시되므로 요청에서 빼면 됩니다.",
+          "code": "from google import genai\n\nclient = genai.Client()\n\ninteraction = client.interactions.create(\n    model=\"gemini-4-argon\",\n    input=\"[요청 내용]\",\n    generation_config={\n        \"thinking_level\": \"low\",  # low | medium(기본값) | high\n        \"max_output_tokens\": 32768\n    }\n    # temperature, top_p, top_k는 넣지 않습니다\n)\nprint(interaction.output_text)",
+          "models": [
+            "Gemini 4 Argon"
+          ],
+          "source": {
+            "title": "What's new in Gemini 4 Argon (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+          }
+        },
+        {
+          "id": "google-think-hard",
+          "category": "추론과 effort",
+          "title": "추론 과정을 쓰게 하지 말고, 어려운 문제에만 '깊이 생각해' 한마디",
+          "body": "Gemini 2.5와 3 계열은 추론 성능을 높이려고 내부적으로 '생각' 텍스트를 자동으로 만들기 때문에, 답변 안에 계획이나 추론 단계를 적게 할 필요가 대체로 없다고 Google은 설명합니다. 추론이 많이 필요한 문제에는 'Think very hard before answering(답하기 전에 아주 깊이 생각해)' 같은 간단한 요청이 성능을 높일 수 있지만, 그만큼 생각 토큰이 더 듭니다. 쉬운 질문에까지 붙이지 말고 수학, 복잡한 계획처럼 어려운 문제에만 쓰세요.",
+          "before": "이 회의 일정 문제를 풀어 줘. 먼저 단계별 계획을 세우고, 1단계부터 추론 과정을 모두 적은 다음, 마지막에 답을 써 줘.\n\n[참석자별 가능 시간과 조건]",
+          "after": "[참석자별 가능 시간과 조건]\n\n위 조건을 모두 만족하는 회의 일정을 찾아 줘. 답하기 전에 아주 깊이 생각해.\n최종 일정표와, 각 조건을 어떻게 만족하는지 한 줄씩만 적어 줘.",
+          "models": [
+            "Gemini 3 계열"
+          ],
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-context-first-question-last",
+          "category": "긴 문서와 자료",
+          "title": "긴 자료는 먼저 넣고, 질문은 맨 끝에",
+          "body": "문서나 코드처럼 많은 자료를 넣을 때는 자료를 모두 먼저 넣고, 구체적인 지시나 질문은 프롬프트 맨 끝에 두라고 Google은 권합니다. 큰 자료 뒤에는 '위 정보를 바탕으로…' 같은 분명한 연결 문장으로 자료와 질문을 이어 주세요. 텍스트, 이미지, 오디오, 영상은 동등한 입력으로 다루고, 지시에서 각 자료를 필요한 만큼 분명히 가리키는 것도 원칙입니다.",
+          "before": "다음 계약서에서 해지 조건이 뭐야? 그리고 첨부 메일이랑 안 맞는 부분 있어?\n\n[계약서 전문 40쪽]\n[메일 스크린숏]",
+          "after": "[계약서 전문]\n\n[첨부: 거래처가 보낸 수정 요청 메일 스크린숏]\n\n위 계약서와 스크린숏을 바탕으로 답해 줘.\n1. 계약서에 적힌 해지 조건과 위약금 조항 (조항 번호 포함)\n2. 스크린숏 속 수정 요청 가운데 1번 조항과 충돌하는 부분",
+          "models": [
+            "Gemini 3 계열"
+          ],
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-grounded-context",
+          "category": "긴 문서와 자료",
+          "title": "제공한 자료 안에서만 답하게 하기",
+          "body": "일반론이 아닌 구체적인 답이 필요하면 참고 자료를 함께 주세요. Google 예시에서 공유기 설명서 없이 물으면 공유기와 모뎀을 재시작하라는 일반적인 안내가 나왔지만, 설명서를 주고 '아래 텍스트를 사용해 답하고, 제공된 텍스트로만 답하라'고 하자 노란 불이 천천히 깜박일 때의 정확한 조치를 답했습니다. 근거를 더 엄격하게 묶어야 하면 가이드의 Gemini 3 Flash용 '엄격한 근거 제한' 문장처럼, 자료에 직접 적힌 사실만 쓰고 답이 없으면 없다고 말하라는 지시를 시스템 지시에 넣으세요.",
+          "before": "와이파이가 끊겼어. 공유기에 노란 불이 천천히 깜박이는데 어떻게 고쳐?",
+          "after": "아래 텍스트를 사용해 질문에 답해 줘. 제공된 텍스트로만 답해.\n\n<설명서>\n[공유기 문제 해결 안내: 표시등 색상과 깜박임별 의미와 조치]\n</설명서>\n\n질문: 와이파이가 끊겼고 공유기에 노란 불이 천천히 깜박여. 어떻게 해야 해?",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-agent-system-instruction",
+          "category": "에이전트와 코딩",
+          "title": "에이전트 시스템 지시에 위험 판단·재시도·멈춤 규칙 넣기",
+          "body": "Google은 깊은 에이전트 작업에는 모델이 추론하고 계획하고 실행하는 방식을 조절하는 구체적인 지시가 필요하다며, 에이전트 벤치마크로 평가한 시스템 지시 템플릿을 제공합니다(전체 번역은 아래 템플릿). 핵심은 검색 같은 탐색 작업에서 선택 정보가 빠진 것은 낮은 위험으로 보고 사용자에게 묻기보다 가진 정보로 도구를 먼저 호출하게 하는 것, 일시적 오류는 재시도 한도까지 다시 시도하고 다른 오류에는 전략을 바꾸게 하는 것, 모든 판단이 끝난 뒤에만 행동하게 하는 것입니다. 끈기를 높이면 성공률은 오르지만 토큰 비용이나 반복 루프 위험도 커진다는 점을 함께 고려하세요.",
+          "after": "(기존 시스템 지시에 덧붙이는 핵심 규칙)\n- 위험 평가: 행동하기 전에 그 결과를 따져. 검색 같은 탐색 작업에서 선택적 파라미터가 빠진 것은 낮은 위험이야. 뒤 단계에서 그 정보가 꼭 필요하지 않다면 사용자에게 묻기보다 가진 정보로 도구를 호출해.\n- 끈기: 일시적 오류(예: '다시 시도해 주세요')는 명시된 재시도 한도(예: 최대 [x]회)에 이르지 않았다면 다시 시도해. 다른 오류는 같은 시도를 반복하지 말고 전략을 바꿔.\n- 응답 억제: 위 판단을 모두 마친 뒤에만 행동해. 한 번 한 행동은 되돌릴 수 없어.",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompt design strategies: Agentic workflows (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-goal-and-skills",
+          "category": "에이전트와 코딩",
+          "title": "긴 에이전트 작업은 방법 대신 결과·제약·증거를 쓰고, 규칙은 skills로",
+          "body": "Google은 Gemini 4 Argon에 약 20만 줄 규모의 google/adk-python 최적화를 밤새 맡긴 사례에서, 목표 한 단락만 준 첫 시도는 공개 JSON 스키마를 바꾸고 단위 테스트를 216개만 돌리는 등 메인테이너 규칙을 몰라 문제가 생겼다고 밝혔습니다. 두 번째에는 규칙을 .agents/skills에 넣고(짧은 SKILL.md 색인과 필요할 때만 읽는 references/ 파일), Google Antigravity의 /goal 모드로 컨텍스트가 압축돼도 목표가 유지되게 했습니다. 프롬프트에는 방법이 아니라 지켜야 할 것, 각 변경에 필요한 증거, 산출물의 모양을 적었고, 에이전트가 보지 못한 별도 벤치마크로 결과를 검증했습니다. 제안 6개 중 2개만 반영됐을 만큼 사람의 리뷰는 여전히 필요합니다.",
+          "before": "ADK 성능 좀 최적화해 줘.",
+          "after": "/goal [대상 프로젝트]가 어떤 에이전트에도 눈에 띄는 오버헤드를 더하지 않게 해 줘.\n모델이 받는 입력과 공개 API는 바꾸지 말고, 각 변경에는 회귀를 잡아낼 테스트를 붙여.\nmain 기준으로 메인테이너가 승인할 만한 PR을 하나 열고, 설명에 전후 수치를 넣어. 병합하지는 마.",
+          "exampleFromSource": true,
+          "models": [
+            "Gemini 4 Argon"
+          ],
+          "source": {
+            "title": "Optimizing a 200,000-line Python codebase overnight with Gemini 4 Argon (Google Developers Blog)",
+            "url": "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon/"
+          }
+        },
+        {
+          "id": "google-agent-token-hygiene",
+          "category": "에이전트와 코딩",
+          "title": "코딩 에이전트에는 고칠 위치를 짚고, 엇나가면 되돌리기",
+          "body": "Google Cloud의 토큰 효율 가이드는 문법이 정확한 넓은 요청보다 오타가 좀 있어도 명확한 지시가 낫다며, 파일·구간·오류를 직접 가리키라고 권합니다. 코드를 쓰기 전에 읽기 전용 명령으로 코드베이스를 조사하게 하고, 에이전트가 잘못된 방향으로 가면 망가진 상태 위에 교정 프롬프트를 쌓지 말고 되돌리세요(컨텍스트가 오염됩니다). 같은 지적을 반복하게 되면 프롬프트 대신 규칙 파일을 고쳐 변경이 유지되게 하고, 주제가 바뀌면 새 채팅을 여세요.",
+          "before": "로그 보고 왜 테스트가 실패하는지 찾아서 고쳐 줘.\n\n[로그 1만 줄]",
+          "after": "[파일 경로]의 [함수 이름]([시작 행]~[끝 행]행)에서 [테스트 이름]이 실패해.\n오류: [오류 메시지 한 줄]\n먼저 읽기 전용 명령으로 이 함수와 호출하는 곳만 살펴보고 원인을 설명해 줘. 수정은 원인을 확인한 뒤 이 함수 안에서만 해.",
+          "source": {
+            "title": "Guide to AI Tokenomics: Eleven Principles for Token Efficient Software Engineering (Google Cloud Blog)",
+            "url": "https://cloud.google.com/blog/topics/developers-practitioners/guide-to-ai-tokenomics-eleven-principles-for-token-efficient-software-engineering"
+          }
+        },
+        {
+          "id": "google-search-and-code",
+          "category": "도구와 API 설정",
+          "title": "최신 사실은 Google 검색, 계산은 코드 실행에 맡기고 날짜를 알려 주기",
+          "body": "Google 프롬프트 가이드는 모델이 잘 알려지지 않았거나 최신인 사실을 알아야 할 때는 Google 검색 그라운딩을, 산수·개수 세기·계산이 필요할 때는 코드 실행 도구를 켜라고 권합니다. 검색을 쓰는 앱이라면 가이드의 Gemini 3 Flash용 전략처럼 시스템 지시에 '시간에 민감한 질문은 제공된 현재 시각(날짜와 연도)에 맞춰 검색어를 만들라'는 문장을 넣으세요. 원문은 지식 기준 시점 문장도 함께 넣는데, 예시의 'January 2025'는 Gemini 3 Flash 기준입니다.",
+          "after": "(시스템 지시에 추가)\n시간에 민감하고 최신 정보가 필요한 사용자 질문에서는, 도구 호출용 검색어를 만들 때 반드시 제공된 현재 시각(날짜와 연도)을 따라야 해. 올해는 2026년이라는 것을 기억해.\n너의 지식 기준 시점은 [사용하는 모델의 지식 기준 시점]이야.",
+          "code": "from google import genai\n\nclient = genai.Client()\n\n# 최신 정보: Google 검색 그라운딩\ninteraction = client.interactions.create(\n    model=\"gemini-3.8-flash\",\n    input=\"[최신 정보가 필요한 질문]\",\n    tools=[{\"type\": \"google_search\"}]\n)\n\n# 계산: 코드 실행\ninteraction = client.interactions.create(\n    model=\"gemini-3.8-flash\",\n    input=\"처음 50개 소수의 합은? 계산 코드를 만들어 실행하고, 50개를 모두 넣었는지 확인해.\",\n    tools=[{\"type\": \"code_execution\"}]\n)",
+          "exampleFromSource": true,
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "id": "google-argon-long-decode",
+          "category": "도구와 API 설정",
+          "title": "Argon의 긴 결과물은 background 실행으로, 분량은 숫자로 정하지 않기",
+          "body": "Gemini 4 Argon은 long decode로 64K 토큰이 넘는 답을 만들 수 있으며, background=True와 65,536보다 큰 max_output_tokens를 함께 지정하면 여러 번에 나눠 생성하므로 완료 뒤 모든 model_output 단계의 텍스트를 이어 붙여야 합니다. 원문은 한도를 올려도 얼마나 쓸지는 모델이 정하고, 토큰 수나 단어 수 목표는 따르지 않는다고 밝힙니다. 그래서 '70만 단어짜리 책 쓰기'처럼 길이를 정한 요청은 long decode에 맞지 않는 예로 꼽힙니다. 토큰을 줄이려면 한도를 낮추지 말고(답이 일찍 잘릴 뿐입니다) thinking_level을 낮추세요.",
+          "code": "import time\nfrom google import genai\n\nclient = genai.Client()\n\ninteraction = client.interactions.create(\n    model=\"gemini-4-argon\",\n    input=\"[긴 결과물이 필요한 요청]\",\n    background=True,\n    generation_config={\n        \"max_output_tokens\": 262144,\n        \"thinking_level\": \"high\",\n    },\n)\n\nwhile interaction.status in (\"in_progress\", \"queued\"):\n    time.sleep(5)\n    interaction = client.interactions.get(id=interaction.id)\n\n# 단계마다 model_output이 추가되므로 모두 이어 붙입니다\ntext = \"\".join(\n    content.text\n    for step in interaction.steps\n    if step.type == \"model_output\"\n    for content in step.content\n    if content.type == \"text\"\n)\nprint(text)",
+          "models": [
+            "Gemini 4 Argon"
+          ],
+          "source": {
+            "title": "Long decode (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/long-decode"
+          }
+        },
+        {
+          "id": "google-image-scene",
+          "category": "이미지·영상·음성",
+          "title": "이미지는 키워드 나열 대신 장면을 연출하듯 쓰기",
+          "body": "Google Cloud의 Nano Banana 가이드는 주제·조명·구도를 구체적으로 쓰고, 원하지 않는 것 대신 원하는 것을 묘사하며('no cars' 대신 'empty street'), 'low angle'·'aerial view' 같은 촬영 용어를 쓰고, 후속 프롬프트로 대화하듯 다듬으라고 권합니다. 참조 이미지가 없을 때는 [주제] + [동작] + [장소/맥락] + [구도] + [스타일] 공식을 쓰고, 수행할 작업을 알려 주는 강한 동사로 시작하라고 합니다. 조명('Golden hour backlighting creating long shadows'), 렌즈('shallow depth of field (f/1.8)'), 필름 느낌('1980s color film, slightly grainy'), 재질('suit jacket' 대신 'navy blue tweed')까지 적으면 결과를 더 세밀하게 정할 수 있습니다.",
+          "before": "카페, 고양이, 아늑함, 따뜻한 느낌, 고화질, 자동차 없음",
+          "after": "사진을 만들어 줘: [주황색 줄무늬 고양이]가 창가 테이블 위에서 몸을 웅크리고 졸고 있다. 장소는 비 갠 오후의 [작은 동네 카페], 창밖은 텅 빈 골목. 고양이 눈높이의 로우 앵글 클로즈업, 얕은 피사계 심도(f/1.8). 창으로 들어오는 골든아워 역광이 긴 그림자를 만들고, 1980년대 컬러 필름처럼 약간 거친 입자감.",
+          "models": [
+            "Nano Banana 2",
+            "Nano Banana Pro"
+          ],
+          "source": {
+            "title": "The ultimate Nano Banana prompting guide (Google Cloud Blog)",
+            "url": "https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-nano-banana"
+          }
+        },
+        {
+          "id": "google-image-edit-text",
+          "category": "이미지·영상·음성",
+          "title": "이미지 편집은 그대로 둘 것까지, 글자는 따옴표와 글꼴로",
+          "body": "편집할 때는 바꿀 부분뿐 아니라 '정확히 그대로 둘 것'을 분명히 적으라고 Google은 권하며, 텍스트로 '마스크'를 정해 특정 부분만 고치고 나머지는 건드리지 않게 할 수도 있다고 설명합니다(semantic masking). 이미지에 넣을 문구는 따옴표로 감싸고, 글꼴을 묘사하거나 'Century Gothic 12px font'처럼 이름으로 지정하세요. 문구가 아직 없다면 먼저 대화로 문구를 정한 뒤 그 문구로 이미지를 요청하는 편이 잘 된다고 합니다(text-first hack).",
+          "before": "이 포스터 더 예쁘게 바꾸고 글자도 넣어 줘",
+          "after": "첨부한 포스터에서 배경만 [해 질 녘 바닷가]로 바꿔 줘. 인물의 얼굴, 자세, 옷, 조명 방향은 정확히 그대로 둬.\n상단 중앙에 \"[SUMMER SALE]\"을 굵고 각진 Impact 글꼴로, 그 아래에 \"[최대 50% 할인]\"을 얇고 미니멀한 Century Gothic 글꼴로 넣어 줘.",
+          "models": [
+            "Nano Banana 2",
+            "Nano Banana Pro"
+          ],
+          "source": {
+            "title": "The ultimate Nano Banana prompting guide (Google Cloud Blog)",
+            "url": "https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-nano-banana"
+          }
+        },
+        {
+          "id": "google-omni-video",
+          "category": "이미지·영상·음성",
+          "title": "Gemini Omni 영상은 장면을 정하고, 수정은 바꿀 것만 대화로",
+          "body": "Google DeepMind의 Gemini Omni 가이드는 샷 구도와 카메라 움직임, 스타일, 조명, 장소, 동작을 정하라고 하면서도, 세부를 많이 쓸수록 통제력이 커지지만 모든 걸 묘사할 필요는 없고 Omni가 전체 의도에 맞춰 만든다고 설명합니다. 끊김 없는 장면은 'one continuous shot'처럼 카메라 용어로 지시하고, 시작·끝 프레임을 쓸 때는 첫 화면에 무엇이 있는지와 마지막 화면에 무엇이 드러나야 하는지를 정확히 적으세요. 만든 뒤에는 장면 전체를 다시 쓰지 말고 배경 교체나 카메라 각도처럼 바꿀 점만 자연어로 요청하고, '나머지는 모두 그대로 두고'처럼 유지할 부분을 밝힙니다.",
+          "before": "드럼 치는 사람 나오는 멋진 영상 만들어 줘",
+          "after": "웅장한 홀에서 베이지색 정장을 입은 세련된 드러머가 빨간 드럼 세트를 연주하는 로우 앵글 클로즈업. 부드러운 보라색 무대 조명 아래, 카메라가 옆으로 빠르게 휩 팬하면 나이 든 색소폰 연주자와 회전하는 발레리나가 함께 드러난다. 끊김 없는 원 테이크, 점프 컷 없음.\n\n(수정할 때) 나머지는 모두 그대로 두고, 카메라 각도만 [색소폰 연주자의 어깨 너머]로 바꿔 줘.",
+          "exampleFromSource": true,
+          "models": [
+            "Gemini Omni"
+          ],
+          "source": {
+            "title": "How to create effective prompts with Gemini Omni (Google DeepMind)",
+            "url": "https://deepmind.google/models/gemini-omni/prompt-guide"
+          }
+        },
+        {
+          "id": "google-tts-script-style",
+          "category": "이미지·영상·음성",
+          "title": "Gemini 3.8 TTS는 대본은 그대로, 연기는 짧은 style과 꺾쇠 태그로",
+          "body": "Gemini 3.8 TTS는 text 필드를 그대로 읽을 대본으로만 취급하므로, 턴 전체의 말투는 speech_metadata의 style에 짧게 넣고 웃음·한숨·쉼 같은 순간 효과는 <laugh>, <sigh>, <short pause>처럼 꺾쇠 태그로 대본 안에 넣습니다. 대본이 한국어여도 태그는 영어로 쓰고, 머뭇거림은 쉼표·대시(--)·말줄임표(...)로, 영문 대본의 강조는 해당 단어를 대문자로 표현하세요. 나이·성별·억양 같은 고정 특징은 style이 아니라 Voice design으로 만든 목소리(voice_... ID)에 담으라고 하며, 긴 'Audio Profile'·'Director's Notes' 블록이나 '목소리를 일정하게 유지해' 같은 메타 지시는 음색이 흔들리는 원인이 된다고 Google은 안내합니다. 감정이 바뀌는 지점에서는 대본을 턴으로 나눠 턴마다 다른 style을 주세요.",
+          "after": "text(대본): 주문하신 상품이 오늘 출발했습니다. <short pause> 도착 예정일은 [날짜]입니다... 문의는 <breath> 언제든 편하게 주세요.\nstyle(턴 단위 말투): cheerful and friendly",
+          "code": "import base64\nfrom google import genai\n\nclient = genai.Client()\n\ninteraction = client.interactions.create(\n    model=\"gemini-3.8-flash-tts\",\n    input=[{\n        \"type\": \"user_input\",\n        \"content\": [{\n            \"type\": \"text\",\n            \"text\": \"주문하신 상품이 오늘 출발했습니다. <short pause> 도착 예정일은 [날짜]입니다.\",\n            \"annotations\": [{\n                \"type\": \"speech_metadata\",\n                \"style\": \"cheerful and friendly\",\n            }],\n        }],\n    }],\n    response_format={\"type\": \"audio\"},\n    generation_config={\n        \"speech_config\": [\n            {\"voice\": \"Kore\"},\n        ]\n    },\n)\n\nwith open(\"out.wav\", \"wb\") as f:\n    f.write(base64.b64decode(interaction.output_audio.data))",
+          "models": [
+            "Gemini 3.8 Flash TTS",
+            "Gemini 3.8 Flash-Lite TTS"
+          ],
+          "source": {
+            "title": "Speech generation (TTS) (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/speech-generation"
+          }
+        },
+        {
+          "id": "google-lyria-music",
+          "category": "이미지·영상·음성",
+          "title": "음악은 장르부터, 템포·악기·보컬은 구체적으로, 가사는 'Lyrics:' 아래에",
+          "body": "Gemini API의 Lyria 가이드는 프롬프트를 주 장르로 시작하라고 하며, 장르를 섞거나 'Early 1990s boom-bap hip-hop'처럼 시대·지역을 붙일 수 있다고 설명합니다. 템포는 '120 BPM'처럼 직접 정하고 조성(예: in D minor), 감정 형용사, 원하는 악기, 보컬의 성별·음역·음색을 구체적으로 적으세요. 직접 쓴 가사는 'Lyrics:' 머리말 아래에 넣고 [Intro], [Verse 1], [Chorus] 같은 구간 태그를 달며, 백보컬·메아리·애드리브는 괄호로 씁니다. Lyria 3.5에서는 '[Intro] -> [Verse 1] -> [Chorus]'처럼 화살표로 곡 진행을 정할 수 있고, 가이드는 '12초에 비트 드롭'처럼 시점을 적는 방법도 소개합니다.",
+          "before": "신나는 여름 노래 만들어 줘.",
+          "after": "[인디 팝] 곡, G major, 122 BPM. 밝고 기분 좋은 분위기.\n악기: [찰랑이는 일렉트릭 기타, 신스 베이스, 핸드클랩]\n보컬: [맑은 여성 알토]\n구성: [Intro] -> [Verse 1] -> [Chorus] -> [Verse 2] -> [Chorus] -> [Outro]\n후렴 직전에 긴장을 쌓았다가 후렴에서 폭발적으로 터지게.\nLyrics:\n[Verse 1]\n[직접 쓴 가사]\n[Chorus]\n[후렴 가사] ([백보컬])",
+          "models": [
+            "Lyria 3.5"
+          ],
+          "source": {
+            "title": "Lyria prompt guide (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/lyria-prompt-guide"
+          }
+        }
       ],
-      "templateTitle": "사용자 프롬프트 기본 틀",
-      "templateNote": "구글 Gemini 3 프롬프트 가이드의 예시 템플릿을 번역했습니다. 시스템 지시 틀은 Gemini 3.8 Flash 소식에 있습니다.",
-      "template": "<context>\n[관련 문서, 코드, 배경 정보]\n</context>\n\n<task>\n위 정보를 바탕으로 [구체적인 요청]\n</task>\n\n<final_instruction>\n답하기 전에 단계별로 생각해.\n</final_instruction>",
-      "sources": [
-        { "title": "Prompt design strategies (Gemini API)", "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies" },
-        { "title": "Thinking (Gemini API)", "url": "https://ai.google.dev/gemini-api/docs/thinking" }
+      "templates": [
+        {
+          "title": "시스템 지시 + 사용자 프롬프트 기본 틀",
+          "when": "API나 Google AI Studio에서 Gemini의 시스템 지시와 사용자 프롬프트를 처음 짤 때. Google 프롬프트 가이드의 Gemini 3 예시 템플릿을 번역했습니다.",
+          "text": "[시스템 지시]\n<role>\n너는 [분야, 예: 데이터 과학] 전문 어시스턴트야.\n너는 정확하고 분석적이며 끈기 있게 일해.\n</role>\n\n<instructions>\n1. 계획: 과제를 분석하고 단계별 계획을 세워.\n2. 실행: 계획을 수행해.\n3. 검증: 결과를 사용자의 과제와 대조해 검토해.\n4. 형식: 요청받은 구조로 최종 답을 제시해.\n</instructions>\n\n<constraints>\n- 분량: [낮음/보통/높음]\n- 톤: [격식/일상/기술적]\n</constraints>\n\n<output_format>\n다음 구조로 답해:\n1. 핵심 요약: [짧은 개요]\n2. 상세 답변: [본문]\n</output_format>\n\n[사용자 프롬프트]\n<context>\n[관련 문서, 코드, 배경 정보]\n</context>\n\n<task>\n위 정보를 바탕으로 [구체적인 요청]\n</task>\n\n<final_instruction>\n답하기 전에 단계별로 생각해.\n</final_instruction>",
+          "source": {
+            "title": "Prompt design strategies (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "title": "에이전트 시스템 지시 틀",
+          "when": "도구를 여러 번 호출하는 에이전트의 시스템 지시를 만들 때. Google이 에이전트 벤치마크로 평가한 템플릿의 아홉 항목을 줄여 번역했습니다. 작업에 맞지 않는 항목은 빼거나 고치세요.",
+          "text": "너는 매우 뛰어난 추론가이자 계획가야. 행동(도구 호출 또는 사용자에게 응답)하기 전에 다음을 먼저 따져.\n\n1. 논리적 의존 관계와 제약: 하려는 행동을 다음 기준으로 분석해.\n   1.1 정책 기반 규칙, 필수 선행 조건, 제약\n   1.2 작업 순서: 지금 행동이 이후에 꼭 필요한 행동을 막지 않는지. 사용자가 순서 없이 요청해도 순서를 다시 정해야 할 수 있어.\n   1.3 그 밖의 선행 조건(필요한 정보나 행동)\n   1.4 사용자가 명시한 제약이나 선호\n2. 위험 평가: 이 행동의 결과는 무엇인가? 검색 같은 탐색 작업에서 선택적 파라미터가 빠진 것은 낮은 위험이야. 뒤 단계에서 그 정보가 꼭 필요하지 않다면 사용자에게 묻기보다 가진 정보로 도구를 호출해.\n3. 가설 탐색: 문제가 생기면 가장 논리적이고 그럴듯한 원인을 찾아. 눈앞의 뻔한 원인 너머를 보고, 가능성 순으로 우선순위를 두되 덜 그럴듯한 가설도 성급히 버리지 마.\n4. 결과 평가와 적응: 직전 관찰 결과 때문에 계획을 바꿔야 하는지 확인해.\n5. 정보 활용: 사용 가능한 도구와 기능, 모든 정책·규칙·체크리스트·제약, 이전 관찰과 대화 기록, 사용자에게 물어야만 알 수 있는 정보를 모두 고려해.\n6. 정밀성과 근거: 추론을 지금 상황에 정확히 맞추고, 정책 등을 언급할 때는 해당 내용을 정확히 인용해 주장을 검증해.\n7. 완전성: 모든 요구 사항, 제약, 선택지, 선호를 계획에 빠짐없이 반영해.\n8. 끈기: 위 추론을 모두 하기 전에는 포기하지 마. 일시적 오류(예: '다시 시도해 주세요')는 명시된 재시도 한도(예: 최대 [x]회)에 이르지 않았다면 다시 시도하고, 다른 오류에는 전략을 바꿔.\n9. 응답 억제: 위 추론을 모두 마친 뒤에만 행동해. 한 번 한 행동은 되돌릴 수 없어.",
+          "source": {
+            "title": "Prompt design strategies: Agentic workflows (Gemini API, Google)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          }
+        },
+        {
+          "title": "Gemini 앱 Gem 지시문 틀",
+          "when": "Gemini 앱에서 나만의 Gem을 만들 때. Google 도움말의 '글쓰기 편집자' 예시를 바탕으로 했으며, 네 영역을 모두 쓸 필요는 없습니다. 목표를 한두 문장만 쓰고 지시문을 Gemini로 다시 작성하는 기능으로 다듬어도 됩니다.",
+          "text": "역할(Persona): 너의 목적은 [내 글을 편집하는 것을 돕는 것]이야. [문법, 맞춤법, 문체, 구조]에 대해 자세한 피드백을 줘.\n작업(Task): 내가 붙여 넣거나 올린 [글]을 받아 [줄 단위로 구체적인 수정안을 주고, 각 수정의 이유를 설명해].\n맥락(Context): [보통(고등학생) 수준의 글쓰기 실력]을 가정하고 그에 맞는 피드백을 줘. [긍정적인 톤]을 유지해.\n형식(Format): 먼저 [이 글의 목표]를 물어본 뒤, 피드백을 [전체 의견, 맞춤법, 문법, 구조, 형식] 항목으로 나눠 글머리표로 정리해. 마지막에 [제안을 반영해 다시 써 줄지] 물어봐.",
+          "source": {
+            "title": "Tips for creating custom Gems (Gemini Apps Help, Google)",
+            "url": "https://support.google.com/gemini/answer/15235603"
+          }
+        },
+        {
+          "title": "Nano Banana 이미지 생성 틀",
+          "when": "Gemini 앱이나 API에서 참조 이미지 없이 사진·광고 이미지를 만들 때. 필요 없는 줄은 지우세요.",
+          "text": "[사진/일러스트/광고 이미지]를 만들어 줘:\n주제: [누가·무엇이, 옷이나 재질까지 구체적으로, 예: navy blue tweed 재킷]\n동작: [무엇을 하고 있는지]\n장소: [장소와 시간대. 빼고 싶은 것은 원하는 모습으로, 예: '텅 빈 거리']\n구도: [클로즈업/미디엄 풀 샷/항공 촬영, 로우 앵글 등]\n조명: [예: 골든아워 역광이 긴 그림자를 만드는, 또는 three-point softbox setup]\n렌즈: [예: 광각 렌즈, 매크로 렌즈, 얕은 피사계 심도(f/1.8)]\n스타일: [예: 패션 매거진 에디토리얼, 1980년대 컬러 필름처럼 약간 거친 입자감]\n글자(있다면): \"[넣을 문구]\"를 [글꼴 묘사나 이름, 예: 얇고 미니멀한 Century Gothic 글꼴]로",
+          "source": {
+            "title": "The ultimate Nano Banana prompting guide (Google Cloud Blog)",
+            "url": "https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-nano-banana"
+          }
+        }
+      ],
+      "watch": [
+        {
+          "title": "Prompt design strategies (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+        },
+        {
+          "title": "What's new in Gemini 4 Argon (Gemini API 최신 모델 가이드)",
+          "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+        },
+        {
+          "title": "Thinking (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/thinking"
+        },
+        {
+          "title": "Nano Banana image generation: Prompting guide and strategies (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/image-generation"
+        },
+        {
+          "title": "Speech generation (TTS) 프롬프트 가이드 (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/speech-generation"
+        },
+        {
+          "title": "How to create effective prompts with Gemini Omni (Google DeepMind)",
+          "url": "https://deepmind.google/models/gemini-omni/prompt-guide"
+        }
       ]
     }
   ]

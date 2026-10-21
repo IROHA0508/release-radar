@@ -82,12 +82,86 @@ def check_news(path):
     return nid
 
 
+GUIDE_CATEGORIES = {"기본 작성법", "구조와 형식", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩",
+                    "도구와 API 설정", "이미지·영상·음성"}
+PRICE_STATUS = {"available", "deprecated", "unlisted"}
+
+
+def check_guides(g, news_ids):
+    where = "data/guides.json"
+    if g is None:
+        return
+    for c in g.get("common", []):
+        if not c.get("title") or not c.get("body"):
+            err(where, "common 항목에 title/body 없음")
+    seen = set()
+    for v in g.get("vendors", []):
+        co = v.get("company")
+        if co not in COMPANIES:
+            err(where, f"vendors.company 오류: {co}")
+        for key in ("name", "summary", "methods", "templates", "watch"):
+            if key not in v:
+                err(where, f"{co}: '{key}' 없음")
+        for m in v.get("methods", []):
+            mid = m.get("id", "")
+            if not ID_RE.match(mid) or mid in seen:
+                err(where, f"{co}: method id 형식 오류 또는 중복: '{mid}'")
+            seen.add(mid)
+            if m.get("category") not in GUIDE_CATEGORIES:
+                err(where, f"{mid}: category는 {sorted(GUIDE_CATEGORIES)} 중 하나: {m.get('category')}")
+            if not m.get("title") or not m.get("body"):
+                err(where, f"{mid}: title/body 없음")
+            if not str((m.get("source") or {}).get("url", "")).startswith("https://"):
+                err(where, f"{mid}: source.url은 https로 시작해야 함")
+            if m.get("newsId") and m["newsId"] not in news_ids:
+                err(where, f"{mid}: newsId '{m['newsId']}' 소식이 없음")
+            for k in ("addedAt", "updatedAt"):
+                if m.get(k) and not DATE_RE.match(m[k]):
+                    err(where, f"{mid}: {k}는 YYYY-MM-DD")
+        for t in v.get("templates", []):
+            if not t.get("title") or not t.get("text"):
+                err(where, f"{co}: template에 title/text 없음")
+        for w in v.get("watch", []):
+            if not str(w.get("url", "")).startswith("https://"):
+                err(where, f"{co}: watch url은 https로 시작해야 함")
+
+
+def check_prices(p, news_ids):
+    where = "data/prices.json"
+    if p is None:
+        return
+    seen = set()
+    for m in p.get("models", []):
+        name = m.get("name")
+        if m.get("company") not in COMPANIES or not name:
+            err(where, f"company/name 오류: {m}")
+        if m.get("status") not in PRICE_STATUS:
+            err(where, f"{name}: status는 {sorted(PRICE_STATUS)} 중 하나: {m.get('status')}")
+        key = (m.get("apiId") or name or "").lower()
+        if key in seen:
+            err(where, f"{name}: 같은 모델이 두 번 있음({key})")
+        seen.add(key)
+        if m.get("status") in ("available", "deprecated"):
+            if not (m.get("input") or m.get("output")):
+                err(where, f"{name}: 가격표에 보이는 모델인데 가격이 없음")
+            if not m.get("verifiedAt") or not DATE_RE.match(m["verifiedAt"]):
+                err(where, f"{name}: verifiedAt(YYYY-MM-DD) 없음")
+        if m.get("newsId") and m["newsId"] not in news_ids:
+            err(where, f"{name}: newsId '{m['newsId']}' 소식이 없음")
+    for co, page in (p.get("pages") or {}).items():
+        if co not in COMPANIES or not str(page.get("url", "")).startswith("https://"):
+            err(where, f"pages.{co} 오류")
+
+
 def main():
     manifest = load(DATA / "manifest.json")
-    load(DATA / "guides.json")
+    guides = load(DATA / "guides.json")
+    prices = load(DATA / "prices.json") if (DATA / "prices.json").exists() else None
     files = sorted((DATA / "news").glob("*.json"))
     ids = [check_news(f) for f in files]
     ids = [i for i in ids if i]
+    check_guides(guides, set(ids))
+    check_prices(prices, set(ids))
     if manifest is not None:
         listed = manifest.get("news", [])
         if not CHECKED_RE.match(str(manifest.get("lastChecked", ""))):

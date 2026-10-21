@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "update(감지+요약+반영) / detect(감지만, 파일 변경 없음) / selftest(소스 점검)"
+        description: "update(감지+요약+반영, 하루 한 번 가격표·가이드 점검 포함) / detect(감지만) / selftest(소스 점검) / maintain(가격표·가이드 지금 점검)"
         type: choice
-        options: [update, detect, selftest]
+        options: [update, detect, selftest, maintain]
         default: update
   push:
     branches: [main]
@@ -72,7 +72,20 @@ jobs:
           [ -z "$ANTHROPIC_API_KEY" ] && unset ANTHROPIC_API_KEY
           [ -z "$RR_MODEL" ] && unset RR_MODEL
           [ -z "$RR_TRIAGE_MODEL" ] && unset RR_TRIAGE_MODEL
-          python -m backend "${{ github.event.inputs.command || 'update' }}"
+          cmd="${{ github.event.inputs.command || 'update' }}"
+          if [ "$cmd" = "maintain" ]; then python -m backend maintain --force; else python -m backend "$cmd"; fi
+      - name: 정기 점검 (API 가격표·프롬프트 가이드, 하루 한 번)
+        if: github.event_name == 'schedule' || github.event.inputs.command == 'update'
+        continue-on-error: true
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RR_MODEL: ${{ vars.RR_MODEL }}
+        run: |
+          [ -z "$CLAUDE_CODE_OAUTH_TOKEN" ] && unset CLAUDE_CODE_OAUTH_TOKEN
+          [ -z "$ANTHROPIC_API_KEY" ] && unset ANTHROPIC_API_KEY
+          [ -z "$RR_MODEL" ] && unset RR_MODEL
+          python -m backend maintain
       - name: 바뀐 데이터 커밋
         if: github.event.inputs.command != 'detect' && github.event.inputs.command != 'selftest'
         run: |
@@ -84,7 +97,9 @@ jobs:
             exit 0
           fi
           added=$(python -c "import json;r=json.load(open('backend/state/last-run.json'));print(', '.join(a['title'] for a in r['added']))")
-          if [ -n "$added" ]; then msg="새 소식: $added"; else msg="마지막 확인 날짜 갱신"; fi
+          if [ -n "$added" ]; then msg="새 소식: $added"
+          elif ! git diff --cached --quiet -- data/prices.json data/guides.json; then msg="API 가격표·프롬프트 가이드 점검 반영"
+          else msg="마지막 확인 날짜 갱신"; fi
           git commit -m "$msg"
           # 그사이 다른 실행이 올린 상태 파일과 겹치면 이번 실행 결과를 우선
           git pull --rebase -X theirs origin main
@@ -92,7 +107,10 @@ jobs:
       - name: Claude 인증 확인
         if: github.event.inputs.command != 'detect' && github.event.inputs.command != 'selftest'
         run: |
-          if python -c "import json,sys;sys.exit(0 if json.load(open('backend/state/last-run.json')).get('authError') else 1)"; then
+          if python -c "
+          import json, pathlib, sys
+          bad = any(json.loads(p.read_text()).get('authError') for p in map(pathlib.Path, ['backend/state/last-run.json', 'backend/state/maintenance-run.json']) if p.exists())
+          sys.exit(0 if bad else 1)"; then
             echo "::error title=Claude 인증 실패::CLAUDE_CODE_OAUTH_TOKEN이 잘못됐거나 만료됐습니다. claude setup-token으로 새로 만들어 GitHub Secret을 바꿔 주세요."
             exit 1
           fi

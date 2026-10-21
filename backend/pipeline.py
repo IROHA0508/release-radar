@@ -44,6 +44,7 @@ class RunReport:
     guardNotes: dict = field(default_factory=dict)
     note: str = ""
     authError: bool = False
+    guideChanges: list = field(default_factory=list)
 
     def save(self) -> None:
         path = config.STATE_FILE.parent / "last-run.json"
@@ -240,6 +241,15 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
             continue
         detect.mark(state, e, "added", today, id=item["id"])
         site.add(item)                      # later candidates in this run must see it
+        if item.get("kind") == "활용 팁":
+            try:                            # a new official tip may hold prompting advice for the guide
+                from . import guides
+
+                for c in guides.from_tip(claude, item, art, today):
+                    annotate("notice", "프롬프트 가이드 변경", c)
+                    report.guideChanges.append(c)
+            except Exception as exc:  # noqa: BLE001 - the news item itself is already saved
+                log.warning("guide update from tip failed: %s", exc)
         site_lines = site.summary_lines()
         report.added.append({"id": item["id"], "title": item["title"], "url": e.url, "charts": len(item.get("charts", []))})
         annotate("notice", "새 소식 추가", f"{item['id']} | {item['title']} | 그래프 {len(item.get('charts', []))}개")
@@ -308,6 +318,32 @@ def run_selftest() -> tuple[bool, list[str]]:
             lines.append(f"OK   원문 읽기 {src.name}: {art.via}, 본문 {len(art.text)}자, 발표일 {art.published}")
         except Exception as exc:  # noqa: BLE001
             lines.append(f"WARN 원문 읽기 {src.name}: {exc}")
+    # Daily upkeep sources: official pricing pages and watched prompt guide pages (warnings only).
+    from . import guides as guide_mod, prices as price_mod
+
+    tracked = price_mod.load().get("models", [])
+    for company, url in config.PRICE_PAGES.items():
+        try:
+            art = price_mod.fetch_page(url)
+            page = "\n".join([art.text, *art.tables]).lower()
+            ids = [m["apiId"] for m in tracked if m["company"] == company and m.get("status") == "available" and m.get("apiId")]
+            seen = [i for i in ids if i.lower() in page]
+            tag = "OK  " if len(art.text) >= 2000 and (not ids or seen) else "WARN"
+            lines.append(f"{tag} 가격 페이지 {company}: {art.via}, 본문 {len(art.text)}자, 표 {len(art.tables)}개, "
+                         f"가격표 모델 ID {len(seen)}/{len(ids)}개 보임")
+        except Exception as exc:  # noqa: BLE001
+            lines.append(f"WARN 가격 페이지 {company}: {exc}"[:300])
+    try:
+        for vendor in guide_mod.load().get("vendors", []):
+            for w in vendor.get("watch", []):
+                try:
+                    art = fetch_article(w["url"])
+                    tag = "OK  " if len(art.text) >= 800 else "WARN"
+                    lines.append(f"{tag} 가이드 페이지 {vendor['company']}: {w['url']} ({art.via}, 본문 {len(art.text)}자)")
+                except Exception as exc:  # noqa: BLE001
+                    lines.append(f"WARN 가이드 페이지 {vendor['company']}: {w['url']} ({exc})"[:300])
+    except Exception as exc:  # noqa: BLE001
+        lines.append(f"WARN 가이드 파일: {exc}")
     for line in lines:
         print(line, flush=True)
         if line.startswith("FAIL"):
@@ -315,3 +351,53 @@ def run_selftest() -> tuple[bool, list[str]]:
     # One annotation with every line: GitHub shows at most 10 notices per step.
     annotate("notice", "자가 시험 결과", "\n".join(lines))
     return ok, lines
+
+
+def run_maintenance(force: bool = False) -> dict:
+    """Daily upkeep: check the API price table against the official pricing pages and the prompt guide
+    against the official guide pages. Each part runs at most once a day unless forced; the price check
+    also runs as soon as a newly announced model has no price record yet."""
+    from . import guides, prices
+    from .summarize import is_auth_error, llm_available, make_llm
+
+    now = now_kst()
+    today = now.date()
+    now_text = now.strftime("%Y-%m-%d %H:%M")
+    report = {"startedAt": now.isoformat(timespec="seconds"), "prices": None, "guides": None, "authError": False,
+              "note": ""}
+    if not llm_available():
+        report["note"] = "Claude 인증 정보가 없어 점검하지 않았습니다."
+        _save_maint(report)
+        return report
+    claude = make_llm()
+    backups = {p: p.read_text(encoding="utf-8") for p in (config.PRICES_FILE, config.GUIDES_FILE) if p.exists()}
+    try:
+        report["prices"] = prices.run(claude, today, now_text, force=force)
+        report["guides"] = guides.check_watch(claude, today, now_text, force=force)
+    except Exception as exc:  # noqa: BLE001
+        if is_auth_error(exc):
+            report["authError"] = True
+            report["note"] = "Claude 인증 실패: 토큰(또는 API 키)을 새로 만들어 GitHub Secret을 바꿔 주세요."
+            annotate("error", "Claude 인증 실패", str(exc)[-400:])
+        else:
+            report["note"] = f"점검 중 오류: {type(exc).__name__}: {exc}"[:500]
+            annotate("warning", "정기 점검 오류", report["note"])
+    ok, out = store.validate()
+    if not ok:
+        for path, text in backups.items():
+            path.write_text(text, encoding="utf-8")
+        report["note"] += " | 검증 실패로 되돌림: " + out[-500:]
+        annotate("warning", "정기 점검 결과 되돌림", out[-500:])
+    for part in ("prices", "guides"):
+        r = report.get(part) or {}
+        for c in r.get("changes", []):
+            annotate("notice", "가격표 변경" if part == "prices" else "프롬프트 가이드 변경", c)
+        for src, err in (r.get("errors") or {}).items():
+            annotate("warning", "가격 페이지 읽기 실패" if part == "prices" else "가이드 페이지 읽기 실패", f"{src}: {err}")
+    _save_maint(report)
+    return report
+
+
+def _save_maint(report: dict) -> None:
+    config.MAINT_REPORT.parent.mkdir(parents=True, exist_ok=True)
+    config.MAINT_REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

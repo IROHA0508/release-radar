@@ -245,10 +245,51 @@ pre.code { overflow-x: auto; white-space: pre; }
 .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px 32px; }
 .tpl { margin-top: 24px; }
 .tpl .note { font-size: 13px; color: var(--muted); margin: 0 0 10px; }
+/* guide: tabs, categories, method cards */
+.g-tabs { margin-top: 22px; }
+.g-meta { font-size: 13px; color: var(--faint); margin: 10px 0 0; }
+.g-cats { margin: 18px 0 4px; }
+.g-cats .chip { font-size: 13px; padding: 6px 11px; }
+.g-cats .n { font: 500 11.5px/1 var(--f-mono); color: var(--faint); }
+.chip[aria-pressed="true"] .n { color: inherit; opacity: .75; }
+.methods { display: grid; gap: 14px; margin-top: 14px; }
+.method { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 18px 20px; min-width: 0; }
+.m-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12.5px; color: var(--faint); }
+.method h3 { margin: 8px 0 6px; font-size: var(--s-md); line-height: 1.4; text-wrap: balance; }
+.method > p { margin: 0; color: var(--muted); max-width: 72ch; }
+.ba { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 12px; margin-top: 14px; }
+.ba-col { border-radius: 6px; border: 1px solid var(--line); min-width: 0; display: flex; flex-direction: column; }
+.ba-col.after { border-color: var(--c, var(--line-strong)); }
+.ba-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 12px 0; font: 600 12px/1.2 var(--f-body); color: var(--faint); }
+.ba-col.after .ba-head { color: var(--c, var(--ink)); }
+.ba-col pre { margin: 0; padding: 8px 12px 12px; background: transparent; font-size: 13.5px; }
+.ba-col.before pre { color: var(--muted); }
+.method .code-wrap { margin-top: 12px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.method .code-wrap .ba-head { padding: 8px 12px 0; }
+.method .code-wrap pre { margin: 0; padding: 8px 12px 12px; font-size: 13px; }
+.m-src { margin: 12px 0 0; font-size: 12.5px; color: var(--faint); }
+.m-src a { color: var(--muted); text-underline-offset: 3px; }
+.copy.sm { font-size: 11.5px; padding: 3px 8px; }
+.watch { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.watch li { font-size: 14px; }
+.watch .when { font: 12px var(--f-mono); color: var(--faint); margin-left: 6px; }
+/* prices */
+.p-status { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 14px 0 0; font-size: 13px; color: var(--muted); }
+.p-status a { color: var(--muted); text-underline-offset: 3px; }
+.p-status .bad { color: var(--anthropic); font-weight: 600; }
+td.model { white-space: normal; min-width: 12em; }
+.pnote { display: block; margin-top: 3px; font-size: 12.5px; line-height: 1.45; color: var(--muted); max-width: 36em; }
+.dep { font: 600 11px/1 var(--f-body); padding: 3px 6px; border-radius: 3px; background: var(--mark); color: var(--mark-ink); margin-left: 6px; white-space: nowrap; }
+.unlisted { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.unlisted li { display: grid; grid-template-columns: 9em minmax(0, 1fr); gap: 4px 14px; font-size: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.unlisted .why { color: var(--muted); }
 
 .foot { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line-strong); color: var(--faint); font-size: 13px; display: grid; gap: 4px; }
 
 @media (max-width: 640px) {
+  .ba { grid-template-columns: minmax(0, 1fr); }
+  .method { padding: 16px; }
+  .unlisted li { grid-template-columns: minmax(0, 1fr); }
   .wrap { padding-block: 22px 56px; padding-inline: 16px; }
   .mast { grid-template-columns: 1fr; }
   .meta-box { text-align: left; }
@@ -315,6 +356,8 @@ pre.code { overflow-x: auto; white-space: pre; }
 
   var state = { manifest: null, news: [], byId: {}, guides: null, error: null, loaded: false, filter: "all", kind: "all" };
   try { var f = localStorage.getItem("rr-filter"); if (f && (f === "all" || COMPANIES[f])) state.filter = f; } catch (e) {}
+  state.guideTab = "common"; state.guideCat = "all";
+  try { var gt = localStorage.getItem("rr-guide"); if (gt) state.guideTab = gt; } catch (e) {}
   try { var k = localStorage.getItem("rr-kind"); if (k && (k === "all" || KINDS.indexOf(k) >= 0)) state.kind = k; } catch (e) {}
 
   var view = document.getElementById("view");
@@ -572,7 +615,9 @@ pre.code { overflow-x: auto; white-space: pre; }
 
     var models = (item.models || []);
     if (models.length) {
+      var hasPrice = models.some(function (m) { return m.input || m.output; });
       art.appendChild(section(isTip ? "다루는 모델" : "모델 사양", "models · USD / 1M tokens", [
+        hasPrice ? h("p", { class: "chart-src" }, ["가격은 발표 당시 기준입니다. 지금 가격은 ", h("a", { href: "#prices", text: "API 가격표" }), "에서 확인하세요."]) : null,
         h("div", { class: "tbl-wrap" }, [h("table", null, [
           h("thead", null, [h("tr", null, [h("th", { text: "모델" }), h("th", { text: "API ID" }), h("th", { class: "r", text: "입력" }), h("th", { class: "r", text: "출력" }), h("th", { class: "r", text: "캐시 입력" })])]),
           h("tbody", null, models.map(function (m) {
@@ -615,68 +660,166 @@ pre.code { overflow-x: auto; white-space: pre; }
     view.appendChild(art);
   }
 
+  function isRecent(d, days) {
+    if (!d) return false;
+    var diff = (new Date() - parseDate(String(d).slice(0, 10))) / 86400000;
+    return diff >= 0 && diff <= days;
+  }
+  function smallCopy(getText) {
+    var b = copyBtn(getText); b.classList.add("sm"); return b;
+  }
+  function methodCard(m, company) {
+    var kids = [
+      h("div", { class: "m-meta" }, [h("span", { class: "pill", text: m.category }),
+        isRecent(m.addedAt, 14) ? h("span", { class: "new", text: "NEW" }) : null,
+        !isRecent(m.addedAt, 14) && isRecent(m.updatedAt, 14) ? h("span", { class: "new", text: "수정" }) : null,
+        (m.models || []).length ? h("span", { text: m.models.join(" · ") }) : null]),
+      h("h3", { text: m.title }),
+      h("p", { text: m.body })
+    ];
+    if (m.before || m.after) {
+      var cols = [];
+      if (m.before) cols.push(h("div", { class: "ba-col before" }, [h("div", { class: "ba-head" }, [h("span", { text: "이렇게 말고" })]), h("pre", { class: "wrap-text", text: m.before })]));
+      if (m.after) cols.push(h("div", { class: "ba-col after" }, [h("div", { class: "ba-head" }, [h("span", { text: (m.before ? "이렇게" : "예시") + (m.exampleFromSource ? " · 원문 예시" : "") }), smallCopy(function () { return m.after; })]), h("pre", { class: "wrap-text", text: m.after })]));
+      kids.push(h("div", { class: "ba", style: cols.length === 1 ? "grid-template-columns:minmax(0,1fr)" : null }, cols));
+    }
+    if (m.code) {
+      kids.push(h("div", { class: "code-wrap" }, [h("div", { class: "ba-head" }, [h("span", { text: "코드" }), smallCopy(function () { return m.code; })]), h("pre", { class: "code", text: m.code })]));
+    }
+    var src = m.source || {};
+    kids.push(h("p", { class: "m-src" }, [
+      "출처: ", h("a", { href: src.url, target: "_blank", rel: "noopener", text: src.title || host(src.url) }), " · " + host(src.url),
+      m.newsId && state.byId[m.newsId] ? h("span", null, [" · ", h("a", { href: "#" + m.newsId, text: "관련 소식" })]) : null
+    ]));
+    return h("article", { class: "method c-" + company, id: "m-" + m.id }, kids);
+  }
+
   function renderGuide() {
     setNav("guide");
     var g = state.guides;
     var frag = document.createDocumentFragment();
     if (!g) { frag.appendChild(h("p", { class: "state", text: "가이드를 불러오지 못했습니다." })); view.textContent = ""; view.appendChild(frag); return; }
-    frag.appendChild(h("p", { class: "lede", text: "세 회사의 공식 프롬프트 가이드와 최신 모델 발표에서 실제로 권하는 내용만 모았습니다. 먼저 공통 원칙을 보고, 쓰는 모델의 섹션에서 틀을 복사해 바꿔 쓰세요." }));
-    frag.appendChild(section("세 회사 공통 원칙", "common ground", [h("div", { class: "common" }, (g.common || []).map(function (t) {
-      return h("div", { class: "tip" }, [h("h3", { text: t.title }), h("p", { text: t.body })]);
-    }))]));
-    (g.vendors || []).forEach(function (v) {
+    var vendors = g.vendors || [];
+    var tabs = [["common", "공통 원칙", null]].concat(vendors.map(function (v) { return [v.company, COMPANIES[v.company] ? COMPANIES[v.company].name : v.name, v]; }));
+    if (!tabs.some(function (t) { return t[0] === state.guideTab; })) state.guideTab = "common";
+    var total = vendors.reduce(function (n, v) { return n + (v.methods || []).length; }, 0);
+    frag.appendChild(h("p", { class: "lede", text: "세 회사의 공식 프롬프트 가이드에서 실제로 권하는 방법만 회사별로 모았습니다. 방법마다 '이렇게 말고 → 이렇게' 예시와 원문 링크가 있고, 공식 가이드 페이지를 매일 확인해 새 권고가 생기면 추가합니다." }));
+    frag.appendChild(h("p", { class: "g-meta", text: "방법 " + total + "개 · 마지막 확인 " + (g.checkedAt ? fmtChecked(g.checkedAt) : (g.updatedAt ? fmtChecked(g.updatedAt) : "—")) + (g.updatedAt ? " · 마지막 변경 " + fmtChecked(g.updatedAt) : "") }));
+    var tabRow = h("div", { class: "filters g-tabs", role: "group", "aria-label": "회사별 가이드" });
+    tabs.forEach(function (t) {
+      var newCount = t[2] ? (t[2].methods || []).filter(function (m) { return isRecent(m.addedAt, 14); }).length : 0;
+      tabRow.appendChild(h("button", {
+        class: "chip" + (t[2] ? " c-" + t[0] : ""), type: "button", "aria-pressed": String(state.guideTab === t[0]),
+        onclick: function () {
+          state.guideTab = t[0]; state.guideCat = "all";
+          try { localStorage.setItem("rr-guide", t[0]); } catch (e) {}
+          renderGuide();
+        }
+      }, [t[2] ? h("span", { class: "sw", "aria-hidden": "true" }) : null, t[1], t[2] ? h("span", { class: "n", text: String((t[2].methods || []).length) }) : null, newCount ? h("span", { class: "new", text: "NEW " + newCount }) : null]));
+    });
+    frag.appendChild(tabRow);
+
+    if (state.guideTab === "common") {
+      frag.appendChild(section("세 회사 공통 원칙", "common ground", [h("div", { class: "common" }, (g.common || []).map(function (t) {
+        return h("div", { class: "tip" }, [h("h3", { text: t.title }), h("p", { text: t.body })]);
+      }))]));
+    } else {
+      var v = vendors.filter(function (x) { return x.company === state.guideTab; })[0];
+      var methods = v.methods || [];
+      var cats = []; methods.forEach(function (m) { if (cats.indexOf(m.category) < 0) cats.push(m.category); });
+      var order = ["기본 작성법", "구조와 형식", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩", "도구와 API 설정", "이미지·영상·음성"];
+      cats.sort(function (a, b) { return order.indexOf(a) - order.indexOf(b); });
+      if (state.guideCat !== "all" && cats.indexOf(state.guideCat) < 0) state.guideCat = "all";
       var block = h("section", { class: "vendor c-" + v.company, id: "guide-" + v.company }, [
         h("div", { class: "vendor-head" }, [h("span", { class: "sw", "aria-hidden": "true" }), h("h2", { text: v.name })]),
-        h("p", { class: "summary", text: v.summary }),
-        h("div", { class: "principles" }, (v.principles || []).map(function (t) {
-          return h("div", { class: "tip" }, [h("h3", { text: t.title }), h("p", { text: t.body })]);
-        })),
-        v.template ? h("div", { class: "tpl" }, [
-          v.templateNote ? h("p", { class: "note", text: v.templateNote }) : null,
-          promptBlock({ title: v.templateTitle || "기본 틀", text: v.template, type: "prompt" })
-        ]) : null,
-        v.sources && v.sources.length ? h("ul", { class: "sources", style: "margin-top:18px" }, v.sources.map(function (s) {
-          return h("li", null, [h("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title }), h("span", { class: "host", text: host(s.url) })]);
-        })) : null
+        h("p", { class: "summary", text: v.summary })
       ]);
+      var catRow = h("div", { class: "filters g-cats", role: "group", "aria-label": "분류" });
+      [["all", "전체", methods.length]].concat(cats.map(function (c) { return [c, c, methods.filter(function (m) { return m.category === c; }).length]; })).forEach(function (c) {
+        catRow.appendChild(h("button", { class: "chip", type: "button", "aria-pressed": String(state.guideCat === c[0]),
+          onclick: function () { state.guideCat = c[0]; renderGuide(); } }, [c[1], h("span", { class: "n", text: String(c[2]) })]));
+      });
+      block.appendChild(catRow);
+      var shown = methods.filter(function (m) { return state.guideCat === "all" || m.category === state.guideCat; })
+        .slice().sort(function (a, b) {
+          var ra = isRecent(a.addedAt, 14) ? 0 : 1, rb = isRecent(b.addedAt, 14) ? 0 : 1;
+          if (ra !== rb) return ra - rb;
+          return order.indexOf(a.category) - order.indexOf(b.category);
+        });
+      block.appendChild(h("div", { class: "methods" }, shown.map(function (m) { return methodCard(m, v.company); })));
+      if ((v.templates || []).length && state.guideCat === "all") {
+        block.appendChild(section("바로 쓰는 템플릿", "templates", v.templates.map(function (t) {
+          var pb = promptBlock({ title: t.title, when: t.when, text: t.text, type: "prompt" });
+          if (t.source && t.source.url) pb.appendChild(h("p", { class: "m-src", style: "padding:0 16px 14px;margin:0" }, ["출처: ", h("a", { href: t.source.url, target: "_blank", rel: "noopener", text: t.source.title || host(t.source.url) })]));
+          return pb;
+        })));
+      }
+      if ((v.watch || []).length) {
+        block.appendChild(section("매일 확인하는 공식 가이드", "watched sources", [h("ul", { class: "watch" }, v.watch.map(function (w) {
+          return h("li", null, [h("a", { href: w.url, target: "_blank", rel: "noopener", text: w.title }), h("span", { class: "host", text: host(w.url) }),
+            w.changedAt ? h("span", { class: "when", text: "변경 감지 " + fmtChecked(w.changedAt) }) : null]);
+        }))]));
+      }
       frag.appendChild(block);
-    });
+    }
     view.textContent = "";
     view.appendChild(frag);
   }
 
+  // Official pages write "$2" or "$2.50"; show at least two decimals so the columns line up.
+  function fmtPrice(v) {
+    if (!v) return "—";
+    var m = String(v).match(/^\$(\d+)(?:\.(\d+))?$/);
+    if (!m) return String(v);
+    var dec = m[2] || "";
+    return "$" + m[1] + "." + (dec.length < 2 ? (dec + "00").slice(0, 2) : dec);
+  }
   function renderPrices() {
     setNav("prices");
-    var rows = [];
-    sortedNews().forEach(function (item) {
-      if (item.kind === "활용 팁") return; // 가이드 글이 다시 적은 가격은 발표 소식과 겹치므로 제외
-      (item.models || []).forEach(function (m) {
-        if (m.input || m.output) rows.push({ company: item.company, m: m, item: item });
-      });
-    });
-    rows.sort(function (a, b) {
-      var ca = ORDER.indexOf(a.company), cb = ORDER.indexOf(b.company);
-      if (ca !== cb) return ca - cb;
-      return a.item.date < b.item.date ? 1 : -1;
-    });
+    var p = state.prices;
     var frag = document.createDocumentFragment();
-    frag.appendChild(h("p", { class: "lede", text: "각 소식의 발표 시점 API 가격을 한곳에 모았습니다. 단위는 100만 토큰당 미국 달러이고, '도입가'는 기간 한정 가격입니다. 모델명을 누르면 해당 소식으로 이동합니다." }));
+    if (!p) { frag.appendChild(h("p", { class: "state", text: "가격표를 불러오지 못했습니다." })); view.textContent = ""; view.appendChild(frag); return; }
+    var models = (p.models || []).slice();
+    var byCo = function (a, b) { return ORDER.indexOf(a.company) - ORDER.indexOf(b.company); };
+    var released = function (m) { var n = m.newsId && state.byId[m.newsId]; return n ? n.date : ""; };
+    var live = models.filter(function (m) { return m.status === "available" || m.status === "deprecated"; }).sort(function (a, b) {
+      return byCo(a, b) || (a.status === b.status ? 0 : a.status === "available" ? -1 : 1) ||
+        (released(a) < released(b) ? 1 : released(a) > released(b) ? -1 : a.name < b.name ? -1 : 1);
+    });
+    var gone = models.filter(function (m) { return m.status === "unlisted"; }).sort(byCo);
+    frag.appendChild(h("p", { class: "lede", text: "사이트에서 다룬 모델 가운데 지금 API로 쓸 수 있는 모델만, 세 회사 공식 가격 페이지에서 매일 확인한 가격으로 보여 줍니다. 단위는 100만 토큰당 미국 달러(기본 등급, 짧은 프롬프트 기준)이고, 공식 가격 페이지에서 사라진 모델은 아래 목록으로 옮깁니다." }));
+    frag.appendChild(h("div", { class: "p-status" }, ORDER.map(function (c) {
+      var pg = (p.pages || {})[c];
+      if (!pg) return null;
+      return h("span", null, [h("a", { href: pg.url, target: "_blank", rel: "noopener", text: COMPANIES[c].name + " 공식 가격" }), " 확인 " + fmtChecked(pg.checkedAt || ""),
+        pg.result && pg.result !== "확인" ? h("span", { class: "bad", text: " · " + pg.result }) : null]);
+    })));
     frag.appendChild(section("API 가격표", "USD per 1M tokens", [
       h("div", { class: "tbl-wrap" }, [h("table", null, [
-        h("thead", null, [h("tr", null, [h("th", { text: "회사" }), h("th", { text: "모델" }), h("th", { text: "API ID" }), h("th", { class: "r", text: "입력" }), h("th", { class: "r", text: "출력" }), h("th", { class: "r", text: "캐시 입력" }), h("th", { text: "발표일" })])]),
-        h("tbody", null, rows.map(function (r) {
+        h("thead", null, [h("tr", null, [h("th", { text: "회사" }), h("th", { text: "모델 · 비고" }), h("th", { text: "API ID" }), h("th", { class: "r", text: "입력" }), h("th", { class: "r", text: "캐시 입력" }), h("th", { class: "r", text: "출력" })])]),
+        h("tbody", null, live.map(function (m) {
           return h("tr", null, [
-            h("td", null, [coTag(r.company)]),
-            h("td", null, [h("a", { href: "#" + r.item.id, text: r.m.name })]),
-            h("td", null, [r.m.apiId ? h("span", { class: "id", text: r.m.apiId }) : h("span", { style: "color:var(--faint)", text: "미공개" })]),
-            h("td", { class: "mono r", text: r.m.input || "—" }),
-            h("td", { class: "mono r", text: r.m.output || "—" }),
-            h("td", { class: "mono r", text: r.m.cached || "—" }),
-            h("td", { class: "mono", text: fmtDate(r.item.date) })
+            h("td", null, [coTag(m.company)]),
+            h("td", { class: "model" }, [m.newsId && state.byId[m.newsId] ? h("a", { href: "#" + m.newsId, text: m.name }) : m.name, m.status === "deprecated" ? h("span", { class: "dep", text: "지원 종료 예정" }) : null,
+              m.note ? h("span", { class: "pnote", text: m.note }) : null]),
+            h("td", null, [m.apiId ? h("span", { class: "id", text: m.apiId }) : h("span", { style: "color:var(--faint)", text: "—" })]),
+            h("td", { class: "mono r", text: fmtPrice(m.input) }),
+            h("td", { class: "mono r", text: fmtPrice(m.cached) }),
+            h("td", { class: "mono r", text: fmtPrice(m.output) })
           ]);
         }))
       ])])
     ]));
+    if (gone.length) {
+      frag.appendChild(section("API 가격표에 없는 모델", "not on the official price lists", [
+        h("p", { class: "lede", style: "margin:0 0 14px;font-size:14px", text: "사이트에서 소개했지만 공식 API 가격 페이지에서 확인되지 않는 모델입니다. 일부 기관에만 제공되거나, 앱 전용이거나, 지원이 끝난 경우입니다. 매일 다시 확인해 가격 페이지에 올라오면 위 표로 옮깁니다." }),
+        h("ul", { class: "unlisted" }, gone.map(function (m) {
+          return h("li", null, [h("span", null, [coTag(m.company)]), h("span", null, [
+            m.newsId && state.byId[m.newsId] ? h("a", { href: "#" + m.newsId, text: m.name }) : h("b", { text: m.name }),
+            h("span", { class: "why", text: " — " + (m.note || "공식 가격 페이지에서 확인되지 않음") + (m.since ? " (" + fmtDate(m.since) + "부터)" : "") })])]);
+        }))
+      ]));
+    }
     frag.appendChild(h("p", { class: "lede", style: "font-size:14px", text: "같은 일을 할 때 실제 비용은 토큰 단가보다 과제당 사용하는 토큰 수에 더 크게 좌우됩니다. 각 사 발표의 '과제당 비용' 비교와 캐시 할인 폭을 함께 보세요." }));
     view.textContent = "";
     view.appendChild(frag);
@@ -710,12 +853,14 @@ pre.code { overflow-x: auto; white-space: pre; }
     var ids = (m.news || []);
     return Promise.all([
       Promise.all(ids.map(function (id) { return getJSON("data/news/" + id + ".json").catch(function () { return null; }); })),
-      getJSON("data/guides.json").catch(function () { return null; })
+      getJSON("data/guides.json").catch(function () { return null; }),
+      getJSON("data/prices.json").catch(function () { return null; })
     ]);
   }).then(function (res) {
     state.news = res[0].filter(Boolean);
     state.news.forEach(function (n) { state.byId[n.id] = n; });
     state.guides = res[1];
+    state.prices = res[2];
     state.loaded = true;
     renderHeader();
     route();
