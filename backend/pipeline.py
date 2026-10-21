@@ -354,7 +354,7 @@ def run_selftest() -> tuple[bool, list[str]]:
     # A few annotations with every line: GitHub shows at most 10 notices per step and cuts long messages.
     chunk: list[str] = []
     for line in lines + [""]:
-        if line == "" or sum(len(x) + 1 for x in chunk) + len(line) > 3500:
+        if line == "" or sum(len(x) + 1 for x in chunk) + len(line) > 1500:
             if chunk:
                 annotate("notice", "자가 시험 결과", "\n".join(chunk))
             chunk = []

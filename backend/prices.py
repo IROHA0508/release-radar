@@ -38,12 +38,14 @@ RULES = """\
 
 각 후보 모델(key)마다:
 - listed: 이 페이지에 그 모델의 API 가격이 있으면 true. 없거나, 페이지가 API에서 쓸 수 없다고 하면 false.
+  일부 조직에만 제공(limited availability 등)되더라도 가격이 실려 있으면 true로 하고 note에 '제한 제공'과 조건을 쓴다.
 - apiId: 페이지에 적힌 모델 ID(예: gpt-6.1-sol, claude-opus-5-5, gemini-3.6-flash). 페이지에 ID가 없으면 빈 문자열.
 - input / cached / output: 기본(standard) 등급의 텍스트 토큰 가격, 100만 토큰당 USD. 페이지 표기 그대로 "$2.50"처럼.
   캐시 입력(cache read/cached input/context caching) 가격이 없으면 cached는 빈 문자열. Batch·Priority·Flex 가격은 쓰지 않는다.
   컨텍스트 길이별로 다르면 기본(짧은 쪽) 가격을 쓰고 note에 구간을 적는다. 이미지·오디오 전용 모델이면 그 모델의 대표
   토큰 가격(텍스트 또는 해당 모달리티)을 쓰고 note에 무엇의 가격인지 적는다.
-- note: 한국어로 짧게. 도입가와 기한, 컨텍스트 구간 가격, 지원 종료 예정일, fast mode 같은 별도 가격 등. 없으면 빈 문자열.
+- note: 한국어로 짧게, 페이지에 적힌 사실만. 기한이 있는 가격과 그 날짜, 긴 컨텍스트 구간 가격, 지원 종료 예정일,
+  fast mode 같은 별도 가격 등. 페이지에 없는 표현(예: 페이지가 쓰지 않은 '도입가', 권장 사항)은 쓰지 않는다. 없으면 빈 문자열.
 - deprecated: 페이지에 지원 종료(deprecated/legacy, 종료 예정일) 표시가 있으면 true.
 - evidence: 그 가격이 적힌 줄을 페이지에서 그대로 짧게 옮긴 것.
 listed가 false면 가격 칸은 빈 문자열로 두고, 이유가 페이지에 있으면 note에 쓴다.
