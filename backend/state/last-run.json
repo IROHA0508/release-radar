@@ -1,20 +1,13 @@
 {
-  "startedAt": "2026-10-22T08:46:14+09:00",
+  "startedAt": "2026-10-22T17:02:07+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1835,
+  "entries": 1836,
   "candidates": [
     {
-      "title": "Introducing Claude Duet",
-      "url": "https://claude.com/resources/articles/claude-duet",
-      "company": "anthropic",
-      "date": "2026-10-21",
-      "relatedId": null
-    },
-    {
-      "title": "HCLTech joins the Claude Partner Network as a Global Premier partner",
-      "url": "https://claude.com/resources/articles/hcltech-joins-claude-partner-network",
-      "company": "anthropic",
+      "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
+      "url": "https://openai.com/index/cloudflare-cyber",
+      "company": "openai",
       "date": "2026-10-21",
       "relatedId": null
     }
@@ -23,14 +16,9 @@
   "updated": [],
   "skipped": [
     {
-      "title": "HCLTech joins the Claude Partner Network as a Global Premier partner",
-      "url": "https://claude.com/resources/articles/hcltech-joins-claude-partner-network",
-      "reason": "기업 파트너십 뉴스로, 판단 기준의 제외 항목(기업 파트너십)에 명시적으로 해당"
-    },
-    {
-      "title": "Introducing Claude Duet",
-      "url": "https://claude.com/resources/articles/claude-duet",
-      "reason": "Claude Duet는 새 모델이 아니라 Opus 5.5 기반의 새 앱(리서치 프리뷰)을 소개하는 제품 발표입니다. 모델 출시나 버전 업데이트가 아니고 가격 변경도 없습니다. 독자가 바로 따라 할 실전 조언도 거의 없어서, 모델과 무관한 제품 공지이자 기능 소개로 보고 제외합니다."
+      "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
+      "url": "https://openai.com/index/cloudflare-cyber",
+      "reason": "기업 파트너십 및 고객 사례입니다. Cloudflare가 OpenAI Daybreak와 Codex를 사용하는 방식을 설명하는 글로, 새 모델 출시·업데이트, 공식 활용 팁(독자가 바로 따라 할 수 있는 조언)이 아닙니다. 지침의 제외 기준 '기업 파트너십, 고객 사례'에 해당합니다."
     }
   ],
   "failed": [],

@@ -1380,6 +1380,14 @@
       "status": "skipped",
       "title": "Chatham scales its capital markets expertise with OpenAI"
     },
+    "https://openai.com/index/cloudflare-cyber": {
+      "checkedAt": "2026-10-22",
+      "company": "openai",
+      "date": "2026-10-21",
+      "reason": "기업 파트너십 및 고객 사례입니다. Cloudflare가 OpenAI Daybreak와 Codex를 사용하는 방식을 설명하는 글로, 새 모델 출시·업데이트, 공식 활용 팁(독자가 바로 따라 할 수 있는 조언)이 아닙니다. 지침의 제외 기준 '기업 파트너십, 고객 사례'에 해당합니다.",
+      "status": "skipped",
+      "title": "Cloudflare links vulnerability discovery to defense with OpenAI"
+    },
     "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities": {
       "checkedAt": "2026-10-22",
       "company": "openai",
