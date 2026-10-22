@@ -1,80 +1,90 @@
 {
-  "startedAt": "2026-10-22T23:09:50+09:00",
+  "startedAt": "2026-10-23T03:54:57+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1837,
+  "entries": 1840,
   "candidates": [
     {
-      "title": "Introducing Claude Duet",
-      "url": "https://claude.com/resources/articles/claude-duet",
-      "company": "anthropic",
-      "date": "2026-10-21",
+      "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+      "url": "https://openai.com/index/uber-chatgpt-work-rollout",
+      "company": "openai",
+      "date": "2026-10-22",
       "relatedId": null
     },
     {
-      "title": "Claude Security now scans continuously and tracks fixes",
-      "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
+      "title": "Building agents: When to fold subagents into your main agent loop",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
       "company": "anthropic",
-      "date": "2026-10-21",
+      "date": "2026-10-22",
       "relatedId": null
     },
     {
-      "title": "New Gemini tools for small business owners",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
+      "title": "Donating Agent Skills to the Agentic AI Foundation",
+      "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+      "company": "anthropic",
+      "date": "2026-10-22",
+      "relatedId": null
+    },
+    {
+      "title": "Streaming comes to API Gateway: real-time and AI-ready APIs, without changing your spec",
+      "url": "https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec/",
       "company": "google",
-      "date": "2026-10-20",
+      "date": "2026-10-22",
       "relatedId": null
+    },
+    {
+      "title": "Architecting Governed, Self-Evolving AI Agents on the Gemini platform",
+      "url": "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform/",
+      "company": "google",
+      "date": "2026-10-22",
+      "relatedId": "gemini-app-small-business-tools"
     }
   ],
   "added": [
     {
-      "id": "claude-duet",
-      "title": "Claude Duet",
-      "url": "https://claude.com/resources/articles/claude-duet",
-      "charts": 0
-    },
-    {
-      "id": "claude-security-continuous-scan",
-      "title": "Claude Security 지속 스캔과 수정 추적",
-      "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
-      "charts": 0
-    },
-    {
-      "id": "gemini-app-small-business-tools",
-      "title": "Gemini 소상공인 도구",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
+      "id": "claude-fold-subagents-main-agent-loop",
+      "title": "서브에이전트를 메인 에이전트 루프로 합치는 기준과 순서",
+      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
       "charts": 0
     }
   ],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "Uber brings ChatGPT Work to all employees with OpenAI",
+      "url": "https://openai.com/index/uber-chatgpt-work-rollout",
+      "reason": "기업 고객 사례로, 특정 기업이 ChatGPT를 도입하는 내용으로 사이트의 포함 기준인 새 모델·기능·활용 팁에 해당하지 않음"
+    },
+    {
+      "title": "Donating Agent Skills to the Agentic AI Foundation",
+      "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+      "reason": "Anthropic과 재단 간의 파트너십 발표로, 독자가 새로 써 볼 수 있는 모델이나 기능과 무관함"
+    },
+    {
+      "title": "Streaming comes to API Gateway: real-time and AI-ready APIs, without changing your spec",
+      "url": "https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec/",
+      "reason": "Google Cloud API Gateway의 기술 기능 추가로, AI 모델 사용과 무관한 인프라 서비스 업데이트로 사이트 범위 밖"
+    },
+    {
+      "title": "Architecting Governed, Self-Evolving AI Agents on the Gemini platform",
+      "url": "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform/",
+      "reason": "Google Cloud의 연구용 참조 아키텍처(Project Chrysalis)와 시뮬레이션 데모를 소개하는 글입니다. 새 모델이나 공식 AI 제품·기능 출시가 아니고, 독자가 바로 따라 할 활용 팁도 아닙니다. SRE 장애 대응 시스템을 설계하는 인프라·프레임워크 성격이 강해 제외합니다. 기존 소식 gemini-app-small-business-tools와도 관련이 없습니다."
+    }
+  ],
   "failed": [],
   "guardNotes": {
-    "claude-security-continuous-scan": [
-      "핵심 수치 '공개 베타 이후 발견한 취약점: 100만 건 이상' 원문에서 확인 안 됨 → 제외"
-    ],
-    "gemini-app-small-business-tools": [
-      "핵심 수치 '사례 속 절약 시간: 하루 2~3시간' 원문에서 확인 안 됨 → 제외"
+    "claude-fold-subagents-main-agent-loop": [
+      "핵심 수치 '지연 시간: 약 2배 빠름' 원문에서 확인 안 됨 → 제외"
     ]
   },
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
-  "guideChanges": [],
-  "styleNotes": {
-    "claude-duet": [
-      "문체 수정: changes.5",
-      "문체 수정: cautions.0",
-      "문체 수정: tips.0.body"
-    ],
-    "claude-security-continuous-scan": [
-      "문체 수정: changes.3",
-      "문체 수정: changes.5",
-      "문체 수정: changes.6",
-      "문체 수정: tips.3.body"
-    ]
-  },
+  "guideChanges": [
+    "가이드 추가: [anthropic] 도구는 API마다 말고 사용자 의도별로 묶기",
+    "가이드 추가: [anthropic] 시스템 프롬프트는 한 곳에서 관리하고 절차는 스킬로 옮기기"
+  ],
+  "styleNotes": {},
   "techLinks": [
-    "claude-duet → long-autonomy, computer-use",
-    "gemini-app-small-business-tools → tool-use, context-eng"
+    "claude-fold-subagents-main-agent-loop → multi-agent, skills, agent-loop, harness"
   ]
 }

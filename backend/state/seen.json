@@ -274,6 +274,14 @@
       "status": "old",
       "title": "Detecting and countering malicious uses of Claude"
     },
+    "https://anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation": {
+      "checkedAt": "2026-10-23",
+      "company": "anthropic",
+      "date": "2026-10-22",
+      "reason": "Anthropic과 재단 간의 파트너십 발표로, 독자가 새로 써 볼 수 있는 모델이나 기능과 무관함",
+      "status": "skipped",
+      "title": "Donating Agent Skills to the Agentic AI Foundation"
+    },
     "https://anthropic.com/news/enabling-claude-code-to-work-more-autonomously": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
@@ -601,6 +609,14 @@
       "status": "skipped",
       "title": "Agents you can coach: how Asana builds human-agent teams with Claude"
     },
+    "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop": {
+      "checkedAt": "2026-10-23",
+      "company": "anthropic",
+      "date": "2026-10-22",
+      "id": "claude-fold-subagents-main-agent-loop",
+      "status": "added",
+      "title": "Building agents: When to fold subagents into your main agent loop"
+    },
     "https://claude.com/resources/articles/claude-code-mods": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -910,6 +926,14 @@
       "status": "skipped",
       "title": "Announcing MCP support in Apigee hybrid: agentic tools that run in your own cluster"
     },
+    "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform": {
+      "checkedAt": "2026-10-23",
+      "company": "google",
+      "date": "2026-10-22",
+      "reason": "Google Cloud의 연구용 참조 아키텍처(Project Chrysalis)와 시뮬레이션 데모를 소개하는 글입니다. 새 모델이나 공식 AI 제품·기능 출시가 아니고, 독자가 바로 따라 할 활용 팁도 아닙니다. SRE 장애 대응 시스템을 설계하는 인프라·프레임워크 성격이 강해 제외합니다. 기존 소식 gemini-app-small-business-tools와도 관련이 없습니다.",
+      "status": "skipped",
+      "title": "Architecting Governed, Self-Evolving AI Agents on the Gemini platform"
+    },
     "https://developers.googleblog.com/autonomous-llm-post-training-with-tunix-on-tpus": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1052,6 +1076,14 @@
       "id": "google-adk-voice-agent-streaming-tools",
       "status": "added",
       "title": "Step by Step guide: Build a Voice Agent That Never Goes Silent using ADK"
+    },
+    "https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec": {
+      "checkedAt": "2026-10-23",
+      "company": "google",
+      "date": "2026-10-22",
+      "reason": "Google Cloud API Gateway의 기술 기능 추가로, AI 모델 사용과 무관한 인프라 서비스 업데이트로 사이트 범위 밖",
+      "status": "skipped",
+      "title": "Streaming comes to API Gateway: real-time and AI-ready APIs, without changing your spec"
     },
     "https://developers.googleblog.com/supercharge-your-development-with-the-google-developer-knowledge-api-ecosystem": {
       "checkedAt": "2026-10-08",
@@ -1595,6 +1627,14 @@
       "reason": "고객 사례: Third Moment Research의 AI 에이전트 구축 사례로, 고객 사례 콘텐츠입니다.",
       "status": "skipped",
       "title": "How Third Moment Research runs 10,000 agents for 36+ hours"
+    },
+    "https://openai.com/index/uber-chatgpt-work-rollout": {
+      "checkedAt": "2026-10-23",
+      "company": "openai",
+      "date": "2026-10-22",
+      "reason": "기업 고객 사례로, 특정 기업이 ChatGPT를 도입하는 내용으로 사이트의 포함 기준인 새 모델·기능·활용 팁에 해당하지 않음",
+      "status": "skipped",
+      "title": "Uber brings ChatGPT Work to all employees with OpenAI"
     },
     "https://openai.com/index/wayfair": {
       "checkedAt": "2026-10-06",

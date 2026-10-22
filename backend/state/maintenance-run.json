@@ -1,15 +1,54 @@
 {
-  "startedAt": "2026-10-22T23:14:14+09:00",
+  "startedAt": "2026-10-23T03:57:56+09:00",
   "prices": {
-    "checked": [],
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
     "changes": [],
     "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 0,
-    "changed": [],
-    "changes": [],
+    "checked": 38,
+    "changed": [
+      "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
+      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+      "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5"
+    ],
+    "changes": [
+      "가이드 추가: [openai] 기억을 완전히 지우려면 저장된 메모리와 원본 출처를 함께 지우기",
+      "가이드 추가: [openai] 빠른 확인은 검색으로, 여러 자료를 따져야 하면 딥 리서치로",
+      "가이드 추가: [openai] 조사 중에도 끼어들어 초점과 출처를 바꾸기",
+      "가이드 추가: [openai] 예약 작업이 멈췄다면 연결된 대화와 승인 대기부터 확인하기",
+      "가이드 추가: [openai] 변화를 지켜볼 일은 모니터링 작업으로, 끝나는 조건까지 적기",
+      "가이드 추가: [openai] 만든 적 없는 주간 재무 업데이트는 Scheduled에서 멈추기",
+      "가이드 추가: [openai] 블록에서 직접 고친 내용은 후속 요청에 반영되니 임시 채팅에서는 따로 복사해 두기",
+      "가이드 추가: [openai] 코드는 Preview와 Run으로 ChatGPT 안에서 바로 확인하기",
+      "가이드 추가: [openai] 다시 쓸 답변은 'Add to project sources'로 프로젝트에 저장하기",
+      "가이드 추가: [openai] 프로젝트 메모리는 기본과 프로젝트 전용 중 골라 두기",
+      "가이드 추가: [openai] 프로젝트를 공유할 땐 초대 대상마다 chat·edit 권한 나누기",
+      "가이드 추가: [openai] 맞춤 지시를 잠깐 쓰지 않을 땐 Enable customization만 끄기",
+      "가이드 추가: [anthropic] 코드에 대한 답은 파일을 열어 본 뒤에 하도록 지시하기",
+      "가이드 추가: [anthropic] 여러 컨텍스트 창에 걸친 작업은 첫 창에서 틀을 세우고 상태를 파일로 남기기",
+      "가이드 추가: [anthropic] 채팅 시스템 프롬프트의 '신중히 생각해' 줄은 지우기",
+      "가이드 추가: [anthropic] 사용자가 붙여 넣은 글은 같은 ID를 단 태그로 표시하기",
+      "가이드 추가: [anthropic] 빽빽한 도표·도면은 고해상도 이미지와 자르기 도구를 주기",
+      "가이드 추가: [anthropic] low effort 코딩에서는 실제 검사를 돌린 뒤에 완료로 보고하게 하기",
+      "가이드 추가: [anthropic] 대소문자가 다른 도구 이름은 하네스에서 너그럽게 처리하기",
+      "가이드 추가: [anthropic] 아이디어나 계획만 원하면 만들기 전에 멈추게 하기",
+      "가이드 추가: [anthropic] 긴 에이전트 프롬프트에서 중간에 멈추면 '끝까지 하되 범위는 넘지 않기' 문단 넣기",
+      "가이드 추가: [anthropic] low·medium effort 코딩에서는 실제로 변경을 검증한 뒤 완료 보고하게 하기",
+      "가이드 추가: [anthropic] 챗봇이 사용자의 설득에 규칙을 놓지 않게 하는 문장 넣기"
+    ],
     "errors": {}
   },
   "authError": false,

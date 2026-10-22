@@ -293,7 +293,8 @@
         "openai-retained-reasoning-compaction",
         "google-adk-voice-agent-streaming-tools",
         "google-agent-evaluation-beyond-vibe-check",
-        "google-agents-cli-extension-system"
+        "google-agents-cli-extension-system",
+        "claude-fold-subagents-main-agent-loop"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -422,7 +423,8 @@
         "openai-retained-reasoning-compaction",
         "openai-gpt-5-6-builders-guide",
         "gemini-4-argon-overnight-codebase",
-        "openai-skills-shell-compaction-tips"
+        "openai-skills-shell-compaction-tips",
+        "claude-fold-subagents-main-agent-loop"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -484,7 +486,8 @@
         "openai-skills-shell-compaction-tips",
         "gemini-4-argon-overnight-codebase",
         "openai-gpt-5-4-frontend-design",
-        "claude-fable-5-cowork-tips"
+        "claude-fable-5-cowork-tips",
+        "claude-fold-subagents-main-agent-loop"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -707,7 +710,8 @@
       "news": [
         "google-antigravity-multi-model-patterns",
         "claude-opus-5-5-task-costs",
-        "openai-gpt-5-6-builders-guide"
+        "openai-gpt-5-6-builders-guide",
+        "claude-fold-subagents-main-agent-loop"
       ],
       "verifiedAt": "2026-10-21"
     },
