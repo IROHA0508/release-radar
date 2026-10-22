@@ -905,8 +905,37 @@ def test_link_check_classifies_and_uses_reader_for_blocked_sites():
                  session=LinkSession(table), workers=2, pause=0)
     assert out["https://a.com/ok/"]["status"] == "ok"
     assert out["https://a.com/old"]["status"] == "moved" and out["https://a.com/old"]["final"].endswith("new-place")
+    assert out["https://a.com/old"]["sameArticle"] is False           # slug "old" is gone → a person checks
     assert out["https://a.com/gone"]["status"] == "broken"
     assert out["https://openai.com/index/x"]["status"] == "ok-reader"
     assert out["https://openai.com/index/dead"]["status"] == "broken"
     used = cl.collect()
     assert all(u.startswith("http") for u in used) and any("data/tech.json" in w for ws in used.values() for w in ws)
+
+
+def test_link_check_applies_only_same_article_redirects(tmp_path, monkeypatch):
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("check_links", REPO / "scripts" / "check_links.py")
+    cl = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cl)
+    assert cl.same_article("https://anthropic.com/engineering/claude-think-tool",
+                           "https://www.anthropic.com/research/claude-think-tool")
+    assert not cl.same_article("https://blog.example.com/posts/launch-notes", "https://blog.example.com/")
+    data = tmp_path / "data"
+    (data / "news").mkdir(parents=True)
+    item = {"id": "x", "sources": [{"url": "https://anthropic.com/engineering/claude-think-tool"},
+                                    {"url": "https://blog.example.com/posts/launch-notes"}]}
+    (data / "news" / "x.json").write_text(json.dumps(item, ensure_ascii=False), encoding="utf-8")
+    report = tmp_path / "report.json"
+    report.write_text(json.dumps({"results": {
+        "https://anthropic.com/engineering/claude-think-tool": {
+            "status": "moved", "final": "https://www.anthropic.com/research/claude-think-tool", "sameArticle": True},
+        "https://blog.example.com/posts/launch-notes": {
+            "status": "moved", "final": "https://blog.example.com/", "sameArticle": False},
+    }}), encoding="utf-8")
+    monkeypatch.setattr(cl, "DATA", data)
+    monkeypatch.setattr(cl, "ROOT", tmp_path)
+    assert cl.apply_moved(str(report)) == 1
+    urls = [s["url"] for s in json.loads((data / "news" / "x.json").read_text(encoding="utf-8"))["sources"]]
+    assert urls == ["https://www.anthropic.com/research/claude-think-tool", "https://blog.example.com/posts/launch-notes"]

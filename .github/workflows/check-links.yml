@@ -12,6 +12,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write   # PR에 결과 표를 댓글로 남긴다
 
 jobs:
   links:
@@ -27,15 +28,30 @@ jobs:
       - run: pip install "requests>=2.31,<3"
       - name: 링크 점검 (끊긴 링크가 있으면 실패로 표시)
         run: |
+          # PR에서는 바뀐 data/ 파일의 링크만 본다. 점검 도구 자체를 고친 PR이면 전체를 본다.
+          scope=""
           if [ "${{ github.event_name }}" = "pull_request" ]; then
-            python scripts/check_links.py --only-changed "origin/${{ github.base_ref }}" --out link-report.json
-          else
-            python scripts/check_links.py --out link-report.json
+            base="origin/${{ github.base_ref }}"
+            if ! git diff --name-only "$base"...HEAD | grep -qE '^(scripts/check_links\.py|\.github/workflows/check-links\.yml)$'; then
+              scope="--only-changed $base"
+            fi
           fi
+          python scripts/check_links.py $scope --out link-report.json --md link-report.md
+      - name: PR에 결과 남기기
+        if: always() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          [ -f link-report.md ] || exit 0
+          gh pr comment "$PR" --body-file link-report.md --edit-last --create-if-none \
+            || gh pr comment "$PR" --body-file link-report.md
       - name: 결과 파일 보관
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: link-report
-          path: link-report.json
+          path: |
+            link-report.json
+            link-report.md
           if-no-files-found: ignore

@@ -59,7 +59,7 @@ python3 -m http.server 8000
 읽기  원문 페이지 본문, 표(셀 그대로), 링크 추출. 막히면 r.jina.ai 리더로 재시도
 작성  Claude가 data/news/<id>.json 형식으로 한국어 요약·팁·프롬프트·그래프 작성 (im-not-ai 문체 규칙을 함께 줌)
 검사  그래프 값, 핵심 수치, 모델 ID, 가격을 원문과 프로그램으로 대조해 원문에 없는 값은 삭제
-문체  연결어미 뒤 쉼표는 프로그램이 지우고, 다른 'AI 티' 신호가 남으면 Claude가 그 문장만 한 번 더 다듬음
+문체  연결어미 뒤 쉼표는 프로그램이 지우고 다른 'AI 티' 신호가 남으면 Claude가 그 문장만 한 번 더 다듬음
       (수치·영문 표기가 바뀌거나 50% 넘게 바뀐 문장은 버리고 원래 문장 유지)
 연결  활용 팁·제품·기능 출시 소식은 AI 활용 기술 항목에 자동 연결, 새 기술 이름은 backend/state/tech-candidates.json에 후보로만 남김
 반영  manifest 갱신 → scripts/validate_data.py 통과 시에만 저장 → 커밋·푸시 → Vercel 배포
@@ -123,7 +123,7 @@ GitHub **Actions → 새 소식 자동 업데이트 → Run workflow**에서 `up
 6시간마다 실행할 때, 그날 처음 실행이면 `python -m backend maintain`이 이어서 돌아갑니다.
 
 ```
-API 가격표    세 회사 공식 가격 페이지를 읽고, 사이트에서 다룬 모델이 실제로 API 가격표에 있는지와 현재 가격을 확인
+API 가격표    세 회사 공식 가격 페이지를 읽고 사이트에서 다룬 모델이 실제로 API 가격표에 있는지와 현재 가격을 확인
               → 원문에 있는 값만 반영(data/prices.json), 두 번 연속 안 보이는 모델은 'API 가격표에 없는 모델'로 이동
               → 새 모델 소식이 추가되면 그 회사 가격 페이지는 그날 바로 다시 확인
 프롬프트 가이드 회사별 공식 프롬프트 가이드 페이지(guides.json의 watch)를 읽어 본문이 바뀌었으면 새 권고만 추가·수정
@@ -149,7 +149,9 @@ API 가격표    세 회사 공식 가격 페이지를 읽고, 사이트에서 �
 
 ### 출처 링크 점검
 
-`.github/workflows/check-links.yml`이 매주 월요일(한국 시간 09:17)과 `data/`를 바꾸는 PR마다 `scripts/check_links.py`를 실행합니다. 봇을 막는 사이트는 r.jina.ai 리더로 다시 확인하고 끊긴 링크가 있으면 실행이 실패로 표시돼 알림이 옵니다. 결과는 실행 페이지의 요약(Summary)과 `link-report` 파일에 남습니다.
+`.github/workflows/check-links.yml`이 매주 월요일(한국 시간 09:17)과 `data/`를 바꾸는 PR마다 `scripts/check_links.py`를 실행합니다. 봇을 막는 사이트는 r.jina.ai 리더로 다시 확인하고 끊긴 링크가 있으면 실행이 실패로 표시돼 알림이 옵니다. 결과는 실행 페이지의 요약(Summary)과 `link-report` 파일에 남고 PR에서는 결과 표가 댓글로 달립니다. 점검 도구 자체를 고친 PR은 전체 링크를 다시 봅니다.
+
+주소가 바뀐 링크 중 원래 주소의 마지막 경로가 새 주소에도 있는 것은 '같은 글'로 표시됩니다. `link-report.json`을 받아 `python3 scripts/check_links.py --apply-moved link-report.json`을 실행하면 이 주소들만 새 주소로 바뀝니다. '확인 필요'로 표시된 것은 목록이나 홈으로 넘어갔을 수 있으니 직접 열어 보고 고칩니다.
 
 ### 문체 점검
 

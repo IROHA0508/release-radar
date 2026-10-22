@@ -4,10 +4,12 @@
   python3 scripts/check_links.py                  # 전체 점검, 결과 표 출력
   python3 scripts/check_links.py --out report.json
   python3 scripts/check_links.py --only-changed origin/main   # PR에서 바뀐 파일의 링크만
+  python3 scripts/check_links.py --apply-moved report.json    # '같은 글'로 넘어간 주소를 data/에 반영
 
 판정
   정상       2xx이고 주소가 그대로(스킴·www·끝 슬래시 차이는 무시)
-  주소 바뀜   2xx지만 다른 주소로 넘어감 → 새 주소로 바꿀지 사람이 확인 (경고)
+  주소 바뀜   2xx지만 다른 주소로 넘어감 (경고). 원래 주소의 마지막 경로(slug)가 새 주소에도 있으면
+             '같은 글'로 보고 --apply-moved로 바꿀 수 있다. 없으면 목록·홈으로 넘어갔을 수 있으니 사람이 확인한다.
   끊김       404·410이거나 리더로 봐도 404 (실패)
   확인 불가   봇 차단(401·403·429 등)인데 리더로도 확인하지 못함 (경고)
   오류       연결 실패·시간 초과 (경고, 한 번 더 시도한 뒤)
@@ -76,6 +78,17 @@ def same_page(a: str, b: str) -> bool:
     return norm(a) == norm(b)
 
 
+def slug(url: str) -> str:
+    parts = [p for p in urlsplit(url).path.split("/") if p]
+    return parts[-1].lower() if parts else ""
+
+
+def same_article(url: str, final: str) -> bool:
+    """리디렉션된 곳이 같은 글로 보이는지. 원래 slug가 새 주소의 경로에 그대로 들어 있으면 같은 글로 본다."""
+    s = slug(url)
+    return len(s) >= 6 and s in urlsplit(final).path.lower()
+
+
 def _get(session, url: str, timeout: int = 20):
     return session.get(url, headers={"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"}, timeout=timeout,
                        allow_redirects=True)
@@ -96,7 +109,7 @@ def check_direct(session, url: str) -> dict:
         if 200 <= code < 300:
             if same_page(url, r.url):
                 return {"status": "ok", "code": code}
-            return {"status": "moved", "code": code, "final": r.url}
+            return {"status": "moved", "code": code, "final": r.url, "sameArticle": same_article(url, r.url)}
         if code in BLOCKED or code >= 500:
             return {"status": "blocked", "code": code}
         return {"status": "error", "code": code}
@@ -138,8 +151,10 @@ def run(urls: list[str], session=None, workers: int = 8, reader_limit: int = 150
 
 # ---------- 보고 ----------
 def annotate(level: str, title: str, msg: str) -> None:
+    # GitHub는 단계마다 경고·오류 표시를 10개까지만 보여 주므로 상태별로 한 줄씩 묶어서 낸다.
     if os.environ.get("GITHUB_ACTIONS") == "true":
-        print(f"::{level} title={title}::{msg.replace(chr(10), '%0A')}", flush=True)
+        msg = msg.replace("%", "%25").replace("\r", "").replace("\n", "%0A")
+        print(f"::{level} title={title}::{msg}", flush=True)
 
 
 def report(results: dict[str, dict], used: dict[str, list[str]]) -> str:
@@ -154,13 +169,37 @@ def report(results: dict[str, dict], used: dict[str, list[str]]) -> str:
         if not rows:
             continue
         lines += ["", f"### {title} ({len(rows)})", "", "| 링크 | 결과 | 쓰인 곳 |", "|---|---|---|"]
+        notes = []
         for u, r in sorted(rows):
             detail = r.get("final") or r.get("detail") or ""
             code = f"HTTP {r['code']} " if r.get("code") else ""
+            if status == "moved":
+                detail += " (같은 글)" if r.get("sameArticle") else " (확인 필요: 다른 곳으로 넘어감)"
             lines.append(f"| {u} | {code}{detail} | {'<br>'.join(used.get(u, [])[:4])} |")
-            level = "error" if status == "broken" else "warning"
-            annotate(level, f"출처 링크 {LABEL[status]}", f"{u} {code}{detail} ← {', '.join(used.get(u, [])[:3])}")
+            notes.append(f"{u} {code}{detail} ← {', '.join(used.get(u, [])[:3])}")
+        annotate("error" if status == "broken" else "warning", f"출처 링크 {LABEL[status]} {len(rows)}개",
+                 "\n".join(notes[:40]) + (f"\n…외 {len(notes) - 40}개" if len(notes) > 40 else ""))
+    if any(r["status"] == "moved" and r.get("sameArticle") for r in results.values()):
+        lines += ["", "'같은 글'로 표시된 주소는 결과 JSON을 받아 `python3 scripts/check_links.py --apply-moved link-report.json`으로 한 번에 바꿀 수 있습니다."]
     return "\n".join(lines) + "\n"
+
+
+def apply_moved(report_path: str) -> int:
+    """결과 JSON에서 '같은 글'로 넘어간 주소를 data/ 아래 JSON에 새 주소로 바꿔 쓴다. 바꾼 개수를 돌려준다."""
+    results = json.loads(Path(report_path).read_text(encoding="utf-8"))["results"]
+    swap = {u: r["final"] for u, r in results.items() if r.get("status") == "moved" and r.get("sameArticle")}
+    changed = 0
+    for path in sorted(DATA.rglob("*.json")):
+        text = path.read_text(encoding="utf-8")
+        new = text
+        for old, final in swap.items():
+            new = new.replace(json.dumps(old, ensure_ascii=False), json.dumps(final, ensure_ascii=False))
+        if new != text:
+            path.write_text(new, encoding="utf-8")
+            changed += 1
+            print(f"바꿈: {path.relative_to(ROOT)}")
+    print(f"주소 {len(swap)}개, 파일 {changed}개를 고쳤습니다. scripts/validate_data.py로 검증하세요.")
+    return changed
 
 
 def main() -> int:
@@ -168,7 +207,12 @@ def main() -> int:
     ap.add_argument("--out", help="결과 JSON 저장 경로")
     ap.add_argument("--only-changed", metavar="BASE", help="BASE와 비교해 바뀐 data/ 파일의 링크만 점검")
     ap.add_argument("--limit", type=int, default=0, help="앞에서 N개만 점검(시험용)")
+    ap.add_argument("--md", help="결과 표(마크다운) 저장 경로. PR 댓글에 쓴다")
+    ap.add_argument("--apply-moved", metavar="REPORT", help="점검 결과 JSON의 '같은 글' 주소를 data/에 반영하고 끝낸다")
     args = ap.parse_args()
+    if args.apply_moved:
+        apply_moved(args.apply_moved)
+        return 0
     used = collect(changed_files(args.only_changed) if args.only_changed else None)
     urls = sorted(used)[: args.limit or None]
     print(f"점검할 링크 {len(urls)}개", flush=True)
@@ -178,6 +222,8 @@ def main() -> int:
     if os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as f:
             f.write(md)
+    if args.md:
+        Path(args.md).write_text(md, encoding="utf-8")
     if args.out:
         Path(args.out).write_text(json.dumps({"results": results, "usedIn": used}, ensure_ascii=False, indent=1),
                                   encoding="utf-8")
