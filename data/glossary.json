@@ -259,7 +259,7 @@
       "sources": [
         {
           "title": "Effective context engineering for AI agents (Anthropic)",
-          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+          "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents"
         }
       ]
     },
@@ -492,7 +492,7 @@
       "sources": [
         {
           "title": "Scaling Managed Agents: Decoupling the brain from the hands (Anthropic, 2026-04-08)",
-          "url": "https://anthropic.com/engineering/managed-agents"
+          "url": "https://www.anthropic.com/research/managed-agents"
         }
       ]
     },
@@ -579,7 +579,7 @@
       "sources": [
         {
           "title": "Beyond permission prompts: making Claude Code more secure and autonomous (Anthropic, 2025-10-20)",
-          "url": "https://anthropic.com/engineering/claude-code-sandboxing"
+          "url": "https://www.anthropic.com/research/claude-code-sandboxing"
         }
       ]
     },

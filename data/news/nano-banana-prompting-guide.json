@@ -134,11 +134,11 @@
     },
     {
       "title": "Gemini 3.1 Flash Image (Nano Banana 2) 모델 문서 (Google Cloud)",
-      "url": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-1-flash-image"
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-1-flash-image"
     },
     {
       "title": "Gemini 3 Pro Image (Nano Banana Pro) 모델 문서 (Google Cloud)",
-      "url": "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/3-pro-image"
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-pro-image"
     }
   ]
 }

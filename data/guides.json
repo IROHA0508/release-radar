@@ -372,11 +372,11 @@
             },
             {
               "title": "Custom GPT 은퇴·이전 FAQ",
-              "url": "https://help.openai.com/en/articles/20001519"
+              "url": "https://help.openai.com/en/articles/20001519-custom-gpt-retirement-and-migration-faq"
             },
             {
               "title": "Memory in ChatGPT",
-              "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+              "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
             }
           ],
           "addedAt": "2026-10-21"
@@ -390,7 +390,7 @@
           "models": [],
           "source": {
             "title": "Memory in ChatGPT",
-            "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+            "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
           },
           "addedAt": "2026-10-21"
         },
@@ -451,7 +451,7 @@
           ],
           "source": {
             "title": "Memory in ChatGPT",
-            "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+            "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
           },
           "addedAt": "2026-10-22"
         },
@@ -594,7 +594,7 @@
         },
         {
           "title": "Memory in ChatGPT",
-          "url": "https://help.openai.com/en/articles/8590148-memory-faq",
+          "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
           "checkedAt": "2026-10-22 04:01",
           "hash": "5242978476559c07",
           "changedAt": "2026-10-22"
@@ -845,7 +845,7 @@
           ],
           "source": {
             "title": "The new rules of context engineering for Claude 5 generation models (Anthropic)",
-            "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
+            "url": "https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/"
           }
         },
         {
@@ -942,7 +942,7 @@
             },
             {
               "title": "Best practices for prompt engineering (Claude 블로그)",
-              "url": "https://claude.com/blog/best-practices-for-prompt-engineering"
+              "url": "https://claude.com/resources/articles/best-practices-for-prompt-engineering"
             }
           ],
           "addedAt": "2026-10-21"
@@ -965,7 +965,7 @@
             },
             {
               "title": "Styles are moving to skills",
-              "url": "https://support.claude.com/en/articles/10181068-configure-and-use-styles"
+              "url": "https://support.claude.com/en/articles/10181068-styles-are-moving-to-skills"
             }
           ],
           "addedAt": "2026-10-21",
@@ -1300,7 +1300,7 @@
           "text": "시작하기 전에, 이 일을 제대로 하는 데 필요한 것을 전부 나에게 물어봐 줘.\n[작업 설명]\n\n(원하는 결과가 아직 분명하지 않을 때)\n대략 이런 걸 원해: [원하는 것]. 이걸 풀어 갈 방법 세 가지를 각각 짧은 샘플과 함께 보여 줘.\n\n(결과를 검토할 때)\n이 수치는 어디서 나왔어?",
           "source": {
             "title": "Working with Claude Fable 5 in Claude Cowork (Anthropic)",
-            "url": "https://claude.com/blog/working-with-claude-fable-5-in-claude-cowork"
+            "url": "https://claude.com/resources/articles/working-with-claude-fable-5-in-claude-cowork"
           }
         },
         {
@@ -1989,7 +1989,7 @@
           },
           {
             "title": "Styles → Skills",
-            "url": "https://support.claude.com/en/articles/10181068-configure-and-use-styles"
+            "url": "https://support.claude.com/en/articles/10181068-styles-are-moving-to-skills"
           }
         ]
       },
@@ -2070,7 +2070,7 @@
               },
               {
                 "title": "Styles are moving to skills",
-                "url": "https://support.claude.com/en/articles/10181068-configure-and-use-styles"
+                "url": "https://support.claude.com/en/articles/10181068-styles-are-moving-to-skills"
               }
             ],
             "methodId": "anthropic-projects-styles",
@@ -2144,7 +2144,7 @@
             "sources": [
               {
                 "title": "Memory in ChatGPT",
-                "url": "https://help.openai.com/en/articles/8590148-memory-faq"
+                "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt"
               }
             ],
             "methodId": "openai-memory"

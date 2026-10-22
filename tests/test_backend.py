@@ -906,6 +906,10 @@ def test_link_check_classifies_and_uses_reader_for_blocked_sites():
     assert out["https://a.com/ok/"]["status"] == "ok"
     assert out["https://a.com/old"]["status"] == "moved" and out["https://a.com/old"]["final"].endswith("new-place")
     assert out["https://a.com/old"]["sameArticle"] is False           # slug "old" is gone → a person checks
+    kept = next(iter(cl.KEEP))
+    kept_out = cl.run([kept], session=LinkSession({kept: (200, kept.rstrip("/") + "/2026-01-01/x", "")}),
+                      workers=1, pause=0)
+    assert kept_out[kept]["status"] == "ok"                                 # deliberate redirect is not reported
     assert out["https://a.com/gone"]["status"] == "broken"
     assert out["https://openai.com/index/x"]["status"] == "ok-reader"
     assert out["https://openai.com/index/dead"]["status"] == "broken"
@@ -939,3 +943,12 @@ def test_link_check_applies_only_same_article_redirects(tmp_path, monkeypatch):
     assert cl.apply_moved(str(report)) == 1
     urls = [s["url"] for s in json.loads((data / "news" / "x.json").read_text(encoding="utf-8"))["sources"]]
     assert urls == ["https://www.anthropic.com/research/claude-think-tool", "https://blog.example.com/posts/launch-notes"]
+
+
+def test_moved_claude_blog_post_is_still_recognized():
+    from backend import detect
+
+    assert detect.slug_key("https://claude.com/blog/what-a-task-costs-on-opus-5-5") == \
+        detect.slug_key("https://claude.dev/blog/what-a-task-costs-on-opus-5-5/")
+    assert detect.slug_key("https://claude.com/resources/articles/web-search-api") == \
+        detect.slug_key("https://claude.com/blog/web-search-api")

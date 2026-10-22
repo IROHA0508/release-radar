@@ -36,6 +36,14 @@ UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ch
       "ReleaseRadarBot/1.0 (+https://release-radar-ten.vercel.app)")
 BLOCKED = {401, 403, 405, 406, 429, 451, 503}
 GONE = {404, 410}
+# 넘어가는 곳이 있어도 일부러 원래 주소를 쓰는 링크. 넘어가면 '정상'으로 보고 끊기면 그대로 '끊김'으로 알린다.
+KEEP = {
+    "https://modelcontextprotocol.io/docs/learn/architecture": "버전 없는 최신 문서 주소(날짜가 붙은 판으로 넘어감)",
+    "https://deepmind.google/models/evals-methodology/gemini-3-8-live/": "공식 평가 방법 안내 주소(PDF로 넘어감)",
+    "https://deepmind.google/models/evals-methodology/gemini-3-8-tts/": "공식 평가 방법 안내 주소(PDF로 넘어감)",
+    "https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/":
+        "소식 원문 주소. 자동 업데이트가 같은 글인지 판단할 때 쓰므로 그대로 둔다",
+}
 LABEL = {"ok": "정상", "ok-reader": "정상(리더)", "moved": "주소 바뀜", "broken": "끊김", "unknown": "확인 불가",
          "error": "오류"}
 
@@ -146,6 +154,8 @@ def run(urls: list[str], session=None, workers: int = 8, reader_limit: int = 150
     for u, r in results.items():
         if r["status"] == "blocked":
             r["status"] = "unknown"
+        if r["status"] == "moved" and u in KEEP:
+            r.update(status="ok", detail="유지: " + KEEP[u])
     return results
 
 

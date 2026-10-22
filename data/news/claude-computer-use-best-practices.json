@@ -166,7 +166,7 @@
   "sources": [
     {
       "title": "Best practices for computer and browser use with Claude (Anthropic)",
-      "url": "https://claude.com/blog/best-practices-for-computer-and-browser-use-with-claude"
+      "url": "https://claude.com/resources/articles/best-practices-for-computer-and-browser-use-with-claude"
     },
     {
       "title": "Computer use tool (Claude Platform Docs)",
@@ -174,7 +174,7 @@
     },
     {
       "title": "Steering thinking (Claude Platform Docs)",
-      "url": "https://platform.claude.com/docs/en/build-with-claude/adaptive-thinking"
+      "url": "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost"
     }
   ]
 }

@@ -285,7 +285,7 @@
         },
         {
           "title": "Python Quickstart for ADK (Google)",
-          "url": "https://google.github.io/adk-docs/get-started/quickstart/"
+          "url": "https://adk.dev/get-started/quickstart/"
         }
       ],
       "news": [
@@ -339,11 +339,11 @@
       "sources": [
         {
           "title": "Effective context engineering for AI agents (Anthropic)",
-          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+          "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents"
         },
         {
           "title": "The new rules of context engineering for Claude 5 generation models (Anthropic)",
-          "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
+          "url": "https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/"
         },
         {
           "title": "Compaction 가이드 (OpenAI API)",
@@ -405,11 +405,11 @@
       "sources": [
         {
           "title": "Scaling Managed Agents: Decoupling the brain from the hands (Anthropic, 2026-04-08)",
-          "url": "https://anthropic.com/engineering/managed-agents"
+          "url": "https://www.anthropic.com/research/managed-agents"
         },
         {
           "title": "Effective context engineering for AI agents (Anthropic)",
-          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+          "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents"
         },
         {
           "title": "Automate actions with hooks (Claude Code Docs)",
@@ -586,7 +586,7 @@
         },
         {
           "title": "Effective context engineering for AI agents (Anthropic)",
-          "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents"
+          "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents"
         }
       ],
       "news": [
@@ -635,7 +635,7 @@
       "sources": [
         {
           "title": "Demystifying evals for AI agents (Anthropic, 2026-01-09)",
-          "url": "https://anthropic.com/engineering/demystifying-evals-for-ai-agents"
+          "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents"
         },
         {
           "title": "Evaluating AI agents: moving past the vibe check (Google Developers Blog)",
@@ -762,7 +762,7 @@
         },
         {
           "title": "Maximizing the value of your Claude Code sessions (Anthropic)",
-          "url": "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions"
+          "url": "https://claude.com/resources/articles/maximizing-the-value-of-your-claude-code-sessions"
         },
         {
           "title": "Automate actions with hooks (Claude Code Docs)",
@@ -887,7 +887,7 @@
       "sources": [
         {
           "title": "Introducing advanced tool use on the Claude Developer Platform (Anthropic, 2025-11-24)",
-          "url": "https://anthropic.com/engineering/advanced-tool-use"
+          "url": "https://www.anthropic.com/research/advanced-tool-use"
         },
         {
           "title": "Programmatic tool calling (Claude Platform Docs)",
@@ -1017,7 +1017,7 @@
         },
         {
           "title": "Demystifying evals for AI agents (Anthropic, 2026-01-09)",
-          "url": "https://anthropic.com/engineering/demystifying-evals-for-ai-agents"
+          "url": "https://www.anthropic.com/research/demystifying-evals-for-ai-agents"
         }
       ],
       "news": [
@@ -1075,7 +1075,7 @@
         },
         {
           "title": "The new rules of context engineering for Claude 5 generation models (Anthropic)",
-          "url": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
+          "url": "https://claude.dev/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models/"
         },
         {
           "title": "Manage Claude's memory (Claude Code Docs)",
@@ -1147,7 +1147,7 @@
         },
         {
           "title": "Lessons from building Claude Code: How we use skills (Anthropic)",
-          "url": "https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills"
+          "url": "https://claude.dev/blog/lessons-from-building-claude-code-how-we-use-skills/"
         }
       ],
       "news": [
@@ -1264,11 +1264,11 @@
         },
         {
           "title": "Introducing the Gemini 2.5 Computer Use model (Google, 2025-10-07)",
-          "url": "https://blog.google/technology/google-deepmind/gemini-computer-use-model/"
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-computer-use-model/"
         },
         {
           "title": "Best practices for computer and browser use with Claude (Anthropic)",
-          "url": "https://claude.com/blog/best-practices-for-computer-and-browser-use-with-claude"
+          "url": "https://claude.com/resources/articles/best-practices-for-computer-and-browser-use-with-claude"
         },
         {
           "title": "Computer use tool (Claude Platform Docs)",
@@ -1391,7 +1391,7 @@
         },
         {
           "title": "What a task costs on Opus 5.5 (Anthropic)",
-          "url": "https://claude.com/blog/what-a-task-costs-on-opus-5-5"
+          "url": "https://claude.dev/blog/what-a-task-costs-on-opus-5-5/"
         },
         {
           "title": "Prompt caching 가이드 (OpenAI API)",
@@ -1510,7 +1510,7 @@
         },
         {
           "title": "Introducing web search on the Anthropic API (Anthropic, 2025-05-07)",
-          "url": "https://claude.com/blog/web-search-api"
+          "url": "https://claude.com/resources/articles/web-search-api"
         },
         {
           "title": "URL context tool for Gemini API now generally available (Google, 2025-08-18)",
@@ -1562,7 +1562,7 @@
       "sources": [
         {
           "title": "The \"think\" tool: Enabling Claude to stop and think (Anthropic, 2025-03-20)",
-          "url": "https://anthropic.com/engineering/claude-think-tool"
+          "url": "https://www.anthropic.com/research/claude-think-tool"
         }
       ],
       "news": [],
@@ -1835,7 +1835,7 @@
         },
         {
           "title": "Maximizing the value of your Claude Code sessions (Anthropic)",
-          "url": "https://claude.com/blog/maximizing-the-value-of-your-claude-code-sessions"
+          "url": "https://claude.com/resources/articles/maximizing-the-value-of-your-claude-code-sessions"
         }
       ],
       "news": [
@@ -2040,7 +2040,7 @@
       "sources": [
         {
           "title": "Desktop Extensions: One-click MCP server installation for Claude Desktop (Anthropic, 2025-06-26)",
-          "url": "https://www.anthropic.com/engineering/desktop-extensions"
+          "url": "https://www.anthropic.com/research/desktop-extensions"
         }
       ],
       "news": [],
@@ -2089,7 +2089,7 @@
       "sources": [
         {
           "title": "How we built our multi-agent research system (Anthropic, 2025-06-13)",
-          "url": "https://www.anthropic.com/engineering/multi-agent-research-system"
+          "url": "https://www.anthropic.com/research/multi-agent-research-system"
         }
       ],
       "news": [],
@@ -2138,7 +2138,7 @@
       "sources": [
         {
           "title": "Gemini CLI: your open-source AI agent (Google, 2025-06-25)",
-          "url": "https://blog.google/technology/developers/introducing-gemini-cli/"
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-cli-open-source-ai-agent/"
         },
         {
           "title": "Manage Claude's memory (Claude Code Docs)",
@@ -2199,7 +2199,7 @@
         },
         {
           "title": "AGENTS.md (openai/agents.md, GitHub)",
-          "url": "https://github.com/openai/agents.md"
+          "url": "https://github.com/agentsmd/agents.md"
         },
         {
           "title": "Manage Claude's memory (Claude Code Docs)",
@@ -2207,7 +2207,7 @@
         },
         {
           "title": "Gemini CLI: your open-source AI agent (Google, 2025-06-25)",
-          "url": "https://blog.google/technology/developers/introducing-gemini-cli/"
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-cli-open-source-ai-agent/"
         }
       ],
       "news": [
@@ -2263,7 +2263,7 @@
         },
         {
           "title": "Beyond permission prompts: making Claude Code more secure and autonomous (Anthropic, 2025-10-20)",
-          "url": "https://anthropic.com/engineering/claude-code-sandboxing"
+          "url": "https://www.anthropic.com/research/claude-code-sandboxing"
         }
       ],
       "news": [
@@ -2417,7 +2417,7 @@
       "sources": [
         {
           "title": "Writing effective tools for agents — with agents (Anthropic, 2025-09-11)",
-          "url": "https://www.anthropic.com/engineering/writing-tools-for-agents"
+          "url": "https://www.anthropic.com/research/writing-tools-for-agents"
         }
       ],
       "news": [],
@@ -2610,7 +2610,7 @@
       "sources": [
         {
           "title": "Introducing apps in ChatGPT and the new Apps SDK (OpenAI, 2025-10-06)",
-          "url": "https://openai.com/blog/introducing-apps-in-chatgpt"
+          "url": "https://openai.com/index/introducing-apps-in-chatgpt/"
         }
       ],
       "news": [],
@@ -2656,7 +2656,7 @@
       "sources": [
         {
           "title": "Grounding with Google Maps: Now available in the Gemini API (Google, 2025-10-17)",
-          "url": "https://blog.google/technology/developers/grounding-google-maps-gemini-api/"
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/grounding-google-maps-gemini-api/"
         }
       ],
       "news": [],
@@ -2705,7 +2705,7 @@
       "sources": [
         {
           "title": "Beyond permission prompts: making Claude Code more secure and autonomous (Anthropic, 2025-10-20)",
-          "url": "https://anthropic.com/engineering/claude-code-sandboxing"
+          "url": "https://www.anthropic.com/research/claude-code-sandboxing"
         },
         {
           "title": "Introducing Codex (OpenAI, 2025-05-16)",
@@ -2758,7 +2758,7 @@
       "sources": [
         {
           "title": "Code execution with MCP: building more efficient agents (Anthropic, 2025-11-04)",
-          "url": "https://www.anthropic.com/engineering/code-execution-with-mcp"
+          "url": "https://www.anthropic.com/research/code-execution-with-mcp"
         }
       ],
       "news": [],
@@ -2811,7 +2811,7 @@
         },
         {
           "title": "Introducing the File Search Tool in Gemini API (Google, 2025-11-06)",
-          "url": "https://blog.google/technology/developers/file-search-gemini-api/"
+          "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-search-gemini-api/"
         }
       ],
       "news": [],
@@ -2860,7 +2860,7 @@
       "sources": [
         {
           "title": "Introducing advanced tool use on the Claude Developer Platform (Anthropic, 2025-11-24)",
-          "url": "https://anthropic.com/engineering/advanced-tool-use"
+          "url": "https://www.anthropic.com/research/advanced-tool-use"
         }
       ],
       "news": [],
@@ -2909,7 +2909,7 @@
       "sources": [
         {
           "title": "Effective harnesses for long-running agents (Anthropic, 2025-11-26)",
-          "url": "https://anthropic.com/engineering/effective-harnesses-for-long-running-agents"
+          "url": "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents"
         }
       ],
       "news": [],
