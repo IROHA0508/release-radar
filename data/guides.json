@@ -950,8 +950,8 @@
         {
           "id": "anthropic-projects-styles",
           "category": "앱 기능과 설정",
-          "title": "반복되는 맥락은 프로젝트 지시·지식, 문체는 스타일에 두기",
-          "body": "claude.ai의 프로젝트에는 Claude가 어떻게 행동하고 답할지 지시를 저장할 수 있고 그 지시는 프로젝트 안의 모든 대화에 쓰입니다. 문서·텍스트 파일·코드 조각을 프로젝트 지식에 올리면 역시 모든 대화에서 쓰이며 프로젝트 안의 대화끼리는 지식에 올린 내용이 아니면 맥락을 공유하지 않습니다. 모든 대화에 적용할 지시는 설정의 Claude 지시(개인 맞춤 설정)에, 문체는 스타일에서 '지시 직접 설정'으로 넣으세요. 메모리는 프로젝트마다 따로 있어 다른 프로젝트의 메모리는 쓰지 않습니다. 다만 프로젝트 밖 대화의 메모리는 함께 쓰이니, 완전히 분리하려면 프로젝트 페이지의 Memory에서 'Use account memory'를 끄세요. 앱에는 API의 시스템 프롬프트 자리가 따로 없으므로 이런 곳이 그 역할을 대신하며 지시문 안에서도 태그나 제목으로 구획을 나눌 수 있습니다.",
+          "title": "반복되는 맥락은 프로젝트 지시·지식에, 모든 대화에 쓸 지시는 Claude 지시에 두기",
+          "body": "claude.ai의 프로젝트에는 Claude가 어떻게 행동하고 답할지 지시를 저장할 수 있고 그 지시는 프로젝트 안의 모든 대화에 쓰입니다. 문서·텍스트 파일·코드 조각을 프로젝트 지식에 올리면 역시 모든 대화에서 쓰이며 프로젝트 안의 대화끼리는 지식에 올린 내용이 아니면 맥락을 공유하지 않습니다. 모든 대화에 적용할 지시는 설정의 'Claude 지시(Instructions for Claude)'에 넣으세요. 스타일은 스킬로 바뀌는 중입니다. 직접 만든 스타일은 스킬로 자동 이전되지만 꺼진 채로 옮겨지므로 Customize > Skills에서 켜야 하고 이전이 끝나면 스타일 메뉴는 사라집니다. 스킬을 쓰고 싶지 않으면 같은 말투 지시를 Claude 지시에 적으면 됩니다. 메모리는 프로젝트마다 따로 있어 다른 프로젝트의 메모리는 쓰지 않습니다. 다만 프로젝트 밖 대화의 메모리는 함께 쓰이니, 완전히 분리하려면 프로젝트 페이지의 Memory에서 'Use account memory'를 끄세요. 앱에는 API의 시스템 프롬프트 자리가 따로 없으므로 이런 곳이 그 역할을 대신하며 지시문 안에서도 태그나 제목으로 구획을 나눌 수 있습니다.",
           "after": "<role>\n[회사]의 [팀] 문서를 검토하는 편집자로 답해 줘.\n</role>\n\n<rules>\n- 프로젝트 지식의 [용어집 파일]에 있는 용어를 그대로 써.\n- 고친 곳마다 이유를 한 줄로 달아 줘.\n- 숫자는 원문과 다르게 바꾸지 마.\n</rules>\n\n<output>\n먼저 수정본, 그다음 변경 내역 표(원문 | 수정 | 이유).\n</output>",
           "models": [],
           "source": {
@@ -964,11 +964,12 @@
               "url": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features"
             },
             {
-              "title": "Configure and use styles",
-              "url": "https://support.claude.com/en/articles/10181068"
+              "title": "Styles are moving to skills",
+              "url": "https://support.claude.com/en/articles/10181068-configure-and-use-styles"
             }
           ],
-          "addedAt": "2026-10-21"
+          "addedAt": "2026-10-21",
+          "updatedAt": "2026-10-22"
         },
         {
           "id": "anthropic-memory",
@@ -1987,8 +1988,8 @@
             "url": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features"
           },
           {
-            "title": "Styles",
-            "url": "https://support.claude.com/en/articles/10181068"
+            "title": "Styles → Skills",
+            "url": "https://support.claude.com/en/articles/10181068-configure-and-use-styles"
           }
         ]
       },
@@ -2060,19 +2061,20 @@
             "methodId": "openai-custom-instructions-projects"
           },
           "anthropic": {
-            "name": "Claude 지시 · 스타일",
-            "note": "모든 대화에 적용할 지시는 설정의 개인 맞춤 설정에, 문체는 스타일에 저장합니다.",
+            "name": "Claude 지시 · 스킬",
+            "note": "모든 대화에 적용할 지시는 설정의 'Claude 지시'에 저장합니다. 스타일은 스킬로 바뀌는 중이라 직접 만든 스타일은 Customize > Skills에서 켜서 씁니다.",
             "sources": [
               {
                 "title": "Understanding Claude's personalization features",
                 "url": "https://support.claude.com/en/articles/10185728-understanding-claude-s-personalization-features"
               },
               {
-                "title": "Configure and use styles",
-                "url": "https://support.claude.com/en/articles/10181068"
+                "title": "Styles are moving to skills",
+                "url": "https://support.claude.com/en/articles/10181068-configure-and-use-styles"
               }
             ],
-            "methodId": "anthropic-projects-styles"
+            "methodId": "anthropic-projects-styles",
+            "updatedAt": "2026-10-22"
           },
           "google": {
             "name": "Gemini에 대한 지시",
