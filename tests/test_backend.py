@@ -776,3 +776,187 @@ def test_changed_help_page_rechecks_feature_map_cells(site):
                                        {"update": [{"key": "schedule", "name": "예약 작업", "note": "Plus는 12개까지."}]},
                                        page.text, date(2026, 10, 23))
     assert out and out[0].startswith("제외") and pairs[0][1]["note"] == "Plus는 8개까지."
+
+
+# ---- style rules (im-not-ai), product kind, technique links ----
+def test_connective_comma_removed_but_noun_comma_kept():
+    from backend.humanize import checker
+
+    sc = checker()
+    text = "모델을 고르고, 결과를 확인하며, 참고, 로고, 빠르지만, 비쌉니다."
+    assert sc.fix_c11(text) == "모델을 고르고 결과를 확인하며 참고, 로고, 빠르지만 비쌉니다."
+    assert sc.c11_spans("최고, 광고, 하고,") == ["하고,"]
+
+
+class StyleClaude:
+    def __init__(self, fields):
+        self.fields, self.calls = fields, 0
+
+    def json_call(self, **kw):
+        self.calls += 1
+        return {"fields": self.fields}
+
+
+def test_polish_keeps_numbers_and_rejects_big_rewrites():
+    from backend import humanize
+
+    item = {"kind": "활용 팁", "title": "추론 유지: 점수 3배", "headline": "설정 두 개로 바뀝니다",
+            "tldr": "핵심은 Responses API를 쓰는 것입니다. 점수가 13.3%에서 38.3%로 올랐고, 토큰은 줄었습니다.",
+            "changes": ["A가 아니라 B입니다.", "C가 아니라 D입니다."], "availability": [], "cautions": [], "tips": []}
+    claude = StyleClaude([
+        {"path": "tldr", "text": "Responses API를 쓰면 됩니다. 점수가 13.3%에서 38.3%로 올랐고 토큰은 줄었습니다."},
+        {"path": "title", "text": "추론 유지로 점수 3배"},
+        {"path": "changes.0", "text": "B입니다(A 대신). 수치 99%"},          # adds a number: rejected
+        {"path": "changes.1", "text": "완전히 다른 문장으로 바꿔 버린 아주 긴 설명입니다 D"},  # rewrites too much
+    ])
+    notes = humanize.polish(claude, item)
+    assert claude.calls == 1
+    assert item["tldr"].startswith("Responses API를 쓰면") and "올랐고 토큰" in item["tldr"]
+    assert item["title"] == "추론 유지로 점수 3배"
+    assert item["changes"] == ["A가 아니라 B입니다.", "C가 아니라 D입니다."]
+    assert sum("거부" in n for n in notes) == 2
+
+
+def test_polish_skips_clean_items_without_a_call():
+    from backend import humanize
+
+    item = {"kind": "모델 출시", "headline": "새 모델", "tldr": "빠르고, 쌉니다.", "changes": [], "tips": []}
+    claude = StyleClaude([])
+    assert humanize.polish(claude, item) == [] and claude.calls == 0
+    assert item["tldr"] == "빠르고 쌉니다."           # the comma rule needs no Claude call
+
+
+def test_product_launch_kind_is_valid(site):
+    item = json.loads((site / "data/news/claude-sonnet-5-5.json").read_text())
+    item.update(id="claude-duet-test", kind="제품·기능 출시", title="Claude Duet", models=[], charts=[])
+    store.write_news(item)
+    store.add_to_manifest(item["id"])
+    ok, out = store.validate()
+    assert ok, out
+
+
+class LinkClaude:
+    def __init__(self, out):
+        self.out, self.calls = out, 0
+
+    def json_call(self, **kw):
+        self.calls += 1
+        assert "AI 활용 기술 목록" in kw["user"] and kw["model"] == config.TRIAGE_MODEL
+        return self.out
+
+
+def test_new_tip_is_linked_to_techniques_and_new_names_are_queued(site):
+    from backend import techlinks
+
+    item = {"id": "openai-prompting-fundamentals", "company": "google", "kind": "활용 팁", "title": "t",
+            "headline": "h", "tldr": "x", "changes": [], "tips": []}
+    claude = LinkClaude({"links": [{"id": "compaction", "reason": "r"}, {"id": "no-such-tech", "reason": "r"},
+                                   {"id": "tool-use", "reason": "r"}],
+                         "candidates": [{"name": "목표 고정 실행", "en": "Goal mode", "oneLiner": "o"},
+                                        {"name": "컴팩션", "en": "Compaction", "oneLiner": "이미 있음"}]})
+    notes = techlinks.link_item(claude, item, date(2026, 10, 22))
+    tech = {t["id"]: t for t in json.loads((site / "data/tech.json").read_text())["items"]}
+    assert "google" in tech["compaction"]["companies"]                 # a radar item learns the company
+    assert item["id"] in tech["tool-use"]["news"]
+    queue = json.loads((site / "backend/state/tech-candidates.json").read_text())
+    assert [q["name"] for q in queue] == ["목표 고정 실행"]               # known names are not queued
+    assert any("새 기술 후보" in n for n in notes)
+    ok, out = store.validate()
+    assert ok, out
+    # same item again: nothing new is linked or queued twice
+    techlinks.link_item(claude, item, date(2026, 10, 22))
+    queue = json.loads((site / "backend/state/tech-candidates.json").read_text())
+    assert len(queue) == 1 and queue[0]["news"] == [item["id"]]
+
+
+# ---- source link check ----
+class _Resp:
+    def __init__(self, url, code, text=""):
+        self.url, self.status_code, self.text = url, code, text
+
+
+class LinkSession:
+    def __init__(self, table):
+        self.table, self.calls = table, []
+
+    def get(self, url, **kw):
+        self.calls.append(url)
+        code, final, text = self.table[url]
+        return _Resp(final or url, code, text)
+
+
+def test_link_check_classifies_and_uses_reader_for_blocked_sites():
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("check_links", REPO / "scripts" / "check_links.py")
+    cl = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cl)
+    r = cl.READER
+    table = {
+        "https://a.com/ok/": (200, "https://www.a.com/ok", ""),           # only www/slash differ
+        "https://a.com/old": (200, "https://a.com/new-place", ""),
+        "https://a.com/gone": (404, None, ""),
+        r + "https://a.com/gone": (200, None, "Warning: Target URL returned error 404: Not Found"),
+        "https://help.example.com/a/1": (404, None, ""),                   # 404 only for CI requests
+        r + "https://help.example.com/a/1": (200, None, "Title: Help\n\nbody"),
+        "https://openai.com/index/x": (403, None, ""),
+        r + "https://openai.com/index/x": (200, None, "Title: X\n\nbody"),
+        "https://openai.com/index/dead": (403, None, ""),
+        r + "https://openai.com/index/dead": (200, None, "Warning: Target URL returned error 404: Not Found"),
+    }
+    out = cl.run(["https://a.com/ok/", "https://a.com/old", "https://a.com/gone", "https://help.example.com/a/1",
+                  "https://openai.com/index/x", "https://openai.com/index/dead"],
+                 session=LinkSession(table), workers=2, pause=0)
+    assert out["https://help.example.com/a/1"]["status"] == "ok-reader"
+    assert out["https://a.com/ok/"]["status"] == "ok"
+    assert out["https://a.com/old"]["status"] == "moved" and out["https://a.com/old"]["final"].endswith("new-place")
+    assert out["https://a.com/old"]["sameArticle"] is False           # slug "old" is gone → a person checks
+    kept = next(iter(cl.KEEP))
+    kept_out = cl.run([kept], session=LinkSession({kept: (200, kept.rstrip("/") + "/2026-01-01/x", "")}),
+                      workers=1, pause=0)
+    assert kept_out[kept]["status"] == "ok"
+    soft = next(iter(cl.SOFT_404))
+    soft_out = cl.run([soft], session=LinkSession({soft: (404, None, ""), r + soft: (404, None, "")}), workers=1, pause=0)
+    assert soft_out[soft]["status"] == "unknown"                       # warning, not a failure                                 # deliberate redirect is not reported
+    assert out["https://a.com/gone"]["status"] == "broken"
+    assert out["https://openai.com/index/x"]["status"] == "ok-reader"
+    assert out["https://openai.com/index/dead"]["status"] == "broken"
+    used = cl.collect()
+    assert all(u.startswith("http") for u in used) and any("data/tech.json" in w for ws in used.values() for w in ws)
+
+
+def test_link_check_applies_only_same_article_redirects(tmp_path, monkeypatch):
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("check_links", REPO / "scripts" / "check_links.py")
+    cl = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cl)
+    assert cl.same_article("https://anthropic.com/engineering/claude-think-tool",
+                           "https://www.anthropic.com/research/claude-think-tool")
+    assert not cl.same_article("https://blog.example.com/posts/launch-notes", "https://blog.example.com/")
+    data = tmp_path / "data"
+    (data / "news").mkdir(parents=True)
+    item = {"id": "x", "sources": [{"url": "https://anthropic.com/engineering/claude-think-tool"},
+                                    {"url": "https://blog.example.com/posts/launch-notes"}]}
+    (data / "news" / "x.json").write_text(json.dumps(item, ensure_ascii=False), encoding="utf-8")
+    report = tmp_path / "report.json"
+    report.write_text(json.dumps({"results": {
+        "https://anthropic.com/engineering/claude-think-tool": {
+            "status": "moved", "final": "https://www.anthropic.com/research/claude-think-tool", "sameArticle": True},
+        "https://blog.example.com/posts/launch-notes": {
+            "status": "moved", "final": "https://blog.example.com/", "sameArticle": False},
+    }}), encoding="utf-8")
+    monkeypatch.setattr(cl, "DATA", data)
+    monkeypatch.setattr(cl, "ROOT", tmp_path)
+    assert cl.apply_moved(str(report)) == 1
+    urls = [s["url"] for s in json.loads((data / "news" / "x.json").read_text(encoding="utf-8"))["sources"]]
+    assert urls == ["https://www.anthropic.com/research/claude-think-tool", "https://blog.example.com/posts/launch-notes"]
+
+
+def test_moved_claude_blog_post_is_still_recognized():
+    from backend import detect
+
+    assert detect.slug_key("https://claude.com/blog/what-a-task-costs-on-opus-5-5") == \
+        detect.slug_key("https://claude.dev/blog/what-a-task-costs-on-opus-5-5/")
+    assert detect.slug_key("https://claude.com/resources/articles/web-search-api") == \
+        detect.slug_key("https://claude.com/blog/web-search-api")

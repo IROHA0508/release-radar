@@ -155,7 +155,15 @@ def _ask(claude, vendor: dict, source: dict, page_text: str, intro: str) -> dict
     user = (f"회사: {vendor['company']} ({vendor.get('name')})\n원문: {source.get('title')} {source.get('url')}\n{intro}\n\n"
             f"# 지금 가이드에 있는 카드\n{json.dumps(existing, ensure_ascii=False, indent=1)}\n\n"
             f"# 원문\n{page_text[:50000]}")
-    return claude.json_call(model=config.SUMMARY_MODEL, system=RULES, user=user, schema=GUIDE_UPDATE, max_tokens=8000)
+    from .humanize import checker, style_rules
+
+    out = claude.json_call(model=config.SUMMARY_MODEL, system=RULES + "\n\n# 문체 규칙\n" + style_rules(), user=user,
+                           schema=GUIDE_UPDATE, max_tokens=8000)
+    for m in (out.get("add") or []) + (out.get("update") or []):
+        for key in ("title", "body"):
+            if isinstance(m.get(key), str):
+                m[key] = checker().fix_c11(m[key])
+    return out
 
 
 def check_watch(claude, today: date, now_text: str, force: bool = False, fetch=None) -> dict:

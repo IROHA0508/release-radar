@@ -252,7 +252,7 @@
   ],
   "cautions": [
     "복잡한 에이전트 코딩은 Sonnet 5.5·Opus 5.5가 더 적합합니다. Terminal-Bench 4.0에서 Haiku 5.5는 39.2%, Sonnet 5.5는 70.6%입니다.",
-    "사이버보안 보호 장치가 Haiku 4.5보다 엄격합니다. 침투 테스트 등은 막히며, 더 넓은 활동은 Cyber Verification Program을 신청해야 합니다.",
+    "사이버보안 보호 장치가 Haiku 4.5보다 엄격합니다. 침투 테스트 등은 막히며 더 넓은 활동은 Cyber Verification Program을 신청해야 합니다.",
     "새 토크나이저 때문에 같은 작업에서 토큰을 약간 더 씁니다."
   ],
   "sources": [

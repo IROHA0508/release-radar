@@ -3,9 +3,9 @@
   "company": "anthropic",
   "date": "2026-06-03",
   "kind": "활용 팁",
-  "title": "Claude Code 팀의 스킬 작성법: Gotchas, 폴더, 트리거 설명",
+  "title": "Gotchas·폴더·트리거 설명으로 보는 Claude Code 팀의 스킬 작성법",
   "headline": "Anthropic이 사내에서 스킬 수백 개를 쓰며 얻은 작성·배포 요령",
-  "tldr": "Claude Code 팀의 Thariq Shihipar가 Anthropic 사내에서 수백 개의 스킬을 운영하며 정리한 글입니다. 스킬에서 가장 가치 있는 부분은 실제 실패에서 모은 Gotchas 섹션이고, description은 요약이 아니라 '언제 이 스킬을 발동할지'를 쓰는 곳이라고 강조합니다.",
+  "tldr": "Claude Code 팀의 Thariq Shihipar가 Anthropic 사내에서 수백 개의 스킬을 운영하며 정리한 글입니다. 스킬에서 가장 가치 있는 부분은 실제 실패에서 모은 Gotchas 섹션이며 description에는 내용 요약 대신 '언제 이 스킬을 발동할지'를 써야 한다고 강조합니다.",
   "models": [],
   "numbers": [
     {
@@ -25,7 +25,7 @@
     "스킬은 '그냥 마크다운 파일'이 아니라 스크립트, 에셋, 데이터 등을 담을 수 있는 폴더입니다. 파일 시스템을 이용해 필요한 내용을 필요할 때 읽게 할 수 있습니다.",
     "스킬에서 가장 신호가 큰 내용은 Gotchas 섹션입니다. 스킬을 쓰면서 Claude가 흔히 부딪히는 실패 지점을 모아 쌓아 올려야 합니다.",
     "Claude는 이미 코딩을 알고 코드베이스를 읽을 수 있습니다. Claude가 기본으로 할 일을 다시 적는 스킬은 가치 없이 컨텍스트만 늘립니다.",
-    "description 필드는 요약이 아니라 이 스킬을 언제 발동할지에 대한 설명입니다.",
+    "description 필드에는 스킬 내용의 요약 대신 이 스킬을 언제 발동할지 적습니다.",
     "스크립트와 라이브러리를 주면 Claude는 보일러플레이트를 다시 만드는 대신 다음에 무엇을 할지 정하는 조합에 턴을 씁니다.",
     "사내 스킬은 라이브러리·API 레퍼런스, 제품 검증, 데이터 조회·분석, 업무 프로세스·팀 자동화, 코드 스캐폴딩·템플릿, 코드 품질·리뷰, CI/CD·배포, 런북, 인프라 운영의 9가지로 묶였습니다."
   ],
@@ -41,7 +41,7 @@
     },
     {
       "title": "description은 발동 조건으로",
-      "body": "description에는 스킬 내용을 요약하지 말고, 어떤 상황에서 이 스킬을 써야 하는지를 적으세요."
+      "body": "description에는 스킬 내용을 요약하지 말고 어떤 상황에서 이 스킬을 써야 하는지를 적으세요."
     },
     {
       "title": "설정은 config.json에",
@@ -49,15 +49,15 @@
     },
     {
       "title": "기억이 필요하면 로그 파일",
-      "body": "standup-post 스킬이 작성한 글을 모두 standups.log에 남기듯 스킬 안에 데이터를 저장할 수 있습니다. 안정적인 저장 위치는 환경 변수 ${CLAUDE_PLUGIN_DATA}로 얻으세요."
+      "body": "standup-post 스킬이 작성한 글을 모두 standups.log에 남기듯 스킬 안에 데이터를 저장해도 됩니다. 안정적인 저장 위치는 환경 변수 ${CLAUDE_PLUGIN_DATA}로 얻으세요."
     },
     {
       "title": "강한 가드레일은 온디맨드 hook으로",
-      "body": "늘 켜 두기엔 과하지만 가끔 매우 유용한 hook은 필요할 때만 켜는 스킬로 만드세요. 예: /careful은 Bash에서 rm -rf, DROP TABLE, force-push, kubectl delete를 막고, /freeze는 특정 디렉터리 밖의 Edit/Write를 막습니다."
+      "body": "늘 켜 두기엔 과하지만 가끔 매우 유용한 hook은 필요할 때만 켜는 스킬로 만드세요. 예: /careful은 Bash에서 rm -rf, DROP TABLE, force-push, kubectl delete를 막고 /freeze는 특정 디렉터리 밖의 Edit/Write를 막습니다."
     },
     {
       "title": "배포하고 사용량을 재기",
-      "body": "스킬은 ./.claude/skills 아래 레포에 체크인해 공유하고, 규모가 커지면 사내 플러그인 마켓플레이스로 배포하세요. PreToolUse hook으로 스킬 사용을 기록하면 인기 있는 스킬과 잘 발동되지 않는 스킬을 찾을 수 있습니다."
+      "body": "스킬은 ./.claude/skills 아래 레포에 체크인해 공유하고 규모가 커지면 사내 플러그인 마켓플레이스로 배포하세요. PreToolUse hook으로 스킬 사용을 기록하면 인기 있는 스킬과 잘 발동되지 않는 스킬이 드러납니다."
     }
   ],
   "prompts": [
@@ -87,7 +87,7 @@
   "sources": [
     {
       "title": "Lessons from building Claude Code: How we use skills (Anthropic)",
-      "url": "https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills"
+      "url": "https://claude.dev/blog/lessons-from-building-claude-code-how-we-use-skills/"
     },
     {
       "title": "Extend Claude with skills (Claude Code Docs)",

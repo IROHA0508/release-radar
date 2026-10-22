@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "GPT-Live",
   "headline": "듣고 말하기를 동시에 하는 음성 모델, ChatGPT 음성 대화의 새 기본값",
-  "tldr": "ChatGPT 음성 대화에 듣기와 말하기를 동시에 하는 전이중(full-duplex) 음성 모델 GPT-Live가 들어왔습니다. Go·Plus·Pro는 GPT-Live-1, Free는 GPT-Live-1 mini가 기본이며, 생각이 필요한 부분은 뒤에서 GPT-5.5가 처리합니다. 대화 중에 끼어들 수 있고 추론 수준도 고를 수 있습니다.",
+  "tldr": "ChatGPT 음성 대화에 듣기와 말하기를 동시에 하는 전이중(full-duplex) 음성 모델 GPT-Live가 들어왔습니다. Go·Plus·Pro는 GPT-Live-1, Free는 GPT-Live-1 mini가 기본이며 생각이 필요한 부분은 뒤에서 GPT-5.5가 처리합니다. 대화 중에 끼어들 수 있고 추론 수준도 고를 수 있습니다.",
   "models": [
     {
       "name": "GPT-Live-1",
@@ -42,8 +42,8 @@
   "chartNote": "공식 발표에 텍스트로 확인할 수 있는 모델 간 비교 수치가 없어 그래프를 넣지 않았습니다. 핵심 수치는 위에 정리했습니다.",
   "changes": [
     "듣는 동안에도 말할 수 있는 전이중 방식이라, 모델이 말하는 중에 끼어들어 방향을 바꿀 수 있습니다.",
-    "음성 모델이 대화를 이끌고, 생각이 필요한 부분은 뒤에서 GPT-5.5가 처리합니다. 기본은 GPT-5.5 Instant이고 Medium·High를 고르면 GPT-5.5 Thinking이 맡습니다.",
-    "사용자가 추론 수준을 직접 고를 수 있습니다."
+    "음성 모델이 대화를 이끌고 생각이 필요한 부분은 뒤에서 GPT-5.5가 처리합니다. 기본은 GPT-5.5 Instant이고 Medium·High를 고르면 GPT-5.5 Thinking이 맡습니다.",
+    "추론 수준은 사용자가 직접 고릅니다."
   ],
   "availability": [
     "ChatGPT 음성 대화: Go·Plus·Pro는 GPT-Live-1, Free는 GPT-Live-1 mini"

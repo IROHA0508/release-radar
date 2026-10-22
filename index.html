@@ -353,6 +353,22 @@ td.model { white-space: normal; min-width: 12em; }
 .rel-news .when { font: 12.5px var(--f-mono); color: var(--faint); }
 .verified { margin-top: 28px; font-size: 13px; color: var(--faint); }
 
+/* ---------- 용어집 ---------- */
+.g-search { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line-strong); border-radius: 999px; padding: 0 14px; background: var(--surface); margin: 18px 0 4px; max-width: 420px; }
+.g-search:focus-within { border-color: var(--ink); }
+.g-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: 15px/1 var(--f-body); color: var(--ink); padding: 10px 0; }
+.terms { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.term { padding: 16px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 24px; }
+.term h3 { margin: 0; font-size: var(--s-lg); display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.term h3 .t-en { margin: 0; }
+.term h3 a { color: var(--faint); text-decoration: none; font: 500 13px/1 var(--f-mono); }
+.term .short { margin: 6px 0 0; font-weight: 500; max-width: 70ch; }
+.term .body { margin: 6px 0 0; color: var(--muted); max-width: 70ch; font-size: 15px; }
+.term .links { margin-top: 10px; }
+.term .t-src { margin: 8px 0 0; font-size: 12.5px; color: var(--faint); }
+.term .t-src a { color: var(--faint); text-underline-offset: 3px; }
+.term.flash { outline: 2px solid var(--mark); outline-offset: 6px; border-radius: 4px; }
+
 .foot { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--line-strong); color: var(--faint); font-size: 13px; display: grid; gap: 4px; }
 
 @media (max-width: 640px) {
@@ -391,7 +407,7 @@ td.model { white-space: normal; min-width: 12em; }
         <div class="radar" aria-hidden="true"></div>
         <h1 class="wordmark"><a href="#" style="text-decoration:none">릴리스 레이더</a></h1>
       </div>
-      <p class="tagline">ChatGPT, Claude, Gemini의 공식 발표를 뉴스별로 요약하고, <br></br>모델을 더 잘 쓰는 법과 추천 프롬프트까지 정리합니다.</p>
+      <p class="tagline">ChatGPT, Claude, Gemini의 공식 발표를 뉴스별로 요약하고 <br></br>모델을 더 잘 쓰는 법과 추천 프롬프트까지 정리합니다.</p>
     </div>
     <div class="meta-box" id="meta">
       <div title="공식 소스를 마지막으로 확인한 시각 (한국 시간)">Update <b id="checked">—</b></div>
@@ -405,17 +421,18 @@ td.model { white-space: normal; min-width: 12em; }
     <a href="#prices" data-nav="prices">API 가격표</a>
     <a href="#tech" data-nav="tech">AI 활용 기술</a>
     <a href="#lab" data-nav="lab">AI 활용 LAB</a>
+    <a href="#glossary" data-nav="glossary">용어집</a>
   </nav>
 
   <main id="view">
-    <div class="filter-rows" aria-hidden="true"><div class="filters"><span class="chip">전체</span><span class="chip">OpenAI</span><span class="chip">Anthropic</span><span class="chip">Google</span></div><div class="filters"><span class="chip">전체</span><span class="chip">모델 출시</span><span class="chip">모델 업데이트</span><span class="chip">활용 팁</span></div></div>
+    <div class="filter-rows" aria-hidden="true"><div class="filters"><span class="chip">전체</span><span class="chip">OpenAI</span><span class="chip">Anthropic</span><span class="chip">Google</span></div><div class="filters"><span class="chip">전체</span><span class="chip">모델 출시</span><span class="chip">모델 업데이트</span><span class="chip">제품·기능 출시</span><span class="chip">활용 팁</span></div></div>
     <div class="month"><h2>최근 소식을 불러오는 중</h2></div>
     <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
   </main>
 
   <footer class="foot">
-    <span>비공식 요약입니다. 수치와 가격은 각 사 공식 발표 시점 기준이며, 정확한 내용은 각 소식의 출처 링크에서 확인하세요.</span>
-    <span>6시간마다(한국 시간 0시·6시·12시·18시) OpenAI, Anthropic, Google의 공식 페이지를 확인해 새 모델 소식과 활용 팁을 추가합니다.</span>
+    <span>비공식 요약입니다. 수치와 가격은 각 사 공식 발표 시점 기준이며 정확한 내용은 각 소식의 출처 링크에서 확인하세요.</span>
+    <span>6시간마다(한국 시간 0시·6시·12시·18시) OpenAI, Anthropic, Google의 공식 페이지를 확인해 새 모델, 제품·기능 출시, 활용 팁 소식을 추가합니다.</span>
   </footer>
 </div>
 
@@ -429,10 +446,10 @@ td.model { white-space: normal; min-width: 12em; }
     google: { name: "Google", product: "Gemini" }
   };
   var ORDER = ["openai", "anthropic", "google"];
-  var KINDS = ["모델 출시", "모델 업데이트", "활용 팁"];
+  var KINDS = ["모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁"];
   var WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
-  var state = { manifest: null, news: [], byId: {}, guides: null, tech: null, techById: {}, error: null, loaded: false, filter: "all", kind: "all", period: "all", listKey: "", listShown: 0, view: "", listScroll: 0, techPeriod: "all", techKey: "", techShown: 0, techScroll: 0 };
+  var state = { manifest: null, news: [], byId: {}, guides: null, tech: null, techById: {}, glossary: null, gq: "", error: null, loaded: false, filter: "all", kind: "all", period: "all", listKey: "", listShown: 0, view: "", listScroll: 0, techPeriod: "all", techKey: "", techShown: 0, techScroll: 0 };
   try { var f = localStorage.getItem("rr-filter"); if (f && (f === "all" || COMPANIES[f])) state.filter = f; } catch (e) {}
   state.guideTab = "common"; state.guideCat = "all";
   try { var gt = localStorage.getItem("rr-guide"); if (gt) state.guideTab = gt; } catch (e) {}
@@ -889,7 +906,7 @@ td.model { white-space: normal; min-width: 12em; }
     var tabs = [["common", "공통 원칙", null]].concat(vendors.map(function (v) { return [v.company, COMPANIES[v.company] ? COMPANIES[v.company].name : v.name, v]; }));
     if (!tabs.some(function (t) { return t[0] === state.guideTab; })) state.guideTab = "common";
     var total = vendors.reduce(function (n, v) { return n + (v.methods || []).length; }, 0);
-    frag.appendChild(h("p", { class: "lede", text: "세 회사의 공식 프롬프트 가이드에서 실제로 권하는 방법만 회사별로 모았습니다. 방법마다 '이렇게 말고 → 이렇게' 예시와 원문 링크가 있고, 공식 가이드 페이지를 매일 확인해 새 권고가 생기면 추가합니다." }));
+    frag.appendChild(h("p", { class: "lede", text: "세 회사의 공식 프롬프트 가이드에서 실제로 권하는 방법만 회사별로 모았습니다. 방법마다 '이렇게 말고 → 이렇게' 예시와 원문 링크가 있고 공식 가이드 페이지를 매일 확인해 새 권고가 생기면 추가합니다." }));
     frag.appendChild(h("p", { class: "g-meta", text: "방법 " + total + "개 · 마지막 확인 " + (g.checkedAt ? fmtChecked(g.checkedAt) : (g.updatedAt ? fmtChecked(g.updatedAt) : "—")) + (g.updatedAt ? " · 마지막 변경 " + fmtChecked(g.updatedAt) : "") }));
     var tabRow = h("div", { class: "filters g-tabs", role: "group", "aria-label": "회사별 가이드" });
     tabs.forEach(function (t) {
@@ -1021,7 +1038,7 @@ td.model { white-space: normal; min-width: 12em; }
         (released(a) < released(b) ? 1 : released(a) > released(b) ? -1 : a.name < b.name ? -1 : 1);
     });
     var gone = models.filter(function (m) { return m.status === "unlisted"; }).sort(byCo);
-    frag.appendChild(h("p", { class: "lede", text: "사이트에서 다룬 모델 가운데 지금 API로 쓸 수 있는 모델만, 세 회사 공식 가격 페이지에서 매일 확인한 가격으로 보여 줍니다. 단위는 100만 토큰당 미국 달러(기본 등급, 짧은 프롬프트 기준)이고, 공식 가격 페이지에서 사라진 모델은 아래 목록으로 옮깁니다." }));
+    frag.appendChild(h("p", { class: "lede", text: "사이트에서 다룬 모델 가운데 지금 API로 쓸 수 있는 모델만, 세 회사 공식 가격 페이지에서 매일 확인한 가격으로 보여 줍니다. 단위는 100만 토큰당 미국 달러(기본 등급, 짧은 프롬프트 기준)이고 공식 가격 페이지에서 사라진 모델은 아래 목록으로 옮깁니다." }));
     frag.appendChild(h("div", { class: "p-status" }, ORDER.map(function (c) {
       var pg = (p.pages || {})[c];
       if (!pg) return null;
@@ -1107,7 +1124,7 @@ td.model { white-space: normal; min-width: 12em; }
     if (!tk) { frag.appendChild(h("p", { class: "state", text: "기술 목록을 불러오지 못했습니다." })); view.textContent = ""; view.appendChild(frag); return; }
     var g = (tk.groups || []).filter(function (x) { return x.key === group; })[0] || { title: "", intro: "", desc: "" };
     frag.appendChild(h("p", { class: "lede", text: g.intro }));
-    var foot = h("p", { class: "lede", style: "font-size:14px", text: "마지막 확인 " + fmtDate(tk.updatedAt) + ". 공식 문서와 공식 발표를 근거로 정리했으며, 각 기술의 출처에서 원문을 확인할 수 있습니다." });
+    var foot = h("p", { class: "lede", style: "font-size:14px", text: "마지막 확인 " + fmtDate(tk.updatedAt) + ". 공식 문서와 공식 발표를 근거로 정리했으며 각 기술의 출처에서 원문을 확인할 수 있습니다." });
     if (group === "path") {
       frag.appendChild(section(g.title, g.en, [h("p", { class: "g-desc", text: g.desc }), h("ul", { class: "entries" }, techItems("path").map(techEntry))]));
       frag.appendChild(foot);
@@ -1181,6 +1198,10 @@ td.model { white-space: normal; min-width: 12em; }
       labLink ? h("dt", { text: "AI 활용 LAB" }) : null, labLink ? h("dd", null, [h("ul", { class: "links" }, [labLink])]) : null
     ])]));
     if (related.length) art.appendChild(section("관련 기술", "related", [h("ul", { class: "links" }, related)]));
+    var terms = ((state.glossary && state.glossary.terms) || []).filter(function (g) { return (g.related || []).indexOf(t.id) >= 0; });
+    if (terms.length) art.appendChild(section("관련 용어", "glossary", [h("ul", { class: "links" }, terms.map(function (g) {
+      return h("li", null, [h("a", { href: "#glossary/" + g.id }, [g.term])]);
+    }))]));
 
     var rel = (t.news || []).map(function (id) { return state.byId[id]; }).filter(Boolean)
       .sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
@@ -1197,6 +1218,59 @@ td.model { white-space: normal; min-width: 12em; }
     ]));
     view.textContent = "";
     view.appendChild(art);
+  }
+
+  /* ---------- 용어집 ---------- */
+  function renderGlossary(focus) {
+    setNav("glossary");
+    var gl = state.glossary;
+    var frag = document.createDocumentFragment();
+    if (!gl) { frag.appendChild(h("p", { class: "state", text: "용어집을 불러오지 못했습니다." })); view.textContent = ""; view.appendChild(frag); return; }
+    frag.appendChild(h("p", { class: "lede", text: gl.intro }));
+    var input = h("input", { type: "search", placeholder: "용어 찾기 (예: 토큰, RAG, MCP)", "aria-label": "용어 검색", value: state.gq });
+    frag.appendChild(h("label", { class: "g-search" }, [input]));
+    var count = h("p", { class: "result", "aria-live": "polite" });
+    frag.appendChild(count);
+    var box = h("div");
+    frag.appendChild(box);
+    function termEl(g) {
+      var rel = (g.related || []).map(techLink).filter(Boolean);
+      return h("li", { class: "term", id: "g-" + g.id }, [
+        h("h3", null, [g.term, h("span", { class: "t-en", text: g.en }), h("a", { href: "#glossary/" + g.id, title: "이 용어 링크", text: "#" })]),
+        h("p", { class: "short", text: g.short }),
+        g.body ? h("p", { class: "body", text: g.body }) : null,
+        rel.length ? h("ul", { class: "links" }, rel) : null,
+        h("p", { class: "t-src" }, ["출처 · "].concat((g.sources || []).map(function (s, i) {
+          return h("span", null, [i ? " · " : "", h("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title })]);
+        })))
+      ]);
+    }
+    function draw() {
+      var q = state.gq.trim().toLowerCase();
+      var hits = (gl.terms || []).filter(function (g) {
+        return !q || [g.term, g.en, g.short, g.body].join(" ").toLowerCase().indexOf(q) >= 0;
+      });
+      count.textContent = (gl.terms || []).length + "개 중 " + hits.length + "개";
+      box.textContent = "";
+      (gl.groups || []).forEach(function (grp) {
+        var list = hits.filter(function (g) { return g.group === grp; });
+        if (!list.length) return;
+        box.appendChild(section(grp, null, [h("ul", { class: "terms" }, list.map(termEl))]));
+      });
+      if (!hits.length) box.appendChild(h("p", { class: "state", text: "찾는 용어가 없습니다. 다른 말로 찾아보세요." }));
+    }
+    input.addEventListener("input", function () { state.gq = input.value; draw(); });
+    draw();
+    frag.appendChild(h("p", { class: "lede", style: "font-size:14px", text: "마지막 확인 " + fmtDate(gl.updatedAt) + ". 정의는 각 회사 공식 문서를 바탕으로 쉬운 말로 옮겼습니다." }));
+    view.textContent = "";
+    view.appendChild(frag);
+    var el = focus && document.getElementById("g-" + focus);
+    if (focus && !el) { state.gq = ""; input.value = ""; draw(); el = document.getElementById("g-" + focus); }
+    if (el) {
+      el.scrollIntoView({ block: "start" });
+      el.classList.add("flash");
+      setTimeout(function () { el.classList.remove("flash"); }, 1600);
+    } else window.scrollTo(0, 0);
   }
 
   function renderState(msg) {
@@ -1220,6 +1294,7 @@ td.model { white-space: normal; min-width: 12em; }
       if (prev === "techItem") { window.scrollTo(0, state.techScroll || 0); return; }
     }
     else if (hash === "lab") { state.view = "lab"; renderTech("path"); }
+    else if (hash === "glossary" || hash.indexOf("glossary/") === 0) { state.view = "glossary"; renderGlossary(hash.slice(9)); return; }
     // 예전 주소(#tech/<학습 경로 id>)도 해당 페이지로 연다
     else if ((hash.indexOf("tech/") === 0 || hash.indexOf("lab/") === 0) && t) { state.view = "techItem"; renderTechItem(t); }
     else if (hash && state.byId[hash]) { state.view = "article"; renderArticle(state.byId[hash]); }
@@ -1244,7 +1319,8 @@ td.model { white-space: normal; min-width: 12em; }
       Promise.all(ids.map(function (id) { return getJSON("data/news/" + id + ".json").catch(function () { return null; }); })),
       getJSON("data/guides.json").catch(function () { return null; }),
       getJSON("data/prices.json").catch(function () { return null; }),
-      getJSON("data/tech.json").catch(function () { return null; })
+      getJSON("data/tech.json").catch(function () { return null; }),
+      getJSON("data/glossary.json").catch(function () { return null; })
     ]);
   }).then(function (res) {
     state.news = res[0].filter(Boolean);
@@ -1252,6 +1328,7 @@ td.model { white-space: normal; min-width: 12em; }
     state.guides = res[1];
     state.prices = res[2];
     state.tech = res[3];
+    state.glossary = res[4];
     ((state.tech && state.tech.items) || []).forEach(function (t) { state.techById[t.id] = t; });
     state.loaded = true;
     renderHeader();

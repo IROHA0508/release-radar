@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "Claude Mythos Preview · Project Glasswing",
   "headline": "일반 공개 없이 보안 파트너에게만 제공하는 최상위 모델, SWE-bench Verified 93.9%",
-  "tldr": "Anthropic이 새 최상위 모델 Claude Mythos Preview를 공개하고, 이를 핵심 소프트웨어의 보안 취약점을 찾아 고치는 데 쓰는 Project Glasswing을 시작했습니다. AWS, Apple, Google, Microsoft, NVIDIA 등 11개 파트너와 40여 개 조직이 참여하며, 일반 공개 계획은 없습니다. CyberGym 83.1%, SWE-bench Verified 93.9%로 Opus 4.6을 크게 앞섰습니다.",
+  "tldr": "Anthropic이 새 최상위 모델 Claude Mythos Preview를 공개하고 이를 핵심 소프트웨어의 보안 취약점을 찾아 고치는 데 쓰는 Project Glasswing을 시작했습니다. AWS, Apple, Google, Microsoft, NVIDIA 등 11개 파트너와 40여 개 조직이 참여하며 일반 공개 계획은 없습니다. CyberGym 83.1%, SWE-bench Verified 93.9%로 Opus 4.6을 크게 앞섰습니다.",
   "models": [
     {
       "name": "Claude Mythos Preview",
@@ -186,7 +186,7 @@
   ],
   "changes": [
     "아직 일반 공개되지 않은 범용 프런티어 모델로, 코딩·보안 능력이 크게 올랐습니다. SWE-bench Multimodal은 27.1%에서 59.0%로 두 배 넘게 뛰었습니다.",
-    "Project Glasswing: AWS, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, Linux Foundation, Microsoft, NVIDIA, Palo Alto Networks가 파트너로 참여하고, 40여 개 조직이 추가로 함께합니다.",
+    "Project Glasswing: AWS, Apple, Broadcom, Cisco, CrowdStrike, Google, JPMorganChase, Linux Foundation, Microsoft, NVIDIA, Palo Alto Networks가 파트너로 참여하고 40여 개 조직이 추가로 함께합니다.",
     "Anthropic은 참여 조직에 최대 1억 달러의 사용 크레딧을 지원합니다.",
     "참여 조직 대상 가격은 100만 토큰당 입력 $25, 출력 $125입니다."
   ],
@@ -197,7 +197,7 @@
   "tips": [
     {
       "title": "일반 사용자는 공개 모델로 방어적 보안 점검",
-      "body": "Mythos Preview는 쓸 수 없지만, 같은 방향의 작업은 공개 모델로도 할 수 있습니다. 자기 코드의 입력 검증, 인증, 비밀값 관리처럼 범위를 정해 점검을 요청하세요."
+      "body": "Mythos Preview는 쓸 수 없지만 같은 방향의 작업은 공개 모델로도 할 수 있습니다. 자기 코드의 입력 검증, 인증, 비밀값 관리처럼 범위를 정해 점검을 요청하세요."
     },
     {
       "title": "오픈소스 의존성 업데이트를 미루지 않기",

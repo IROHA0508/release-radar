@@ -83,10 +83,16 @@ def related_item(entry: Entry, site: SiteIndex) -> str | None:
     return best[0] if best else None
 
 
+# Hosts that serve the same posts. Some Claude blog posts moved from claude.com/blog to claude.dev/blog
+# (Oct 2026), and the link check rewrites our sources to the new host, so both must match one slug.
+HOST_ALIASES = {"claude.dev": "claude.com"}
+
+
 def slug_key(url: str) -> str:
     """host + last path segment, so /news/claude-x and /claude-x count as the same page."""
     norm = normalize_url(url)
     host = norm.split("/")[2]
+    host = HOST_ALIASES.get(host, host)
     return host + "/" + norm.rstrip("/").rsplit("/", 1)[-1]
 
 

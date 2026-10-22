@@ -222,7 +222,7 @@
     "핵심 추론이 한 단계 올라, 복잡한 문제 해결의 더 똑똑한 기본 모델이 됐습니다.",
     "ARC-AGI-2 검증 점수 77.1%로 Gemini 3 Pro의 두 배가 넘습니다.",
     "Google은 코드 기반 애니메이션, 복잡한 시스템 종합, 인터랙티브 디자인, 크리에이티브 코딩처럼 단순한 답으로 충분하지 않은 작업을 예로 들었습니다.",
-    "두 달 뒤 경쟁사 표에서도 BrowseComp 85.9%, GPQA 94.3%로 상위권을 유지했지만, 코딩(Terminal-Bench 2.0, SWE-Bench Pro)은 상대적으로 낮았습니다."
+    "두 달 뒤 경쟁사 표에서도 BrowseComp 85.9%, GPQA 94.3%로 상위권을 유지했지만 코딩(Terminal-Bench 2.0, SWE-Bench Pro)은 상대적으로 낮았습니다."
   ],
   "availability": [
     "개발자: Gemini API(Google AI Studio), Gemini CLI, Google Antigravity, Android Studio (프리뷰)",
@@ -241,7 +241,7 @@
     },
     {
       "title": "thinking_level은 high로",
-      "body": "Gemini 3 계열은 thinking_level로 생각의 깊이를 정합니다. 어려운 추론 과제는 high로 두고, 빠른 답이 필요할 때만 낮추세요."
+      "body": "Gemini 3 계열은 thinking_level로 생각의 깊이를 정합니다. 어려운 추론 과제는 high로 두고 빠른 답이 필요할 때만 낮추세요."
     }
   ],
   "prompts": [
@@ -260,7 +260,7 @@
   ],
   "cautions": [
     "발표 시점에는 프리뷰 모델입니다.",
-    "그래프 수치는 OpenAI 표 기준이며, 비교 모델들은 3.1 Pro보다 나중에 나왔습니다."
+    "그래프 수치는 OpenAI 표 기준이며 비교 모델들은 3.1 Pro보다 나중에 나왔습니다."
   ],
   "sources": [
     {

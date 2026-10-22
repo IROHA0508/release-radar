@@ -1,0 +1,744 @@
+{
+  "updatedAt": "2026-10-22",
+  "intro": "사이트에 자주 나오는 AI 용어를 공식 문서의 정의를 바탕으로 정리했습니다. 용어마다 관련된 AI 활용 기술과 출처를 함께 달았습니다.",
+  "groups": [
+    "기본 개념",
+    "프롬프트",
+    "모델 설정",
+    "검색과 근거",
+    "에이전트와 도구",
+    "학습과 평가",
+    "비용과 운영",
+    "안전"
+  ],
+  "terms": [
+    {
+      "id": "llm",
+      "term": "대규모 언어 모델",
+      "en": "Large language model (LLM)",
+      "group": "기본 개념",
+      "short": "아주 많은 텍스트로 학습해 사람처럼 글을 쓰고 질문에 답하고 요약하는 AI 모델입니다.",
+      "body": "GPT·Claude·Gemini가 모두 여기에 속합니다. Google은 텍스트 중심의 파운데이션 모델로 설명합니다.",
+      "related": [
+        "llm-api"
+      ],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "token",
+      "term": "토큰",
+      "en": "Token",
+      "group": "기본 개념",
+      "short": "모델이 글을 읽고 쓰는 가장 작은 단위로, 단어 하나일 수도 있고 단어 조각이나 글자 하나일 수도 있습니다.",
+      "body": "API 요금과 컨텍스트 창 크기는 모두 토큰 수로 셉니다. Anthropic은 영어 기준 토큰 하나가 대략 3.5글자라고 설명하며 같은 글이라도 모델의 토크나이저에 따라 토큰 수가 달라집니다.",
+      "related": [
+        "llm-api",
+        "tokenomics"
+      ],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "context-window",
+      "term": "컨텍스트 창",
+      "en": "Context window",
+      "group": "기본 개념",
+      "short": "모델이 한 번에 받아 참고할 수 있는 토큰의 최대량으로, 모델의 작업 기억에 해당합니다.",
+      "body": "학습 데이터와는 다릅니다. 대화 기록, 붙인 문서, 도구 결과가 모두 이 안에 들어가야 합니다. Google은 100만 토큰 창에 코드 약 5만 줄이 들어간다고 예를 듭니다.",
+      "related": [
+        "context-eng",
+        "compaction"
+      ],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "multimodal",
+      "term": "멀티모달",
+      "en": "Multimodal",
+      "group": "기본 개념",
+      "short": "텍스트뿐 아니라 이미지·오디오·영상 같은 여러 종류의 입력을 함께 받거나 만들어 내는 성질입니다.",
+      "body": "Google은 프롬프트에 텍스트와 함께 이미지·오디오 같은 미디어를 넣을 수 있다고 설명합니다.",
+      "related": [
+        "media-prompting"
+      ],
+      "sources": [
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "hallucination",
+      "term": "환각",
+      "en": "Hallucination",
+      "group": "기본 개념",
+      "short": "그럴듯하게 들리지만 사실과 다른 내용을 모델이 만들어 내는 현상입니다.",
+      "body": "근거 문서를 붙이는 그라운딩, RAG, 인용 기능이 환각을 줄이는 대표적인 방법입니다.",
+      "related": [
+        "citations",
+        "rag",
+        "web-grounding"
+      ],
+      "sources": [
+        {
+          "title": "Machine Learning Glossary: Generative AI (Google for Developers)",
+          "url": "https://developers.google.com/machine-learning/glossary/generative"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "latency",
+      "term": "지연 시간·TTFT",
+      "en": "Latency / Time to first token",
+      "group": "기본 개념",
+      "short": "프롬프트를 보낸 뒤 응답을 받기까지 걸리는 시간입니다. 첫 토큰이 나올 때까지의 시간을 TTFT라고 부릅니다.",
+      "body": "Google은 지연 시간을 첫 토큰까지 시간(TTFT)과 마지막 토큰까지 시간(TTLT)으로 나눠 잽니다. TTFT는 응답이 얼마나 빨리 시작되는지 보여 줍니다.",
+      "related": [
+        "tokenomics"
+      ],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "reasoning-model",
+      "term": "추론 모델",
+      "en": "Reasoning model",
+      "group": "기본 개념",
+      "short": "답하기 전에 보이지 않는 내부 '생각' 토큰을 써서 문제를 계획하고 풀어 가는 모델입니다.",
+      "body": "OpenAI 문서에 따르면 이 생각 토큰은 API로 보이지 않지만 컨텍스트 창을 차지하고 출력 토큰 요금으로 과금됩니다. 생각을 얼마나 할지는 추론량 설정으로 조절합니다.",
+      "related": [
+        "reasoning-budget",
+        "retained-reasoning"
+      ],
+      "sources": [
+        {
+          "title": "Reasoning models 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning"
+        }
+      ]
+    },
+    {
+      "id": "prompt",
+      "term": "프롬프트",
+      "en": "Prompt",
+      "group": "프롬프트",
+      "short": "모델에게 보내는 요청입니다. 자연어 지시에 이미지·오디오 같은 자료를 함께 넣을 수 있습니다.",
+      "body": "",
+      "related": [
+        "llm-api"
+      ],
+      "sources": [
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "system-prompt",
+      "term": "시스템 프롬프트",
+      "en": "System prompt",
+      "group": "프롬프트",
+      "short": "사용자 메시지와 따로 두는 지시문으로, 대화 전체에서 모델의 역할과 어조, 행동 방식을 정합니다.",
+      "body": "\"너는 Python 전문 코딩 도우미다\"처럼 역할을 주는 방식(role prompting)이 대표적입니다.",
+      "related": [
+        "llm-api",
+        "agents-md"
+      ],
+      "sources": [
+        {
+          "title": "Prompting best practices (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices"
+        }
+      ]
+    },
+    {
+      "id": "prompt-engineering",
+      "term": "프롬프트 엔지니어링",
+      "en": "Prompt engineering",
+      "group": "프롬프트",
+      "short": "원하는 답을 얻도록 프롬프트를 고치고 결과를 확인하는 일을 되풀이하는 작업입니다.",
+      "body": "예시를 몇 개 넣을지(제로샷·원샷·퓨샷) 고르는 것도 여기에 들어갑니다. 이 사이트의 '프롬프트 가이드' 탭에 세 회사의 공식 권고를 모아 두었습니다.",
+      "related": [],
+      "sources": [
+        {
+          "title": "Machine Learning Glossary: Generative AI (Google for Developers)",
+          "url": "https://developers.google.com/machine-learning/glossary/generative"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "few-shot",
+      "term": "퓨샷·제로샷 프롬프트",
+      "en": "Few-shot / Zero-shot prompting",
+      "group": "프롬프트",
+      "short": "프롬프트에 기대하는 답의 예시를 여러 개 넣으면 퓨샷, 예시 없이 질문만 주면 제로샷입니다.",
+      "body": "Google은 퓨샷이 보통 제로샷·원샷보다 결과가 좋지만 프롬프트가 길어진다고 설명합니다.",
+      "related": [],
+      "sources": [
+        {
+          "title": "Machine Learning Glossary: Generative AI (Google for Developers)",
+          "url": "https://developers.google.com/machine-learning/glossary/generative"
+        }
+      ]
+    },
+    {
+      "id": "chain-of-thought",
+      "term": "사고 사슬 프롬프트",
+      "en": "Chain-of-thought prompting",
+      "group": "프롬프트",
+      "short": "모델에게 답에 이르는 과정을 단계별로 설명하게 하는 프롬프트 방식입니다.",
+      "body": "정확도가 오를 수 있고 사용자가 풀이 과정을 확인할 수 있습니다. 추론 모델은 이런 과정을 스스로 내부에서 거칩니다.",
+      "related": [
+        "reasoning-budget"
+      ],
+      "sources": [
+        {
+          "title": "Machine Learning Glossary: Generative AI (Google for Developers)",
+          "url": "https://developers.google.com/machine-learning/glossary/generative"
+        },
+        {
+          "title": "Reasoning models 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning"
+        }
+      ]
+    },
+    {
+      "id": "context-engineering",
+      "term": "컨텍스트 엔지니어링",
+      "en": "Context engineering",
+      "group": "프롬프트",
+      "short": "모델이 매 요청에서 보는 지시·도구 정의·대화 기록·문서 전체를 한정된 자원으로 보고, 무엇을 넣고 뺄지 설계하는 일입니다.",
+      "body": "",
+      "related": [
+        "context-eng"
+      ],
+      "sources": [
+        {
+          "title": "Effective context engineering for AI agents (Anthropic)",
+          "url": "https://www.anthropic.com/research/effective-context-engineering-for-ai-agents"
+        }
+      ]
+    },
+    {
+      "id": "temperature",
+      "term": "온도",
+      "en": "Temperature",
+      "group": "모델 설정",
+      "short": "답의 무작위성을 조절하는 값입니다. 높이면 다양한 답이, 낮추면 예측 가능한 답이 나옵니다.",
+      "body": "Anthropic은 0으로 두어도 출력이 완전히 같게 나오지는 않는다고 설명합니다.",
+      "related": [],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "top-p-top-k",
+      "term": "top-P·top-K",
+      "en": "top-P / top-K",
+      "group": "모델 설정",
+      "short": "다음 토큰을 고를 후보를 줄이는 설정입니다. top-K는 확률이 높은 K개만, top-P는 확률을 더해 P를 넘을 때까지의 후보만 남깁니다.",
+      "body": "",
+      "related": [],
+      "sources": [
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "max-output-tokens",
+      "term": "최대 출력 토큰",
+      "en": "Max output tokens",
+      "group": "모델 설정",
+      "short": "응답 하나가 쓸 수 있는 토큰 수의 상한입니다.",
+      "body": "상한에 걸리면 답이 중간에 끊기므로 긴 답이 필요한 작업에서는 넉넉하게 잡습니다.",
+      "related": [
+        "llm-api"
+      ],
+      "sources": [
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "effort",
+      "term": "추론량 설정",
+      "en": "Reasoning effort / Effort",
+      "group": "모델 설정",
+      "short": "추론 모델이 답하기 전에 얼마나 많이 생각할지 정하는 설정입니다.",
+      "body": "OpenAI는 reasoning effort, Anthropic은 effort, Gemini는 thinking level(이전에는 thinking budget)로 부릅니다. 값이 클수록 어려운 문제에 강하지만 비용과 지연이 늘어납니다.",
+      "related": [
+        "reasoning-budget"
+      ],
+      "sources": [
+        {
+          "title": "Reasoning models 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/reasoning"
+        },
+        {
+          "title": "Effort (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort"
+        },
+        {
+          "title": "Thinking (Gemini API)",
+          "url": "https://ai.google.dev/gemini-api/docs/thinking"
+        }
+      ]
+    },
+    {
+      "id": "structured-output-term",
+      "term": "구조화된 출력",
+      "en": "Structured outputs",
+      "group": "모델 설정",
+      "short": "모델의 답을 미리 정한 JSON 스키마에 맞는 데이터로 받는 기능입니다.",
+      "body": "",
+      "related": [
+        "structured-output"
+      ],
+      "sources": [
+        {
+          "title": "Structured outputs (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs"
+        }
+      ]
+    },
+    {
+      "id": "embedding",
+      "term": "임베딩",
+      "en": "Embedding",
+      "group": "검색과 근거",
+      "short": "텍스트나 이미지를 숫자 벡터로 바꾼 것으로, 뜻이 비슷한 것끼리 가까이 놓이게 만듭니다.",
+      "body": "RAG에서 질문과 비슷한 문서 조각을 찾을 때 씁니다.",
+      "related": [
+        "rag",
+        "managed-file-search"
+      ],
+      "sources": [
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "rag-term",
+      "term": "검색 증강 생성",
+      "en": "Retrieval-augmented generation (RAG)",
+      "group": "검색과 근거",
+      "short": "질문할 때 외부 자료에서 관련 내용을 찾아 프롬프트에 함께 넣고 그 자료를 근거로 답하게 하는 방식입니다.",
+      "body": "",
+      "related": [
+        "rag",
+        "managed-file-search"
+      ],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "grounding",
+      "term": "그라운딩",
+      "en": "Grounding",
+      "group": "검색과 근거",
+      "short": "모델의 답을 확인할 수 있는 출처에 묶어 정확도를 높이고 환각을 줄이는 방법입니다.",
+      "body": "검색 결과, 지도 데이터, 내 문서처럼 근거가 될 자료를 붙이는 기능이 모두 여기에 해당합니다.",
+      "related": [
+        "web-grounding",
+        "maps-grounding",
+        "citations"
+      ],
+      "sources": [
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "function-calling",
+      "term": "도구 호출",
+      "en": "Function calling / Tool use",
+      "group": "에이전트와 도구",
+      "short": "모델이 쓸 외부 함수를 고르고 필요한 인자를 구조화해 돌려주면, 프로그램이 실행한 결과를 다시 모델이 받아 답에 쓰는 방식입니다.",
+      "body": "",
+      "related": [
+        "tool-use"
+      ],
+      "sources": [
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        },
+        {
+          "title": "Tool use with Claude (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview"
+        }
+      ]
+    },
+    {
+      "id": "agent",
+      "term": "AI 에이전트",
+      "en": "AI agent",
+      "group": "에이전트와 도구",
+      "short": "목표를 받아 스스로 계획을 세우고 도구를 써서 행동하는 소프트웨어입니다.",
+      "body": "Google은 에이전트를 오케스트레이션, 모델, 도구로 이뤄진 시스템으로 설명합니다.",
+      "related": [
+        "agent-loop"
+      ],
+      "sources": [
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        },
+        {
+          "title": "Machine Learning Glossary: Generative AI (Google for Developers)",
+          "url": "https://developers.google.com/machine-learning/glossary/generative"
+        }
+      ]
+    },
+    {
+      "id": "mcp-term",
+      "term": "MCP",
+      "en": "Model Context Protocol",
+      "group": "에이전트와 도구",
+      "short": "AI 앱이 외부 데이터와 도구에 연결하는 방법을 표준으로 정한 개방형 프로토콜입니다.",
+      "body": "도구를 MCP 서버로 한 번 만들면 Claude Code, VS Code처럼 MCP를 지원하는 여러 앱에서 쓸 수 있습니다.",
+      "related": [
+        "mcp",
+        "remote-mcp-api"
+      ],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        },
+        {
+          "title": "Architecture overview (Model Context Protocol)",
+          "url": "https://modelcontextprotocol.io/docs/learn/architecture"
+        }
+      ]
+    },
+    {
+      "id": "harness-term",
+      "term": "하네스",
+      "en": "Agent harness",
+      "group": "에이전트와 도구",
+      "short": "모델을 되풀이해 부르고 모델이 요청한 도구 호출을 실제 실행 환경으로 연결하는 제어 루프입니다.",
+      "body": "권한, 검증, 기록 같은 주변 장치까지 포함해 부르기도 합니다. 같은 모델이라도 하네스에 따라 결과가 크게 달라집니다.",
+      "related": [
+        "harness"
+      ],
+      "sources": [
+        {
+          "title": "Scaling Managed Agents: Decoupling the brain from the hands (Anthropic, 2026-04-08)",
+          "url": "https://www.anthropic.com/research/managed-agents"
+        }
+      ]
+    },
+    {
+      "id": "subagent",
+      "term": "서브에이전트",
+      "en": "Subagent",
+      "group": "에이전트와 도구",
+      "short": "자기만의 컨텍스트 창과 시스템 프롬프트, 도구 권한을 가진 하위 에이전트입니다.",
+      "body": "검색이나 로그 읽기 같은 곁가지 작업을 맡겨 메인 대화에는 요약만 돌아오게 합니다.",
+      "related": [
+        "multi-agent",
+        "subagent-crosscheck"
+      ],
+      "sources": [
+        {
+          "title": "Create custom subagents (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/sub-agents"
+        }
+      ]
+    },
+    {
+      "id": "skill",
+      "term": "스킬",
+      "en": "Skill (SKILL.md)",
+      "group": "에이전트와 도구",
+      "short": "작업 절차와 참고 자료를 SKILL.md 파일로 묶어 두고 관련 작업일 때만 불러오게 하는 확장 방식입니다.",
+      "body": "항상 읽히는 CLAUDE.md와 달리 본문은 쓸 때만 불러오므로 긴 참고 자료를 넣어도 평소 비용이 거의 들지 않습니다.",
+      "related": [
+        "skills"
+      ],
+      "sources": [
+        {
+          "title": "Extend Claude with skills (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/skills"
+        }
+      ]
+    },
+    {
+      "id": "hook",
+      "term": "훅",
+      "en": "Hook",
+      "group": "에이전트와 도구",
+      "short": "코딩 에이전트가 파일을 고치거나 명령을 실행하는 특정 시점에 미리 정한 명령이 자동으로 실행되게 하는 장치입니다.",
+      "body": "모델의 판단과 상관없이 항상 실행되므로 꼭 지켜야 할 규칙을 강제할 때 씁니다.",
+      "related": [
+        "hooks"
+      ],
+      "sources": [
+        {
+          "title": "Automate actions with hooks (Claude Code Docs)",
+          "url": "https://code.claude.com/docs/en/hooks-guide"
+        }
+      ]
+    },
+    {
+      "id": "compaction-term",
+      "term": "컴팩션",
+      "en": "Compaction",
+      "group": "에이전트와 도구",
+      "short": "긴 대화의 컨텍스트를 줄이면서 이후 작업에 필요한 상태는 남기는 기능입니다.",
+      "body": "OpenAI API에서는 토큰 수가 정해 둔 기준을 넘으면 서버에서 자동으로 실행되게 할 수 있습니다.",
+      "related": [
+        "compaction",
+        "context-eng"
+      ],
+      "sources": [
+        {
+          "title": "Compaction 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/compaction"
+        }
+      ]
+    },
+    {
+      "id": "sandbox",
+      "term": "샌드박스",
+      "en": "Sandbox",
+      "group": "에이전트와 도구",
+      "short": "에이전트가 접근할 수 있는 폴더와 서버를 미리 제한한 격리된 실행 환경입니다.",
+      "body": "",
+      "related": [
+        "sandboxing"
+      ],
+      "sources": [
+        {
+          "title": "Beyond permission prompts: making Claude Code more secure and autonomous (Anthropic, 2025-10-20)",
+          "url": "https://www.anthropic.com/research/claude-code-sandboxing"
+        }
+      ]
+    },
+    {
+      "id": "pretraining",
+      "term": "사전 학습",
+      "en": "Pretraining",
+      "group": "학습과 평가",
+      "short": "레이블 없는 대규모 텍스트로 다음 단어를 맞히도록 언어 모델을 처음 학습시키는 단계입니다.",
+      "body": "사전 학습만 한 모델은 지시를 잘 따르지 못해 파인튜닝과 RLHF를 거칩니다.",
+      "related": [],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        }
+      ]
+    },
+    {
+      "id": "fine-tuning",
+      "term": "파인튜닝",
+      "en": "Fine-tuning",
+      "group": "학습과 평가",
+      "short": "사전 학습된 모델을 추가 데이터로 더 학습시켜 그 데이터의 패턴과 스타일을 익히게 하는 일입니다.",
+      "body": "Google은 레이블이 붙은 예시가 100개를 넘을 때 효과가 가장 크다고 설명합니다. 제공 여부는 회사와 모델마다 다르며 Anthropic은 현재 Claude API에서 파인튜닝을 제공하지 않는다고 밝힙니다.",
+      "related": [],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        },
+        {
+          "title": "Generative AI glossary (Google Cloud)",
+          "url": "https://docs.cloud.google.com/docs/generative-ai/glossary"
+        }
+      ]
+    },
+    {
+      "id": "rlhf",
+      "term": "RLHF",
+      "en": "Reinforcement learning from human feedback",
+      "group": "학습과 평가",
+      "short": "사람이 모델의 답들에 순위를 매기고, 모델이 순위가 높은 답을 선호하도록 학습시키는 방법입니다.",
+      "body": "",
+      "related": [],
+      "sources": [
+        {
+          "title": "Glossary (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/about-claude/glossary"
+        }
+      ]
+    },
+    {
+      "id": "distillation",
+      "term": "증류",
+      "en": "Distillation",
+      "group": "학습과 평가",
+      "short": "큰 교사 모델을 흉내 내도록 작은 학생 모델을 학습시켜 더 빠르고 가볍게 만드는 방법입니다.",
+      "body": "속도와 메모리를 얻는 대신 예측 품질은 다소 떨어질 수 있습니다.",
+      "related": [],
+      "sources": [
+        {
+          "title": "Machine Learning Glossary: Generative AI (Google for Developers)",
+          "url": "https://developers.google.com/machine-learning/glossary/generative"
+        }
+      ]
+    },
+    {
+      "id": "evals-term",
+      "term": "평가(evals)",
+      "en": "LLM evaluations",
+      "group": "학습과 평가",
+      "short": "모델의 성능을 재고 약점을 찾고 여러 모델을 비교하기 위한 지표와 테스트 묶음입니다.",
+      "body": "",
+      "related": [
+        "evals",
+        "agent-trace-eval"
+      ],
+      "sources": [
+        {
+          "title": "Machine Learning Glossary: Generative AI (Google for Developers)",
+          "url": "https://developers.google.com/machine-learning/glossary/generative"
+        }
+      ]
+    },
+    {
+      "id": "autorater",
+      "term": "자동 채점(LLM 심판)",
+      "en": "Autorater / LLM-as-a-judge",
+      "group": "학습과 평가",
+      "short": "사람의 판단으로 학습한 모델이 다른 모델의 답을 대신 채점하는 평가 방식입니다.",
+      "body": "많은 결과를 빠르게 채점할 수 있지만 사람이 직접 매긴 점수와 맞는지 확인해야 믿을 수 있습니다.",
+      "related": [
+        "evals",
+        "agent-trace-eval"
+      ],
+      "sources": [
+        {
+          "title": "Machine Learning Glossary: Generative AI (Google for Developers)",
+          "url": "https://developers.google.com/machine-learning/glossary/generative"
+        },
+        {
+          "title": "Evaluating AI agents: moving past the vibe check (Google Developers Blog)",
+          "url": "https://developers.googleblog.com/evaluating-ai-agents-moving-past-the-vibe-check/"
+        }
+      ]
+    },
+    {
+      "id": "prompt-caching-term",
+      "term": "프롬프트 캐싱",
+      "en": "Prompt caching",
+      "group": "비용과 운영",
+      "short": "여러 요청이 같은 앞부분을 공유하면 그 부분을 다시 계산하지 않고 재사용해 비용과 지연을 줄이는 기능입니다.",
+      "body": "OpenAI 문서는 고정된 지시와 참고 자료를 앞에, 바뀌는 내용을 뒤에 두라고 권합니다. 재사용된 입력 토큰은 최대 95%까지 할인될 수 있다고 설명합니다.",
+      "related": [
+        "prompt-caching",
+        "tokenomics"
+      ],
+      "sources": [
+        {
+          "title": "Prompt caching 가이드 (OpenAI API)",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-caching"
+        }
+      ]
+    },
+    {
+      "id": "batch",
+      "term": "배치 처리",
+      "en": "Batch processing",
+      "group": "비용과 운영",
+      "short": "급하지 않은 요청 여러 개를 묶어 비동기로 처리하고 그 대신 더 싼 요금을 내는 방식입니다.",
+      "body": "Gemini API 배치 모드는 발표 당시 일반 요청보다 50% 싸고 24시간 안에 결과를 돌려준다고 안내했습니다.",
+      "related": [
+        "batch-flex"
+      ],
+      "sources": [
+        {
+          "title": "Batch Mode in the Gemini API: Process more for less (Google, 2025-07-07)",
+          "url": "https://developers.googleblog.com/scale-your-ai-workloads-batch-mode-gemini-api/"
+        }
+      ]
+    },
+    {
+      "id": "prompt-injection",
+      "term": "프롬프트 인젝션·탈옥",
+      "en": "Prompt injection / Jailbreak",
+      "group": "안전",
+      "short": "모델이 지침이나 개발자의 지시를 무시하게 만들려는 공격입니다. 웹페이지·메일·도구 결과 같은 외부 자료 속에 지시를 숨기는 방식이 간접 인젝션입니다.",
+      "body": "Anthropic은 외부 자료를 지시와 분리해 도구 결과로만 넘기고, 그 자료가 시스템 프롬프트를 덮어쓸 수 없다고 시스템 프롬프트에 밝히라고 권합니다.",
+      "related": [
+        "sandboxing",
+        "computer-use"
+      ],
+      "sources": [
+        {
+          "title": "Mitigate jailbreaks and prompt injections (Claude Platform Docs)",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks"
+        }
+      ]
+    }
+  ]
+}

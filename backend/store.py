@@ -12,7 +12,7 @@ from . import config
 
 KEY_ORDER = ["id", "company", "date", "kind", "title", "headline", "tldr", "models", "numbers", "chartSource",
              "charts", "chartNote", "changes", "availability", "tips", "prompts", "cautions", "sources"]
-RESERVED = {"guide", "prices", "tech", "lab"}
+RESERVED = {"guide", "prices", "tech", "lab", "glossary"}
 
 
 def slugify(text: str) -> str:

@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "Claude Opus 5.5",
   "headline": "Fable 5.1 수준 성능을 Opus 5보다 40% 낮은 비용으로",
-  "tldr": "Claude 5.5 패밀리의 첫 모델입니다. 대부분의 작업에서 Claude Fable 5.1 수준이고, 일반 워크로드 기준 Opus 5보다 40% 저렴합니다. 에이전트 코딩, 컴퓨터 사용, 지식 업무 벤치마크에서 선두이며 글이 훨씬 읽기 쉬워졌습니다.",
+  "tldr": "Claude 5.5 패밀리의 첫 모델입니다. 대부분의 작업에서 Claude Fable 5.1 수준이고 일반 워크로드 기준 Opus 5보다 40% 저렴합니다. 에이전트 코딩, 컴퓨터 사용, 지식 업무 벤치마크에서 선두이며 글이 훨씬 읽기 쉬워졌습니다.",
   "models": [
     {
       "name": "Claude Opus 5.5",
@@ -38,12 +38,12 @@
     }
   ],
   "changes": [
-    "가격 인하: 입력 $4, 출력 $20으로 Opus 5보다 20% 낮고, 에이전트·코딩 비용의 대부분을 차지하는 캐시 읽기는 $0.20으로 60% 낮습니다.",
+    "가격 인하: 입력 $4, 출력 $20으로 Opus 5보다 20% 낮고 에이전트·코딩 비용의 대부분을 차지하는 캐시 읽기는 $0.20으로 60% 낮습니다.",
     "출력 속도가 Opus 5보다 30% 이상 빠릅니다. Claude Code와 Claude Platform의 Fast 모드는 최대 2.5배 속도($8/$40)입니다.",
     "코드베이스 전체 마이그레이션이나 감사처럼 길고 넓은 작업에 특히 강합니다. 68만 줄 마이그레이션을 하루 안에, 20만 줄 감사·수정을 3시간 안에 끝낸 사례가 공개됐습니다.",
-    "글쓰기가 달라졌습니다. 중요한 정보를 먼저 쓰고, 전문용어와 특이한 표현을 줄이며, 사용자가 준 글쓰기 규칙을 잘 따릅니다.",
-    "자동 행동 감사에서 역대 최고 점수를 받았고, 되돌리기 어려운 행동이나 권한 밖 행동이 줄었으며 프롬프트 인젝션 저항이 Opus 5보다 강해졌습니다.",
-    "Pro, Max, Team, 좌석형 Enterprise 플랜의 5시간 사용 한도가 올라갔고, 구독자는 원할 때 쓸 수 있는 사용량 리셋을 한 번 받습니다."
+    "글쓰기가 달라졌습니다. 중요한 정보를 먼저 쓰고 전문용어와 특이한 표현을 줄이며 사용자가 준 글쓰기 규칙을 잘 따릅니다.",
+    "자동 행동 감사에서 역대 최고 점수를 받았고 되돌리기 어려운 행동이나 권한 밖 행동이 줄었으며 프롬프트 인젝션 저항이 Opus 5보다 강해졌습니다.",
+    "Pro, Max, Team, 좌석형 Enterprise 플랜의 5시간 사용 한도가 올라갔고 구독자는 원할 때 쓸 수 있는 사용량 리셋을 한 번 받습니다."
   ],
   "availability": [
     "Claude 앱, Claude Code, Claude Platform 및 AWS, Google Cloud, Microsoft Azure",
@@ -54,7 +54,7 @@
   "tips": [
     {
       "title": "medium effort로 시작",
-      "body": "기본값(medium)에서도 여러 벤치마크에서 Opus 5의 max를 넘었습니다. Factory는 'medium을 기본으로 쓸 첫 모델'이라고 했고, Deloitte와 Rogo는 가장 낮은 effort에서도 Opus 5 high보다 나았다고 보고했습니다."
+      "body": "기본값(medium)에서도 여러 벤치마크에서 Opus 5의 max를 넘었습니다. Factory는 'medium을 기본으로 쓸 첫 모델'이라고 했고 Deloitte와 Rogo는 가장 낮은 effort에서도 Opus 5 high보다 나았다고 보고했습니다."
     },
     {
       "title": "글쓰기 규칙을 시스템 프롬프트에",
@@ -108,7 +108,7 @@
       "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5"
     }
   ],
-  "chartSource": "Anthropic Claude Opus 5.5 발표문의 비교표 기준이며, Opus 5.5는 max effort(Terminal-Bench는 xhigh) 점수입니다.",
+  "chartSource": "Anthropic Claude Opus 5.5 발표문의 비교표 기준이며 Opus 5.5는 max effort(Terminal-Bench는 xhigh) 점수입니다.",
   "charts": [
     {
       "title": "Terminal-Bench 4.0",

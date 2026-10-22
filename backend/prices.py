@@ -33,7 +33,7 @@ PRICE_CHECK = {
 }
 
 RULES = """\
-너는 AI 모델 API의 공식 가격 페이지를 읽고, 우리 사이트의 가격표가 맞는지 확인하는 도우미다.
+너는 AI 모델 API의 공식 가격 페이지를 읽고 우리 사이트의 가격표가 맞는지 확인하는 도우미다.
 반드시 아래 페이지 내용에 있는 값만 쓴다. 기억이나 추측으로 채우지 않는다.
 
 각 후보 모델(key)마다:
@@ -48,7 +48,7 @@ RULES = """\
   fast mode 같은 별도 가격 등. 페이지에 없는 표현(예: 페이지가 쓰지 않은 '도입가', 권장 사항)은 쓰지 않는다. 없으면 빈 문자열.
 - deprecated: 페이지에 지원 종료(deprecated/legacy, 종료 예정일) 표시가 있으면 true.
 - evidence: 그 가격이 적힌 줄을 페이지에서 그대로 짧게 옮긴 것.
-listed가 false면 가격 칸은 빈 문자열로 두고, 이유가 페이지에 있으면 note에 쓴다.
+listed가 false면 가격 칸은 빈 문자열로 두고 이유가 페이지에 있으면 note에 쓴다.
 """
 
 
@@ -106,7 +106,7 @@ def candidates(data: dict) -> dict[str, dict]:
         by_name[detect.model_key(m.get("name"))] = key
     for path in sorted(config.NEWS_DIR.glob("*.json")):
         item = json.loads(path.read_text(encoding="utf-8"))
-        if item.get("kind") == "활용 팁":
+        if item.get("kind") in ("활용 팁", "제품·기능 출시") and not any(m.get("input") or m.get("output") for m in item.get("models", [])):
             continue
         for m in item.get("models", []):
             if not (m.get("input") or m.get("output")):
