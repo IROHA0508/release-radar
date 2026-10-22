@@ -170,7 +170,8 @@
         }
       ],
       "news": [
-        "gemini-3-1-flash-lite"
+        "gemini-3-1-flash-lite",
+        "decisions-api"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1346,7 +1347,8 @@
       ],
       "news": [
         "google-adk-voice-agent-streaming-tools",
-        "gpt-realtime-2"
+        "gpt-realtime-2",
+        "decisions-api"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1850,7 +1852,8 @@
       "news": [
         "gpt-6-model-guide",
         "claude-code-session-value-tips",
-        "openai-gpt-5-6-builders-guide"
+        "openai-gpt-5-6-builders-guide",
+        "decisions-api"
       ],
       "verifiedAt": "2026-10-21"
     },

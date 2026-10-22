@@ -641,6 +641,14 @@
       "status": "skipped",
       "title": "Claude for Government is now generally available"
     },
+    "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed": {
+      "checkedAt": "2026-10-23",
+      "company": "anthropic",
+      "date": "2026-10-22",
+      "reason": "제외 기준 '다른 회사 플랫폼에 모델 탑재'에 해당합니다. Google Cloud는 Anthropic이 아닌 다른 회사의 플랫폼입니다.",
+      "status": "skipped",
+      "title": "The full Claude Platform, available on Google Cloud"
+    },
     "https://claude.com/resources/articles/claude-now-works-in-google-docs-sheets-and-slides": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -728,6 +736,14 @@
       "id": "google-antigravity-multi-model-patterns",
       "status": "added",
       "title": "Claude Opus 5.5 and Claude Sonnet 5.5 are now available in Google Antigravity"
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/expanding-claude-availability-on-google-cloud": {
+      "checkedAt": "2026-10-23",
+      "company": "google",
+      "date": "2026-10-22",
+      "reason": "제외 기준 '다른 회사 플랫폼에 모델 탑재'에 해당합니다. Google Cloud 블로그에서 Google이 Claude의 가용성 확대를 발표하는 기업 파트너십 공지입니다.",
+      "status": "skipped",
+      "title": "Expanding Claude availability and deployment choice on Google Cloud"
     },
     "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud": {
       "checkedAt": "2026-10-14",
@@ -1427,6 +1443,14 @@
       "reason": "모델과 무관한 보안 정책·파트너십 이니셔티브. 새 모델 출시, 모델 업데이트, 공식 활용 팁이 아님.",
       "status": "skipped",
       "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities"
+    },
+    "https://openai.com/index/decisions-api": {
+      "checkedAt": "2026-10-23",
+      "company": "openai",
+      "date": "2026-10-22",
+      "id": "decisions-api",
+      "status": "added",
+      "title": "Build more responsive apps with the Decisions API"
     },
     "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign": {
       "checkedAt": "2026-10-03",

@@ -1,90 +1,59 @@
 {
-  "startedAt": "2026-10-23T03:54:57+09:00",
+  "startedAt": "2026-10-23T08:43:58+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1840,
+  "entries": 1842,
   "candidates": [
     {
-      "title": "Uber brings ChatGPT Work to all employees with OpenAI",
-      "url": "https://openai.com/index/uber-chatgpt-work-rollout",
+      "title": "Build more responsive apps with the Decisions API",
+      "url": "https://openai.com/index/decisions-api",
       "company": "openai",
       "date": "2026-10-22",
       "relatedId": null
     },
     {
-      "title": "Building agents: When to fold subagents into your main agent loop",
-      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "title": "The full Claude Platform, available on Google Cloud",
+      "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
       "company": "anthropic",
       "date": "2026-10-22",
       "relatedId": null
     },
     {
-      "title": "Donating Agent Skills to the Agentic AI Foundation",
-      "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
-      "company": "anthropic",
-      "date": "2026-10-22",
-      "relatedId": null
-    },
-    {
-      "title": "Streaming comes to API Gateway: real-time and AI-ready APIs, without changing your spec",
-      "url": "https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec/",
+      "title": "Expanding Claude availability and deployment choice on Google Cloud",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/expanding-claude-availability-on-google-cloud/",
       "company": "google",
       "date": "2026-10-22",
       "relatedId": null
-    },
-    {
-      "title": "Architecting Governed, Self-Evolving AI Agents on the Gemini platform",
-      "url": "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform/",
-      "company": "google",
-      "date": "2026-10-22",
-      "relatedId": "gemini-app-small-business-tools"
     }
   ],
   "added": [
     {
-      "id": "claude-fold-subagents-main-agent-loop",
-      "title": "서브에이전트를 메인 에이전트 루프로 합치는 기준과 순서",
-      "url": "https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop",
+      "id": "decisions-api",
+      "title": "Decisions API",
+      "url": "https://openai.com/index/decisions-api",
       "charts": 0
     }
   ],
   "updated": [],
   "skipped": [
     {
-      "title": "Uber brings ChatGPT Work to all employees with OpenAI",
-      "url": "https://openai.com/index/uber-chatgpt-work-rollout",
-      "reason": "기업 고객 사례로, 특정 기업이 ChatGPT를 도입하는 내용으로 사이트의 포함 기준인 새 모델·기능·활용 팁에 해당하지 않음"
+      "title": "The full Claude Platform, available on Google Cloud",
+      "url": "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed",
+      "reason": "제외 기준 '다른 회사 플랫폼에 모델 탑재'에 해당합니다. Google Cloud는 Anthropic이 아닌 다른 회사의 플랫폼입니다."
     },
     {
-      "title": "Donating Agent Skills to the Agentic AI Foundation",
-      "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
-      "reason": "Anthropic과 재단 간의 파트너십 발표로, 독자가 새로 써 볼 수 있는 모델이나 기능과 무관함"
-    },
-    {
-      "title": "Streaming comes to API Gateway: real-time and AI-ready APIs, without changing your spec",
-      "url": "https://developers.googleblog.com/streaming-comes-to-api-gateway-real-time-and-ai-ready-apis-without-changing-your-spec/",
-      "reason": "Google Cloud API Gateway의 기술 기능 추가로, AI 모델 사용과 무관한 인프라 서비스 업데이트로 사이트 범위 밖"
-    },
-    {
-      "title": "Architecting Governed, Self-Evolving AI Agents on the Gemini platform",
-      "url": "https://developers.googleblog.com/architecting-governed-self-evolving-ai-agents-on-gemini-agent-platform/",
-      "reason": "Google Cloud의 연구용 참조 아키텍처(Project Chrysalis)와 시뮬레이션 데모를 소개하는 글입니다. 새 모델이나 공식 AI 제품·기능 출시가 아니고, 독자가 바로 따라 할 활용 팁도 아닙니다. SRE 장애 대응 시스템을 설계하는 인프라·프레임워크 성격이 강해 제외합니다. 기존 소식 gemini-app-small-business-tools와도 관련이 없습니다."
+      "title": "Expanding Claude availability and deployment choice on Google Cloud",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/expanding-claude-availability-on-google-cloud/",
+      "reason": "제외 기준 '다른 회사 플랫폼에 모델 탑재'에 해당합니다. Google Cloud 블로그에서 Google이 Claude의 가용성 확대를 발표하는 기업 파트너십 공지입니다."
     }
   ],
   "failed": [],
-  "guardNotes": {
-    "claude-fold-subagents-main-agent-loop": [
-      "핵심 수치 '지연 시간: 약 2배 빠름' 원문에서 확인 안 됨 → 제외"
-    ]
-  },
+  "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
-  "guideChanges": [
-    "가이드 추가: [anthropic] 도구는 API마다 말고 사용자 의도별로 묶기",
-    "가이드 추가: [anthropic] 시스템 프롬프트는 한 곳에서 관리하고 절차는 스킬로 옮기기"
-  ],
+  "guideChanges": [],
   "styleNotes": {},
   "techLinks": [
-    "claude-fold-subagents-main-agent-loop → multi-agent, skills, agent-loop, harness"
+    "decisions-api → structured-output, voice-agent, prompt-caching"
   ]
 }

@@ -1,0 +1,103 @@
+{
+  "id": "decisions-api",
+  "company": "openai",
+  "date": "2026-10-22",
+  "kind": "제품·기능 출시",
+  "title": "Decisions API",
+  "headline": "분류·라우팅·다음 행동 선택 같은 작은 판단을 GPT-6 Luna로 빠르고 싸게 처리하는 API",
+  "tldr": "Decisions API가 정식 출시됐습니다. GPT-6 Luna를 바탕으로 정해진 답 중에서 고르는 질문에 특화했고 Responses API로 GPT-6 Luna를 쓸 때보다 최대 10배 빠르게 판단합니다. 입력 토큰 100만 개당 $0.10이고 출력 토큰 요금은 없습니다.",
+  "models": [
+    {
+      "name": "GPT-6 Luna",
+      "apiId": null,
+      "input": "$0.10",
+      "output": null,
+      "cached": "$0.01"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "속도",
+      "value": "최대 10배",
+      "note": "Responses API로 쓰는 GPT-6 Luna 대비"
+    },
+    {
+      "label": "입력 토큰 가격",
+      "value": "$0.10",
+      "note": "100만 토큰당, 캐시된 입력은 $0.01"
+    },
+    {
+      "label": "요청당 질문 수",
+      "value": "최대 400개",
+      "note": "공개 베타의 두 배"
+    },
+    {
+      "label": "출력 토큰 요금",
+      "value": "없음",
+      "note": "입력 토큰에만 요금 부과"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 성능 비교 표나 그래프용 수치가 없습니다. 속도·비용 수치는 고객 사례 인용문에만 있어 그래프로 만들지 않았습니다.",
+  "changes": [
+    "개발자가 질문과 허용되는 답을 정의하고 텍스트·이미지·네이티브 JSON으로 맥락을 주면 API가 답을 하나 돌려줍니다.",
+    "답 유형은 세 가지입니다. predicate는 조건이 참일 확률(0~1)을, choice는 미리 정한 값 중 하나를, score는 기준표 단계의 확률 가중 평균을 돌려줍니다.",
+    "공개 베타 이후 GPT-Live 네이티브 연동, 재사용 맥락용 프롬프트 캐싱, 미국·EU 추론 거주 지역 지정이 추가됐습니다.",
+    "네이티브 JSON 입력, 질문 지시문에 이미지 포함, 요청당 최대 400개 질문(기존 한도의 두 배)을 지원합니다.",
+    "아시아 일부 지역에 용량을 늘려 지연 시간도 계속 줄였습니다.",
+    "GPT-Live 세션의 session.triggers에 decisions 설정을 추가하면 음성 대화 중 판단 결과가 decision.event로 전달됩니다."
+  ],
+  "availability": [
+    "전용 Decisions 엔드포인트에서 GPT-6 Luna로 정식 출시",
+    "Decisions Playground에서 직접 만든 텍스트나 이미지로 시험 가능",
+    "미국·EU 지역 처리 지원",
+    "자격이 되는 고객은 Zero Data Retention 사용 가능"
+  ],
+  "tips": [
+    {
+      "title": "반복되는 판단 하나로 시작",
+      "body": "애플리케이션이 자주 내리는 판단 하나를 골라 질문, 가능한 답, 구분에 필요한 맥락을 정의하세요."
+    },
+    {
+      "title": "Playground에서 실제 예시로 시험",
+      "body": "실제 사용을 닮은 예시를 Decisions Playground에서 텍스트나 이미지로 넣어 보고 개발자 가이드를 따라 첫 요청을 보내세요."
+    },
+    {
+      "title": "음성 에이전트에는 GPT-Live 연동",
+      "body": "전사 업데이트 이벤트(session.input_transcript.delta)에 decisions 트리거를 걸면 대화 중 되묻기, 라우팅, 에스컬레이션 같은 판단을 바로 처리합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "GPT-Live 아바타 표정 선택 트리거",
+      "when": "GPT-Live 세션에서 사용자의 말에 따라 아바타 반응을 고르게 할 때(원문 예시)",
+      "type": "code",
+      "text": "{\n  \"type\": \"decisions\",\n  \"event_type\": \"session.input_transcript.delta\",\n  \"decisions\": {\n    \"questions\": [{\n      \"type\": \"choice\",\n      \"name\": \"reaction\",\n      \"instructions\": \"Choose an appropriate reaction for the avatar based on the user's latest message.\",\n      \"choices\": [\n        {\"value\": \"neutral\"},\n        {\"value\": \"happy\"},\n        {\"value\": \"sad\"},\n        {\"value\": \"concerned\"}\n      ]\n    }]\n  }\n}"
+    },
+    {
+      "title": "질문 정의 틀",
+      "when": "자주 반복되는 판단을 Decisions API 질문으로 옮길 때(원문 설명을 응용)",
+      "type": "prompt",
+      "text": "판단할 질문: [예: 이 요청을 어느 팀으로 보낼까?]\n허용되는 답: [선택지 3~4개]\n판단에 필요한 맥락: [텍스트, 이미지 또는 JSON]"
+    }
+  ],
+  "cautions": [
+    "속도·비용 수치는 Box, Datadog, Ramp, Sierra, Speak 등 고객이 각자 평가한 결과이며 조건이 서로 다릅니다.",
+    "답은 확률·선택·점수 중 하나입니다. 자유 서술이 필요한 작업에는 맞지 않습니다.",
+    "캐시 쓰기 요금 등 세부 가격은 공식 가격 안내에서 확인해야 합니다. 원문에 모두 나와 있지 않습니다."
+  ],
+  "sources": [
+    {
+      "title": "Build more responsive apps with the Decisions API (OpenAI)",
+      "url": "https://openai.com/index/decisions-api"
+    },
+    {
+      "title": "Decisions 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/decisions"
+    },
+    {
+      "title": "Decisions 음성 연동 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/decisions-voice"
+    }
+  ]
+}
