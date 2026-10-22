@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "GPT-5.6 (Sol · Terra · Luna)",
   "headline": "세 가지 크기로 나온 GPT-5.6, 에이전트 4개를 병렬로 돌리는 ultra 설정",
-  "tldr": "OpenAI가 GPT-5.6을 Sol, Terra, Luna 세 등급으로 내놓았습니다. 최상위 Sol은 Terminal-Bench 2.1 88.8%(ultra 91.9%), BrowseComp 90.4%를 기록했고, 새 ultra 설정은 기본으로 에이전트 4개를 병렬로 돌려 어려운 과제를 더 빨리 끝냅니다. 6월 26일 Sol 제한 프리뷰를 거쳐 7월 9일 정식 출시됐습니다.",
+  "tldr": "OpenAI가 GPT-5.6을 Sol, Terra, Luna 세 등급으로 내놓았습니다. 최상위 Sol은 Terminal-Bench 2.1 88.8%(ultra 91.9%), BrowseComp 90.4%를 기록했고 새 ultra 설정은 기본으로 에이전트 4개를 병렬로 돌려 어려운 과제를 더 빨리 끝냅니다. 6월 26일 Sol 제한 프리뷰를 거쳐 7월 9일 정식 출시됐습니다.",
   "models": [
     {
       "name": "GPT-5.6 Sol",
@@ -371,7 +371,7 @@
   "changes": [
     "한 세대를 Sol(최상위), Terra(중간), Luna(경량) 세 등급으로 나눠 냈습니다. Luna는 Sol 가격의 1/5입니다.",
     "새 ultra 설정은 기본으로 에이전트 4개를 병렬로 조율해, 토큰을 더 쓰는 대신 어려운 과제에서 더 좋은 결과를 더 빨리 냅니다.",
-    "Agents' Last Exam에서는 세 등급 모두 GPT-5.5와 경쟁사 모델보다 높았고, ARC-AGI-3에서는 Sol이 7.78%로 다른 모델(최고 1.5%)을 크게 앞섰습니다.",
+    "Agents' Last Exam에서는 세 등급 모두 GPT-5.5와 경쟁사 모델보다 높았고 ARC-AGI-3에서는 Sol이 7.78%로 다른 모델(최고 1.5%)을 크게 앞섰습니다.",
     "SWE-Bench Pro는 Sol 64.6%로 GPT-5.5(59.4%)보다 올랐지만 Claude Fable 5(80%)·Mythos 5(80.3%)와는 차이가 큽니다."
   ],
   "availability": [
@@ -383,7 +383,7 @@
   "tips": [
     {
       "title": "등급은 과제 난이도에 맞추기",
-      "body": "Terminal-Bench 2.1에서 Luna(84.7%)와 Sol(88.8%)의 차이는 4%p인데 가격은 5배 차이입니다. 일상 코딩과 문서 작업은 Luna나 Terra로 시작하고, 결과가 부족할 때만 Sol로 올리세요."
+      "body": "Terminal-Bench 2.1에서 Luna(84.7%)와 Sol(88.8%)의 차이는 4%p인데 가격은 5배 차이입니다. 일상 코딩과 문서 작업은 Luna나 Terra로 시작하고 결과가 부족할 때만 Sol로 올리세요."
     },
     {
       "title": "ultra는 길고 어려운 과제에만",

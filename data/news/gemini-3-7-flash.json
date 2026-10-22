@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "Gemini 3.7 Flash",
   "headline": "실무형 코드·문서·자동화 점수가 크게 오른 3.7 Flash, 연말까지 반값 도입가",
-  "tldr": "Google이 Gemini 3.7 Flash를 공개했습니다. 3.6 Flash보다 실제 병합 가능한 코드(FrontierCode 43.6% 대 34.4%), 장기 개발 과제(DeepSWE 65.3% 대 49.0%), PDF 이해, 업무 자동화가 크게 좋아졌습니다. 12월 31일까지는 입력 $0.75 / 출력 $3.75의 도입가이며, 24시간 대신 일해 주는 개인 에이전트 Gemini Spark도 이날부터 3.7 Flash로 동작합니다.",
+  "tldr": "Google이 Gemini 3.7 Flash를 공개했습니다. 3.6 Flash보다 실제 병합 가능한 코드(FrontierCode 43.6% 대 34.4%), 장기 개발 과제(DeepSWE 65.3% 대 49.0%), PDF 이해, 업무 자동화가 크게 좋아졌습니다. 12월 31일까지는 입력 $0.75 / 출력 $3.75의 도입가이며 24시간 대신 일해 주는 개인 에이전트 Gemini Spark도 이날부터 3.7 Flash로 동작합니다.",
   "models": [
     {
       "name": "Gemini 3.7 Flash (도입가, 12월 31일까지)",

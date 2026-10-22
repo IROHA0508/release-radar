@@ -439,14 +439,6 @@
       "status": "skipped",
       "title": "Guided Vision in Gemini Live: built for accessibility"
     },
-    "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners": {
-      "checkedAt": "2026-10-21",
-      "company": "google",
-      "date": "2026-10-20",
-      "reason": "Gemini 앱의 일반적인 기능 소개(이미지 스타일 생성, 커스터마이징, 템플릿 콘텐츠 생성). 특정 모델 출시/업데이트가 아니며, 실전 조언이 거의 없는 기능 소개에 해당하므로 제외.",
-      "status": "skipped",
-      "title": "New Gemini tools for small business owners"
-    },
     "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon": {
       "checkedAt": "2026-10-14",
       "company": "google",
@@ -609,14 +601,6 @@
       "status": "skipped",
       "title": "Customize Claude Code with mods"
     },
-    "https://claude.com/resources/articles/claude-duet": {
-      "checkedAt": "2026-10-22",
-      "company": "anthropic",
-      "date": "2026-10-21",
-      "reason": "Claude Duet는 새 모델이 아니라 Opus 5.5 기반의 새 앱(리서치 프리뷰)을 소개하는 제품 발표입니다. 모델 출시나 버전 업데이트가 아니고 가격 변경도 없습니다. 독자가 바로 따라 할 실전 조언도 거의 없어서, 모델과 무관한 제품 공지이자 기능 소개로 보고 제외합니다.",
-      "status": "skipped",
-      "title": "Introducing Claude Duet"
-    },
     "https://claude.com/resources/articles/claude-for-government-is-now-generally-available": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -632,14 +616,6 @@
       "reason": "기존 Claude에 Google 도구 통합이 추가되는 단순 기능 공지. 실전 조언이 거의 없는 기능 소개에 해당.",
       "status": "skipped",
       "title": "Claude now works with Google Docs, Sheets, and Slides"
-    },
-    "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes": {
-      "checkedAt": "2026-10-22",
-      "company": "anthropic",
-      "date": "2026-10-21",
-      "reason": "실전 조언이 거의 없는 기능 소개. 사용자가 바로 따라 할 수 있는 구체적인 활용 가이드 부족.",
-      "status": "skipped",
-      "title": "Claude Security now scans continuously and tracks fixes"
     },
     "https://claude.com/resources/articles/dashboards-and-motion": {
       "checkedAt": "2026-10-09",

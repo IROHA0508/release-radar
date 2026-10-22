@@ -5,7 +5,7 @@
   "kind": "모델 업데이트",
   "title": "GPT-5.3 Instant",
   "headline": "ChatGPT 기본 모델 업데이트, 고위험 질문에서 환각 최대 26.8% 감소",
-  "tldr": "ChatGPT의 빠른 기본 모델이 GPT-5.3 Instant로 바뀌었습니다. 틀리면 위험한 질문을 모은 평가에서 웹 검색을 쓸 때 환각이 26.8%, 쓰지 않을 때 19.7% 줄었습니다. 모든 ChatGPT 사용자가 쓸 수 있고, API에서는 gpt-5.3-chat-latest로 제공됩니다.",
+  "tldr": "ChatGPT의 빠른 기본 모델이 GPT-5.3 Instant로 바뀌었습니다. 틀리면 위험한 질문을 모은 평가에서 웹 검색을 쓸 때 환각이 26.8%, 쓰지 않을 때 19.7% 줄었습니다. 모든 ChatGPT 사용자가 쓸 수 있고 API에서는 gpt-5.3-chat-latest로 제공됩니다.",
   "models": [
     {
       "name": "GPT-5.3 Instant",

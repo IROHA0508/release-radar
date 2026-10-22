@@ -3,7 +3,7 @@
   "company": "google",
   "date": "2026-10-21",
   "kind": "활용 팁",
-  "title": "Agents CLI 확장 시스템: ADK 없이 LangChain으로 배포하고 배포 정책 끼우기",
+  "title": "Agents CLI 확장으로 ADK 없이 LangChain 배포하고 배포 정책 끼우기",
   "headline": "포크 없이 명령을 덮어쓰거나 추가해 어떤 프레임워크로든 Agents CLI의 배포·평가 흐름을 씁니다",
   "tldr": "Agents CLI 1.5.0부터 확장 시스템이 들어와, 도구를 포크하지 않고도 내장 명령을 바꾸거나 새 명령을 추가할 수 있습니다. 1.8.0에는 LangChain 공식 확장이 포함되어 ADK 의존성 없이 Cloud Run 배포와 평가를 그대로 쓸 수 있습니다. 글은 SBOM 스캔을 deploy 앞에 끼우는 사내 정책 확장도 직접 만들어 보여 줍니다.",
   "models": [],
@@ -27,11 +27,11 @@
   "charts": [],
   "chartNote": "성능 비교 수치가 없는 개발 도구 가이드라 그래프는 만들지 않았습니다.",
   "changes": [
-    "확장은 Git 저장소 안의 디렉터리에 agents-cli-extension.yaml 파일 하나를 두는 방식입니다. 내장 명령을 덮어쓰는 override와 새 명령을 더하는 add를 선언하며, 별도 패키지 레지스트리 없이 Git으로 버전과 배포를 관리합니다.",
-    "v1.8.0의 LangChain 공식 확장 템플릿은 LangChain 에이전트, LangGraph 그래프, Deep Agents를 같은 수명 주기로 돌립니다. 생성된 프로젝트에는 google-adk 의존성이 없고, Cloud Run 배포는 ADK 프로젝트와 같은 경로를 씁니다.",
-    "LangChain 확장은 playground, run, eval.generate, publish.gemini-enterprise를 대체하고, ADK 객체가 필요한 eval.dataset과 eval.optimize는 잘못된 결과 대신 명확한 거부 메시지를 냅니다. deploy, infra, install, login 등은 그대로입니다.",
-    "설치 범위는 프로젝트(기본)와 사용자(--global) 두 가지이며, 둘이 겹치면 프로젝트가 우선합니다. 해결된 커밋 SHA를 락파일에 기록해 agents-cli install이 항상 같은 코드를 복원하고, 갱신은 agents-cli extension update로 직접 합니다.",
-    "덮어쓴 명령은 도움말에 [↑ 확장 이름]으로 표시되고 agents-cli info로 실행 명령을 확인할 수 있습니다. override 스크립트 안에서는 AGENTS_CLI_DISABLE_OVERRIDES=1이 설정돼, 내부에서 agents-cli deploy를 불러도 내장 명령이 실행되어 무한 재귀가 생기지 않습니다."
+    "확장은 Git 저장소 안의 디렉터리에 agents-cli-extension.yaml 파일 하나를 두는 방식입니다. 내장 명령을 덮어쓰는 override와 새 명령을 더하는 add를 선언하며 별도 패키지 레지스트리 없이 Git으로 버전과 배포를 관리합니다.",
+    "v1.8.0의 LangChain 공식 확장 템플릿은 LangChain 에이전트, LangGraph 그래프, Deep Agents를 같은 수명 주기로 돌립니다. 생성된 프로젝트에는 google-adk 의존성이 없고 Cloud Run 배포는 ADK 프로젝트와 같은 경로를 씁니다.",
+    "LangChain 확장은 playground, run, eval.generate, publish.gemini-enterprise를 대체하고 ADK 객체가 필요한 eval.dataset과 eval.optimize는 잘못된 결과 대신 명확한 거부 메시지를 냅니다. deploy, infra, install, login 등은 그대로입니다.",
+    "설치 범위는 프로젝트(기본)와 사용자(--global) 두 가지이며 둘이 겹치면 프로젝트가 우선합니다. 해결된 커밋 SHA를 락파일에 기록해 agents-cli install이 항상 같은 코드를 복원하고 갱신은 agents-cli extension update로 직접 합니다.",
+    "덮어쓴 명령은 도움말에 [↑ 확장 이름]으로 표시되고 실행되는 명령은 agents-cli info가 보여 줍니다. override 스크립트 안에서는 AGENTS_CLI_DISABLE_OVERRIDES=1이 설정돼, 내부에서 agents-cli deploy를 불러도 내장 명령이 실행되어 무한 재귀가 생기지 않습니다."
   ],
   "availability": [
     "Agents CLI v1.5.0 이상(확장 시스템), v1.8.0(LangChain 공식 확장)",

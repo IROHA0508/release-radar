@@ -5,7 +5,7 @@
   "kind": "모델 업데이트",
   "title": "ChatGPT에서 GPT-4o 등 구형 모델 은퇴",
   "headline": "2월 13일 ChatGPT에서 GPT-4o·GPT-4.1·GPT-4.1 mini·o4-mini 은퇴, API는 그대로",
-  "tldr": "OpenAI가 2026년 2월 13일 ChatGPT에서 GPT-4o, GPT-4.1, GPT-4.1 mini, OpenAI o4-mini를 은퇴시킨다고 발표했습니다. 앞서 예고한 GPT-5(Instant·Thinking) 은퇴와 같은 날입니다. 매일 GPT-4o를 고르는 사용자가 0.1%에 그치고 사용량 대부분이 GPT-5.2로 옮겨 갔다는 것이 이유이며, API에는 발표 시점 기준으로 변화가 없습니다.",
+  "tldr": "OpenAI가 2026년 2월 13일 ChatGPT에서 GPT-4o, GPT-4.1, GPT-4.1 mini, OpenAI o4-mini를 은퇴시킨다고 발표했습니다. 앞서 예고한 GPT-5(Instant·Thinking) 은퇴와 같은 날입니다. 매일 GPT-4o를 고르는 사용자가 0.1%에 그치고 사용량 대부분이 GPT-5.2로 옮겨 갔다는 것이 이유이며 API에는 발표 시점 기준으로 변화가 없습니다.",
   "models": [],
   "numbers": [
     {
@@ -52,7 +52,7 @@
     },
     {
       "title": "API 사용자는 미리 평가해 두기",
-      "body": "API에는 당장 변화가 없지만, 언젠가 지원 종료 공지가 나올 수 있습니다. 지금 쓰는 프롬프트를 최신 모델로도 돌려 품질과 비용을 비교해 두면 전환이 쉬워집니다."
+      "body": "API에는 당장 변화가 없지만 언젠가 지원 종료 공지가 나올 수 있습니다. 지금 쓰는 프롬프트를 최신 모델로도 돌려 품질과 비용을 비교해 두면 전환이 쉬워집니다."
     }
   ],
   "prompts": [

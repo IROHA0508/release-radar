@@ -5,7 +5,7 @@
   "kind": "모델 업데이트",
   "title": "Veo 3.1 Ingredients to Video 업데이트",
   "headline": "참조 이미지로 만드는 영상의 인물 일관성 강화, 세로 영상과 4K 업스케일링",
-  "tldr": "Google이 Veo 3.1의 Ingredients to Video(참조 이미지로 영상 만들기)를 업데이트했습니다. 등장인물이 장면마다 같은 모습을 유지하는 일관성이 좋아졌고, 9:16 세로 영상을 바로 만들 수 있으며, 1080p와 4K로 업스케일링할 수 있습니다. Gemini 앱, YouTube Shorts, Flow, Gemini API 등에서 쓸 수 있습니다.",
+  "tldr": "Google이 Veo 3.1의 Ingredients to Video(참조 이미지로 영상 만들기)를 업데이트했습니다. 등장인물이 장면마다 같은 모습을 유지하는 일관성이 좋아졌고 9:16 세로 영상을 바로 만들 수 있으며 1080p와 4K로 업스케일링할 수 있습니다. Gemini 앱, YouTube Shorts, Flow, Gemini API 등에 적용됩니다.",
   "models": [
     {
       "name": "Veo 3.1",
@@ -35,10 +35,10 @@
   "chartNote": "모델 기능 업데이트라 성능 비교 그래프가 없습니다.",
   "changes": [
     "인물 일관성이 좋아져 여러 장면에서 같은 등장인물이 같은 모습을 유지합니다.",
-    "Ingredients to Video에서 9:16 세로(portrait) 영상을 바로 만들 수 있습니다.",
-    "1080p와 4K로 업스케일링할 수 있습니다.",
-    "대사와 이야기 전개가 더 풍부해졌고, 인물·사물·질감·배경을 섞어 한 장면을 만들 수 있습니다.",
-    "Google 도구로 만든 영상에는 SynthID 워터마크가 들어가며, Gemini 앱에 영상을 올려 Google AI로 만들었는지 물어볼 수 있습니다."
+    "Ingredients to Video에서 9:16 세로(portrait) 영상을 바로 만드는 기능을 지원합니다.",
+    "1080p와 4K 업스케일링을 지원합니다.",
+    "대사와 이야기 전개가 더 풍부해졌고 인물·사물·질감·배경을 섞어 한 장면을 만들 수 있습니다.",
+    "Google 도구로 만든 영상에는 SynthID 워터마크가 들어가며 Gemini 앱에 영상을 올려 Google AI로 만들었는지 물어볼 수 있습니다."
   ],
   "availability": [
     "일반 사용자·크리에이터: Gemini 앱, YouTube Shorts, YouTube Create 앱",
@@ -55,7 +55,7 @@
     },
     {
       "title": "초안은 낮은 해상도로",
-      "body": "마음에 드는 구도가 나올 때까지는 기본 해상도로 여러 번 만들고, 최종본만 4K로 업스케일링하면 시간이 절약됩니다."
+      "body": "마음에 드는 구도가 나올 때까지는 기본 해상도로 여러 번 만들고 최종본만 4K로 업스케일링하면 시간이 절약됩니다."
     }
   ],
   "prompts": [

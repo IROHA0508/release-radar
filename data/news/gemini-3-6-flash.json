@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "Gemini 3.6 Flash · 3.5 Flash-Lite · 3.5 Flash Cyber",
   "headline": "출력 토큰 17% 절약하며 더 정확해진 3.6 Flash, 초당 350토큰 3.5 Flash-Lite",
-  "tldr": "Google이 Gemini 3.6 Flash와 3.5 Flash-Lite, 보안 특화 3.5 Flash Cyber를 공개했습니다. 3.6 Flash는 3.5 Flash보다 출력 토큰을 17%(DeepSWE에서는 최대 65%) 덜 쓰면서 불필요한 코드 수정과 실행 반복이 줄었고, 컴퓨터 사용과 지식 업무 점수도 올랐습니다. 3.5 Flash-Lite는 초당 350토큰을 내는 저가 모델입니다.",
+  "tldr": "Google이 Gemini 3.6 Flash와 3.5 Flash-Lite, 보안 특화 3.5 Flash Cyber를 공개했습니다. 3.6 Flash는 3.5 Flash보다 출력 토큰을 17%(DeepSWE에서는 최대 65%) 덜 쓰면서 불필요한 코드 수정과 실행 반복이 줄었고 컴퓨터 사용과 지식 업무 점수도 올랐습니다. 3.5 Flash-Lite는 초당 350토큰을 내는 저가 모델입니다.",
   "models": [
     {
       "name": "Gemini 3.6 Flash",
@@ -122,7 +122,7 @@
     }
   ],
   "changes": [
-    "3.5 Flash보다 출력 토큰을 17% 덜 쓰고, DeepSWE 같은 일부 평가에서는 최대 65% 덜 씁니다.",
+    "3.5 Flash보다 출력 토큰을 17% 덜 쓰고 DeepSWE 같은 일부 평가에서는 최대 65% 덜 씁니다.",
     "원치 않는 코드 수정과 실행 반복이 줄어 DeepSWE가 37%에서 49%로 올랐습니다.",
     "컴퓨터 사용(OSWorld-Verified 83.0%)과 지식 업무(GDPval-AA v2 1421)도 3.5 Flash보다 좋아졌습니다.",
     "3.5 Flash-Lite는 초당 350 출력 토큰을 내는 저가 모델입니다.",
@@ -140,7 +140,7 @@
     },
     {
       "title": "코드 수정 범위를 지정하기",
-      "body": "불필요한 수정이 줄었지만, 수정해도 되는 파일과 건드리면 안 되는 파일을 적어 주면 결과가 더 깔끔합니다."
+      "body": "불필요한 수정이 줄었지만 수정해도 되는 파일과 건드리면 안 되는 파일을 적어 주면 결과가 더 깔끔합니다."
     },
     {
       "title": "빠른 응답은 3.5 Flash-Lite로",

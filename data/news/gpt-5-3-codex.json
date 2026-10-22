@@ -37,7 +37,7 @@
       "note": "OpenAI 발표 기준"
     }
   ],
-  "chartSource": "OpenAI GPT-5.3-Codex 발표문의 비교표 기준이며, 모두 xhigh 추론 설정 값입니다.",
+  "chartSource": "OpenAI GPT-5.3-Codex 발표문의 비교표 기준이며 모두 xhigh 추론 설정 값입니다.",
   "charts": [
     {
       "title": "Terminal-Bench 2.0",
@@ -153,7 +153,7 @@
   "changes": [
     "GPT-5.2-Codex의 코딩 성능과 GPT-5.2의 추론·전문 지식을 한 모델로 합쳤습니다. GDPval(전문직 업무)도 GPT-5.2와 같은 70.9%입니다.",
     "이전보다 25% 빠르게 동작합니다.",
-    "작업 중 진행 상황을 자주 알려 주고, 그사이 사용자가 실시간으로 방향을 바꿀 수 있습니다.",
+    "작업 중 진행 상황을 자주 알려 주고 그사이 사용자가 실시간으로 방향을 바꿀 수 있습니다.",
     "OSWorld-Verified가 38.2%에서 64.7%로 올라 코드 밖의 컴퓨터 작업도 크게 좋아졌습니다."
   ],
   "availability": [

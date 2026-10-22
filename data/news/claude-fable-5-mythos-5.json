@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "Claude Fable 5 · Claude Mythos 5",
   "headline": "Mythos급 모델 첫 일반 공개, 보호 장치를 더한 Fable 5",
-  "tldr": "Anthropic이 Mythos급 모델을 처음으로 일반에 공개했습니다. Claude Fable 5와 Claude Mythos 5는 같은 바탕 모델이며, 일반에 공개된 Fable 5에는 보호 장치가 더해져 사이버보안·생물·화학·증류(distillation) 관련 요청은 Opus 4.8이 대신 답합니다. Mythos 5는 Project Glasswing 파트너에게만 제공됩니다.",
+  "tldr": "Anthropic이 Mythos급 모델을 처음으로 일반에 공개했습니다. Claude Fable 5와 Claude Mythos 5는 같은 바탕 모델이며 일반에 공개된 Fable 5에는 보호 장치가 더해져 사이버보안·생물·화학·증류(distillation) 관련 요청은 Opus 4.8이 대신 답합니다. Mythos 5는 Project Glasswing 파트너에게만 제공됩니다.",
   "models": [
     {
       "name": "Claude Fable 5",
@@ -237,11 +237,11 @@
     }
   ],
   "changes": [
-    "Fable 5와 Mythos 5는 같은 바탕 모델이며, Mythos 5는 일부 영역에서 보호 장치를 푼 버전입니다. 가격은 두 모델 모두 $10 / $50입니다.",
+    "Fable 5와 Mythos 5는 같은 바탕 모델이며 Mythos 5는 일부 영역에서 보호 장치를 푼 버전입니다. 가격은 두 모델 모두 $10 / $50입니다.",
     "Fable 5의 분류기가 사이버보안, 생물·화학, 증류 관련 요청을 감지하면 Claude Opus 4.8이 대신 답합니다. Fable 세션의 95% 이상은 이런 전환이 전혀 없습니다.",
     "가장 높은 effort에서 Fable 5는 자기 작업을 되돌아보고 검증합니다.",
-    "Mythos급 모델의 모든 트래픽은 30일 보존이 필수이며, 대부분 30일 뒤 삭제됩니다.",
-    "6월 12일 미국 상무부 수출 통제를 따르기 위해 Fable 5·Mythos 5 제공이 중단됐고, 6월 30일 통제가 해제된 뒤 7월 1일 재개됐습니다."
+    "Mythos급 모델의 모든 트래픽은 30일 보존이 필수이며 대부분 30일 뒤 삭제됩니다.",
+    "6월 12일 미국 상무부 수출 통제를 따르기 위해 Fable 5·Mythos 5 제공이 중단됐고 6월 30일 통제가 해제된 뒤 7월 1일 재개됐습니다."
   ],
   "availability": [
     "Fable 5: Claude 앱, Claude Code, Claude API (claude-fable-5)",

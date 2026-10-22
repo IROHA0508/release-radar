@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "GPT-5.5 · GPT-5.5 Pro",
   "headline": "Terminal-Bench 2.0 82.7%, 여러 갈래의 복잡한 일을 맡기는 1M 컨텍스트 모델",
-  "tldr": "OpenAI가 GPT-5.5와 GPT-5.5 Pro를 공개했습니다. Terminal-Bench 2.0 82.7%, GDPval 84.9%, ARC-AGI-2 85.0%로 GPT-5.4보다 전반적으로 올랐고, API에서는 100만 토큰 컨텍스트를 지원합니다. 다만 SWE-Bench Pro와 MCP Atlas에서는 Claude Opus 4.7이 더 높았습니다.",
+  "tldr": "OpenAI가 GPT-5.5와 GPT-5.5 Pro를 공개했습니다. Terminal-Bench 2.0 82.7%, GDPval 84.9%, ARC-AGI-2 85.0%로 GPT-5.4보다 전반적으로 올랐고 API에서는 100만 토큰 컨텍스트를 지원합니다. 다만 SWE-Bench Pro와 MCP Atlas에서는 Claude Opus 4.7이 더 높았습니다.",
   "models": [
     {
       "name": "GPT-5.5",

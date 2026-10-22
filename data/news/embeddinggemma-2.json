@@ -38,22 +38,22 @@
     }
   ],
   "charts": [],
-  "chartNote": "원문에는 모델 간 비교 수치가 표나 텍스트로 없고, EmbeddingGemma 1 대비 MTEB(Code) 14% 향상이라는 상대 수치만 있습니다. 벤치마크와 기기별 지연은 이미지로만 제공되어 그래프를 만들지 않았습니다.",
+  "chartNote": "원문에는 모델 간 비교 수치가 표나 텍스트로 없고 EmbeddingGemma 1 대비 MTEB(Code) 14% 향상이라는 상대 수치만 있습니다. 벤치마크와 기기별 지연은 이미지로만 제공되어 그래프를 만들지 않았습니다.",
   "changes": [
     "텍스트, 코드, 이미지, 영상, 오디오를 하나의 공유 768차원 공간에 임베딩해 모달리티를 넘나드는 검색이 가능합니다.",
-    "코드 검색과 기술 문서 검색에서 EmbeddingGemma 1보다 크게 좋아졌고, MTEB(Code) 점수는 14% 높습니다. 다국어 텍스트 정확도는 EmbeddingGemma 1 수준을 유지합니다.",
-    "모듈식 구조라 270M(텍스트·코드), 440M(텍스트+비전), 570M(텍스트+오디오), 740M(전체)로 필요한 인코더만 불러올 수 있습니다. 네 구성은 같은 벡터 공간을 공유합니다.",
-    "MRL로 768차원을 512·256·128차원으로 줄일 수 있습니다. 256차원은 텍스트·코드 품질 대부분과 이미지·영상·음성 검색 품질 약 95%를 유지하고, 저장 공간은 1/3입니다.",
+    "코드 검색과 기술 문서 검색에서 EmbeddingGemma 1보다 크게 좋아졌고 MTEB(Code) 점수는 14% 높습니다. 다국어 텍스트 정확도는 EmbeddingGemma 1 수준을 유지합니다.",
+    "모듈식 구조라 270M(텍스트·코드), 440M(텍스트+비전), 570M(텍스트+오디오), 740M(전체)로 필요한 인코더만 골라 불러오는 방식입니다. 네 구성은 같은 벡터 공간을 공유합니다.",
+    "MRL을 지원해 768차원을 512·256·128차원으로 줄이는 것도 가능합니다. 256차원은 텍스트·코드 품질 대부분과 이미지·영상·음성 검색 품질 약 95%를 유지하고 저장 공간은 1/3입니다.",
     "Gemma 4와 텍스트 토크나이저, 오디오 인코더 구조를 공유해 온디바이스 RAG에서 전체 메모리 사용량을 줄일 수 있습니다.",
-    "양자화 인식 학습(QAT)으로 가중치를 INT4와 INT8로 압축해 중급 소비자 하드웨어에서도 쓸 수 있습니다.",
+    "양자화 인식 학습(QAT)으로 가중치를 INT4와 INT8로 압축해 중급 소비자 하드웨어에서도 돌아갑니다.",
     "학습이나 파인튜닝 없이 입력을 분류 라벨·설명과 직접 매칭해 제로샷 의도 라우팅을 수 ms 안에 수행할 수 있습니다.",
-    "Google AI Edge Gallery에 Instant Media Search와 Video Moments Finder 데모가 추가됐고, Mac용 실험 앱 Google AI Edge Foresight가 공개됐습니다."
+    "Google AI Edge Gallery에 Instant Media Search와 Video Moments Finder 데모가 추가됐고 Mac용 실험 앱 Google AI Edge Foresight가 공개됐습니다."
   ],
   "availability": [
-    "Hugging Face에서 가중치를 내려받을 수 있습니다(Apache 2.0 라이선스).",
-    "sentence-transformers v6.1.0 이상에서 사용할 수 있습니다.",
-    "vLLM, Hugging Face Transformers, SGLang, MLX, Ollama, LMStudio, LiteRT에서 실행할 수 있습니다.",
-    "Unsloth로 파인튜닝할 수 있습니다.",
+    "가중치는 Hugging Face에 공개돼 있습니다(Apache 2.0 라이선스).",
+    "sentence-transformers v6.1.0 이상이 지원합니다.",
+    "vLLM, Hugging Face Transformers, SGLang, MLX, Ollama, LMStudio, LiteRT에서 실행됩니다.",
+    "Unsloth로 파인튜닝하는 것도 가능합니다.",
     "Google AI Edge Gallery 앱(Google Play, App Store)에서 데모 체험",
     "Google AI Edge Foresight Mac 앱 (실험 버전)",
     "MediaPipe Tasks: Embedder와 Semantic Retriever에 EmbeddingGemma 2 지원 추가, iOS·macOS·Windows·Linux·웹 대응",
@@ -63,7 +63,7 @@
   "tips": [
     {
       "title": "필요한 인코더만 로드하기",
-      "body": "텍스트만 쓴다면 config_kwargs에서 vision_config와 audio_config를 None으로 설정하세요. 비활성화한 인코더는 메모리에 올라가지 않아 270M 구성으로 돌릴 수 있습니다. 나중에 이미지나 오디오를 추가해도 이미 계산한 임베딩은 다시 만들 필요가 없습니다."
+      "body": "텍스트만 쓴다면 config_kwargs에서 vision_config와 audio_config를 None으로 설정하세요. 비활성화한 인코더는 메모리에 올라가지 않아 270M 구성으로 돌아갑니다. 나중에 이미지나 오디오를 추가해도 이미 계산한 임베딩은 다시 만들 필요가 없습니다."
     },
     {
       "title": "검색에는 질의와 문서에 다른 태스크 프롬프트 사용",
@@ -75,7 +75,7 @@
     },
     {
       "title": "질의와 문서의 차원을 맞추기",
-      "body": "truncate_dim을 쓸 때는 normalize_embeddings=True를 함께 지정하고, 질의와 문서에 같은 차원을 사용해야 합니다."
+      "body": "truncate_dim을 쓸 때는 normalize_embeddings=True를 함께 지정하고 질의와 문서에 같은 차원을 사용해야 합니다."
     },
     {
       "title": "크로스플랫폼은 MediaPipe, 세밀한 제어는 LiteRT",
@@ -83,7 +83,7 @@
     },
     {
       "title": "분류기 대신 Decision Task로 라우팅",
-      "body": "파인튜닝 없이 라벨과 설명만으로 이미지·텍스트·오디오 입력을 분류해 온디바이스 라우팅이나 행동 예측에 쓸 수 있습니다."
+      "body": "파인튜닝 없이 라벨과 설명만으로 이미지·텍스트·오디오 입력을 분류해 온디바이스 라우팅이나 행동 예측에 활용하세요."
     }
   ],
   "prompts": [
@@ -108,9 +108,9 @@
   ],
   "cautions": [
     "128차원으로 줄이면 텍스트·코드 품질은 약 90%를 유지하지만 이미지·영상·음성 검색 품질은 약 75%로 떨어집니다. 멀티모달 질의에 쓰기 전에 직접 데이터로 검증하세요.",
-    "모든 모달리티가 8,192 토큰 컨텍스트 창을 공유합니다. 영상은 기본 초당 1프레임으로 샘플링하고, 오디오는 16kHz 모노여야 합니다.",
+    "모든 모달리티가 8,192 토큰 컨텍스트 창을 공유합니다. 영상은 기본 초당 1프레임으로 샘플링하고 오디오는 16kHz 모노여야 합니다.",
     "Android ML Kit 서비스는 아직 출시 전이며 앞으로 몇 주 안에 제공될 예정입니다.",
-    "원문에 모델 간 비교 벤치마크 수치가 거의 없습니다. 확인되는 개선 폭은 MTEB(Code) 14% 향상뿐이며, 자세한 평가는 Google DeepMind 블로그와 Hugging Face 모델 카드에서 확인하세요."
+    "원문에 모델 간 비교 벤치마크 수치가 거의 없습니다. 확인되는 개선 폭은 MTEB(Code) 14% 향상뿐이며 자세한 평가는 Google DeepMind 블로그와 Hugging Face 모델 카드에서 확인하세요."
   ],
   "sources": [
     {

@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "Gemini 3.5 Flash",
   "headline": "코딩·에이전트 평가에서 3.1 Pro를 넘은 Flash, 다른 프런티어 모델보다 4배 빠른 출력",
-  "tldr": "Google I/O에서 Gemini 3.5 Flash가 공개됐습니다. Terminal-Bench 2.1 76.2%, GDPval-AA 1656 Elo, MCP Atlas 83.6%로 어려운 코딩·에이전트 평가에서 상위 모델인 Gemini 3.1 Pro를 넘었고, 초당 출력 토큰 기준으로 다른 프런티어 모델보다 4배 빠릅니다. Gemini 앱과 검색 AI Mode의 기본 모델로 모든 사용자에게 제공됩니다.",
+  "tldr": "Google I/O에서 Gemini 3.5 Flash가 공개됐습니다. Terminal-Bench 2.1 76.2%, GDPval-AA 1656 Elo, MCP Atlas 83.6%로 어려운 코딩·에이전트 평가에서 상위 모델인 Gemini 3.1 Pro를 넘었고 초당 출력 토큰 기준으로 다른 프런티어 모델보다 4배 빠릅니다. Gemini 앱과 검색 AI Mode의 기본 모델로 모든 사용자에게 제공됩니다.",
   "models": [
     {
       "name": "Gemini 3.5 Flash",

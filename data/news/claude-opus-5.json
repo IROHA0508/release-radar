@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "Claude Opus 5",
   "headline": "Fable 5에 가까운 지능을 절반 가격에, Max 플랜 새 기본 모델",
-  "tldr": "Anthropic이 Claude Opus 5를 공개했습니다. Fable 5에 가까운 지능을 절반 가격에 제공하며, Frontier-Bench와 GDPval-AA에서 새 최고 기록을 세웠습니다. CursorBench 3.2에서는 max effort로 Fable 5 최고점의 0.5% 이내 점수를 과제당 절반 비용으로 냈습니다. Max 플랜의 기본 모델이며, Mythos급과 달리 데이터 보존 요건이 없습니다.",
+  "tldr": "Anthropic이 Claude Opus 5를 공개했습니다. Fable 5에 가까운 지능을 절반 가격에 제공하며 Frontier-Bench와 GDPval-AA에서 새 최고 기록을 세웠습니다. CursorBench 3.2에서는 max effort로 Fable 5 최고점의 0.5% 이내 점수를 과제당 절반 비용으로 냈습니다. Max 플랜의 기본 모델이며 Mythos급과 달리 데이터 보존 요건이 없습니다.",
   "models": [
     {
       "name": "Claude Opus 5",
@@ -161,9 +161,9 @@
   ],
   "changes": [
     "Fable 5에 가까운 지능을 절반 가격에 제공합니다. CursorBench 3.2에서는 max effort로 Fable 5 최고점의 0.5% 이내 점수를 과제당 절반 비용으로 냈습니다.",
-    "Frontier-Bench와 GDPval-AA에서 새 최고 기록을 세웠고, Frontier-Bench v0.1에서는 Opus 4.8의 두 배 넘는 성능을 더 낮은 과제당 비용으로 냈습니다.",
+    "Frontier-Bench와 GDPval-AA에서 새 최고 기록을 세웠고 Frontier-Bench v0.1에서는 Opus 4.8의 두 배 넘는 성능을 더 낮은 과제당 비용으로 냈습니다.",
     "ARC-AGI 3 점수는 차점 모델의 3배, Zapier AutomationBench 통과율은 같은 과제당 비용에서 차점 모델의 약 1.5배입니다.",
-    "OSWorld 2.0에서는 어떤 비용 수준에서도 다른 모델보다 높았고, Fable 5의 최고 결과를 1/3을 조금 넘는 비용으로 넘어섰습니다.",
+    "OSWorld 2.0에서는 어떤 비용 수준에서도 다른 모델보다 높았고 Fable 5의 최고 결과를 1/3을 조금 넘는 비용으로 넘어섰습니다.",
     "Max 플랜의 새 기본 모델이자 Pro 플랜에서 쓸 수 있는 가장 강한 모델입니다.",
     "일반 사용에는 데이터 보존 요건이 없습니다(Mythos급 모델은 30일 보존 필수).",
     "Fast 모드는 기본 가격의 2배입니다."
@@ -183,7 +183,7 @@
     },
     {
       "title": "서브에이전트는 꼭 필요할 때만",
-      "body": "가이드는 서로 독립적이고 병렬로 나눌 수 있는 큰 작업에만 서브에이전트를 쓰고, 몇 번의 도구 호출로 끝낼 일이나 검증용으로는 쓰지 말라고 안내합니다."
+      "body": "가이드는 서로 독립적이고 병렬로 나눌 수 있는 큰 작업에만 서브에이전트를 쓰고 몇 번의 도구 호출로 끝낼 일이나 검증용으로는 쓰지 말라고 안내합니다."
     },
     {
       "title": "thinking은 끄지 말고 effort를 낮추기",

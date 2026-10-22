@@ -5,7 +5,7 @@
   "kind": "모델 출시",
   "title": "Nano Banana 2 (Gemini 3.1 Flash Image)",
   "headline": "512px부터 4K까지, 인물 5명·사물 14개를 일관되게 유지하는 빠른 이미지 모델",
-  "tldr": "Google이 Nano Banana 2(Gemini 3.1 Flash Image)를 공개했습니다. 512px부터 4K까지 다양한 비율로 만들고, 한 작업 안에서 인물 최대 5명과 사물 14개를 일관되게 유지하며, 이미지 속 글자를 정확히 쓰고 번역할 수 있습니다. Gemini 앱에서 Nano Banana Pro를 대신하고 Flow의 기본 모델이 됐으며, 6월 30일에는 더 싼 Nano Banana 2 Lite가 나왔습니다.",
+  "tldr": "Google이 Nano Banana 2(Gemini 3.1 Flash Image)를 공개했습니다. 512px부터 4K까지 다양한 비율로 만들고 한 작업 안에서 인물 최대 5명과 사물 14개를 일관되게 유지하며 이미지 속 글자를 정확히 쓰고 번역할 수 있습니다. Gemini 앱에서 Nano Banana Pro를 대신하고 Flow의 기본 모델이 됐으며 6월 30일에는 더 싼 Nano Banana 2 Lite가 나왔습니다.",
   "models": [
     {
       "name": "Gemini 3.1 Flash Image",
@@ -48,9 +48,9 @@
   "changes": [
     "512px부터 4K까지 해상도와 화면 비율을 고를 수 있습니다.",
     "한 작업 흐름 안에서 인물 최대 5명의 생김새와 사물 최대 14개의 형태를 유지합니다.",
-    "마케팅 시안이나 카드에 들어갈 글자를 정확하게 쓰고, 이미지 속 글자를 번역·현지화할 수 있습니다.",
+    "마케팅 시안이나 카드에 들어갈 글자를 정확하게 쓰고 이미지 속 글자를 번역·현지화할 수 있습니다.",
     "Gemini의 지식과 웹 검색의 실시간 정보·이미지를 바탕으로 만듭니다.",
-    "5월 28일 API에서 정식(GA) 모델 gemini-3.1-flash-image가 나왔고, 6월 30일 1K 이미지 1장당 $0.034, 생성 약 4초인 Nano Banana 2 Lite가 추가됐습니다."
+    "5월 28일 API에서 정식(GA) 모델 gemini-3.1-flash-image가 나왔고 6월 30일 1K 이미지 1장당 $0.034, 생성 약 4초인 Nano Banana 2 Lite가 추가됐습니다."
   ],
   "availability": [
     "Gemini 앱: Fast·Thinking·Pro 모드에서 Nano Banana Pro를 대체",
@@ -65,7 +65,7 @@
     },
     {
       "title": "글자는 그대로 쓸 문구를 따옴표로",
-      "body": "카드나 포스터 문구는 따옴표 안에 정확히 적고, 번역이 필요하면 '이 이미지의 영어 문구를 한국어로 바꿔줘'처럼 편집으로 요청하세요."
+      "body": "카드나 포스터 문구는 따옴표 안에 정확히 적고 번역이 필요하면 '이 이미지의 영어 문구를 한국어로 바꿔줘'처럼 편집으로 요청하세요."
     },
     {
       "title": "대량 생성은 Lite로",
