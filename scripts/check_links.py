@@ -45,6 +45,12 @@ KEEP = {
     "https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/":
         "소식 원문 주소. 자동 업데이트가 같은 글인지 판단할 때 쓰므로 그대로 둔다",
 }
+# 브라우저로는 열리는데 자동 요청(GitHub Actions·리더)에만 404가 나오는 링크. 실패 대신 '확인 불가' 경고로 둔다.
+# 사람이 브라우저로 열어 확인한 날짜를 함께 적고, 오래되면 다시 열어 본다.
+SOFT_404 = {
+    "https://support.claude.com/en/articles/10181068-styles-are-moving-to-skills":
+        "Claude 도움말. 2026-10-22 브라우저로 열림(같은 글 de·it판도 열림)",
+}
 LABEL = {"ok": "정상", "ok-reader": "정상(리더)", "moved": "주소 바뀜", "broken": "끊김", "unknown": "확인 불가",
          "error": "오류"}
 
@@ -164,6 +170,8 @@ def run(urls: list[str], session=None, workers: int = 8, reader_limit: int = 150
             r["status"] = "unknown"
         if r["status"] == "moved" and u in KEEP:
             r.update(status="ok", detail="유지: " + KEEP[u])
+        if r["status"] == "broken" and u in SOFT_404:
+            r.update(status="unknown", detail="자동 요청에만 404: " + SOFT_404[u])
     return results
 
 

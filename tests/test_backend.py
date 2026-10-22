@@ -914,7 +914,10 @@ def test_link_check_classifies_and_uses_reader_for_blocked_sites():
     kept = next(iter(cl.KEEP))
     kept_out = cl.run([kept], session=LinkSession({kept: (200, kept.rstrip("/") + "/2026-01-01/x", "")}),
                       workers=1, pause=0)
-    assert kept_out[kept]["status"] == "ok"                                 # deliberate redirect is not reported
+    assert kept_out[kept]["status"] == "ok"
+    soft = next(iter(cl.SOFT_404))
+    soft_out = cl.run([soft], session=LinkSession({soft: (404, None, ""), r + soft: (404, None, "")}), workers=1, pause=0)
+    assert soft_out[soft]["status"] == "unknown"                       # warning, not a failure                                 # deliberate redirect is not reported
     assert out["https://a.com/gone"]["status"] == "broken"
     assert out["https://openai.com/index/x"]["status"] == "ok-reader"
     assert out["https://openai.com/index/dead"]["status"] == "broken"
