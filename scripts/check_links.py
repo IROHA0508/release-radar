@@ -15,6 +15,7 @@
   오류       연결 실패·시간 초과 (경고, 한 번 더 시도한 뒤)
 
 봇을 막는 사이트(openai.com 등)는 backend와 같은 방식으로 r.jina.ai 리더를 거쳐 다시 확인한다.
+직접 요청이 404여도 리더로 한 번 더 본다. 일부 도움말 사이트는 GitHub Actions에서 보낸 요청에만 404를 주기 때문이다.
 끊긴 링크가 있으면 종료 코드 1을 돌려준다(GitHub Actions에서 실패로 표시돼 알림이 간다).
 """
 from __future__ import annotations
@@ -143,13 +144,20 @@ def run(urls: list[str], session=None, workers: int = 8, reader_limit: int = 150
     session = session or requests.Session()
     with ThreadPoolExecutor(workers) as pool:
         results = dict(zip(urls, pool.map(lambda u: check_direct(session, u), urls)))
-    blocked = [u for u, r in results.items() if r["status"] in ("blocked", "error")]
-    for i, u in enumerate(blocked):
+    recheck = [u for u, r in results.items() if r["status"] in ("blocked", "error", "broken")]
+    for i, u in enumerate(recheck):
+        direct = results[u]
         if i >= reader_limit:
-            results[u] = {**results[u], "status": "unknown", "detail": "리더 점검 한도 초과"}
+            if direct["status"] != "broken":
+                results[u] = {**direct, "status": "unknown", "detail": "리더 점검 한도 초과"}
             continue
         rr = check_reader(session, u)
-        results[u] = {**results[u], **rr}
+        if direct["status"] == "broken" and rr["status"] != "ok-reader":
+            pass                             # the direct 404 stands unless the reader actually got the page
+        elif direct["status"] == "broken":
+            results[u] = {**direct, **rr, "detail": f"직접 요청은 HTTP {direct.get('code')}, 리더로는 열림"}
+        else:
+            results[u] = {**direct, **rr}
         time.sleep(pause)                    # the free reader allows only a few requests per minute
     for u, r in results.items():
         if r["status"] == "blocked":

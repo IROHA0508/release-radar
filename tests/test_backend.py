@@ -896,13 +896,18 @@ def test_link_check_classifies_and_uses_reader_for_blocked_sites():
         "https://a.com/ok/": (200, "https://www.a.com/ok", ""),           # only www/slash differ
         "https://a.com/old": (200, "https://a.com/new-place", ""),
         "https://a.com/gone": (404, None, ""),
+        r + "https://a.com/gone": (200, None, "Warning: Target URL returned error 404: Not Found"),
+        "https://help.example.com/a/1": (404, None, ""),                   # 404 only for CI requests
+        r + "https://help.example.com/a/1": (200, None, "Title: Help\n\nbody"),
         "https://openai.com/index/x": (403, None, ""),
         r + "https://openai.com/index/x": (200, None, "Title: X\n\nbody"),
         "https://openai.com/index/dead": (403, None, ""),
         r + "https://openai.com/index/dead": (200, None, "Warning: Target URL returned error 404: Not Found"),
     }
-    out = cl.run(list(table)[:3] + ["https://openai.com/index/x", "https://openai.com/index/dead"],
+    out = cl.run(["https://a.com/ok/", "https://a.com/old", "https://a.com/gone", "https://help.example.com/a/1",
+                  "https://openai.com/index/x", "https://openai.com/index/dead"],
                  session=LinkSession(table), workers=2, pause=0)
+    assert out["https://help.example.com/a/1"]["status"] == "ok-reader"
     assert out["https://a.com/ok/"]["status"] == "ok"
     assert out["https://a.com/old"]["status"] == "moved" and out["https://a.com/old"]["final"].endswith("new-place")
     assert out["https://a.com/old"]["sameArticle"] is False           # slug "old" is gone → a person checks
