@@ -439,6 +439,14 @@
       "status": "skipped",
       "title": "Guided Vision in Gemini Live: built for accessibility"
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners": {
+      "checkedAt": "2026-10-22",
+      "company": "google",
+      "date": "2026-10-20",
+      "id": "gemini-app-small-business-tools",
+      "status": "added",
+      "title": "New Gemini tools for small business owners"
+    },
     "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon": {
       "checkedAt": "2026-10-14",
       "company": "google",
@@ -601,6 +609,14 @@
       "status": "skipped",
       "title": "Customize Claude Code with mods"
     },
+    "https://claude.com/resources/articles/claude-duet": {
+      "checkedAt": "2026-10-22",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "id": "claude-duet",
+      "status": "added",
+      "title": "Introducing Claude Duet"
+    },
     "https://claude.com/resources/articles/claude-for-government-is-now-generally-available": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -616,6 +632,14 @@
       "reason": "기존 Claude에 Google 도구 통합이 추가되는 단순 기능 공지. 실전 조언이 거의 없는 기능 소개에 해당.",
       "status": "skipped",
       "title": "Claude now works with Google Docs, Sheets, and Slides"
+    },
+    "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes": {
+      "checkedAt": "2026-10-22",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "id": "claude-security-continuous-scan",
+      "status": "added",
+      "title": "Claude Security now scans continuously and tracks fixes"
     },
     "https://claude.com/resources/articles/dashboards-and-motion": {
       "checkedAt": "2026-10-09",

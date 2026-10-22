@@ -1,29 +1,80 @@
 {
-  "startedAt": "2026-10-22T17:02:07+09:00",
+  "startedAt": "2026-10-22T23:09:50+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1836,
+  "entries": 1837,
   "candidates": [
     {
-      "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
-      "url": "https://openai.com/index/cloudflare-cyber",
-      "company": "openai",
+      "title": "Introducing Claude Duet",
+      "url": "https://claude.com/resources/articles/claude-duet",
+      "company": "anthropic",
       "date": "2026-10-21",
+      "relatedId": null
+    },
+    {
+      "title": "Claude Security now scans continuously and tracks fixes",
+      "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "relatedId": null
+    },
+    {
+      "title": "New Gemini tools for small business owners",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
+      "company": "google",
+      "date": "2026-10-20",
       "relatedId": null
     }
   ],
-  "added": [],
-  "updated": [],
-  "skipped": [
+  "added": [
     {
-      "title": "Cloudflare links vulnerability discovery to defense with OpenAI",
-      "url": "https://openai.com/index/cloudflare-cyber",
-      "reason": "기업 파트너십 및 고객 사례입니다. Cloudflare가 OpenAI Daybreak와 Codex를 사용하는 방식을 설명하는 글로, 새 모델 출시·업데이트, 공식 활용 팁(독자가 바로 따라 할 수 있는 조언)이 아닙니다. 지침의 제외 기준 '기업 파트너십, 고객 사례'에 해당합니다."
+      "id": "claude-duet",
+      "title": "Claude Duet",
+      "url": "https://claude.com/resources/articles/claude-duet",
+      "charts": 0
+    },
+    {
+      "id": "claude-security-continuous-scan",
+      "title": "Claude Security 지속 스캔과 수정 추적",
+      "url": "https://claude.com/resources/articles/claude-security-now-scans-continuously-and-tracks-fixes",
+      "charts": 0
+    },
+    {
+      "id": "gemini-app-small-business-tools",
+      "title": "Gemini 소상공인 도구",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners/",
+      "charts": 0
     }
   ],
+  "updated": [],
+  "skipped": [],
   "failed": [],
-  "guardNotes": {},
+  "guardNotes": {
+    "claude-security-continuous-scan": [
+      "핵심 수치 '공개 베타 이후 발견한 취약점: 100만 건 이상' 원문에서 확인 안 됨 → 제외"
+    ],
+    "gemini-app-small-business-tools": [
+      "핵심 수치 '사례 속 절약 시간: 하루 2~3시간' 원문에서 확인 안 됨 → 제외"
+    ]
+  },
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
-  "guideChanges": []
+  "guideChanges": [],
+  "styleNotes": {
+    "claude-duet": [
+      "문체 수정: changes.5",
+      "문체 수정: cautions.0",
+      "문체 수정: tips.0.body"
+    ],
+    "claude-security-continuous-scan": [
+      "문체 수정: changes.3",
+      "문체 수정: changes.5",
+      "문체 수정: changes.6",
+      "문체 수정: tips.3.body"
+    ]
+  },
+  "techLinks": [
+    "claude-duet → long-autonomy, computer-use",
+    "gemini-app-small-business-tools → tool-use, context-eng"
+  ]
 }

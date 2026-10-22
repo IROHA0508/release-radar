@@ -226,7 +226,8 @@
       ],
       "news": [
         "gemini-3-5-flash-developer-guide",
-        "openai-gpt-5-6-builders-guide"
+        "openai-gpt-5-6-builders-guide",
+        "gemini-app-small-business-tools"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -358,7 +359,8 @@
         "claude-5-context-engineering",
         "claude-code-session-value-tips",
         "openai-retained-reasoning-compaction",
-        "gpt-6-model-guide"
+        "gpt-6-model-guide",
+        "gemini-app-small-business-tools"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1165,7 +1167,8 @@
       "status": "관찰",
       "companies": [
         "google",
-        "openai"
+        "openai",
+        "anthropic"
       ],
       "prerequisites": [
         "harness",
@@ -1209,7 +1212,8 @@
       ],
       "news": [
         "gemini-4-argon-overnight-codebase",
-        "gpt-6-model-guide"
+        "gpt-6-model-guide",
+        "claude-duet"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1277,7 +1281,8 @@
       ],
       "news": [
         "claude-computer-use-best-practices",
-        "gpt-6-astra"
+        "gpt-6-astra",
+        "claude-duet"
       ],
       "verifiedAt": "2026-10-21"
     },
