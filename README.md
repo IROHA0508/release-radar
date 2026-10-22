@@ -2,7 +2,7 @@
 
 **사이트: https://release-radar-ten.vercel.app**
 
-ChatGPT(OpenAI), Claude(Anthropic), Gemini(Google)의 공식 발표를 뉴스별로 한국어로 요약하는 정적 웹사이트입니다. 소식마다 핵심 수치, 성능 그래프, 모델 사양, 활용 팁, 추천 프롬프트, 공식 출처를 정리하고, 세 회사의 프롬프트 가이드와 API 가격표, 최신 AI 활용 기술(AI 활용 기술 탭)과 기초부터 익히는 학습 경로(AI 활용 LAB 탭)를 함께 제공합니다.
+ChatGPT(OpenAI), Claude(Anthropic), Gemini(Google)의 공식 발표를 뉴스별로 한국어로 요약하는 정적 웹사이트입니다. 소식마다 핵심 수치, 성능 그래프, 모델 사양, 활용 팁, 추천 프롬프트, 공식 출처를 정리하고 세 회사의 프롬프트 가이드와 API 가격표, 최신 AI 활용 기술(AI 활용 기술 탭)과 기초부터 익히는 학습 경로(AI 활용 LAB 탭)를 함께 제공합니다.
 
 ## 구조
 
@@ -12,10 +12,14 @@ data/manifest.json      사이트에 보여 줄 소식 id 목록과 마지막 �
 data/news/<id>.json     소식 한 건 = 파일 한 개
 data/guides.json        프롬프트 가이드 탭 내용
 data/tech.json          AI 활용 기술 탭(최신 활용 기술)·AI 활용 LAB 탭(학습 경로) 내용
+data/glossary.json      용어집 탭 내용
 docs/DATA_SCHEMA.md     데이터 형식 설명
 docs/GUIDELINES.md      프로젝트 지침 (목표·원칙·로드맵)
 CLAUDE.md               AI와 작업할 때 먼저 읽는 요약 지침
 scripts/validate_data.py  커밋 전 데이터 검증
+scripts/style_check.py    글의 'AI 티' 문체 점검 (im-not-ai 규칙)
+scripts/check_links.py    공식 출처 링크 점검 (매주 월요일, 데이터를 바꾸는 PR마다)
+.claude/skills/humanize-korean-site/  사이트 문체 규칙 스킬 (im-not-ai, MIT)
 vercel.json             Vercel 설정 (데이터 캐시 끄기, 깔끔한 URL)
 backend/                새 소식 감지·요약·반영 Python 코드 (GitHub Actions에서 실행)
 tests/                  backend 오프라인 테스트
@@ -45,16 +49,19 @@ python3 -m http.server 8000
 
 ## 자동 업데이트 (Python 백엔드)
 
-`backend/`의 Python 코드가 GitHub Actions에서 6시간마다(한국 시간 0시·6시·12시·18시) 실행됩니다. GitHub 사정으로 몇 분 늦게 시작할 수 있습니다. 사이트는 정적 파일이라 서버가 따로 없고, 이 작업이 `data/`를 고쳐 커밋하면 Vercel이 자동으로 다시 배포합니다.
+`backend/`의 Python 코드가 GitHub Actions에서 6시간마다(한국 시간 0시·6시·12시·18시) 실행됩니다. GitHub 사정으로 몇 분 늦게 시작할 수 있습니다. 사이트는 정적 파일이라 서버가 따로 없고 이 작업이 `data/`를 고쳐 커밋하면 Vercel이 자동으로 다시 배포합니다.
 
 ```
 감지  모델 발표: OpenAI 뉴스 RSS, Anthropic 뉴스룸·사이트맵, Google Gemini 모델 블로그·DeepMind RSS
       활용 팁:   OpenAI 개발자 블로그, Claude 블로그, Google Gemini 앱 블로그·Developers 블로그·Cloud AI 블로그
   ↓   사이트에 이미 있는 출처 URL·이전 실행 기록과 비교, 최근 7일 이내 + 모델·활용 관련 글만 후보
-분류  Claude(작은 모델)가 후보 중 모델 출시·모델 업데이트·활용 팁만 고름 (고객 사례·정책·영업 공지 등 제외)
+분류  Claude(작은 모델)가 후보 중 모델 출시·모델 업데이트·제품·기능 출시·활용 팁만 고름 (고객 사례·정책·영업 공지 등 제외)
 읽기  원문 페이지 본문, 표(셀 그대로), 링크 추출. 막히면 r.jina.ai 리더로 재시도
-작성  Claude가 data/news/<id>.json 형식으로 한국어 요약·팁·프롬프트·그래프 작성
+작성  Claude가 data/news/<id>.json 형식으로 한국어 요약·팁·프롬프트·그래프 작성 (im-not-ai 문체 규칙을 함께 줌)
 검사  그래프 값, 핵심 수치, 모델 ID, 가격을 원문과 프로그램으로 대조해 원문에 없는 값은 삭제
+문체  연결어미 뒤 쉼표는 프로그램이 지우고, 다른 'AI 티' 신호가 남으면 Claude가 그 문장만 한 번 더 다듬음
+      (수치·영문 표기가 바뀌거나 50% 넘게 바뀐 문장은 버리고 원래 문장 유지)
+연결  활용 팁·제품·기능 출시 소식은 AI 활용 기술 항목에 자동 연결, 새 기술 이름은 backend/state/tech-candidates.json에 후보로만 남김
 반영  manifest 갱신 → scripts/validate_data.py 통과 시에만 저장 → 커밋·푸시 → Vercel 배포
 ```
 
@@ -68,11 +75,13 @@ python3 -m http.server 8000
 | `backend/guard.py` | 원문 대조로 지어낸 수치 제거 |
 | `backend/store.py` | 파일·manifest 저장과 검증 |
 | `backend/pipeline.py` | 전체 흐름, 실행 보고서(`backend/state/last-run.json`) |
+| `backend/humanize.py` | im-not-ai 문체 규칙을 작성 프롬프트에 넣고 쓴 뒤 문체 신호를 점검·수정 |
+| `backend/techlinks.py` | 새 소식을 AI 활용 기술 항목에 연결, 새 기술 후보 기록 |
 | `.github/workflows/update-news.yml` | 6시간마다 실행, 코드가 바뀌면 테스트와 소스 자가 시험 |
 
 ### 처음 한 번 설정
 
-요약을 쓰려면 Claude 인증 정보가 하나 필요합니다. 둘 중 하나만 넣으면 되고, 둘 다 있으면 구독 토큰을 먼저 씁니다.
+요약을 쓰려면 Claude 인증 정보가 하나 필요합니다. 둘 중 하나만 넣으면 되고 둘 다 있으면 구독 토큰을 먼저 씁니다.
 
 **방법 A. Claude 구독(Pro·Max) 토큰 — 추가 결제 없음 (권장)**
 
@@ -87,7 +96,7 @@ python3 -m http.server 8000
 1. Claude Console(https://platform.claude.com)에서 API 키를 만들고 크레딧을 충전합니다.
 2. 같은 화면에서 이름 `ANTHROPIC_API_KEY`로 저장합니다.
 
-기본 모델 기준 소식 1건당 약 0.1달러(입력 2~3만, 출력 5천 토큰 안팎)이며, 구독 요금과는 따로 청구됩니다.
+기본 모델 기준 소식 1건당 약 0.1달러(입력 2~3만, 출력 5천 토큰 안팎)이며 구독 요금과는 따로 청구됩니다.
 
 **공통**
 
@@ -132,10 +141,19 @@ API 가격표    세 회사 공식 가격 페이지를 읽고, 사이트에서 �
 ### 화면 표시
 
 - 상단 **Update**: 마지막으로 공식 소스를 확인한 한국 시간(`data/manifest.json`의 `lastChecked`, `YYYY-MM-DD HH:MM`). 새 소식이 없어도 실행할 때마다 갱신됩니다.
-- 필터: 회사(OpenAI·Anthropic·Google), 종류(모델 출시·모델 업데이트·활용 팁), 기간(연도·월)을 함께 고를 수 있습니다. 기간 버튼은 다시 누르면 전체 기간으로 돌아갑니다.
-- 목록은 10건씩 보여 주고, 아래로 스크롤하거나 '더 보기'를 누르면 다음 10건을 이어서 보여 줍니다.
+- 필터: 회사(OpenAI·Anthropic·Google), 종류(모델 출시·모델 업데이트·제품·기능 출시·활용 팁), 기간(연도·월)을 함께 고를 수 있습니다. 기간 버튼은 다시 누르면 전체 기간으로 돌아갑니다.
+- 목록은 10건씩 보여 주고 아래로 스크롤하거나 '더 보기'를 누르면 다음 10건을 이어서 보여 줍니다.
 - AI 활용 기술 탭도 같은 방식입니다. 2025년 1월 이후 세 회사가 공식 소개한 활용 기술을 소개일 기준 기간(연도·월)으로 고를 수 있습니다.
 - 소식 상세의 공식 출처는 한 줄 요약 바로 아래에 있습니다.
+- 용어집 탭: 사이트에 자주 나오는 AI 용어를 공식 문서 정의로 정리했습니다. 검색할 수 있고 `#glossary/<id>`로 용어 하나를 바로 열 수 있습니다. 기술 페이지에는 관련 용어가 함께 나옵니다.
+
+### 출처 링크 점검
+
+`.github/workflows/check-links.yml`이 매주 월요일(한국 시간 09:17)과 `data/`를 바꾸는 PR마다 `scripts/check_links.py`를 실행합니다. 봇을 막는 사이트는 r.jina.ai 리더로 다시 확인하고 끊긴 링크가 있으면 실행이 실패로 표시돼 알림이 옵니다. 결과는 실행 페이지의 요약(Summary)과 `link-report` 파일에 남습니다.
+
+### 문체 점검
+
+글은 [im-not-ai](https://github.com/epoko77-ai/im-not-ai)의 'AI 티' 규칙을 따릅니다(`.claude/skills/humanize-korean-site/`). `python3 scripts/style_check.py --spans`로 걸린 문장을 볼 수 있습니다.
 
 ## 소식 직접 추가하기
 
@@ -145,4 +163,4 @@ API 가격표    세 회사 공식 가격 페이지를 읽고, 사이트에서 �
 
 ## 참고
 
-비공식 요약입니다. 수치와 가격은 각 사 공식 발표 시점 기준이며, 정확한 내용은 각 소식의 출처 링크를 확인하세요. 성능 그래프는 원문 이미지를 복제하지 않고, 공식 발표에 공개된 수치로 직접 그린 것입니다.
+비공식 요약입니다. 수치와 가격은 각 사 공식 발표 시점 기준이며 정확한 내용은 각 소식의 출처 링크를 확인하세요. 성능 그래프는 원문 이미지를 복제하지 않고 공식 발표에 공개된 수치로 직접 그린 것입니다.

@@ -13,8 +13,8 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
 COMPANIES = {"openai", "anthropic", "google"}
-KINDS = {"모델 출시", "모델 업데이트", "활용 팁"}
-RESERVED_IDS = {"guide", "prices", "tech", "lab"}
+KINDS = {"모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁"}
+RESERVED_IDS = {"guide", "prices", "tech", "lab", "glossary"}
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 CHECKED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$")
@@ -270,6 +270,37 @@ def check_tech(t, news_ids):
         err(where, "학습 경로 order가 중복됨")
 
 
+GLOSSARY_REQUIRED = ["id", "term", "en", "group", "short", "related", "sources"]
+
+
+def check_glossary(g, tech_ids):
+    where = "data/glossary.json"
+    if g is None:
+        return
+    groups = set(g.get("groups") or [])
+    seen = set()
+    for t in g.get("terms") or []:
+        w = f"{where} [{t.get('id', '?')}]"
+        for key in GLOSSARY_REQUIRED:
+            if key not in t:
+                err(w, f"필수 필드 '{key}' 없음")
+        if not ID_RE.match(str(t.get("id", ""))) or t.get("id") in seen:
+            err(w, "id 형식 오류 또는 중복")
+        seen.add(t.get("id"))
+        if t.get("group") not in groups:
+            err(w, f"group은 groups 중 하나: {t.get('group')}")
+        if not str(t.get("short", "")).strip():
+            err(w, "short(한 줄 정의)가 비어 있음")
+        if not t.get("sources"):
+            err(w, "공식 출처(sources)가 하나 이상 있어야 함")
+        for s in t.get("sources", []):
+            if not s.get("title") or not str(s.get("url", "")).startswith("https://"):
+                err(w, f"출처 형식 오류(title, https url): {s}")
+        for r in t.get("related", []):
+            if tech_ids is not None and r not in tech_ids:
+                err(w, f"related의 '{r}' 기술이 없음")
+
+
 def main():
     manifest = load(DATA / "manifest.json")
     guides = load(DATA / "guides.json")
@@ -282,6 +313,9 @@ def main():
     tech_path = DATA / "tech.json"
     tech = load(tech_path) if tech_path.exists() else None
     check_tech(tech, set(ids))
+    gl_path = DATA / "glossary.json"
+    glossary = load(gl_path) if gl_path.exists() else None
+    check_glossary(glossary, {i.get("id") for i in tech.get("items", [])} if tech else None)
     if manifest is not None:
         listed = manifest.get("news", [])
         if not CHECKED_RE.match(str(manifest.get("lastChecked", ""))):
@@ -299,7 +333,8 @@ def main():
         for e in errors:
             print(" -", e)
         sys.exit(1)
-    print(f"데이터 검증 통과: 소식 {len(ids)}건" + (f", 기술 {len(tech.get('items', []))}건" if tech else ""))
+    print(f"데이터 검증 통과: 소식 {len(ids)}건" + (f", 기술 {len(tech.get('items', []))}건" if tech else "")
+          + (f", 용어 {len(glossary.get('terms', []))}개" if glossary else ""))
 
 
 if __name__ == "__main__":

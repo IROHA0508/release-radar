@@ -1,0 +1,41 @@
+name: 출처 링크 점검
+
+on:
+  schedule:
+    - cron: "17 0 * * 1"   # 매주 월요일 한국 시간 09:17 (UTC 00:17)
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "data/**"
+      - "scripts/check_links.py"
+      - ".github/workflows/check-links.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install "requests>=2.31,<3"
+      - name: 링크 점검 (끊긴 링크가 있으면 실패로 표시)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python scripts/check_links.py --only-changed "origin/${{ github.base_ref }}" --out link-report.json
+          else
+            python scripts/check_links.py --out link-report.json
+          fi
+      - name: 결과 파일 보관
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-report
+          path: link-report.json
+          if-no-files-found: ignore

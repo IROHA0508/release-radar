@@ -35,7 +35,7 @@ CHART = _obj({
 
 ITEM = _obj({
     "id": STR,
-    "kind": {"type": "string", "enum": ["모델 출시", "모델 업데이트", "활용 팁"]},
+    "kind": {"type": "string", "enum": ["모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁"]},
     "title": STR, "headline": STR, "tldr": STR,
     "models": {"type": "array", "items": _obj({"name": STR, "apiId": STR, "input": STR, "output": STR, "cached": STR})},
     "numbers": {"type": "array", "items": _obj({"label": STR, "value": STR, "note": STR})},
@@ -65,16 +65,18 @@ TRIAGE = _obj({"results": {"type": "array", "items": _obj({
 
 RULES = """\
 너는 '릴리스 레이더' 사이트의 편집자다. 이 사이트는 OpenAI(ChatGPT/GPT), Anthropic(Claude), Google(Gemini)의 공식 발표를
-뉴스별로 한국어로 요약하고, 성능 그래프, 모델을 더 잘 쓰는 법, 추천 프롬프트를 정리한다.
+뉴스별로 한국어로 요약하고 성능 그래프, 모델을 더 잘 쓰는 법, 추천 프롬프트를 정리한다.
 
 판단 기준
-- 포함(decision "new"): 새 모델 출시·발표, 모델 버전 업데이트, 가격이나 사용 가능 범위의 큰 변경, 그리고 공식 활용 팁
-  (특정 모델이나 ChatGPT·Codex·Claude·Claude Code·Gemini 앱·Gemini API 같은 공식 도구를 더 잘 쓰는 법,
-  프롬프트 가이드, 모범 사례처럼 독자가 바로 따라 할 수 있는 실전 조언이 중심인 글).
+- 포함(decision "new"): 새 모델 출시·발표, 모델 버전 업데이트, 가격이나 사용 가능 범위의 큰 변경,
+  AI 제품·기능 출시(ChatGPT·Codex·Claude 앱·Claude Code·Gemini 앱·Gemini CLI·Gemini API·AI Studio·Antigravity 같은
+  공식 AI 제품과 개발자 도구에 새로 나온 앱·기능·도구로, 독자가 새로 써 볼 수 있는 것), 그리고 공식 활용 팁
+  (특정 모델이나 위 공식 도구를 더 잘 쓰는 법, 프롬프트 가이드, 모범 사례처럼 독자가 바로 따라 할 수 있는 실전 조언이 중심인 글).
 - 제외(decision "skip"): 기업 파트너십, 고객 사례, 정책·규제 글, 모델 출시와 무관한 연구·안전 보고서, 행사 홍보,
-  모델과 무관한 제품·영업 공지(정부·기업 요금제 출시, 통합 발표 등), 실전 조언이 거의 없는 기능 소개.
-- kind는 셋 중 하나: "모델 출시"(새 모델 출시·발표), "모델 업데이트"(기존 모델의 기능·가격·가용성 변경, 지원 종료),
-  "활용 팁"(위의 공식 활용 팁).
+  요금제·영업·광고 사업 공지(정부·기업·학교 요금제 출시, 광고 지역 확대, 다른 회사 플랫폼에 모델 탑재 등),
+  AI 모델을 쓰는 방식과 무관한 인프라·하드웨어·개발 프레임워크 글, 특정 업종 마케팅 글.
+- kind는 넷 중 하나: "모델 출시"(새 모델 출시·발표), "모델 업데이트"(기존 모델의 기능·가격·가용성 변경, 지원 종료),
+  "제품·기능 출시"(위의 AI 제품·기능 출시. 새 모델이 함께 발표되면 "모델 출시"), "활용 팁"(위의 공식 활용 팁).
 - 이미 사이트에 있는 모델의 후속 소식(가용성 확대, 새 모드 등)은 decision "update", updateId에 기존 id를 쓰고
   update 필드에 덧붙일 changes/availability/sources만 쓴다. 이 경우 item은 빈 값으로 채워도 된다.
 
@@ -86,8 +88,12 @@ RULES = """\
   lowerIsBetter true. 수치가 이미지로만 있어 텍스트로 확인할 수 없으면 charts는 빈 배열, chartNote에 그 사실을 쓴다.
   charts를 쓰면 chartSource에 수치 출처를 쓴다. 각 수치가 무엇과 비교한 값인지(이전 모델 대비인지, 측정 기관) 원문대로 쓴다.
 - 이 단계 뒤에 프로그램이 모든 그래프 값·핵심 수치·모델 ID·가격을 원문과 대조해, 원문에 없는 값은 지운다.
-- 문체: 자연스럽고 간결한 한국어 존댓말 서술. 과장 금지. title은 모델 출시·업데이트면 공식 모델명 그대로,
-  활용 팁이면 핵심을 담은 짧은 한국어 제목(예: "API 설정 두 개로 점수 3배: 추론 유지와 컴팩션").
+- 문체: 자연스럽고 간결한 한국어 존댓말 서술. 과장 금지. 아래 '문체 규칙'을 따른다.
+  title은 모델 출시·업데이트면 공식 모델명 그대로, 제품·기능 출시면 공식 제품·기능 이름 그대로,
+  활용 팁이면 핵심을 담은 짧은 한국어 제목 하나(예: "추론 유지와 컴팩션으로 점수 3배 올리기").
+  제목에 "X: Y" 같은 콜론 부제를 붙이지 않는다.
+- 제품·기능 출시에서 changes는 새로 생긴 기능과 달라진 점, availability는 쓸 수 있는 곳·요금제·지역,
+  tips는 처음 써 볼 때의 방법, models는 원문에 모델이 나올 때만 쓴다.
 - 활용 팁에서 changes는 원문의 핵심 내용, tips는 바로 따라 할 행동, prompts는 원문 예시를 옮긴 것 위주로 쓴다.
   성능 비교 수치가 없으면 charts는 빈 배열로 둔다.
 - numbers는 핵심 수치 3~4개, changes 3~6개, tips 2~4개, prompts 2개(바로 붙여 쓸 수 있는 한국어, 바꿀 부분은 [대괄호],
@@ -200,7 +206,7 @@ def triage(claude, entries: list[Entry], site_lines: list[str]) -> dict[int, tup
         for i, e in enumerate(entries))
     user = (f"사이트에 이미 있는 소식:\n" + "\n".join(site_lines[:60]) +
             f"\n\n새로 올라온 글 목록:\n{listing}\n\n각 글이 사이트에 실을 글(새 모델, 모델 업데이트, 가격·사용 범위 변경, "
-            "공식 활용 팁·프롬프트 가이드·모범 사례, 또는 이미 있는 모델의 의미 있는 후속 소식)인지 위 판단 기준대로 "
+            "AI 제품·기능 출시, 공식 활용 팁·프롬프트 가이드·모범 사례, 또는 이미 있는 모델의 의미 있는 후속 소식)인지 위 판단 기준대로 "
             "판단해 results에 index별로 답해라.")
     out = claude.json_call(model=config.TRIAGE_MODEL, system=RULES, user=user, schema=TRIAGE, max_tokens=2000)
     return {r["index"]: (bool(r["relevant"]), r.get("reason", "")) for r in out.get("results", [])}
@@ -215,7 +221,10 @@ def write_item(claude, entry: Entry, article: Article, site_lines: list[str], to
     tip_example = config.TIP_EXAMPLE.read_text(encoding="utf-8") if config.TIP_EXAMPLE.exists() else ""
     tables = "\n\n".join(article.tables) or "(텍스트로 된 표 없음)"
     links = "\n".join(l for l in article.links if re.search(r"model|api|docs|pricing|aistudio|platform", l, re.I))[:4000]
-    system = (RULES + "\n\n# 데이터 형식\n" + schema_doc + "\n\n# 문체·구성 예시: 모델 출시 (다른 소식)\n" + example
+    from .humanize import style_rules
+
+    system = (RULES + "\n\n# 문체 규칙\n" + style_rules() + "\n\n# 데이터 형식\n" + schema_doc
+              + "\n\n# 문체·구성 예시: 모델 출시 (다른 소식)\n" + example
               + "\n\n# 문체·구성 예시: 활용 팁 (다른 소식)\n" + tip_example)
     user = (
         f"오늘(Asia/Seoul): {today.isoformat()}\n회사: {entry.company}\n원문 제목: {article.title or entry.title}\n"
@@ -232,7 +241,7 @@ def write_item(claude, entry: Entry, article: Article, site_lines: list[str], to
             f"이 원문은 이미 사이트에 있는 소식 '{update_of['id']}'와 같은 모델·같은 발표를 다룬 다른 글이다. "
             "새 소식을 만들지 말고 decision은 반드시 \"update\", updateId는 "
             f"\"{update_of['id']}\"로 써라. update.changes와 update.availability에는 아래 기존 내용에 없는 "
-            "새 사실만 짧게(각 0~3개) 쓰고, update.sources에는 이 원문 URL을 넣어라. item은 빈 값으로 둔다.\n"
+            "새 사실만 짧게(각 0~3개) 쓰고 update.sources에는 이 원문 URL을 넣어라. item은 빈 값으로 둔다.\n"
             + json.dumps(existing, ensure_ascii=False, indent=1)
         )
     return claude.json_call(model=config.SUMMARY_MODEL, system=system, user=user, schema=RESULT, max_tokens=16000)

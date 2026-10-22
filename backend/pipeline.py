@@ -45,6 +45,8 @@ class RunReport:
     note: str = ""
     authError: bool = False
     guideChanges: list = field(default_factory=list)
+    styleNotes: dict = field(default_factory=dict)
+    techLinks: list = field(default_factory=list)
 
     def save(self) -> None:
         path = config.STATE_FILE.parent / "last-run.json"
@@ -206,6 +208,11 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
             report.skipped.append({"title": e.title, "url": e.url, "reason": draft.get("reason", "")})
             continue
         if decision == "update":
+            from .humanize import checker
+
+            upd = draft.get("update") or {}
+            for key in ("changes", "availability"):
+                upd[key] = [checker().fix_c11(s) for s in upd.get(key) or []]
             target = store.slugify(draft.get("updateId") or e.extra.get("relatedId") or "")
             target_path = config.NEWS_DIR / f"{target}.json"
             before = target_path.read_text(encoding="utf-8") if target_path.exists() else None
@@ -230,6 +237,11 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
         item = store.normalize_item(item, company=e.company, day=day, url=e.url, title_hint=e.title)
         if notes:
             report.guardNotes[item["id"]] = notes
+        from .humanize import polish     # im-not-ai style rules: fix AI-tell sentences, keep every number/ID
+
+        style = polish(claude, item)
+        if style:
+            report.styleNotes[item["id"]] = style
         path = store.write_news(item)
         store.add_to_manifest(item["id"])
         ok, out = store.validate()
@@ -241,6 +253,15 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
             continue
         detect.mark(state, e, "added", today, id=item["id"])
         site.add(item)                      # later candidates in this run must see it
+        if item.get("kind") in ("활용 팁", "제품·기능 출시"):
+            try:                            # link the item to the techniques it covers; queue new technique names
+                from . import techlinks
+
+                for c in techlinks.link_item(claude, item, today):
+                    annotate("notice", "활용 기술 연결", c)
+                    report.techLinks.append(c)
+            except Exception as exc:  # noqa: BLE001 - the news item itself is already saved
+                log.warning("tech link failed: %s", exc)
         if item.get("kind") == "활용 팁":
             try:                            # a new official tip may hold prompting advice for the guide
                 from . import guides

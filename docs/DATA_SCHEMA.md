@@ -11,17 +11,17 @@
 }
 ```
 
-- `lastChecked`: 마지막으로 공식 소스를 확인한 시각 `YYYY-MM-DD HH:MM`(Asia/Seoul). 상단 "Update"에 표시되고, 날짜 부분이 NEW 배지(7일 이내)의 기준입니다. 날짜만 있는 `YYYY-MM-DD`도 허용합니다.
+- `lastChecked`: 마지막으로 공식 소스를 확인한 시각 `YYYY-MM-DD HH:MM`(Asia/Seoul). 상단 "Update"에 표시되고 날짜 부분이 NEW 배지(7일 이내)의 기준입니다. 날짜만 있는 `YYYY-MM-DD`도 허용합니다.
 - `news`: 사이트에 보여 줄 소식 id 목록. 순서와 관계없이 화면에서는 날짜 역순으로 정렬됩니다.
 
 ## data/news/&lt;id&gt;.json
 
 | 필드 | 형식 | 설명 |
 |---|---|---|
-| `id` | 문자열 | 파일 이름과 같음. 소문자·숫자·하이픈만. `guide`, `prices`는 예약어 |
+| `id` | 문자열 | 파일 이름과 같음. 소문자·숫자·하이픈만. `guide`, `prices`, `tech`, `lab`, `glossary`는 예약어 |
 | `company` | `openai` \| `anthropic` \| `google` | 발표한 회사 |
 | `date` | `YYYY-MM-DD` | 공식 발표일 |
-| `kind` | `모델 출시` \| `모델 업데이트` \| `활용 팁` | 소식 종류. 화면의 종류 필터와 같음. 새 모델 출시·발표는 `모델 출시`, 기존 모델의 기능·가격·가용성 변경과 지원 종료는 `모델 업데이트`, 공식 사용 가이드·프롬프트 팁은 `활용 팁` |
+| `kind` | `모델 출시` \| `모델 업데이트` \| `제품·기능 출시` \| `활용 팁` | 소식 종류. 화면의 종류 필터와 같음. 새 모델 출시·발표는 `모델 출시`, 기존 모델의 기능·가격·가용성 변경과 지원 종료는 `모델 업데이트`, ChatGPT·Codex·Claude·Claude Code·Gemini 앱·Gemini CLI 같은 공식 AI 제품과 개발자 도구의 새 앱·기능은 `제품·기능 출시`, 공식 사용 가이드·프롬프트 팁은 `활용 팁` |
 | `title`, `headline`, `tldr` | 문자열 | 제목, 한 줄 헤드라인, 2~3문장 요약 |
 | `models` | 배열 | `{name, apiId, input, output, cached}` — 가격은 1M 토큰당 USD 문자열, 모르면 `null` |
 | `numbers` | 배열 | `{label, value, note}` 핵심 수치 3~4개 |
@@ -102,7 +102,7 @@
 - `category`: `기본 작성법`, `구조와 형식`, `앱 기능과 설정`, `예시 활용`, `추론과 effort`, `긴 문서와 자료`, `에이전트와 코딩`, `도구와 API 설정`, `이미지·영상·음성` 중 하나
 - `watch`: 매일 내용을 확인하는 공식 프롬프트 가이드 페이지. 본문이 바뀌면 Claude가 새 권고만 골라 `methods`에 추가하거나 고칩니다.
 - `structure`: '공통 원칙' 탭의 '태그·구분자는 웹 앱에서도 쓸 수 있나요?' 회사별 비교표.
-- `appFeatures`: '공통 원칙' 탭의 앱 기능 대응표(지시 저장, 프로젝트·노트북, 메모리, 캔버스·아티팩트, 딥 리서치, 예약 작업). 줄마다 `cells`에 세 회사 칸이 모두 있어야 하고, 칸마다 공식 도움말 `sources`가 필요합니다. `methodId`가 있으면 '방법 보기'로 그 회사 탭의 방법 카드로 이동합니다. 칸의 근거 페이지가 `watch`에 있고 본문이 바뀌면, Claude가 그 칸이 아직 맞는지 다시 확인해 고칩니다(고친 칸의 숫자는 모두 원문에 있어야 반영).
+- `appFeatures`: '공통 원칙' 탭의 앱 기능 대응표(지시 저장, 프로젝트·노트북, 메모리, 캔버스·아티팩트, 딥 리서치, 예약 작업). 줄마다 `cells`에 세 회사 칸이 모두 있어야 하고 칸마다 공식 도움말 `sources`가 필요합니다. `methodId`가 있으면 '방법 보기'로 그 회사 탭의 방법 카드로 이동합니다. 칸의 근거 페이지가 `watch`에 있고 본문이 바뀌면, Claude가 그 칸이 아직 맞는지 다시 확인해 고칩니다(고친 칸의 숫자는 모두 원문에 있어야 반영).
 - `addedAt`이 14일 이내인 방법은 화면에 NEW로 표시됩니다.
 - `before`는 흔한 덜 좋은 요청(사이트가 쓴 예), `after`는 개선한 요청입니다. `exampleFromSource: true`는 `after`가 원문 예시를 옮긴 것이라는 뜻이며 화면에 '원문 예시'로 표시됩니다. `before`에는 적용되지 않습니다.
 
@@ -126,7 +126,7 @@
 
 ## data/tech.json (AI 활용 기술 탭 · AI 활용 LAB 탭)
 
-학습 경로(`group: "path"`)와 최신 활용 기술(`group: "radar"`)을 한 파일에 담고, 화면에서는 두 탭으로 나눠 보여 줍니다.
+학습 경로(`group: "path"`)와 최신 활용 기술(`group: "radar"`)을 한 파일에 담고 화면에서는 두 탭으로 나눠 보여 줍니다.
 
 | 탭 | group | 목록 | 상세 |
 |---|---|---|---|
@@ -159,7 +159,32 @@
 - `news`: 이 기술을 다룬 사이트 소식 id(관련 소식 링크).
 - `sources`: 공식 출처 1개 이상 필수(https).
 - radar 항목 전용: `date`(공식적으로 처음 소개된 날, `YYYY-MM-DD`, 2025-01-01 이후 필수), `dateNote`(선택, 날짜에 대한 안내), `status`(`관찰`·`시도`·`랩`·`보관`), `companies`(이 기술을 다룬 회사), `status`가 `랩`이면 `lab`에 학습 경로 항목 id
-- radar 목록은 `date` 최신순으로 보여 주고, 화면의 기간 선택(연도·월)도 `date` 기준입니다.
+- radar 목록은 `date` 최신순으로 보여 주고 화면의 기간 선택(연도·월)도 `date` 기준입니다.
 - radar 항목 중 `관찰` 단계이면서 두 회사 이상이 다루거나 근거 소식이 3건 이상이면 화면에 '시도 추천'이 붙습니다(지침 9.1).
-- `groups`에는 `path`와 `radar`가 하나씩 있어야 하고, 각각 `title`과 `intro`가 필요합니다.
+- `groups`에는 `path`와 `radar`가 하나씩 있어야 하고 각각 `title`과 `intro`가 필요합니다.
 - `tech`, `lab`은 소식 id 예약어입니다.
+- 자동 업데이트가 활용 팁·제품·기능 출시 소식을 추가하면 관련 기술의 `news`에 id를 넣습니다(radar 항목은 `companies`에 회사도 추가). 목록에 없는 새 기술 이름은 `backend/state/tech-candidates.json`에만 쌓이고 사람이 공식 출처를 확인한 뒤 항목으로 만듭니다.
+
+## data/glossary.json (용어집 탭)
+
+```json
+{
+  "updatedAt": "2026-10-22",
+  "intro": "탭 맨 위 소개 문장",
+  "groups": ["기본 개념", "프롬프트"],
+  "terms": [{
+    "id": "token", "term": "토큰", "en": "Token", "group": "기본 개념",
+    "short": "한 줄 정의 (필수)", "body": "조금 더 설명 (선택)",
+    "related": ["llm-api"],
+    "sources": [{ "title": "...", "url": "https://..." }]
+  }]
+}
+```
+
+- `group`은 `groups` 중 하나. 화면은 `groups` 순서대로 묶어 보여 줍니다.
+- `related`는 `data/tech.json`의 기술 id. 기술 페이지에 '관련 용어'로 거꾸로도 표시됩니다.
+- 정의는 공식 문서(`sources`, 1개 이상 필수)를 바탕으로 씁니다. 화면 주소는 `#glossary`, 용어 하나는 `#glossary/<id>`.
+
+## 문체
+
+`data/` 아래 글은 im-not-ai의 'AI 티' 규칙을 따릅니다. 규칙과 적용 범위는 `.claude/skills/humanize-korean-site/SKILL.md`, 점검은 `python3 scripts/style_check.py --spans`.
