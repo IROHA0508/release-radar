@@ -1,53 +1,15 @@
 {
-  "startedAt": "2026-10-24T03:49:26+09:00",
+  "startedAt": "2026-10-24T08:37:26+09:00",
   "prices": {
-    "checked": [
-      "openai",
-      "anthropic",
-      "google"
-    ],
+    "checked": [],
     "changes": [],
     "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 38,
-    "changed": [
-      "https://developers.openai.com/api/docs/guides/latest-model",
-      "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
-      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
-      "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
-      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5",
-      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
-      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5",
-      "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"
-    ],
-    "changes": [
-      "가이드 추가: [openai] 프롬프트와 도구 설명은 덜어내며 평가로 확인하기",
-      "가이드 추가: [openai] 요청 종류별로 허용할 행동 범위를 한 곳에 적기",
-      "가이드 추가: [openai] 기본 상세도는 text.verbosity로, 짧은 답에 꼭 넣을 내용은 프롬프트로",
-      "가이드 추가: [openai] 채팅 기록 참고를 끄면 저장된 메모리는 남으니 두 설정을 따로 보기",
-      "가이드 추가: [openai] 개선된 메모리와 기존 저장 메모리 중 계정에 맞는 방식 고르기",
-      "가이드 추가: [openai] 잠근 채팅은 기존 메모리를 쓰지만 새 대화는 일반 메모리에 반영되지 않음",
-      "가이드 추가: [openai] 딥 리서치에 이전 모델을 쓰고 싶으면 직접 고르기",
-      "가이드 추가: [openai] 예약 작업이 안 되는 대화는 음성·GPT·잠근 채팅",
-      "가이드 추가: [openai] 데스크톱 앱에 Scheduled가 안 보이면 웹에서 만들기",
-      "가이드 추가: [openai] 공유받은 작업은 내용과 시간대를 확인한 뒤 내 계정에 예약하기",
-      "가이드 추가: [openai] Slack·Google Drive 링크는 프로젝트 소스로 붙여 넣기",
-      "가이드 추가: [openai] 이미 나눈 대화는 프로젝트로 옮겨 지시문과 파일 맥락 이어받기",
-      "가이드 추가: [openai] 공유 프로젝트에서 남의 대화는 분기해 새 가설 시험하기",
-      "가이드 추가: [anthropic] thinking을 끄고 쓰던 프롬프트는 low effort에서 다시 시작하기",
-      "가이드 추가: [anthropic] 프론트엔드 디자인은 피할 패턴을 구체적으로 적기",
-      "가이드 추가: [anthropic] 작은 수정에 파일 전체를 다시 쓰면 필요한 부분만 고치라는 문장 붙이기",
-      "가이드 추가: [anthropic] 정상 코딩 요청이 거절되면 질문 표현과 맥락부터 바꿔 보기",
-      "가이드 추가: [anthropic] xhigh·max에서 긴 결과물은 max_tokens를 넉넉히 잡고 이중 작성을 막기",
-      "가이드 추가: [anthropic] 답변에 추론 같은 글이 섞이면 adaptive thinking과 medium effort로 바꾸기",
-      "가이드 추가: [anthropic] Haiku 4.5용 max_tokens와 thinking 설정은 그대로 옮기지 말고 다시 보기",
-      "가이드 추가: [anthropic] stop_reason이 refusal이면 클라이언트에서 처리하고 같은 요청을 반복하지 않기"
-    ],
+    "checked": 0,
+    "changed": [],
+    "changes": [],
     "errors": {}
   },
   "authError": false,

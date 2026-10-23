@@ -1,50 +1,36 @@
 {
-  "startedAt": "2026-10-24T03:46:28+09:00",
+  "startedAt": "2026-10-24T08:36:52+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1845,
+  "entries": 1846,
   "candidates": [
     {
-      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
-      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+      "title": "Securing our frontier model training environment",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
       "company": "openai",
       "date": "2026-10-23",
       "relatedId": null
     },
     {
-      "title": "Claude Cowork and chat come together for Enterprise",
-      "url": "https://claude.com/resources/articles/unified-claude-enterprise",
+      "title": "Claude Duet Safety, Privacy, and Security",
+      "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
       "company": "anthropic",
       "date": "2026-10-23",
-      "relatedId": null
-    },
-    {
-      "title": "See what 5 builders are making with Gemini 4 Argon",
-      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-builders/",
-      "company": "google",
-      "date": "2026-10-23",
-      "relatedId": "gemini-4-argon"
+      "relatedId": "claude-duet"
     }
   ],
-  "added": [
-    {
-      "id": "claude-enterprise-unified-chat-cowork",
-      "title": "Claude Enterprise 통합 Claude 경험",
-      "url": "https://claude.com/resources/articles/unified-claude-enterprise",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [
     {
-      "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
-      "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
-      "reason": "OpenAI의 저장소 인프라 기술(Habitat, Azure Cosmos DB 등)에 관한 글로, AI 모델을 쓰는 방식과 무관한 인프라·개발 프레임워크 기사"
+      "title": "Securing our frontier model training environment",
+      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+      "reason": "모델 출시와 무관한 안전 보고서. 모델 훈련 환경의 보안 강화에 관한 기술 설명으로, 사용자가 새로 쓸 수 있는 제품·기능·모델과 무관합니다."
     },
     {
-      "title": "See what 5 builders are making with Gemini 4 Argon",
-      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-builders/",
-      "reason": "이미 사이트에 있는 Gemini 4 Argon 모델을 사용한 개발자 5명의 사례·빌드를 소개하는 글로, 고객 사례에 해당"
+      "title": "Claude Duet Safety, Privacy, and Security",
+      "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
+      "reason": "정책·규제 글. 이미 등재된 Claude Duet의 보안·개인정보 정책 설명서로, 새 기능이나 업데이트가 아닙니다."
     }
   ],
   "failed": [],
@@ -52,15 +38,6 @@
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {
-    "claude-enterprise-unified-chat-cowork": [
-      "문체 수정: changes.2",
-      "문체 수정: cautions.0",
-      "문체 수정: cautions.2",
-      "문체 수정: tips.0.body"
-    ]
-  },
-  "techLinks": [
-    "claude-enterprise-unified-chat-cowork → long-autonomy, long-running-handoff, tokenomics"
-  ]
+  "styleNotes": {},
+  "techLinks": []
 }

@@ -641,6 +641,14 @@
       "status": "added",
       "title": "Introducing Claude Duet"
     },
+    "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security": {
+      "checkedAt": "2026-10-24",
+      "company": "anthropic",
+      "date": "2026-10-23",
+      "reason": "정책·규제 글. 이미 등재된 Claude Duet의 보안·개인정보 정책 설명서로, 새 기능이나 업데이트가 아닙니다.",
+      "status": "skipped",
+      "title": "Claude Duet Safety, Privacy, and Security"
+    },
     "https://claude.com/resources/articles/claude-for-government-is-now-generally-available": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -1619,6 +1627,14 @@
       "reason": "OpenAI의 저장소 인프라 기술(Habitat, Azure Cosmos DB 등)에 관한 글로, AI 모델을 쓰는 방식과 무관한 인프라·개발 프레임워크 기사",
       "status": "skipped",
       "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)"
+    },
+    "https://openai.com/index/securing-our-frontier-model-training-environment": {
+      "checkedAt": "2026-10-24",
+      "company": "openai",
+      "date": "2026-10-23",
+      "reason": "모델 출시와 무관한 안전 보고서. 모델 훈련 환경의 보안 강화에 관한 기술 설명으로, 사용자가 새로 쓸 수 있는 제품·기능·모델과 무관합니다.",
+      "status": "skipped",
+      "title": "Securing our frontier model training environment"
     },
     "https://openai.com/index/sharing-ai-progress-in-mathematics": {
       "checkedAt": "2026-10-07",
