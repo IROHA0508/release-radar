@@ -1218,7 +1218,8 @@
       "news": [
         "gemini-4-argon-overnight-codebase",
         "gpt-6-model-guide",
-        "claude-duet"
+        "claude-duet",
+        "claude-enterprise-unified-chat-cowork"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1419,7 +1420,8 @@
         "gpt-6-model-guide",
         "openai-gpt-5-6-builders-guide",
         "claude-code-session-value-tips",
-        "claude-fable-5-cowork-tips"
+        "claude-fable-5-cowork-tips",
+        "claude-enterprise-unified-chat-cowork"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2924,7 +2926,9 @@
           "url": "https://www.anthropic.com/research/effective-harnesses-for-long-running-agents"
         }
       ],
-      "news": [],
+      "news": [
+        "claude-enterprise-unified-chat-cowork"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {
