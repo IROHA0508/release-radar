@@ -1,19 +1,19 @@
 {
-  "checkedAt": "2026-10-24 03:49",
+  "checkedAt": "2026-10-25 02:42",
   "pages": {
     "openai": {
       "url": "https://developers.openai.com/api/docs/pricing.md",
-      "checkedAt": "2026-10-24 03:49",
+      "checkedAt": "2026-10-25 02:42",
       "result": "확인"
     },
     "anthropic": {
       "url": "https://platform.claude.com/docs/en/about-claude/pricing.md",
-      "checkedAt": "2026-10-24 03:49",
+      "checkedAt": "2026-10-25 02:42",
       "result": "확인"
     },
     "google": {
       "url": "https://ai.google.dev/gemini-api/docs/pricing.md.txt",
-      "checkedAt": "2026-10-24 03:49",
+      "checkedAt": "2026-10-25 02:42",
       "result": "확인"
     }
   },
@@ -28,7 +28,7 @@
       "note": "이미지 토큰 가격. 텍스트 입력은 $5(캐시 $1.25)",
       "status": "available",
       "newsId": "chatgpt-images-2-0",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -42,7 +42,7 @@
       "note": "입력 27.2만 토큰 초과 시 $5 / $0.50 / $22.50",
       "status": "available",
       "newsId": "gpt-5-4",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -56,7 +56,7 @@
       "note": "Responses API 전용, 캐시 할인 없음. 입력 27.2만 토큰 초과 시 $60 / $270",
       "status": "available",
       "newsId": "gpt-5-4",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -70,7 +70,7 @@
       "note": "Fast mode는 입력 $1.50, 출력 $9.00, 캐시 입력 $0.15.",
       "status": "available",
       "newsId": "gpt-5-4-mini-nano",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -84,7 +84,7 @@
       "note": "입력 27.2만 토큰 초과 시 $10 / $1 / $45",
       "status": "available",
       "newsId": "gpt-5-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -98,7 +98,7 @@
       "note": "Responses API 전용, 캐시 할인 없음. 입력 27.2만 토큰 초과 시 $60 / $270",
       "status": "available",
       "newsId": "gpt-5-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -112,7 +112,7 @@
       "note": "입력 27.2만 토큰 초과 시 $0.40 / $0.04 / $1.80",
       "status": "available",
       "newsId": "gpt-5-6",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -126,7 +126,7 @@
       "note": "프로모션 가격, 최소 2026년 11월 21일까지. 입력 27.2만 토큰 초과 시 $8 / $0.80 / $30",
       "status": "available",
       "newsId": "gpt-5-6",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -140,7 +140,7 @@
       "note": "입력 27.2만 토큰 초과 시 $4 / $0.40 / $18",
       "status": "available",
       "newsId": "gpt-5-6",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -154,7 +154,7 @@
       "note": "입력 27.2만 토큰 초과 시 $20 / $2 / $75",
       "status": "available",
       "newsId": "gpt-6-astra",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -168,7 +168,7 @@
       "note": "입력 27.2만 토큰 초과 시 $0.20 / $0.02 / $0.75",
       "status": "available",
       "newsId": "gpt-6-sol-luna",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -182,7 +182,7 @@
       "note": "새 Sol 모델은 GPT-6.1 Sol. 입력 27.2만 토큰 초과 시 $4 / $0.40 / $15",
       "status": "available",
       "newsId": "gpt-6-sol-luna",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -196,7 +196,7 @@
       "note": "입력 27.2만 토큰 초과 시 $4 / $0.20 / $15",
       "status": "available",
       "newsId": "gpt-6-1-sol",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -210,7 +210,7 @@
       "note": "이미지 토큰 가격. 텍스트 입력은 $5(캐시 $1.25)",
       "status": "available",
       "newsId": "chatgpt-images-2-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -224,7 +224,7 @@
       "note": "이미지 토큰 가격. 텍스트 입력은 $5(캐시 $1.25)",
       "status": "available",
       "newsId": "chatgpt-images-2-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -238,7 +238,7 @@
       "note": "텍스트 토큰 가격. 오디오는 입력 $32.00, 출력 $64.00, 캐시 입력 $0.40. 이미지 입력 $5.00, 캐시 입력 $0.50.",
       "status": "available",
       "newsId": "gpt-realtime-2",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -252,7 +252,7 @@
       "note": "2027년 4월 1일 종료 예정, 대체 모델 gpt-6-luna",
       "status": "deprecated",
       "newsId": "gpt-5-4-mini-nano",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -266,7 +266,7 @@
       "note": "",
       "status": "available",
       "newsId": "claude-fable-5-mythos-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -280,7 +280,7 @@
       "note": "캐시 적중은 기본 입력가의 0.025배",
       "status": "available",
       "newsId": "claude-fable-mythos-5-1",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -294,7 +294,7 @@
       "note": "10만 토큰 초과 프롬프트는 $0.50 / $0.05 / $2.50",
       "status": "available",
       "newsId": "claude-haiku-5-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -308,7 +308,7 @@
       "note": "제한 제공: Anthropic 인증 프로그램을 거친 조직만 사용 가능(limited availability)",
       "status": "available",
       "newsId": "claude-fable-5-mythos-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -322,7 +322,7 @@
       "note": "제한 제공: Anthropic 인증 프로그램을 거친 조직만 사용 가능(limited availability)",
       "status": "available",
       "newsId": "claude-fable-mythos-5-1",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "since": "2026-10-21",
       "missing": 0
     },
@@ -336,7 +336,7 @@
       "note": "",
       "status": "available",
       "newsId": "claude-opus-4-6",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -350,7 +350,7 @@
       "note": "",
       "status": "available",
       "newsId": "claude-opus-4-7",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -364,7 +364,7 @@
       "note": "fast mode(연구 프리뷰) $10 / $50",
       "status": "available",
       "newsId": "claude-opus-4-8",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -378,7 +378,7 @@
       "note": "fast mode(연구 프리뷰) $10 / $50",
       "status": "available",
       "newsId": "claude-opus-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -392,7 +392,7 @@
       "note": "fast mode $8 / $40",
       "status": "available",
       "newsId": "claude-opus-5-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -406,7 +406,7 @@
       "note": "",
       "status": "available",
       "newsId": "claude-sonnet-4-6",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -420,7 +420,7 @@
       "note": "출시 때 2026-08-31까지 도입 가격으로 발표했던 $2/$10이 이제 표준 가격이며, 9월 1일 $3/$15 인상은 없음",
       "status": "available",
       "newsId": "claude-sonnet-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -434,7 +434,7 @@
       "note": "캐시 적중은 기본 입력가의 0.05배",
       "status": "available",
       "newsId": "claude-sonnet-5-5",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -449,7 +449,7 @@
       "status": "unlisted",
       "newsId": "claude-mythos-preview",
       "verifiedAt": null,
-      "missing": 3,
+      "missing": 4,
       "since": "2026-10-21"
     },
     {
@@ -462,7 +462,7 @@
       "note": "입력 가격은 텍스트/이미지/비디오/오디오 공통. 캐시 저장 $1.00 / 100만 토큰·시간.",
       "status": "available",
       "newsId": "gemini-3-6-flash",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -476,7 +476,7 @@
       "note": "2026년 12월 31일까지. 2027년 1월 1일부터 $1.50 / $0.15 / $7.50",
       "status": "available",
       "newsId": "gemini-3-6-flash",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -490,7 +490,7 @@
       "note": "2026년 12월 31일까지. 2027년 1월 1일부터 $1.50 / $0.15 / $7.50",
       "status": "available",
       "newsId": "gemini-3-8-flash",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -504,7 +504,7 @@
       "note": "2026년 11월 30일까지 이 가격. 12월 1일부터 $4 / $0.20 / $20. 암묵적 캐싱만 지원",
       "status": "available",
       "newsId": "gemini-4-argon",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -518,7 +518,7 @@
       "note": "오디오 입력 $0.50. 빠르면 2027년 5월 7일 종료(대체 모델 Gemini 3.5 Flash-Lite)",
       "status": "deprecated",
       "newsId": "gemini-3-1-flash-lite",
-      "verifiedAt": "2026-10-24",
+      "verifiedAt": "2026-10-25",
       "missing": 0,
       "since": "2026-10-21"
     },
@@ -533,7 +533,7 @@
       "status": "unlisted",
       "newsId": "gemini-3-7-flash",
       "verifiedAt": null,
-      "missing": 3,
+      "missing": 4,
       "since": "2026-10-21"
     }
   ]
