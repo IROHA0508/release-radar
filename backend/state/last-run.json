@@ -1,38 +1,12 @@
 {
-  "startedAt": "2026-10-24T08:36:52+09:00",
+  "startedAt": "2026-10-24T16:40:50+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1846,
-  "candidates": [
-    {
-      "title": "Securing our frontier model training environment",
-      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
-      "company": "openai",
-      "date": "2026-10-23",
-      "relatedId": null
-    },
-    {
-      "title": "Claude Duet Safety, Privacy, and Security",
-      "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
-      "company": "anthropic",
-      "date": "2026-10-23",
-      "relatedId": "claude-duet"
-    }
-  ],
+  "candidates": [],
   "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Securing our frontier model training environment",
-      "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
-      "reason": "모델 출시와 무관한 안전 보고서. 모델 훈련 환경의 보안 강화에 관한 기술 설명으로, 사용자가 새로 쓸 수 있는 제품·기능·모델과 무관합니다."
-    },
-    {
-      "title": "Claude Duet Safety, Privacy, and Security",
-      "url": "https://claude.com/resources/articles/claude-duet-safety-privacy-and-security",
-      "reason": "정책·규제 글. 이미 등재된 Claude Duet의 보안·개인정보 정책 설명서로, 새 기능이나 업데이트가 아닙니다."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
