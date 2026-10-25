@@ -1,8 +1,10 @@
 {
-  "startedAt": "2026-10-25T22:25:15+09:00",
+  "startedAt": "2026-10-26T02:55:57+09:00",
   "mode": "update",
-  "sourceErrors": {},
-  "entries": 1846,
+  "sourceErrors": {
+    "Google Cloud AI blog": "HTTPError: 500 Server Error: Internal Server Error for url: https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/"
+  },
+  "entries": 1826,
   "candidates": [],
   "added": [],
   "updated": [],

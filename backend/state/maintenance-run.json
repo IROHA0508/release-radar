@@ -1,15 +1,43 @@
 {
-  "startedAt": "2026-10-25T22:25:27+09:00",
+  "startedAt": "2026-10-26T02:56:09+09:00",
   "prices": {
-    "checked": [],
-    "changes": [],
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "changes": [
+      "가격 변경: GPT Image 2 입력 $8.00 → $5.00",
+      "가격 변경: GPT Image 2 캐시 입력 $2.00 → $1.25",
+      "가격 변경: GPT Image 2 출력 $30.00 → —",
+      "가격 변경: GPT-Image-2.5 Flare 입력 $8.00 → $5.00",
+      "가격 변경: GPT-Image-2.5 Flare 캐시 입력 $2.00 → $1.25",
+      "가격 변경: GPT-Image-2.5 Flare 출력 $30.00 → —",
+      "가격 변경: GPT-Image-2.5 Sunburst 입력 $8.00 → $5.00",
+      "가격 변경: GPT-Image-2.5 Sunburst 캐시 입력 $2.00 → $1.25",
+      "가격 변경: GPT-Image-2.5 Sunburst 출력 $30.00 → —"
+    ],
     "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 0,
-    "changed": [],
-    "changes": [],
+    "checked": 38,
+    "changed": [
+      "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
+      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+      "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+    ],
+    "changes": [
+      "가이드 추가: [openai] Healthcare·규제 워크스페이스에서는 개선된 메모리에 PHI 넣지 않기",
+      "가이드 추가: [openai] 공유 링크에 담기지 않는 것을 알고 받는 사람의 권한에 맞춰 쓰기",
+      "가이드 추가: [openai] 건강·재무 정보를 활용하는 예약 작업은 이벤트 트리거가 아닌 일정으로 만들기",
+      "가이드 추가: [openai] 공유 프로젝트는 소유자 요금제의 협업자 수와 파일 한도 안에서 초대하기",
+      "가이드 추가: [openai] 프로젝트의 대화 하나만 보여 줄 땐 해당 대화의 공유 링크 쓰기",
+      "가이드 추가: [openai] 공유 프로젝트 자료가 모델 개선에 쓰이는 조건 확인하기"
+    ],
     "errors": {}
   },
   "authError": false,
