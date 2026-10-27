@@ -18,7 +18,7 @@
 
 | 필드 | 형식 | 설명 |
 |---|---|---|
-| `id` | 문자열 | 파일 이름과 같음. 소문자·숫자·하이픈만. `guide`, `prices`, `tech`, `lab`, `glossary`는 예약어 |
+| `id` | 문자열 | 파일 이름과 같음. 소문자·숫자·하이픈만. `guide`, `prices`, `models`, `tech`, `lab`, `glossary`는 예약어 |
 | `company` | `openai` \| `anthropic` \| `google` | 발표한 회사 |
 | `date` | `YYYY-MM-DD` | 공식 발표일 |
 | `kind` | `모델 출시` \| `모델 업데이트` \| `제품·기능 출시` \| `활용 팁` | 소식 종류. 화면의 종류 필터와 같음. 새 모델 출시·발표는 `모델 출시`, 기존 모델의 기능·가격·가용성 변경과 지원 종료는 `모델 업데이트`, ChatGPT·Codex·Claude·Claude Code·Gemini 앱·Gemini CLI 같은 공식 AI 제품과 개발자 도구의 새 앱·기능은 `제품·기능 출시`, 공식 사용 가이드·프롬프트 팁은 `활용 팁` |
@@ -184,6 +184,46 @@
 - `group`은 `groups` 중 하나. 화면은 `groups` 순서대로 묶어 보여 줍니다.
 - `related`는 `data/tech.json`의 기술 id. 기술 페이지에 '관련 용어'로 거꾸로도 표시됩니다.
 - 정의는 공식 문서(`sources`, 1개 이상 필수)를 바탕으로 씁니다. 화면 주소는 `#glossary`, 용어 하나는 `#glossary/<id>`.
+
+## data/models.json (모델 추천 탭)
+
+상황별로 어떤 모델을 어느 노력 단계(effort)로 쓰면 좋은지 세 회사 공식 문서를 근거로 정리합니다. 화면 주소는 `#models`.
+
+```json
+{
+  "verifiedAt": "2026-10-27",
+  "intro": "탭 맨 위 소개 문장",
+  "params": { "openai": "reasoning.effort", "anthropic": "output_config.effort", "google": "thinking_level" },
+  "models": [{
+    "company": "openai", "name": "GPT-6.1 Sol", "apiId": "gpt-6.1-sol", "tier": "성능·비용 균형",
+    "summary": "공식 설명", "efforts": ["low", "medium", "high", "xhigh", "max"], "default": "medium",
+    "defaultNote": "(default가 null일 때 필수) 공식 문서에 명시 없음",
+    "start": "시작 권장", "sources": [{ "title": "...", "url": "https://..." }]
+  }],
+  "situations": [{
+    "id": "bulk", "title": "대량·반복 단순 작업", "examples": "분류, 필드 추출",
+    "picks": {
+      "openai": { "model": "gpt-6-luna", "effort": "low", "raise": ["medium"], "note": "...", "sources": [{ "title": "...", "url": "https://..." }] },
+      "anthropic": { "name": "목록 밖 모델·에이전트 이름", "apiId": "(선택)", "note": "...", "sources": [] },
+      "google": { "missing": "공식 안내를 찾지 못한 이유(확인 필요)" }
+    }
+  }],
+  "levels": [{ "key": "none", "openai": "설명", "anthropic": null, "google": null }],
+  "levelSources": [{ "title": "...", "url": "https://..." }],
+  "principles": [{ "title": "...", "body": "...", "sources": [{ "title": "...", "url": "https://..." }] }],
+  "notes": ["..."], "noteSources": [{ "title": "...", "url": "https://..." }]
+}
+```
+
+- 노력 단계 값은 `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, `max` 중에서 씁니다. 화면도 이 순서로 그립니다. 값의 이름과 뜻은 회사마다 달라 `levels`에 회사별 설명을 둡니다(`null`은 그 회사에 없는 값).
+- `models[].efforts`는 API가 받는 값만, `default`는 API 기본값입니다. 앱 기본값이 다르면 `notes`에 적습니다.
+- `situations[].picks`에는 세 회사 칸이 모두 있어야 합니다. 칸은 셋 중 하나입니다.
+  - `model`: `models`의 apiId. `effort`(시작 단계)와 `raise`(결과가 부족하면 올릴 단계)는 그 모델의 `efforts` 안에서 고릅니다.
+  - `name`: 노력 단계로 고르지 않는 별도 모델·에이전트(예: Gemini Deep Research).
+  - `missing`: 공식 안내를 찾지 못한 칸. 추측으로 채우지 않습니다.
+- 가격은 넣지 않습니다. 화면이 `data/prices.json`에서 같은 apiId의 가격·상태·관련 소식을 가져오고 `deprecated`·`unlisted`면 배지를 붙입니다(가격표에 없는 apiId는 검증에서 경고만 냅니다).
+- `verifiedAt`에서 30일이 지나거나 그 뒤 가격표에 새 텍스트 모델(`since`가 더 늦은 모델, 이미지·음성·임베딩 제외)이 올라오면 화면 위에 알림이 뜹니다.
+- 자동 업데이트는 이 파일을 고치지 않습니다. 새 모델 소식이 오면 사람이 공식 문서를 확인해 고치고 `verifiedAt`을 바꿉니다.
 
 ## 문체
 

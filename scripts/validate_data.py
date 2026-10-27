@@ -14,7 +14,7 @@ DATA = ROOT / "data"
 
 COMPANIES = {"openai", "anthropic", "google"}
 KINDS = {"모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁"}
-RESERVED_IDS = {"guide", "prices", "tech", "lab", "glossary"}
+RESERVED_IDS = {"guide", "prices", "models", "tech", "lab", "glossary"}
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 CHECKED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$")
@@ -301,6 +301,103 @@ def check_glossary(g, tech_ids):
                 err(w, f"related의 '{r}' 기술이 없음")
 
 
+EFFORTS = ["none", "minimal", "low", "medium", "high", "xhigh", "max"]  # 약한 순서. 화면도 이 순서로 그린다
+MODEL_REQUIRED = ["company", "name", "apiId", "tier", "summary", "efforts", "default", "start", "sources"]
+warnings = []
+
+
+def check_sources(w, sources):
+    if not sources:
+        err(w, "공식 출처(sources)가 하나 이상 있어야 함")
+    for s in sources or []:
+        if not s.get("title") or not str(s.get("url", "")).startswith("https://"):
+            err(w, f"출처 형식 오류(title, https url): {s}")
+
+
+def check_models(m, prices):
+    """data/models.json(모델 추천 탭). 가격은 prices.json에서 가져오므로 여기에는 두지 않는다."""
+    where = "data/models.json"
+    if m is None:
+        return
+    if not DATE_RE.match(str(m.get("verifiedAt", ""))):
+        err(where, "verifiedAt은 YYYY-MM-DD")
+    if not str(m.get("intro", "")).strip():
+        err(where, "intro가 비어 있음")
+    if set((m.get("params") or {}).keys()) != COMPANIES:
+        err(where, f"params에는 {sorted(COMPANIES)}의 파라미터 이름이 모두 있어야 함")
+    models = {}
+    for x in m.get("models") or []:
+        w = f"{where} [{x.get('apiId', '?')}]"
+        for key in MODEL_REQUIRED:
+            if key not in x:
+                err(w, f"필수 필드 '{key}' 없음")
+        if x.get("company") not in COMPANIES:
+            err(w, f"company는 {sorted(COMPANIES)} 중 하나")
+        if x.get("apiId") in models:
+            err(w, "같은 apiId가 두 번 있음")
+        models[x.get("apiId")] = x
+        eff = x.get("efforts") or []
+        if not eff or any(e not in EFFORTS for e in eff):
+            err(w, f"efforts는 {EFFORTS} 중 하나 이상: {eff}")
+        if x.get("default") is not None and x.get("default") not in eff:
+            err(w, f"default '{x.get('default')}'가 efforts에 없음")
+        if x.get("default") is None and not x.get("defaultNote"):
+            err(w, "기본값을 모르면 default: null과 defaultNote(예: 공식 문서에 명시 없음)를 둠")
+        check_sources(w, x.get("sources"))
+    price_ids = {p.get("apiId") for p in (prices or {}).get("models", [])}
+    for api_id in models:
+        if prices is not None and api_id not in price_ids:
+            # 가격표 자동 점검이 상태를 바꿔도 커밋이 막히지 않게 경고만 한다
+            warnings.append(f"{where} [{api_id}]: API 가격표(prices.json)에 없는 모델이라 가격이 비어 보임")
+    seen = set()
+    for s in m.get("situations") or []:
+        w = f"{where} situations[{s.get('id', '?')}]"
+        if not ID_RE.match(str(s.get("id", ""))) or s.get("id") in seen:
+            err(w, "id 형식 오류 또는 중복")
+        seen.add(s.get("id"))
+        if not s.get("title"):
+            err(w, "title이 없음")
+        picks = s.get("picks") or {}
+        if set(picks) != COMPANIES:
+            err(w, f"picks에는 {sorted(COMPANIES)} 칸이 모두 있어야 함(안내가 없으면 missing에 이유)")
+        for co, p in picks.items():
+            pw = f"{w}.{co}"
+            if "missing" in p:
+                if not str(p["missing"]).strip():
+                    err(pw, "missing에 이유를 적어야 함")
+                continue
+            if "model" in p:
+                mod = models.get(p["model"])
+                if not mod:
+                    err(pw, f"model '{p['model']}'이 models 목록에 없음")
+                elif mod.get("company") != co:
+                    err(pw, f"model '{p['model']}'은 {co} 모델이 아님")
+                else:
+                    for e in [p.get("effort")] + list(p.get("raise", [])):
+                        if e not in mod.get("efforts", []):
+                            err(pw, f"노력 단계 '{e}'는 {p['model']}가 지원하지 않음")
+            elif not p.get("name"):
+                err(pw, "model(목록의 apiId), name(목록 밖 모델·에이전트), missing 중 하나가 필요함")
+            if not str(p.get("note", "")).strip():
+                err(pw, "note가 비어 있음")
+            check_sources(pw, p.get("sources"))
+    keys = [lv.get("key") for lv in m.get("levels") or []]
+    if keys != [e for e in EFFORTS if e in keys] or set(keys) != set(EFFORTS):
+        err(where, f"levels는 {EFFORTS} 순서로 하나씩 있어야 함")
+    for lv in m.get("levels") or []:
+        for co in COMPANIES:
+            if co not in lv:
+                err(f"{where} levels[{lv.get('key')}]", f"'{co}' 칸 없음(지원하지 않으면 null)")
+    check_sources(f"{where} levelSources", m.get("levelSources"))
+    for i, p in enumerate(m.get("principles") or []):
+        w = f"{where} principles[{i}]"
+        if not p.get("title") or not p.get("body"):
+            err(w, "title과 body가 필요함")
+        check_sources(w, p.get("sources"))
+    if m.get("notes"):
+        check_sources(f"{where} noteSources", m.get("noteSources"))
+
+
 def main():
     manifest = load(DATA / "manifest.json")
     guides = load(DATA / "guides.json")
@@ -316,6 +413,9 @@ def main():
     gl_path = DATA / "glossary.json"
     glossary = load(gl_path) if gl_path.exists() else None
     check_glossary(glossary, {i.get("id") for i in tech.get("items", [])} if tech else None)
+    md_path = DATA / "models.json"
+    model_rec = load(md_path) if md_path.exists() else None
+    check_models(model_rec, prices)
     if manifest is not None:
         listed = manifest.get("news", [])
         if not CHECKED_RE.match(str(manifest.get("lastChecked", ""))):
@@ -328,13 +428,16 @@ def main():
         for i in ids:
             if i not in listed:
                 err("data/manifest.json", f"data/news/{i}.json이 manifest에 없음 (사이트에 안 보임)")
+    for w in warnings:
+        print("경고:", w)
     if errors:
         print("데이터 검증 실패:")
         for e in errors:
             print(" -", e)
         sys.exit(1)
     print(f"데이터 검증 통과: 소식 {len(ids)}건" + (f", 기술 {len(tech.get('items', []))}건" if tech else "")
-          + (f", 용어 {len(glossary.get('terms', []))}개" if glossary else ""))
+          + (f", 용어 {len(glossary.get('terms', []))}개" if glossary else "")
+          + (f", 추천 모델 {len(model_rec.get('models', []))}개·상황 {len(model_rec.get('situations', []))}개" if model_rec else ""))
 
 
 if __name__ == "__main__":
