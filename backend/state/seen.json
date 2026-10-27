@@ -503,6 +503,14 @@
       "status": "skipped",
       "title": "See what 5 builders are making with Gemini 4 Argon"
     },
+    "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-in-action": {
+      "checkedAt": "2026-10-28",
+      "company": "google",
+      "date": "2026-10-27",
+      "reason": "기존 모델(Gemini 4 Argon)의 사용 사례/예시 모음. 고객 사례 성격으로 지침의 제외 대상입니다.",
+      "status": "skipped",
+      "title": "8 examples of Gemini 4 Argon in action"
+    },
     "https://blog.google/products-and-platforms/products/gemini/stylist-outfit-tips-gemini": {
       "checkedAt": "2026-10-20",
       "company": "google",
@@ -657,6 +665,14 @@
       "status": "skipped",
       "title": "Claude Duet Safety, Privacy, and Security"
     },
+    "https://claude.com/resources/articles/claude-for-financial-advisors": {
+      "checkedAt": "2026-10-28",
+      "company": "anthropic",
+      "date": "2026-10-27",
+      "reason": "금융 어드바이저 대상 업종별 마케팅·가이드. 지침의 '특정 업종 마케팅 글' 제외 대상입니다.",
+      "status": "skipped",
+      "title": "Claude for Financial Advisors"
+    },
     "https://claude.com/resources/articles/claude-for-government-is-now-generally-available": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -753,6 +769,14 @@
       "status": "skipped",
       "title": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK"
     },
+    "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud": {
+      "checkedAt": "2026-10-28",
+      "company": "anthropic",
+      "date": "2026-10-27",
+      "id": "claude-code-google-cloud-cost-roi",
+      "status": "added",
+      "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud"
+    },
     "https://claude.com/resources/articles/unified-claude-enterprise": {
       "checkedAt": "2026-10-24",
       "company": "anthropic",
@@ -800,6 +824,14 @@
       "reason": "정부 부문 특화 버전으로 보이는 기업 파트너십 또는 정책·규제 영역 관련 글. ChatGPT·Gemini 같은 공식 도구를 더 잘 쓰는 실전 조언이나 새 모델 출시가 아님.",
       "status": "skipped",
       "title": "Introducing Gemini for government services"
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud": {
+      "checkedAt": "2026-10-28",
+      "company": "google",
+      "date": "2026-10-27",
+      "reason": "기존 모델의 클라우드 플랫폼 가용성 공지. 인프라·플랫폼 관련 뉴스로, 'AI 모델을 쓰는 방식과 무관한 인프라' 제외 대상입니다.",
+      "status": "skipped",
+      "title": "Gemini Robotics Embodied Reasoning 2 is now available on Google Cloud"
     },
     "https://cloud.google.com/blog/products/ai-machine-learning/google-cloud-brings-openai-models-to-customers": {
       "checkedAt": "2026-10-21",
@@ -929,6 +961,14 @@
       "status": "skipped",
       "title": "Gemini 4 Argon for Robotics"
     },
+    "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation": {
+      "checkedAt": "2026-10-28",
+      "company": "google",
+      "date": "2026-10-27",
+      "reason": "연구용 모델(DeepMind 월드 모델). 사용자나 개발자가 직접 쓸 수 있는 공식 AI 제품·도구가 아니며, 연구 보고서에 해당합니다.",
+      "status": "skipped",
+      "title": "Genie 4: A new generation of world simulation"
+    },
     "https://deepmind.google/blog/introducing-gemini-4-argon": {
       "checkedAt": "2026-10-14",
       "company": "google",
@@ -1027,6 +1067,14 @@
       "status": "old",
       "title": "Build zero-trust AI agents with Google's Agent Development Kit- Google Developers Blog"
     },
+    "https://developers.googleblog.com/building-conversational-commerce-with-multi-agent-swarms-on-gcp-a-working-prototype": {
+      "checkedAt": "2026-10-28",
+      "company": "google",
+      "date": "2026-10-27",
+      "reason": "설명에서 '블로그 작성 템플릿 및 메타데이터 구조'라고 명시되어 있어, 구체적인 제품 기능 출시나 사용 팁보다는 발행 템플릿 성격으로 보입니다.",
+      "status": "skipped",
+      "title": "Building Conversational Commerce with Multi-Agent Swarms on GCP: A Working Prototype"
+    },
     "https://developers.googleblog.com/driving-developer-excellence-inside-the-program-sprints": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1056,6 +1104,14 @@
       "id": "google-agent-evaluation-beyond-vibe-check",
       "status": "added",
       "title": "Evaluating AI agents: moving past the vibe check"
+    },
+    "https://developers.googleblog.com/fast-reliable-a2ui": {
+      "checkedAt": "2026-10-28",
+      "company": "google",
+      "date": "2026-10-27",
+      "id": "google-a2ui-express",
+      "status": "added",
+      "title": "Fast, reliable A2UI, with swappable inference formats"
     },
     "https://developers.googleblog.com/gemini-4-argon-for-robotics": {
       "checkedAt": "2026-10-14",
@@ -1420,6 +1476,14 @@
       "status": "skipped",
       "title": "Amp puts AI agents to work beyond code with OpenAI models"
     },
+    "https://openai.com/index/anima": {
+      "checkedAt": "2026-10-28",
+      "company": "openai",
+      "date": "2026-10-23",
+      "reason": "Anima 클리닉의 GPT-6·GPT-Live 도입 사례입니다. 지침에서 명시하는 '고객 사례' 제외 대상입니다.",
+      "status": "skipped",
+      "title": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live"
+    },
     "https://openai.com/index/asana-browser-agent": {
       "checkedAt": "2026-10-10",
       "company": "openai",
@@ -1651,6 +1715,14 @@
       "reason": "고객 사례로, 제외 기준의 '기업 파트너십, 고객 사례'에 해당합니다.",
       "status": "skipped",
       "title": "How Oracle turns days of work into minutes with ChatGPT and Codex"
+    },
+    "https://openai.com/index/oracle-apps-in-chatgpt": {
+      "checkedAt": "2026-10-28",
+      "company": "openai",
+      "date": "2026-10-27",
+      "reason": "기업 파트너십 공지. OpenAI와 Oracle 간 비즈니스 파트너십으로, 지침의 제외 대상입니다.",
+      "status": "skipped",
+      "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT"
     },
     "https://openai.com/index/pollo-ai": {
       "checkedAt": "2026-10-09",

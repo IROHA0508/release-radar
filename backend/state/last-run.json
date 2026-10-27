@@ -1,17 +1,139 @@
 {
-  "startedAt": "2026-10-27T23:59:08+09:00",
+  "startedAt": "2026-10-28T04:49:18+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1854,
-  "candidates": [],
-  "added": [],
+  "entries": 1858,
+  "candidates": [
+    {
+      "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT",
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt",
+      "company": "openai",
+      "date": "2026-10-27",
+      "relatedId": null
+    },
+    {
+      "title": "Genie 4: A new generation of world simulation",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "company": "google",
+      "date": "2026-10-27",
+      "relatedId": null
+    },
+    {
+      "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud",
+      "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
+      "company": "anthropic",
+      "date": "2026-10-27",
+      "relatedId": null
+    },
+    {
+      "title": "Claude for Financial Advisors",
+      "url": "https://claude.com/resources/articles/claude-for-financial-advisors",
+      "company": "anthropic",
+      "date": "2026-10-27",
+      "relatedId": null
+    },
+    {
+      "title": "8 examples of Gemini 4 Argon in action",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-in-action/",
+      "company": "google",
+      "date": "2026-10-27",
+      "relatedId": "gemini-4-argon"
+    },
+    {
+      "title": "Gemini Robotics Embodied Reasoning 2 is now available on Google Cloud",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud/",
+      "company": "google",
+      "date": "2026-10-27",
+      "relatedId": "gemini-app-small-business-tools"
+    },
+    {
+      "title": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live",
+      "url": "https://openai.com/index/anima",
+      "company": "openai",
+      "date": "2026-10-23",
+      "relatedId": "gpt-live"
+    },
+    {
+      "title": "Fast, reliable A2UI, with swappable inference formats",
+      "url": "https://developers.googleblog.com/fast-reliable-a2ui/",
+      "company": "google",
+      "date": "2026-10-27",
+      "relatedId": null
+    },
+    {
+      "title": "Building Conversational Commerce with Multi-Agent Swarms on GCP: A Working Prototype",
+      "url": "https://developers.googleblog.com/building-conversational-commerce-with-multi-agent-swarms-on-gcp-a-working-prototype/",
+      "company": "google",
+      "date": "2026-10-27",
+      "relatedId": null
+    }
+  ],
+  "added": [
+    {
+      "id": "claude-code-google-cloud-cost-roi",
+      "title": "통제·추적·증명으로 Google Cloud의 Claude Code 비용 관리하기",
+      "url": "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud",
+      "charts": 0
+    },
+    {
+      "id": "google-a2ui-express",
+      "title": "A2UI Express",
+      "url": "https://developers.googleblog.com/fast-reliable-a2ui/",
+      "charts": 0
+    }
+  ],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT",
+      "url": "https://openai.com/index/oracle-apps-in-chatgpt",
+      "reason": "기업 파트너십 공지. OpenAI와 Oracle 간 비즈니스 파트너십으로, 지침의 제외 대상입니다."
+    },
+    {
+      "title": "Genie 4: A new generation of world simulation",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "reason": "연구용 모델(DeepMind 월드 모델). 사용자나 개발자가 직접 쓸 수 있는 공식 AI 제품·도구가 아니며, 연구 보고서에 해당합니다."
+    },
+    {
+      "title": "Claude for Financial Advisors",
+      "url": "https://claude.com/resources/articles/claude-for-financial-advisors",
+      "reason": "금융 어드바이저 대상 업종별 마케팅·가이드. 지침의 '특정 업종 마케팅 글' 제외 대상입니다."
+    },
+    {
+      "title": "8 examples of Gemini 4 Argon in action",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-argon-in-action/",
+      "reason": "기존 모델(Gemini 4 Argon)의 사용 사례/예시 모음. 고객 사례 성격으로 지침의 제외 대상입니다."
+    },
+    {
+      "title": "Gemini Robotics Embodied Reasoning 2 is now available on Google Cloud",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud/",
+      "reason": "기존 모델의 클라우드 플랫폼 가용성 공지. 인프라·플랫폼 관련 뉴스로, 'AI 모델을 쓰는 방식과 무관한 인프라' 제외 대상입니다."
+    },
+    {
+      "title": "Anima helps clinics cut call waits by 75% with GPT-6 and GPT-Live",
+      "url": "https://openai.com/index/anima",
+      "reason": "Anima 클리닉의 GPT-6·GPT-Live 도입 사례입니다. 지침에서 명시하는 '고객 사례' 제외 대상입니다."
+    },
+    {
+      "title": "Building Conversational Commerce with Multi-Agent Swarms on GCP: A Working Prototype",
+      "url": "https://developers.googleblog.com/building-conversational-commerce-with-multi-agent-swarms-on-gcp-a-working-prototype/",
+      "reason": "설명에서 '블로그 작성 템플릿 및 메타데이터 구조'라고 명시되어 있어, 구체적인 제품 기능 출시나 사용 팁보다는 발행 템플릿 성격으로 보입니다."
+    }
+  ],
   "failed": [],
-  "guardNotes": {},
+  "guardNotes": {
+    "google-a2ui-express": [
+      "핵심 수치 'Express 지연 감소: 최대 3배' 원문에서 확인 안 됨 → 제외",
+      "핵심 수치 '결정 모델 사용 시 지연 감소: 최대 80배' 원문에서 확인 안 됨 → 제외",
+      "핵심 수치 'Express 토큰량: 최대 3배 적음' 원문에서 확인 안 됨 → 제외"
+    ]
+  },
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
   "styleNotes": {},
-  "techLinks": []
+  "techLinks": [
+    "claude-code-google-cloud-cost-roi → tokenomics",
+    "google-a2ui-express → structured-output, custom-tools-grammar"
+  ]
 }

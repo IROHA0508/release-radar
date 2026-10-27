@@ -1,0 +1,80 @@
+{
+  "id": "google-a2ui-express",
+  "company": "google",
+  "date": "2026-10-27",
+  "kind": "제품·기능 출시",
+  "title": "A2UI Express",
+  "headline": "생성형 UI 지연을 최대 3배 줄이는 A2UI의 새 기본 추론 형식",
+  "tldr": "A2UI는 에이전트가 화면 구성을 설명하면 클라이언트가 신뢰된 컴포넌트로 UI를 그리는 프로토콜입니다. 이번 릴리스는 모델이 내놓는 형식을 바꿔 끼우는 inference_format을 도입했고 새 기본값인 A2UI Express는 Direct JSON보다 지연을 최대 3배 줄입니다. 레이아웃이 정해진 화면이라면 Jev 같은 결정 모델로 최대 80배까지 빨라집니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "Jev 응답 시간",
+      "value": "약 100~300ms",
+      "note": "한 요청에서 여러 질문에 답하는 경우"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 비교 표나 벤치마크 수치가 텍스트로 없어 그래프는 만들지 않았습니다. 평가 결과 그래프는 이미지로만 제공됩니다.",
+  "changes": [
+    "모델이 생성하는 형식을 inference_format이라 부르고 생성기를 만들 때 인자 하나로 바꿔 끼웁니다.",
+    "새 기본 형식 A2UI Express는 파이썬과 비슷한 문법으로 한 줄에 컴포넌트 하나를 쓰고 에이전트 SDK가 이를 표준 A2UI JSON 메시지로 컴파일합니다.",
+    "Direct JSON은 스키마가 복잡해 LLM에게 느리고 오류가 잦았습니다. Express는 같은 UI를 최대 3배 적은 토큰으로 만들고 지연을 최대 3배 줄입니다.",
+    "gemini-3.5-flash로 51개 과제 평가를 돌린 결과 Express는 thinking을 꺼도 잘 동작해 가장 빠른 추론 속도를 낼 수 있다고 합니다.",
+    "TypeSafe의 결정 모델 Jev로 미리 정의한 레이아웃 중 하나를 고르게 하면 지연이 최대 80배 줄어듭니다. 예시 프로젝트 Apparite(jev2ui)에서는 화면 구조가 약 200ms에 올라옵니다.",
+    "카탈로그에서 Express용 스킬을 만드는 Python SDK의 SkillGenerator와 Python SDK의 매크로 연동도 소개됐습니다."
+  ],
+  "availability": [
+    "Python 에이전트 SDK: a2ui-agent-sdk 0.9.0 (PyPI)",
+    "TypeScript 에이전트 SDK: @a2ui/agent (npm)",
+    "Dart SDK: a2ui_agent 0.0.1-wip004 (pub.dev)",
+    "결정 모델 방식은 아직 SDK의 inference format에 포함되지 않았고 jev2ui 예제 저장소로 제공됩니다."
+  ],
+  "tips": [
+    {
+      "title": "Express로 먼저 바꿔 보기",
+      "body": "pip install a2ui-agent-sdk 또는 npm install @a2ui/agent로 설치하고 생성기를 만들 때 ExpressFormatFactory()를 넘깁니다. 카탈로그와 렌더러는 그대로 둡니다."
+    },
+    {
+      "title": "thinking은 끄고 시작",
+      "body": "원문은 Express가 thinking을 꺼도 잘 동작한다고 설명합니다. 가장 빠른 속도를 원하면 thinking을 끄고 돌려 보세요."
+    },
+    {
+      "title": "화면 성격에 따라 방식 고르기",
+      "body": "설정·결제·확인 화면처럼 모양이 정해져 있으면 결정 모델이 가장 빠릅니다. 자유로운 화면은 Express, 새 용도는 직접 만든 DSL과 변환기를 붙이는 쪽으로 나눕니다."
+    },
+    {
+      "title": "Gemini에 Express 가르치기",
+      "body": "스킬을 불러오는 모델이라면 SkillGenerator로 카탈로그 기반 스킬을 만들어 내보내면 됩니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Express 생성기 만들기 (Python)",
+      "when": "에이전트에서 A2UI Express를 처음 켤 때",
+      "type": "code",
+      "text": "from a2ui.processor import A2uiGenerator, CatalogConfig\nfrom a2ui.inference_formats import ExpressFormatFactory\n\ncatalog = CatalogConfig.from_path(\"catalog.json\")\ngenerator = A2uiGenerator(\n    [catalog],\n    examples=few_shot_examples,  # written once as A2UI JSON\n    inference_format_factory=ExpressFormatFactory(),\n)\n\nprocessor = generator.create_processor(renderer_capabilities)\nsystem_prompt = f\"{instructions}\\n\\n{processor.prompt_snippet}\"\nparts = processor.parse_response(model_reply)  # text parts + validated A2UI messages"
+    },
+    {
+      "title": "카탈로그에서 Express 스킬 만들기 (Python)",
+      "when": "Gemini 등 스킬을 읽는 모델이 내 컴포넌트만으로 Express를 쓰게 할 때",
+      "type": "code",
+      "text": "import json\nfrom a2ui.core import Catalog\nfrom a2ui.inference_formats.express import ExpressFormat\nfrom a2ui.skill import SkillGenerator\n\ncatalog = Catalog.from_json(json.load(open(\"catalog.json\")))\nskills = SkillGenerator(ExpressFormat([catalog])).generate_skillset()\nskills.export_to_directory(\"skills\")  # a2ui-core plus one skill per catalog"
+    }
+  ],
+  "cautions": [
+    "Python과 TypeScript SDK는 Direct JSON은 조각 단위로 스트리밍하지만 Express는 전체 응답을 받은 뒤 컴파일합니다.",
+    "결정 모델 방식은 문법이 정의한 레이아웃만 만들 수 있습니다. Apparite 문법은 화면 유형 9개와 블록 12개를 다루며 모양이 정해지지 않은 화면에는 Express가 맞습니다.",
+    "Apparite의 수치는 11개 프롬프트로 본 결과이며 프로젝트도 표본이 작아 처음 살펴본 값으로 본다고 밝혔습니다."
+  ],
+  "sources": [
+    {
+      "title": "Fast, reliable A2UI, with swappable inference formats (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/fast-reliable-a2ui/"
+    },
+    {
+      "title": "Jev documentation (TypeSafe)",
+      "url": "https://docs.typesafe.ai/"
+    }
+  ]
+}
