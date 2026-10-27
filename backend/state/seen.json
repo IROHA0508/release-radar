@@ -479,6 +479,14 @@
       "status": "skipped",
       "title": "Let skills in Gemini tackle your most repetitive tasks"
     },
+    "https://blog.google/products-and-platforms/products/gemini/college-student-favorite-features": {
+      "checkedAt": "2026-10-27",
+      "company": "google",
+      "date": "2026-10-26",
+      "reason": "사용자 인터뷰(대학생 15명의 Gemini 활용 경험). 새로운 기능이나 모델이 아닌 사용자 사례 마케팅.",
+      "status": "skipped",
+      "title": "15 college students share their favorite Gemini features"
+    },
     "https://blog.google/products-and-platforms/products/gemini/edys-grocer-gemini": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -689,6 +697,14 @@
       "status": "skipped",
       "title": "Build live dashboards and animate explainers with Claude"
     },
+    "https://claude.com/resources/articles/expanding-claude-for-nonprofits": {
+      "checkedAt": "2026-10-27",
+      "company": "anthropic",
+      "date": "2026-10-26",
+      "reason": "비영리 단체 대상 특별 요금제 공지. 특정 조직·세그먼트 대상 영업·마케팅.",
+      "status": "skipped",
+      "title": "Expanding Claude for Nonprofits"
+    },
     "https://claude.com/resources/articles/hcltech-joins-claude-partner-network": {
       "checkedAt": "2026-10-22",
       "company": "anthropic",
@@ -824,6 +840,14 @@
       "reason": "모델 무관 제품 공지: BigQuery의 비용 관리 기능으로, 특정 AI 모델(ChatGPT/Claude/Gemini)과 무관한 데이터 분석 도구 업데이트입니다.",
       "status": "skipped",
       "title": "Predictable AI spend in BigQuery: Introducing cost management for generative AI functions"
+    },
+    "https://cloud.google.com/blog/products/identity-security/scale-agents-securely-with-iam-helper-agent-skills-and-mcp-tools": {
+      "checkedAt": "2026-10-27",
+      "company": "google",
+      "date": "2026-10-26",
+      "reason": "Google Cloud의 IAM 및 보안 인프라 기능. AI 모델을 쓰는 방식과 무관한 클라우드 개발 프레임워크.",
+      "status": "skipped",
+      "title": "Scale agents securely with IAM Helper Agent Skills and MCP Tools"
     },
     "https://cloud.google.com/blog/products/media-entertainment/how-visko-streams-real-time-world-models-on-google-cloud-tpus": {
       "checkedAt": "2026-10-16",
@@ -1101,6 +1125,14 @@
       "id": "google-agents-cli-extension-system",
       "status": "added",
       "title": "Powering the Agent Development Lifecycle with any framework, from ADK to LangChain and beyond"
+    },
+    "https://developers.googleblog.com/preview-edit-and-collaborate-on-markdown-md-files-natively-in-google-docs-and-drive": {
+      "checkedAt": "2026-10-27",
+      "company": "google",
+      "date": "2026-10-26",
+      "reason": "Google Workspace의 마크다운 파일 지원 추가. AI 모델과 무관한 개발 도구 기능.",
+      "status": "skipped",
+      "title": "Preview, edit, and collaborate on markdown (.md) files natively in Google Docs and Drive"
     },
     "https://developers.googleblog.com/reproducing-olmo-3-7b-pre-training-in-maxtext-case-study-of-large-scale-training-on-tpus": {
       "checkedAt": "2026-10-03",
@@ -1428,6 +1460,14 @@
       "status": "skipped",
       "title": "How we built ChatGPT’s novel ad stack for user trust and relevance"
     },
+    "https://openai.com/index/building-scientific-understanding-with-academic-communities": {
+      "checkedAt": "2026-10-27",
+      "company": "openai",
+      "date": "2026-10-26",
+      "reason": "모델 출시와 무관한 학술 연구 결과 공유. 새로운 모델이나 기능이 아니며 학술 커뮤니티 협력 공지.",
+      "status": "skipped",
+      "title": "Working with academic communities to build scientific understanding"
+    },
     "https://openai.com/index/chatgpt-ads-expands-26-new-countries": {
       "checkedAt": "2026-10-21",
       "company": "openai",
@@ -1443,6 +1483,14 @@
       "reason": "서비스 지역 확대, 모델 자체 업데이트 아님",
       "status": "skipped",
       "title": "ChatGPT Ads expands to Southeast Asia and Taiwan"
+    },
+    "https://openai.com/index/chatgpt-expanding-world-of-work": {
+      "checkedAt": "2026-10-27",
+      "company": "openai",
+      "date": "2026-10-26",
+      "reason": "ChatGPT 사용 통계 및 마케팅 분석. 새로운 모델, 기능, 가격 변경이 아닌 사용자 현황 리포트.",
+      "status": "skipped",
+      "title": "ChatGPT’s expanding world of work"
     },
     "https://openai.com/index/chatham-financial": {
       "checkedAt": "2026-10-03",
@@ -1484,6 +1532,14 @@
       "status": "skipped",
       "title": "Disrupting a coordinated model-distillation campaign"
     },
+    "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security": {
+      "checkedAt": "2026-10-27",
+      "company": "openai",
+      "date": "2026-10-26",
+      "reason": "고객 사례(CodeRabbit의 GPT-6.1 Sol 활용법). 서드파티 도구의 마케팅 글로, 공식 제품·기능 출시나 활용 팁이 아님.",
+      "status": "skipped",
+      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases"
+    },
     "https://openai.com/index/gpt-6-for-everyone": {
       "checkedAt": "2026-10-08",
       "company": "openai",
@@ -1491,6 +1547,14 @@
       "id": "gpt-6-sol-luna",
       "status": "updated",
       "title": "GPT-6 and Intelligent UI for everyone"
+    },
+    "https://openai.com/index/greptile-code-review-codex-astra": {
+      "checkedAt": "2026-10-27",
+      "company": "openai",
+      "date": "2026-10-26",
+      "reason": "고객 사례(Greptile의 GPT-6 Astra 활용법). 서드파티 도구의 마케팅 글로, 공식 제품·기능 출시나 활용 팁이 아님.",
+      "status": "skipped",
+      "title": "Greptile takes bug detection beyond code review with GPT-6 Astra"
     },
     "https://openai.com/index/harvey-from-context-to-confidence-with-astra": {
       "checkedAt": "2026-10-03",
@@ -1507,6 +1571,14 @@
       "reason": "고객 기업 파트너십 및 사례 소개",
       "status": "skipped",
       "title": "Higgsfield takes AI video from 1 minute to over 10"
+    },
+    "https://openai.com/index/introducing-gpt-6-1-terra": {
+      "checkedAt": "2026-10-27",
+      "company": "openai",
+      "date": "2026-10-26",
+      "id": "gpt-6-1-terra",
+      "status": "added",
+      "title": "Introducing GPT-6.1 Terra"
     },
     "https://openai.com/index/introducing-the-rosalind-academic-plan": {
       "checkedAt": "2026-10-16",
@@ -1555,6 +1627,14 @@
       "reason": "광고 플랫폼 기능 확대 공지로, 모델과 무관한 제품·영업 소식에 해당합니다. 사용자가 모델을 더 잘 쓰는 공식 활용 팁이 아닙니다.",
       "status": "skipped",
       "title": "Building advertising for the way people use AI"
+    },
+    "https://openai.com/index/openai-cut-incident-investigation": {
+      "checkedAt": "2026-10-27",
+      "company": "openai",
+      "date": "2026-10-26",
+      "reason": "OpenAI 내부 도구(Codex Ultrafast) 사용 사례. 공개되지 않은 내부 도구로 일반 사용자가 접근 불가능.",
+      "status": "skipped",
+      "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI"
     },
     "https://openai.com/index/openai-models-google-cloud": {
       "checkedAt": "2026-10-21",

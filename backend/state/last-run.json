@@ -1,12 +1,136 @@
 {
-  "startedAt": "2026-10-27T00:33:50+09:00",
+  "startedAt": "2026-10-27T09:07:24+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1847,
-  "candidates": [],
-  "added": [],
+  "entries": 1854,
+  "candidates": [
+    {
+      "title": "Greptile takes bug detection beyond code review with GPT-6 Astra",
+      "url": "https://openai.com/index/greptile-code-review-codex-astra",
+      "company": "openai",
+      "date": "2026-10-26",
+      "relatedId": "gpt-6-model-guide"
+    },
+    {
+      "title": "Working with academic communities to build scientific understanding",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
+      "company": "openai",
+      "date": "2026-10-26",
+      "relatedId": null
+    },
+    {
+      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
+      "url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+      "company": "openai",
+      "date": "2026-10-26",
+      "relatedId": "gpt-6-1-sol"
+    },
+    {
+      "title": "ChatGPT’s expanding world of work",
+      "url": "https://openai.com/index/chatgpt-expanding-world-of-work",
+      "company": "openai",
+      "date": "2026-10-26",
+      "relatedId": null
+    },
+    {
+      "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI",
+      "url": "https://openai.com/index/openai-cut-incident-investigation",
+      "company": "openai",
+      "date": "2026-10-26",
+      "relatedId": null
+    },
+    {
+      "title": "Introducing GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "company": "openai",
+      "date": "2026-10-26",
+      "relatedId": null
+    },
+    {
+      "title": "Expanding Claude for Nonprofits",
+      "url": "https://claude.com/resources/articles/expanding-claude-for-nonprofits",
+      "company": "anthropic",
+      "date": "2026-10-26",
+      "relatedId": null
+    },
+    {
+      "title": "15 college students share their favorite Gemini features",
+      "url": "https://blog.google/products-and-platforms/products/gemini/college-student-favorite-features/",
+      "company": "google",
+      "date": "2026-10-26",
+      "relatedId": "gemini-app-small-business-tools"
+    },
+    {
+      "title": "Scale agents securely with IAM Helper Agent Skills and MCP Tools",
+      "url": "https://cloud.google.com/blog/products/identity-security/scale-agents-securely-with-iam-helper-agent-skills-and-mcp-tools/",
+      "company": "google",
+      "date": "2026-10-26",
+      "relatedId": null
+    },
+    {
+      "title": "Preview, edit, and collaborate on markdown (.md) files natively in Google Docs and Drive",
+      "url": "https://developers.googleblog.com/preview-edit-and-collaborate-on-markdown-md-files-natively-in-google-docs-and-drive/",
+      "company": "google",
+      "date": "2026-10-26",
+      "relatedId": null
+    }
+  ],
+  "added": [
+    {
+      "id": "gpt-6-1-terra",
+      "title": "GPT-6.1 Terra",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "charts": 2
+    }
+  ],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "Greptile takes bug detection beyond code review with GPT-6 Astra",
+      "url": "https://openai.com/index/greptile-code-review-codex-astra",
+      "reason": "고객 사례(Greptile의 GPT-6 Astra 활용법). 서드파티 도구의 마케팅 글로, 공식 제품·기능 출시나 활용 팁이 아님."
+    },
+    {
+      "title": "Working with academic communities to build scientific understanding",
+      "url": "https://openai.com/index/building-scientific-understanding-with-academic-communities",
+      "reason": "모델 출시와 무관한 학술 연구 결과 공유. 새로운 모델이나 기능이 아니며 학술 커뮤니티 협력 공지."
+    },
+    {
+      "title": "GPT-6.1 Sol helps CodeRabbit strengthen security across complex codebases",
+      "url": "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security",
+      "reason": "고객 사례(CodeRabbit의 GPT-6.1 Sol 활용법). 서드파티 도구의 마케팅 글로, 공식 제품·기능 출시나 활용 팁이 아님."
+    },
+    {
+      "title": "ChatGPT’s expanding world of work",
+      "url": "https://openai.com/index/chatgpt-expanding-world-of-work",
+      "reason": "ChatGPT 사용 통계 및 마케팅 분석. 새로운 모델, 기능, 가격 변경이 아닌 사용자 현황 리포트."
+    },
+    {
+      "title": "How Ultrafast cut incident investigation from hours to minutes at OpenAI",
+      "url": "https://openai.com/index/openai-cut-incident-investigation",
+      "reason": "OpenAI 내부 도구(Codex Ultrafast) 사용 사례. 공개되지 않은 내부 도구로 일반 사용자가 접근 불가능."
+    },
+    {
+      "title": "Expanding Claude for Nonprofits",
+      "url": "https://claude.com/resources/articles/expanding-claude-for-nonprofits",
+      "reason": "비영리 단체 대상 특별 요금제 공지. 특정 조직·세그먼트 대상 영업·마케팅."
+    },
+    {
+      "title": "15 college students share their favorite Gemini features",
+      "url": "https://blog.google/products-and-platforms/products/gemini/college-student-favorite-features/",
+      "reason": "사용자 인터뷰(대학생 15명의 Gemini 활용 경험). 새로운 기능이나 모델이 아닌 사용자 사례 마케팅."
+    },
+    {
+      "title": "Scale agents securely with IAM Helper Agent Skills and MCP Tools",
+      "url": "https://cloud.google.com/blog/products/identity-security/scale-agents-securely-with-iam-helper-agent-skills-and-mcp-tools/",
+      "reason": "Google Cloud의 IAM 및 보안 인프라 기능. AI 모델을 쓰는 방식과 무관한 클라우드 개발 프레임워크."
+    },
+    {
+      "title": "Preview, edit, and collaborate on markdown (.md) files natively in Google Docs and Drive",
+      "url": "https://developers.googleblog.com/preview-edit-and-collaborate-on-markdown-md-files-natively-in-google-docs-and-drive/",
+      "reason": "Google Workspace의 마크다운 파일 지원 추가. AI 모델과 무관한 개발 도구 기능."
+    }
+  ],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",

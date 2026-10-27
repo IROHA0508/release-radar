@@ -1,32 +1,28 @@
 {
-  "startedAt": "2026-10-27T00:34:08+09:00",
+  "startedAt": "2026-10-27T09:09:28+09:00",
   "prices": {
     "checked": [
-      "openai",
-      "anthropic",
-      "google"
+      "openai"
     ],
-    "changes": [],
+    "changes": [
+      "가격 변경: GPT Image 2 입력 $5.00 → $8.00",
+      "가격 변경: GPT Image 2 캐시 입력 $1.25 → $2.00",
+      "가격 변경: GPT Image 2 출력 — → $30.00",
+      "가격 변경: GPT-Image-2.5 Flare 입력 $5.00 → $8.00",
+      "가격 변경: GPT-Image-2.5 Flare 캐시 입력 $1.25 → $2.00",
+      "가격 변경: GPT-Image-2.5 Flare 출력 — → $30.00",
+      "가격 변경: GPT-Image-2.5 Sunburst 입력 $5.00 → $8.00",
+      "가격 변경: GPT-Image-2.5 Sunburst 캐시 입력 $1.25 → $2.00",
+      "가격 변경: GPT-Image-2.5 Sunburst 출력 — → $30.00",
+      "가격표에 추가: GPT-6.1 Terra (입력 $1.00 / 출력 $5.00)"
+    ],
     "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 38,
-    "changed": [
-      "https://developers.openai.com/api/docs/guides/live-prompting",
-      "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
-      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
-      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
-    ],
-    "changes": [
-      "가이드 추가: [openai] GPT-Live는 대화 지시와 백엔드 지시를 나눠 쓰기",
-      "가이드 추가: [openai] 백엔드 위임은 <|SpawnThinking|> 생성 조건으로 구체적으로 적기",
-      "가이드 추가: [openai] 맞장구 빈도는 Backchannel policy로, 겹치는 발화 금지는 조심하기",
-      "가이드 추가: [openai] 임시 채팅은 시작 전에 Unpersonalized 여부를 정하기",
-      "가이드 추가: [openai] 프로젝트에서 커스텀 GPT는 첫 메시지가 아니라 기존 대화에서 쓰기"
-    ],
+    "checked": 0,
+    "changed": [],
+    "changes": [],
     "errors": {}
   },
   "authError": false,

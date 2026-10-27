@@ -1,6 +1,7 @@
 {
-  "lastChecked": "2026-10-27 00:34",
+  "lastChecked": "2026-10-27 09:09",
   "news": [
+    "gpt-6-1-terra",
     "claude-enterprise-unified-chat-cowork",
     "decisions-api",
     "claude-fold-subagents-main-agent-loop",
