@@ -165,7 +165,24 @@ def site_docs() -> dict[str, list[str]]:
     guides = DATA / "guides.json"
     if guides.exists():
         docs.update(guide_docs(json.loads(guides.read_text(encoding="utf-8"))))
+    models = DATA / "models.json"
+    if models.exists():
+        docs.update(models_docs(json.loads(models.read_text(encoding="utf-8"))))
     return docs
+
+
+def models_docs(m: dict) -> dict[str, list[str]]:
+    """모델 추천 탭. 모델 카드와 상황 한 줄이 각각 독립된 글이라 따로 본다."""
+    docs = {"models/intro": [m.get("intro", "")] + m.get("notes", [])}
+    for x in m.get("models", []):
+        docs[f"models/{x.get('apiId')}"] = [x.get("summary", ""), x.get("start", "")]
+    for s in m.get("situations", []):
+        docs[f"models/situation/{s.get('id')}"] = [s.get("title", "")] + [
+            p.get("note", "") or p.get("missing", "") for p in s.get("picks", {}).values()]
+    docs["models/levels"] = [c for lv in m.get("levels", []) for c in (lv.get("openai"), lv.get("anthropic"), lv.get("google")) if c]
+    for i, p in enumerate(m.get("principles", [])):
+        docs[f"models/principle/{i}"] = [p.get("title", ""), p.get("body", "")]
+    return {k: [p for p in v if p] for k, v in docs.items()}
 
 
 def main() -> None:
