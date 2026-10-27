@@ -1,21 +1,8 @@
 {
-  "startedAt": "2026-10-27T09:09:28+09:00",
+  "startedAt": "2026-10-27T17:27:04+09:00",
   "prices": {
-    "checked": [
-      "openai"
-    ],
-    "changes": [
-      "가격 변경: GPT Image 2 입력 $5.00 → $8.00",
-      "가격 변경: GPT Image 2 캐시 입력 $1.25 → $2.00",
-      "가격 변경: GPT Image 2 출력 — → $30.00",
-      "가격 변경: GPT-Image-2.5 Flare 입력 $5.00 → $8.00",
-      "가격 변경: GPT-Image-2.5 Flare 캐시 입력 $1.25 → $2.00",
-      "가격 변경: GPT-Image-2.5 Flare 출력 — → $30.00",
-      "가격 변경: GPT-Image-2.5 Sunburst 입력 $5.00 → $8.00",
-      "가격 변경: GPT-Image-2.5 Sunburst 캐시 입력 $1.25 → $2.00",
-      "가격 변경: GPT-Image-2.5 Sunburst 출력 — → $30.00",
-      "가격표에 추가: GPT-6.1 Terra (입력 $1.00 / 출력 $5.00)"
-    ],
+    "checked": [],
+    "changes": [],
     "notes": [],
     "errors": {}
   },
