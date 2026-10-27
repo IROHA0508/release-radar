@@ -19,6 +19,7 @@ GPT·Claude·Gemini 공식 발표를 한국어로 요약하는 정적 사이트(
 - 토큰·API 키는 GitHub Secrets나 로컬 `.env`에만. 사이트 자동화는 구독 토큰(`CLAUDE_CODE_OAUTH_TOKEN`)을 쓰고 랩 실습용 API 키와 섞지 않는다.
 
 ## 함정
+- 글자 크기는 `index.html` 맨 위 `:root`의 `--s-*` 토큰으로만 정한다(본문 `--s-md` 17px, 가장 작은 글씨 `--s-3xs` 12.5px). px 값을 직접 쓰지 말고 맞는 토큰을 고르거나 토큰을 추가한다.
 - 빌드 없는 정적 사이트다. 화면은 `index.html` 한 파일, 데이터는 `fetch`로 읽는다. 로컬 확인은 `python3 -m http.server 8000` (파일로 직접 열면 `data/`를 못 읽음).
 - 소식 id 예약어: `guide`, `prices`, `models`, `tech`, `lab`, `glossary` (해시 라우팅과 겹침). 새 탭을 만들면 `scripts/validate_data.py`와 `backend/store.py`의 예약어에 함께 추가한다.
 - 그래프·핵심 수치는 원문 텍스트에 있는 값만. `backend/guard.py`가 원문에 없는 값을 지운다.
