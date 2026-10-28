@@ -1,38 +1,12 @@
 {
-  "startedAt": "2026-10-28T09:07:22+09:00",
+  "startedAt": "2026-10-28T18:04:10+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 1861,
-  "candidates": [
-    {
-      "title": "Retell uses OpenAI models to help power 100M monthly calls",
-      "url": "https://openai.com/index/retell-ai",
-      "company": "openai",
-      "date": "2026-10-27",
-      "relatedId": null
-    },
-    {
-      "title": "Expanding our partnership with GSA to bring Claude to all levels of government",
-      "url": "https://www.anthropic.com/news/expanding-partnership-gsa",
-      "company": "anthropic",
-      "date": "2026-10-27",
-      "relatedId": null
-    }
-  ],
+  "candidates": [],
   "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Retell uses OpenAI models to help power 100M monthly calls",
-      "url": "https://openai.com/index/retell-ai",
-      "reason": "고객 사례(Retell이 OpenAI 모델을 활용한 사례)로 판단 기준의 '제외' 항목에 해당합니다. 특정 기업의 마케팅 콘텐츠이며 새로운 모델 출시, 모델 업데이트, 공식 제품·기능 출시, 공식 활용 팁이 아닙니다."
-    },
-    {
-      "title": "Expanding our partnership with GSA to bring Claude to all levels of government",
-      "url": "https://www.anthropic.com/news/expanding-partnership-gsa",
-      "reason": "기업 파트너십 및 정부 요금제 관련 공지로 판단 기준의 '제외' 항목에 해당합니다. Anthropic과 GSA의 협력 확대, 정부 수준별 Claude 공급 등은 모델 출시·업데이트, 제품·기능 출시, 공식 활용 팁에 해당하지 않습니다."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
