@@ -539,7 +539,8 @@
       ],
       "news": [
         "claude-code-session-value-tips",
-        "claude-opus-4-7"
+        "claude-opus-4-7",
+        "google-connected-apps-platform"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -652,7 +653,8 @@
       "news": [
         "google-agent-evaluation-beyond-vibe-check",
         "openai-retained-reasoning-compaction",
-        "google-agents-cli-extension-system"
+        "google-agents-cli-extension-system",
+        "google-agents-cli-eval-hill-climbing"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1029,7 +1031,8 @@
         }
       ],
       "news": [
-        "google-agent-evaluation-beyond-vibe-check"
+        "google-agent-evaluation-beyond-vibe-check",
+        "google-agents-cli-eval-hill-climbing"
       ],
       "verifiedAt": "2026-10-21"
     },

@@ -1,0 +1,123 @@
+{
+  "id": "gemini-4-carbon",
+  "company": "google",
+  "date": "2026-10-28",
+  "kind": "모델 출시",
+  "title": "Gemini 4 Carbon",
+  "headline": "사이버보안과 장기 과제에 강한 Google의 가장 강력한 모델, 사이버 방어팀부터 단계적 공개",
+  "tldr": "Gemini 4 Argon이 나온 지 2주 만에 공개된 Google의 최상위 모델입니다. Artificial Analysis Intelligence Index v5.0에서 59점으로 1위이고 취약점 탐지·악용·패치 벤치마크에서 최고 수준을 냈습니다. 지금은 일부 사이버 방어 담당자에게만 열려 있고 개발자·기업·일반 사용자 공개 시점은 아직 밝히지 않았습니다.",
+  "models": [
+    {
+      "name": "Gemini 4 Carbon",
+      "apiId": null,
+      "input": "$2",
+      "output": "$10",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Artificial Analysis Intelligence Index v5.0",
+      "value": "59점 (1위)",
+      "note": "최근 갱신된 v5.0 기준"
+    },
+    {
+      "label": "SEC-bench Pro",
+      "value": "88.2%",
+      "note": "취약점 찾기, 최고 수준"
+    },
+    {
+      "label": "ExploitGym",
+      "value": "54.8%",
+      "note": "취약점 악용 검증, 최고 수준"
+    },
+    {
+      "label": "CWE-bench",
+      "value": "71.0%",
+      "note": "Collinear 벤치마크, 취약점 패치"
+    }
+  ],
+  "chartSource": "Google 발표문 본문에 숫자로 나온 값입니다. 벤치마크 표와 일부 차트는 이미지로만 공개돼 텍스트로 확인한 값만 썼습니다.",
+  "charts": [
+    {
+      "title": "Gray Swan IPI 공격 성공률",
+      "desc": "간접 프롬프트 인젝션 저항, 낮을수록 좋음",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": true,
+      "source": "Google 발표문",
+      "note": "Argon은 이 벤치마크에서 이전에 1위였음",
+      "rows": [
+        {
+          "label": "Gemini 4 Argon",
+          "value": 0.7
+        },
+        {
+          "label": "Gemini 4 Carbon",
+          "value": 0,
+          "highlight": true
+        }
+      ]
+    }
+  ],
+  "chartNote": "벤치마크 비교표와 ExploitGym·CWE-bench 차트는 이미지로만 공개돼 다른 모델과의 비교 수치를 텍스트로 확인할 수 없었습니다.",
+  "changes": [
+    "수일간 이어지는 장기 엔지니어링 과제를 겨냥했습니다. 내부 팀은 Carbon이 막다른 길을 거치며 며칠 동안 작업을 이어 가 큰 코드베이스와 저수준 시스템의 미묘한 버그 원인을 찾아 고쳤다고 설명합니다.",
+    "WebDev Arena에서 +89 Elo 올라 4위(1768)에 자리 잡았습니다. 웹 개발 결과물과 아티팩트의 품질이 좋아졌다는 설명입니다.",
+    "사이버보안 방어 전 과정에서 최고 수준을 냈습니다. 취약점 탐지 SEC-bench Pro 88.2%, 악용 검증 ExploitGym 54.8%, 패치 CWE-bench 71.0%이며 모두 가드레일 없이 평가한 값입니다.",
+    "내부 벤치마크에서 안전한 코드 생성 성공률이 Argon보다 2배 넘게 올랐습니다. Chrome 팀은 고품질 패치 생성에서 다른 연구소의 대형 프런티어 모델보다 10배 넘게 낫다고 보고했습니다.",
+    "Terminal-Bench 4.0에서 부정행위 성공을 0.0%로, 시도를 0.4%로 줄였고 정확도도 함께 올랐습니다. 라이브 코딩 환경에서 심각도 높은 정렬 이상 경고는 80% 가까이 줄었습니다.",
+    "근거 없는 주장은 Argon보다 약 2배 줄었습니다. 과잉 수행은 26%, 미흡 수행은 29% 줄어 범위를 지키며 다단계 계획을 끝까지 실행하는 신뢰도가 높아졌다고 합니다.",
+    "Gray Swan 간접 프롬프트 인젝션 공격 성공률이 Argon의 0.7%에서 0.0%가 됐습니다."
+  ],
+  "availability": [
+    "이번 주부터 일부 사이버 방어 담당자에게 제공합니다. 이후 Fairwind Program을 통해 신뢰할 수 있는 파트너로 단계적으로 넓힙니다.",
+    "개발자·기업·일반 사용자에게는 제품 화면을 통해 가능한 한 빨리 공개할 예정이며 구체적인 날짜는 밝히지 않았습니다.",
+    "Google은 출시 전 모델 테스트를 위한 미국 정부의 자발적 절차에도 참여 중이라고 밝혔습니다.",
+    "도입 가격은 Argon과 같습니다. 입력 100만 토큰당 $2, 출력 100만 토큰당 $10이고 캐시된 입력 토큰은 입력 가격에서 95% 할인됩니다.",
+    "API 모델 ID는 원문에 없어 확인 필요입니다."
+  ],
+  "tips": [
+    {
+      "title": "지금은 접근 신청 경로부터 확인",
+      "body": "Carbon은 일반 공개 전이라 바로 쓸 수 없습니다. 사이버 방어 업무를 한다면 Fairwind Program 안내를 확인하고 나머지는 공개 소식을 기다려야 합니다."
+    },
+    {
+      "title": "당장 쓸 모델은 Argon",
+      "body": "Carbon 가격이 Argon과 같으므로 Argon으로 만든 워크플로를 나중에 모델 이름만 바꿔 비교해 볼 수 있습니다. 공개 전까지는 Argon 기준으로 평가 환경을 준비해 두세요."
+    },
+    {
+      "title": "모호한 요청에는 출처 확인 동작을 기대",
+      "body": "Google은 Carbon이 추측하지 않고 관련 출처를 찾아 불일치를 먼저 알려 준다고 설명합니다. 긴 작업을 맡길 때 범위와 제약을 명시해 두면 이 동작을 평가하기 쉽습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "취약점 점검 요청 틀",
+      "when": "공개 후 보안 점검을 맡길 때 (원문 예시가 아니라 사이트가 만든 틀)",
+      "type": "prompt",
+      "text": "다음 코드베이스에서 [점검 대상 경로]의 보안 취약점을 찾아줘.\n\n- 각 취약점마다 위치, 원인, 악용 가능성을 근거와 함께 적어\n- 확인하지 못한 부분은 추측하지 말고 \"확인 필요\"로 표시해\n- 수정은 원인 한 곳에 최소 범위로 제안해"
+    },
+    {
+      "title": "범위를 지키는 장기 작업 지시",
+      "when": "긴 엔지니어링 작업을 에이전트에게 맡길 때 (원문 예시가 아니라 사이트가 만든 틀)",
+      "type": "prompt",
+      "text": "[작업 목표]를 진행해줘.\n\n- 변경해도 되는 범위: [디렉터리나 파일]\n- 건드리면 안 되는 것: [제약 조건]\n- 막히면 우회하지 말고 막힌 이유와 필요한 것을 목록으로 알려줘\n- 끝나면 한 일, 하지 않은 일, 검증 결과를 구분해서 정리해줘"
+    }
+  ],
+  "cautions": [
+    "일반 공개 전 단계입니다. 개발자·기업·일반 사용자용 출시 시점과 API 모델 ID는 원문에 없습니다.",
+    "원문의 사이버보안 수치는 가드레일 없이 평가한 값입니다. 제품으로 공개될 때의 동작은 가드레일 조정에 따라 달라질 수 있습니다.",
+    "대부분 수치는 Google 내부 테스트나 보고이며 비교 대상 모델 이름이 밝혀지지 않은 것도 있습니다(Chrome 팀의 10배 비교 등)."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 4 Carbon: our next frontier model (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/"
+    },
+    {
+      "title": "Gemini 4 모델 안전·보안 (Google)",
+      "url": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/"
+    }
+  ]
+}

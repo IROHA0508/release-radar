@@ -439,6 +439,14 @@
       "status": "skipped",
       "title": "Gemini 4 Argon: Built to solve your hardest problems"
     },
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon": {
+      "checkedAt": "2026-10-29",
+      "company": "google",
+      "date": "2026-10-28",
+      "id": "gemini-4-carbon",
+      "status": "added",
+      "title": "Gemini 4 Carbon: our next frontier model"
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability": {
       "checkedAt": "2026-10-14",
       "company": "google",
@@ -455,6 +463,14 @@
       "status": "skipped",
       "title": "Guided Vision in Gemini Live: built for accessibility"
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/immersive-explorations-student-hub": {
+      "checkedAt": "2026-10-29",
+      "company": "google",
+      "date": "2026-10-28",
+      "id": "gemini-immersive-explorations",
+      "status": "added",
+      "title": "Dive into new topics with immersive explorations in the Gemini app."
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/new-tools-small-business-owners": {
       "checkedAt": "2026-10-22",
       "company": "google",
@@ -470,6 +486,14 @@
       "id": "gemini-4-argon",
       "status": "updated",
       "title": "Gemini 4 Argon is now available for developers."
+    },
+    "https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place": {
+      "checkedAt": "2026-10-29",
+      "company": "google",
+      "date": "2026-10-28",
+      "id": "google-connected-apps-platform",
+      "status": "added",
+      "title": "Build and manage Connected Apps in one place"
     },
     "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security": {
       "checkedAt": "2026-10-14",
@@ -785,6 +809,22 @@
       "status": "added",
       "title": "Manage costs and demonstrate ROI for Claude Code on Google Cloud"
     },
+    "https://claude.com/resources/articles/idc-brings-quanta-into-claude-and-adopts-claude-across-the-company": {
+      "checkedAt": "2026-10-29",
+      "company": "anthropic",
+      "date": "2026-10-28",
+      "reason": "기업/파트너십 사례로, 특정 회사의 Claude 도입 소식입니다.",
+      "status": "skipped",
+      "title": "IDC brings Quanta into Claude and adopts Claude across the company"
+    },
+    "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets": {
+      "checkedAt": "2026-10-29",
+      "company": "anthropic",
+      "date": "2026-10-28",
+      "id": "claude-enterprise-smart-reports-surveys-budgets",
+      "status": "added",
+      "title": "Smart reports, surveys, and pooled group budgets for Claude Enterprise"
+    },
     "https://claude.com/resources/articles/unified-claude-enterprise": {
       "checkedAt": "2026-10-24",
       "company": "anthropic",
@@ -969,6 +1009,14 @@
       "status": "skipped",
       "title": "Gemini 4 Argon for Robotics"
     },
+    "https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model": {
+      "checkedAt": "2026-10-29",
+      "company": "google",
+      "date": "2026-10-28",
+      "id": "gemini-4-carbon",
+      "status": "added",
+      "title": "Gemini 4 Carbon: our next frontier model"
+    },
     "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation": {
       "checkedAt": "2026-10-28",
       "company": "google",
@@ -1143,6 +1191,14 @@
       "date": "2026-08-13",
       "status": "old",
       "title": "HeyGen x Google Cloud: Bringing Avatar IV to TPUs- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/hill-climbing-agent-quality-with-agents-cli-evaluation": {
+      "checkedAt": "2026-10-29",
+      "company": "google",
+      "date": "2026-10-28",
+      "id": "google-agents-cli-eval-hill-climbing",
+      "status": "added",
+      "title": "Hill-Climbing Agent Quality with Agents CLI Evaluation"
     },
     "https://developers.googleblog.com/how-to-evaluate-live-voice-agents-in-adk": {
       "checkedAt": "2026-10-03",
@@ -1683,6 +1739,14 @@
       "reason": "고객 사례: LegalOn의 Codex 비용 절감 경험을 소개한 글로, 공식 활용 팁이나 모델 출시·업데이트가 아님",
       "status": "skipped",
       "title": "LegalOn halves Codex costs while maintaining development speed"
+    },
+    "https://openai.com/index/legora": {
+      "checkedAt": "2026-10-29",
+      "company": "openai",
+      "date": "2026-10-28",
+      "reason": "고객 사례로, 특정 업종(법률) 마케팅에 해당합니다.",
+      "status": "skipped",
+      "title": "Legora is building the agentic operating system for legal work"
     },
     "https://openai.com/index/low-resource-programming-languages": {
       "checkedAt": "2026-10-20",

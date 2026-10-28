@@ -1,0 +1,67 @@
+{
+  "id": "google-connected-apps-platform",
+  "company": "google",
+  "date": "2026-10-28",
+  "kind": "제품·기능 출시",
+  "title": "Connected Apps Platform",
+  "headline": "Search와 Gemini 앱에 들어갈 앱을 한 곳에서 만들고 관리하는 개발자 플랫폼",
+  "tldr": "Google이 Search와 Gemini 앱에 앱 기능을 연결하려는 개발자를 위한 Connected Apps Platform의 프리뷰를 시작했습니다. 한 번 만들면 두 곳 모두에 낼 수 있고 Google Connected Console에서 등록·테스트·제출과 트래픽 확인까지 합니다. Adobe, Calm, Peloton 같은 파트너의 새 Connected Apps도 함께 공개됐습니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "출시된 Connected Apps",
+      "value": "50개 이상",
+      "note": "Search와 Gemini에 걸쳐 생산성, 공연 티켓, 건강·피트니스 등 분야"
+    },
+    {
+      "label": "플랫폼 상태",
+      "value": "프리뷰",
+      "note": "단계적으로 개발자, 시장, Google 제품을 늘릴 예정"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "개발자가 한 번 만든 앱으로 Search와 Gemini 앱 양쪽의 이용자에게 닿을 수 있는 통합 플랫폼이 생겼습니다.",
+    "개발자는 클라우드 호스팅 MCP 서버, 또는 AppFunctions API를 쓰는 Android MCP로 연동합니다.",
+    "Google Connected Console에서 앱을 등록하고 테스트한 뒤 제출합니다.",
+    "심사 전에 앱을 Search, Gemini 앱, 둘 다 중 어디에 공개할지 고릅니다.",
+    "공개 뒤에는 트래픽, 지연 시간, 오류율을 확인하고 인증된 로고와 계정 같은 브랜드 정체성도 직접 관리합니다.",
+    "Adobe, Experian, Localiza, Peloton 연동은 Gemini에서 이미 쓸 수 있고 몇 주 안에 Search에도 들어옵니다. Calm 연동은 Search와 Gemini에 함께 출시됩니다."
+  ],
+  "availability": [
+    "Connected Apps Platform은 프리뷰이며 단계적으로 접근을 열고 있습니다.",
+    "앞으로 몇 달에 걸쳐 개발자, 시장, Google 제품을 추가할 예정입니다.",
+    "프리뷰 신청과 문서는 developers.google.com/connected-apps에서 볼 수 있습니다.",
+    "이용자가 쓸 수 있는 앱 목록은 Search와 Gemini의 도움말 센터 페이지에 있습니다."
+  ],
+  "tips": [
+    {
+      "title": "프리뷰 신청부터",
+      "body": "developers.google.com/connected-apps에서 프리뷰를 신청하고 문서를 읽어 보세요. 접근은 단계적으로 열립니다."
+    },
+    {
+      "title": "연동 방식 고르기",
+      "body": "웹 서비스라면 클라우드 호스팅 MCP 서버, Android 앱이라면 AppFunctions API 기반의 Android MCP를 씁니다."
+    },
+    {
+      "title": "공개 위치 정하기",
+      "body": "심사 전에 Search, Gemini 앱, 둘 다 중 하나를 고르므로 앱 성격에 맞는 노출 위치를 먼저 정해 두세요."
+    }
+  ],
+  "prompts": [],
+  "cautions": [
+    "프리뷰 단계라 접근 가능한 개발자와 시장이 제한될 수 있습니다. 지원 지역과 일정은 원문에 없어 확인이 필요합니다.",
+    "Search에 들어올 Adobe 등의 연동은 '몇 주 안에' 예정이라는 설명만 있고 정확한 날짜는 없습니다."
+  ],
+  "sources": [
+    {
+      "title": "Build and manage Connected Apps in one place (Google)",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place/"
+    },
+    {
+      "title": "Connected Apps 문서 (Google for Developers)",
+      "url": "https://developers.google.com/connected-apps"
+    }
+  ]
+}
