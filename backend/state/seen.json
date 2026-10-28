@@ -289,6 +289,14 @@
       "status": "old",
       "title": "Enabling Claude Code to work more autonomously"
     },
+    "https://anthropic.com/news/expanding-partnership-gsa": {
+      "checkedAt": "2026-10-28",
+      "company": "anthropic",
+      "date": "2026-10-27",
+      "reason": "기업 파트너십 및 정부 요금제 관련 공지로 판단 기준의 '제외' 항목에 해당합니다. Anthropic과 GSA의 협력 확대, 정부 수준별 Claude 공급 등은 모델 출시·업데이트, 제품·기능 출시, 공식 활용 팁에 해당하지 않습니다.",
+      "status": "skipped",
+      "title": "Expanding our partnership with GSA to bring Claude to all levels of government"
+    },
     "https://anthropic.com/news/fable-safeguards-jailbreak-framework": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
@@ -1755,6 +1763,14 @@
       "reason": "Radisson 호텔 그룹과의 파트너십 및 ChatGPT 플러그인 통합 사례로, 지침상 기업 파트너십과 고객 사례는 제외 대상",
       "status": "skipped",
       "title": "Radisson Hotel Group brings hotel discovery into ChatGPT"
+    },
+    "https://openai.com/index/retell-ai": {
+      "checkedAt": "2026-10-28",
+      "company": "openai",
+      "date": "2026-10-27",
+      "reason": "고객 사례(Retell이 OpenAI 모델을 활용한 사례)로 판단 기준의 '제외' 항목에 해당합니다. 특정 기업의 마케팅 콘텐츠이며 새로운 모델 출시, 모델 업데이트, 공식 제품·기능 출시, 공식 활용 팁이 아닙니다.",
+      "status": "skipped",
+      "title": "Retell uses OpenAI models to help power 100M monthly calls"
     },
     "https://openai.com/index/ringg": {
       "checkedAt": "2026-10-03",
