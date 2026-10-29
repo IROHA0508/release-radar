@@ -30,7 +30,8 @@ class Entry:
 
     @property
     def key(self) -> str:
-        return normalize_url(self.url)
+        # A changelog entry shares its page URL with every other entry, so it carries its own key.
+        return self.extra.get("key") or normalize_url(self.url)
 
 
 def normalize_url(url: str) -> str:
@@ -195,7 +196,142 @@ def parse_reader_listing(markdown: str, source: config.Source) -> list[Entry]:
     return entries
 
 
+_MON = "jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec"
+CL_FULL_RE = re.compile(rf"(?i)^(?:(?:mon|tue|wed|thu|fri|sat|sun)[a-z]*,?\s+)?({_MON})[a-z]*\.?\s+(\d{{1,2}}),?\s+(20\d\d)$")
+CL_ISO_RE = re.compile(r"^(20\d\d)-(\d\d)-(\d\d)$")
+CL_MONTH_DAY_RE = re.compile(rf"(?i)^({_MON})[a-z]*\.?\s+(\d{{1,2}})$")
+CL_MONTH_YEAR_RE = re.compile(rf"(?i)^({_MON})[a-z]*,?\s+(20\d\d)$")
+CL_LABEL_RE = re.compile(r"(?i)^(feature|update|fix|announcement|deprecation|new|changed|removed|improvement|breaking"
+                         r"|beta|ga|launch|release)s?$")
+MD_LINK_RE = re.compile(r"\[([^\]]*)\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
+
+
+def _month(name: str) -> int:
+    return ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"].index(name[:3].lower()) + 1
+
+
+def _clean_line(line: str, base: str, links: list[str]) -> str:
+    """Markdown or page text -> plain text; link targets are collected."""
+    def repl(m):
+        links.append(urljoin(base, m.group(2)))
+        return m.group(1)
+    text = MD_LINK_RE.sub(repl, line)
+    text = re.sub(r"\s*\{#[^}]*\}\s*$", "", text)                    # '## October 6, 2026 {#october-6}'
+    text = re.sub(r"^\s*(?:#{1,6}\s*|>\s*)", "", text)
+    text = re.sub(r"^\s*[-*+]\s+", "", text)
+    text = re.sub(r"<[^>]+>|\*\*|__|`", "", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _line_date(text: str, year: int | None, today: date) -> date | None:
+    m = CL_FULL_RE.match(text)
+    try:
+        if m:
+            return date(int(m.group(3)), _month(m.group(1)), int(m.group(2)))
+        m = CL_ISO_RE.match(text)
+        if m:
+            return date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        m = CL_MONTH_DAY_RE.match(text)
+        if m:
+            if year:
+                return date(year, _month(m.group(1)), int(m.group(2)))
+            return month_day(text, today)
+    except ValueError:
+        return None
+    return None
+
+
+def parse_changelog(text: str, source: config.Source, today: date | None = None) -> list[Entry]:
+    """Split an API changelog into one entry per item.
+
+    Handles '## October 6, 2026' + bullets (Gemini API, Claude release notes) and
+    '### October, 2026' then 'Oct 28' / 'Feature' / body per item (OpenAI). Page text without
+    bullet markers gives one entry per date."""
+    import hashlib
+
+    today = today or datetime.now(timezone.utc).date()
+    page = source.page or source.url
+    sections: list[tuple[date, list[str]]] = []
+    year = None
+    for raw in text.splitlines():
+        plain = _clean_line(raw, page, [])
+        if not plain:
+            if sections:
+                sections[-1][1].append("")
+            continue
+        m = CL_MONTH_YEAR_RE.match(plain)
+        if m:
+            year = int(m.group(2))
+            continue
+        d = _line_date(plain, year, today) if len(plain) <= 40 else None
+        if d:
+            sections.append((d, []))
+        elif sections:
+            sections[-1][1].append(raw)
+    entries, seen = [], set()
+    for d, lines in sections:
+        items: list[list[str]] = []
+        bulleted = any(re.match(r"^[-*+]\s+", ln) for ln in lines)
+        for ln in lines:
+            if bulleted and re.match(r"^[-*+]\s+", ln):
+                items.append([ln])
+            elif bulleted:
+                if items:
+                    items[-1].append(ln)
+            else:
+                items = items or [[]]
+                items[0].append(ln)
+        for item in items:
+            links: list[str] = []
+            cleaned = [c for c in (_clean_line(ln, page, links) for ln in item) if c]
+            body = [c for c in cleaned if not CL_LABEL_RE.match(c)]
+            label = next((c for c in cleaned if CL_LABEL_RE.match(c)), "")
+            if not body:
+                continue
+            text_ = " ".join(body)
+            title = next((c for c in body if len(c.split()) >= 4), body[0])
+            title = re.split(r"(?<=[.!?])\s", title)[0][:200]
+            digest = hashlib.sha1(re.sub(r"[^a-z0-9]+", "", text_.lower())[:200].encode()).hexdigest()[:8]
+            key = f"{normalize_url(page)}#{d.isoformat()}-{digest}"
+            if key in seen:
+                continue
+            seen.add(key)
+            entries.append(Entry(title, f"{page}#{d.isoformat()}", source.company, source.name, d,
+                                 ((label + ": ") if label else "") + text_[:500], source.priority,
+                                 {"changelog": True, "key": key, "text": text_, "links": links, "page": page}))
+    return entries
+
+
+def fetch_changelog(source: config.Source) -> list[Entry]:
+    """The markdown copy first (keeps bullets); the page itself (through the reader if blocked) if that fails."""
+    errors = []
+    try:
+        resp = http_get(source.url, accept="text/markdown,text/plain,*/*")
+        if resp.status_code == 200:
+            entries = parse_changelog(resp.text, source)
+            if entries:
+                return entries
+            errors.append(f"마크다운에서 날짜 항목 0개({len(resp.text)}자)")
+        else:
+            errors.append(f"마크다운 HTTP {resp.status_code}")
+    except Exception as exc:  # noqa: BLE001
+        errors.append(f"마크다운 {type(exc).__name__}: {exc}")
+    if source.page and source.page != source.url:
+        from .extract import fetch_article
+
+        art = fetch_article(source.page)
+        entries = parse_changelog(art.text, source)
+        if entries:
+            return entries
+        errors.append(f"페이지에서 날짜 항목 0개({len(art.text)}자)")
+    raise RuntimeError("변경 기록을 읽지 못함 — " + " / ".join(errors))
+
+
 def fetch_source(source: config.Source) -> list[Entry]:
+    if source.kind == "changelog":
+        entries = fetch_changelog(source)
+        log.info("%s: %d entries", source.name, len(entries))
+        return entries
     resp = http_get(source.url, accept="text/html,*/*" if source.kind == "listing" else
                     "application/rss+xml,application/xml,text/xml,*/*")
     if source.kind == "listing" and resp.status_code != 200 and config.READER_FALLBACK:

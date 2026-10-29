@@ -176,8 +176,10 @@ def find_candidates(entries: list[Entry], site: SiteIndex, state: dict, today: d
     out = []
     for e in dedupe(entries):
         urls = [e.url, *e.extra.get("alsoAt", [])]
-        keys = [normalize_url(u) for u in urls]
-        if any(k in known for k in keys) or any(slug_key(u) in known_slugs for u in urls):
+        keys = [e.key, *[normalize_url(u) for u in e.extra.get("alsoAt", [])]]
+        # A changelog entry's URL is the changelog page itself, which news items may cite for other
+        # entries; only its own key (and the 'same model, same day' check below) tells it apart.
+        if not e.extra.get("changelog") and (any(k in known for k in keys) or any(slug_key(u) in known_slugs for u in urls)):
             continue
         if not pretend_missing and any(k in seen for k in keys):
             continue
@@ -192,13 +194,14 @@ def find_candidates(entries: list[Entry], site: SiteIndex, state: dict, today: d
             continue
         e.extra["relatedId"] = related_item(e, site)
         out.append(e)
-    # Dated entries first (newest first), then undated ones from sitemaps.
-    out.sort(key=lambda x: (x.published is not None, x.published or x.extra.get("lastmod") or today), reverse=True)
+    # Dated entries first (newest first), then undated ones from sitemaps. On the same day a blog post
+    # comes before a changelog entry, so the fuller article is written and the entry is added to it.
+    out.sort(key=lambda x: (x.published is not None, x.published or x.extra.get("lastmod") or today, x.priority), reverse=True)
     return out
 
 
 def mark(state: dict, entry: Entry, status: str, today: date, **info) -> None:
     rec = {"status": status, "title": entry.title, "company": entry.company,
            "date": entry.published.isoformat() if entry.published else None, "checkedAt": today.isoformat(), **info}
-    for u in [entry.url, *entry.extra.get("alsoAt", [])]:
-        state.setdefault("urls", {})[normalize_url(u)] = rec
+    for k in [entry.key, *[normalize_url(u) for u in entry.extra.get("alsoAt", [])]]:
+        state.setdefault("urls", {})[k] = rec

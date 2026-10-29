@@ -55,6 +55,9 @@ python3 -m http.server 8000
 ```
 감지  모델 발표: OpenAI 뉴스 RSS, Anthropic 뉴스룸·사이트맵, Google Gemini 모델 블로그·DeepMind RSS
       활용 팁:   OpenAI 개발자 블로그, Claude 블로그, Google Gemini 앱 블로그·Developers 블로그·Cloud AI 블로그
+      API 변경 기록: OpenAI API changelog, Claude Platform release notes, Gemini API release notes
+                 (블로그 글 없이 여기에만 올라오는 출시가 있음. 날짜별 항목 하나를 글 하나로 보고, 항목에 걸린 공식 문서 한 곳을 함께 읽음.
+                  같은 날 블로그 글이 있으면 블로그 글로 소식을 쓰고 변경 기록은 그 소식의 출처로 덧붙임)
   ↓   사이트에 이미 있는 출처 URL·이전 실행 기록과 비교, 최근 7일 이내 + 모델·활용 관련 글만 후보
 분류  Claude(작은 모델)가 후보 중 모델 출시·모델 업데이트·제품·기능 출시·활용 팁만 고름 (고객 사례·정책·영업 공지 등 제외)
 읽기  원문 페이지 본문, 표(셀 그대로), 링크 추출. 막히면 r.jina.ai 리더로 재시도
@@ -69,7 +72,7 @@ python3 -m http.server 8000
 | 파일 | 역할 |
 |---|---|
 | `backend/config.py` | 감시할 소스 목록(`SOURCES`), 모델·실행 한도 설정 |
-| `backend/feeds.py` | 소스 수집(RSS·뉴스룸 HTML) |
+| `backend/feeds.py` | 소스 수집(RSS·뉴스룸 HTML·API 변경 기록) |
 | `backend/detect.py` | 새 글 판정, 같은 글 중복 제거, 실행 기록(`backend/state/seen.json`) |
 | `backend/extract.py` | 원문 본문·표·링크·발표일 추출 |
 | `backend/summarize.py` | Claude 호출(분류, 기사 작성) — 구독 토큰이면 Claude Code CLI, API 키면 Claude API |

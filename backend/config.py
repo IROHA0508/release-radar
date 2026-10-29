@@ -82,6 +82,9 @@ class Source:
     # Anthropic newsroom, whose new links appear at the top; elsewhere an undated post is skipped so
     # old blog posts are never mistaken for new ones.
     undated_is_new: bool = False
+    # changelog sources: the page people open (url may be its markdown copy). Each dated entry on the page
+    # becomes one candidate, linked as page#YYYY-MM-DD.
+    page: str = ""
 
 
 SOURCES = [
@@ -103,7 +106,19 @@ SOURCES = [
     Source("Google Gemini app blog", "google", "rss", "https://blog.google/products/gemini/rss/", priority=1),
     Source("Google Developers blog", "google", "rss", "https://developers.googleblog.com/feeds/posts/default"),
     Source("Google Cloud AI blog", "google", "rss", "https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/"),
+    # API changelogs: some launches appear only here (e.g. Nano Banana 2.1, GPT-Realtime-2.1, GPT-Transcribe),
+    # with no blog post. Lowest priority, so a blog post about the same launch is written first and the
+    # changelog entry is added to it as another source.
+    Source("OpenAI API changelog", "openai", "changelog", "https://developers.openai.com/api/docs/changelog.md",
+           page="https://developers.openai.com/api/docs/changelog", priority=-1),
+    Source("Claude Platform release notes", "anthropic", "changelog",
+           "https://platform.claude.com/docs/en/release-notes/overview.md",
+           page="https://platform.claude.com/docs/en/release-notes/overview", priority=-1),
+    Source("Gemini API release notes", "google", "changelog", "https://ai.google.dev/gemini-api/docs/changelog.md.txt",
+           page="https://ai.google.dev/gemini-api/docs/changelog", priority=-1),
 ]
+# Reading one linked doc page gives a short changelog entry enough detail to write about.
+CHANGELOG_DOC_LIMIT = 20_000
 
 # Anthropic's newsroom links to article pages under /news/ and to launch pages at the top level
 # (/claude-sonnet-5-5, /glasswing ...). Only these paths count as articles.

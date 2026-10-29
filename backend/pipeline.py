@@ -10,7 +10,7 @@ from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
 from . import config, detect, feeds, guard, store
-from .extract import Article, fetch_article
+from .extract import Article, changelog_article, fetch_article
 
 log = logging.getLogger(__name__)
 
@@ -173,7 +173,7 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
         # (e.g. two blog posts about one launch on the same day): only add its new details there.
         same = detect.same_item(e, site, set())
         try:
-            art = cache.get(e.key) or fetch_article(e.url)
+            art = cache.get(e.key) or (changelog_article(e) if e.extra.get("changelog") else fetch_article(e.url))
             draft = write_item(claude, e, art, site_lines, today, update_of=_load_item(same) if same else None)
             if draft.get("decision") == "new" and not same:
                 probe = {**(draft.get("item") or {}), "company": e.company,

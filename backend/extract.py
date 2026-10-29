@@ -159,6 +159,34 @@ def fetch_reader(url: str) -> Article:
     return parse_reader(resp.text, url)
 
 
+DOC_LINK_RE = re.compile(r"/(?:docs|models?|api)/", re.I)
+
+
+def changelog_article(entry, fetch=None) -> Article:
+    """A changelog entry as an article: the entry text, then one official doc page it links to
+    (a model page usually has the ID, description and prices that the one-line entry lacks)."""
+    from urllib.parse import urlsplit
+
+    fetch = fetch or fetch_article
+    page = entry.extra.get("page") or entry.url
+    parts = [f"[공식 API 변경 기록 {page} · {entry.published}]", entry.extra.get("text") or entry.summary]
+    links = list(dict.fromkeys(entry.extra.get("links") or []))
+    host = urlsplit(page).netloc
+    docs = [u for u in links if urlsplit(u).netloc == host and DOC_LINK_RE.search(urlsplit(u).path)
+            and urlsplit(u).path.rstrip("/") != urlsplit(page).path.rstrip("/")]
+    tables: list[str] = []
+    for url in docs[:1]:
+        try:
+            doc = fetch(url.split("#")[0])
+        except Exception as exc:  # noqa: BLE001 - the entry alone is still an official source
+            log.info("changelog doc %s unreadable: %s", url, exc)
+            continue
+        parts.append(f"\n# 연결된 공식 문서: {url}\n{doc.title}\n{doc.text[: config.CHANGELOG_DOC_LIMIT]}")
+        tables += doc.tables
+        links += doc.links
+    return Article(entry.url, entry.title, entry.published, "\n".join(parts), tables, links, via="changelog")
+
+
 def fetch_article(url: str) -> Article:
     """Read the page directly; use the reader when the page is blocked, too short, or has no
     HTML tables (some sites draw benchmark tables with divs, which the reader turns into tables)."""
