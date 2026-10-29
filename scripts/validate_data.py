@@ -84,7 +84,8 @@ def check_news(path):
 
 GUIDE_CATEGORIES = {"기본 작성법", "구조와 형식", "앱 기능과 설정", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩",
                     "도구와 API 설정", "이미지·영상·음성"}
-PRICE_STATUS = {"available", "deprecated", "unlisted"}
+PRICE_STATUS = {"available", "deprecated", "unlisted", "retired"}
+PRICE_CATEGORIES = {"text", "audio", "media", "other"}
 
 
 def check_guides(g, news_ids):
@@ -178,16 +179,27 @@ def check_prices(p, news_ids):
         if key in seen:
             err(where, f"{name}: 같은 모델이 두 번 있음({key})")
         seen.add(key)
+        if m.get("category") not in PRICE_CATEGORIES:
+            err(where, f"{name}: category는 {sorted(PRICE_CATEGORIES)} 중 하나: {m.get('category')}")
         if m.get("status") in ("available", "deprecated"):
-            if not (m.get("input") or m.get("output")):
-                err(where, f"{name}: 가격표에 보이는 모델인데 가격이 없음")
+            if not (m.get("input") or m.get("output") or m.get("perUnit")):
+                err(where, f"{name}: 가격표에 보이는 모델인데 가격(토큰 또는 그 밖의 단가)이 없음")
             if not m.get("verifiedAt") or not DATE_RE.match(m["verifiedAt"]):
                 err(where, f"{name}: verifiedAt(YYYY-MM-DD) 없음")
+        if m.get("status") == "retired" and not m.get("shutdown"):
+            err(where, f"{name}: 지원 종료(retired) 모델에는 shutdown(종료일)이 필요")
+        for k in ("shutdown", "addedAt", "since"):
+            if m.get(k) and not DATE_RE.match(m[k]):
+                err(where, f"{name}: {k}는 YYYY-MM-DD")
+        for k in ("desc", "perUnit", "replacement"):
+            if m.get(k) is not None and not isinstance(m[k], str):
+                err(where, f"{name}: {k}는 문자열")
         if m.get("newsId") and m["newsId"] not in news_ids:
             err(where, f"{name}: newsId '{m['newsId']}' 소식이 없음")
-    for co, page in (p.get("pages") or {}).items():
-        if co not in COMPANIES or not str(page.get("url", "")).startswith("https://"):
-            err(where, f"pages.{co} 오류")
+    for field in ("pages", "deprecationPages"):
+        for co, page in (p.get(field) or {}).items():
+            if co not in COMPANIES or not str(page.get("url", "")).startswith("https://"):
+                err(where, f"{field}.{co} 오류")
 
 
 TECH_GROUPS = {"path", "radar"}

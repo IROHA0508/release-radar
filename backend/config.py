@@ -30,6 +30,18 @@ PRICE_PAGES = {
 }
 # A model missing from its pricing page this many daily checks in a row leaves the price table.
 PRICE_MISSING_LIMIT = 2
+# More new models than this on one pricing page in one run is taken as a reading error.
+PRICE_DISCOVER_LIMIT = 60
+
+# Official deprecation pages, read right after each pricing page. A model whose shutdown date has passed
+# moves to the "지원 종료 모델" list; models retired within RETIRED_WINDOW_DAYS are added even if the
+# price table never had them, so a sudden error in old code can be looked up.
+DEPRECATION_PAGES = {
+    "openai": "https://developers.openai.com/api/docs/deprecations.md",
+    "anthropic": "https://platform.claude.com/docs/en/about-claude/model-deprecations.md",
+    "google": "https://ai.google.dev/gemini-api/docs/deprecations.md.txt",
+}
+RETIRED_WINDOW_DAYS = 365
 
 TIMEZONE = "Asia/Seoul"
 

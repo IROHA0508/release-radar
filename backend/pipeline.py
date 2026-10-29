@@ -357,6 +357,14 @@ def run_selftest() -> tuple[bool, list[str]]:
                          f"가격표 모델 {len(seen)}/{len(live)}개 보임(ID 또는 이름)")
         except Exception as exc:  # noqa: BLE001
             lines.append(f"WARN 가격 페이지 {company}: {exc}"[:300])
+    for company, url in config.DEPRECATION_PAGES.items():
+        try:
+            art = price_mod.fetch_page(url)
+            page = art.text.lower()
+            tag = "OK  " if len(art.text) >= 1000 and ("deprecat" in page or "shutdown" in page or "retire" in page) else "WARN"
+            lines.append(f"{tag} 지원 종료 페이지 {company}: {art.via}, 본문 {len(art.text)}자")
+        except Exception as exc:  # noqa: BLE001
+            lines.append(f"WARN 지원 종료 페이지 {company}: {exc}"[:300])
     try:
         for vendor in guide_mod.load().get("vendors", []):
             for w in vendor.get("watch", []):
