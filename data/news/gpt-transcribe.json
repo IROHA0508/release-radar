@@ -1,0 +1,113 @@
+{
+  "id": "gpt-transcribe",
+  "company": "openai",
+  "date": "2026-07-28",
+  "kind": "모델 출시",
+  "title": "GPT-Transcribe · GPT-Live-Transcribe",
+  "headline": "Whisper를 대체하는 파일 전사 모델과 실시간 스트리밍 전사 모델",
+  "tldr": "OpenAI의 새 음성 인식 모델 두 가지입니다. GPT-Transcribe는 업로드한 오디오 파일을 정확하게 전사하고 GPT-Live-Transcribe는 지연이 짧은 연속 스트리밍 전사를 맡습니다. 두 모델 모두 녹음 맥락 설명, 키워드 힌트, 여러 입력 언어 지정을 지원합니다.",
+  "models": [
+    {
+      "name": "GPT-Transcribe",
+      "apiId": "gpt-transcribe",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "GPT-Live-Transcribe",
+      "apiId": "gpt-live-transcribe",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "파일 전사 비용",
+      "value": "약 $0.0045 / 분",
+      "note": "가격 페이지 추정 비용"
+    },
+    {
+      "label": "실시간 전사 비용",
+      "value": "약 $0.017 / 분",
+      "note": "가격 페이지 추정 비용"
+    },
+    {
+      "label": "새 입력 옵션",
+      "value": "3가지",
+      "note": "prompt, keywords, languages"
+    },
+    {
+      "label": "Whisper 등 종료",
+      "value": "2027-02-26",
+      "note": "whisper-1, gpt-4o-transcribe 계열"
+    }
+  ],
+  "chartSource": "",
+  "charts": [],
+  "chartNote": "OpenAI는 이 모델들의 정확도 비교 수치를 공개하지 않았습니다.",
+  "changes": [
+    "GPT-Transcribe는 완성된 오디오 파일 전사와 Realtime 대화 턴의 최종 전사본을 맡습니다.",
+    "GPT-Live-Transcribe는 지연이 짧은 연속 스트리밍 전사용입니다.",
+    "prompt로 녹음의 주제와 맥락을, keywords로 고유명사·식별자 힌트를, languages 배열로 예상 언어 여러 개를 알려 줍니다.",
+    "GPT-Transcribe 결과에는 감지한 언어 정보가 들어갈 수 있습니다.",
+    "OpenAI는 whisper-1, gpt-4o-transcribe, gpt-4o-mini-transcribe(2025-12-15), gpt-4o-transcribe-diarize를 2027년 2월 26일 종료하고 두 모델로 옮기라고 안내합니다."
+  ],
+  "availability": [
+    "파일 전사: POST /v1/audio/transcriptions, 모델 ID gpt-transcribe",
+    "실시간 전사: Realtime 전사 세션(WebSocket·WebRTC), 모델 ID gpt-live-transcribe",
+    "가격 페이지에는 토큰 가격 없이 분당 추정 비용만 나옵니다."
+  ],
+  "tips": [
+    {
+      "title": "고유명사는 keywords로",
+      "body": "제품명, 사람 이름, 주문 코드처럼 실제로 말할 단어를 keywords 힌트로 넣으세요. 꺾쇠(<, >)와 줄바꿈이 들어가면 요청 전체가 거부될 수 있습니다."
+    },
+    {
+      "title": "language와 languages는 하나만",
+      "body": "Whisper 코드에서 옮길 때 language와 languages를 함께 보내지 마세요. 여러 언어가 섞이면 languages 배열 하나만 씁니다."
+    },
+    {
+      "title": "자막이 필요하면 따로 확인",
+      "body": "응답은 JSON으로 옵니다. SRT·VTT 자막이나 타임스탬프에 의존하던 코드는 그 형식을 지원하는 모델을 계속 쓰거나 처리 코드를 고치세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "파일 전사 요청 (Python)",
+      "when": "회의 녹음 파일을 전사할 때",
+      "type": "code",
+      "text": "from openai import OpenAI\n\nclient = OpenAI()\n\nwith open(\"[녹음 파일].m4a\", \"rb\") as f:\n    result = client.audio.transcriptions.create(\n        model=\"gpt-transcribe\",\n        file=f,\n        prompt=\"[회의 주제와 참석자 설명]\",\n    )\nprint(result.text)"
+    },
+    {
+      "title": "prompt에 넣을 맥락 설명",
+      "when": "전사 정확도를 높이려고 녹음 맥락을 적을 때",
+      "type": "prompt",
+      "text": "[회사명] 주간 제품 회의 녹음입니다. 참석자는 [이름 1], [이름 2], [이름 3]이고 [제품명], [기능 이름] 같은 용어가 자주 나옵니다. 한국어로 말하다가 영어 기술 용어를 섞어 씁니다."
+    }
+  ],
+  "cautions": [
+    "응답 형식이 JSON으로 바뀌므로 text·srt·vtt 응답을 가정한 코드는 그대로 동작하지 않을 수 있습니다.",
+    "GPT-Live-Transcribe는 처음에는 감지한 언어를 돌려주지 않습니다.",
+    "빈 languages 배열은 오류가 아니라 정상 결과로 처리해야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "OpenAI API Changelog, 2026년 7월 28일 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-07-28"
+    },
+    {
+      "title": "Migrate from Whisper to GPT-Transcribe and GPT-Live-Transcribe (OpenAI)",
+      "url": "https://developers.openai.com/cookbook/examples/migrating_from_whisper_to_gpt_transcribe"
+    },
+    {
+      "title": "OpenAI 지원 종료 일정 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/deprecations"
+    },
+    {
+      "title": "OpenAI API 가격 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/pricing"
+    }
+  ]
+}

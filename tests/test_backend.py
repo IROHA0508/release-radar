@@ -342,11 +342,13 @@ def test_changelog_entries_are_candidates_once(site):
     cands = detect.find_candidates(entries, idx, {"urls": {}}, date(2026, 10, 8))
     assert [c.title[:20] for c in cands][:2] == ["Deprecation: gemini-", "Deep Research agent "]
     assert all(c.published >= date(2026, 9, 24) for c in cands)                 # Sep 22 is outside the look-back window
+    # the site already has a Nano Banana 2.1 item from that day, so its changelog entry is not a candidate
+    assert not any("Nano Banana 2.1" in c.title for c in cands)
     state = {"urls": {}}
-    nano = next(c for c in cands if "Nano Banana 2.1" in c.title)
-    detect.mark(state, nano, "added", date(2026, 10, 8))
+    first = cands[0]
+    detect.mark(state, first, "skipped", date(2026, 10, 8))
     left = detect.find_candidates(entries, idx, state, date(2026, 10, 8))
-    assert nano.key not in {c.key for c in left} and len(left) == len(cands) - 1
+    assert first.key not in {c.key for c in left} and len(left) == len(cands) - 1
 
 
 def test_changelog_article_adds_the_linked_doc_page():

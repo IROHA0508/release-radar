@@ -84,6 +84,15 @@
     "openai-gpt-6-astra-skills-prompts",
     "openai-gpt-image-prompting-guide",
     "openai-prompting-fundamentals",
-    "openai-skills-shell-compaction-tips"
+    "openai-skills-shell-compaction-tips",
+    "nano-banana-2-1",
+    "gemini-3-5-live-translate",
+    "gemini-deep-research-max",
+    "gemini-embedding-2",
+    "gemini-robotics-er-2",
+    "gpt-realtime-2-1",
+    "gpt-transcribe",
+    "gpt-5-6-cyber",
+    "gpt-rosalind"
   ]
 }

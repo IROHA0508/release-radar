@@ -1,0 +1,98 @@
+{
+  "id": "gpt-rosalind",
+  "company": "openai",
+  "date": "2026-04-16",
+  "kind": "모델 출시",
+  "title": "GPT-Rosalind",
+  "headline": "생물학·신약 개발·중개의학 연구를 위한 신뢰 접근 전용 추론 모델",
+  "tldr": "문헌 종합, 가설 생성, 실험 설계, 여러 단계 데이터 분석 같은 생명과학 연구를 돕는 추론 모델입니다. 2026년 4월 ChatGPT, Codex, API에서 자격을 갖춘 기관 대상 연구 미리보기로 나왔고 9월 8일 신뢰 접근 프로그램으로 정식 제공됐습니다. 과금은 2026년 10월 5일부터입니다.",
+  "models": [
+    {
+      "name": "GPT-Rosalind",
+      "apiId": "gpt-rosalind-research",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "LABBench2",
+      "value": "11개 중 6개",
+      "note": "GPT-5.4보다 앞선 과제 수"
+    },
+    {
+      "label": "RNA 예측 과제",
+      "value": "95백분위 이상",
+      "note": "인간 전문가 대비, Codex best-of-ten"
+    },
+    {
+      "label": "서열 생성 과제",
+      "value": "약 84백분위",
+      "note": "인간 전문가 대비"
+    },
+    {
+      "label": "API 가격",
+      "value": "$5 / $25",
+      "note": "100만 토큰당 입력/출력, 2026-09-08 변경 기록 기준"
+    }
+  ],
+  "chartSource": "",
+  "charts": [],
+  "chartNote": "OpenAI는 절대 점수 대신 백분위와 상대 비교만 공개해 그래프를 만들지 않았습니다.",
+  "changes": [
+    "생물학, 신약 개발, 중개의학 연구를 위해 만든 프런티어 추론 모델입니다.",
+    "BixBench에서 점수를 공개한 모델 가운데 가장 높았고 LABBench2에서는 11개 과제 중 6개에서 GPT-5.4를 앞섰습니다. 가장 크게 오른 과제는 CloningQA입니다.",
+    "Dyno Therapeutics RNA 과제에서 예측은 인간 전문가의 95백분위 이상, 서열 생성은 약 84백분위였습니다.",
+    "Codex용 Life Sciences 리서치 플러그인은 50개 이상의 공개 데이터베이스와 도구에 연결하며 무료로 제공됩니다.",
+    "2026년 9월 8일 gpt-rosalind-research가 승인된 내부 생명과학 연구용 신뢰 접근 프로그램으로 정식 제공됐습니다."
+  ],
+  "availability": [
+    "ChatGPT, Codex, API: 자격 심사를 통과한 기관만(처음에는 미국 엔터프라이즈 고객부터)",
+    "API 모델 ID gpt-rosalind-research. 입력 100만 토큰당 $5, 캐시 입력 $0.50, 출력 $25(2026-09-08 변경 기록 기준, 2026-10-05부터 과금)",
+    "연구 미리보기 기간에는 기존 크레딧이나 토큰을 쓰지 않았습니다."
+  ],
+  "tips": [
+    {
+      "title": "승인 조건을 먼저 확인하기",
+      "body": "합법적인 과학 연구와 공익, 거버넌스·컴플라이언스·오용 방지 통제, 승인된 사용자만 접근하는 환경이 필요합니다. 신청 전에 내부 관리 체계를 정리해 두세요."
+    },
+    {
+      "title": "플러그인은 누구나 먼저 써 보기",
+      "body": "Life Sciences 리서치 플러그인은 GPT-Rosalind 승인 없이도 Codex에서 쓸 수 있습니다. 공개 데이터베이스 검색 흐름을 먼저 익혀 두면 좋습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "문헌 종합과 가설",
+      "when": "새 표적에 대한 선행 연구를 정리할 때",
+      "type": "prompt",
+      "text": "[표적 유전자/단백질]과 [질환]의 관계에 대한 최근 문헌을 정리해줘.\n- 근거 수준별(임상, 동물, 세포, 계산)로 나눠\n- 서로 충돌하는 결과는 따로 표시해\n- 검증할 만한 가설 3개와 각 가설을 확인할 첫 실험을 제안해\n- 모든 주장에 출처를 붙여"
+    },
+    {
+      "title": "실험 설계 검토",
+      "when": "실험 계획의 빈틈을 점검할 때",
+      "type": "prompt",
+      "text": "아래 실험 계획을 검토해줘. 대조군, 표본 수, 교란 변수, 재현성 문제를 항목별로 짚고 고칠 점을 우선순위대로 정리해.\n\n[실험 계획]"
+    }
+  ],
+  "cautions": [
+    "벤치마크 결과는 OpenAI 자체 평가입니다.",
+    "생물학적 오용을 막기 위해 엔터프라이즈 보안 통제와 강화된 접근 관리가 적용됩니다.",
+    "승인되지 않은 계정은 모델을 쓸 수 없습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing GPT-Rosalind for life sciences research (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-rosalind/"
+    },
+    {
+      "title": "OpenAI API Changelog, 2026년 9월 8일 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-09-08"
+    },
+    {
+      "title": "OpenAI API 가격 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/pricing"
+    }
+  ]
+}

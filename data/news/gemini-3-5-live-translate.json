@@ -1,0 +1,95 @@
+{
+  "id": "gemini-3-5-live-translate",
+  "company": "google",
+  "date": "2026-06-09",
+  "kind": "모델 출시",
+  "title": "Gemini 3.5 Live Translate",
+  "headline": "70개 이상 언어를 말하는 도중에 바로 통역하는 실시간 음성 번역 모델",
+  "tldr": "말이 끝나기를 기다리지 않고 들으면서 통역하는 음성 대 음성 번역 모델입니다. 70개 이상 언어를 자동으로 감지하고 화자의 억양·속도·음높이를 살린 목소리로 번역하며 세션 내내 화자보다 몇 초 뒤를 따라갑니다. 개발자는 Gemini Live API와 Google AI Studio에서 프리뷰로 쓸 수 있습니다.",
+  "models": [
+    {
+      "name": "Gemini 3.5 Live Translate",
+      "apiId": "gemini-3.5-live-translate-preview",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "지원 언어",
+      "value": "70개 이상",
+      "note": "자동 감지"
+    },
+    {
+      "label": "통역 지연",
+      "value": "몇 초",
+      "note": "세션 내내 화자보다 몇 초 뒤"
+    },
+    {
+      "label": "Meet 언어 조합",
+      "value": "2,000개 이상",
+      "note": "이전에는 영어와의 상호 번역만"
+    },
+    {
+      "label": "분당 가격",
+      "value": "$0.0053 / $0.0315",
+      "note": "오디오 입력/출력, 가격 페이지 환산값, 2026-10-29 가격 페이지 기준"
+    }
+  ],
+  "chartSource": "",
+  "charts": [],
+  "chartNote": "Google은 이 모델의 번역 품질을 수치로 비교하지 않았습니다.",
+  "changes": [
+    "화자가 말을 마칠 때까지 기다리는 턴 방식과 달리 말을 들으면서 번역 음성을 계속 만들어 어색한 공백을 줄입니다.",
+    "70개 이상 언어를 자동 감지하므로 여러 언어가 섞인 입력도 따로 설정하지 않고 처리합니다.",
+    "번역한 음성은 원래 화자의 억양, 속도, 음높이를 따릅니다.",
+    "시끄러운 환경에서도 동작하도록 소음에 강하게 만들었습니다.",
+    "Google Meet 통역 언어가 5개에서 70개 이상으로 늘었습니다(기업 대상 비공개 프리뷰)."
+  ],
+  "availability": [
+    "Gemini Live API·Google AI Studio: 공개 프리뷰, 모델 ID gemini-3.5-live-translate-preview",
+    "Google 번역 앱(Android·iOS): 전 세계 출시. Android에는 휴대폰을 귀에 대고 듣는 리스닝 모드가 순차 도입",
+    "Google Meet: 기업 고객 대상 비공개 프리뷰, 이후 확대 예정",
+    "가격(2026-10-29 가격 페이지 기준): 오디오 입력 100만 토큰당 $3.50, 출력 $21.00"
+  ],
+  "tips": [
+    {
+      "title": "언어를 정하지 말고 바로 말하기",
+      "body": "모델이 언어를 자동으로 감지합니다. 다국어 회의나 통화에서 화자마다 언어를 따로 지정하지 않아도 됩니다."
+    },
+    {
+      "title": "쓰던 음성 프레임워크의 예제부터 보기",
+      "body": "Agora, Fishjam, LiveKit, Pipecat, Vision Agents가 Live API 연동을 제공합니다. 이미 쓰는 프레임워크가 있다면 그쪽 연동 예제로 먼저 시험해 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "통역 안내 문구",
+      "when": "통역을 쓰는 상담 화면이나 행사장에 띄울 때",
+      "type": "prompt",
+      "text": "이 대화는 AI 실시간 통역으로 진행됩니다.\n- 평소 속도로 말씀하셔도 됩니다\n- 고유명사와 숫자는 또렷하게 말씀해 주세요\n- 통역이 어색하면 '다시'라고 말씀해 주세요"
+    },
+    {
+      "title": "통역 품질 점검표",
+      "when": "도입 전에 통역 결과를 사람이 확인할 때",
+      "type": "prompt",
+      "text": "아래 원문 녹취와 통역 녹취를 비교해서 문제를 표로 정리해줘.\n- 열: 시각, 원문, 통역, 문제 종류(누락/오역/숫자·고유명사 오류), 심각도\n- 숫자, 날짜, 사람 이름은 하나도 빠짐없이 대조해\n\n원문:\n[원문 녹취]\n\n통역:\n[통역 녹취]"
+    }
+  ],
+  "cautions": [
+    "API와 AI Studio는 프리뷰 단계입니다.",
+    "지연 시간 말고는 공개된 품질 수치가 없습니다.",
+    "생성된 모든 오디오에 SynthID 워터마크가 들어갑니다."
+  ],
+  "sources": [
+    {
+      "title": "Fluid, natural voice translation with Gemini 3.5 Live Translate (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-live-3-5-translate/"
+    },
+    {
+      "title": "Gemini Developer API 가격 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing"
+    }
+  ]
+}
