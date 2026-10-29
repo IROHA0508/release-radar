@@ -1,126 +1,43 @@
 {
-  "startedAt": "2026-10-29T04:56:57+09:00",
+  "startedAt": "2026-10-29T09:29:37+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1863,
+  "entries": 1864,
   "candidates": [
     {
-      "title": "Legora is building the agentic operating system for legal work",
-      "url": "https://openai.com/index/legora",
+      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
+      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
       "company": "openai",
       "date": "2026-10-28",
       "relatedId": null
     },
     {
-      "title": "Gemini 4 Carbon: our next frontier model",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
-      "company": "google",
-      "date": "2026-10-28",
-      "relatedId": "gemini-app-small-business-tools"
-    },
-    {
-      "title": "Smart reports, surveys, and pooled group budgets for Claude Enterprise",
-      "url": "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets",
-      "company": "anthropic",
-      "date": "2026-10-28",
-      "relatedId": null
-    },
-    {
-      "title": "IDC brings Quanta into Claude and adopts Claude across the company",
-      "url": "https://claude.com/resources/articles/idc-brings-quanta-into-claude-and-adopts-claude-across-the-company",
-      "company": "anthropic",
-      "date": "2026-10-28",
-      "relatedId": null
-    },
-    {
-      "title": "Dive into new topics with immersive explorations in the Gemini app.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/immersive-explorations-student-hub/",
-      "company": "google",
-      "date": "2026-10-28",
-      "relatedId": "gemini-app-small-business-tools"
-    },
-    {
-      "title": "Build and manage Connected Apps in one place",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place/",
-      "company": "google",
-      "date": "2026-10-28",
-      "relatedId": null
-    },
-    {
-      "title": "Hill-Climbing Agent Quality with Agents CLI Evaluation",
-      "url": "https://developers.googleblog.com/hill-climbing-agent-quality-with-agents-cli-evaluation/",
+      "title": "Smaller apps and faster GPU inference with LiteRT in Google Play services",
+      "url": "https://developers.googleblog.com/smaller-apps-and-faster-gpu-inference-with-litert-in-google-play-services/",
       "company": "google",
       "date": "2026-10-28",
       "relatedId": null
     }
   ],
-  "added": [
-    {
-      "id": "gemini-4-carbon",
-      "title": "Gemini 4 Carbon",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/",
-      "charts": 1
-    },
-    {
-      "id": "claude-enterprise-smart-reports-surveys-budgets",
-      "title": "Claude Enterprise 스마트 리포트·인앱 설문·그룹 공동 예산",
-      "url": "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets",
-      "charts": 0
-    },
-    {
-      "id": "gemini-immersive-explorations",
-      "title": "Gemini 앱 Immersive explorations",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/immersive-explorations-student-hub/",
-      "charts": 0
-    },
-    {
-      "id": "google-connected-apps-platform",
-      "title": "Connected Apps Platform",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place/",
-      "charts": 0
-    },
-    {
-      "id": "google-agents-cli-eval-hill-climbing",
-      "title": "Agents CLI eval로 에이전트 품질을 단계적으로 끌어올리는 법",
-      "url": "https://developers.googleblog.com/hill-climbing-agent-quality-with-agents-cli-evaluation/",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [
     {
-      "title": "Legora is building the agentic operating system for legal work",
-      "url": "https://openai.com/index/legora",
-      "reason": "고객 사례로, 특정 업종(법률) 마케팅에 해당합니다."
+      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
+      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
+      "reason": "기업 파트너십 공지. OpenAI 모델이 ServiceNow 플랫폼에 탑재되는 내용으로, 모델 출시, 기능 출시, 활용 팁이 아닌 비즈니스 파트너십에 해당해 제외 대상"
     },
     {
-      "title": "IDC brings Quanta into Claude and adopts Claude across the company",
-      "url": "https://claude.com/resources/articles/idc-brings-quanta-into-claude-and-adopts-claude-across-the-company",
-      "reason": "기업/파트너십 사례로, 특정 회사의 Claude 도입 소식입니다."
+      "title": "Smaller apps and faster GPU inference with LiteRT in Google Play services",
+      "url": "https://developers.googleblog.com/smaller-apps-and-faster-gpu-inference-with-litert-in-google-play-services/",
+      "reason": "AI 모델 사용과 무관한 개발 프레임워크·인프라 글. LiteRT의 GPU 추론 최적화, CompiledModel API 등은 ML 모델 배포 프레임워크에 관한 것으로, 새 모델 출시, AI 제품·기능 출시, 활용 팁에 해당하지 않음"
     }
   ],
   "failed": [],
-  "guardNotes": {
-    "claude-enterprise-smart-reports-surveys-budgets": [
-      "핵심 수치 '정식 출시 기능: 3개' 원문에서 확인 안 됨 → 제외",
-      "핵심 수치 '설문 기본 질문: 4개' 원문에서 확인 안 됨 → 제외"
-    ],
-    "gemini-immersive-explorations": [
-      "핵심 수치 '지원 언어: 6개' 원문에서 확인 안 됨 → 제외"
-    ],
-    "google-connected-apps-platform": [
-      "핵심 수치 '연동 방식: MCP 서버 2종' 원문에서 확인 안 됨 → 제외"
-    ]
-  },
+  "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
-  "guideChanges": [
-    "가이드 추가: [google] 프롬프트를 고칠 때마다 같은 소수 사례로 돌려 사례별로 비교하기",
-    "가이드 추가: [google] 모델을 바꿔 비교할 때는 사례별로 보고 프롬프트도 모델에 맞추기"
-  ],
+  "guideChanges": [],
   "styleNotes": {},
-  "techLinks": [
-    "google-connected-apps-platform → mcp",
-    "google-agents-cli-eval-hill-climbing → evals, agent-trace-eval"
-  ]
+  "techLinks": []
 }

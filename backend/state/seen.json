@@ -1261,6 +1261,14 @@
       "status": "old",
       "title": "Reproducing Olmo 3 7B Pre-training in MaxText: case study of large scale training on TPUs- Google Developers Blog"
     },
+    "https://developers.googleblog.com/smaller-apps-and-faster-gpu-inference-with-litert-in-google-play-services": {
+      "checkedAt": "2026-10-29",
+      "company": "google",
+      "date": "2026-10-28",
+      "reason": "AI 모델 사용과 무관한 개발 프레임워크·인프라 글. LiteRT의 GPU 추론 최적화, CompiledModel API 등은 ML 모델 배포 프레임워크에 관한 것으로, 새 모델 출시, AI 제품·기능 출시, 활용 팁에 해당하지 않음",
+      "status": "skipped",
+      "title": "Smaller apps and faster GPU inference with LiteRT in Google Play services"
+    },
     "https://developers.googleblog.com/step-by-step-guide-build-a-voice-agent-that-never-goes-silent-using-adk": {
       "checkedAt": "2026-10-20",
       "company": "google",
@@ -1779,6 +1787,14 @@
       "reason": "기업 파트너십: OpenAI와 Google Cloud의 통합 발표로, 모델 출시·업데이트나 공식 활용 팁이 아닌 분배 채널 협력",
       "status": "skipped",
       "title": "OpenAI models are coming to Google Cloud"
+    },
+    "https://openai.com/index/openai-servicenow-partnership-expansion": {
+      "checkedAt": "2026-10-29",
+      "company": "openai",
+      "date": "2026-10-28",
+      "reason": "기업 파트너십 공지. OpenAI 모델이 ServiceNow 플랫폼에 탑재되는 내용으로, 모델 출시, 기능 출시, 활용 팁이 아닌 비즈니스 파트너십에 해당해 제외 대상",
+      "status": "skipped",
+      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows"
     },
     "https://openai.com/index/oracle": {
       "checkedAt": "2026-10-09",

@@ -1,39 +1,15 @@
 {
-  "startedAt": "2026-10-29T05:02:36+09:00",
+  "startedAt": "2026-10-29T09:30:16+09:00",
   "prices": {
-    "checked": [
-      "openai",
-      "anthropic",
-      "google"
-    ],
+    "checked": [],
     "changes": [],
     "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 38,
-    "changed": [
-      "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
-      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
-      "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
-      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-      "https://deepmind.google/models/gemini-omni/prompt-guide"
-    ],
-    "changes": [
-      "가이드 추가: [openai] 연결된 청소년 계정의 메모리는 보호자 통제에서 관리하기",
-      "가이드 추가: [openai] 저장된 메모리는 채팅과 따로 저장되니 삭제 범위를 알고 관리하기",
-      "가이드 추가: [openai] 이름을 기억시키고 싶다면 직접 알려 주기",
-      "가이드 추가: [openai] 오래 쓸 보고서는 채팅을 지우기 전에 내려받기",
-      "가이드 추가: [openai] 예약 작업을 공유하기 전에 공유 가능 조건과 열람 범위 확인하기",
-      "가이드 추가: [openai] FedRAMP 워크스페이스에서는 이벤트 트리거 작업을 만들 수 없음",
-      "가이드 추가: [openai] 공유를 멈춰도 프로젝트 메모리는 전용으로 남으니 링크 설정도 함께 바꾸기",
-      "가이드 추가: [openai] 프로젝트 전용 메모리로 바꾸면 바깥 메모리에서 그 프로젝트 정보가 빠지는 점 알기",
-      "가이드 추가: [google] 카메라는 촬영 용어로 구도·움직임·종류까지 지정하기",
-      "가이드 추가: [google] 장면의 움직임은 두고 화풍만 바꾸려면 새 스타일을 요청하기",
-      "가이드 추가: [google] 움직임을 바꾸거나 소리와 맞출 때는 동기화할 대상을 문장에 쓰기"
-    ],
+    "checked": 0,
+    "changed": [],
+    "changes": [],
     "errors": {}
   },
   "authError": false,
