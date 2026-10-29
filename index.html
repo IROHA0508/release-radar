@@ -344,6 +344,15 @@ table.retired td.model { min-width: 0; }
 .dep.added { background: var(--ink); color: var(--bg); }
 td.unit { white-space: normal; min-width: 10em; max-width: 16em; font-size: var(--s-xs); line-height: 1.45; font-family: var(--f-mono); }
 .p-empty { margin: 0; color: var(--muted); font-size: var(--s-sm); }
+.p-co { display: flex; align-items: center; gap: 8px; margin: 26px 0 10px; font-size: var(--s-md); font-weight: 600; }
+.p-co:first-of-type { margin-top: 4px; }
+.p-co .sw { width: 10px; height: 10px; }
+.p-co .n { font: 500 var(--s-3xs)/1 var(--f-mono); color: var(--faint); }
+table.ptbl { table-layout: fixed; min-width: 760px; }
+table.ptbl td.model { min-width: 0; }
+table.ptbl td.pid { white-space: normal; }
+table.ptbl td.pid .id { display: inline-block; max-width: 100%; overflow-wrap: anywhere; line-height: 1.35; }
+table.ptbl td.unit { min-width: 0; max-width: none; }
 table.retired td.model .rname { display: block; margin-bottom: 4px; }
 table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted); }
 
@@ -1162,25 +1171,37 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
         m.status === "deprecated" && m.replacement ? h("span", { class: "pnote", text: "대체 모델: " + m.replacement }) : null
       ]);
     }
-    PRICE_CATS.forEach(function (cat) {
-      var rows = live.filter(function (m) { return (m.category || "text") === cat[0]; });
-      var unit = rows.some(function (m) { return m.perUnit; });
-      var body = rows.length ? h("div", { class: "tbl-wrap" }, [h("table", null, [
-        h("thead", null, [h("tr", null, [h("th", { text: "회사" }), h("th", { text: "모델 · 설명" }), h("th", { text: "API ID" }), h("th", { class: "r", text: "입력" }), h("th", { class: "r", text: "캐시 입력" }), h("th", { class: "r", text: "출력" }),
+    // 분류마다 회사별로 표를 따로 둔다. 같은 분류의 표는 열 너비를 맞춰 위아래로 비교하기 쉽게 한다.
+    function priceTable(rows, unit) {
+      var widths = unit ? ["34%", "21%", "9%", "9%", "9%", "18%"] : ["42%", "25%", "11%", "11%", "11%"];
+      return h("div", { class: "tbl-wrap" }, [h("table", { class: "ptbl" }, [
+        h("colgroup", null, widths.map(function (w) { return h("col", { style: "width:" + w }); })),
+        h("thead", null, [h("tr", null, [h("th", { text: "모델 · 설명" }), h("th", { text: "API ID" }), h("th", { class: "r", text: "입력" }), h("th", { class: "r", text: "캐시 입력" }), h("th", { class: "r", text: "출력" }),
           unit ? h("th", { text: "그 밖의 단가" }) : null])]),
         h("tbody", null, rows.map(function (m) {
           return h("tr", null, [
-            h("td", null, [coTag(m.company)]),
             modelCell(m),
-            h("td", null, [m.apiId ? h("span", { class: "id", text: m.apiId }) : h("span", { style: "color:var(--faint)", text: "-" })]),
+            h("td", { class: "pid" }, [m.apiId ? h("span", { class: "id", text: m.apiId }) : h("span", { style: "color:var(--faint)", text: "-" })]),
             h("td", { class: "mono r", text: fmtPrice(m.input) }),
             h("td", { class: "mono r", text: fmtPrice(m.cached) }),
             h("td", { class: "mono r", text: fmtPrice(m.output) }),
             unit ? h("td", { class: "unit", text: m.perUnit || "-" }) : null
           ]);
         }))
-      ])]) : h("p", { class: "p-empty", text: state.priceCo === "all" ? "아직 가격을 확인한 모델이 없습니다. 공식 가격 페이지에 가격이 실리면 매일 점검에서 자동으로 추가됩니다." : "이 회사에는 이 분류의 모델이 없습니다." });
-      frag.appendChild(section(cat[1], cat[2] + " · " + rows.length, [body]));
+      ])]);
+    }
+    PRICE_CATS.forEach(function (cat) {
+      var rows = live.filter(function (m) { return (m.category || "text") === cat[0]; });
+      var unit = rows.some(function (m) { return m.perUnit; });
+      var body = [];
+      ORDER.forEach(function (c) {
+        var mine = rows.filter(function (m) { return m.company === c; });
+        if (!mine.length) return;
+        body.push(h("h3", { class: "p-co c-" + c }, [h("span", { class: "sw", "aria-hidden": "true" }), COMPANIES[c].name, h("span", { class: "n", text: mine.length + "개" })]));
+        body.push(priceTable(mine, unit));
+      });
+      if (!body.length) body.push(h("p", { class: "p-empty", text: state.priceCo === "all" ? "아직 가격을 확인한 모델이 없습니다. 공식 가격 페이지에 가격이 실리면 매일 점검에서 자동으로 추가됩니다." : "이 회사에는 이 분류의 모델이 없습니다." }));
+      frag.appendChild(section(cat[1], cat[2] + " · " + rows.length, body));
     });
 
     if (gone.length) {
