@@ -463,6 +463,14 @@
       "status": "added",
       "title": "Gemini 4 Carbon: our next frontier model"
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly": {
+      "checkedAt": "2026-10-30",
+      "company": "google",
+      "date": "2026-10-29",
+      "id": "gemini-app-small-business-tools",
+      "status": "updated",
+      "title": "You can now generate, preview, and edit documents, PDFs, presentations, spreadsheets, and more directly in Gemini."
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/gemini-4-argon-availability": {
       "checkedAt": "2026-10-14",
       "company": "google",
@@ -494,6 +502,14 @@
       "id": "gemini-app-small-business-tools",
       "status": "added",
       "title": "New Gemini tools for small business owners"
+    },
+    "https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini": {
+      "checkedAt": "2026-10-30",
+      "company": "google",
+      "date": "2026-10-29",
+      "id": "gemini-app-resume-update",
+      "status": "added",
+      "title": "How to use Gemini to update your resume"
     },
     "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-argon": {
       "checkedAt": "2026-10-14",
@@ -1125,6 +1141,14 @@
       "status": "skipped",
       "title": "Bringing Visual Graph Debugging to Custom Edge Compilers with Model Explorer"
     },
+    "https://developers.googleblog.com/build-generative-ui-apps-with-a2ui-copilotkit-agents": {
+      "checkedAt": "2026-10-30",
+      "company": "google",
+      "date": "2026-10-29",
+      "id": "google-a2ui-copilotkit-generative-ui",
+      "status": "added",
+      "title": "Build Generative UI Apps with A2UI & CopilotKit Agents"
+    },
     "https://developers.googleblog.com/build-zero-trust-ai-agents-that-judge-intent-not-just-syntax": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1740,6 +1764,14 @@
       "status": "skipped",
       "title": "Higgsfield takes AI video from 1 minute to over 10"
     },
+    "https://openai.com/index/how-we-detect-frontier-model-misalignment": {
+      "checkedAt": "2026-10-30",
+      "company": "openai",
+      "date": "2026-10-29",
+      "reason": "모델 출시·업데이트·제품·기능 출시와 무관한 안전 모니터링 보고서",
+      "status": "skipped",
+      "title": "How we detect frontier model misalignment"
+    },
     "https://openai.com/index/introducing-gpt-6-1-terra": {
       "checkedAt": "2026-10-27",
       "company": "openai",
@@ -1980,6 +2012,14 @@
       "status": "skipped",
       "title": "Uber brings ChatGPT Work to all employees with OpenAI"
     },
+    "https://openai.com/index/updated-model-spec": {
+      "checkedAt": "2026-10-30",
+      "company": "openai",
+      "date": "2026-10-29",
+      "reason": "모델 출시·업데이트·제품·기능 출시와 무관한 안전 정책 보고서",
+      "status": "skipped",
+      "title": "An updated Model Spec for more capable and beneficial AI"
+    },
     "https://openai.com/index/wayfair": {
       "checkedAt": "2026-10-06",
       "company": "openai",
@@ -2035,6 +2075,22 @@
       "id": "claude-tag-api",
       "status": "added",
       "title": "The Claude Tag API is available in beta for Claude Enterprise organizations with the experimental-claude-tag-2026-10-21 beta header."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-28-a39d0d12": {
+      "checkedAt": "2026-10-30",
+      "company": "anthropic",
+      "date": "2026-10-28",
+      "reason": "기존 API 요청 크기 제한 완화(기술 공지, 독자가 새로 쓸 새로운 기능 아님)",
+      "status": "skipped",
+      "title": "We’ve raised the maximum request size for the Messages API and the Token Counting API from 32 MB to 128 MB on the first-party Claude API."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-29-f22234b2": {
+      "checkedAt": "2026-10-30",
+      "company": "anthropic",
+      "date": "2026-10-29",
+      "id": "claude-usage-cost-analytics-api",
+      "status": "added",
+      "title": "We’ve launched the Usage and Cost Analytics API in beta with the analytics-usage-cost-2026-08-24 beta header."
     }
   }
 }

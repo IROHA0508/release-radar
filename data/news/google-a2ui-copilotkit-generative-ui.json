@@ -1,0 +1,93 @@
+{
+  "id": "google-a2ui-copilotkit-generative-ui",
+  "company": "google",
+  "date": "2026-10-29",
+  "kind": "활용 팁",
+  "title": "A2UI와 CopilotKit으로 생성형 UI 앱 만들기",
+  "headline": "에이전트가 글 대신 선택 목록과 날짜 선택기를 그리게 하는 설정 순서",
+  "tldr": "Google의 오픈 표준 A2UI와 CopilotKit을 묶어 에이전트가 대화 안에서 UI를 직접 그리게 하는 방법입니다. 서버에는 ADK 에이전트를 AG-UI 엔드포인트로 올리고 클라이언트에는 쓸 수 있는 컴포넌트 카탈로그만 등록하면 됩니다. 명령 한 줄로 시작용 앱도 만들 수 있습니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "Basic Catalog 기본 컴포넌트",
+      "value": "18개",
+      "note": "레이아웃, 표시, 입력, 컨테이너 범용 요소"
+    },
+    {
+      "label": "공식 렌더러",
+      "value": "React, Lit, Angular, SwiftUI, Jetpack Compose, Flutter",
+      "note": "Vue와 터미널은 커뮤니티 렌더러"
+    },
+    {
+      "label": "시작 명령",
+      "value": "npx copilotkit@latest create",
+      "note": "--name my-app --framework a2ui"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프는 만들지 않았습니다.",
+  "changes": [
+    "A2UI는 에이전트가 UI를 코드가 아닌 데이터(JSON 메시지)로 설명하고 앱이 이미 가진 컴포넌트로 그리는 프레임워크 독립 표준입니다.",
+    "클라이언트가 신뢰하는 컴포넌트 카탈로그를 갖고 있어 카탈로그 밖의 요소는 화면에 닿기 전에 걸러집니다.",
+    "CopilotKit은 AG-UI 프로토콜 위에서 동작합니다. Google ADK, LangChain, Mastra, Strands처럼 AG-UI와 호환되는 프레임워크라면 설정이 같습니다.",
+    "입력을 데이터 경로에 묶고 버튼에 action을 달면 사용자의 선택이 같은 스트림으로 돌아옵니다. 에이전트는 같은 surfaceId에 화면을 다시 내보내 검색부터 확인까지 한 화면에서 이어 갑니다.",
+    "AG-UI 위에서는 전용 서브에이전트가 UI를 생성하고 잘못된 출력은 오류 내용과 함께 되돌려 고치게 합니다. 재시도가 끝나도 짧은 메시지로 대화는 이어집니다."
+  ],
+  "availability": [
+    "A2UI 렌더러: React, Lit, Angular, SwiftUI, Jetpack Compose, Flutter",
+    "CopilotKit: React와 Angular 렌더러 사용, Vue와 Slack용 커스텀 렌더러 제공",
+    "시작 도구: npx copilotkit@latest create --name my-app --framework a2ui",
+    "CopilotKit Dojo에 고정 스키마, 동적 스키마, 오류 복구 데모가 있습니다."
+  ],
+  "tips": [
+    {
+      "title": "서버는 ADK 에이전트를 AG-UI 엔드포인트로 감싸기",
+      "body": "ag_ui_adk 패키지의 ADKAgent와 add_adk_fastapi_endpoint로 기존 ADK 에이전트를 FastAPI 엔드포인트로 올립니다. 앱 쪽에서는 이 엔드포인트를 /api/copilotkit 런타임에 등록합니다."
+    },
+    {
+      "title": "클라이언트에서 쓸 컴포넌트만 카탈로그로 정의",
+      "body": "컴포넌트마다 description과 Zod 스키마를 적고 렌더러에 연결한 뒤 createCatalog 결과를 CopilotKit의 a2ui 속성으로 넘깁니다. description은 에이전트 프롬프트에 들어가므로 언제 쓰는 컴포넌트인지 분명히 적어야 합니다."
+    },
+    {
+      "title": "Basic Catalog에 커스텀 컴포넌트 더하기",
+      "body": "Basic Catalog는 일부러 작게 만들어져 실제 앱은 자기 카탈로그를 정의합니다. includeBasicCatalog를 true로 두면 기본 18개와 함께 쓸 수 있습니다."
+    },
+    {
+      "title": "검증은 클라이언트에 맡기기",
+      "body": "잘못된 이메일 같은 입력 오류는 모델 호출 없이 화면에서 바로 표시됩니다. 버튼이 눌리기 전에는 에이전트에 아무것도 전달되지 않습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "새 A2UI + CopilotKit 앱 만들기",
+      "when": "시작용 프로젝트가 필요할 때",
+      "type": "code",
+      "text": "npx copilotkit@latest create --name my-app --framework a2ui"
+    },
+    {
+      "title": "ADK 에이전트를 AG-UI 엔드포인트로 올리기 (Python)",
+      "when": "서버 쪽 에이전트를 CopilotKit에 연결할 때",
+      "type": "code",
+      "text": "from fastapi import FastAPI\nfrom google.adk.agents import LlmAgent\nfrom ag_ui_adk import ADKAgent, add_adk_fastapi_endpoint\n\nroot_agent = LlmAgent(\n    name=\"flight_agent\",\n    model=\"gemini-3.8-flash\",\n    instruction=\"Help users find and book flights. Call generate_a2ui to show results.\",\n)\n\nadk_agent = ADKAgent(\n    adk_agent=root_agent,\n    app_name=\"flights\",\n    user_id=\"demo_user\",\n    use_in_memory_services=True,\n)\n\napp = FastAPI()\nadd_adk_fastapi_endpoint(app, adk_agent, path=\"/\")"
+    }
+  ],
+  "cautions": [
+    "원문 예시는 CopilotKit 기준입니다. CopilotKit 없이 쓰려면 @ag-ui/client로 이벤트 스트림을 직접 받아 @a2ui/react 같은 호환 렌더러에 넘겨야 합니다.",
+    "설정은 서버에서 미리 할 수도 있고 클라이언트에서 요청과 함께 동적으로 보낼 수도 있습니다. 예시의 ADK 코드는 동적 방식이라 generate_a2ui를 따로 정의하지 않았습니다. 자세한 차이는 문서를 확인해야 합니다.",
+    "CopilotKit은 Google이 아닌 외부 서비스입니다. 이 글은 Google A2UI 팀과 CopilotKit이 함께 썼습니다."
+  ],
+  "sources": [
+    {
+      "title": "Build Generative UI Apps with A2UI & CopilotKit Agents (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/build-generative-ui-apps-with-a2ui-copilotkit-agents/"
+    },
+    {
+      "title": "CopilotKit A2UI 문서",
+      "url": "https://docs.copilotkit.ai/generative-ui/a2ui"
+    },
+    {
+      "title": "CopilotKit Google ADK A2UI 문서",
+      "url": "https://docs.copilotkit.ai/google-adk/generative-ui/a2ui"
+    }
+  ]
+}
