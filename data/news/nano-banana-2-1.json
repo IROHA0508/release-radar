@@ -1,0 +1,231 @@
+{
+  "id": "nano-banana-2-1",
+  "company": "google",
+  "date": "2026-10-06",
+  "kind": "모델 출시",
+  "title": "Nano Banana 2.1",
+  "headline": "글자 표현과 여러 인물 일관성을 끌어올린 Flash급 이미지 생성·편집 모델",
+  "tldr": "Nano Banana 2(Gemini 3.1 Flash Image)를 잇는 이미지 생성·대화형 편집 모델로 2026년 10월 6일 Gemini API에 정식 출시됐습니다. Gemini 3.6 Flash를 바탕으로 화질, 프롬프트 준수, 여러 턴에 걸친 캐릭터 일관성, 글자 렌더링, 와이드·파노라마 비율 생성이 나아졌습니다. 같은 날 이전 모델 gemini-3.1-flash-image는 지원 중단으로 바뀌었고 종료일은 아직 정해지지 않았습니다.",
+  "models": [
+    {
+      "name": "Gemini Nano Banana 2.1",
+      "apiId": "gemini-nano-banana-2.1",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "종합 선호도",
+      "value": "1050 Elo",
+      "note": "텍스트→이미지, Thinking 기준. Nano Banana 2는 990"
+    },
+    {
+      "label": "여러 인물 일관성",
+      "value": "1106 Elo",
+      "note": "Nano Banana 2 978, Nano Banana Pro 1011"
+    },
+    {
+      "label": "출력 해상도",
+      "value": "1K · 2K · 4K",
+      "note": "기본값 1K"
+    },
+    {
+      "label": "1K 이미지 1장",
+      "value": "약 $0.0336",
+      "note": "가격 페이지 환산값. Nano Banana 2는 약 $0.067, 2026-10-29 가격 페이지 기준"
+    }
+  ],
+  "chartSource": "Google DeepMind의 Nano Banana 2.1 모델 카드에 실린 사람 비교 평가(Elo)",
+  "charts": [
+    {
+      "title": "종합 선호도 (텍스트→이미지)",
+      "desc": "여러 텍스트→이미지 과제의 전체 선호도",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Google DeepMind 모델 카드",
+      "note": "사람 비교 평가 Elo. ± 오차 범위는 생략",
+      "rows": [
+        {
+          "label": "Nano Banana 2.1 (Thinking)",
+          "value": 1050,
+          "highlight": true
+        },
+        {
+          "label": "Nano Banana 2.1 (Thinking 끔)",
+          "value": 1015,
+          "highlight": true
+        },
+        {
+          "label": "Nano Banana 2 (Thinking)",
+          "value": 990,
+          "highlight": false
+        },
+        {
+          "label": "Nano Banana Pro",
+          "value": 935,
+          "highlight": false
+        }
+      ]
+    },
+    {
+      "title": "일반 편집",
+      "desc": "이미지 편집 전체 선호도",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Google DeepMind 모델 카드",
+      "note": "사람 비교 평가 Elo. ± 오차 범위는 생략",
+      "rows": [
+        {
+          "label": "Nano Banana 2.1 (Thinking)",
+          "value": 1026,
+          "highlight": true
+        },
+        {
+          "label": "Nano Banana 2.1 (Thinking 끔)",
+          "value": 980,
+          "highlight": true
+        },
+        {
+          "label": "Nano Banana 2 (Thinking)",
+          "value": 938,
+          "highlight": false
+        },
+        {
+          "label": "Nano Banana Pro",
+          "value": 939,
+          "highlight": false
+        }
+      ]
+    },
+    {
+      "title": "여러 인물 일관성",
+      "desc": "여러 인물이 나오는 편집에서 생김새 유지",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Google DeepMind 모델 카드",
+      "note": "사람 비교 평가 Elo. ± 오차 범위는 생략",
+      "rows": [
+        {
+          "label": "Nano Banana 2.1 (Thinking)",
+          "value": 1106,
+          "highlight": true
+        },
+        {
+          "label": "Nano Banana 2.1 (Thinking 끔)",
+          "value": 1068,
+          "highlight": true
+        },
+        {
+          "label": "Nano Banana 2 (Thinking)",
+          "value": 978,
+          "highlight": false
+        },
+        {
+          "label": "Nano Banana Pro",
+          "value": 1011,
+          "highlight": false
+        }
+      ]
+    },
+    {
+      "title": "마스크·드로잉 기반 편집",
+      "desc": "표시한 영역만 고치는 편집",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Google DeepMind 모델 카드",
+      "note": "사람 비교 평가 Elo. ± 오차 범위는 생략",
+      "rows": [
+        {
+          "label": "Nano Banana 2.1 (Thinking)",
+          "value": 1049,
+          "highlight": true
+        },
+        {
+          "label": "Nano Banana 2.1 (Thinking 끔)",
+          "value": 1042,
+          "highlight": true
+        },
+        {
+          "label": "Nano Banana 2 (Thinking)",
+          "value": 965,
+          "highlight": false
+        },
+        {
+          "label": "Nano Banana Pro",
+          "value": 927,
+          "highlight": false
+        }
+      ]
+    }
+  ],
+  "chartNote": "",
+  "changes": [
+    "Nano Banana 2의 후속 버전입니다. Flash급 속도와 비용을 유지하면서 화질, 프롬프트 준수, 여러 턴 캐릭터 일관성, 글자 렌더링을 개선했습니다.",
+    "1:4, 4:1, 1:8, 8:1 같은 와이드·파노라마 비율의 2K·4K 생성 문제를 고쳤습니다.",
+    "참조 이미지를 최대 14장(캐릭터 최대 4명, 물체 최대 10개)까지 섞어 쓰고 Thinking 수준은 minimal, medium(기본), high 중에서 고릅니다.",
+    "모델 카드에 실린 텍스트→이미지·편집 평가 10개 항목 모두에서 Nano Banana 2와 Nano Banana Pro보다 높은 점수를 받았습니다.",
+    "Gemini API 릴리스 노트와 DeepMind 모델 카드로 공개됐습니다."
+  ],
+  "availability": [
+    "Gemini API·Google AI Studio: 정식 버전 gemini-nano-banana-2.1",
+    "Gemini 앱, Google 검색 AI 모드, Google Ads, Google Flow, Google Stitch",
+    "가격(2026-10-29 가격 페이지 기준): 입력 100만 토큰당 $1.50, 이미지 출력 $30.00, 텍스트·사고 출력 $7.50. 무료 등급에서는 쓸 수 없습니다."
+  ],
+  "tips": [
+    {
+      "title": "글자가 중요한 이미지는 Thinking을 켜기",
+      "body": "모델 카드 평가에서 Thinking을 켠 결과가 10개 항목 모두에서 끈 결과보다 높았습니다. 인포그래픽처럼 글자와 사실 정확도가 중요한 이미지라면 Thinking 수준을 올려 보세요."
+    },
+    {
+      "title": "참조 이미지로 인물과 제품 고정하기",
+      "body": "같은 인물이나 제품을 여러 장면에 반복해 써야 하면 참조 이미지를 함께 보내세요. 캐릭터는 최대 4명, 물체는 최대 10개까지 넣을 수 있습니다."
+    },
+    {
+      "title": "Nano Banana 2 코드는 모델 ID부터 바꿔 비교하기",
+      "body": "gemini-3.1-flash-image는 지원 중단 상태라 언젠가 종료됩니다. 모델 ID만 gemini-nano-banana-2.1로 바꿔 결과를 비교한 뒤 옮기세요. 1K 이미지 한 장 가격은 Nano Banana 2의 절반 수준입니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "와이드 배너 만들기",
+      "when": "새로 고친 와이드 비율과 글자 렌더링을 쓸 때",
+      "type": "prompt",
+      "text": "[제품/행사]를 알리는 가로로 긴 배너 이미지를 만들어줘.\n- 비율 4:1, 해상도 2K\n- 왼쪽에 큰 제목 \"[제목 문구]\", 오른쪽에 [제품 또는 장면]\n- 스타일: [미니멀/일러스트/사진풍]\n제목 글자는 철자를 바꾸지 말고 그대로 넣어줘."
+    },
+    {
+      "title": "같은 인물로 장면 바꾸기",
+      "when": "참조 이미지로 인물을 고정해 여러 컷을 만들 때",
+      "type": "prompt",
+      "text": "첨부한 사진 속 [인물 이름 또는 역할]을 그대로 유지해서 아래 세 장면을 만들어줘.\n1. [장면 1]\n2. [장면 2]\n3. [장면 3]\n얼굴, 머리 모양, 옷은 세 장면 모두 똑같게 유지해."
+    }
+  ],
+  "cautions": [
+    "모델 카드는 작은 글씨와 긴 문단 렌더링, 마스크 기반 편집의 지시 이행, 좌우 같은 공간 위치 판단에 여전히 한계가 있다고 밝힙니다.",
+    "캐싱, 함수 호출, 구조화된 출력, Live API는 지원하지 않습니다.",
+    "gemini-3.1-flash-image는 지원 중단 상태이며 종료일은 아직 발표되지 않았습니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 릴리스 노트, 2026년 10월 6일 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-10-06"
+    },
+    {
+      "title": "Nano Banana 2.1 모델 카드 (Google DeepMind)",
+      "url": "https://deepmind.google/models/model-cards/nano-banana-2-1/"
+    },
+    {
+      "title": "Gemini Nano Banana 2.1 모델 문서 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1"
+    },
+    {
+      "title": "Gemini Developer API 가격 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing"
+    }
+  ]
+}

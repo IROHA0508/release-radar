@@ -1,0 +1,113 @@
+{
+  "id": "gpt-realtime-2-1",
+  "company": "openai",
+  "date": "2026-07-06",
+  "kind": "모델 출시",
+  "title": "GPT-Realtime-2.1 · GPT-Realtime-2.1 mini",
+  "headline": "영숫자 인식과 끼어들기 처리를 다듬은 실시간 음성 추론 모델과 저렴한 mini",
+  "tldr": "GPT-Realtime-2를 잇는 실시간 음성 추론 모델입니다. 알파벳·숫자 인식, 침묵·잡음 처리, 끼어들기 동작이 나아졌고 더 빠르고 저렴한 증류 모델 GPT-Realtime-2.1 mini가 함께 나왔습니다. API 변경 기록과 모델 문서로 공개됐습니다.",
+  "models": [
+    {
+      "name": "GPT-Realtime-2.1 (텍스트)",
+      "apiId": "gpt-realtime-2.1",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "GPT-Realtime-2.1 mini (텍스트)",
+      "apiId": "gpt-realtime-2.1-mini",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "컨텍스트",
+      "value": "128,000 토큰",
+      "note": "최대 출력 32,000 토큰"
+    },
+    {
+      "label": "오디오 가격 (2.1)",
+      "value": "$32 / $64",
+      "note": "100만 토큰당 입력/출력, 2026-10-29 가격 페이지 기준"
+    },
+    {
+      "label": "오디오 가격 (mini)",
+      "value": "$10 / $20",
+      "note": "100만 토큰당 입력/출력, 2026-10-29 가격 페이지 기준"
+    },
+    {
+      "label": "지식 기준일",
+      "value": "2024-09-30",
+      "note": ""
+    }
+  ],
+  "chartSource": "",
+  "charts": [],
+  "chartNote": "OpenAI는 이 모델의 성능 비교 수치를 공개하지 않았습니다.",
+  "changes": [
+    "GPT-Realtime-2보다 알파벳·숫자 인식, 침묵·잡음 처리, 끼어들기 동작이 나아졌습니다.",
+    "GPT-Realtime-2.1 mini는 실시간 음성 앱용으로 증류한 더 빠르고 저렴한 추론 모델입니다.",
+    "음성 대 음성 대화에서 추론 강도(reasoning effort), 지시 따르기, 함수 호출을 지원합니다.",
+    "입력은 텍스트·오디오·이미지, 출력은 텍스트·오디오입니다.",
+    "OpenAI는 기존 gpt-realtime과 gpt-realtime-mini를 2027년 1월 20일 종료하고 각각 2.1과 2.1 mini로 옮기라고 안내합니다."
+  ],
+  "availability": [
+    "Realtime API(v1/realtime) 등. 모델 ID gpt-realtime-2.1, gpt-realtime-2.1-mini",
+    "가격(2026-10-29 가격 페이지 기준, 100만 토큰당): 2.1 텍스트 입력 $4.00·출력 $24.00, 오디오 입력 $32.00·출력 $64.00 / mini 텍스트 $0.60·$2.40, 오디오 $10.00·$20.00",
+    "무료 등급에서는 쓸 수 없습니다."
+  ],
+  "tips": [
+    {
+      "title": "주문 번호는 복창하게 하기",
+      "body": "영숫자 인식이 나아졌어도 주문 번호나 예약 코드는 지시문에서 마지막에 한 번 더 복창해 확인받게 하세요."
+    },
+    {
+      "title": "추론 강도는 낮게 시작하기",
+      "body": "추론 강도를 올리면 지연 시간과 출력 토큰이 늘어납니다. 대화가 끊기지 않아야 하는 상담에는 낮은 단계부터 시험하세요."
+    },
+    {
+      "title": "대량 통화는 mini부터",
+      "body": "오디오 입력 가격이 2.1의 3분의 1 이하라 단순 안내 전화는 mini로 먼저 품질을 확인해 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "예약 상담 지시문",
+      "when": "GPT-Realtime-2.1로 전화 예약 에이전트를 만들 때",
+      "type": "prompt",
+      "text": "<role>\n너는 [가게 이름] 전화 예약 담당이야. 짧고 친절하게 말해.\n</role>\n\n<rules>\n- 날짜, 시간, 인원, 연락처를 하나씩 물어\n- 연락처와 예약 번호는 숫자를 하나씩 끊어서 복창해 확인받아\n- 고객이 말하는 도중에 끼어들면 바로 멈추고 들어\n- 주변 소음 때문에 못 알아들었으면 추측하지 말고 다시 물어\n</rules>"
+    },
+    {
+      "title": "통화 품질 점검",
+      "when": "도입 전 녹취로 응대 품질을 확인할 때",
+      "type": "prompt",
+      "text": "아래 통화 녹취에서 숫자·영문 코드를 잘못 알아들은 곳, 고객이 끼어들었는데 멈추지 않은 곳, 침묵 뒤 엉뚱하게 반응한 곳을 시각과 함께 표로 정리해줘.\n\n[통화 녹취]"
+    }
+  ],
+  "cautions": [
+    "지식 기준일이 2024년 9월 30일입니다.",
+    "추론 강도를 올리면 지연 시간과 출력 토큰 사용량이 늘어납니다.",
+    "OpenAI가 공개한 성능 비교 수치가 없어 이전 모델과의 차이는 직접 시험해 봐야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "OpenAI API Changelog, 2026년 7월 6일 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-07-06"
+    },
+    {
+      "title": "GPT-Realtime-2.1 모델 문서 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/models/gpt-realtime-2.1"
+    },
+    {
+      "title": "OpenAI 지원 종료 일정 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/deprecations"
+    },
+    {
+      "title": "OpenAI API 가격 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/pricing"
+    }
+  ]
+}

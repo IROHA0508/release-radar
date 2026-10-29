@@ -251,6 +251,171 @@ def test_full_update_writes_verified_item(site, monkeypatch):
     assert report2.candidates == [] and report2.added == []
 
 
+# ---- API changelogs (launches that never get a blog post) ----
+
+GEMINI_CL = next(s for s in config.SOURCES if s.name == "Gemini API release notes")
+OPENAI_CL = next(s for s in config.SOURCES if s.name == "OpenAI API changelog")
+CLAUDE_CL = next(s for s in config.SOURCES if s.name == "Claude Platform release notes")
+
+GEMINI_MD = """# Release notes
+
+## October 8, 2026 {#10-08-2026}
+
+- **Deprecation**: `gemini-3.7-flash` is deprecated. Requests are routed to [`gemini-3.8-flash`](/gemini-api/docs/models/gemini-3.8-flash).
+- Deep Research agent `deep-research-pro-preview-12-2025` is deprecated.
+
+## October 6, 2026
+
+- Released Gemini Nano Banana 2.1 (`gemini-nano-banana-2.1`), our latest image model. See the [model page](/gemini-api/docs/models/gemini-nano-banana-2.1).
+  - Better text rendering.
+- Announced deprecation of `gemini-3.1-flash-image`.
+
+## September 22, 2026
+
+- Gemini 3.8 Flash TTS and Gemini 3.8 Flash-Lite TTS generally available (GA).
+"""
+
+OPENAI_CL_TEXT = """### October, 2026
+
+Oct 28
+
+Feature
+
+Eligible ChatGPT Pro and Business subscribers can now claim free API credits.
+
+Oct 6
+
+Feature
+
+gpt-6-luna
+
+Released the Decisions API in beta for structured choices.
+
+### December, 2025
+
+Dec 30
+
+Update
+
+Released a year-end snapshot of the realtime models.
+"""
+
+CLAUDE_MD = """# Claude Platform release notes
+
+### October 7, 2026
+
+- We've launched [Claude Haiku 5.5](/docs/en/about-claude/models/overview), our fastest model.
+- Lowered the cache read price for Claude Sonnet 5.5.
+"""
+
+
+def test_changelog_formats_split_into_dated_entries():
+    g = feeds.parse_changelog(GEMINI_MD, GEMINI_CL, today=date(2026, 10, 29))
+    assert [(e.published.isoformat(), e.title[:25]) for e in g] == [
+        ("2026-10-08", "Deprecation: gemini-3.7-f"), ("2026-10-08", "Deep Research agent deep-"),
+        ("2026-10-06", "Released Gemini Nano Bana"), ("2026-10-06", "Announced deprecation of "),
+        ("2026-09-22", "Gemini 3.8 Flash TTS and ")]
+    nano = g[2]
+    assert nano.url == "https://ai.google.dev/gemini-api/docs/changelog#2026-10-06"
+    assert "Better text rendering" in nano.extra["text"]                  # sub-bullet stays with its item
+    assert "https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1" in nano.extra["links"]
+    assert len({e.key for e in g}) == 5 and nano.key != g[3].key         # same page, same day, separate entries
+    # keys are stable, and editing one entry does not change the others
+    again = feeds.parse_changelog(GEMINI_MD.replace("is deprecated.", "is now deprecated.", 1), GEMINI_CL, today=date(2026, 10, 29))
+    assert [e.key for e in again][1:] == [e.key for e in g][1:] and again[0].key != g[0].key
+
+    o = feeds.parse_changelog(OPENAI_CL_TEXT, OPENAI_CL, today=date(2026, 10, 29))
+    assert [(e.published.isoformat(), e.title[:30], e.summary.split(":")[0]) for e in o] == [
+        ("2026-10-28", "Eligible ChatGPT Pro and Busin", "Feature"),
+        ("2026-10-06", "Released the Decisions API in ", "Feature"),      # the tag line is not the title
+        ("2025-12-30", "Released a year-end snapshot o", "Update")]       # year from the month heading
+
+    c = feeds.parse_changelog(CLAUDE_MD, CLAUDE_CL, today=date(2026, 10, 29))
+    assert [e.title for e in c] == ["We've launched Claude Haiku 5.5, our fastest model.", "Lowered the cache read price for Claude Sonnet 5.5."]
+    assert c[0].extra["links"] == ["https://platform.claude.com/docs/en/about-claude/models/overview"]
+
+
+def test_changelog_entries_are_candidates_once(site):
+    entries = feeds.parse_changelog(GEMINI_MD, GEMINI_CL, today=date(2026, 10, 8))
+    idx = detect.load_site()
+    idx.known_urls[feeds.normalize_url(GEMINI_CL.page)] = "some-item"          # a news item citing the changelog page
+    cands = detect.find_candidates(entries, idx, {"urls": {}}, date(2026, 10, 8))
+    assert [c.title[:20] for c in cands][:2] == ["Deprecation: gemini-", "Deep Research agent "]
+    assert all(c.published >= date(2026, 9, 24) for c in cands)                 # Sep 22 is outside the look-back window
+    # the site already has a Nano Banana 2.1 item from that day, so its changelog entry is not a candidate
+    assert not any("Nano Banana 2.1" in c.title for c in cands)
+    state = {"urls": {}}
+    first = cands[0]
+    detect.mark(state, first, "skipped", date(2026, 10, 8))
+    left = detect.find_candidates(entries, idx, state, date(2026, 10, 8))
+    assert first.key not in {c.key for c in left} and len(left) == len(cands) - 1
+
+
+def test_changelog_article_adds_the_linked_doc_page():
+    nano = feeds.parse_changelog(GEMINI_MD, GEMINI_CL, today=date(2026, 10, 29))[2]
+    read = []
+    doc = extract.Article("https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1", "Gemini Nano Banana 2.1",
+                          None, "Model code gemini-nano-banana-2.1. Output $30.00 per 1M image tokens.", ["| a | b |"], [])
+    art = extract.changelog_article(nano, fetch=lambda url: read.append(url) or doc)
+    assert read == ["https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1"]
+    assert "Released Gemini Nano Banana 2.1" in art.text and "$30.00" in art.text and art.tables == ["| a | b |"]
+    assert art.published == date(2026, 10, 6) and art.via == "changelog"
+    broken = extract.changelog_article(nano, fetch=lambda url: (_ for _ in ()).throw(RuntimeError("404")))
+    assert "Released Gemini Nano Banana 2.1" in broken.text                  # the entry alone still works
+
+
+NOVA_CL = """### October, 2026
+
+Oct 1
+
+Feature
+
+gpt-7-nova
+
+Released GPT-7 Nova (gpt-7-nova), a new frontier model. See the [model page](/api/docs/models/gpt-7-nova).
+"""
+
+
+def run_changelog_update(site, monkeypatch, entries):
+    import backend.summarize as summ
+
+    seen_articles = []
+    monkeypatch.setattr(feeds, "fetch_all", lambda sources=None: (entries, {}))
+    monkeypatch.setattr(pipeline, "fetch_article", lambda url: extract.parse_html(ARTICLE, url))
+    monkeypatch.setattr(extract, "fetch_article", lambda url: extract.parse_html(ARTICLE, url))   # the linked doc page
+    monkeypatch.setattr(summ, "Claude", FakeClaude)
+    monkeypatch.setattr(summ, "triage", lambda c, cands, lines: {i: ("Nova" in e.title, "고객 사례") for i, e in enumerate(cands)})
+
+    def write(claude, entry, art, *a, **k):
+        seen_articles.append((entry.url, art.via, art.text))
+        return fake_draft()
+    monkeypatch.setattr(summ, "write_item", write)
+    return pipeline.run_update(api_key="test"), seen_articles
+
+
+def test_launch_only_in_a_changelog_becomes_news(site, monkeypatch):
+    entries = feeds.parse_changelog(NOVA_CL, OPENAI_CL, today=date(2026, 10, 2))
+    report, arts = run_changelog_update(site, monkeypatch, entries)
+    assert [a["id"] for a in report.added] == ["gpt-7-nova"]
+    assert arts[0][1] == "changelog" and "Terminal-Bench" in arts[0][2]       # the entry plus its linked model page
+    item = json.loads((site / "data/news/gpt-7-nova.json").read_text())
+    assert item["date"] == "2026-10-01" and item["sources"][0]["url"] == "https://developers.openai.com/api/docs/changelog#2026-10-01"
+    assert [n["label"] for n in item["numbers"]] == ["Terminal-Bench 4.0"]   # values still checked against the source
+    assert store.validate()[0]
+    report2, _ = run_changelog_update(site, monkeypatch, entries)
+    assert report2.candidates == [] and report2.added == []
+
+
+def test_blog_post_and_changelog_entry_on_the_same_day_make_one_item(site, monkeypatch):
+    entries = feeds.parse_rss(RSS, OPENAI) + feeds.parse_changelog(NOVA_CL, OPENAI_CL, today=date(2026, 10, 2))
+    report, arts = run_changelog_update(site, monkeypatch, entries)
+    assert [a["id"] for a in report.added] == ["gpt-7-nova"] and arts[0][1] != "changelog"   # the blog post is written first
+    assert [u["id"] for u in report.updated] == ["gpt-7-nova"]
+    urls = [s["url"] for s in json.loads((site / "data/news/gpt-7-nova.json").read_text())["sources"]]
+    assert "https://developers.openai.com/api/docs/changelog#2026-10-01" in urls
+    assert len(list((site / "data/news").glob("gpt-7-nova*.json"))) == 1
+
+
 def test_without_api_key_only_detects(site, monkeypatch):
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
     monkeypatch.delenv("CLAUDE_CODE_OAUTH_TOKEN", raising=False)
