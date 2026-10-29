@@ -3,6 +3,22 @@
     "https://openai.com/index/terminal-x": 1
   },
   "urls": {
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-10-26-11faf6fa": {
+      "checkedAt": "2026-10-29",
+      "company": "google",
+      "date": "2026-10-26",
+      "reason": "Generate Content API 스토리지 기본값 변경. 기술적 설정 변경일 뿐 새로운 제품·기능이 아님",
+      "status": "skipped",
+      "title": "Generate Content API storage on by default : New projects using the Generate Content API (generateContent, streamGenerateContent, and batchGenerateContent) on the paid tier now store requests by defau"
+    },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-10-27-070ab073": {
+      "checkedAt": "2026-10-29",
+      "company": "google",
+      "date": "2026-10-27",
+      "id": "gemini-api-cli",
+      "status": "added",
+      "title": "Gemini API CLI (gemini-api) beta : Released the [Gemini API"
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -1345,6 +1361,22 @@
       "status": "old",
       "title": "Why Go is an Ideal Language for AI-Assisted Software Engineering- Google Developers Blog"
     },
+    "https://developers.openai.com/api/docs/changelog#2026-10-22-154d17a3": {
+      "checkedAt": "2026-10-29",
+      "company": "openai",
+      "date": "2026-10-22",
+      "reason": "기존 decisions-api 소식의 후속 업데이트. 별도 update 처리 대상이므로 new로 판단하지 않음",
+      "status": "skipped",
+      "title": "Update · Model: gpt-6-luna · API: v1/decisions"
+    },
+    "https://developers.openai.com/api/docs/changelog#2026-10-28-93730e5f": {
+      "checkedAt": "2026-10-29",
+      "company": "openai",
+      "date": "2026-10-28",
+      "reason": "요금제·영업·광고 사업 공지에 해당. 구독자 혜택으로 제공하는 API 크레딧이지 새로운 모델, 제품, 기능이 아님",
+      "status": "skipped",
+      "title": "Eligible ChatGPT Pro and Business subscribers can now claim up to $500 per month in free API credits as a subscription benefit."
+    },
     "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -1955,6 +1987,54 @@
       "reason": "Wayfair의 고객 사례로, 제외 기준의 '고객 사례'에 해당합니다. 새 모델 출시나 모델 업데이트, 공식 활용 팁이 아닙니다.",
       "status": "skipped",
       "title": "Wayfair boosts catalog accuracy and support speed with OpenAI"
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21-1cedd8e4": {
+      "checkedAt": "2026-10-29",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "reason": "라이선스 정책 변경(MIT→Apache 2.0). 제품·기능과 무관한 정책 변경",
+      "status": "skipped",
+      "title": "The new SDK and CLI versions also have breaking changes that don’t depend on the API version, and they are licensed under Apache 2.0 instead of the MIT License."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21-89f812c8": {
+      "checkedAt": "2026-10-29",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "reason": "SDK/CLI 버전 업그레이드(Python 2.0.0 등). 지침에 해당하는 '개발 프레임워크' 버전 변경일 뿐 새로운 기능이 아님",
+      "status": "skipped",
+      "title": "We’ve released new versions of the client SDKs and the ant CLI that send API version 2026-10-21 by default: Python SDK 2.0.0, TypeScript SDK 1.0.0, C# SDK 13.0.0, Go SDK 2.0.0, Java SDK 3.0.0, PHP SDK"
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21-9a303aab": {
+      "checkedAt": "2026-10-29",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "reason": "API 버전 2026-10-21 업데이트. 기술적 인프라 변경일 뿐 독자가 새로 써볼 제품·기능이 아님",
+      "status": "skipped",
+      "title": "We’ve released API version 2026-10-21."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-22-2db36789": {
+      "checkedAt": "2026-10-29",
+      "company": "anthropic",
+      "date": "2026-10-22",
+      "reason": "기존 claude-opus-5-5 모델의 후속 업데이트. Fast mode 기능 추가와 Google Cloud 플랫폼 가용성이므로 update 처리 대상",
+      "status": "skipped",
+      "title": "Fast mode is available for Claude Opus 5.5 on Claude Models on Google Cloud (Anthropic managed)."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-22-770e1c61": {
+      "checkedAt": "2026-10-29",
+      "company": "anthropic",
+      "date": "2026-10-22",
+      "reason": "Anthropic과 Google의 기업 파트너십 발표. 지침의 제외 기준 '기업 파트너십'에 해당",
+      "status": "skipped",
+      "title": "We’ve launched Claude Models on Google Cloud (Anthropic managed), the Claude API operated by Anthropic and reached through your Google Cloud project."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-23-98bd7e0d": {
+      "checkedAt": "2026-10-29",
+      "company": "anthropic",
+      "date": "2026-10-23",
+      "id": "claude-tag-api",
+      "status": "added",
+      "title": "The Claude Tag API is available in beta for Claude Enterprise organizations with the experimental-claude-tag-2026-10-21 beta header."
     }
   }
 }

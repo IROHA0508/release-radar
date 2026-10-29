@@ -1,6 +1,8 @@
 {
-  "lastChecked": "2026-10-29 09:30",
+  "lastChecked": "2026-10-29 18:05",
   "news": [
+    "claude-tag-api",
+    "gemini-api-cli",
     "google-agents-cli-eval-hill-climbing",
     "google-connected-apps-platform",
     "gemini-immersive-explorations",

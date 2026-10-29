@@ -426,7 +426,8 @@
         "openai-gpt-5-6-builders-guide",
         "gemini-4-argon-overnight-codebase",
         "openai-skills-shell-compaction-tips",
-        "claude-fold-subagents-main-agent-loop"
+        "claude-fold-subagents-main-agent-loop",
+        "claude-tag-api"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2166,7 +2167,8 @@
       ],
       "news": [
         "gemini-token-efficient-coding",
-        "claude-code-session-value-tips"
+        "claude-code-session-value-tips",
+        "gemini-api-cli"
       ],
       "verifiedAt": "2026-10-21"
     },

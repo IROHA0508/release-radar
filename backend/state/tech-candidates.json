@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "name": "Claude 조직 설정 API",
+    "en": "Claude Tag Settings Management",
+    "oneLiner": "조직의 Slack 채널별 Claude 접근 권한을 API로 관리하고 설정을 코드로 버전 제어합니다.",
+    "news": [
+      "claude-tag-api"
+    ],
+    "company": "anthropic",
+    "addedAt": "2026-10-29"
+  }
+]

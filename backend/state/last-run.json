@@ -1,36 +1,135 @@
 {
-  "startedAt": "2026-10-29T09:29:37+09:00",
+  "startedAt": "2026-10-29T18:01:51+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 1864,
+  "entries": 2635,
   "candidates": [
     {
-      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
-      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
+      "title": "Eligible ChatGPT Pro and Business subscribers can now claim up to $500 per month in free API credits as a subscription benefit.",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-28",
       "company": "openai",
       "date": "2026-10-28",
       "relatedId": null
     },
     {
-      "title": "Smaller apps and faster GPU inference with LiteRT in Google Play services",
-      "url": "https://developers.googleblog.com/smaller-apps-and-faster-gpu-inference-with-litert-in-google-play-services/",
+      "title": "Gemini API CLI (gemini-api) beta : Released the [Gemini API",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-10-27",
       "company": "google",
-      "date": "2026-10-28",
+      "date": "2026-10-27",
+      "relatedId": "gemini-app-small-business-tools"
+    },
+    {
+      "title": "Generate Content API storage on by default : New projects using the Generate Content API (generateContent, streamGenerateContent, and batchGenerateContent) on the paid tier now store requests by defau",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-10-26",
+      "company": "google",
+      "date": "2026-10-26",
+      "relatedId": null
+    },
+    {
+      "title": "The Claude Tag API is available in beta for Claude Enterprise organizations with the experimental-claude-tag-2026-10-21 beta header.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-23",
+      "company": "anthropic",
+      "date": "2026-10-23",
+      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
+    },
+    {
+      "title": "Update · Model: gpt-6-luna · API: v1/decisions",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-22",
+      "company": "openai",
+      "date": "2026-10-22",
+      "relatedId": null
+    },
+    {
+      "title": "We’ve launched Claude Models on Google Cloud (Anthropic managed), the Claude API operated by Anthropic and reached through your Google Cloud project.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-22",
+      "company": "anthropic",
+      "date": "2026-10-22",
+      "relatedId": null
+    },
+    {
+      "title": "Fast mode is available for Claude Opus 5.5 on Claude Models on Google Cloud (Anthropic managed).",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-22",
+      "company": "anthropic",
+      "date": "2026-10-22",
+      "relatedId": "claude-opus-5-5"
+    },
+    {
+      "title": "We’ve released API version 2026-10-21.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "relatedId": null
+    },
+    {
+      "title": "We’ve released new versions of the client SDKs and the ant CLI that send API version 2026-10-21 by default: Python SDK 2.0.0, TypeScript SDK 1.0.0, C# SDK 13.0.0, Go SDK 2.0.0, Java SDK 3.0.0, PHP SDK",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21",
+      "company": "anthropic",
+      "date": "2026-10-21",
+      "relatedId": null
+    },
+    {
+      "title": "The new SDK and CLI versions also have breaking changes that don’t depend on the API version, and they are licensed under Apache 2.0 instead of the MIT License.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21",
+      "company": "anthropic",
+      "date": "2026-10-21",
       "relatedId": null
     }
   ],
-  "added": [],
+  "added": [
+    {
+      "id": "gemini-api-cli",
+      "title": "Gemini API CLI",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-10-27",
+      "charts": 0
+    },
+    {
+      "id": "claude-tag-api",
+      "title": "Claude Tag API",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-23",
+      "charts": 0
+    }
+  ],
   "updated": [],
   "skipped": [
     {
-      "title": "OpenAI and ServiceNow expand partnership across enterprise workflows",
-      "url": "https://openai.com/index/openai-servicenow-partnership-expansion",
-      "reason": "기업 파트너십 공지. OpenAI 모델이 ServiceNow 플랫폼에 탑재되는 내용으로, 모델 출시, 기능 출시, 활용 팁이 아닌 비즈니스 파트너십에 해당해 제외 대상"
+      "title": "Eligible ChatGPT Pro and Business subscribers can now claim up to $500 per month in free API credits as a subscription benefit.",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-28",
+      "reason": "요금제·영업·광고 사업 공지에 해당. 구독자 혜택으로 제공하는 API 크레딧이지 새로운 모델, 제품, 기능이 아님"
     },
     {
-      "title": "Smaller apps and faster GPU inference with LiteRT in Google Play services",
-      "url": "https://developers.googleblog.com/smaller-apps-and-faster-gpu-inference-with-litert-in-google-play-services/",
-      "reason": "AI 모델 사용과 무관한 개발 프레임워크·인프라 글. LiteRT의 GPU 추론 최적화, CompiledModel API 등은 ML 모델 배포 프레임워크에 관한 것으로, 새 모델 출시, AI 제품·기능 출시, 활용 팁에 해당하지 않음"
+      "title": "Generate Content API storage on by default : New projects using the Generate Content API (generateContent, streamGenerateContent, and batchGenerateContent) on the paid tier now store requests by defau",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-10-26",
+      "reason": "Generate Content API 스토리지 기본값 변경. 기술적 설정 변경일 뿐 새로운 제품·기능이 아님"
+    },
+    {
+      "title": "Update · Model: gpt-6-luna · API: v1/decisions",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-22",
+      "reason": "기존 decisions-api 소식의 후속 업데이트. 별도 update 처리 대상이므로 new로 판단하지 않음"
+    },
+    {
+      "title": "We’ve launched Claude Models on Google Cloud (Anthropic managed), the Claude API operated by Anthropic and reached through your Google Cloud project.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-22",
+      "reason": "Anthropic과 Google의 기업 파트너십 발표. 지침의 제외 기준 '기업 파트너십'에 해당"
+    },
+    {
+      "title": "Fast mode is available for Claude Opus 5.5 on Claude Models on Google Cloud (Anthropic managed).",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-22",
+      "reason": "기존 claude-opus-5-5 모델의 후속 업데이트. Fast mode 기능 추가와 Google Cloud 플랫폼 가용성이므로 update 처리 대상"
+    },
+    {
+      "title": "We’ve released API version 2026-10-21.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21",
+      "reason": "API 버전 2026-10-21 업데이트. 기술적 인프라 변경일 뿐 독자가 새로 써볼 제품·기능이 아님"
+    },
+    {
+      "title": "We’ve released new versions of the client SDKs and the ant CLI that send API version 2026-10-21 by default: Python SDK 2.0.0, TypeScript SDK 1.0.0, C# SDK 13.0.0, Go SDK 2.0.0, Java SDK 3.0.0, PHP SDK",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21",
+      "reason": "SDK/CLI 버전 업그레이드(Python 2.0.0 등). 지침에 해당하는 '개발 프레임워크' 버전 변경일 뿐 새로운 기능이 아님"
+    },
+    {
+      "title": "The new SDK and CLI versions also have breaking changes that don’t depend on the API version, and they are licensed under Apache 2.0 instead of the MIT License.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-21",
+      "reason": "라이선스 정책 변경(MIT→Apache 2.0). 제품·기능과 무관한 정책 변경"
     }
   ],
   "failed": [],
@@ -39,5 +138,9 @@
   "authError": false,
   "guideChanges": [],
   "styleNotes": {},
-  "techLinks": []
+  "techLinks": [
+    "gemini-api-cli → terminal-agents",
+    "claude-tag-api → harness",
+    "새 기술 후보: Claude 조직 설정 API (Claude Tag Settings Management) ← claude-tag-api"
+  ]
 }
