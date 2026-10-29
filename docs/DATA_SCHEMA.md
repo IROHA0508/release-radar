@@ -112,19 +112,31 @@
 {
   "checkedAt": "2026-10-21 06:05",
   "pages": { "openai": { "url": "https://...", "checkedAt": "2026-10-21 06:05", "result": "확인" } },
+  "deprecationPages": { "openai": { "url": "https://...", "checkedAt": "2026-10-21 06:05", "result": "확인" } },
   "models": [{
-    "company": "openai", "name": "GPT-6.1 Sol", "apiId": "gpt-6.1-sol",
-    "input": "$2", "cached": "$0.10", "output": "$10", "note": "",
+    "company": "openai", "name": "GPT-6.1 Sol", "apiId": "gpt-6.1-sol", "category": "text", "desc": "",
+    "input": "$2", "cached": "$0.10", "output": "$10", "perUnit": null, "note": "",
     "status": "available", "newsId": "gpt-6-1-sol", "verifiedAt": "2026-10-21", "missing": 0, "since": "2026-10-21"
+  }, {
+    "company": "openai", "name": "gpt-4.1-nano", "apiId": "gpt-4.1-nano", "category": "text",
+    "status": "retired", "shutdown": "2026-10-23", "replacement": "gpt-5.6-luna", "...": "..."
   }]
 }
 ```
 
-- `status`: `available`(표에 표시), `deprecated`(표에 '지원 종료 예정'으로 표시), `unlisted`(공식 가격 페이지에 없음 → 아래 별도 목록)
-- 가격은 기본 등급 텍스트 토큰, 100만 토큰당 USD. 공식 가격 페이지 문구 그대로 씁니다.
-- 매일 한 번 공식 가격 페이지를 읽어 확인합니다. 가격 페이지에서 두 번 연속 보이지 않는 모델은 `unlisted`가 됩니다.
-- 소식에 나온 적 없이 가격 페이지에서 직접 더한 모델은 `newsId`가 `null`이고 `available`·`deprecated` 항목에는 `since`가 없습니다. `since`가 있으면 모델 추천 탭이 '새 모델 반영 전' 알림을 띄우기 때문에, 새로 나온 모델이 아니면 `since`를 두지 않습니다(상태가 바뀌면 자동 점검이 채웁니다).
-- 지원이 끝난(retired) 모델과 분당·건당으로만 과금하는 모델은 싣지 않습니다. 끝난 모델이 가격 페이지에 남아 있으면 자동 점검이 `available`로 되돌립니다.
+- `status`: `available`(표에 표시), `deprecated`(표에 '종료 예정'으로 표시), `unlisted`(공식 가격 페이지에 없음 → 'API 가격표에 없는 모델' 목록), `retired`(지원 종료 → '지원 종료 모델' 표)
+- `category`(필수): `text`·`audio`(음성·실시간·TTS·전사)·`media`(이미지·영상·음악)·`other`(임베딩·에이전트 등). 화면은 이 값으로 표를 네 개로 나눕니다.
+- 가격은 기본 등급 토큰 가격, 100만 토큰당 USD. 공식 가격 페이지 문구 그대로 씁니다. 토큰 가격이 없으면 `null`이고 화면에는 `-`로 나옵니다.
+- `perUnit`: 분·초·이미지 단위 가격("$0.05 / 분"). 페이지가 추정 비용이라고 하면 "(추정)"을 붙입니다. 표에 보이는 모델은 `input`·`output`·`perUnit` 중 하나는 있어야 합니다.
+- `desc`: 소식이 없는 모델의 한 줄 설명(공식 페이지 문구). `addedAt`: 자동 점검이 가격 페이지에서 새로 찾아 넣은 날(14일 동안 '새로 추가' 표시).
+- `shutdown`·`replacement`: 지원 종료일(예정일)과 공식 대체 모델. `retired`에는 `shutdown`이 꼭 있어야 합니다.
+- 매일 한 번 공식 가격 페이지와 지원 종료 페이지를 읽어 확인합니다(`backend/prices.py`).
+  - 가격 페이지에서 두 번 연속 보이지 않는 모델은 `unlisted`가 됩니다.
+  - 가격 페이지에 있는데 표에 없는 모델은 자동으로 추가됩니다. 이름·ID와 가격이 원문에 있어야 합니다. 한 번에 60개가 넘으면 읽기 오류로 보고 넣지 않습니다.
+  - 지원 종료 페이지의 종료일이 지나면 `retired`로 옮깁니다. 앞으로 종료되면 `deprecated`와 `shutdown`을 붙입니다. 표에 없던 모델도 최근 1년 안에 종료됐으면 `retired`로 추가합니다.
+  - `retired`는 되돌리지 않습니다. 가격 페이지는 종료된 모델의 가격을 한동안 남겨 두므로 가격 점검 대상에서 빼며 같은 모델을 새 모델로 다시 넣지도 않습니다.
+  - 지원 종료 페이지를 못 읽은 날에도 `shutdown`이 지난 모델은 `retired`로 옮깁니다.
+- 가격 페이지에서 직접 더한 모델은 `newsId`가 `null`이고 `since`가 없습니다. `since`가 있으면 모델 추천 탭이 '새 모델 반영 전' 알림을 띄우므로, 출시 소식이 연결될 때 그 소식의 날짜로 채웁니다.
 
 ## data/tech.json (AI 활용 기술 탭 · AI 활용 LAB 탭)
 

@@ -573,18 +573,34 @@ PRICE_PAGE = extract.Article(
 
 
 class PriceClaude:
-    def __init__(self, rows):
-        self.rows = rows
+    """Answers the pricing-page call with rows (+ others) and the deprecation-page call with dep."""
+    def __init__(self, rows, others=None, dep=None):
+        self.rows, self.others, self.dep = rows, others or [], dep or []
+        self.price_users = []
 
-    def json_call(self, **_):
-        return {"models": self.rows}
+    def json_call(self, **kw):
+        if kw.get("schema") is prices.DEPRECATION_CHECK:
+            return {"models": self.dep}
+        self.price_users.append(kw.get("user", ""))
+        return {"models": self.rows, "others": self.others}
 
 
 def price_row(key, listed=True, **kw):
-    base = {"key": key, "listed": listed, "apiId": "", "input": "", "cached": "", "output": "", "note": "",
-            "deprecated": False, "evidence": ""}
+    base = {"key": key, "listed": listed, "apiId": "", "input": "", "cached": "", "output": "", "perUnit": "",
+            "category": "text", "desc": "", "note": "", "deprecated": False, "evidence": ""}
     base.update(kw)
     return base
+
+
+def other_row(name, api, **kw):
+    base = price_row("", apiId=api, **kw)
+    del base["key"], base["listed"]
+    base["name"] = name
+    return base
+
+
+def dep_row(api, shutdown, status="retired", replacement="", category="text"):
+    return {"apiId": api, "status": status, "shutdown": shutdown, "replacement": replacement, "category": category, "evidence": ""}
 
 
 def seed_prices(site, models):
@@ -598,6 +614,7 @@ def entry(name, api, i, o, c=None, status="available", company="openai"):
 
 def only_openai(monkeypatch):
     monkeypatch.setattr(config, "PRICE_PAGES", {"openai": PRICE_PAGE.url})
+    monkeypatch.setattr(config, "DEPRECATION_PAGES", {})
     monkeypatch.setattr(config, "NEWS_DIR", config.NEWS_DIR.parent / "no-news")
     config.NEWS_DIR.mkdir(exist_ok=True)
 
@@ -657,6 +674,123 @@ def test_newly_announced_model_is_checked_at_once(site, monkeypatch):
     sol = next(m for m in models if m["apiId"] == "gpt-6.1-sol")
     assert sol["status"] == "available" and sol["newsId"] == "gpt-6-1-sol" and news.exists()
     assert all(m["status"] in ("available", "unlisted") for m in models)
+
+
+# ---- new models found on the pricing page, shutdowns from the deprecation page ----
+
+DEP_URL = "https://developers.openai.com/api/docs/deprecations.md"
+DISCOVER_PAGE = extract.Article(PRICE_PAGE.url, "Pricing", None, PRICE_PAGE.text +
+                                "GPT-7 Nova gpt-7-nova Input $3.00 Cached input $0.30 Output $15.00\n"
+                                "GPT-Live 2 gpt-live-2 Price per minute $0.06\n", [], [])
+LISTED = [price_row("gpt-6.1-sol", input="$2.00", cached="$0.20", output="$12.00"),
+          price_row("gpt-6-luna", input="$0.10", cached="$0.01", output="$0.50")]
+
+
+def table():
+    return [entry("GPT-6.1 Sol", "gpt-6.1-sol", "$2.00", "$12.00", "$0.20"), entry("GPT-6 Luna", "gpt-6-luna", "$0.10", "$0.50", "$0.01")]
+
+
+def dep_page(text):
+    return extract.Article(DEP_URL, "Deprecations", None, "Deprecations. " + "Shutdown schedule. " * 80 + text, [], [])
+
+
+def with_dep(monkeypatch, article):
+    only_openai(monkeypatch)
+    monkeypatch.setattr(config, "DEPRECATION_PAGES", {"openai": DEP_URL})
+    return lambda url: article if url == DEP_URL else DISCOVER_PAGE
+
+
+def models_by_id(site):
+    return {m["apiId"]: m for m in json.loads((site / "data/prices.json").read_text())["models"]}
+
+
+def test_new_model_on_the_pricing_page_is_added(site, monkeypatch):
+    fetch = with_dep(monkeypatch, dep_page("No changes."))
+    seed_prices(site, table())
+    claude = PriceClaude(LISTED, others=[
+        other_row("GPT-7 Nova", "gpt-7-nova", input="$3.00", cached="$0.30", output="$15.00", desc="새 플래그십 모델"),
+        other_row("GPT-Live 2", "gpt-live-2", perUnit="$0.06 / 분", category="audio"),   # priced per minute only
+        other_row("GPT-Ghost", "gpt-ghost", input="$1.00", output="$2.00"),             # not on the page
+        other_row("GPT-7 Nova Max", "gpt-7-nova", input="$9.99", output="$15.00"),      # price not on the page
+        other_row("GPT 6.1 Sol", "", input="$2.00", output="$12.00"),                   # ours, spelled differently
+    ])
+    r = prices.run(claude, date(2026, 10, 30), "2026-10-30 06:05", fetch=fetch)
+    m = models_by_id(site)
+    nova, live = m["gpt-7-nova"], m["gpt-live-2"]
+    assert (nova["status"], nova["category"], nova["input"], nova["desc"], nova["addedAt"]) == \
+        ("available", "text", "$3.00", "새 플래그십 모델", "2026-10-30")
+    assert "since" not in nova      # found on the price page, not announced: no 'new model' alert on the 모델 추천 tab
+    assert (live["category"], live["input"], live["output"], live["perUnit"]) == ("audio", None, None, "$0.06 / 분")
+    assert sorted(m) == ["gpt-6-luna", "gpt-6.1-sol", "gpt-7-nova", "gpt-live-2"]
+    assert sum("새 모델 추가" in c for c in r["changes"]) == 2
+    assert any("GPT-Ghost" in n for n in r["notes"]) and any("GPT-7 Nova Max" in n for n in r["notes"])
+
+
+def test_retired_model_moves_to_the_retired_list_and_stays_there(site, monkeypatch):
+    fetch = with_dep(monkeypatch, dep_page("| 2026-10-28 | gpt-6-luna | gpt-6.1-terra |\n"
+                                           "| 2026-03-01 | gpt-old-1 | gpt-6.1-sol |\n| 2024-01-01 | gpt-ancient | gpt-6.1-sol |"))
+    seed_prices(site, table())
+    claude = PriceClaude(LISTED, dep=[dep_row("gpt-6-luna", "2026-10-28", replacement="gpt-6.1-terra"),
+                                      dep_row("gpt-old-1", "2026-03-01", replacement="gpt-6.1-sol"),
+                                      dep_row("gpt-ancient", "2024-01-01")])
+    r = prices.run(claude, date(2026, 10, 30), "2026-10-30 06:05", fetch=fetch)
+    m = models_by_id(site)
+    luna = m["gpt-6-luna"]
+    assert (luna["status"], luna["shutdown"], luna["replacement"]) == ("retired", "2026-10-28", "gpt-6.1-terra")
+    assert m["gpt-old-1"]["status"] == "retired"      # retired within a year: listed so old code can be looked up
+    assert "gpt-ancient" not in m                     # older than a year and never in our table
+    assert m["gpt-6.1-sol"]["status"] == "available"
+    assert any(c.startswith("지원 종료로 옮김: GPT-6 Luna") for c in r["changes"])
+
+    # The next day the pricing page still prices GPT-6 Luna (old prices stay up): it is neither checked nor re-added.
+    claude = PriceClaude(LISTED, others=[other_row("GPT-6 Luna", "gpt-6-luna", input="$0.10", output="$0.50")])
+    prices.run(claude, date(2026, 10, 31), "2026-10-31 06:05", fetch=fetch)
+    models = json.loads((site / "data/prices.json").read_text())["models"]
+    assert [x["status"] for x in models if x["apiId"] == "gpt-6-luna"] == ["retired"]
+    assert "[gpt-6-luna]" not in claude.price_users[0] and "- GPT-6 Luna | gpt-6-luna" in claude.price_users[0]
+
+
+def test_upcoming_shutdown_is_shown_then_retires_on_the_day(site, monkeypatch):
+    fetch = with_dep(monkeypatch, dep_page("| 2026-11-15 | gpt-6-luna | gpt-6.1-terra |"))
+    seed_prices(site, table())
+    claude = PriceClaude(LISTED, dep=[dep_row("gpt-6-luna", "2026-11-15", status="deprecated", replacement="gpt-6.1-terra")])
+    r = prices.run(claude, date(2026, 10, 30), "2026-10-30 06:05", fetch=fetch)
+    luna = models_by_id(site)["gpt-6-luna"]
+    assert (luna["status"], luna["shutdown"], luna["replacement"]) == ("deprecated", "2026-11-15", "gpt-6.1-terra")
+    assert any("지원 종료 예정 표시: GPT-6 Luna" in c for c in r["changes"])
+
+    # On the shutdown day the deprecation page cannot be read, but the known date still retires the model.
+    def broken(url):
+        if url == DEP_URL:
+            raise RuntimeError("down")
+        return DISCOVER_PAGE
+    r = prices.run(PriceClaude(LISTED), date(2026, 11, 15), "2026-11-15 06:05", fetch=broken)
+    assert models_by_id(site)["gpt-6-luna"]["status"] == "retired" and "openai 지원 종료" in r["errors"]
+
+
+def test_earliest_possible_date_of_an_active_model_is_not_a_shutdown(site, monkeypatch):
+    fetch = with_dep(monkeypatch, dep_page("| gpt-6-luna | Active | N/A | Not sooner than October 15, 2026 |"))
+    seed_prices(site, table())
+    r = prices.run(PriceClaude(LISTED, dep=[dep_row("gpt-6-luna", "2026-10-15")]), date(2026, 10, 30), "x", fetch=fetch)
+    assert models_by_id(site)["gpt-6-luna"]["status"] == "available"
+    assert any("gpt-6-luna" in n and "확인하지 못해" in n for n in r["notes"])
+
+
+def test_half_the_table_retiring_at_once_is_ignored(site, monkeypatch):
+    fetch = with_dep(monkeypatch, dep_page("| 2026-10-01 | gpt-6-luna |\n| 2026-10-01 | gpt-6.1-sol |"))
+    seed_prices(site, table())
+    claude = PriceClaude(LISTED, dep=[dep_row("gpt-6-luna", "2026-10-01"), dep_row("gpt-6.1-sol", "2026-10-01")])
+    r = prices.run(claude, date(2026, 10, 30), "x", fetch=fetch)
+    assert all(m["status"] == "available" for m in models_by_id(site).values())
+    assert any("한꺼번에 지원 종료로 읽혀" in c for c in r["changes"])
+
+
+def test_name_only_models_match_ids_without_mixing_versions():
+    assert prices.name_matches_id("Claude Opus 4.1", "claude-opus-4-1-20250805")
+    assert not prices.name_matches_id("Claude Opus 4", "claude-opus-4-1-20250805")
+    assert prices.name_matches_id("gpt-5.4-nano", "gpt-5.4-nano-2026-03-17")
+    assert [prices.guess_category(x) for x in ("gpt-live-1", "gemini-nano-banana-2.1", "gemini-embedding-2", "gpt-6.1-sol")] == \
+        ["audio", "media", "other", "text"]
 
 
 # ---- prompt guide upkeep ----
