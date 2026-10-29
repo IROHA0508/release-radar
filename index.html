@@ -1099,7 +1099,7 @@ td.model { white-space: normal; min-width: 12em; }
         (released(a) < released(b) ? 1 : released(a) > released(b) ? -1 : a.name < b.name ? -1 : 1);
     });
     var gone = models.filter(function (m) { return m.status === "unlisted"; }).sort(byCo);
-    frag.appendChild(h("p", { class: "lede", text: "사이트에서 다룬 모델 가운데 지금 API로 쓸 수 있는 모델만, 세 회사 공식 가격 페이지에서 매일 확인한 가격으로 보여 줍니다. 단위는 100만 토큰당 미국 달러(기본 등급, 짧은 프롬프트 기준)이고 공식 가격 페이지에서 사라진 모델은 아래 목록으로 옮깁니다." }));
+    frag.appendChild(h("p", { class: "lede", text: "세 회사 공식 가격 페이지에서 매일 확인한 가격으로, 지금 API로 쓸 수 있는 모델을 보여 줍니다. 단위는 100만 토큰당 미국 달러(기본 등급, 짧은 프롬프트 기준)이고 공식 가격 페이지에서 사라진 모델은 아래 목록으로 옮깁니다." }));
     frag.appendChild(h("div", { class: "p-status" }, ORDER.map(function (c) {
       var pg = (p.pages || {})[c];
       if (!pg) return null;
@@ -1124,7 +1124,7 @@ td.model { white-space: normal; min-width: 12em; }
     ]));
     if (gone.length) {
       frag.appendChild(section("API 가격표에 없는 모델", "not on the official price lists", [
-        h("p", { class: "lede", style: "margin:0 0 14px;font-size:var(--s-sm)", text: "사이트에서 소개했지만 공식 API 가격 페이지에서 확인되지 않는 모델입니다. 일부 기관에만 제공되거나, 앱 전용이거나, 지원이 끝난 경우입니다. 매일 다시 확인해 가격 페이지에 올라오면 위 표로 옮깁니다." }),
+        h("p", { class: "lede", style: "margin:0 0 14px;font-size:var(--s-sm)", text: "사이트에서 소개했거나 공식 문서에 나오지만 공식 API 가격 페이지에서는 확인되지 않는 모델입니다. 일부 기관에만 제공되거나, 앱 전용이거나, 지원이 끝났거나, 다른 모델로 자동 연결되는 경우입니다. 매일 다시 확인해 가격 페이지에 올라오면 위 표로 옮깁니다." }),
         h("ul", { class: "unlisted" }, gone.map(function (m) {
           return h("li", null, [h("span", null, [coTag(m.company)]), h("span", null, [
             m.newsId && state.byId[m.newsId] ? h("a", { href: "#" + m.newsId, text: m.name }) : h("b", { text: m.name }),
