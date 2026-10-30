@@ -969,6 +969,14 @@
       "status": "skipped",
       "title": "How Visko streams real-time world models on Google Cloud TPUs"
     },
+    "https://cloud.google.com/blog/topics/ai-infrastructure/whats-new-in-ai-infrastructure-this-month": {
+      "checkedAt": "2026-10-31",
+      "company": "google",
+      "date": "2026-10-30",
+      "reason": "인프라·하드웨어 관련 글. AI 모델을 쓰는 방식과 무관한 기술 공지",
+      "status": "skipped",
+      "title": "What’s new in AI infrastructure and orchestration in October"
+    },
     "https://cloud.google.com/blog/topics/customers/ireland-innovation-companies-startups-governments-scale-with-gemini": {
       "checkedAt": "2026-10-09",
       "company": "google",
@@ -1170,6 +1178,14 @@
       "reason": "설명에서 '블로그 작성 템플릿 및 메타데이터 구조'라고 명시되어 있어, 구체적인 제품 기능 출시나 사용 팁보다는 발행 템플릿 성격으로 보입니다.",
       "status": "skipped",
       "title": "Building Conversational Commerce with Multi-Agent Swarms on GCP: A Working Prototype"
+    },
+    "https://developers.googleblog.com/devfest-is-back": {
+      "checkedAt": "2026-10-31",
+      "company": "google",
+      "date": "2026-10-30",
+      "reason": "행사 홍보. DevFest 컨퍼런스 광고일 뿐 제품·모델 출시 아님",
+      "status": "skipped",
+      "title": "DevFest is back!"
     },
     "https://developers.googleblog.com/driving-developer-excellence-inside-the-program-sprints": {
       "checkedAt": "2026-10-03",
@@ -1400,6 +1416,14 @@
       "reason": "요금제·영업·광고 사업 공지에 해당. 구독자 혜택으로 제공하는 API 크레딧이지 새로운 모델, 제품, 기능이 아님",
       "status": "skipped",
       "title": "Eligible ChatGPT Pro and Business subscribers can now claim up to $500 per month in free API credits as a subscription benefit."
+    },
+    "https://developers.openai.com/api/docs/changelog#2026-10-30-5ea80d3e": {
+      "checkedAt": "2026-10-31",
+      "company": "openai",
+      "date": "2026-10-30",
+      "id": "gpt-6-rosalind",
+      "status": "added",
+      "title": "Feature · Model: gpt-6-rosalind"
     },
     "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps": {
       "checkedAt": "2026-10-03",
@@ -1700,6 +1724,14 @@
       "status": "skipped",
       "title": "Cloudflare links vulnerability discovery to defense with OpenAI"
     },
+    "https://openai.com/index/community-safety-report-and-new-protections-for-teens": {
+      "checkedAt": "2026-10-31",
+      "company": "openai",
+      "date": "2026-10-30",
+      "reason": "정책·규제 글이자 안전 보고서. 새 모델, 제품·기능 출시가 아님",
+      "status": "skipped",
+      "title": "Community safety report and new protections for teens"
+    },
     "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities": {
       "checkedAt": "2026-10-22",
       "company": "openai",
@@ -1707,6 +1739,14 @@
       "reason": "모델과 무관한 보안 정책·파트너십 이니셔티브. 새 모델 출시, 모델 업데이트, 공식 활용 팁이 아님.",
       "status": "skipped",
       "title": "Patch the Planet: global response coordination as agents uncover critical vulnerabilities"
+    },
+    "https://openai.com/index/credit-saison": {
+      "checkedAt": "2026-10-31",
+      "company": "openai",
+      "date": "2026-10-29",
+      "reason": "고객 사례 연구. 기업 파트너십·마케팅 사례일 뿐 새 모델이나 기능 출시 아님",
+      "status": "skipped",
+      "title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot"
     },
     "https://openai.com/index/decisions-api": {
       "checkedAt": "2026-10-23",

@@ -1,0 +1,98 @@
+{
+  "id": "gpt-6-rosalind",
+  "company": "openai",
+  "date": "2026-10-30",
+  "kind": "모델 출시",
+  "title": "GPT-6 Rosalind",
+  "headline": "과학 도구를 쓰는 생물학 추론을 갖춘 생명과학 연구용 모델",
+  "tldr": "OpenAI가 복잡한 생명과학 연구를 위해 과학 도구 사용을 결합한 생물학 추론 모델 GPT-6 Rosalind를 API로 냈습니다. 접근은 Rosalind Research 승인을 받은 조직에 한정되며 trusted-access 프로그램을 통해 내부 연구용으로만 열립니다. 가격은 입력 $15, 출력 $75(100만 토큰당)입니다.",
+  "models": [
+    {
+      "name": "GPT-6 Rosalind",
+      "apiId": "gpt-6-rosalind",
+      "input": "$15",
+      "output": "$75",
+      "cached": "$1.50"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "입력 가격",
+      "value": "$15.00",
+      "note": "100만 토큰당"
+    },
+    {
+      "label": "출력 가격",
+      "value": "$75.00",
+      "note": "100만 토큰당"
+    },
+    {
+      "label": "캐시된 입력",
+      "value": "$1.50",
+      "note": "100만 토큰당"
+    },
+    {
+      "label": "프롬프트 캐시 쓰기",
+      "value": "$18.75 / $37.50",
+      "note": "30분 / 12시간 보존, 100만 토큰당"
+    }
+  ],
+  "charts": [],
+  "chartNote": "변경 기록과 가격 페이지에 성능 비교 수치가 없어 그래프는 만들지 않았습니다.",
+  "changes": [
+    "GPT-6 Rosalind는 복잡한 생명과학 연구를 위한 특화 생물학 추론과 과학 도구 사용을 내세운 모델입니다.",
+    "API 모델 ID는 gpt-6-rosalind이고 2026-10-30 API 변경 기록에 출시로 올라왔습니다.",
+    "가격 페이지의 생명과학 모델 항목에 올라 있으며 입력 $15.00, 출력 $75.00, 캐시된 입력 $1.50입니다.",
+    "프롬프트 캐싱 쓰기 요금은 30분 보존 $18.75, 12시간 보존 $37.50입니다.",
+    "같은 항목에 gpt-rosalind-research와 gpt-rosalind-discovery도 있으며 두 모델은 입력 $5.00, 출력 $25.00, 캐시된 입력 $0.50입니다."
+  ],
+  "availability": [
+    "Rosalind Research 승인을 받은 조직에 trusted-access 프로그램을 통해 제공됩니다.",
+    "승인된 내부 연구에서 권한을 받은 사용자에게만 허용됩니다.",
+    "OpenAI는 자격을 갖춘 모든 조직이 앞으로 나오는 최신 GPT-Rosalind 모델도 계속 쓸 수 있다고 안내합니다.",
+    "데이터 레지던시(지역 처리) 엔드포인트는 2026-03-05 이후 출시된 대상 모델에 10% 추가 요금이 붙습니다."
+  ],
+  "tips": [
+    {
+      "title": "먼저 접근 승인 확인",
+      "body": "일반 API 키만으로는 쓸 수 없고 Rosalind Research 승인과 trusted-access 프로그램이 필요합니다. 조직의 승인 상태부터 확인하세요."
+    },
+    {
+      "title": "용도에 맞는 Rosalind 모델 고르기",
+      "body": "가격 페이지에는 gpt-6-rosalind 외에 입력 $5.00, 출력 $25.00인 gpt-rosalind-research와 gpt-rosalind-discovery가 함께 있습니다. 두 모델의 차이는 원문에 설명이 없으니 공식 문서에서 확인하세요."
+    },
+    {
+      "title": "반복 입력은 캐시로 비용 줄이기",
+      "body": "캐시된 입력은 일반 입력의 10분의 1인 $1.50입니다. 같은 긴 자료를 여러 번 넣는 분석이라면 캐시 쓰기 요금과 함께 계산해 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "연구 질문 정리 요청",
+      "when": "승인된 내부 연구에서 가설과 검증 계획을 정리할 때",
+      "type": "prompt",
+      "text": "다음 연구 질문에 대해 알려진 근거와 불확실한 부분을 나눠 정리해줘.\n\n질문: [연구 질문]\n자료: [첨부한 논문 요약이나 데이터 설명]\n\n- 근거가 있는 내용과 추정인 내용을 구분해\n- 검증에 필요한 실험이나 분석 단계를 제안해\n- 확실하지 않은 부분은 확인이 필요하다고 표시해"
+    },
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "승인을 받은 조직에서 모델 ID로 호출해 볼 때",
+      "type": "code",
+      "text": "from openai import OpenAI\n\nclient = OpenAI()\n\nresponse = client.responses.create(\n    model=\"gpt-6-rosalind\",\n    input=\"[연구 질문]\",\n)\n\nprint(response.output_text)"
+    }
+  ],
+  "cautions": [
+    "접근은 승인된 조직의 내부 연구로 제한됩니다. 승인 없이는 호출이 안 될 수도 있습니다.",
+    "원문은 성능 수치나 벤치마크를 공개하지 않아 다른 모델과의 비교는 확인 필요합니다.",
+    "입력 $15, 출력 $75로 일반 GPT-6.1 Sol(입력 $2, 출력 $10)보다 훨씬 비쌉니다."
+  ],
+  "sources": [
+    {
+      "title": "API 변경 기록 2026-10-30 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-30"
+    },
+    {
+      "title": "Pricing, Life sciences models (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/pricing#life-sciences-models"
+    }
+  ]
+}
