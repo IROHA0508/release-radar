@@ -1,120 +1,17 @@
 {
-  "startedAt": "2026-10-30T04:55:38+09:00",
+  "startedAt": "2026-10-30T09:29:14+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 2641,
-  "candidates": [
-    {
-      "title": "An updated Model Spec for more capable and beneficial AI",
-      "url": "https://openai.com/index/updated-model-spec",
-      "company": "openai",
-      "date": "2026-10-29",
-      "relatedId": null
-    },
-    {
-      "title": "How we detect frontier model misalignment",
-      "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment",
-      "company": "openai",
-      "date": "2026-10-29",
-      "relatedId": null
-    },
-    {
-      "title": "You can now generate, preview, and edit documents, PDFs, presentations, spreadsheets, and more directly in Gemini.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly/",
-      "company": "google",
-      "date": "2026-10-29",
-      "relatedId": null
-    },
-    {
-      "title": "How to use Gemini to update your resume",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini/",
-      "company": "google",
-      "date": "2026-10-29",
-      "relatedId": "gemini-app-small-business-tools"
-    },
-    {
-      "title": "We’ve launched the Usage and Cost Analytics API in beta with the analytics-usage-cost-2026-08-24 beta header.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-29",
-      "company": "anthropic",
-      "date": "2026-10-29",
-      "relatedId": null
-    },
-    {
-      "title": "We’ve raised the maximum request size for the Messages API and the Token Counting API from 32 MB to 128 MB on the first-party Claude API.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-28",
-      "company": "anthropic",
-      "date": "2026-10-28",
-      "relatedId": null
-    },
-    {
-      "title": "Build Generative UI Apps with A2UI & CopilotKit Agents",
-      "url": "https://developers.googleblog.com/build-generative-ui-apps-with-a2ui-copilotkit-agents/",
-      "company": "google",
-      "date": "2026-10-29",
-      "relatedId": null
-    }
-  ],
-  "added": [
-    {
-      "id": "gemini-app-resume-update",
-      "title": "Gemini로 이력서 경력 문장 다듬기",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini/",
-      "charts": 0
-    },
-    {
-      "id": "claude-usage-cost-analytics-api",
-      "title": "Usage and Cost Analytics API",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-29",
-      "charts": 0
-    },
-    {
-      "id": "google-a2ui-copilotkit-generative-ui",
-      "title": "A2UI와 CopilotKit으로 생성형 UI 앱 만들기",
-      "url": "https://developers.googleblog.com/build-generative-ui-apps-with-a2ui-copilotkit-agents/",
-      "charts": 0
-    }
-  ],
-  "updated": [
-    {
-      "id": "gemini-app-small-business-tools",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly/"
-    }
-  ],
-  "skipped": [
-    {
-      "title": "An updated Model Spec for more capable and beneficial AI",
-      "url": "https://openai.com/index/updated-model-spec",
-      "reason": "모델 출시·업데이트·제품·기능 출시와 무관한 안전 정책 보고서"
-    },
-    {
-      "title": "How we detect frontier model misalignment",
-      "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment",
-      "reason": "모델 출시·업데이트·제품·기능 출시와 무관한 안전 모니터링 보고서"
-    },
-    {
-      "title": "We’ve raised the maximum request size for the Messages API and the Token Counting API from 32 MB to 128 MB on the first-party Claude API.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-28",
-      "reason": "기존 API 요청 크기 제한 완화(기술 공지, 독자가 새로 쓸 새로운 기능 아님)"
-    }
-  ],
+  "candidates": [],
+  "added": [],
+  "updated": [],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
-  "guideChanges": [
-    "가이드 추가: [google] 정리 안 된 메모를 먼저 쏟아내고 결과물의 개수·시작 방식·어조를 정하기"
-  ],
-  "styleNotes": {
-    "claude-usage-cost-analytics-api": [
-      "문체 수정: tldr",
-      "문체 수정: changes.2",
-      "문체 수정: cautions.0"
-    ]
-  },
-  "techLinks": [
-    "새 기술 후보: 역할 기반 프롬프트 설계 (Role-based prompt engineering) ← gemini-app-resume-update",
-    "claude-usage-cost-analytics-api → tokenomics",
-    "google-a2ui-copilotkit-generative-ui → structured-output, multi-agent",
-    "새 기술 후보: 제너레이티브 UI (Generative UI) ← google-a2ui-copilotkit-generative-ui"
-  ]
+  "guideChanges": [],
+  "styleNotes": {},
+  "techLinks": []
 }
