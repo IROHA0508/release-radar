@@ -1,15 +1,72 @@
 {
-  "startedAt": "2026-10-31T18:01:21+09:00",
+  "startedAt": "2026-11-01T03:54:24+09:00",
   "prices": {
-    "checked": [],
-    "changes": [],
-    "notes": [],
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "changes": [
+      "가격 변경: GPT-Realtime-2 입력 $4.00 → $32.00",
+      "가격 변경: GPT-Realtime-2 출력 $24.00 → $64.00",
+      "가격 변경: GPT-Realtime-2.1 입력 $4.00 → $32.00",
+      "가격 변경: GPT-Realtime-2.1 출력 $24.00 → $64.00",
+      "가격 변경: GPT-Realtime-2.1 mini 입력 $0.60 → $10.00",
+      "가격 변경: GPT-Realtime-2.1 mini 캐시 입력 $0.06 → $0.30",
+      "가격 변경: GPT-Realtime-2.1 mini 출력 $2.40 → $20.00",
+      "가격 변경: gpt-audio-1.5 입력 $2.50 → $32.00",
+      "가격 변경: gpt-audio-1.5 출력 $10.00 → $64.00",
+      "가격 변경: gpt-realtime-1.5 입력 $4.00 → $32.00",
+      "가격 변경: gpt-realtime-1.5 출력 $16.00 → $64.00",
+      "가격 변경: gpt-audio 입력 $2.50 → $32.00",
+      "가격 변경: gpt-audio 출력 $10.00 → $64.00",
+      "가격 변경: gpt-realtime 입력 $4.00 → $32.00",
+      "가격 변경: gpt-realtime 출력 $16.00 → $64.00",
+      "새 모델 추가: gpt-6-astra-law [text] (입력 $10.00 / 출력 $50.00)",
+      "가격 변경: Gemini 3 Pro Image 출력 $12.00 → $120.00",
+      "가격 변경: Gemini 3 Pro Image 그 밖의 단가 $0.134 / 이미지 (1K/2K), $0.24 / 이미지 (4K) → $0.134 / 이미지 (1K/2K)",
+      "가격 변경: Gemini 3.1 Flash Image 출력 $3 → $60.00",
+      "가격 변경: Gemini 3.1 Flash Image 그 밖의 단가 $0.045 / 0.5K 이미지, $0.067 / 1K 이미지, $0.101 / 2K 이미지, $0.151 / 4K 이미지 → $0.067 / 이미지 (1K)",
+      "가격 변경: Gemini 3.1 Flash Lite Image 출력 $1.50 → $30.00",
+      "가격 변경: Gemini Nano Banana 2.1 출력 $7.50 → $30.00",
+      "가격 변경: Gemini Nano Banana 2.1 그 밖의 단가 $0.0336 / 1K 이미지, $0.0504 / 2K 이미지, $0.113 / 4K 이미지 → $0.0336 / 이미지 (1K)",
+      "가격 변경: Gemini Omni Flash 출력 $9.00 → $17.50",
+      "가격 변경: Gemini 2.5 Flash Image 출력 — → $30",
+      "가격 변경: Lyria 3 Clip Preview 그 밖의 단가 $0.04 / 곡 → $0.04 / 곡 (30초)"
+    ],
+    "notes": [
+      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음",
+      "새 모델 후보 Gemma 4: 가격을 원문에서 확인하지 못해 넣지 않음"
+    ],
     "errors": {}
   },
   "guides": {
-    "checked": 0,
-    "changed": [],
-    "changes": [],
+    "checked": 38,
+    "changed": [
+      "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
+      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+      "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+      "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
+      "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
+    ],
+    "changes": [
+      "가이드 추가: [openai] 메모리를 꺼도 안전 목적의 제한된 맥락 사용은 별개임을 알기",
+      "가이드 추가: [openai] 이메일·문서 초안은 글쓰기 블록에서 바로 보내거나 Library에 저장하기",
+      "가이드 추가: [anthropic] 아이 약 복용량 질문이 들어올 앱은 라벨 기준 블록을 그대로 넣기",
+      "가이드 추가: [anthropic] 복잡한 조사는 가설을 여러 개 세우고 확신도를 기록하게 하기",
+      "가이드 추가: [anthropic] 중간 결과를 확인해야 하면 초안·검토·수정을 API 호출 세 번으로 나누기",
+      "가이드 추가: [anthropic] 클라우드 Cowork 작업에도 채팅 메모리가 이어지니 필요 없는 작업은 메모리를 끄기",
+      "가이드 수정: [anthropic] 이어 가고 싶은 지난 대화는 주제를 말해 채팅 검색으로 찾게 하기",
+      "가이드 수정: [anthropic] 메모리는 설정에서 주제별로 고치고 남기지 않을 대화는 끄거나 시크릿으로",
+      "가이드 추가: [anthropic] 끝난 프로젝트는 보관하고 접근 회수는 공유 설정에서 하기",
+      "가이드 추가: [anthropic] 프로젝트 밖에서 시작한 대화는 'Add to project'로 옮기기",
+      "가이드 추가: [anthropic] 유료 플랜은 프로젝트 지식이 한도에 가까워지면 RAG 모드가 자동으로 켜짐"
+    ],
     "errors": {}
   },
   "authError": false,
