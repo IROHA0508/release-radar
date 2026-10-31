@@ -1,87 +1,30 @@
 {
-  "startedAt": "2026-10-31T04:46:12+09:00",
+  "startedAt": "2026-10-31T09:13:03+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2646,
+  "entries": 2648,
   "candidates": [
     {
-      "title": "Community safety report and new protections for teens",
-      "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
-      "company": "openai",
+      "title": "We’ve deprecated fast mode for Claude Opus 4.8, with removal on November 30, 2026.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30",
+      "company": "anthropic",
       "date": "2026-10-30",
-      "relatedId": null
-    },
-    {
-      "title": "What’s new in AI infrastructure and orchestration in October",
-      "url": "https://cloud.google.com/blog/topics/ai-infrastructure/whats-new-in-ai-infrastructure-this-month/",
-      "company": "google",
-      "date": "2026-10-30",
-      "relatedId": null
-    },
-    {
-      "title": "Feature · Model: gpt-6-rosalind",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-10-30",
-      "company": "openai",
-      "date": "2026-10-30",
-      "relatedId": null
-    },
-    {
-      "title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot",
-      "url": "https://openai.com/index/credit-saison",
-      "company": "openai",
-      "date": "2026-10-29",
-      "relatedId": null
-    },
-    {
-      "title": "DevFest is back!",
-      "url": "https://developers.googleblog.com/devfest-is-back/",
-      "company": "google",
-      "date": "2026-10-30",
-      "relatedId": null
+      "relatedId": "claude-opus-4-8"
     }
   ],
-  "added": [
+  "added": [],
+  "updated": [
     {
-      "id": "gpt-6-rosalind",
-      "title": "GPT-6 Rosalind",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-10-30",
-      "charts": 0
+      "id": "claude-opus-4-8",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30"
     }
   ],
-  "updated": [],
-  "skipped": [
-    {
-      "title": "Community safety report and new protections for teens",
-      "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
-      "reason": "정책·규제 글이자 안전 보고서. 새 모델, 제품·기능 출시가 아님"
-    },
-    {
-      "title": "What’s new in AI infrastructure and orchestration in October",
-      "url": "https://cloud.google.com/blog/topics/ai-infrastructure/whats-new-in-ai-infrastructure-this-month/",
-      "reason": "인프라·하드웨어 관련 글. AI 모델을 쓰는 방식과 무관한 기술 공지"
-    },
-    {
-      "title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot",
-      "url": "https://openai.com/index/credit-saison",
-      "reason": "고객 사례 연구. 기업 파트너십·마케팅 사례일 뿐 새 모델이나 기능 출시 아님"
-    },
-    {
-      "title": "DevFest is back!",
-      "url": "https://developers.googleblog.com/devfest-is-back/",
-      "reason": "행사 홍보. DevFest 컨퍼런스 광고일 뿐 제품·모델 출시 아님"
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {
-    "gpt-6-rosalind": [
-      "문체 수정: availability.0",
-      "문체 수정: availability.1",
-      "문체 수정: cautions.0"
-    ]
-  },
+  "styleNotes": {},
   "techLinks": []
 }

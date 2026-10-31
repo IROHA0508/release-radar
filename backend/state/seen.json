@@ -2131,6 +2131,14 @@
       "id": "claude-usage-cost-analytics-api",
       "status": "added",
       "title": "We’ve launched the Usage and Cost Analytics API in beta with the analytics-usage-cost-2026-08-24 beta header."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30-39eff05e": {
+      "checkedAt": "2026-10-31",
+      "company": "anthropic",
+      "date": "2026-10-30",
+      "id": "claude-opus-4-8",
+      "status": "updated",
+      "title": "We’ve deprecated fast mode for Claude Opus 4.8, with removal on November 30, 2026."
     }
   }
 }

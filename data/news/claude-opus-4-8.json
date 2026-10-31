@@ -197,12 +197,18 @@
     "자신이 작성한 코드의 결함을 언급 없이 넘길 가능성이 이전 모델보다 약 4배 낮아졌습니다.",
     "동적 워크플로: Claude가 작업을 계획한 뒤 한 세션에서 수백 개의 서브에이전트를 병렬로 돌려, Claude Code로 수십만 줄 규모의 코드베이스 마이그레이션을 할 수 있습니다.",
     "모델 선택기 옆에 응답에 들일 노력(effort)을 고르는 컨트롤이 생겼습니다.",
-    "Fast 모드는 2.5배 빠르고 가격은 이전 Fast 모드의 1/3인 $10 / $50입니다."
+    "Fast 모드는 2.5배 빠르고 가격은 이전 Fast 모드의 1/3인 $10 / $50입니다.",
+    "2026-10-30 Anthropic이 Claude Opus 4.8의 fast mode를 지원 중단(deprecated)한다고 공지했습니다. 제거일은 2026년 11월 30일입니다.",
+    "제거 이후 claude-opus-4-8에 speed: \"fast\"를 붙여 요청하면 오류가 반환됩니다.",
+    "fast mode를 계속 쓰려면 Claude Opus 5.5로 옮겨야 합니다. Opus 5.5의 fast mode는 정식 제공 상태이고 Opus 5와 Opus 4.8은 연구 프리뷰였습니다.",
+    "fast mode 가격은 Opus 5.5가 입력 $8, 출력 $40(MTok당)이고 Opus 5와 Opus 4.8은 입력 $10, 출력 $50입니다."
   ],
   "availability": [
     "출시 당일 모든 Claude 제품과 Claude API에서 제공",
     "동적 워크플로: Claude Code (Enterprise·Team·Max)",
-    "API 모델명: claude-opus-4-8"
+    "API 모델명: claude-opus-4-8",
+    "제거일 2026-11-30 전까지는 Claude API에서 Opus 4.8의 fast mode를 연구 프리뷰로 쓸 수 있습니다.",
+    "대체 모델 Claude Opus 5.5의 fast mode는 Claude API, Google Cloud의 Claude 모델(Anthropic managed), Microsoft Foundry에서 쓸 수 있습니다."
   ],
   "tips": [
     {
@@ -245,6 +251,18 @@
     {
       "title": "GPT-5.6 (그래프 수치 출처, OpenAI)",
       "url": "https://openai.com/index/gpt-5-6/"
+    },
+    {
+      "title": "Claude Platform 릴리스 노트 2026-10-30 (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30"
+    },
+    {
+      "title": "Fast mode (Claude Platform 문서)",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/fast-mode"
+    },
+    {
+      "title": "Opus 5.5 마이그레이션 가이드",
+      "url": "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide#migrating-from-claude-opus-4-8"
     }
   ]
 }
