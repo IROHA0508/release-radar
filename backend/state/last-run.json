@@ -1,24 +1,11 @@
 {
-  "startedAt": "2026-10-31T09:13:03+09:00",
+  "startedAt": "2026-10-31T18:00:39+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 2648,
-  "candidates": [
-    {
-      "title": "We’ve deprecated fast mode for Claude Opus 4.8, with removal on November 30, 2026.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30",
-      "company": "anthropic",
-      "date": "2026-10-30",
-      "relatedId": "claude-opus-4-8"
-    }
-  ],
+  "candidates": [],
   "added": [],
-  "updated": [
-    {
-      "id": "claude-opus-4-8",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30"
-    }
-  ],
+  "updated": [],
   "skipped": [],
   "failed": [],
   "guardNotes": {},
