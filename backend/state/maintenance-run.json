@@ -1,15 +1,47 @@
 {
-  "startedAt": "2026-11-01T18:51:57+09:00",
+  "startedAt": "2026-11-02T04:16:01+09:00",
   "prices": {
-    "checked": [],
-    "changes": [],
-    "notes": [],
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "changes": [
+      "가격 변경: Gemini 3 Pro Image 그 밖의 단가 $0.134 / 이미지 (1K/2K) → $0.134 / 이미지 (1K·2K), $0.24 / 이미지 (4K)",
+      "가격 변경: Gemini 3.1 Flash Image 그 밖의 단가 $0.067 / 이미지 (1K) → $0.045 / 이미지 (0.5K), $0.067 / 이미지 (1K), $0.101 / 이미지 (2K), $0.151 / 이미지 (4K)",
+      "가격 변경: Gemini Nano Banana 2.1 그 밖의 단가 $0.0336 / 이미지 (1K) → $0.0336 / 이미지 (1K), $0.0504 / 이미지 (2K), $0.113 / 이미지 (4K)",
+      "가격 변경: Gemini 2.5 Flash Image 출력 $30 → $30.00",
+      "가격 변경: Lyria 3 Clip Preview 그 밖의 단가 $0.04 / 곡 (30초) → $0.04 / 곡"
+    ],
+    "notes": [
+      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음",
+      "새 모델 후보 Gemma 4: 가격을 원문에서 확인하지 못해 넣지 않음"
+    ],
     "errors": {}
   },
   "guides": {
-    "checked": 0,
-    "changed": [],
-    "changes": [],
+    "checked": 38,
+    "changed": [
+      "https://developers.openai.com/api/docs/guides/image-prompting",
+      "https://developers.openai.com/api/docs/guides/voice-prompting",
+      "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
+      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+      "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions"
+    ],
+    "changes": [
+      "가이드 추가: [openai] 슬라이드·도표·차트는 산출물 명세처럼 쓰기",
+      "가이드 추가: [openai] 부분 수정은 바꿀 대상 하나와 유지할 요소를 구체적으로",
+      "가이드 추가: [openai] 옛 이미지 모델은 종료일을 확인하고 새 모델로 옮기기",
+      "가이드 추가: [openai] 침묵·배경 소리에는 wait_for_user 도구로 조용히 있게 하기",
+      "가이드 추가: [openai] 알아듣기 어려운 음성은 추측하지 말고 짧게 되묻게 하기",
+      "가이드 추가: [openai] 주문번호·이메일은 하나씩 받고 되읽어 확인한 뒤 도구 호출하기",
+      "가이드 추가: [openai] 프로젝트 지시문에는 역할·말투·형식을 짧게 적기",
+      "가이드 추가: [openai] 프로젝트 전용 메모리가 안 보이면 메모리 설정부터 확인하기",
+      "가이드 추가: [openai] 워크스페이스에서 프로젝트를 만들거나 공유하지 못하면 역할 권한 확인하기"
+    ],
     "errors": {}
   },
   "authError": false,

@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-01",
-  "checkedAt": "2026-11-01 03:54",
+  "updatedAt": "2026-11-02",
+  "checkedAt": "2026-11-02 04:16",
   "common": [
     {
       "title": "결과와 완료 기준을 먼저 쓰기",
@@ -1591,6 +1591,149 @@
             "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt"
           },
           "addedAt": "2026-11-01"
+        },
+        {
+          "id": "openai-image-artifact-spec",
+          "category": "예시 활용",
+          "title": "슬라이드·도표·차트는 산출물 명세처럼 쓰기",
+          "body": "OpenAI 이미지 프롬프트 가이드는 슬라이드, 워크플로 다이어그램, 차트 같은 이미지를 일러스트 요청처럼 쓰지 말고 산출물 명세처럼 쓰라고 합니다. 산출물 종류와 캔버스, 위계를 정하고 실제 문구와 데이터를 프롬프트에 직접 넣으세요. 읽기 쉬운 서체와 정돈된 여백을 요구하고 장식과 흔한 스톡 사진 느낌은 피하게 합니다. 덱 형태는 가로 크기를 쓰고 작은 글자나 범례, 축, 각주가 있으면 quality=\"high\"를 씁니다. 가이드 예시의 시장 규모 수치와 출처는 가상이니 실제 데이터로 바꿔 쓰세요.",
+          "before": "투자 유치용 시장 규모 슬라이드 만들어 줘.",
+          "after": "\"[슬라이드 제목]\"이라는 제목의 발표 슬라이드 한 장을 만들어 주세요. 흰 배경에 깔끔한 산세리프 서체를 쓰고 [지표 이름: 값]은 동심원 도표로, [시작 연도]~[끝 연도] 성장은 아래 막대 차트로 넣어 주세요. 각주는 \"[출처]\"로 쓰고 클립아트, 그림자, 장식은 넣지 마세요.",
+          "code": "result = client.images.generate(\n    model=\"gpt-image-2.5-sunburst\",\n    prompt=prompt,\n    size=\"1536x864\",\n    quality=\"high\",\n)",
+          "models": [
+            "GPT Image 2.5 Sunburst",
+            "GPT Image 2.5 Flare"
+          ],
+          "source": {
+            "title": "Image prompting (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/image-prompting"
+          },
+          "addedAt": "2026-11-02"
+        },
+        {
+          "id": "openai-image-local-edit-constraints",
+          "category": "예시 활용",
+          "title": "부분 수정은 바꿀 대상 하나와 유지할 요소를 구체적으로",
+          "body": "이미지 가이드는 정밀한 부분 편집이면 채도, 대비, 화살표, 카메라 각도, 주변 사물처럼 그대로 둘 요소까지 짚으라고 합니다. 가구 교체 예시는 흰 의자만 나무 의자로 바꾸라고 하고 카메라 각도, 방 조명, 바닥 그림자, 주변 사물을 유지하게 합니다. 사물 제거도 없앨 대상을 이름으로 쓰고 나머지는 바꾸지 말라고 적습니다.",
+          "before": "방 사진에서 의자를 나무로 바꿔 줘.",
+          "after": "이 방 사진에서 [바꿀 대상]만 [원하는 모습]으로 바꿔 주세요. 카메라 각도, 방 조명, 바닥 그림자, 주변 사물은 그대로 두고 다른 부분은 바꾸지 마세요.",
+          "models": [
+            "GPT Image 2.5 Sunburst",
+            "GPT Image 2.5 Flare"
+          ],
+          "source": {
+            "title": "Image prompting (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/image-prompting"
+          },
+          "addedAt": "2026-11-02"
+        },
+        {
+          "id": "openai-image-legacy-shutdown",
+          "category": "도구와 API 설정",
+          "title": "옛 이미지 모델은 종료일을 확인하고 새 모델로 옮기기",
+          "body": "이미지 가이드에 따르면 gpt-image-1은 2026년 10월 23일에 종료됐고 gpt-image-2.5-sunburst나 gpt-image-2.5-flare로 옮기라고 안내합니다. gpt-image-1.5는 2026년 12월 1일 종료 예정이며 옮기기 전에 gpt-image-2로 기존 워크플로를 검증하라고 합니다. 옛 설정을 그대로 복사하지 말고 후보 모델이 지원하는 요청 설정을 시험하세요.",
+          "models": [
+            "GPT Image 1",
+            "GPT Image 1.5",
+            "GPT Image 2"
+          ],
+          "source": {
+            "title": "Image prompting (OpenAI API)",
+            "url": "https://developers.openai.com/api/docs/guides/image-prompting"
+          },
+          "addedAt": "2026-11-02"
+        },
+        {
+          "id": "openai-voice-wait-tool",
+          "category": "에이전트와 코딩",
+          "title": "침묵·배경 소리에는 wait_for_user 도구로 조용히 있게 하기",
+          "body": "음성 에이전트는 기본적으로 뭐든 답하려 하기 때문에 침묵, 배경 소음, 대기 음악, TV 소리, 옆 사람과의 대화에도 \"I'm here\" 같은 말을 할 수 있습니다. OpenAI 음성 프롬프트 가이드는 말하지 않고 듣기만 하는 no-op 도구를 두어 모델에게 말하지 않는 유효한 행동을 주라고 합니다. 프롬프트에는 이런 소리가 들리면 이 도구를 부르고 그 뒤에 말로 답하지 말라고 함께 적으세요. 사용자가 분명히 말을 걸었는데 알아들을 수 없을 때는 이 도구가 아니라 되묻기를 쓰게 합니다.",
+          "before": "조용하면 \"계세요?\"라고 물어봐.",
+          "after": "## Handling Silence and Background Noise\nIf the latest audio is silence, background noise, hold music, TV audio, side conversation, or speech not addressed to you, call `wait_for_user`.\nDo not respond conversationally after calling this tool.\nResume normal responses only when the user clearly addresses you or asks for help.",
+          "code": "{\n  \"name\": \"wait_for_user\",\n  \"description\": \"Call this when the latest audio does not need a spoken response, such as silence, background noise, hold music, TV audio, side conversation, or speech not addressed to the assistant. This tool helps end the turn without a spoken reply.\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {},\n    \"required\": []\n  }\n}",
+          "models": [
+            "gpt-realtime-2"
+          ],
+          "source": {
+            "title": "Voice prompting (Realtime API)",
+            "url": "https://developers.openai.com/api/docs/guides/voice-prompting"
+          },
+          "addedAt": "2026-11-02"
+        },
+        {
+          "id": "openai-voice-unclear-audio",
+          "category": "에이전트와 코딩",
+          "title": "알아듣기 어려운 음성은 추측하지 말고 짧게 되묻게 하기",
+          "body": "OpenAI 음성 프롬프트 가이드에 따르면 모델은 확신을 갖고 이해한 오디오에만 반응해야 합니다. 불분명하면 짧게 되묻게 하고 빠진 단어를 추측하거나 도구 호출, 프리앰블, 숨은 추론에 시간을 쓰지 못하게 하세요. 같은 되묻기를 두 번 반복하지 않도록 적는 것도 좋습니다. 숫자가 중간에 끊긴 주문번호처럼 일부만 들렸다면 어디까지 들렸는지 알리고 자릿수대로 다시 말해 달라고 요청하게 합니다.",
+          "before": "사용자 말이 잘 안 들려도 최대한 의도를 짐작해서 도와줘.",
+          "after": "## Unclear Audio\n- Only respond to clear audio or text.\n- If the user's audio is not clear, ask for clarification using a short phrase such as \"Sorry, could you repeat that clearly?\"\n- Don't repeat the same unclear-audio clarification twice.\n- Do not guess what the user meant from unclear audio.\n- Do not reason when the audio is unclear.",
+          "models": [
+            "gpt-realtime-2"
+          ],
+          "source": {
+            "title": "Voice prompting (Realtime API)",
+            "url": "https://developers.openai.com/api/docs/guides/voice-prompting"
+          },
+          "addedAt": "2026-11-02"
+        },
+        {
+          "id": "openai-voice-entity-capture",
+          "category": "에이전트와 코딩",
+          "title": "주문번호·이메일은 하나씩 받고 되읽어 확인한 뒤 도구 호출하기",
+          "body": "음성에서는 숫자를 묶어 말하거나 중간에 고쳐 말하는 일이 잦아서 숫자 하나만 틀려도 조회가 실패하거나 엉뚱한 계정이 나옵니다. OpenAI 가이드는 값을 한 번에 하나씩 받고 분명한 것만 정규화하며 정밀도가 필요한 값은 도구 호출 전에 확인하라고 권합니다. 숫자 식별자는 한 자리씩 읽어 확인하고 이메일은 글자 단위로 확인합니다. 사용자가 일부를 고치면 고친 전체 값을 다시 읽어 주고 다시 확인받은 뒤에 쓰게 하세요.",
+          "before": "주문번호를 받으면 바로 조회해.",
+          "after": "## Exact Identifier Confirmation\nBefore calling tools with high-precision identifiers:\n- Collect one value at a time.\n- Confirm the final normalized value with the user.\n- Read numeric identifiers back digit by digit.\n- Do not use guessed, partial, or ambiguous values.\n- If the user corrects the value, repeat the full corrected value before calling the tool.",
+          "models": [
+            "gpt-realtime-2"
+          ],
+          "source": {
+            "title": "Voice prompting (Realtime API)",
+            "url": "https://developers.openai.com/api/docs/guides/voice-prompting"
+          },
+          "addedAt": "2026-11-02"
+        },
+        {
+          "id": "openai-project-instructions-setup",
+          "category": "앱 기능과 설정",
+          "title": "프로젝트 지시문에는 역할·말투·형식을 짧게 적기",
+          "body": "프로젝트의 더보기(•••) 메뉴에서 Project settings를 열면 그 프로젝트 전용 지시문을 넣을 수 있습니다. OpenAI 도움말의 예시는 역할, 간결함, 글머리표, 확인 질문을 짧은 문장 몇 개로 적은 것입니다. 프로젝트 지시문은 그 프로젝트 안에서만 적용되고 전체 맞춤 지시보다 우선합니다. 같은 형식으로 자주 답을 받는 업무라면 대화마다 반복하지 말고 여기에 한 번 적어 두세요.",
+          "after": "내 [분야] 멘토처럼 행동해 주세요. 간결하게 답하고 글머리표를 쓰며 필요하면 확인 질문을 해 주세요.",
+          "models": [
+            "ChatGPT"
+          ],
+          "source": {
+            "title": "Projects in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+          },
+          "addedAt": "2026-11-02"
+        },
+        {
+          "id": "openai-project-only-memory-requirements",
+          "category": "앱 기능과 설정",
+          "title": "프로젝트 전용 메모리가 안 보이면 메모리 설정부터 확인하기",
+          "body": "설정에 Enable memory가 보이면 먼저 켜세요. 저장된 메모리와 채팅 기록 참고 설정이 따로 있는 계정이라면 Enterprise는 개인 설정의 Reference saved memories와 워크스페이스 설정의 Memory가 켜져 있어야 합니다. 그 밖의 요금제는 개인 설정에서 Reference saved memories와 Reference chat history를 모두 켜야 합니다. 관리형 워크스페이스는 조직도 메모리를 허용해야 하며 Business나 Enterprise에서 항목이 없을 때 이 조건부터 점검하세요.",
+          "models": [
+            "ChatGPT"
+          ],
+          "source": {
+            "title": "Projects in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+          },
+          "addedAt": "2026-11-02"
+        },
+        {
+          "id": "openai-project-admin-permissions",
+          "category": "앱 기능과 설정",
+          "title": "워크스페이스에서 프로젝트를 만들거나 공유하지 못하면 역할 권한 확인하기",
+          "body": "워크스페이스 소유자는 Workspace settings > Permissions & roles의 Projects 항목에서 역할별 권한을 정합니다. Create and manage projects는 프로젝트를 만들 수 있는 사람을, Share projects는 공유할 수 있는 사람을 정합니다. 딥 리서치, 음성, 메모리 같은 기능이 워크스페이스 수준에서 꺼져 있으면 모든 프로젝트 안에서도 자동으로 꺼집니다. 프로젝트 기능이 안 보이면 관리자에게 이 설정을 확인해 달라고 요청하세요.",
+          "models": [
+            "ChatGPT"
+          ],
+          "source": {
+            "title": "Projects in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+          },
+          "addedAt": "2026-11-02"
         }
       ],
       "templates": [
@@ -1635,89 +1778,90 @@
         {
           "title": "Using GPT-6 (모델별 프롬프트·마이그레이션 가이드)",
           "url": "https://developers.openai.com/api/docs/guides/latest-model",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "220ef3bcc449ce6f",
           "changedAt": "2026-10-28"
         },
         {
           "title": "Prompt engineering (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "faa9f929eb1e3d8d"
         },
         {
           "title": "Image prompting (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/image-prompting",
-          "checkedAt": "2026-11-01 03:54",
-          "hash": "e13fe213872e4396",
-          "changedAt": "2026-10-30"
+          "checkedAt": "2026-11-02 04:16",
+          "hash": "7005e06cf3219976",
+          "changedAt": "2026-11-02"
         },
         {
           "title": "Voice prompting (Realtime API)",
           "url": "https://developers.openai.com/api/docs/guides/voice-prompting",
-          "checkedAt": "2026-11-01 03:54",
-          "hash": "bce0fa3c42897646"
+          "checkedAt": "2026-11-02 04:16",
+          "hash": "80af958d1acc90ef",
+          "changedAt": "2026-11-02"
         },
         {
           "title": "Prompting GPT-Live (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/live-prompting",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "123cf98ddbbddce5",
           "changedAt": "2026-10-27"
         },
         {
           "title": "Prompting (ChatGPT Learn)",
           "url": "https://learn.chatgpt.com/docs/prompting",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "a5482cef89036684"
         },
         {
           "title": "ChatGPT Enterprise Prompting Guide",
           "url": "https://learn.chatgpt.com/cookbook/examples/chatgpt/chatgpt_prompt_guide/chatgpt_prompt_guide",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "6cdc64d5460294b7"
         },
         {
           "title": "Memory in ChatGPT",
           "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
-          "checkedAt": "2026-11-01 03:54",
-          "hash": "bc68ee01f9bf5a39",
-          "changedAt": "2026-11-01"
+          "checkedAt": "2026-11-02 04:16",
+          "hash": "cb1e72bace8a11b0",
+          "changedAt": "2026-11-02"
         },
         {
           "title": "Deep research in ChatGPT",
           "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
-          "checkedAt": "2026-11-01 03:54",
-          "hash": "ae619311546575cd",
-          "changedAt": "2026-11-01"
+          "checkedAt": "2026-11-02 04:16",
+          "hash": "42ab5825482a6b7a",
+          "changedAt": "2026-11-02"
         },
         {
           "title": "Scheduled tasks in ChatGPT",
           "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
-          "checkedAt": "2026-11-01 03:54",
-          "hash": "6a593d13943508ab",
-          "changedAt": "2026-11-01"
+          "checkedAt": "2026-11-02 04:16",
+          "hash": "5e4be5bd1cd7dfac",
+          "changedAt": "2026-11-02"
         },
         {
           "title": "Writing blocks and code blocks in ChatGPT",
           "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-          "checkedAt": "2026-11-01 03:54",
-          "hash": "85af9f43afcfbf38",
-          "changedAt": "2026-11-01"
+          "checkedAt": "2026-11-02 04:16",
+          "hash": "481708e391cff3a0",
+          "changedAt": "2026-11-02"
         },
         {
           "title": "Projects in ChatGPT",
           "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-          "checkedAt": "2026-11-01 03:54",
-          "hash": "dcf0502f5ff4c727",
-          "changedAt": "2026-11-01"
+          "checkedAt": "2026-11-02 04:16",
+          "hash": "a458142aaf16595b",
+          "changedAt": "2026-11-02"
         },
         {
           "title": "ChatGPT custom instructions",
           "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-          "checkedAt": "2026-11-01 03:54",
-          "hash": "9a0cc5f98ee4d72f",
-          "changedAt": "2026-11-01"
+          "checkedAt": "2026-11-02 04:16",
+          "hash": "13739765ed460644",
+          "changedAt": "2026-11-02"
         }
       ]
     },
@@ -3263,77 +3407,77 @@
         {
           "title": "Prompting best practices (Claude Platform Docs)",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "78be8b607bc6ce50",
           "changedAt": "2026-11-01"
         },
         {
           "title": "Prompting Claude Opus 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "ed39f4f638c098c3",
           "changedAt": "2026-10-31"
         },
         {
           "title": "Prompting Claude Sonnet 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "c8df439708891144",
           "changedAt": "2026-10-28"
         },
         {
           "title": "Prompting Claude Fable 5.1",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "d3d6b705828e1800",
           "changedAt": "2026-10-30"
         },
         {
           "title": "Prompting Claude Haiku 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "e0ef187c449f74f3",
           "changedAt": "2026-10-28"
         },
         {
           "title": "Best practices for Claude Code",
           "url": "https://code.claude.com/docs/en/best-practices",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "f937550f929dab02",
           "changedAt": "2026-10-31"
         },
         {
           "title": "Use Claude's chat search and memory",
           "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "ca917ffcc14cd0ab",
           "changedAt": "2026-11-01"
         },
         {
           "title": "Use research on Claude",
           "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "5ec3a25228dc468a",
           "changedAt": "2026-10-31"
         },
         {
           "title": "What are artifacts and how do I use them?",
           "url": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "4bdcdf37c2073479",
           "changedAt": "2026-10-31"
         },
         {
           "title": "Schedule recurring tasks in Claude Cowork",
           "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "27cdfd2edc378465",
           "changedAt": "2026-11-01"
         },
         {
           "title": "How can I create and manage projects?",
           "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "c8947f64cddaf989",
           "changedAt": "2026-11-01"
         }
@@ -4059,89 +4203,89 @@
         {
           "title": "Prompt design strategies (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "c5b55a63c8d373cb"
         },
         {
           "title": "What's new in Gemini 4 Argon (Gemini API 최신 모델 가이드)",
           "url": "https://ai.google.dev/gemini-api/docs/latest-model",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "36c271bfc220f339",
           "changedAt": "2026-10-28"
         },
         {
           "title": "Thinking (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/thinking",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "8aa826721ab389f3"
         },
         {
           "title": "Nano Banana image generation: Prompting guide and strategies (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/image-generation",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "3f0ff37ca5598d70"
         },
         {
           "title": "Speech generation (TTS) 프롬프트 가이드 (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "5bda85efd054b5c6",
           "changedAt": "2026-10-30"
         },
         {
           "title": "How to create effective prompts with Gemini Omni (Google DeepMind)",
           "url": "https://deepmind.google/models/gemini-omni/prompt-guide",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "197498da6d54bd9c",
           "changedAt": "2026-10-31"
         },
         {
           "title": "Write effective skills (Gemini Apps Help)",
           "url": "https://support.google.com/gemini/answer/17102773?hl=en",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "b5e912109515d1c7"
         },
         {
           "title": "Customize Gemini's responses with your instructions",
           "url": "https://support.google.com/gemini/answer/16598625?hl=en",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "54518d8532eb8812"
         },
         {
           "title": "Memory of your past Gemini chats",
           "url": "https://support.google.com/gemini/answer/16598469?hl=en",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "66767b60a55d9e7a"
         },
         {
           "title": "Organize your projects with notebooks in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/16972047?hl=en",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "0dd39511812610f0"
         },
         {
           "title": "Use Deep Research in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/15719111?hl=en",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "1fef63dc283bdc74"
         },
         {
           "title": "Create docs, apps & more with Canvas",
           "url": "https://support.google.com/gemini/answer/16047321?hl=en",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "ece3ee46b1dee329"
         },
         {
           "title": "Manage your tasks & workflows in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/17094507?hl=en",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "f44bb0e6be458cf0",
           "changedAt": "2026-10-25"
         },
         {
           "title": "Schedule actions in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/16316416?hl=en",
-          "checkedAt": "2026-11-01 03:54",
+          "checkedAt": "2026-11-02 04:16",
           "hash": "e2a15a25c619dc3b"
         }
       ]
@@ -4256,7 +4400,7 @@
   "appFeatures": {
     "title": "태그 말고 앱에 있는 기능들: 세 앱 대응표",
     "intro": "태그는 프롬프트 안에서 구조를 만드는 방법이고 아래 기능들은 지시·자료·기억을 프롬프트 밖에 두거나 결과물을 다루는 방법입니다. 이름은 달라도 하는 일은 비슷하니, 쓰는 앱의 칸을 보고 '방법 보기'에서 자세한 사용법과 예시를 확인하세요. 칸마다 근거가 된 공식 도움말을 달았고 그 페이지가 바뀌면 이 표도 다시 확인합니다. 요금제·나이·지역에 따라 쓸 수 없는 기능이 있습니다.",
-    "checkedAt": "2026-11-01",
+    "checkedAt": "2026-11-02",
     "rows": [
       {
         "key": "instructions",
