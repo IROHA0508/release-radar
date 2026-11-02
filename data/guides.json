@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-02",
-  "checkedAt": "2026-11-02 04:16",
+  "updatedAt": "2026-11-03",
+  "checkedAt": "2026-11-03 07:58",
   "common": [
     {
       "title": "결과와 완료 기준을 먼저 쓰기",
@@ -1333,12 +1333,13 @@
           "id": "openai-project-delete-scope",
           "category": "앱 기능과 설정",
           "title": "프로젝트를 지우기 전에 사라지는 것과 남는 것 구분하기",
-          "body": "프로젝트는 더보기(•••) > Delete project로 삭제하며 되돌릴 수 없습니다. 프로젝트의 대화와 지시문, 프로젝트에만 저장된 파일이 영구히 지워집니다. Library에 따로 저장한 파일은 지워지지 않습니다. 공유 프로젝트라면 멤버 모두 접근을 잃으니 필요한 내용은 미리 복사해 두세요. OpenAI 도움말에 따르면 삭제된 프로젝트의 대화, 프로젝트에만 있던 파일, 지시문은 법률·보안상 보관할 사유가 없으면 30일 안에 OpenAI 시스템에서 제거됩니다.",
+          "body": "프로젝트는 더보기(•••) > Delete project로 삭제하며 되돌릴 수 없습니다. 프로젝트의 대화와 지시문, 프로젝트에만 저장된 파일이 영구히 지워집니다. Library나 Space에 따로 저장한 파일은 지워지지 않습니다. 공유 프로젝트라면 멤버 모두 접근을 잃으니 필요한 내용은 미리 복사해 두세요. OpenAI 도움말에 따르면 삭제된 프로젝트의 대화, 프로젝트에만 있던 파일, 지시문은 법률·보안상 보관할 사유가 없으면 30일 안에 OpenAI 시스템에서 제거됩니다.",
           "source": {
             "title": "Projects in ChatGPT",
             "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
           },
-          "addedAt": "2026-10-28"
+          "addedAt": "2026-10-28",
+          "updatedAt": "2026-11-03"
         },
         {
           "id": "openai-shared-project-visibility",
@@ -1778,90 +1779,90 @@
         {
           "title": "Using GPT-6 (모델별 프롬프트·마이그레이션 가이드)",
           "url": "https://developers.openai.com/api/docs/guides/latest-model",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "220ef3bcc449ce6f",
           "changedAt": "2026-10-28"
         },
         {
           "title": "Prompt engineering (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "faa9f929eb1e3d8d"
         },
         {
           "title": "Image prompting (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/image-prompting",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "7005e06cf3219976",
           "changedAt": "2026-11-02"
         },
         {
           "title": "Voice prompting (Realtime API)",
           "url": "https://developers.openai.com/api/docs/guides/voice-prompting",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "80af958d1acc90ef",
           "changedAt": "2026-11-02"
         },
         {
           "title": "Prompting GPT-Live (OpenAI API)",
           "url": "https://developers.openai.com/api/docs/guides/live-prompting",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "123cf98ddbbddce5",
           "changedAt": "2026-10-27"
         },
         {
           "title": "Prompting (ChatGPT Learn)",
           "url": "https://learn.chatgpt.com/docs/prompting",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "a5482cef89036684"
         },
         {
           "title": "ChatGPT Enterprise Prompting Guide",
           "url": "https://learn.chatgpt.com/cookbook/examples/chatgpt/chatgpt_prompt_guide/chatgpt_prompt_guide",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "6cdc64d5460294b7"
         },
         {
           "title": "Memory in ChatGPT",
           "url": "https://help.openai.com/en/articles/8590148-memory-in-chatgpt",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "cb1e72bace8a11b0",
           "changedAt": "2026-11-02"
         },
         {
           "title": "Deep research in ChatGPT",
           "url": "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "42ab5825482a6b7a",
           "changedAt": "2026-11-02"
         },
         {
           "title": "Scheduled tasks in ChatGPT",
           "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "5e4be5bd1cd7dfac",
           "changedAt": "2026-11-02"
         },
         {
           "title": "Writing blocks and code blocks in ChatGPT",
           "url": "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "481708e391cff3a0",
-          "changedAt": "2026-11-02"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "4f99138fedf98433",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "Projects in ChatGPT",
           "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "a458142aaf16595b",
-          "changedAt": "2026-11-02"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "8099e5fc04ea9d93",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "ChatGPT custom instructions",
           "url": "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "13739765ed460644",
-          "changedAt": "2026-11-02"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "e94fa94199dca484",
+          "changedAt": "2026-11-03"
         }
       ]
     },
@@ -2441,7 +2442,7 @@
           "id": "anthropic-haiku-search-date",
           "category": "도구와 API 설정",
           "title": "검색 도구를 줄 때는 오늘 날짜를 함께 알려 주기",
-          "body": "Claude Haiku 5.5에 검색 도구를 줄 때 오늘 날짜도 알려 주면 최근 검색 결과에 근거해 답했다고 Anthropic 테스트는 말합니다. 날짜는 시스템 프롬프트나 검색 도구 설명에 넣고 대화가 시작될 때 한 번만 채우세요. 시스템 프롬프트가 길거나 low effort일 때는 검색을 건너뛰는 일이 있어, 날짜 바로 뒤에 아래 문단을 덧붙이면 답이 바뀐 질문에서 검색 비율이 올랐습니다. '확신이 들어도 무조건 검색하라'는 식의 포괄 지시는 검색이 필요 없는 질문의 절반에서도 검색하게 하니 피하세요.",
+          "body": "Claude Haiku 5.5에 검색 도구를 줄 때 오늘 날짜도 알려 주면 최근 검색 결과에 근거해 답했다고 Anthropic 테스트는 말합니다. 날짜는 시스템 프롬프트나 검색 도구 설명에 넣어 대화가 시작될 때 한 번만 채우고 이후 요청에도 같은 system과 tools를 보내세요. 대화가 다음 날 이어지면 시스템 프롬프트를 고치지 말고 가장 최근 턴에 새 날짜를 적습니다. 시스템 프롬프트가 길거나 low effort일 때는 검색을 건너뛰는 일이 있어, 날짜 바로 뒤에 아래 문단을 덧붙이면 답이 바뀐 질문에서 검색 비율이 올랐습니다. 짧은 프롬프트의 medium effort에서는 날짜만으로도 검색이 늘어 이 문단을 생략해도 됩니다. '확신이 들어도 무조건 검색하라'는 식의 포괄 지시는 검색이 필요 없는 질문의 절반에서도 검색하게 하니 피하세요.",
           "before": "최신 버전이 뭐야? 검색해서 알려 줘.",
           "after": "The current date is [오늘 날짜].\nYour training data ends well before today's date. Records, office holders, prices, versions, rules and anything \"latest\" may have changed since then, so search for those before you answer, even when you feel sure. Facts that can't change need no search. When the answer depends on where the user is, put the user's country or region in the search query.",
           "models": [
@@ -2451,7 +2452,8 @@
             "title": "Prompting Claude Haiku 5.5",
             "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5"
           },
-          "addedAt": "2026-10-22"
+          "addedAt": "2026-10-22",
+          "updatedAt": "2026-11-03"
         },
         {
           "id": "anthropic-haiku-json-tools",
@@ -2825,7 +2827,7 @@
           "id": "anthropic-memory-pause-reset",
           "category": "앱 기능과 설정",
           "title": "메모리를 끌 때는 일시중지와 초기화를 구분해 고르기",
-          "body": "설정 > Your Claude의 'Memory from chats'(이전 설정 화면에서는 설정 > 메모리의 '채팅에서 메모리 생성') 토글을 누르면 선택지가 둘 나옵니다. '메모리 일시중지'는 저장된 메모리를 그대로 두고 쓰지도 새로 만들지도 않으며 중지 중 나눈 대화는 다시 켜도 메모리에 더해지지 않습니다. '메모리 초기화'는 프로젝트 메모리까지 모두 영구 삭제하고 되돌릴 수 없습니다. 일부만 지우고 싶다면 초기화 대신 주제 목록에서 해당 항목을 삭제하세요.",
+          "body": "설정 > Your Claude의 'Memory from chats'(이전 설정 화면에서는 설정 > 메모리의 '채팅에서 메모리 생성') 토글을 누르면 선택지가 둘 나옵니다. '메모리 일시중지'는 민감한 주제를 켜 둔 경우 그 항목까지 포함해 저장된 메모리를 그대로 두고 쓰지도 새로 만들지도 않으며 중지 중 나눈 대화는 다시 켜도 메모리에 더해지지 않습니다. 일시중지를 풀면 메모리와 민감한 주제 메모리가 모두 다시 켜집니다. '메모리 초기화'는 프로젝트 메모리까지 모두 영구 삭제하고 되돌릴 수 없습니다. 일부만 지우고 싶다면 초기화 대신 주제 목록에서 해당 항목을 삭제하세요.",
           "models": [
             "Claude"
           ],
@@ -2833,7 +2835,8 @@
             "title": "Use Claude's chat search and memory",
             "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
           },
-          "addedAt": "2026-10-25"
+          "addedAt": "2026-10-25",
+          "updatedAt": "2026-11-03"
         },
         {
           "id": "anthropic-artifact-fix-error",
@@ -3363,6 +3366,79 @@
             "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects"
           },
           "addedAt": "2026-11-01"
+        },
+        {
+          "id": "anthropic-haiku-effort-cache",
+          "category": "추론과 effort",
+          "title": "대화 중간에 effort를 바꿀 때는 메시지별 변경(베타)으로 캐시 지키기",
+          "body": "Claude Haiku 5.5에서 요청 사이에 최상위 effort 값을 바꾸면 그 대화의 메시지에 대한 프롬프트 캐시가 무효화됩니다. 플랫폼이 지원하면 메시지별 effort 변경(베타)으로 캐시를 유지한 채 대화 중간에 단계를 바꿉니다. 바꾼 값은 다른 변경이 덮어쓸 때까지 이후 모든 턴에 적용됩니다. mid-conversation-output-config-2026-07-01 베타 헤더와 기본값인 adaptive thinking이 필요하고 thinking을 끄면 400 오류가 납니다.",
+          "models": [
+            "Claude Haiku 5.5"
+          ],
+          "source": {
+            "title": "Prompting Claude Haiku 5.5",
+            "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "anthropic-skill-no-auto-invoke",
+          "category": "에이전트와 코딩",
+          "title": "부작용이 있는 스킬은 disable-model-invocation: true로 직접 실행만 허용하기",
+          "body": "팀의 릴리스 절차, 장애 대응 런북, API 문서 작성 방식처럼 코드에서 알 수 없는 절차는 .claude/skills/<name>/SKILL.md에 스킬로 저장합니다. 스킬은 이름과 설명만 매 세션 보이고 작업에 필요할 때 전체 파일을 읽으므로 CLAUDE.md보다 컨텍스트 부담이 적습니다. 실제 릴리스처럼 부작용이 있는 워크플로에는 disable-model-invocation: true를 넣으세요. Claude가 스스로 시작하지 못하고 /release처럼 직접 입력할 때만 실행됩니다.",
+          "code": "---\nname: release\ndescription: Cut a new release. Bumps the version, writes the changelog entry, tags it and pushes the tag so CI can publish.\ndisable-model-invocation: true\n---\n1. Make sure you're on main with a clean tree. If not, stop and ask.\n2. Run `pnpm changeset version` and commit the result.",
+          "models": [
+            "Claude Code"
+          ],
+          "source": {
+            "title": "Best practices for Claude Code",
+            "url": "https://code.claude.com/docs/en/best-practices"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "anthropic-deny-rules-files",
+          "category": "에이전트와 코딩",
+          "title": "읽으면 안 되는 파일은 프롬프트 대신 deny 규칙으로 막기",
+          "body": "deny 규칙은 auto와 bypassPermissions를 포함한 모든 권한 모드에서 적용되므로 .env 같은 파일 차단에 알맞습니다. .claude/settings.json의 permissions.deny에 Read(./.env)를 적으면 Read 도구는 물론 cat .env 같은 일반 파일 읽기 명령도 막힙니다. 다만 규칙은 의도가 아니라 도구 호출을 기준으로 맞춥니다. 파일을 여는 스크립트는 잡지 못하고 WebFetch의 도메인 deny 규칙도 sandbox를 켜지 않으면 같은 도메인으로 가는 curl을 막지 못합니다. 파일 시스템과 네트워크를 OS 수준에서 제한하려면 /sandbox를 켜세요. 보안이 걸린 일에는 둘을 함께 씁니다.",
+          "code": "{\n  \"permissions\": {\n    \"allow\": [\"Bash(pnpm tsc --noEmit)\"],\n    \"ask\": [\"Bash(git push *)\"],\n    \"deny\": [\"Read(./.env)\", \"Read(./.env.local)\", \"Read(./secrets/**)\"]\n  }\n}",
+          "models": [
+            "Claude Code"
+          ],
+          "source": {
+            "title": "Best practices for Claude Code",
+            "url": "https://code.claude.com/docs/en/best-practices"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "anthropic-hook-types-enforce",
+          "category": "에이전트와 코딩",
+          "title": "반드시 실행할 단계는 command·http hook으로 걸기",
+          "body": "hook은 도구 호출 전후나 Claude가 멈추려 할 때처럼 정해진 시점에 내 스크립트를 실행합니다. 종류는 셸 명령, HTTP POST, MCP 서버의 도구 호출, 그리고 모델이 판단하는 prompt·agent hook입니다. prompt·agent hook은 다른 모델이 결정하므로 결정적이지 않습니다. 확실히 강제하려면 command나 http hook을 쓰고 hook 자체가 죽거나 시간 초과일 때도 동작을 막고 싶다면 onFailure: \"block\"을 더하세요. 포맷터 규칙은 Edit|Write 뒤에 도는 PostToolUse hook으로 만들고 마이그레이션 폴더 보호는 해당 경로에 종료 코드 2를 내는 PreToolUse hook으로 만듭니다. 'write a hook that blocks edits to the migrations folder'라고 요청해도 만들어 주며 /hooks에서 결과를 볼 수 있습니다. 예외가 전혀 없는 규칙에만 쓰고 'Prefer named exports'처럼 예외가 많은 규칙은 CLAUDE.md에 두세요.",
+          "code": "{\n  \"hooks\": {\n    \"PostToolUse\": [\n      {\n        \"matcher\": \"Edit|Write\",\n        \"hooks\": [\n          {\n            \"type\": \"command\",\n            \"command\": \"npx prettier --write --ignore-unknown \\\"$(jq -r '.tool_input.file_path')\\\"\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+          "models": [
+            "Claude Code"
+          ],
+          "source": {
+            "title": "Best practices for Claude Code",
+            "url": "https://code.claude.com/docs/en/best-practices"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "anthropic-duet-memory-settings",
+          "category": "앱 기능과 설정",
+          "title": "Claude Duet에 지난 대화를 보여 주고 싶지 않으면 채팅 검색 설정부터 끄기",
+          "body": "Pro·Max·Ultra 요금제의 리서치 프리뷰인 Claude Duet도 '채팅 검색 및 참조' 설정을 따릅니다. 이 토글을 끄면 Duet도 지난 대화를 검색하지 못합니다. 메모리가 켜져 있으면 Duet은 메모리를 쓰고 새로 더하기도 하니, 첫 메시지부터 내 정보를 알고 시작합니다. 설정 > Your Claude(이전 설정 화면에서는 설정 > 메모리)에서 두 기능을 각각 조정하세요.",
+          "models": [
+            "Claude"
+          ],
+          "source": {
+            "title": "Use Claude's chat search and memory",
+            "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
+          },
+          "addedAt": "2026-11-03"
         }
       ],
       "templates": [
@@ -3407,77 +3483,77 @@
         {
           "title": "Prompting best practices (Claude Platform Docs)",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "78be8b607bc6ce50",
           "changedAt": "2026-11-01"
         },
         {
           "title": "Prompting Claude Opus 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "ed39f4f638c098c3",
           "changedAt": "2026-10-31"
         },
         {
           "title": "Prompting Claude Sonnet 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "c8df439708891144",
           "changedAt": "2026-10-28"
         },
         {
           "title": "Prompting Claude Fable 5.1",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "d3d6b705828e1800",
           "changedAt": "2026-10-30"
         },
         {
           "title": "Prompting Claude Haiku 5.5",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "e0ef187c449f74f3",
-          "changedAt": "2026-10-28"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "9ea76edefbb423e8",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "Best practices for Claude Code",
           "url": "https://code.claude.com/docs/en/best-practices",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "f937550f929dab02",
-          "changedAt": "2026-10-31"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "59de8715f566a287",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "Use Claude's chat search and memory",
           "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "ca917ffcc14cd0ab",
-          "changedAt": "2026-11-01"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "517536a88ab9184e",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "Use research on Claude",
           "url": "https://support.claude.com/en/articles/11088861-use-research-on-claude",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "5ec3a25228dc468a",
           "changedAt": "2026-10-31"
         },
         {
           "title": "What are artifacts and how do I use them?",
           "url": "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "4bdcdf37c2073479",
           "changedAt": "2026-10-31"
         },
         {
           "title": "Schedule recurring tasks in Claude Cowork",
           "url": "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "27cdfd2edc378465",
           "changedAt": "2026-11-01"
         },
         {
           "title": "How can I create and manage projects?",
           "url": "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "c8947f64cddaf989",
           "changedAt": "2026-11-01"
         }
@@ -4159,6 +4235,164 @@
             "url": "https://ai.google.dev/gemini-api/docs/speech-generation"
           },
           "addedAt": "2026-10-30"
+        },
+        {
+          "id": "google-completion-prefix",
+          "category": "예시 활용",
+          "title": "형식이 정해진 출력은 예시와 시작 부분을 주고 이어 쓰게 하기",
+          "body": "Google은 응답 형식을 말로 길게 설명하기 어려울 때 예시 하나와 응답의 시작 부분(prefix)을 주고 모델이 이어 쓰게 하는 completion 전략을 소개합니다. 원문 예시에서 주문 내용을 JSON으로 바꾸게 하자 주문하지 않은 항목까지 0으로 채웠지만 예시와 'Output:' 접두를 넣자 주문한 항목만 담았습니다. 에세이 개요도 'I. Introduction'과 글머리표 '*'로 시작 부분을 적어 두면 같은 패턴으로 이어 씁니다. 더 복잡한 JSON 스키마가 필요하면 structured output을 쓰라고 권합니다.",
+          "before": "주문 내용을 JSON으로 바꿔 줘. 각 항목의 값은 수량이야.",
+          "after": "사용할 수 있는 항목은 [항목 목록]입니다.\n주문: [예시 주문 문장]\nOutput:\n[예시 JSON]\n주문: [실제 주문 문장]\nOutput:",
+          "models": [
+            "Gemini 2.5 Flash"
+          ],
+          "source": {
+            "title": "Prompt design strategies (Gemini API)",
+            "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-argon-output-limit",
+          "category": "추론과 effort",
+          "title": "max_output_tokens는 생각과 출력의 합계 한도라 작업별로 정하기",
+          "body": "Gemini 4 Argon의 max_output_tokens는 엄격한 한도입니다. 생각과 출력 토큰의 합이 이 값에 닿으면 응답이 멈추므로 답이 잘리지 않을 만큼 높게 두세요. 원문은 시작값으로 일반 작업에는 기본값 65,536을 쓰거나 값을 지정하지 않기를, 복잡한 추론과 코딩에는 background: true와 함께 131,072 또는 262,144(최대 1,048,576에서 입력 토큰을 뺀 값)를 권합니다. 한도를 너무 높이면 어려운 프롬프트가 한도를 전부 쓸 때 비용이 커지니 이 점도 함께 보세요.",
+          "code": "interaction = client.interactions.create(\n    model=\"gemini-4-argon\",\n    input=\"[복잡한 추론이나 코딩 요청]\",\n    background=True,\n    generation_config={\n        \"max_output_tokens\": 131072,\n        \"thinking_level\": \"high\",\n    },\n)",
+          "models": [
+            "gemini-4-argon"
+          ],
+          "source": {
+            "title": "What's new in Gemini 4 Argon (Gemini API 최신 모델 가이드)",
+            "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-argon-managed-agent-model",
+          "category": "에이전트와 코딩",
+          "title": "Managed Agents의 Antigravity 에이전트는 agent_config에서 Argon 지정하기",
+          "body": "Gemini Managed Agents의 Antigravity 에이전트가 Gemini 4 Argon을 지원합니다. 사용하려면 요청의 agent_config에 type을 antigravity로, model을 gemini-4-argon으로 적으세요. 원문 예시는 웹사이트의 성능과 SEO를 점검하라는 요청에서 양쪽 환경(모바일, 데스크톱)을 모두 조회하게 하고 우선순위가 붙은 수정 목록을 표로 받도록 출력 형식까지 적었습니다.",
+          "code": "interaction = client.interactions.create(\n    agent=\"antigravity-preview-09-2026\",\n    input=\"[에이전트에게 맡길 작업과 출력 형식]\",\n    environment=\"remote\",\n    agent_config={\n        \"type\": \"antigravity\",\n        \"model\": \"gemini-4-argon\",\n    },\n)",
+          "models": [
+            "gemini-4-argon"
+          ],
+          "source": {
+            "title": "What's new in Gemini 4 Argon (Gemini API 최신 모델 가이드)",
+            "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-thought-summaries",
+          "category": "추론과 effort",
+          "title": "생각 요약은 thinking_summaries로 켜고 summary가 비어 있어도 동작하게 만들기",
+          "body": "Interactions API는 기본값으로 최종 출력만 돌려줍니다. generation_config에 thinking_summaries를 \"auto\"로 넣으면 thought 단계의 summary로 추론 요약을 받습니다. 원문은 이 요약을 읽고 실패 원인을 파악해 프롬프트를 고치라고 권합니다. 간단한 요청, \"none\" 설정, 이미지 같은 일부 내용 유형에서는 signature만 오고 summary가 비거나 없을 수 있으니 코드가 그 경우를 처리해야 합니다. 요금은 출력된 요약이 아니라 모델이 실제로 만든 전체 생각 토큰 기준입니다.",
+          "code": "interaction = client.interactions.create(\n    model=\"gemini-3.8-flash\",\n    input=\"What is the sum of the first 50 prime numbers?\",\n    generation_config={\"thinking_summaries\": \"auto\"}\n)\nfor step in interaction.steps:\n    if step.type == \"thought\" and step.summary:\n        for block in step.summary:\n            if block.type == \"text\":\n                print(block.text)",
+          "models": [
+            "Gemini 3.8 Flash"
+          ],
+          "source": {
+            "title": "Thinking (Gemini API)",
+            "url": "https://ai.google.dev/gemini-api/docs/thinking"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-thought-signature-stateless",
+          "category": "도구와 API 설정",
+          "title": "대화 기록을 직접 관리하면 thought 블록을 받은 그대로 다시 보내기",
+          "body": "store: true와 previous_interaction_id로 서버가 대화 상태를 관리하는 stateful 모드에서는 서명을 따로 다루지 않아도 됩니다. 입력과 출력 전체 기록을 직접 보내는 stateless 모드에서는 thought 블록을 받은 그대로 매번 다시 보내야 하고 지우거나 고치면 안 됩니다. 서명은 모델이 추론을 이어 가는 데 필요합니다. 세션 중에 모델을 바꿔도 이전 모델의 thought 블록을 다시 보내고 Google 검색 같은 내장 도구 호출·결과 블록의 서명도 함께 보내세요.",
+          "models": [
+            "Gemini 3.8 Flash",
+            "Gemini 4 Argon"
+          ],
+          "source": {
+            "title": "Thinking (Gemini API)",
+            "url": "https://ai.google.dev/gemini-api/docs/thinking"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-image-multiturn",
+          "category": "이미지·영상·음성",
+          "title": "이미지는 대화로 고치고 previous_interaction_id로 이어 가기",
+          "body": "Google은 이미지를 다듬을 때 멀티턴 대화를 권장 방식으로 소개합니다. 첫 결과를 받은 뒤 previous_interaction_id에 이전 interaction의 id를 넘기고 바꿀 것만 요청하세요. 원문 예시는 인포그래픽을 스페인어로 바꿔 달라고 하면서 'Do not change any other elements of the image.'를 붙여 나머지는 그대로 두게 했습니다.",
+          "before": "광합성 인포그래픽을 스페인어로 처음부터 다시 만들어 줘.",
+          "after": "이 인포그래픽을 [언어]로 바꿔 줘. 이미지의 다른 요소는 바꾸지 마.",
+          "code": "interaction_2 = client.interactions.create(\n    model=\"gemini-nano-banana-2.1\",\n    input=\"Update this infographic to be in Spanish. Do not change any other elements of the image.\",\n    previous_interaction_id=interaction.id,\n)",
+          "models": [
+            "Nano Banana 2.1"
+          ],
+          "source": {
+            "title": "Nano Banana image generation: Prompting guide and strategies (Gemini API)",
+            "url": "https://ai.google.dev/gemini-api/docs/image-generation"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-image-context-steps",
+          "category": "이미지·영상·음성",
+          "title": "이미지의 목적을 알려 주고 복잡한 장면은 단계로 나눠 쓰기",
+          "body": "Google은 이미지의 목적을 함께 설명하라고 권합니다. 원문은 'Create a logo for a high-end, minimalist skincare brand'가 'Create a logo'보다 낫다고 설명합니다. 요소가 많은 복잡한 장면은 'First, … Then, … Finally, …'처럼 프롬프트를 단계로 나눠 쓰라고 합니다. 세부 묘사도 구체적일수록 통제력이 커집니다.",
+          "before": "안개 낀 숲에 제단과 검이 있는 그림을 그려 줘.",
+          "after": "먼저 새벽의 고요하고 안개 낀 숲을 배경으로 만들어 줘. 그다음 전경에 이끼 덮인 오래된 돌 제단을 넣어 줘. 마지막으로 제단 위에 빛나는 검 하나를 놓아 줘. 용도는 [사용 목적]이야.",
+          "models": [
+            "Nano Banana 2.1",
+            "Nano Banana Pro"
+          ],
+          "source": {
+            "title": "Nano Banana image generation: Prompting guide and strategies (Gemini API)",
+            "url": "https://ai.google.dev/gemini-api/docs/image-generation"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-image-size-ratio",
+          "category": "이미지·영상·음성",
+          "title": "해상도와 비율은 response_format으로 정하고 K는 대문자로 쓰기",
+          "body": "이미지 크기와 비율은 response_format의 image_size와 aspect_ratio로 정합니다. 따로 정하지 않으면 입력 이미지 크기를 따르고 입력이 없으면 1:1 정사각형이 나옵니다. 1K, 2K, 4K처럼 K는 대문자로 써야 하며 1k처럼 소문자를 쓰면 요청이 거부됩니다. 512px는 Gemini 3.1 Flash Image에서만 되고 Nano Banana 2.1에서는 지원하지 않습니다.",
+          "code": "response_format={\n    \"type\": \"image\",\n    \"aspect_ratio\": \"16:9\",\n    \"image_size\": \"2K\",\n}",
+          "models": [
+            "Nano Banana 2.1",
+            "Nano Banana 2",
+            "Nano Banana Pro"
+          ],
+          "source": {
+            "title": "Nano Banana image generation: Prompting guide and strategies (Gemini API)",
+            "url": "https://ai.google.dev/gemini-api/docs/image-generation"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-tts-output-format",
+          "category": "도구와 API 설정",
+          "title": "TTS 출력 형식은 요청 방식마다 다르니 필요하면 mime_type으로 정하기",
+          "body": "Gemini 3.8 TTS는 일반 요청(stream=False)에서 RIFF 헤더가 붙은 WAV(audio/wav)를, 스트리밍 요청(stream=True)에서 헤더 없는 raw PCM(audio/l16)을 기본으로 돌려줍니다. 둘 다 24 kHz, 모노, 16비트입니다. 기존 파이프라인이 헤더 없는 PCM이나 mu-law, A-law를 기대하면 response_format의 mime_type을 audio/l16, audio/mulaw, audio/alaw 중에서 직접 지정하세요. sample_rate는 24000, 16000, 8000 Hz 등으로 정할 수 있고 기본값은 24000 Hz입니다.",
+          "code": "response_format={\n    \"type\": \"audio\",\n    \"mime_type\": \"audio/l16\",\n    \"sample_rate\": 24000,\n}",
+          "models": [
+            "gemini-3.8-flash-tts",
+            "gemini-3.8-flash-lite-tts"
+          ],
+          "source": {
+            "title": "Speech generation (TTS) 프롬프트 가이드 (Gemini API)",
+            "url": "https://ai.google.dev/gemini-api/docs/speech-generation"
+          },
+          "addedAt": "2026-11-03"
+        },
+        {
+          "id": "google-tts-multispeaker-limit",
+          "category": "도구와 API 설정",
+          "title": "한 요청의 다중 화자는 2명까지, 커스텀 목소리는 턴별로 따로 합성하기",
+          "body": "speech_config.speakers를 쓰는 한 번의 다중 화자 요청은 미리 만들어진 목소리로 최대 2명까지 지원합니다. Voice design이나 Voice replication으로 만든 목소리(voice_... 또는 voicekey_...)를 한 대화에 섞으려면 화자별 턴을 하나씩 따로 합성해야 합니다. 일반 요청은 기본으로 44바이트 RIFF 헤더가 붙은 audio/wav를 돌려주므로 이어 붙이기 전에 audio/l16을 요청하거나 각 턴의 WAV 헤더를 떼어 내고 24kHz PCM 프레임을 연결하세요.",
+          "models": [
+            "gemini-3.8-flash-tts",
+            "gemini-3.8-flash-lite-tts"
+          ],
+          "source": {
+            "title": "Speech generation (TTS) 프롬프트 가이드 (Gemini API)",
+            "url": "https://ai.google.dev/gemini-api/docs/speech-generation"
+          },
+          "addedAt": "2026-11-03"
         }
       ],
       "templates": [
@@ -4203,89 +4437,92 @@
         {
           "title": "Prompt design strategies (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "c5b55a63c8d373cb"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "e7df917223e27d4f",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "What's new in Gemini 4 Argon (Gemini API 최신 모델 가이드)",
           "url": "https://ai.google.dev/gemini-api/docs/latest-model",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "36c271bfc220f339",
-          "changedAt": "2026-10-28"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "6ce2666c5c069240",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "Thinking (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/thinking",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "8aa826721ab389f3"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "c146e480587b4638",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "Nano Banana image generation: Prompting guide and strategies (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/image-generation",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "3f0ff37ca5598d70"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "787b591b7660ada2",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "Speech generation (TTS) 프롬프트 가이드 (Gemini API)",
           "url": "https://ai.google.dev/gemini-api/docs/speech-generation",
-          "checkedAt": "2026-11-02 04:16",
-          "hash": "5bda85efd054b5c6",
-          "changedAt": "2026-10-30"
+          "checkedAt": "2026-11-03 07:58",
+          "hash": "91c43307ae3681b8",
+          "changedAt": "2026-11-03"
         },
         {
           "title": "How to create effective prompts with Gemini Omni (Google DeepMind)",
           "url": "https://deepmind.google/models/gemini-omni/prompt-guide",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "197498da6d54bd9c",
           "changedAt": "2026-10-31"
         },
         {
           "title": "Write effective skills (Gemini Apps Help)",
           "url": "https://support.google.com/gemini/answer/17102773?hl=en",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "b5e912109515d1c7"
         },
         {
           "title": "Customize Gemini's responses with your instructions",
           "url": "https://support.google.com/gemini/answer/16598625?hl=en",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "54518d8532eb8812"
         },
         {
           "title": "Memory of your past Gemini chats",
           "url": "https://support.google.com/gemini/answer/16598469?hl=en",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "66767b60a55d9e7a"
         },
         {
           "title": "Organize your projects with notebooks in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/16972047?hl=en",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "0dd39511812610f0"
         },
         {
           "title": "Use Deep Research in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/15719111?hl=en",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "1fef63dc283bdc74"
         },
         {
           "title": "Create docs, apps & more with Canvas",
           "url": "https://support.google.com/gemini/answer/16047321?hl=en",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "ece3ee46b1dee329"
         },
         {
           "title": "Manage your tasks & workflows in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/17094507?hl=en",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "f44bb0e6be458cf0",
           "changedAt": "2026-10-25"
         },
         {
           "title": "Schedule actions in Gemini Apps",
           "url": "https://support.google.com/gemini/answer/16316416?hl=en",
-          "checkedAt": "2026-11-02 04:16",
+          "checkedAt": "2026-11-03 07:58",
           "hash": "e2a15a25c619dc3b"
         }
       ]
@@ -4400,7 +4637,7 @@
   "appFeatures": {
     "title": "태그 말고 앱에 있는 기능들: 세 앱 대응표",
     "intro": "태그는 프롬프트 안에서 구조를 만드는 방법이고 아래 기능들은 지시·자료·기억을 프롬프트 밖에 두거나 결과물을 다루는 방법입니다. 이름은 달라도 하는 일은 비슷하니, 쓰는 앱의 칸을 보고 '방법 보기'에서 자세한 사용법과 예시를 확인하세요. 칸마다 근거가 된 공식 도움말을 달았고 그 페이지가 바뀌면 이 표도 다시 확인합니다. 요금제·나이·지역에 따라 쓸 수 없는 기능이 있습니다.",
-    "checkedAt": "2026-11-02",
+    "checkedAt": "2026-11-03",
     "rows": [
       {
         "key": "instructions",

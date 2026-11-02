@@ -118,7 +118,8 @@
       ],
       "news": [
         "gpt-6-model-guide",
-        "openai-retained-reasoning-compaction"
+        "openai-retained-reasoning-compaction",
+        "claude-message-threads"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -364,7 +365,8 @@
         "claude-code-session-value-tips",
         "openai-retained-reasoning-compaction",
         "gpt-6-model-guide",
-        "gemini-app-small-business-tools"
+        "gemini-app-small-business-tools",
+        "claude-message-threads"
       ],
       "verifiedAt": "2026-10-21"
     },

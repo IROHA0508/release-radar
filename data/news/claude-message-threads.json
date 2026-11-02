@@ -1,0 +1,87 @@
+{
+  "id": "claude-message-threads",
+  "company": "anthropic",
+  "date": "2026-11-02",
+  "kind": "제품·기능 출시",
+  "title": "Message threads",
+  "headline": "매 턴 전체 대화를 다시 보내지 않아 긴 에이전트 세션의 첫 응답이 빨라집니다",
+  "tldr": "Claude Platform에서 public beta로 열린 기능입니다. 첫 요청에서 스레드를 시작하면 이후에는 새 메시지와 직전 응답 ID만 보내면 됩니다. Claude Code 사용자 대부분에게는 기본으로 켜져 있고 500k~1M 토큰 요청의 time to first token(TTFT) 중앙값이 약 35% 줄었습니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "TTFT 감소",
+      "value": "약 35%",
+      "note": "500k~1M 토큰 요청의 중앙값, Claude Code 기본 적용 기준"
+    },
+    {
+      "label": "스레드 만료",
+      "value": "5분",
+      "note": "마지막 요청 후, 이후에는 전체 대화를 다시 보내 새 스레드를 시작"
+    },
+    {
+      "label": "토큰 사용량",
+      "value": "동일",
+      "note": "요청은 작아져도 Claude는 매 턴 전체 대화를 읽음"
+    },
+    {
+      "label": "제공 단계",
+      "value": "public beta",
+      "note": "Claude Platform 등 4개 환경"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 비교 그래프는 없고 TTFT 약 35% 감소 수치만 본문에 있어 차트는 만들지 않았습니다.",
+  "changes": [
+    "코딩 에이전트는 한 세션에서 수백 번 요청하고 요청마다 이전 메시지와 도구 결과를 모두 다시 보냈습니다. Message threads는 이 재전송을 없앱니다.",
+    "Messages API 요청에 thread 파라미터를 추가해 씁니다. 첫 요청은 전체 대화를 보내 스레드를 시작합니다.",
+    "이후 요청에는 새 메시지와 직전 응답 ID만 담습니다.",
+    "Anthropic은 각 스레드를 턴 사이에 메모리에 보관하며 암호화되어 디스크에는 기록되지 않는다고 밝혔습니다.",
+    "스레드는 마지막 요청 5분 뒤에 만료됩니다. 그 뒤에는 클라이언트가 전체 대화를 다시 보내 새 스레드를 시작합니다.",
+    "요청이 작아져도 Claude는 매 턴 전체 대화를 읽으므로 토큰 사용량은 그대로입니다."
+  ],
+  "availability": [
+    "public beta로 네이티브 Claude Platform에서 사용 가능합니다.",
+    "Claude Platform on AWS, Claude in Microsoft Foundry, Claude Models on Google Cloud(Anthropic managed)에서도 쓸 수 있습니다.",
+    "Claude Code 사용자 대부분에게는 기본으로 켜져 있습니다.",
+    "표준 Claude 토큰 요금과 기존 속도 제한이 그대로 적용됩니다."
+  ],
+  "tips": [
+    {
+      "title": "컨텍스트가 큰 세션부터 적용",
+      "body": "에이전트가 담고 있는 컨텍스트가 많을수록 TTFT 감소 폭이 커집니다. 수십만 토큰까지 쌓이는 장기 세션부터 켜 보세요."
+    },
+    {
+      "title": "스크린샷이 많은 컴퓨터 유즈 에이전트",
+      "body": "스레드에서는 스크린샷이 매 턴 다시 업로드되지 않고 스레드에 남습니다. 이미지가 많은 워크플로에 잘 맞습니다."
+    },
+    {
+      "title": "5분 만료 처리",
+      "body": "요청 간격이 5분을 넘으면 스레드가 끝납니다. 이때는 전체 대화를 다시 보내 새 스레드를 시작하도록 클라이언트를 짜 두세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "내 에이전트 루프 점검",
+      "when": "Claude Code에서 직접 만든 에이전트가 message threads에 맞는지 살필 때",
+      "type": "prompt",
+      "text": "이 저장소의 에이전트 루프에서 Messages API를 호출하는 부분을 찾아줘.\n\n- 요청마다 전체 대화 기록을 다시 보내는 곳을 알려줘\n- 공식 문서(https://platform.claude.com/docs/en/build-with-claude/message-threads)를 읽고 thread 파라미터를 쓰도록 바꾸는 계획을 세워줘\n- 스레드가 5분 뒤 만료될 때 전체 대화를 다시 보내는 처리도 포함해줘\n\n코드는 계획을 확인한 뒤에 고쳐."
+    },
+    {
+      "title": "적용 효과 측정 계획",
+      "when": "적용 전후 응답 속도를 비교하고 싶을 때",
+      "type": "prompt",
+      "text": "[에이전트 이름]의 긴 세션에서 time to first token을 측정하는 간단한 로깅을 추가하는 방법을 제안해줘. 컨텍스트가 [토큰 수] 안팎일 때 thread 사용 전후의 중앙값을 비교할 수 있게 해줘."
+    }
+  ],
+  "cautions": [
+    "토큰 사용량은 줄지 않습니다. 줄어드는 것은 전송량과 첫 응답까지의 지연입니다.",
+    "public beta 기능이라 동작이 바뀔 수 있습니다. 상세 사용법은 공식 문서를 확인하세요.",
+    "TTFT 35% 감소는 Claude Code 기본 적용 환경에서 500k~1M 토큰 요청으로 잰 중앙값입니다. 다른 작업에서는 다를 여지가 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Make long-running agents faster with message threads (Claude)",
+      "url": "https://claude.com/resources/articles/message-threads"
+    }
+  ]
+}

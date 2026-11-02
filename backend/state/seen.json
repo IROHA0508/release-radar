@@ -849,6 +849,14 @@
       "status": "skipped",
       "title": "IDC brings Quanta into Claude and adopts Claude across the company"
     },
+    "https://claude.com/resources/articles/message-threads": {
+      "checkedAt": "2026-11-03",
+      "company": "anthropic",
+      "date": "2026-11-02",
+      "id": "claude-message-threads",
+      "status": "added",
+      "title": "Make long-running agents faster with message threads"
+    },
     "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets": {
       "checkedAt": "2026-10-29",
       "company": "anthropic",
@@ -944,6 +952,14 @@
       "reason": "Gemini at Work 2026 키노트 요약으로, 기업용 Gemini 에이전트 제품 소개와 고객 사례, 거버넌스·비용 통제 기능 발표가 중심입니다. 새 모델 출시나 모델 가격·가용성 변경이 아니고, 독자가 바로 따라 할 실전 활용 팁도 없습니다. 제품·영업 공지와 고객 사례로 보고 제외합니다.",
       "status": "skipped",
       "title": "Welcome to Gemini at Work 2026: Introducing the Gemini agent"
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month": {
+      "checkedAt": "2026-11-03",
+      "company": "google",
+      "date": "2026-11-02",
+      "reason": "월간 뉴스 정리 페이지로 구체적인 새 모델, 기능, 업데이트 내용 없음",
+      "status": "skipped",
+      "title": "What Google Cloud announced in AI this month"
     },
     "https://cloud.google.com/blog/products/data-analytics/using-bigquerys-generative-ai-cost-management-features": {
       "checkedAt": "2026-10-15",
@@ -1940,6 +1956,14 @@
       "status": "skipped",
       "title": "Proaction boosts sales 60% and saves 75+ hours with Codex"
     },
+    "https://openai.com/index/qodo-codex-plugin": {
+      "checkedAt": "2026-11-03",
+      "company": "openai",
+      "date": "2026-11-02",
+      "reason": "고객 사례 및 기업 파트너십. Qodo라는 외부 도구가 Codex를 활용하는 통합 사례로 OpenAI 공식 기능 출시가 아님",
+      "status": "skipped",
+      "title": "Qodo builds context into AI code review with Codex"
+    },
     "https://openai.com/index/radisson": {
       "checkedAt": "2026-10-08",
       "company": "openai",
@@ -2139,6 +2163,14 @@
       "id": "claude-opus-4-8",
       "status": "updated",
       "title": "We’ve deprecated fast mode for Claude Opus 4.8, with removal on November 30, 2026."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-02-f2e3169e": {
+      "checkedAt": "2026-11-03",
+      "company": "anthropic",
+      "date": "2026-11-02",
+      "reason": "인덱스 [1]과 동일한 Message Threads 기능을 다루는 중복 소식 (블로그 vs 릴리스 노트)",
+      "status": "skipped",
+      "title": "Long conversations and agent loops on the Messages API can now send smaller requests and get a lower time to first token with message threads, in beta with the message-threads-2026-08-12 beta header."
     }
   }
 }

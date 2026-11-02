@@ -1,6 +1,7 @@
 {
-  "lastChecked": "2026-11-02 19:12",
+  "lastChecked": "2026-11-03 07:58",
   "news": [
+    "claude-message-threads",
     "gpt-6-rosalind",
     "google-a2ui-copilotkit-generative-ui",
     "claude-usage-cost-analytics-api",
