@@ -15,7 +15,10 @@
     "그다음 이력서 작성 전문가 역할을 맡기는 프롬프트를 붙입니다. 원문 프롬프트는 날것 그대로의 메모를 지원 직무용 이력서 문장 네 개로 바꿔 달라는 내용입니다.",
     "프롬프트는 각 문장을 강한 행동 동사로 시작하고 어조는 임원급으로 명확하게, ATS 친화적으로 유지하라고 요구합니다.",
     "결과가 나오면 Gemini와 대화를 주고받으며 세부 내용, 어조, 초점을 조정합니다.",
-    "마지막으로 완성된 문장을 복사해 이력서에 붙여 넣습니다."
+    "마지막으로 완성된 문장을 복사해 이력서에 붙여 넣습니다.",
+    "Google Cloud 블로그는 토큰당 가격이 아니라 검증을 통과한 작업 하나당 비용으로 에이전트 비용을 따지라고 권합니다.",
+    "50문항 코딩 에이전트 테스트에서 Gemini 3.8 Flash를 thinkingLevel \"LOW\"로 쓰면 50문항을 모두 풀었습니다. maxOutputTokens만 낮추면 쉬운 작업의 사고 토큰이 줄지 않아 비용 절감에 도움이 되지 않았습니다.",
+    "분류기 Jev로 쉬운 작업은 Flash-Lite에, 어려운 작업은 Flash(low)로 보내는 라우터도 50문항을 모두 풀었습니다. 키워드 규칙 라우터는 48문항(96.0%)이었고 컨텍스트 캐시는 모델마다 따로여서 긴 작업은 한 모델에 두라고 안내합니다."
   ],
   "availability": [
     "Gemini 앱"
@@ -56,6 +59,14 @@
     {
       "title": "How to use Gemini to update your resume (Google)",
       "url": "https://blog.google/innovation-and-ai/products/gemini-app/update-resume-with-gemini/"
+    },
+    {
+      "title": "Cost per task: Using cheap classifiers to route across Gemini models and thinking levels",
+      "url": "https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels/"
+    },
+    {
+      "title": "Cost per task: Using cheap classifiers to route across Gemini models and thinking levels (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels/"
     }
   ]
 }

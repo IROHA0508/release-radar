@@ -1,0 +1,107 @@
+{
+  "id": "gemini-2-5-pro-deprecation",
+  "company": "google",
+  "date": "2026-11-02",
+  "kind": "모델 업데이트",
+  "title": "Gemini 2.5 Pro",
+  "headline": "12월 1일부터 gemini-2.5-pro 요청이 Gemini 3.8 Flash로 자동 전환됩니다",
+  "tldr": "Google이 gemini-2.5-pro를 지원 종료(deprecated)로 바꿨고 Google AI Studio에서는 이제 선택할 수 없습니다. 2026년 12월 1일부터 gemini-2.5-pro로 보내는 모든 API 요청이 gemini-3.8-flash로 자동 전환되고 Gemini 3.8 Flash 요금이 청구됩니다. 12월 1일 전에 모델 문자열을 바꾸고 마이그레이션 가이드의 호환성 변경을 확인해야 합니다.",
+  "models": [
+    {
+      "name": "Gemini 2.5 Pro",
+      "apiId": "gemini-2.5-pro",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Gemini 3.8 Flash",
+      "apiId": "gemini-3.8-flash",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "자동 전환 시작일",
+      "value": "2026-12-01",
+      "note": "이날부터 gemini-2.5-pro 요청이 gemini-3.8-flash로 전환됨"
+    },
+    {
+      "label": "전환 대상 모델",
+      "value": "gemini-3.8-flash",
+      "note": "청구도 Gemini 3.8 Flash 요금 기준"
+    },
+    {
+      "label": "AI Studio 선택",
+      "value": "불가",
+      "note": "gemini-2.5-pro는 Google AI Studio에서 더 이상 선택할 수 없음"
+    }
+  ],
+  "charts": [],
+  "chartNote": "성능 비교 수치가 없는 지원 종료 공지라 그래프를 만들지 않았습니다.",
+  "changes": [
+    "gemini-2.5-pro가 지원 종료(deprecated) 상태가 됐고 Google AI Studio에서 이제 선택할 수 없습니다.",
+    "2026년 12월 1일부터 gemini-2.5-pro로 가는 모든 API 요청이 gemini-3.8-flash로 자동 전환됩니다.",
+    "자동 전환된 요청은 Gemini 3.8 Flash 요금으로 청구됩니다.",
+    "마이그레이션 시 깨질 수 있는 API 변경으로 함수 호출과 thought_signature 검증이 있습니다.",
+    "thinking_budget 대신 thinking_level을 쓰며 샘플링 파라미터와 미리 채운 모델 턴(prefilled model turns)은 제거됐습니다."
+  ],
+  "availability": [
+    "Google AI Studio: gemini-2.5-pro 선택 불가",
+    "Gemini API: 2026년 12월 1일부터 gemini-2.5-pro 요청이 gemini-3.8-flash로 자동 라우팅",
+    "대체 모델 API 모델명: gemini-3.8-flash"
+  ],
+  "tips": [
+    {
+      "title": "12월 1일 전에 모델 문자열 바꾸기",
+      "body": "코드와 설정에 적힌 gemini-2.5-pro를 gemini-3.8-flash로 직접 바꿔 두면 자동 전환 시점에 예기치 않게 동작이 달라지는 일을 피할 수 있습니다."
+    },
+    {
+      "title": "마이그레이션 가이드로 깨지는 부분 확인",
+      "body": "Gemini 3.8 Flash 마이그레이션 가이드를 열어 함수 호출 코드와 thought_signature 검증, thinking_level 전환, 제거된 파라미터를 하나씩 대조하세요."
+    },
+    {
+      "title": "요금 변화 미리 확인",
+      "body": "전환 후에는 Gemini 3.8 Flash 요금이 적용됩니다. 공식 가격 페이지에서 예상 비용을 미리 계산해 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "모델 문자열 교체 예시 (Python)",
+      "when": "Gemini API 코드에서 모델 이름만 먼저 바꿀 때",
+      "type": "code",
+      "text": "from google import genai\n\nclient = genai.Client()\n\nresponse = client.models.generate_content(\n    model=\"gemini-3.8-flash\",  # 이전: gemini-2.5-pro\n    contents=\"[요청]\",\n)\nprint(response.text)"
+    },
+    {
+      "title": "마이그레이션 점검 요청",
+      "when": "코딩 에이전트에게 저장소 점검을 맡길 때",
+      "type": "prompt",
+      "text": "이 저장소에서 gemini-2.5-pro를 쓰는 곳을 모두 찾아줘.\n\n- 각 위치를 gemini-3.8-flash로 바꾸는 수정안을 제안해\n- thinking_budget을 쓰는 곳은 thinking_level로 바꿀 방법을 알려줘\n- 샘플링 파라미터나 prefilled model turn을 쓰는 곳은 따로 목록으로 정리해줘\n- 파일은 아직 수정하지 말고 변경 계획만 보여줘"
+    }
+  ],
+  "cautions": [
+    "thinking_budget을 thinking_level로 바꾸는 등 호환성이 깨지는 변경이 있어 모델 이름만 바꾸면 동작하지 않을 수 있습니다.",
+    "자동 전환 후에는 응답 특성과 비용이 gemini-2.5-pro와 달라질 수 있으니 12월 1일 전에 직접 테스트하는 편이 안전합니다.",
+    "원문에는 3.8 Flash의 가격 수치가 없습니다. 금액은 공식 가격 페이지에서 확인이 필요합니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 변경 기록 2026-11-02 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-02"
+    },
+    {
+      "title": "Gemini 2.5 Pro 지원 종료 안내 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/deprecations#gemini-2.5-pro-models"
+    },
+    {
+      "title": "Gemini 3.8 Flash 마이그레이션 가이드 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/whats-new-gemini-3.8#migrate-to-gemini-3-8-flash"
+    },
+    {
+      "title": "Gemini 3.8 Flash 가격 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/pricing#gemini-3.8-flash"
+    }
+  ]
+}

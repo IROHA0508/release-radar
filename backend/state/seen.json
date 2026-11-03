@@ -19,6 +19,22 @@
       "status": "added",
       "title": "Gemini API CLI (gemini-api) beta : Released the [Gemini API"
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-02-47611cf0": {
+      "checkedAt": "2026-11-04",
+      "company": "google",
+      "date": "2026-11-02",
+      "id": "gemini-2-5-pro-deprecation",
+      "status": "added",
+      "title": "Gemini 2.5 Pro deprecation:gemini-2.5-pro isdeprecated and is no longer available to select in Google AI Studio."
+    },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-02-a993183a": {
+      "checkedAt": "2026-11-04",
+      "company": "google",
+      "date": "2026-11-02",
+      "id": "gemini-2-5-flash-deprecation",
+      "status": "added",
+      "title": "Gemini 2.5 Flash deprecation:gemini-2.5-flash isdeprecated and is no longer available to select in Google AI Studio."
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -945,6 +961,14 @@
       "status": "skipped",
       "title": "Google named a Leader in the 2026 IDC MarketScape for Agentic AI Platforms"
     },
+    "https://cloud.google.com/blog/products/ai-machine-learning/introducing-physical-engineerings-last-exam-for-agents": {
+      "checkedAt": "2026-11-04",
+      "company": "google",
+      "date": "2026-11-03",
+      "reason": "에이전트 평가 벤치마크/지표로, 모델 사용과 직결되지 않은 연구·평가 도구.",
+      "status": "skipped",
+      "title": "Introducing Physical-Engineering’s Last Exam for agents"
+    },
     "https://cloud.google.com/blog/products/ai-machine-learning/welcome-to-gemini-at-work-2026": {
       "checkedAt": "2026-10-09",
       "company": "google",
@@ -1048,6 +1072,14 @@
       "reason": "모델 출시·업데이트와 무관한 연구 보고서",
       "status": "skipped",
       "title": "Accelerating the search for antimicrobial peptides with Google Antigravity"
+    },
+    "https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity": {
+      "checkedAt": "2026-11-04",
+      "company": "google",
+      "date": "2026-11-03",
+      "reason": "Antigravity(이미 발표된 제품)의 특정 업종(약학) 활용 마케팅. 새로운 출시가 아님.",
+      "status": "skipped",
+      "title": "Agentic cheminformatics with Google Antigravity"
     },
     "https://deepmind.google/blog/developing-gemini-4-argon-responsibly-and-safely": {
       "checkedAt": "2026-10-14",
@@ -1194,6 +1226,14 @@
       "reason": "설명에서 '블로그 작성 템플릿 및 메타데이터 구조'라고 명시되어 있어, 구체적인 제품 기능 출시나 사용 팁보다는 발행 템플릿 성격으로 보입니다.",
       "status": "skipped",
       "title": "Building Conversational Commerce with Multi-Agent Swarms on GCP: A Working Prototype"
+    },
+    "https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels": {
+      "checkedAt": "2026-11-04",
+      "company": "google",
+      "date": "2026-11-03",
+      "id": "gemini-app-resume-update",
+      "status": "updated",
+      "title": "Cost per task: Using cheap classifiers to route across Gemini models and thinking levels"
     },
     "https://developers.googleblog.com/devfest-is-back": {
       "checkedAt": "2026-10-31",
@@ -1612,6 +1652,14 @@
       "status": "skipped",
       "title": "Are you a Codex Original?"
     },
+    "https://openai.com/index/accelerating-engineering-for-the-physical-world": {
+      "checkedAt": "2026-11-04",
+      "company": "openai",
+      "date": "2026-11-03",
+      "reason": "고객 사례 및 특정 업종(엔지니어링) 마케팅. 새 모델, 기능, 가격 변경이 아님.",
+      "status": "skipped",
+      "title": "Accelerating engineering for the physical world"
+    },
     "https://openai.com/index/advancing-computer-use-with-ironclad": {
       "checkedAt": "2026-10-07",
       "company": "openai",
@@ -1732,6 +1780,14 @@
       "status": "skipped",
       "title": "Chatham scales its capital markets expertise with OpenAI"
     },
+    "https://openai.com/index/cisco-cyber": {
+      "checkedAt": "2026-11-04",
+      "company": "openai",
+      "date": "2026-11-03",
+      "reason": "기업 파트너십/고객 사례. 새 모델이나 제품 기능이 아님.",
+      "status": "skipped",
+      "title": "How Cisco defends at machine speed with OpenAI"
+    },
     "https://openai.com/index/cloudflare-cyber": {
       "checkedAt": "2026-10-22",
       "company": "openai",
@@ -1811,6 +1867,14 @@
       "reason": "고객 사례",
       "status": "skipped",
       "title": "Harvey turns legal context into stronger drafts with GPT-6 Astra"
+    },
+    "https://openai.com/index/heimstaden": {
+      "checkedAt": "2026-11-04",
+      "company": "openai",
+      "date": "2026-11-03",
+      "reason": "고객 사례 및 특정 업종(부동산) 마케팅. 새 모델이나 기능 출시가 아님.",
+      "status": "skipped",
+      "title": "Heimstaden is changing residential real estate management with AI"
     },
     "https://openai.com/index/higgsfield-longer-videos-voice": {
       "checkedAt": "2026-10-14",

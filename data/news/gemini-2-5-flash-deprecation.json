@@ -1,0 +1,107 @@
+{
+  "id": "gemini-2-5-flash-deprecation",
+  "company": "google",
+  "date": "2026-11-02",
+  "kind": "모델 업데이트",
+  "title": "Gemini 2.5 Flash",
+  "headline": "2026년 12월 1일부터 gemini-2.5-flash 요청이 Gemini 3.5 Flash-Lite로 자동 전환됩니다",
+  "tldr": "gemini-2.5-flash가 지원 종료되어 Google AI Studio에서 더 이상 고를 수 없습니다. 2026년 12월 1일부터는 이 모델로 보낸 모든 API 요청이 gemini-3.5-flash-lite로 자동 연결되고 Gemini 3.5 Flash-Lite 요금이 적용됩니다. 그 전에 모델 문자열을 바꾸고 마이그레이션 가이드를 확인해야 합니다.",
+  "models": [
+    {
+      "name": "Gemini 2.5 Flash",
+      "apiId": "gemini-2.5-flash",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Gemini 3.5 Flash-Lite",
+      "apiId": "gemini-3.5-flash-lite",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "자동 전환 시작일",
+      "value": "2026-12-01",
+      "note": "gemini-2.5-flash 요청이 gemini-3.5-flash-lite로 연결됨"
+    },
+    {
+      "label": "AI Studio 선택",
+      "value": "불가",
+      "note": "gemini-2.5-flash는 deprecated 상태이며 더 이상 선택할 수 없음"
+    },
+    {
+      "label": "전환 후 요금",
+      "value": "Gemini 3.5 Flash-Lite 요금",
+      "note": "전환된 요청에 적용되는 청구 기준"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "gemini-2.5-flash가 deprecated 상태가 되어 Google AI Studio에서 선택할 수 없습니다.",
+    "2026년 12월 1일부터 gemini-2.5-flash로 가는 모든 API 요청이 gemini-3.5-flash-lite로 자동 연결됩니다.",
+    "자동 전환된 요청은 Gemini 3.5 Flash-Lite 요금으로 청구됩니다.",
+    "12월 1일 전에 모델 문자열을 gemini-3.5-flash-lite로 바꾸고 Gemini 3.5 Flash-Lite 마이그레이션 가이드를 확인하라고 안내합니다.",
+    "호환성이 깨지는 API 변경이 있습니다. function calling과 thought_signature 검증, thinking_budget을 대체하는 thinking_level, 제거된 샘플링 매개변수, 미리 채운 모델 턴(prefilled model turns)의 제거가 해당됩니다."
+  ],
+  "availability": [
+    "적용 대상: gemini-2.5-flash를 호출하는 Gemini API 요청",
+    "Google AI Studio: 2026-11-02 기준 선택 불가",
+    "자동 전환 시작: 2026-12-01",
+    "전환 대상 모델 ID: gemini-3.5-flash-lite"
+  ],
+  "tips": [
+    {
+      "title": "12월 1일 전에 모델 문자열 바꾸기",
+      "body": "코드와 설정 파일에서 gemini-2.5-flash를 찾아 gemini-3.5-flash-lite로 교체하세요. 자동 전환을 기다리면 아래 호환성 변경을 점검하지 못한 채 요청이 연결됩니다."
+    },
+    {
+      "title": "깨지는 변경부터 점검",
+      "body": "function calling과 thought_signature 검증, thinking_budget 대신 thinking_level 사용, 샘플링 매개변수 제거, prefilled model turns 제거 네 가지를 먼저 확인하세요."
+    },
+    {
+      "title": "요금 확인",
+      "body": "전환 후에는 Gemini 3.5 Flash-Lite 요금이 적용됩니다. 공식 가격 페이지에서 단가를 보고 예상 비용을 다시 계산해 두세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "코드베이스 마이그레이션 점검 요청",
+      "when": "Gemini 2.5 Flash를 쓰는 프로젝트를 옮기기 전에 영향 범위를 파악할 때",
+      "type": "prompt",
+      "text": "이 저장소에서 gemini-2.5-flash를 쓰는 곳을 모두 찾아줘.\n\n- 모델 문자열을 gemini-3.5-flash-lite로 바꿀 위치를 파일별로 정리해\n- thinking_budget, 샘플링 매개변수(temperature 등), prefilled model turns, function calling을 쓰는 코드를 따로 표시해\n- 아직 코드는 고치지 말고 변경 계획만 알려줘"
+    },
+    {
+      "title": "모델 문자열 교체 예시 (Python)",
+      "when": "google-genai SDK로 호출 중인 모델을 바꿀 때",
+      "type": "code",
+      "text": "from google import genai\n\nclient = genai.Client()\n\nresponse = client.models.generate_content(\n    model=\"gemini-3.5-flash-lite\",  # 기존: gemini-2.5-flash\n    contents=\"[요청]\",\n)\nprint(response.text)"
+    }
+  ],
+  "cautions": [
+    "원문은 호환성이 깨지는 변경이 있다고 밝힙니다. 모델 문자열만 바꾸면 동작이 달라지거나 오류가 날 수 있으니 테스트가 필요합니다.",
+    "자동 전환 후에는 Gemini 3.5 Flash-Lite 요금으로 청구됩니다. 단가는 원문에 없어 공식 가격 페이지 확인이 필요합니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 변경 기록 (Google AI for Developers)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-02"
+    },
+    {
+      "title": "Gemini 2.5 Flash 지원 종료 안내 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/deprecations#gemini-2.5-flash-models"
+    },
+    {
+      "title": "Gemini 3.5 Flash-Lite 마이그레이션 가이드",
+      "url": "https://aistudio.google.com/docs/whats-new-gemini-3.6#migrate-to-gemini-3-5-flash-lite"
+    },
+    {
+      "title": "Gemini 3.5 Flash-Lite 가격 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/pricing#gemini-3.5-flash-lite"
+    }
+  ]
+}

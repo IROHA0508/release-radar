@@ -1,15 +1,39 @@
 {
-  "startedAt": "2026-11-03T19:13:25+09:00",
+  "startedAt": "2026-11-04T05:44:48+09:00",
   "prices": {
-    "checked": [],
-    "changes": [],
-    "notes": [],
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "changes": [
+      "지원 종료 예정 표시: Gemini 2.5 Flash",
+      "지원 종료 예정 표시: Gemini 2.5 Pro",
+      "가격 변경: Gemini 3 Pro Image 그 밖의 단가 $0.134 / 이미지 (1K/2K) → $0.134 / 이미지 (1K·2K), $0.24 / 이미지 (4K)",
+      "가격 변경: Gemini Embedding 2 그 밖의 단가 $0.00012 / 이미지 → $0.00012 / 이미지, $0.00016 / 초(오디오), $0.00079 / 프레임(영상)",
+      "가격 변경: Lyria 3 Clip Preview 그 밖의 단가 $0.04 / 곡 (30초) → $0.04 / 곡",
+      "지원 종료 모델 추가: gemini-2.5-flash-preview-09-2025 (2026-02-17 종료)",
+      "지원 종료 모델 추가: gemini-embedding-2-preview (2026-08-10 종료)"
+    ],
+    "notes": [
+      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음",
+      "새 모델 후보 Gemma 4: 가격을 원문에서 확인하지 못해 넣지 않음"
+    ],
     "errors": {}
   },
   "guides": {
-    "checked": 0,
-    "changed": [],
-    "changes": [],
+    "checked": 38,
+    "changed": [
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+      "https://support.google.com/gemini/answer/16598625?hl=en"
+    ],
+    "changes": [
+      "대응표 수정: [openai] 매번 쓰는 지시 저장 → 맞춤 지시",
+      "가이드 추가: [google] 기억시킬 사실은 대화 중에 직접 말하고 틀린 내용은 바로 고치기",
+      "대응표 수정: [google] 매번 쓰는 지시 저장 → Gemini에 대한 지시"
+    ],
     "errors": {}
   },
   "authError": false,
