@@ -1,62 +1,24 @@
 {
-  "startedAt": "2026-11-03T07:55:45+09:00",
+  "startedAt": "2026-11-03T19:12:32+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2652,
+  "entries": 2656,
   "candidates": [
     {
-      "title": "Qodo builds context into AI code review with Codex",
-      "url": "https://openai.com/index/qodo-codex-plugin",
+      "title": "Scaling Git at OpenAI",
+      "url": "https://openai.com/index/scaling-git-at-openai",
       "company": "openai",
       "date": "2026-11-02",
       "relatedId": null
-    },
-    {
-      "title": "Make long-running agents faster with message threads",
-      "url": "https://claude.com/resources/articles/message-threads",
-      "company": "anthropic",
-      "date": "2026-11-02",
-      "relatedId": null
-    },
-    {
-      "title": "What Google Cloud announced in AI this month",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month/",
-      "company": "google",
-      "date": "2026-11-02",
-      "relatedId": null
-    },
-    {
-      "title": "Long conversations and agent loops on the Messages API can now send smaller requests and get a lower time to first token with message threads, in beta with the message-threads-2026-08-12 beta header.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-02",
-      "company": "anthropic",
-      "date": "2026-11-02",
-      "relatedId": null
     }
   ],
-  "added": [
-    {
-      "id": "claude-message-threads",
-      "title": "Message threads",
-      "url": "https://claude.com/resources/articles/message-threads",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [
     {
-      "title": "Qodo builds context into AI code review with Codex",
-      "url": "https://openai.com/index/qodo-codex-plugin",
-      "reason": "고객 사례 및 기업 파트너십. Qodo라는 외부 도구가 Codex를 활용하는 통합 사례로 OpenAI 공식 기능 출시가 아님"
-    },
-    {
-      "title": "What Google Cloud announced in AI this month",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/what-google-cloud-announced-in-ai-this-month/",
-      "reason": "월간 뉴스 정리 페이지로 구체적인 새 모델, 기능, 업데이트 내용 없음"
-    },
-    {
-      "title": "Long conversations and agent loops on the Messages API can now send smaller requests and get a lower time to first token with message threads, in beta with the message-threads-2026-08-12 beta header.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-02",
-      "reason": "인덱스 [1]과 동일한 Message Threads 기능을 다루는 중복 소식 (블로그 vs 릴리스 노트)"
+      "title": "Scaling Git at OpenAI",
+      "url": "https://openai.com/index/scaling-git-at-openai",
+      "reason": "AI 모델을 쓰는 방식과 무관한 개발 인프라(Git 백엔드) 관련 글. 독자가 새로 써볼 수 있는 공식 AI 제품·기능·도구가 아니며, 기업의 개발 환경 개선 공지에 해당함."
     }
   ],
   "failed": [],
@@ -64,13 +26,6 @@
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {
-    "claude-message-threads": [
-      "문체 수정: availability.0",
-      "문체 수정: cautions.2"
-    ]
-  },
-  "techLinks": [
-    "claude-message-threads → llm-api, context-eng"
-  ]
+  "styleNotes": {},
+  "techLinks": []
 }

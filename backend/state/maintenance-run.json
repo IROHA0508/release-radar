@@ -1,66 +1,15 @@
 {
-  "startedAt": "2026-11-03T07:58:53+09:00",
+  "startedAt": "2026-11-03T19:13:25+09:00",
   "prices": {
-    "checked": [
-      "openai",
-      "anthropic",
-      "google"
-    ],
-    "changes": [
-      "가격 변경: Gemini 3 Pro Image 그 밖의 단가 $0.134 / 이미지 (1K·2K), $0.24 / 이미지 (4K) → $0.134 / 이미지 (1K/2K)",
-      "가격 변경: Gemini 3.1 Flash Image 그 밖의 단가 $0.045 / 이미지 (0.5K), $0.067 / 이미지 (1K), $0.101 / 이미지 (2K), $0.151 / 이미지 (4K) → $0.067 / 이미지 (1K)",
-      "가격 변경: Gemini 3.8 Live 입력 $0.75 → $3.00",
-      "가격 변경: Gemini 3.8 Live 출력 $4.50 → $12.00",
-      "가격 변경: Gemini 3.8 Live Extended Thinking 입력 $0.75 → $3.00",
-      "가격 변경: Gemini 3.8 Live Extended Thinking 출력 $4.50 → $12.00",
-      "가격 변경: Gemini Embedding 2 그 밖의 단가 $0.00012 / 이미지, $0.00016 / 초 (오디오), $0.00079 / 프레임 (영상) → $0.00012 / 이미지",
-      "가격 변경: Gemini Nano Banana 2.1 그 밖의 단가 $0.0336 / 이미지 (1K), $0.0504 / 이미지 (2K), $0.113 / 이미지 (4K) → $0.0336 / 이미지 (1K)",
-      "가격 변경: Gemini 2.5 Flash Native Audio 입력 $0.50 → $3.00",
-      "가격 변경: Gemini 2.5 Flash Native Audio 출력 $2.00 → $12.00",
-      "가격 변경: Gemini 3.1 Flash Live Preview 입력 $0.75 → $3.00",
-      "가격 변경: Gemini 3.1 Flash Live Preview 출력 $4.50 → $12.00",
-      "가격 변경: Lyria 3 Clip Preview 그 밖의 단가 $0.04 / 곡 → $0.04 / 곡 (30초)"
-    ],
-    "notes": [
-      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음"
-    ],
+    "checked": [],
+    "changes": [],
+    "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 38,
-    "changed": [
-      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5",
-      "https://code.claude.com/docs/en/best-practices",
-      "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
-      "https://ai.google.dev/gemini-api/docs/prompting-strategies",
-      "https://ai.google.dev/gemini-api/docs/latest-model",
-      "https://ai.google.dev/gemini-api/docs/thinking",
-      "https://ai.google.dev/gemini-api/docs/image-generation",
-      "https://ai.google.dev/gemini-api/docs/speech-generation"
-    ],
-    "changes": [
-      "가이드 수정: [openai] 프로젝트를 지우기 전에 사라지는 것과 남는 것 구분하기",
-      "가이드 추가: [anthropic] 대화 중간에 effort를 바꿀 때는 메시지별 변경(베타)으로 캐시 지키기",
-      "가이드 수정: [anthropic] 검색 도구를 줄 때는 오늘 날짜를 함께 알려 주기",
-      "가이드 추가: [anthropic] 부작용이 있는 스킬은 disable-model-invocation: true로 직접 실행만 허용하기",
-      "가이드 추가: [anthropic] 읽으면 안 되는 파일은 프롬프트 대신 deny 규칙으로 막기",
-      "가이드 추가: [anthropic] 반드시 실행할 단계는 command·http hook으로 걸기",
-      "가이드 추가: [anthropic] Claude Duet에 지난 대화를 보여 주고 싶지 않으면 채팅 검색 설정부터 끄기",
-      "가이드 수정: [anthropic] 메모리를 끌 때는 일시중지와 초기화를 구분해 고르기",
-      "가이드 추가: [google] 형식이 정해진 출력은 예시와 시작 부분을 주고 이어 쓰게 하기",
-      "가이드 추가: [google] max_output_tokens는 생각과 출력의 합계 한도라 작업별로 정하기",
-      "가이드 추가: [google] Managed Agents의 Antigravity 에이전트는 agent_config에서 Argon 지정하기",
-      "가이드 추가: [google] 생각 요약은 thinking_summaries로 켜고 summary가 비어 있어도 동작하게 만들기",
-      "가이드 추가: [google] 대화 기록을 직접 관리하면 thought 블록을 받은 그대로 다시 보내기",
-      "가이드 추가: [google] 이미지는 대화로 고치고 previous_interaction_id로 이어 가기",
-      "가이드 추가: [google] 이미지의 목적을 알려 주고 복잡한 장면은 단계로 나눠 쓰기",
-      "가이드 추가: [google] 해상도와 비율은 response_format으로 정하고 K는 대문자로 쓰기",
-      "가이드 추가: [google] TTS 출력 형식은 요청 방식마다 다르니 필요하면 mime_type으로 정하기",
-      "가이드 추가: [google] 한 요청의 다중 화자는 2명까지, 커스텀 목소리는 턴별로 따로 합성하기"
-    ],
+    "checked": 0,
+    "changed": [],
+    "changes": [],
     "errors": {}
   },
   "authError": false,

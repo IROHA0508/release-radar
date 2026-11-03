@@ -1996,6 +1996,14 @@
       "status": "skipped",
       "title": "Using thousands of AI agents to uncover new leads in biological data"
     },
+    "https://openai.com/index/scaling-git-at-openai": {
+      "checkedAt": "2026-11-03",
+      "company": "openai",
+      "date": "2026-11-02",
+      "reason": "AI 모델을 쓰는 방식과 무관한 개발 인프라(Git 백엔드) 관련 글. 독자가 새로 써볼 수 있는 공식 AI 제품·기능·도구가 아니며, 기업의 개발 환경 개선 공지에 해당함.",
+      "status": "skipped",
+      "title": "Scaling Git at OpenAI"
+    },
     "https://openai.com/index/scaling-storage-one-billion-users-part-two": {
       "checkedAt": "2026-10-24",
       "company": "openai",
