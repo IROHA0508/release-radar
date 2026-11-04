@@ -35,7 +35,8 @@ CHART = _obj({
 
 ITEM = _obj({
     "id": STR,
-    "kind": {"type": "string", "enum": ["모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁"]},
+    "kind": {"type": "string", "enum": ["모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁", "지원 종료 예정", "지원 종료"]},
+    "shutdown": STR,
     "title": STR, "headline": STR, "tldr": STR,
     "models": {"type": "array", "items": _obj({"name": STR, "apiId": STR, "input": STR, "output": STR, "cached": STR})},
     "numbers": {"type": "array", "items": _obj({"label": STR, "value": STR, "note": STR})},
@@ -68,15 +69,19 @@ RULES = """\
 뉴스별로 한국어로 요약하고 성능 그래프, 모델을 더 잘 쓰는 법, 추천 프롬프트를 정리한다.
 
 판단 기준
-- 포함(decision "new"): 새 모델 출시·발표, 모델 버전 업데이트, 가격이나 사용 가능 범위의 큰 변경,
+- 포함(decision "new"): 새 모델 출시·발표, 모델 버전 업데이트, 가격이나 사용 가능 범위의 큰 변경, 모델 지원 종료·은퇴 공지,
   AI 제품·기능 출시(ChatGPT·Codex·Claude 앱·Claude Code·Gemini 앱·Gemini CLI·Gemini API·AI Studio·Antigravity 같은
   공식 AI 제품과 개발자 도구에 새로 나온 앱·기능·도구로, 독자가 새로 써 볼 수 있는 것), 그리고 공식 활용 팁
   (특정 모델이나 위 공식 도구를 더 잘 쓰는 법, 프롬프트 가이드, 모범 사례처럼 독자가 바로 따라 할 수 있는 실전 조언이 중심인 글).
 - 제외(decision "skip"): 기업 파트너십, 고객 사례, 정책·규제 글, 모델 출시와 무관한 연구·안전 보고서, 행사 홍보,
   요금제·영업·광고 사업 공지(정부·기업·학교 요금제 출시, 광고 지역 확대, 다른 회사 플랫폼에 모델 탑재 등),
   AI 모델을 쓰는 방식과 무관한 인프라·하드웨어·개발 프레임워크 글, 특정 업종 마케팅 글.
-- kind는 넷 중 하나: "모델 출시"(새 모델 출시·발표), "모델 업데이트"(기존 모델의 기능·가격·가용성 변경, 지원 종료),
-  "제품·기능 출시"(위의 AI 제품·기능 출시. 새 모델이 함께 발표되면 "모델 출시"), "활용 팁"(위의 공식 활용 팁).
+- kind는 여섯 중 하나: "모델 출시"(새 모델 출시·발표), "모델 업데이트"(기존 모델의 기능·가격·가용성 변경),
+  "제품·기능 출시"(위의 AI 제품·기능 출시. 새 모델이 함께 발표되면 "모델 출시"), "활용 팁"(위의 공식 활용 팁),
+  "지원 종료 예정"(모델·기능의 지원 종료(deprecation)·은퇴·다른 모델로의 자동 전환을 미리 알리는 공지),
+  "지원 종료"(발표일에 이미 종료된 경우). 지원 종료 공지는 다른 변경이 함께 있어도 이 둘 중 하나로 쓴다.
+- shutdown: kind가 "지원 종료 예정"·"지원 종료"일 때만 원문에 적힌 종료일(더 이상 쓸 수 없게 되거나 다른 모델로 전환되는 날)을
+  YYYY-MM-DD로 쓴다. 대상이 여러 개면 가장 이른 날. 원문에 날짜가 없거나 다른 종류면 빈 문자열.
 - 이미 사이트에 있는 모델의 후속 소식(가용성 확대, 새 모드 등)은 decision "update", updateId에 기존 id를 쓰고
   update 필드에 덧붙일 changes/availability/sources만 쓴다. 이 경우 item은 빈 값으로 채워도 된다.
 
@@ -205,7 +210,7 @@ def triage(claude, entries: list[Entry], site_lines: list[str]) -> dict[int, tup
         f"[{i}] {e.company} | {e.published or '날짜 미상'} | {e.title} | {e.summary[:200]} | {e.url}"
         for i, e in enumerate(entries))
     user = (f"사이트에 이미 있는 소식:\n" + "\n".join(site_lines[:60]) +
-            f"\n\n새로 올라온 글 목록:\n{listing}\n\n각 글이 사이트에 실을 글(새 모델, 모델 업데이트, 가격·사용 범위 변경, "
+            f"\n\n새로 올라온 글 목록:\n{listing}\n\n각 글이 사이트에 실을 글(새 모델, 모델 업데이트, 가격·사용 범위 변경, 모델 지원 종료, "
             "AI 제품·기능 출시, 공식 활용 팁·프롬프트 가이드·모범 사례, 또는 이미 있는 모델의 의미 있는 후속 소식)인지 위 판단 기준대로 "
             "판단해 results에 index별로 답해라.")
     out = claude.json_call(model=config.TRIAGE_MODEL, system=RULES, user=user, schema=TRIAGE, max_tokens=2000)

@@ -47,6 +47,7 @@ class RunReport:
     guideChanges: list = field(default_factory=list)
     styleNotes: dict = field(default_factory=dict)
     techLinks: list = field(default_factory=list)
+    retired: list = field(default_factory=list)
 
     def save(self) -> None:
         path = config.STATE_FILE.parent / "last-run.json"
@@ -102,10 +103,19 @@ def _fill_dates(cands: list[feeds.Entry], cache: dict[str, Article], cutoff: dat
     return out
 
 
+def _retire_due(today: date, report: "RunReport") -> None:
+    """종료일이 된 '지원 종료 예정' 소식을 '지원 종료'로 바꾼다(모델 호출 없이 날짜만 본다)."""
+    for r in store.retire_due(today):
+        report.retired.append(r)
+        annotate("notice", "지원 종료 반영", f"{r['id']} | {r['title']} | 종료일 {r['shutdown']}")
+
+
 def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunReport:
     today = today_kst()
     report = RunReport(datetime.now(ZoneInfo(config.TIMEZONE)).isoformat(timespec="seconds"),
                        "dry-run" if dry_run else "update")
+    if not dry_run:
+        _retire_due(today, report)          # 날짜만 보면 되니 감지·요약이 실패해도 먼저 반영
     site = detect.load_site()
     state = detect.load_state()
     entries, report.sourceErrors = feeds.fetch_all()
@@ -275,6 +285,7 @@ def run_update(*, dry_run: bool = False, api_key: str | None = None) -> RunRepor
         report.added.append({"id": item["id"], "title": item["title"], "url": e.url, "charts": len(item.get("charts", []))})
         annotate("notice", "새 소식 추가", f"{item['id']} | {item['title']} | 그래프 {len(item.get('charts', []))}개")
 
+    _retire_due(today, report)
     store.touch_last_checked(now_kst())
     detect.save_state(state)
     report.save()

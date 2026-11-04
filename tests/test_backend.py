@@ -1259,3 +1259,65 @@ def test_moved_claude_blog_post_is_still_recognized():
         detect.slug_key("https://claude.dev/blog/what-a-task-costs-on-opus-5-5/")
     assert detect.slug_key("https://claude.com/resources/articles/web-search-api") == \
         detect.slug_key("https://claude.com/blog/web-search-api")
+
+
+def _retire_item(site, nid, kind, shutdown):
+    item = json.loads((site / "data/news/claude-sonnet-5-5.json").read_text())
+    item.update(id=nid, kind=kind, title="Old Model", models=[], charts=[], shutdown=shutdown)
+    store.write_news(item)
+    store.add_to_manifest(nid)
+
+
+def test_retire_kinds_are_valid_and_shutdown_is_checked(site):
+    _retire_item(site, "retire-soon-test", "지원 종료 예정", "2999-01-01")
+    _retire_item(site, "retired-test", "지원 종료", "2026-01-01")
+    ok, out = store.validate()
+    assert ok, out
+    _retire_item(site, "retired-too-early", "지원 종료", "2999-01-01")   # 아직 오지 않은 종료일
+    ok, out = store.validate()
+    assert not ok and "지원 종료 예정" in out
+
+
+def test_shutdown_only_on_retire_kinds(site):
+    _retire_item(site, "launch-with-shutdown", "모델 출시", "2026-12-01")
+    ok, out = store.validate()
+    assert not ok and "shutdown" in out
+
+
+def test_soon_becomes_retired_on_the_shutdown_day(site):
+    _retire_item(site, "retire-day-test", "지원 종료 예정", "2026-10-02")
+    _retire_item(site, "retire-later-test", "지원 종료 예정", "2026-10-03")
+    done = store.retire_due(date(2026, 10, 2))
+    assert [d["id"] for d in done] == ["retire-day-test"]
+    assert json.loads((site / "data/news/retire-day-test.json").read_text())["kind"] == "지원 종료"
+    assert json.loads((site / "data/news/retire-later-test.json").read_text())["kind"] == "지원 종료 예정"
+    assert store.retire_due(date(2026, 10, 2)) == []                  # 한 번만 바뀐다
+
+
+def test_run_retires_due_items_even_without_llm(site, monkeypatch):
+    monkeypatch.setattr(feeds, "fetch_all", lambda: ([], {}))
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    monkeypatch.delenv("CLAUDE_CODE_OAUTH_TOKEN", raising=False)
+    _retire_item(site, "retire-run-test", "지원 종료 예정", "2026-10-01")
+    report = pipeline.run_update()
+    assert [r["id"] for r in report.retired] == ["retire-run-test"]
+    ok, out = store.validate()
+    assert ok, out
+
+
+def test_normalize_keeps_shutdown_only_for_retire_kinds():
+    base = {"kind": "모델 업데이트", "shutdown": "2026-12-01", "title": "X"}
+    out = store.normalize_item(dict(base), company="google", day=date(2026, 11, 2), url="https://example.com/a", title_hint="X")
+    assert "shutdown" not in out
+    out = store.normalize_item(dict(base, kind="지원 종료"), company="google", day=date(2026, 11, 2),
+                               url="https://example.com/b", title_hint="X")
+    assert out["kind"] == "지원 종료 예정" and out["shutdown"] == "2026-12-01"   # 발표일 뒤에 끝나면 '예정'
+
+
+def test_guard_drops_shutdown_not_in_source():
+    assert guard.date_in("2026-12-01", "Starting December 1, 2026, requests to gemini-2.5-flash are routed")
+    assert guard.date_in("2026-12-01", "on Dec. 1st") and guard.date_in("2026-12-01", "2026년 12월 1일부터")
+    assert not guard.date_in("2026-12-01", "December 11") and not guard.date_in("2026-12-01", "12월 10일")
+    item = {"kind": "지원 종료 예정", "shutdown": "2026-12-15", "numbers": [], "models": [], "charts": []}
+    notes = guard.check_item(item, "The model shuts down on December 1, 2026.")
+    assert "shutdown" not in item and any("종료일" in n for n in notes)

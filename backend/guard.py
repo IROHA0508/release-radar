@@ -25,6 +25,26 @@ def _has(value: float, pool: set[float]) -> bool:
     return any(abs(value - p) < 1e-6 for p in pool)
 
 
+MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october",
+          "november", "december"]
+
+
+def date_in(iso: str, text: str) -> bool:
+    """Is this date (YYYY-MM-DD) written in the text? Accepts 2026-12-01, December 1(, 2026), Dec 1, 1 December,
+    2026년 12월 1일, 12월 1일. A day without a year counts, because notices often omit the year."""
+    try:
+        y, m, d = (int(x) for x in iso.split("-"))
+        name = MONTHS[m - 1]
+    except (ValueError, IndexError):
+        return False
+    low = text.lower()
+    mon = rf"(?:{name}|{name[:3]}\.?)"
+    pats = [rf"{y}-{m:02d}-{d:02d}", rf"{y}/{m:02d}/{d:02d}", rf"{y}\.\s?{m}\.\s?{d}(?!\d)",
+            rf"\b{mon}\s+0?{d}(?:st|nd|rd|th)?\b", rf"\b0?{d}(?:st|nd|rd|th)?\s+(?:of\s+)?{mon}\b",
+            rf"(?<!\d){m}월\s*{d}일"]
+    return any(re.search(p, low) for p in pats)
+
+
 def check_item(item: dict, source_text: str, link_text: str = "") -> list[str]:
     """Mutate item in place and return a list of human-readable notes about what was removed."""
     notes: list[str] = []
@@ -79,4 +99,9 @@ def check_item(item: dict, source_text: str, link_text: str = "") -> list[str]:
             if values and not any(_has(v, pool) for v in values):
                 notes.append(f"'{m.get('name')}' {key} 가격 '{val}' 원문에서 확인 안 됨 → 제외")
                 m[key] = None
+    # Shutdown date of a retirement notice: must be written in the page, otherwise it is dropped ('종료일 미정').
+    sd = item.get("shutdown")
+    if sd and not date_in(str(sd), haystack):
+        notes.append(f"종료일 '{sd}' 원문에서 확인 안 됨 → 종료일 미정으로 표시")
+        item.pop("shutdown", None)
     return notes
