@@ -25,6 +25,7 @@
   --code-bg: #ECEFF3;
   --mark: #F4C534;
   --mark-ink: #1E1803;
+  --danger: #C4221B; --danger-bg: #FDECEA; /* 지원 종료 배지 */
   --openai: #077456;
   --anthropic: #B0502B;
   --google: #2A63D4;
@@ -53,6 +54,7 @@
     --bg: #0E1115; --surface: #161A20; --ink: #E7EAEF; --muted: #A0A8B6; --faint: #737C8B;
     --line: #262C35; --line-strong: #39414D; --code-bg: #1C2129;
     --mark: #F4C534; --mark-ink: #1E1803;
+    --danger: #FF7A70; --danger-bg: #3A1A18;
     --openai: #3CC59A; --anthropic: #EC8A5E; --google: #74A0FF; --focus: #74A0FF;
     --bar-openai: #22A07A; --bar-anthropic: #D9744A; --bar-google: #4F86F0;
     --bar-muted: #4E5766; --grid: #262C35;
@@ -63,6 +65,7 @@
   --bg: #0E1115; --surface: #161A20; --ink: #E7EAEF; --muted: #A0A8B6; --faint: #737C8B;
   --line: #262C35; --line-strong: #39414D; --code-bg: #1C2129;
   --mark: #F4C534; --mark-ink: #1E1803;
+  --danger: #FF7A70; --danger-bg: #3A1A18;
   --openai: #3CC59A; --anthropic: #EC8A5E; --google: #74A0FF; --focus: #74A0FF;
   --bar-openai: #22A07A; --bar-anthropic: #D9744A; --bar-google: #4F86F0;
   --bar-muted: #4E5766; --grid: #262C35;
@@ -108,6 +111,8 @@ a { color: inherit; }
 .chip { font: 500 var(--s-sm)/1 var(--f-body); padding: 8px 13px; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent; color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; gap: 7px; }
 .chip:hover { border-color: var(--ink); }
 .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip.k-end { color: var(--danger); border-color: var(--danger); }
+.chip.k-end[aria-pressed="true"] { background: var(--danger); color: var(--danger-bg); }
 .filter-rows { display: grid; gap: 10px; margin: 18px 0 6px; }
 .filter-rows .filters { margin: 0; align-items: center; }
 .f-label { font: 600 var(--s-2xs)/1 var(--f-body); color: var(--faint); min-width: 2.6em; }
@@ -143,6 +148,9 @@ a { color: inherit; }
 .co { color: var(--c); }
 
 .pill { font-size: var(--s-3xs); font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--muted); white-space: nowrap; }
+/* 지원 종료 예정·지원 종료: 놓치면 안 되는 소식이라 배지와 종료일을 빨간색으로 */
+.pill.k-end { border: 1.5px solid var(--danger); color: var(--danger); background: var(--danger-bg); font-weight: 700; }
+.end-date { font: 600 var(--s-xs)/1.2 var(--f-mono); color: var(--danger); white-space: nowrap; }
 .new { font: 600 var(--s-3xs)/1 var(--f-mono); padding: 4px 6px; border-radius: 3px; background: var(--mark); color: var(--mark-ink); letter-spacing: 0.04em; }
 
 /* ---------- ledger ---------- */
@@ -502,7 +510,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
   </nav>
 
   <main id="view">
-    <div class="filter-rows" aria-hidden="true"><div class="filters"><span class="chip">전체</span><span class="chip">OpenAI</span><span class="chip">Anthropic</span><span class="chip">Google</span></div><div class="filters"><span class="chip">전체</span><span class="chip">모델 출시</span><span class="chip">모델 업데이트</span><span class="chip">제품·기능 출시</span><span class="chip">활용 팁</span></div></div>
+    <div class="filter-rows" aria-hidden="true"><div class="filters"><span class="chip">전체</span><span class="chip">OpenAI</span><span class="chip">Anthropic</span><span class="chip">Google</span></div><div class="filters"><span class="chip">전체</span><span class="chip">모델 출시</span><span class="chip">모델 업데이트</span><span class="chip">제품·기능 출시</span><span class="chip">활용 팁</span><span class="chip">지원 종료 예정</span><span class="chip">지원 종료</span></div></div>
     <div class="month"><h2>최근 소식을 불러오는 중</h2></div>
     <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
   </main>
@@ -523,7 +531,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
     google: { name: "Google", product: "Gemini" }
   };
   var ORDER = ["openai", "anthropic", "google"];
-  var KINDS = ["모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁"];
+  var KINDS = ["모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁", "지원 종료 예정", "지원 종료"];
   var WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
   var state = { manifest: null, news: [], byId: {}, guides: null, tech: null, techById: {}, glossary: null, gq: "", error: null, loaded: false, filter: "all", kind: "all", period: "all", listKey: "", listShown: 0, view: "", listScroll: 0, techPeriod: "all", techKey: "", techShown: 0, techScroll: 0 };
@@ -565,6 +573,25 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
   function coTag(c) {
     var co = COMPANIES[c] || { name: c };
     return h("span", { class: "co c-" + c }, [h("span", { class: "sw", "aria-hidden": "true" }), co.name]);
+  }
+  /* 지원 종료: 데이터의 kind가 아직 '예정'이어도 종료일(한국 시간)이 되면 화면에서는 바로 '지원 종료'로 본다.
+     데이터 쪽은 6시간마다 도는 자동 실행(backend store.retire_due)이 같은 기준으로 바꿔 둔다. */
+  function todayKST() { return new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10); }
+  function kindOf(item) {
+    return item.kind === "지원 종료 예정" && item.shutdown && item.shutdown <= todayKST() ? "지원 종료" : item.kind;
+  }
+  function isEnd(k) { return k === "지원 종료 예정" || k === "지원 종료"; }
+  function kindTags(item) {
+    var k = kindOf(item);
+    if (!isEnd(k)) return [h("span", { class: "pill", text: k })];
+    var note;
+    if (!item.shutdown) note = k === "지원 종료 예정" ? "종료일 미정" : null;
+    else if (k === "지원 종료") note = fmtDate(item.shutdown) + " 종료";
+    else {
+      var left = Math.round((parseDate(item.shutdown) - parseDate(todayKST())) / 86400000);
+      note = fmtDate(item.shutdown) + " 종료 · D-" + left;
+    }
+    return [h("span", { class: "pill k-end", text: k }), note ? h("span", { class: "end-date", text: note }) : null];
   }
   function isNew(item) {
     if (!state.manifest || !state.manifest.lastChecked) return false;
@@ -703,7 +730,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
     [["all", "전체"]].concat(KINDS.map(function (k) { return [k, k]; })).forEach(function (pair) {
       var key = pair[0];
       kindRow.appendChild(h("button", {
-        class: "chip", type: "button", "aria-pressed": String(state.kind === key),
+        class: "chip" + (isEnd(key) ? " k-end" : ""), type: "button", "aria-pressed": String(state.kind === key),
         onclick: function () {
           state.kind = key;
           try { localStorage.setItem("rr-kind", key); } catch (e) {}
@@ -713,7 +740,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
     });
     // 회사·종류 필터를 통과한 소식. 기간 버튼의 건수는 이 목록 기준이다.
     var filtered = sortedNews().filter(function (x) {
-      return (state.filter === "all" || x.company === state.filter) && (state.kind === "all" || x.kind === state.kind);
+      return (state.filter === "all" || x.company === state.filter) && (state.kind === "all" || kindOf(x) === state.kind);
     });
     if (state.period !== "all" && !filtered.some(function (x) { return x.date.slice(0, state.period.length) === state.period; })) state.period = "all";
     var items = filtered.filter(function (x) { return state.period === "all" || x.date.slice(0, state.period.length) === state.period; });
@@ -785,7 +812,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
       h("a", { class: "entry", href: "#" + item.id }, [
         h("div", { class: "date" }, [h("span", { class: "d", text: mmdd(item.date) }), h("span", { class: "w", text: weekday(item.date) + "요일" })]),
         h("div", { class: "e-body" }, [
-          h("div", { class: "e-meta" }, [coTag(item.company), h("span", { class: "pill", text: item.kind }), isNew(item) ? h("span", { class: "new", text: "NEW" }) : null]),
+          h("div", { class: "e-meta" }, [coTag(item.company)].concat(kindTags(item), [isNew(item) ? h("span", { class: "new", text: "NEW" }) : null])),
           h("h3", { class: "e-title", text: item.title }),
           h("p", { class: "e-head", text: item.headline }),
           h("p", { class: "e-tldr", text: item.tldr }),
@@ -849,7 +876,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
 
     var art = h("article", { class: "article" });
     art.appendChild(h("a", { class: "back", href: "#" }, ["← 전체 소식"]));
-    art.appendChild(h("div", { class: "a-meta" }, [coTag(item.company), h("span", { class: "pill", text: item.kind }), h("span", { class: "when", text: fmtDate(item.date) + " (" + weekday(item.date) + ")" }), isNew(item) ? h("span", { class: "new", text: "NEW" }) : null]));
+    art.appendChild(h("div", { class: "a-meta" }, [coTag(item.company)].concat(kindTags(item), [h("span", { class: "when", text: fmtDate(item.date) + " (" + weekday(item.date) + ")" }), isNew(item) ? h("span", { class: "new", text: "NEW" }) : null])));
     art.appendChild(h("h1", { class: "a-title", text: item.title }));
     art.appendChild(h("p", { class: "a-head", text: item.headline }));
     var isTip = item.kind === "활용 팁";

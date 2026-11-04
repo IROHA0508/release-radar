@@ -97,7 +97,9 @@ jobs:
             exit 0
           fi
           added=$(python -c "import json;r=json.load(open('backend/state/last-run.json'));print(', '.join(a['title'] for a in r['added']))")
+          retired=$(python -c "import json;r=json.load(open('backend/state/last-run.json'));print(', '.join(a['title'] for a in r.get('retired', [])))")
           if [ -n "$added" ]; then msg="새 소식: $added"
+          elif [ -n "$retired" ]; then msg="지원 종료 반영: $retired"
           elif ! git diff --cached --quiet -- data/prices.json data/guides.json; then msg="API 가격표·프롬프트 가이드 점검 반영"
           else msg="마지막 확인 날짜 갱신"; fi
           git commit -m "$msg"

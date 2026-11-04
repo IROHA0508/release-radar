@@ -3,7 +3,7 @@
 GPT·Claude·Gemini 공식 발표를 한국어로 요약하는 정적 사이트(https://release-radar-ten.vercel.app)와, AI를 활용하는 기술을 정리하고 직접 실습해 보는 학습 공간. 1차 독자는 저장소 주인(학습용), 2차 독자는 링크를 받은 지인. 설명과 커밋 메시지는 한국어로 쓴다.
 
 ## 상황별로 볼 문서
-- 목표·원칙·로드맵·결정 기록이 필요할 때: `docs/GUIDELINES.md` (지침 v1.5)
+- 목표·원칙·로드맵·결정 기록이 필요할 때: `docs/GUIDELINES.md` (지침 v1.6)
 - `data/` 아래 JSON(소식, 가이드, 가격표, 모델 추천, 기술)을 만들거나 고칠 때: `docs/DATA_SCHEMA.md`
 - 자동 업데이트(GitHub Actions + `backend/`)를 고칠 때: `README.md`의 '자동 업데이트'
 - 랩(실습)을 만들 때: `docs/GUIDELINES.md` 5장(랩)·6장(실습 환경)
@@ -24,7 +24,8 @@ GPT·Claude·Gemini 공식 발표를 한국어로 요약하는 정적 사이트(
 - 소식 id 예약어: `guide`, `prices`, `models`, `tech`, `lab`, `glossary` (해시 라우팅과 겹침). 새 탭을 만들면 `scripts/validate_data.py`와 `backend/store.py`의 예약어에 함께 추가한다.
 - API 가격표(`data/prices.json`)의 `retired`는 되돌리지 않는다. 가격 페이지가 종료된 모델 가격을 남겨 두기 때문에 자동 점검이 일부러 다시 확인하지 않는다. 모델을 손으로 넣을 때도 `category`를 꼭 쓴다.
 - 그래프·핵심 수치는 원문 텍스트에 있는 값만. `backend/guard.py`가 원문에 없는 값을 지운다.
-- 소식 종류는 `모델 출시`·`모델 업데이트`·`제품·기능 출시`·`활용 팁` 넷. 바꾸면 `backend/summarize.py`, `scripts/validate_data.py`, `index.html`의 KINDS를 함께 고친다.
+- 소식 종류는 `모델 출시`·`모델 업데이트`·`제품·기능 출시`·`활용 팁`·`지원 종료 예정`·`지원 종료` 여섯. 바꾸면 `backend/summarize.py`, `scripts/validate_data.py`, `index.html`의 KINDS를 함께 고친다.
+- 지원 종료 두 종류는 `shutdown`(종료일)을 가진다. 종료일이 되면 화면은 `kindOf()`로 바로 `지원 종료`를 보여 주고 파일은 자동 실행의 `store.retire_due()`가 바꾼다. 손으로 `지원 종료 예정`을 `지원 종료`로 미리 바꾸지 않는다(검증 실패).
 - '모델 추천' 탭(`#models`)은 `data/models.json`을 쓰고 가격은 `data/prices.json`에서 apiId로 가져온다. 상황별 칸은 공식 출처가 있어야 하고 공식 안내가 없으면 `missing`으로 비운다. 자동 수정하지 않으니 새 모델이나 기본값 변경 소식이 오면 공식 문서를 확인해 직접 고친다.
 - 'AI 활용 기술' 탭(`#tech`, 최신 활용 기술)과 'AI 활용 LAB' 탭(`#lab`, 학습 경로)은 둘 다 `data/tech.json`을 `group`(`radar`/`path`)으로 나눠 쓴다. 기술 페이지는 필수 항목(정의, 왜 필요한가, 어떻게 활용하나, 기대 효과)과 공식 출처가 있어야 검증을 통과한다.
 - 랩은 대화하며 함께 작성하고 저장소 주인이 직접 실행해 통과한 코드만 커밋한다. 오류를 도울 때는 고치기 전에 왜 났는지 먼저 설명한다.

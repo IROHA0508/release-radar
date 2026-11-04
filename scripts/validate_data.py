@@ -7,13 +7,17 @@ Exits with code 1 and prints every problem if anything is wrong.
 import json
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 
 COMPANIES = {"openai", "anthropic", "google"}
-KINDS = {"모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁"}
+KINDS = {"모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁", "지원 종료 예정", "지원 종료"}
+RETIRE_KINDS = {"지원 종료 예정", "지원 종료"}  # 이 둘만 shutdown(종료일)을 가진다
+TODAY = datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
 RESERVED_IDS = {"guide", "prices", "models", "tech", "lab", "glossary"}
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -71,6 +75,7 @@ def check_news(path):
         err(where, f"date는 YYYY-MM-DD: {d.get('date')}")
     if d.get("kind") not in KINDS:
         err(where, f"kind는 {sorted(KINDS)} 중 하나: {d.get('kind')}")
+    check_shutdown(where, d)
     for s in d.get("sources", []):
         if not str(s.get("url", "")).startswith("https://"):
             err(where, f"출처 URL은 https로 시작해야 함: {s.get('url')}")
@@ -80,6 +85,23 @@ def check_news(path):
     for c in d.get("charts", []) or []:
         check_chart(where, c)
     return nid
+
+
+def check_shutdown(where, d):
+    """지원 종료 예정·지원 종료 소식의 종료일(shutdown). 예정은 종료일이 지나면 자동 실행이 '지원 종료'로 바꾼다."""
+    kind, sd = d.get("kind"), d.get("shutdown")
+    if sd is None:
+        return
+    if kind not in RETIRE_KINDS:
+        err(where, f"shutdown은 '지원 종료 예정'·'지원 종료' 소식에만 씀 (지금 kind: {kind})")
+        return
+    if not DATE_RE.match(str(sd)):
+        err(where, f"shutdown은 YYYY-MM-DD: {sd}")
+        return
+    if kind == "지원 종료" and sd > TODAY:
+        err(where, f"종료일 {sd}이 아직 오지 않았으니 kind는 '지원 종료 예정'이어야 함")
+    if kind == "지원 종료 예정" and sd <= TODAY:
+        warnings.append(f"{where}: 종료일 {sd}이 지났음. 다음 자동 실행에서 '지원 종료'로 바뀜(화면은 이미 '지원 종료'로 보임)")
 
 
 GUIDE_CATEGORIES = {"기본 작성법", "구조와 형식", "앱 기능과 설정", "예시 활용", "추론과 effort", "긴 문서와 자료", "에이전트와 코딩",

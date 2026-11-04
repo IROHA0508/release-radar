@@ -10,9 +10,11 @@ from pathlib import Path
 
 from . import config
 
-KEY_ORDER = ["id", "company", "date", "kind", "title", "headline", "tldr", "models", "numbers", "chartSource",
+KEY_ORDER = ["id", "company", "date", "kind", "shutdown", "title", "headline", "tldr", "models", "numbers", "chartSource",
              "charts", "chartNote", "changes", "availability", "tips", "prompts", "cautions", "sources"]
 RESERVED = {"guide", "prices", "models", "tech", "lab", "glossary"}
+RETIRE_SOON, RETIRED = "지원 종료 예정", "지원 종료"
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def slugify(text: str) -> str:
@@ -58,6 +60,11 @@ def normalize_item(raw: dict, *, company: str, day: date, url: str, title_hint: 
     for key in ("chartSource", "chartNote"):
         if not item.get(key):
             item.pop(key, None)
+    # 종료일은 지원 종료 소식에만, YYYY-MM-DD일 때만 남긴다(모르면 빼 둔다 → 화면에 '종료일 미정')
+    if item.get("kind") not in (RETIRE_SOON, RETIRED) or not DATE_RE.match(str(item.get("shutdown") or "")):
+        item.pop("shutdown", None)
+    elif item["kind"] == RETIRED and item["shutdown"] > item["date"]:
+        item["kind"] = RETIRE_SOON              # 발표일 뒤에 끝나는 일은 아직 '예정'
     for n in item.get("numbers", []):
         n.setdefault("note", "")
     sources = [s for s in item.get("sources", []) if str(s.get("url", "")).startswith("https://")]
@@ -95,6 +102,19 @@ def apply_update(news_id: str, update: dict) -> bool:
     if changed:
         path.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return changed
+
+
+def retire_due(today: date) -> list[dict]:
+    """종료일이 된 '지원 종료 예정' 소식을 '지원 종료'로 바꾼다. 바꾼 소식의 id·title을 돌려준다."""
+    done = []
+    for path in sorted(config.NEWS_DIR.glob("*.json")):
+        d = json.loads(path.read_text(encoding="utf-8"))
+        sd = str(d.get("shutdown") or "")
+        if d.get("kind") == RETIRE_SOON and DATE_RE.match(sd) and sd <= today.isoformat():
+            d["kind"] = RETIRED
+            path.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            done.append({"id": d["id"], "title": d.get("title", ""), "shutdown": sd})
+    return done
 
 
 def load_manifest() -> dict:
