@@ -35,6 +35,14 @@
       "status": "added",
       "title": "Gemini 2.5 Flash deprecation:gemini-2.5-flash isdeprecated and is no longer available to select in Google AI Studio."
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-04-fdcd2184": {
+      "checkedAt": "2026-11-05",
+      "company": "google",
+      "date": "2026-11-04",
+      "id": "gemini-3-8-tts",
+      "status": "updated",
+      "title": "Voice remixing for Gemini 3.8 TTS: ReleasedVoice remixing, which lets you modify an existing prebuilt or designed voice using natural-language instructions to create a new, independent stored voice."
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -872,6 +880,14 @@
       "id": "claude-message-threads",
       "status": "added",
       "title": "Make long-running agents faster with message threads"
+    },
+    "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace": {
+      "checkedAt": "2026-11-05",
+      "company": "anthropic",
+      "date": "2026-11-04",
+      "reason": "Claude Marketplace에 파트너사 에이전트·제품이 추가됐다는 소식입니다. 기업 파트너십과 엔터프라이즈 약정 지출 활용에 관한 영업·사업 공지라서 제외합니다.",
+      "status": "skipped",
+      "title": "New agents and products for security, productivity, and creative work on Claude Marketplace"
     },
     "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets": {
       "checkedAt": "2026-10-29",
@@ -1828,6 +1844,14 @@
       "status": "skipped",
       "title": "Credit Saison achieves 954% ROI in a ChatGPT Enterprise pilot"
     },
+    "https://openai.com/index/daybreak-red-aws-govcloud": {
+      "checkedAt": "2026-11-05",
+      "company": "openai",
+      "date": "2026-11-04",
+      "reason": "기존 GPT-5.6 Cyber를 AWS GovCloud(US-East)의 승인된 정부 고객에게 제공하는 가용성 확대 글입니다. 다른 회사 플랫폼에 모델을 탑재하는 공지이고 정부 대상 사업 성격이라 제외합니다.",
+      "status": "skipped",
+      "title": "Daybreak Red is now available in AWS GovCloud (US-East)"
+    },
     "https://openai.com/index/decisions-api": {
       "checkedAt": "2026-10-23",
       "company": "openai",
@@ -1987,6 +2011,14 @@
       "reason": "기업 파트너십 공지. OpenAI 모델이 ServiceNow 플랫폼에 탑재되는 내용으로, 모델 출시, 기능 출시, 활용 팁이 아닌 비즈니스 파트너십에 해당해 제외 대상",
       "status": "skipped",
       "title": "OpenAI and ServiceNow expand partnership across enterprise workflows"
+    },
+    "https://openai.com/index/openai-to-acquire-pierre": {
+      "checkedAt": "2026-11-05",
+      "company": "openai",
+      "date": "2026-11-04",
+      "reason": "기업 인수 소식으로 제외 기준(기업 파트너십)에 해당",
+      "status": "skipped",
+      "title": "OpenAI to acquire Pierre Computer Company, Inc."
     },
     "https://openai.com/index/oracle": {
       "checkedAt": "2026-10-09",

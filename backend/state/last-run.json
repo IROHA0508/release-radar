@@ -1,12 +1,62 @@
 {
-  "startedAt": "2026-11-04T19:03:01+09:00",
+  "startedAt": "2026-11-05T05:58:30+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2634,
-  "candidates": [],
+  "entries": 2632,
+  "candidates": [
+    {
+      "title": "OpenAI to acquire Pierre Computer Company, Inc.",
+      "url": "https://openai.com/index/openai-to-acquire-pierre",
+      "company": "openai",
+      "date": "2026-11-04",
+      "relatedId": null
+    },
+    {
+      "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
+      "url": "https://openai.com/index/daybreak-red-aws-govcloud",
+      "company": "openai",
+      "date": "2026-11-04",
+      "relatedId": null
+    },
+    {
+      "title": "New agents and products for security, productivity, and creative work on Claude Marketplace",
+      "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace",
+      "company": "anthropic",
+      "date": "2026-11-04",
+      "relatedId": null
+    },
+    {
+      "title": "Voice remixing for Gemini 3.8 TTS: ReleasedVoice remixing, which lets you modify an existing prebuilt or designed voice using natural-language instructions to create a new, independent stored voice.",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-04",
+      "company": "google",
+      "date": "2026-11-04",
+      "relatedId": "gemini-app-resume-update"
+    }
+  ],
   "added": [],
-  "updated": [],
-  "skipped": [],
+  "updated": [
+    {
+      "id": "gemini-3-8-tts",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-04"
+    }
+  ],
+  "skipped": [
+    {
+      "title": "OpenAI to acquire Pierre Computer Company, Inc.",
+      "url": "https://openai.com/index/openai-to-acquire-pierre",
+      "reason": "기업 인수 소식으로 제외 기준(기업 파트너십)에 해당"
+    },
+    {
+      "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
+      "url": "https://openai.com/index/daybreak-red-aws-govcloud",
+      "reason": "기존 GPT-5.6 Cyber를 AWS GovCloud(US-East)의 승인된 정부 고객에게 제공하는 가용성 확대 글입니다. 다른 회사 플랫폼에 모델을 탑재하는 공지이고 정부 대상 사업 성격이라 제외합니다."
+    },
+    {
+      "title": "New agents and products for security, productivity, and creative work on Claude Marketplace",
+      "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace",
+      "reason": "Claude Marketplace에 파트너사 에이전트·제품이 추가됐다는 소식입니다. 기업 파트너십과 엔터프라이즈 약정 지출 활용에 관한 영업·사업 공지라서 제외합니다."
+    }
+  ],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
