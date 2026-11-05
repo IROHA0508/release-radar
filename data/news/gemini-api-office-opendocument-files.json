@@ -1,0 +1,91 @@
+{
+  "id": "gemini-api-office-opendocument-files",
+  "company": "google",
+  "date": "2026-11-05",
+  "kind": "제품·기능 출시",
+  "title": "Gemini API Office·OpenDocument 파일 지원 확대",
+  "headline": "PPT·ODP·ODS를 입력으로 받고 DOC는 페이지 이미지로 처리",
+  "tldr": "Gemini API가 PowerPoint 97-2003(PPT), OpenDocument Presentation(ODP), OpenDocument Spreadsheet(ODS) 파일을 입력으로 받습니다. Word 97-2003(DOC) 파일은 페이지 이미지 처리가 추가됐습니다. DOCX, DOTX, ODT, PPTX, XLSX, XLS 처리는 그대로입니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "새로 받는 입력 형식",
+      "value": "PPT · ODP · ODS",
+      "note": "Gemini API 변경 기록 기준"
+    },
+    {
+      "label": "페이지 이미지 처리 추가",
+      "value": "DOC",
+      "note": "Word 97-2003 파일"
+    },
+    {
+      "label": "ODS 처리 범위",
+      "value": "첫 번째 시트",
+      "note": "데이터와 수식을 모델에 전달"
+    }
+  ],
+  "charts": [],
+  "chartNote": "성능 비교 수치가 없는 기능 변경 소식이라 그래프를 만들지 않았습니다.",
+  "changes": [
+    "PPT, ODP, ODS 파일을 Gemini API 입력으로 쓸 수 있습니다.",
+    "DOC 파일에 페이지 이미지 처리가 추가됐습니다.",
+    "DOC, PPT, ODP 파일은 페이지 이미지로 렌더링해 모델에 전달합니다.",
+    "ODS 파일은 첫 번째 시트의 데이터와 수식을 모델이 받습니다.",
+    "DOCX, DOTX, ODT, PPTX, XLSX, XLS 파일 처리는 바뀌지 않았습니다.",
+    "GenerateContent API의 함수 응답(function response) 파트가 이미지·PDF·일반 텍스트에 더해 오디오, 비디오, Office·OpenDocument 파일을 받습니다. 도구가 이런 파일을 모델에 바로 돌려줄 수 있습니다.",
+    "함수 응답 파트가 fileData도 받습니다. 도구가 인라인 바이트 대신 Files API URI를 돌려줄 수 있습니다.",
+    "inlineData와 fileData 모두에서 displayName을 쓸 수 있고 비디오 파트는 mediaProcessing(STATIC 또는 AGENTIC)을 받습니다.",
+    "Interactions API의 function_result 단계가 텍스트·이미지에 더해 document, audio, video 콘텐츠 블록을 인라인 데이터 또는 uri로 받습니다. 비디오 블록은 v1beta와 v1alpha에서 쓸 수 있고 processing을 받습니다."
+  ],
+  "availability": [
+    "Gemini API (2026-11-05 변경 기록에 반영)",
+    "형식별 처리 방식은 공식 문서의 Office and OpenDocument files 항목에 정리돼 있습니다.",
+    "Gemini API의 GenerateContent API와 Interactions API (Interactions API 비디오 블록은 v1beta·v1alpha)"
+  ],
+  "tips": [
+    {
+      "title": "옛 형식 문서를 변환 없이 시도",
+      "body": "예전 PowerPoint(PPT)나 OpenDocument 파일을 PPTX 등으로 바꾸지 않고 그대로 입력해 볼 수 있습니다."
+    },
+    {
+      "title": "ODS는 첫 시트만 전달",
+      "body": "ODS 파일은 첫 번째 시트의 데이터와 수식만 모델이 받습니다. 분석할 시트를 맨 앞에 두세요."
+    },
+    {
+      "title": "페이지 이미지로 처리되는 형식 확인",
+      "body": "DOC, PPT, ODP는 페이지 이미지로 렌더링됩니다. 표나 도식이 많은 문서는 결과를 확인하며 쓰세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "슬라이드 파일 요약",
+      "when": "PPT 또는 ODP 발표 자료를 첨부했을 때",
+      "type": "prompt",
+      "text": "첨부한 발표 자료를 슬라이드 순서대로 한 문장씩 요약해줘.\n마지막에 전체 흐름을 3줄로 정리하고, 읽기 어려웠던 슬라이드가 있으면 번호를 알려줘."
+    },
+    {
+      "title": "ODS 스프레드시트 점검",
+      "when": "ODS 파일의 첫 시트를 분석할 때",
+      "type": "prompt",
+      "text": "첨부한 스프레드시트의 첫 번째 시트에서 [확인할 열]의 수식이 일관된지 점검해줘.\n이상한 행이 있으면 행 번호와 이유를 표로 정리해줘."
+    }
+  ],
+  "cautions": [
+    "ODS는 첫 번째 시트만 전달되므로 다른 시트의 내용은 모델이 보지 못합니다.",
+    "페이지 이미지로 처리되는 형식은 원본 서식이 렌더링에서 어떻게 보이는지 직접 확인해야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 변경 기록 (2026-11-05)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05"
+    },
+    {
+      "title": "Office and OpenDocument files (Gemini API 문서)",
+      "url": "https://aistudio.google.com/docs/document-processing#office-documents"
+    },
+    {
+      "title": "Multimodal function responses (Function calling 문서)",
+      "url": "https://aistudio.google.com/docs/function-calling#multimodal"
+    }
+  ]
+}

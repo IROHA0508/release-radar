@@ -1,6 +1,8 @@
 {
-  "lastChecked": "2026-11-05 10:18",
+  "lastChecked": "2026-11-05 19:02",
   "news": [
+    "claude-opus-4-8-fast-mode-deprecation",
+    "gemini-api-office-opendocument-files",
     "images-2-6",
     "gemini-2-5-flash-deprecation",
     "gemini-2-5-pro-deprecation",

@@ -119,7 +119,8 @@
       "news": [
         "gpt-6-model-guide",
         "openai-retained-reasoning-compaction",
-        "claude-message-threads"
+        "claude-message-threads",
+        "gemini-api-office-opendocument-files"
       ],
       "verifiedAt": "2026-10-21"
     },

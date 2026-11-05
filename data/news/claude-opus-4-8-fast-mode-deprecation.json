@@ -1,0 +1,100 @@
+{
+  "id": "claude-opus-4-8-fast-mode-deprecation",
+  "company": "anthropic",
+  "date": "2026-10-30",
+  "kind": "지원 종료 예정",
+  "shutdown": "2026-11-30",
+  "title": "Claude Opus 4.8 fast mode",
+  "headline": "2026년 11월 30일부터 claude-opus-4-8의 speed: \"fast\" 요청은 오류를 반환합니다",
+  "tldr": "Anthropic이 Claude Opus 4.8의 fast mode를 지원 중단 대상으로 공지했습니다. 2026년 11월 30일 이후 claude-opus-4-8에 speed: \"fast\"를 붙여 보내면 오류가 납니다. fast mode를 계속 쓰려면 Claude Opus 5.5로 옮겨야 합니다.",
+  "models": [
+    {
+      "name": "Claude Opus 4.8",
+      "apiId": "claude-opus-4-8",
+      "input": "$10",
+      "output": "$50",
+      "cached": null
+    },
+    {
+      "name": "Claude Opus 5.5",
+      "apiId": "claude-opus-5-5",
+      "input": "$8",
+      "output": "$40",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "fast mode 제거일",
+      "value": "2026-11-30",
+      "note": "이후 claude-opus-4-8의 speed: \"fast\" 요청은 오류 반환"
+    },
+    {
+      "label": "Opus 5.5 fast mode 가격",
+      "value": "$8 / $40",
+      "note": "입력 / 출력, 100만 토큰당. Opus 4.8은 $10 / $50"
+    }
+  ],
+  "charts": [],
+  "chartNote": "성능 비교 수치가 없는 지원 종료 공지라 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Claude Opus 4.8의 fast mode가 지원 중단(deprecated)으로 바뀌었고 제거일은 2026년 11월 30일입니다.",
+    "제거 후 claude-opus-4-8에 speed: \"fast\"를 지정한 요청은 오류를 반환합니다.",
+    "fast mode를 계속 쓰려면 Claude Opus 5.5로 옮기라고 안내합니다.",
+    "fast mode는 같은 모델을 더 빠른 추론 설정으로 돌리는 방식이라 지능과 기능은 그대로입니다. 표준 속도보다 초당 출력 토큰이 최대 2.5배 높습니다.",
+    "fast mode 가격은 Opus 5.5가 입력 $8, 출력 $40(100만 토큰당)이고 Opus 5와 Opus 4.8은 입력 $10, 출력 $50입니다."
+  ],
+  "availability": [
+    "영향 대상: claude-opus-4-8에 speed: \"fast\"를 쓰는 Messages API와 Managed Agents 요청 (현재 Opus 4.8은 리서치 프리뷰)",
+    "이전 대상: Claude Opus 5.5. Claude API, Claude Models on Google Cloud(Anthropic managed), Microsoft Foundry에서 쓸 수 있습니다.",
+    "Opus 5.5는 Start, Build, Scale 사용 등급에 기본 fast mode 속도 제한이 있어 따로 접근을 요청할 필요가 없습니다.",
+    "Batch API와 Priority Tier 약정에서는 fast mode를 쓸 수 없습니다."
+  ],
+  "tips": [
+    {
+      "title": "model과 speed를 함께 바꾸기",
+      "body": "fast mode를 쓰는 코드는 model을 claude-opus-5-5로 바꾸고 speed: \"fast\"는 그대로 둡니다. Managed Agents는 에이전트의 model 객체에 speed를 지정합니다."
+    },
+    {
+      "title": "fast 요청 실패 시 표준 속도로 대체",
+      "body": "속도 제한(429)이 나면 speed를 빼고 다시 요청하는 폴백을 둘 수 있습니다. 응답의 usage.speed 값으로 실제 사용된 속도를 확인하세요."
+    },
+    {
+      "title": "fast 비용 따로 보기",
+      "body": "fast mode는 표준 요금에 배수가 붙습니다. 조직의 사용량과 비용은 Usage and Cost Analytics API로 추적할 수 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Opus 5.5로 옮긴 fast mode 호출 (Python)",
+      "when": "claude-opus-4-8로 fast mode를 쓰던 코드를 고칠 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.create(\n    model=\"claude-opus-5-5\",  # 기존: claude-opus-4-8\n    max_tokens=4096,\n    speed=\"fast\",\n    messages=[{\"role\": \"user\", \"content\": \"[요청]\"}],\n)\nprint(response.usage.speed)  # \"fast\" 또는 \"standard\""
+    },
+    {
+      "title": "코드베이스 점검 요청",
+      "when": "Claude Code 등에서 영향받는 호출을 찾고 싶을 때",
+      "type": "prompt",
+      "text": "이 저장소에서 model이 claude-opus-4-8이면서 speed=\"fast\"를 쓰는 호출을 모두 찾아줘.\n\n- 파일 경로와 줄 번호를 목록으로 정리해\n- 각 호출을 claude-opus-5-5로 바꾸는 최소 수정안을 제안해\n- 요청과 무관한 코드는 건드리지 마"
+    }
+  ],
+  "cautions": [
+    "2026년 11월 30일 이후에는 claude-opus-4-8의 fast 요청이 오류가 되므로 서비스 장애를 막으려면 그 전에 옮겨야 합니다.",
+    "fast mode 가격은 모델마다 다릅니다. 옮기기 전에 Pricing 페이지에서 최종 요금을 확인하세요.",
+    "fast mode 요청은 속도 제한(429)이나 용량 부족(529)에서도 오류가 납니다."
+  ],
+  "sources": [
+    {
+      "title": "Claude Developer Platform release notes (2026-10-30)",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30"
+    },
+    {
+      "title": "Fast mode (Claude API Docs)",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/fast-mode"
+    },
+    {
+      "title": "Opus 5.5 migration guide: Migrating from Claude Opus 4.8",
+      "url": "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide#migrating-from-claude-opus-4-8"
+    }
+  ]
+}

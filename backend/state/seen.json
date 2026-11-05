@@ -43,6 +43,22 @@
       "status": "updated",
       "title": "Voice remixing for Gemini 3.8 TTS: ReleasedVoice remixing, which lets you modify an existing prebuilt or designed voice using natural-language instructions to create a new, independent stored voice."
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05-12ba0e2e": {
+      "checkedAt": "2026-11-05",
+      "company": "google",
+      "date": "2026-11-05",
+      "id": "gemini-api-office-opendocument-files",
+      "status": "added",
+      "title": "Expanded Office and OpenDocument file support: The Gemini API now accepts PowerPoint 97-2003 (PPT), OpenDocument Presentation (ODP), and OpenDocument Spreadsheet (ODS) files as input, and adds page-im"
+    },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05-5c523f93": {
+      "checkedAt": "2026-11-05",
+      "company": "google",
+      "date": "2026-11-05",
+      "id": "gemini-api-office-opendocument-files",
+      "status": "updated",
+      "title": "More file types and file URIs in function responses: Tools can now return Office and OpenDocument files, audio, and video to the model."
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -2291,6 +2307,14 @@
       "id": "claude-usage-cost-analytics-api",
       "status": "added",
       "title": "We’ve launched the Usage and Cost Analytics API in beta with the analytics-usage-cost-2026-08-24 beta header."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30-13d93647": {
+      "checkedAt": "2026-11-05",
+      "company": "anthropic",
+      "date": "2026-10-30",
+      "id": "claude-opus-4-8-fast-mode-deprecation",
+      "status": "added",
+      "title": "We’ve deprecated fast mode for Claude Opus 4.8, with removal on November 30, 2026."
     },
     "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30-39eff05e": {
       "checkedAt": "2026-10-31",
