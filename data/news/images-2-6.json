@@ -1,0 +1,122 @@
+{
+  "id": "images-2-6",
+  "company": "openai",
+  "date": "2026-11-04",
+  "kind": "모델 출시",
+  "title": "Images 2.6",
+  "headline": "이미지 생성이 50% 빨라지고 GIF 애니메이션과 SVG 내보내기를 지원하는 OpenAI 이미지 모델",
+  "tldr": "Images 2.6은 이전보다 이미지를 50% 빠르게 만듭니다. GIF 애니메이션 생성이 새로 생겼고 편집할 때 캐릭터·제품·브랜드 디테일을 더 일관되게 유지합니다. API에서는 GPT-Image-2.6 Flare와 Sunburst 중 골라 쓰고 이미지 마크업·SVG 내보내기·complexity 매개변수가 추가됐습니다.",
+  "models": [
+    {
+      "name": "GPT-Image-2.6 Flare",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "GPT-Image-2.6 Sunburst",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "생성 속도",
+      "value": "50% 빠름",
+      "note": "이전 Images 모델 대비"
+    },
+    {
+      "label": "Flare 최단 생성 시간",
+      "value": "6초",
+      "note": "quality를 low로 설정했을 때"
+    },
+    {
+      "label": "주간 이미지 생성량",
+      "value": "40억 장",
+      "note": "ChatGPT, Codex, API 합계"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 벤치마크 비교 수치가 없어 성능 그래프는 만들지 않았습니다.",
+  "changes": [
+    "이미지 생성 속도가 이전보다 50% 빨라졌습니다.",
+    "GIF를 만들 수 있습니다. 브랜드 마스코트나 캐릭터를 움직이거나 제품 사진을 반복 재생 영상으로 바꾸는 데 쓰입니다.",
+    "API에서는 GPT-Image-2.6 Flare와 Sunburst 중 고릅니다. Flare는 quality를 low로 두면 최단 6초 만에 이미지를 만들고 포스터·제품 이미지 같은 전문 시각물의 레이아웃 품질도 좋아졌습니다.",
+    "Sunburst는 quality를 medium이나 high로 둘 때 더 높은 화질과 편집 간 일관성을 냅니다.",
+    "ChatGPT에 있던 이미지 마크업이 API에도 들어와 수정할 위치를 정확히 짚을 수 있게 됐습니다. SVG 내보내기로 웹사이트, 앱, 인쇄물에 바로 쓸 디자인을 얻습니다.",
+    "새 complexity 매개변수로 모델이 요청을 맞추기 위해 얼마나 계획을 세울지 조절합니다. 이미지 quality는 화질과 충실도, complexity는 장면에 담을 내용의 양을 다룹니다.",
+    "API 변경 기록에 따르면 GPT-Image-2.6 Sunburst(gpt-image-2.6-sunburst)와 GPT-Image-2.6 Flare(gpt-image-2.6-flare)가 이미지 생성과 편집용으로 출시됐습니다. 조절 가능한 complexity, SVG 생성, 애니메이션 GIF 생성을 지원합니다.",
+    "지원되는 GPT Image 2.5와 2.6 모델에 마크업 기반 편집(markup-guided editing)이 추가됐습니다.",
+    "GPT-Image-2.6 Sunburst는 텍스트와 이미지를 입력으로 받아 이미지를 출력합니다. 세부 구성이 많은 이미지와 편집 작업용 모델로 소개됩니다.",
+    "GPT-Image-2.6 Sunburst의 가격은 100만 토큰당 텍스트 입력 $5.00(캐시 입력 $1.25), 이미지 입력 $8.00(캐시 입력 $2.00), 이미지 출력 $30.00입니다."
+  ],
+  "availability": [
+    "ChatGPT와 Codex의 모든 구독 요금제에서 데스크톱, 모바일, 웹으로 오늘부터 전 세계에서 쓸 수 있습니다.",
+    "API에서는 GPT-Image-2.6 Sunburst와 GPT-Image-2.6 Flare가 제공됩니다.",
+    "API 가격은 OpenAI 가격 페이지의 이미지 생성 항목에서 확인합니다.",
+    "API 엔드포인트: v1/images/generations(이미지 생성), v1/images/edits(이미지 편집)",
+    "모델 문서에는 오디오와 비디오는 지원하지 않는다고 적혀 있습니다."
+  ],
+  "tips": [
+    {
+      "title": "편집은 low complexity로 시작",
+      "body": "OpenAI는 대부분의 편집 작업에 low complexity를 권합니다. 필요한 이미지 quality와 함께 설정하면 편집이 빨라집니다."
+    },
+    {
+      "title": "요소가 많은 장면은 complexity를 올리기",
+      "body": "요소나 제약이 많은 장면은 medium이나 high complexity를 시도하세요."
+    },
+    {
+      "title": "빠른 시안은 Flare, 정밀 작업은 Sunburst",
+      "body": "초안과 빠른 반복에는 quality를 low로 둔 Flare가 맞고 디테일과 편집 일관성이 중요하면 medium 또는 high에서 Sunburst를 쓰세요."
+    },
+    {
+      "title": "GIF는 스프라이트 시트로 요청",
+      "body": "원문 예시는 프레임 수와 격자 배치를 정한 스프라이트 시트를 요청합니다. 마지막 프레임이 첫 프레임으로 자연스럽게 이어지게 쓰면 반복 재생에 유리합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "반복 재생 GIF용 스프라이트 시트",
+      "when": "캐릭터나 마스코트를 움직이는 GIF로 만들 때 (원문 예시를 응용)",
+      "type": "prompt",
+      "text": "반복 재생되는 GIF용 애니메이션 스프라이트 시트를 한 장 만들어줘.\n캐릭터: [캐릭터 설명]\n동작 순서: [처음 표정과 동작 → 변화 → 마지막 동작]\n정확히 6프레임을 가로 3칸 × 세로 2칸 격자로 배치하고, 모든 칸의 크기는 같게 해줘.\n카메라는 고정하고 캐릭터, 배경, 의상은 모든 프레임에서 동일하게 유지해줘. 여섯 번째 프레임은 첫 프레임으로 자연스럽게 이어지게 해줘.\n스타일: [스타일]\n자막, 글자, 숫자, 로고, 말풍선, 테두리는 넣지 마."
+    },
+    {
+      "title": "스케치를 움직이는 캐릭터로",
+      "when": "손으로 그린 간단한 그림을 애니메이션으로 만들 때",
+      "type": "prompt",
+      "text": "첨부한 스케치의 캐릭터를 그대로 살려서 반복 재생 GIF용 6프레임 스프라이트 시트로 만들어줘.\n동작: [동작 설명]\n스타일: [스타일]\n프레임마다 캐릭터의 모양과 색은 바뀌지 않게 해줘."
+    }
+  ],
+  "cautions": [
+    "원문에 API 모델 ID와 가격이 적혀 있지 않아 이 글에서는 비워 뒀습니다. 가격 페이지에서 확인해야 합니다.",
+    "complexity 매개변수의 구체적인 값 형식과 사용법은 원문에 없습니다. API 문서를 확인해야 합니다.",
+    "원문 예시 이미지는 OpenArt 등 초기 접근 고객이 만든 것이라 일반 사용자의 결과와 다를 수도 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Images 2.6 (OpenAI)",
+      "url": "https://openai.com/index/introducing-images-2-6"
+    },
+    {
+      "title": "OpenAI API 가격 (이미지 생성)",
+      "url": "https://developers.openai.com/api/docs/pricing#image-generation"
+    },
+    {
+      "title": "OpenAI API 변경 기록 (2026-11-04)",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-04"
+    },
+    {
+      "title": "GPT-Image-2.6 Sunburst 모델 문서 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst"
+    },
+    {
+      "title": "이미지 생성 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/image-generation#gpt-image-26"
+    }
+  ]
+}

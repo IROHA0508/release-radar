@@ -1,43 +1,15 @@
 {
-  "startedAt": "2026-11-05T06:00:23+09:00",
+  "startedAt": "2026-11-05T10:18:39+09:00",
   "prices": {
-    "checked": [
-      "openai",
-      "anthropic",
-      "google"
-    ],
-    "changes": [
-      "가격 변경: Gemini 3.5 Live Translate 그 밖의 단가 입력 $0.0053 / 분, 출력 $0.0315 / 분 → $0.0368 / 분 (추정)",
-      "가격 변경: Gemini 3.5 Transcribe 그 밖의 단가 입력 $0.003 / 분, 출력 $0.002 / 분 → $0.005 / 분 (추정)",
-      "가격 변경: Gemini 3.5 Transcribe Live 그 밖의 단가 입력 $0.005 / 분, 출력 $0.004 / 분 → $0.009 / 분 (추정)"
-    ],
-    "notes": [
-      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음"
-    ],
+    "checked": [],
+    "changes": [],
+    "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 38,
-    "changed": [
-      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
-      "https://code.claude.com/docs/en/best-practices",
-      "https://ai.google.dev/gemini-api/docs/speech-generation"
-    ],
-    "changes": [
-      "가이드 추가: [openai] 팀이 함께 키우는 반복 업무는 공유 프로젝트로, 재사용 지식은 GPT로",
-      "가이드 추가: [openai] 공유 프로젝트의 내 대화는 보관·삭제하면 다른 멤버도 볼 수 없음",
-      "가이드 추가: [openai] 프로젝트 대화에서는 학습 모드와 학습 시간이 적용되지 않음",
-      "가이드 추가: [anthropic] 빽빽한 차트와 도면은 자르기·확대 도구를 먼저 주기",
-      "가이드 추가: [anthropic] 자동 모드가 일상 작업을 자꾸 막으면 autoMode에 신뢰할 환경 적기",
-      "가이드 추가: [anthropic] 두 번 고쳐도 틀리면 세 번째 수정 대신 /clear 후 새 프롬프트",
-      "가이드 추가: [anthropic] 관련 없는 작업 사이에는 /clear, 긴 세션은 초점을 정해 /compact",
-      "가이드 추가: [google] 말투가 중간에 바뀌면 턴을 나누고 턴마다 style을 따로 주기",
-      "가이드 추가: [google] 인라인 태그는 사람 소리만 쓰고 효과음 태그는 피하기",
-      "가이드 추가: [google] 대본은 실제로 말하듯 쓰고 style 없이 먼저 시험하기"
-    ],
+    "checked": 0,
+    "changed": [],
+    "changes": [],
     "errors": {}
   },
   "authError": false,

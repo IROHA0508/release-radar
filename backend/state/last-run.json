@@ -1,68 +1,69 @@
 {
-  "startedAt": "2026-11-05T05:58:30+09:00",
+  "startedAt": "2026-11-05T10:16:26+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2632,
+  "entries": 2636,
   "candidates": [
     {
-      "title": "OpenAI to acquire Pierre Computer Company, Inc.",
-      "url": "https://openai.com/index/openai-to-acquire-pierre",
+      "title": "Introducing Images 2.6",
+      "url": "https://openai.com/index/introducing-images-2-6",
       "company": "openai",
       "date": "2026-11-04",
       "relatedId": null
     },
     {
-      "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
-      "url": "https://openai.com/index/daybreak-red-aws-govcloud",
+      "title": "DevRev delivers autonomous self-service with GPT-6.1 Sol",
+      "url": "https://openai.com/index/devrev-enterprise-self-service",
+      "company": "openai",
+      "date": "2026-11-04",
+      "relatedId": "gpt-6-1-sol"
+    },
+    {
+      "title": "Feature · Model: gpt-image-2.6-sunburst · Model: gpt-image-2.6-flare · API: v1/images/generations · API: v1/images/edits",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-04",
       "company": "openai",
       "date": "2026-11-04",
       "relatedId": null
-    },
-    {
-      "title": "New agents and products for security, productivity, and creative work on Claude Marketplace",
-      "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace",
-      "company": "anthropic",
-      "date": "2026-11-04",
-      "relatedId": null
-    },
-    {
-      "title": "Voice remixing for Gemini 3.8 TTS: ReleasedVoice remixing, which lets you modify an existing prebuilt or designed voice using natural-language instructions to create a new, independent stored voice.",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-04",
-      "company": "google",
-      "date": "2026-11-04",
-      "relatedId": "gemini-app-resume-update"
     }
   ],
-  "added": [],
+  "added": [
+    {
+      "id": "images-2-6",
+      "title": "Images 2.6",
+      "url": "https://openai.com/index/introducing-images-2-6",
+      "charts": 0
+    }
+  ],
   "updated": [
     {
-      "id": "gemini-3-8-tts",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-04"
+      "id": "images-2-6",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-04"
     }
   ],
   "skipped": [
     {
-      "title": "OpenAI to acquire Pierre Computer Company, Inc.",
-      "url": "https://openai.com/index/openai-to-acquire-pierre",
-      "reason": "기업 인수 소식으로 제외 기준(기업 파트너십)에 해당"
-    },
-    {
-      "title": "Daybreak Red is now available in AWS GovCloud (US-East)",
-      "url": "https://openai.com/index/daybreak-red-aws-govcloud",
-      "reason": "기존 GPT-5.6 Cyber를 AWS GovCloud(US-East)의 승인된 정부 고객에게 제공하는 가용성 확대 글입니다. 다른 회사 플랫폼에 모델을 탑재하는 공지이고 정부 대상 사업 성격이라 제외합니다."
-    },
-    {
-      "title": "New agents and products for security, productivity, and creative work on Claude Marketplace",
-      "url": "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace",
-      "reason": "Claude Marketplace에 파트너사 에이전트·제품이 추가됐다는 소식입니다. 기업 파트너십과 엔터프라이즈 약정 지출 활용에 관한 영업·사업 공지라서 제외합니다."
+      "title": "DevRev delivers autonomous self-service with GPT-6.1 Sol",
+      "url": "https://openai.com/index/devrev-enterprise-self-service",
+      "reason": "특정 기업의 GPT-6.1 Sol 활용 사례로, 기업 파트너십·고객 사례에 해당하므로 제외합니다."
     }
   ],
   "failed": [],
-  "guardNotes": {},
+  "guardNotes": {
+    "images-2-6": [
+      "핵심 수치 '일평균 이미지 생성량: 5억 장 이상' 원문에서 확인 안 됨 → 제외"
+    ]
+  },
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {},
+  "styleNotes": {
+    "images-2-6": [
+      "문체 수정: changes.1",
+      "문체 수정: changes.4",
+      "문체 수정: availability.1",
+      "문체 수정: cautions.2"
+    ]
+  },
   "techLinks": [],
   "retired": []
 }

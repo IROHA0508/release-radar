@@ -1497,6 +1497,14 @@
       "status": "added",
       "title": "Feature · Model: gpt-6-rosalind"
     },
+    "https://developers.openai.com/api/docs/changelog#2026-11-04-62296cb4": {
+      "checkedAt": "2026-11-05",
+      "company": "openai",
+      "date": "2026-11-04",
+      "id": "images-2-6",
+      "status": "updated",
+      "title": "Feature · Model: gpt-image-2.6-sunburst · Model: gpt-image-2.6-flare · API: v1/images/generations · API: v1/images/edits"
+    },
     "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -1860,6 +1868,14 @@
       "status": "added",
       "title": "Build more responsive apps with the Decisions API"
     },
+    "https://openai.com/index/devrev-enterprise-self-service": {
+      "checkedAt": "2026-11-05",
+      "company": "openai",
+      "date": "2026-11-04",
+      "reason": "특정 기업의 GPT-6.1 Sol 활용 사례로, 기업 파트너십·고객 사례에 해당하므로 제외합니다.",
+      "status": "skipped",
+      "title": "DevRev delivers autonomous self-service with GPT-6.1 Sol"
+    },
     "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -1931,6 +1947,14 @@
       "id": "gpt-6-1-terra",
       "status": "added",
       "title": "Introducing GPT-6.1 Terra"
+    },
+    "https://openai.com/index/introducing-images-2-6": {
+      "checkedAt": "2026-11-05",
+      "company": "openai",
+      "date": "2026-11-04",
+      "id": "images-2-6",
+      "status": "added",
+      "title": "Introducing Images 2.6"
     },
     "https://openai.com/index/introducing-the-rosalind-academic-plan": {
       "checkedAt": "2026-10-16",
