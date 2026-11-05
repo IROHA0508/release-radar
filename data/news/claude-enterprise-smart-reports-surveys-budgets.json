@@ -22,12 +22,17 @@
     "소유자는 관리자가 아닌 팀 리더도 자기 그룹의 리포트를 실행하도록 허용합니다. 결제 권한이 있는 관리자는 지출 한도 때문에 막힌 사람의 한도를 리포트에서 바로 올립니다.",
     "인앱 설문: 구성원이 일하던 도구에서 답변 뒤에 짧은 카드로 설문을 받습니다. 관리자는 질문을 바꾸거나 지우고 대상, 실행 시점, 표시 위치를 정합니다. 응답은 설문 페이지에 실시간으로 쌓이고 스프레드시트로 내보냅니다.",
     "인앱 설문은 고객 관리형 암호화 키를 쓰는 조직에서도 켤 수 있습니다. 모든 데이터에 보존 기간을 하나로 정한 조직은 설문과 응답도 그 일정에 따라 삭제됩니다.",
-    "그룹 공동 예산: 그룹에 월 예산 하나를 주어 많이 쓰는 사람이 월초에 개인 한도에 걸리는 일을 줄입니다. 구성원 한도는 과도한 개인 사용을 막는 안전장치로 남고 모든 요청이 두 한도에 함께 집계되어 먼저 소진되는 쪽에서 멈춥니다."
+    "그룹 공동 예산: 그룹에 월 예산 하나를 주어 많이 쓰는 사람이 월초에 개인 한도에 걸리는 일을 줄입니다. 구성원 한도는 과도한 개인 사용을 막는 안전장치로 남고 모든 요청이 두 한도에 함께 집계되어 먼저 소진되는 쪽에서 멈춥니다.",
+    "보안 센터가 조직 설정에 추가됐습니다. 채팅, Cowork, Claude Code의 보안 설정을 Anthropic 권장 구성과 한 페이지에서 비교하고 보고서로 내려받을 수 있습니다. 인증이나 법규 준수를 보증하지는 않습니다.",
+    "추론 훅(프롬프트 훅, 도구 호출 전 훅)이 정식 출시됐습니다. 조직이 쓰는 데이터 보안 도구로 프롬프트와 도구 호출을 검사합니다.",
+    "중앙 관리 콘솔(admin.claude.com)에서 SSO, SCIM, 도메인 확인, 그룹, Compliance API 키를 상위 조직 단위로 관리합니다. Admin API로 멤버 로그아웃, IP 허용 목록 직접 관리, 관리형 컴퓨터의 Claude Desktop에서 개인 계정 차단도 가능해졌습니다."
   ],
   "availability": [
     "Claude Enterprise에서 오늘(2026-10-28) 정식 출시됐습니다.",
     "HIPAA 구성이나 고객 관리형 암호화 키를 쓰는 조직은 구성에 따라 제공 범위가 다릅니다.",
-    "자격 요건과 자세한 설정 방법은 원문이 안내한 Help Center에 있습니다."
+    "자격 요건과 자세한 설정 방법은 원문이 안내한 Help Center에 있습니다.",
+    "보안 센터, 중앙 관리, Admin API 멤버 로그아웃, IP 허용 목록 직접 관리, Claude Desktop 설정은 베타입니다.",
+    "Cowork의 EDR 연동은 macOS·Windows의 Claude Team·Enterprise에서 베타입니다."
   ],
   "tips": [
     {
@@ -66,6 +71,14 @@
     {
       "title": "Smart reports, surveys, and pooled group budgets for Claude Enterprise (Anthropic)",
       "url": "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets"
+    },
+    {
+      "title": "More visibility and control over Claude Enterprise for security teams",
+      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates"
+    },
+    {
+      "title": "More visibility and control over Claude Enterprise for security teams (Anthropic)",
+      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates"
     }
   ]
 }

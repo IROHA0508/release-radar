@@ -1,64 +1,152 @@
 {
-  "startedAt": "2026-11-05T18:58:40+09:00",
+  "startedAt": "2026-11-06T06:15:54+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2630,
+  "entries": 2631,
   "candidates": [
     {
-      "title": "Expanded Office and OpenDocument file support: The Gemini API now accepts PowerPoint 97-2003 (PPT), OpenDocument Presentation (ODP), and OpenDocument Spreadsheet (ODS) files as input, and adds page-im",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
-      "company": "google",
+      "title": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+      "url": "https://openai.com/index/introducing-gpt-6-cyber",
+      "company": "openai",
       "date": "2026-11-05",
-      "relatedId": "gemini-app-resume-update"
+      "relatedId": null
     },
     {
-      "title": "More file types and file URIs in function responses: Tools can now return Office and OpenDocument files, audio, and video to the model.",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
+      "title": "Setting a new standard for responsible AI infrastructure",
+      "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+      "company": "openai",
+      "date": "2026-11-05",
+      "relatedId": null
+    },
+    {
+      "title": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+      "company": "google",
+      "date": "2026-11-05",
+      "relatedId": "gemini-omni"
+    },
+    {
+      "title": "Introducing Personal Finance in Claude",
+      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
+      "company": "anthropic",
+      "date": "2026-11-05",
+      "relatedId": null
+    },
+    {
+      "title": "More visibility and control over Claude Enterprise for security teams",
+      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates",
+      "company": "anthropic",
+      "date": "2026-11-05",
+      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
+    },
+    {
+      "title": "Transform a quick drawing into a live app with Gemini.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini/",
       "company": "google",
       "date": "2026-11-05",
       "relatedId": null
     },
     {
-      "title": "We’ve deprecated fast mode for Claude Opus 4.8, with removal on November 30, 2026.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30",
+      "title": "Gemini Omni 1.2 Flash: Fast, cost-effective, and reliable video generation and editing now generally available",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-omni-1-2-flash-generally-available/",
+      "company": "google",
+      "date": "2026-11-05",
+      "relatedId": "gemini-omni"
+    },
+    {
+      "title": "Feature · Model: gpt-6-cyber",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-05",
+      "company": "openai",
+      "date": "2026-11-05",
+      "relatedId": null
+    },
+    {
+      "title": "You can now set up an IP allowlist for your organization in the Claude Console, in beta.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
       "company": "anthropic",
-      "date": "2026-10-30",
-      "relatedId": "claude-opus-4-8"
+      "date": "2026-11-05",
+      "relatedId": null
+    },
+    {
+      "title": "You can now sign a member of your Claude Enterprise (claude.ai) organization out of Claude everywhere with the Admin API (see the Admin API reference).",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
+      "company": "anthropic",
+      "date": "2026-11-05",
+      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
+    },
+    {
+      "title": "Gemini Omni 1.2 Flash generally available (GA): ReleasedGemini Omni 1.2 Flash(gemini-omni-1.2-flash), featuring up to 15-second video generation and conversational editing (3 to 10 seconds for first a",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
+      "company": "google",
+      "date": "2026-11-05",
+      "relatedId": "gemini-omni"
+    },
+    {
+      "title": "Gemini Omni 1.1 Flash automatic routing notice: Effective December 3,2026, API requests to gemini-omni-1.1-flash will automatically route togemini-omni-1.2-flash atGemini Omni 1.2 Flash rates.",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
+      "company": "google",
+      "date": "2026-11-05",
+      "relatedId": "gemini-omni-1-1-flash"
     }
   ],
   "added": [
     {
-      "id": "gemini-api-office-opendocument-files",
-      "title": "Gemini API Office·OpenDocument 파일 지원 확대",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
+      "id": "gpt-6-cyber",
+      "title": "GPT-6 Cyber",
+      "url": "https://openai.com/index/introducing-gpt-6-cyber",
+      "charts": 4
+    },
+    {
+      "id": "gemini-omni-1-2-flash",
+      "title": "Gemini Omni 1.2 Flash",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
       "charts": 0
     },
     {
-      "id": "claude-opus-4-8-fast-mode-deprecation",
-      "title": "Claude Opus 4.8 fast mode",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-10-30",
+      "id": "claude-personal-finance",
+      "title": "Personal Finance in Claude",
+      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
+      "charts": 0
+    },
+    {
+      "id": "gemini-app-sketch-to-app",
+      "title": "손그림 스케치를 Gemini Canvas로 실행되는 앱으로 바꾸기",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini/",
       "charts": 0
     }
   ],
   "updated": [
     {
-      "id": "gemini-api-office-opendocument-files",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05"
+      "id": "claude-enterprise-smart-reports-surveys-budgets",
+      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates"
     }
   ],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "Setting a new standard for responsible AI infrastructure",
+      "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+      "reason": "AI 인프라 정책 공지로 모델 출시·기능과 무관"
+    }
+  ],
   "failed": [],
-  "guardNotes": {
-    "claude-opus-4-8-fast-mode-deprecation": [
-      "핵심 수치 'fast mode 속도: 최대 2.5배' 원문에서 확인 안 됨 → 제외"
-    ]
-  },
+  "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {},
+  "styleNotes": {
+    "gemini-omni-1-2-flash": [
+      "문체 수정: changes.0",
+      "문체 수정: changes.3",
+      "문체 수정: changes.5",
+      "문체 수정: availability.0",
+      "문체 수정: availability.1",
+      "문체 수정: availability.3",
+      "문체 수정: availability.4"
+    ]
+  },
   "techLinks": [
-    "gemini-api-office-opendocument-files → llm-api"
+    "claude-personal-finance → tool-use, rag, structured-output",
+    "새 기술 후보: 비전 기반 프로토타이핑 (Vision-based prototyping) ← gemini-app-sketch-to-app"
   ],
   "retired": []
 }

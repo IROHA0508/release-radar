@@ -1,0 +1,182 @@
+{
+  "id": "gpt-6-cyber",
+  "company": "openai",
+  "date": "2026-11-05",
+  "kind": "모델 출시",
+  "title": "GPT-6 Cyber",
+  "headline": "ExploitGym 48.5%, 허용 범위를 지키는 정렬을 강화한 보안 연구용 모델",
+  "tldr": "GPT-5.6 Cyber의 후속 모델로, 취약점을 찾고 고치는 능력과 연구자가 정한 범위를 지키는 신뢰도를 함께 높였습니다. ExploitGym은 32.1%에서 48.5%로 올랐고 범위 밖 서비스를 공격하지 않은 비율은 배포용 프롬프트 없이 99.93%입니다. 우선 승인된 Daybreak Red 고객 일부에게 API와 Codex로 제공됩니다.",
+  "models": [
+    {
+      "name": "GPT-6 Cyber",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "ExploitGym",
+      "value": "48.5%",
+      "note": "GPT-5.6 Cyber는 32.1%, 상대 개선 51%"
+    },
+    {
+      "label": "ExploitGym Honeypot",
+      "value": "99.93%",
+      "note": "배포용 프롬프트 없이 범위 밖 서비스를 공격하지 않은 비율. 프롬프트를 쓰면 100%, GPT-5.6 Cyber는 94.49%"
+    },
+    {
+      "label": "Linux 커널 익스플로잇",
+      "value": "948개",
+      "note": "1,724개 취약점을 재현했고 GPT-5.6 Sol은 같은 하네스에서 166개"
+    },
+    {
+      "label": "Firefox 신규 고위험 취약점",
+      "value": "81개",
+      "note": "Mozilla가 고위험으로 분류한 값"
+    }
+  ],
+  "chartSource": "OpenAI GPT-6 Cyber 발표문 본문에 적힌 수치 기준입니다.",
+  "charts": [
+    {
+      "title": "ExploitGym",
+      "desc": "원격 대상의 지정된 취약점 공격 성공률",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "OpenAI",
+      "rows": [
+        {
+          "label": "GPT-6 Cyber",
+          "value": 48.5,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Cyber",
+          "value": 32.1
+        }
+      ]
+    },
+    {
+      "title": "웹 침투 테스트 평가",
+      "desc": "소스 코드 없이 웹 애플리케이션을 탐색해 찾은 취약점 재현율",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "OpenAI 자체 신규 평가",
+      "rows": [
+        {
+          "label": "GPT-6 Cyber",
+          "value": 40.3,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6 Astra",
+          "value": 32
+        }
+      ]
+    },
+    {
+      "title": "ExploitGym Honeypot",
+      "desc": "배포용 안전 프롬프트 없이 범위 밖 서비스를 공격하지 않은 비율",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "OpenAI",
+      "note": "프롬프트를 쓰면 GPT-6 Cyber는 100%",
+      "rows": [
+        {
+          "label": "GPT-6 Cyber",
+          "value": 99.93,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Cyber",
+          "value": 94.49
+        }
+      ]
+    },
+    {
+      "title": "Linux 커널 익스플로잇 개발",
+      "desc": "같은 연구 하네스에서 작동하는 익스플로잇을 만든 취약점 수",
+      "type": "bar",
+      "unit": "",
+      "lowerIsBetter": false,
+      "source": "OpenAI",
+      "rows": [
+        {
+          "label": "GPT-6 Cyber",
+          "value": 948,
+          "highlight": true
+        },
+        {
+          "label": "GPT-5.6 Sol",
+          "value": 166
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "ExploitGym에서 GPT-5.6 Cyber보다 약 16%p 오른 48.5%를 기록했고 GPT-6 Astra보다 대부분의 사이버 과제에서 앞섭니다. Astra가 요청을 거절하지 않는 경우에도 같습니다.",
+    "허용된 범위를 지키고 제한을 따르며 작업을 정확히 보고하도록 따로 학습했습니다. 연구자가 정한 교전 규칙을 무시하거나 관련 없는 서비스를 공격하는 위험을 줄이는 데 초점을 뒀습니다.",
+    "RemoteExploitBench 초기 평가에서 Daybreak Blue로 돌린 GPT-6 Astra는 과제를 100% 거절했고 GPT-6 Cyber는 95%를 완료했습니다. 유일한 실패는 원격에서 작동시키지 못한 익스플로잇입니다.",
+    "OpenAI 연구진이 Linux 커널 취약점 948개의 익스플로잇을 개발했고 Firefox에서 알려지지 않은 고위험 취약점 81개를 찾았습니다. 기존에 알려진 30건은 보고된 것보다 심각하다는 점도 확인했습니다.",
+    "Preparedness Framework에서 사이버보안 능력을 GPT-5.6 Cyber의 High보다 높은 Critical로 분류했습니다.",
+    "오용 탐지 장치를 보강했습니다. 사이버 특화 정렬 이탈 모니터링, Private Safety Processing, Daybreak Red API의 IP 허용 목록 기본 적용이 들어갑니다. 핵심 시설을 노리는 고위험 지원은 새 점검으로 차단합니다."
+  ],
+  "availability": [
+    "API와 Codex에서 승인된 Daybreak Red 고객 일부에게 먼저 제공됩니다.",
+    "모든 Daybreak Red 고객으로 곧 확대할 예정이며 GPT-5.6 Cyber는 이미 모든 Daybreak Red 고객에게 열립니다.",
+    "GPT-6 Astra의 Daybreak Blue 알파 접근을 더 많은 조직과 개인 보안 연구자에게 넓힙니다.",
+    "승인된 핵심 인프라 방어자용으로 Daybreak Red 안에 Daybreak Red for Critical Infrastructure 그룹을 새로 만들었습니다.",
+    "신규 사용자와 조직은 Daybreak 신청 페이지에서 지원합니다."
+  ],
+  "tips": [
+    {
+      "title": "역할에 맞는 모델부터 고르기",
+      "body": "코드 리뷰, 취약점 분류, 패치 개발은 GPT-6 Astra 같은 일반 모델로 이미 가능합니다. 검증된 방어자가 불필요한 거절을 줄이려면 Daybreak Blue를, 익스플로잇 개발과 승인된 보안 테스트가 필요하면 Daybreak Red의 GPT-6 Cyber를 씁니다."
+    },
+    {
+      "title": "샌드박스와 사람의 검토 붙이기",
+      "body": "OpenAI는 이전 모델과 같이 위험도가 높은 작업에 샌드박싱, 액션 리뷰, 사람의 감독을 권합니다."
+    },
+    {
+      "title": "ZDR 고객은 PSP 확인",
+      "body": "Zero Data Retention을 쓰는 API 고객은 대체로 Private Safety Processing을 써야 합니다. 도입 전에 설정 문서를 확인하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "범위를 명시한 취약점 점검",
+      "when": "승인된 대상에서 보안 점검을 맡길 때",
+      "type": "prompt",
+      "text": "다음 범위 안에서만 취약점을 점검해줘.\n- 허용 대상: [호스트 또는 저장소]\n- 허용하지 않는 대상: [패키지 레지스트리, 객체 저장소 등 지원 서비스]\n\n범위 밖 자격 증명이나 서비스는 탐색하지 마. 찾은 취약점은 재현 절차와 근거를 함께 보고하고 시도하지 않은 항목도 알려줘."
+    },
+    {
+      "title": "패치 후보 작성",
+      "when": "찾은 취약점의 수정안을 만들 때",
+      "type": "prompt",
+      "text": "[취약점 설명]에 대한 패치 후보를 작성해줘.\n- 기존 동작을 바꾸지 않는 최소 수정으로 해\n- 수정이 막는 공격 경로를 설명해\n- 수정을 검증할 테스트를 함께 제안해"
+    }
+  ],
+  "cautions": [
+    "현재는 승인된 일부 Daybreak Red 고객만 쓸 수 있습니다. 일반 사용자는 바로 쓸 수 없습니다.",
+    "원문은 안전장치 차단율이 높다고 항상 좋은 것은 아니라고 설명합니다. 정상적인 보안 연구에도 같은 기법이 쓰이기 때문에 연구와 패치 지원을 함께 평가한다고 밝힙니다.",
+    "모델 ID와 API 가격은 원문에 없어 비워 두었습니다. 확인 필요."
+  ],
+  "sources": [
+    {
+      "title": "GPT-6 Cyber: Advancing the frontier of aligned cybersecurity agents (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-6-cyber"
+    },
+    {
+      "title": "GPT-6 Cyber system card",
+      "url": "https://deploymentsafety.openai.com/gpt-6-cyber"
+    },
+    {
+      "title": "Private Safety Processing (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing"
+    }
+  ]
+}

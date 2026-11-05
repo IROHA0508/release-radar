@@ -28,5 +28,15 @@
     ],
     "company": "google",
     "addedAt": "2026-10-30"
+  },
+  {
+    "name": "비전 기반 프로토타이핑",
+    "en": "Vision-based prototyping",
+    "oneLiner": "앱 목업이나 스케치 이미지를 업로드하면 모델이 그것을 읽어 실행 가능한 코드로 생성합니다.",
+    "news": [
+      "gemini-app-sketch-to-app"
+    ],
+    "company": "google",
+    "addedAt": "2026-11-06"
   }
 ]

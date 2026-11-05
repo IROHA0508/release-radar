@@ -175,7 +175,8 @@
         "gemini-3-1-flash-lite",
         "decisions-api",
         "google-a2ui-express",
-        "google-a2ui-copilotkit-generative-ui"
+        "google-a2ui-copilotkit-generative-ui",
+        "claude-personal-finance"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -232,7 +233,8 @@
       "news": [
         "gemini-3-5-flash-developer-guide",
         "openai-gpt-5-6-builders-guide",
-        "gemini-app-small-business-tools"
+        "gemini-app-small-business-tools",
+        "claude-personal-finance"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -603,7 +605,8 @@
         }
       ],
       "news": [
-        "embeddinggemma-2"
+        "embeddinggemma-2",
+        "claude-personal-finance"
       ],
       "verifiedAt": "2026-10-21"
     },
