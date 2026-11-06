@@ -1,61 +1,33 @@
 {
-  "startedAt": "2026-11-06T06:15:54+09:00",
+  "startedAt": "2026-11-06T19:00:38+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2631,
+  "entries": 2637,
   "candidates": [
     {
-      "title": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
-      "url": "https://openai.com/index/introducing-gpt-6-cyber",
+      "title": "Australian universities are creating AI-native graduates",
+      "url": "https://openai.com/index/australian-universities-ai-native-graduates",
       "company": "openai",
       "date": "2026-11-05",
       "relatedId": null
     },
     {
-      "title": "Setting a new standard for responsible AI infrastructure",
-      "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+      "title": "Cult.fit builds operational muscle with Codex",
+      "url": "https://openai.com/index/cultfit-builds-with-codex",
       "company": "openai",
       "date": "2026-11-05",
       "relatedId": null
     },
     {
-      "title": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
-      "company": "google",
-      "date": "2026-11-05",
-      "relatedId": "gemini-omni"
-    },
-    {
-      "title": "Introducing Personal Finance in Claude",
-      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
-      "company": "anthropic",
+      "title": "Merge builds product and business tools with OpenAI technology",
+      "url": "https://openai.com/index/merge-builds-with-openai",
+      "company": "openai",
       "date": "2026-11-05",
       "relatedId": null
     },
     {
-      "title": "More visibility and control over Claude Enterprise for security teams",
-      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates",
-      "company": "anthropic",
-      "date": "2026-11-05",
-      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
-    },
-    {
-      "title": "Transform a quick drawing into a live app with Gemini.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini/",
-      "company": "google",
-      "date": "2026-11-05",
-      "relatedId": null
-    },
-    {
-      "title": "Gemini Omni 1.2 Flash: Fast, cost-effective, and reliable video generation and editing now generally available",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-omni-1-2-flash-generally-available/",
-      "company": "google",
-      "date": "2026-11-05",
-      "relatedId": "gemini-omni"
-    },
-    {
-      "title": "Feature · Model: gpt-6-cyber",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-11-05",
+      "title": "Flipsnack grows product signups with conversion optimization",
+      "url": "https://openai.com/ads/customers/flipsnack",
       "company": "openai",
       "date": "2026-11-05",
       "relatedId": null
@@ -68,18 +40,11 @@
       "relatedId": null
     },
     {
-      "title": "You can now sign a member of your Claude Enterprise (claude.ai) organization out of Claude everywhere with the Admin API (see the Admin API reference).",
+      "title": "You can now sign a member of your Claude Enterprise (claude.ai) organization out of Claude everywhere with the Admin API.",
       "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
       "company": "anthropic",
       "date": "2026-11-05",
       "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
-    },
-    {
-      "title": "Gemini Omni 1.2 Flash generally available (GA): ReleasedGemini Omni 1.2 Flash(gemini-omni-1.2-flash), featuring up to 15-second video generation and conversational editing (3 to 10 seconds for first a",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
-      "company": "google",
-      "date": "2026-11-05",
-      "relatedId": "gemini-omni"
     },
     {
       "title": "Gemini Omni 1.1 Flash automatic routing notice: Effective December 3,2026, API requests to gemini-omni-1.1-flash will automatically route togemini-omni-1.2-flash atGemini Omni 1.2 Flash rates.",
@@ -91,41 +56,45 @@
   ],
   "added": [
     {
-      "id": "gpt-6-cyber",
-      "title": "GPT-6 Cyber",
-      "url": "https://openai.com/index/introducing-gpt-6-cyber",
-      "charts": 4
-    },
-    {
-      "id": "gemini-omni-1-2-flash",
-      "title": "Gemini Omni 1.2 Flash",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/",
+      "id": "claude-console-ip-allowlist",
+      "title": "Claude Console IP 허용 목록",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
       "charts": 0
     },
     {
-      "id": "claude-personal-finance",
-      "title": "Personal Finance in Claude",
-      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
+      "id": "claude-admin-api-sign-out-member",
+      "title": "Sign a member out everywhere (Admin API)",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
       "charts": 0
     },
     {
-      "id": "gemini-app-sketch-to-app",
-      "title": "손그림 스케치를 Gemini Canvas로 실행되는 앱으로 바꾸기",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini/",
+      "id": "gemini-omni-1-1-flash-deprecation",
+      "title": "Gemini Omni 1.1 Flash",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
       "charts": 0
     }
   ],
-  "updated": [
-    {
-      "id": "claude-enterprise-smart-reports-surveys-budgets",
-      "url": "https://claude.com/resources/articles/claude-enterprise-security-updates"
-    }
-  ],
+  "updated": [],
   "skipped": [
     {
-      "title": "Setting a new standard for responsible AI infrastructure",
-      "url": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
-      "reason": "AI 인프라 정책 공지로 모델 출시·기능과 무관"
+      "title": "Australian universities are creating AI-native graduates",
+      "url": "https://openai.com/index/australian-universities-ai-native-graduates",
+      "reason": "기업 고객 사례. 새 모델 출시, 기능 출시, 가격 변경이 없고 대학의 ChatGPT 채택 마케팅에 해당하여 제외 대상(마케팅 글)에 포함됨"
+    },
+    {
+      "title": "Cult.fit builds operational muscle with Codex",
+      "url": "https://openai.com/index/cultfit-builds-with-codex",
+      "reason": "기업 고객 사례. Cult.fit의 Codex 사용 사례로, 새 제품·기능 출시가 아닌 고객 마케팅 글에 해당"
+    },
+    {
+      "title": "Merge builds product and business tools with OpenAI technology",
+      "url": "https://openai.com/index/merge-builds-with-openai",
+      "reason": "기업 고객 사례 및 마케팅. Merge의 OpenAI 기술 활용 사례로, 새 모델이나 기능 출시가 아님"
+    },
+    {
+      "title": "Flipsnack grows product signups with conversion optimization",
+      "url": "https://openai.com/ads/customers/flipsnack",
+      "reason": "마케팅 캠페인 사례. Flipsnack의 광고 성과 사례로, AI 제품·기능 출시나 활용 팁이 아님"
     }
   ],
   "failed": [],
@@ -134,19 +103,18 @@
   "authError": false,
   "guideChanges": [],
   "styleNotes": {
-    "gemini-omni-1-2-flash": [
-      "문체 수정: changes.0",
+    "claude-console-ip-allowlist": [
       "문체 수정: changes.3",
-      "문체 수정: changes.5",
-      "문체 수정: availability.0",
-      "문체 수정: availability.1",
-      "문체 수정: availability.3",
-      "문체 수정: availability.4"
+      "문체 수정: cautions.0",
+      "문체 수정: cautions.1",
+      "문체 수정: tips.1.body"
+    ],
+    "claude-admin-api-sign-out-member": [
+      "문체 수정: tldr",
+      "문체 수정: changes.2",
+      "문체 수정: cautions.0"
     ]
   },
-  "techLinks": [
-    "claude-personal-finance → tool-use, rag, structured-output",
-    "새 기술 후보: 비전 기반 프로토타이핑 (Vision-based prototyping) ← gemini-app-sketch-to-app"
-  ],
+  "techLinks": [],
   "retired": []
 }

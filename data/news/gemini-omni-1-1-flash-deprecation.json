@@ -1,0 +1,87 @@
+{
+  "id": "gemini-omni-1-1-flash-deprecation",
+  "company": "google",
+  "date": "2026-11-05",
+  "kind": "지원 종료 예정",
+  "shutdown": "2026-12-03",
+  "title": "Gemini Omni 1.1 Flash",
+  "headline": "2026년 12월 3일부터 API 요청이 Gemini Omni 1.2 Flash로 자동 전환됩니다",
+  "tldr": "Google이 Gemini API 변경 기록에 Gemini Omni 1.1 Flash 자동 전환 공지를 올렸습니다. 2026년 12월 3일부터 gemini-omni-1.1-flash로 보낸 API 요청은 gemini-omni-1.2-flash로 자동 전달되고 요금도 Gemini Omni 1.2 Flash 기준으로 청구됩니다.",
+  "models": [
+    {
+      "name": "Gemini Omni 1.1 Flash",
+      "apiId": "gemini-omni-1.1-flash",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Gemini Omni 1.2 Flash",
+      "apiId": "gemini-omni-1.2-flash",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "전환 시작일",
+      "value": "2026-12-03",
+      "note": "이날부터 gemini-omni-1.1-flash 요청이 자동 전환됩니다"
+    },
+    {
+      "label": "전환 대상",
+      "value": "gemini-omni-1.2-flash",
+      "note": "Gemini Omni 1.2 Flash 요금 적용"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 비교 수치가 없어 그래프는 없습니다.",
+  "changes": [
+    "2026년 12월 3일부터 gemini-omni-1.1-flash로 보내는 API 요청이 gemini-omni-1.2-flash로 자동 전달됩니다.",
+    "전환된 요청에는 Gemini Omni 1.2 Flash 요금이 적용됩니다.",
+    "요금표는 AI Studio 가격 페이지의 gemini-omni-1.2-flash 항목에서 확인할 수 있습니다."
+  ],
+  "availability": [
+    "대상: Gemini API에서 gemini-omni-1.1-flash 모델 ID를 쓰는 요청",
+    "전환일: 2026-12-03"
+  ],
+  "tips": [
+    {
+      "title": "모델 ID를 미리 바꿔 두기",
+      "body": "자동 전환을 기다리지 말고 코드의 모델 ID를 gemini-omni-1.2-flash로 직접 바꿔 두면 전환일 전에 결과를 확인할 수 있습니다."
+    },
+    {
+      "title": "비용 변화 확인",
+      "body": "전환 후에는 1.2 Flash 요금이 적용됩니다. 가격 페이지에서 단가를 보고 예상 비용을 다시 계산하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "모델 ID 교체 예시 (Python)",
+      "when": "전환일 전에 1.2 Flash로 먼저 시험해 볼 때",
+      "type": "code",
+      "text": "from google import genai\n\nclient = genai.Client()\n\nresponse = client.models.generate_content(\n    model=\"gemini-omni-1.2-flash\",  # 기존: gemini-omni-1.1-flash\n    contents=\"[요청]\",\n)\nprint(response.text)"
+    },
+    {
+      "title": "기존 코드 점검 요청",
+      "when": "프로젝트에서 이전 모델 ID가 남은 곳을 찾을 때",
+      "type": "prompt",
+      "text": "이 저장소에서 gemini-omni-1.1-flash를 쓰는 곳을 모두 찾아서 파일 경로와 줄 번호를 알려줘.\n각 위치를 gemini-omni-1.2-flash로 바꾸는 수정안도 만들어 줘. 아직 적용은 하지 마."
+    }
+  ],
+  "cautions": [
+    "원문에는 전환일과 대상 모델, 요금 기준만 적혀 있습니다. 1.2 Flash의 단가와 동작 차이는 가격 페이지와 관련 문서에서 확인이 필요합니다.",
+    "자동 전환 전후로 응답 품질이나 지연 시간이 달라질 수 있어 운영 중인 서비스는 미리 시험해 보는 편이 안전합니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 변경 기록 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05"
+    },
+    {
+      "title": "Gemini Omni 1.2 Flash 가격 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/pricing#gemini-omni-1.2-flash"
+    }
+  ]
+}

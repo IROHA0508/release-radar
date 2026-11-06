@@ -1,0 +1,89 @@
+{
+  "id": "claude-console-ip-allowlist",
+  "company": "anthropic",
+  "date": "2026-11-05",
+  "kind": "제품·기능 출시",
+  "title": "Claude Console IP 허용 목록",
+  "headline": "허용한 IP에서 온 요청만 받아 API 키 유출 피해를 줄이는 베타 기능",
+  "tldr": "Claude Console에서 조직 단위 IP 허용 목록을 설정할 수 있게 됐습니다(베타). 목록에 없는 주소에서 오는 요청은 거부되므로 API 키가 새어 나가도 쓸 수 있는 곳이 제한됩니다. IPv4와 IPv6 주소 또는 CIDR 범위를 조직당 최대 1,000개 넣을 수 있습니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "항목 수",
+      "value": "최대 1,000개",
+      "note": "조직당 IPv4·IPv6 주소 또는 CIDR 범위"
+    },
+    {
+      "label": "적용 지연",
+      "value": "최대 15분",
+      "note": "설정을 바꾼 뒤 반영되기까지"
+    },
+    {
+      "label": "CIDR 범위 한도",
+      "value": "IPv4 /8, IPv6 /32",
+      "note": "이보다 넓은 범위는 넣을 수 없음"
+    }
+  ],
+  "charts": [],
+  "chartNote": "성능 비교 수치가 없는 보안 설정 기능이라 그래프는 없습니다.",
+  "changes": [
+    "조직 관리자나 소유자가 설정에서 허용 IP 목록을 만들면 목록 안의 주소에서 온 요청만 통과합니다.",
+    "목록 밖 주소의 API 요청은 거부됩니다. Messages API는 403 permission_error와 \"Your IP address isn't in this organization's allowed range.\" 메시지를 돌려줍니다.",
+    "Claude Platform 조직에서는 Claude Console 접속과 Messages, Message Batches, Token Counting, Models, Files, Skills 엔드포인트에 적용됩니다. Claude Managed Agents의 Agents, Sessions, Environments, Vaults, Memory stores 엔드포인트와 Admin API, Compliance API도 대상입니다.",
+    "허용 목록을 쓰는 중에도 관리자가 어느 IP에서든 설정 페이지에 들어올 수 있게 하는 체크박스가 있어 잠김을 피하게 해 줍니다.",
+    "Claude Enterprise 조직은 별도의 IP 허용 목록을 갖고 있고 브라우저·데스크톱·모바일 앱, Claude 계정으로 로그인한 Claude Code, Claude in Chrome, Office 애드인, Cowork에 적용됩니다."
+  ],
+  "availability": [
+    "Claude Console의 Identity and access 페이지(베타)",
+    "Claude Enterprise는 claude.ai > Organization settings > Organization and access에서 소유자와 기본 소유자가 설정합니다.",
+    "Claude in Amazon Bedrock, Claude Platform on AWS, Claude Models on Google Cloud, Claude in Microsoft Foundry에는 적용되지 않습니다.",
+    "Claude Managed Agents는 엔드포인트 요청만 대상이며 런타임 내부 네트워크에는 적용되지 않습니다."
+  ],
+  "tips": [
+    {
+      "title": "서버·CI·사무실 주소를 먼저 모으기",
+      "body": "저장 전에 데이터 센터, CI, 사무실, VPN, 프록시, 자체 호스팅 샌드박스 작업자의 공인 IPv4·IPv6 주소를 모두 목록에 넣으세요. 설정 페이지는 지금 접속한 주소만 확인하고 서버나 팀원 주소는 확인하지 않습니다."
+    },
+    {
+      "title": "복구 경로 체크박스 켜 두기",
+      "body": "Anthropic은 \"Allow admins to access this settings page from any IP address\" 체크박스를 선택해 두라고 권합니다. 다만 관리자 세션이 탈취되면 원격에서 목록이 바뀔 여지가 있어 Compliance API의 Activity Feed로 변경 기록을 점검하는 편이 좋습니다."
+    },
+    {
+      "title": "저장 후 15분 동안 403 지켜보기",
+      "body": "변경이 반영되는 데 최대 15분이 걸립니다. 매일이나 매주 도는 작업까지 포함해 403 permission_error가 나는지 보고 빠진 주소를 추가하세요."
+    },
+    {
+      "title": "키 만료나 Workload Identity Federation과 함께 쓰기",
+      "body": "허용 목록은 키가 어디서 쓰이는지만 제한하고 얼마나 오래 쓰이는지는 제한하지 않습니다. 짧은 키 만료를 설정하거나 Workload Identity Federation으로 바꾸는 쪽이 더 안전합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "허용 목록에 넣을 주소 점검표 만들기",
+      "when": "허용 목록을 켜기 전에 빠진 네트워크가 없는지 확인할 때",
+      "type": "prompt",
+      "text": "우리 조직에서 Claude API를 호출하는 곳을 정리하고 있어. 아래 환경을 보고 IP 허용 목록에 넣어야 할 공인 IP 후보 항목을 표로 만들어줘. 사설 대역(10.0.0.0/8 등)은 제외하고, 확인이 필요한 항목은 따로 표시해줘.\n\n- 운영 서버: [서버 환경]\n- CI/CD: [CI 서비스]\n- 사무실·VPN·프록시: [네트워크 정보]\n- 매일·매주 도는 배치 작업: [작업 목록]"
+    },
+    {
+      "title": "403 오류 원인 추적",
+      "when": "허용 목록을 켠 뒤 일부 작업이 실패할 때",
+      "type": "prompt",
+      "text": "IP 허용 목록을 켠 뒤 아래 로그에서 403 permission_error가 나고 있어. 메시지는 \"Your IP address isn't in this organization's allowed range.\"야. 로그에서 요청이 나간 환경을 추정하고, 허용 목록에 추가해야 할 공인 IP를 확인하는 방법을 알려줘.\n\n[오류 로그]"
+    }
+  ],
+  "cautions": [
+    "허용 목록은 조직 전체에 적용되며 관리자와 소유자도 막힙니다. 복구 체크박스를 켜지 않으면 관리자 잠김이 생길 수도 있습니다.",
+    "Claude Enterprise에서 차단된 사용자의 채팅 작업은 최대 24시간 계속될 수도 있지만 목록 밖에서는 그 채팅을 열거나 제어할 수 없습니다. Claude Design, Claude in Slack, Claude Academy는 적용 대상이 아닙니다.",
+    "공유 프록시 주소를 넣으면 키나 로그인 정보를 훔친 공격자가 그 프록시를 통해 접근할 가능성이 있습니다. 집이나 모바일 주소는 예고 없이 바뀔 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Claude API 변경 기록 2026-11-05 (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05"
+    },
+    {
+      "title": "IP allowlisting (Claude Docs)",
+      "url": "https://platform.claude.com/docs/en/manage-claude/ip-allowlist"
+    }
+  ]
+}
