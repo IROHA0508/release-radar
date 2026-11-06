@@ -1,100 +1,99 @@
 {
-  "startedAt": "2026-11-06T19:00:38+09:00",
+  "startedAt": "2026-11-07T05:38:30+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2637,
+  "entries": 2636,
   "candidates": [
     {
-      "title": "Australian universities are creating AI-native graduates",
-      "url": "https://openai.com/index/australian-universities-ai-native-graduates",
+      "title": "Measuring how AI agents handle everyday wet-lab science",
+      "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
       "company": "openai",
-      "date": "2026-11-05",
+      "date": "2026-11-06",
       "relatedId": null
     },
     {
-      "title": "Cult.fit builds operational muscle with Codex",
-      "url": "https://openai.com/index/cultfit-builds-with-codex",
-      "company": "openai",
-      "date": "2026-11-05",
-      "relatedId": null
+      "title": "Gemini Embedding 2 Preview deprecation:gemini-embedding-2-preview isdeprecated.",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-06",
+      "company": "google",
+      "date": "2026-11-06",
+      "relatedId": "gemini-embedding-2"
     },
     {
-      "title": "Merge builds product and business tools with OpenAI technology",
-      "url": "https://openai.com/index/merge-builds-with-openai",
-      "company": "openai",
-      "date": "2026-11-05",
-      "relatedId": null
-    },
-    {
-      "title": "Flipsnack grows product signups with conversion optimization",
-      "url": "https://openai.com/ads/customers/flipsnack",
-      "company": "openai",
-      "date": "2026-11-05",
-      "relatedId": null
-    },
-    {
-      "title": "You can now set up an IP allowlist for your organization in the Claude Console, in beta.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
-      "company": "anthropic",
-      "date": "2026-11-05",
-      "relatedId": null
-    },
-    {
-      "title": "You can now sign a member of your Claude Enterprise (claude.ai) organization out of Claude everywhere with the Admin API.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
-      "company": "anthropic",
-      "date": "2026-11-05",
-      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
-    },
-    {
-      "title": "Gemini Omni 1.1 Flash automatic routing notice: Effective December 3,2026, API requests to gemini-omni-1.1-flash will automatically route togemini-omni-1.2-flash atGemini Omni 1.2 Flash rates.",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
+      "title": "Bringing conversational analytics to Gemini with Agentic Data Cloud connectors",
+      "url": "https://cloud.google.com/blog/products/data-analytics/query-enterprise-data-in-gemini-with-data-cloud-connectors/",
       "company": "google",
       "date": "2026-11-05",
-      "relatedId": "gemini-omni-1-1-flash"
+      "relatedId": "gemini-app-resume-update"
+    },
+    {
+      "title": "Feature · Model: gpt-live-1 · API: v1/live/sessions",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-02",
+      "company": "openai",
+      "date": "2026-11-02",
+      "relatedId": "gpt-live"
+    },
+    {
+      "title": "Update · API: v1/agents · API: v1/agents/sessions",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-30",
+      "company": "openai",
+      "date": "2026-10-30",
+      "relatedId": null
+    },
+    {
+      "title": "Feature · API: v1/agents/sessions",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-30",
+      "company": "openai",
+      "date": "2026-10-30",
+      "relatedId": null
+    },
+    {
+      "title": "Agent Distraction",
+      "url": "https://developers.googleblog.com/agent-distraction/",
+      "company": "google",
+      "date": "2026-11-06",
+      "relatedId": null
     }
   ],
   "added": [
     {
-      "id": "claude-console-ip-allowlist",
-      "title": "Claude Console IP 허용 목록",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
+      "id": "gemini-embedding-2-preview-deprecation",
+      "title": "Gemini Embedding 2 Preview",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-06",
       "charts": 0
     },
     {
-      "id": "claude-admin-api-sign-out-member",
-      "title": "Sign a member out everywhere (Admin API)",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
+      "id": "gemini-data-cloud-connectors",
+      "title": "Gemini Data Cloud connectors",
+      "url": "https://cloud.google.com/blog/products/data-analytics/query-enterprise-data-in-gemini-with-data-cloud-connectors/",
       "charts": 0
     },
     {
-      "id": "gemini-omni-1-1-flash-deprecation",
-      "title": "Gemini Omni 1.1 Flash",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-05",
+      "id": "openai-agents-api-session-update",
+      "title": "Agents API 세션 도구 업데이트와 백그라운드 컴팩션",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-30",
       "charts": 0
     }
   ],
-  "updated": [],
+  "updated": [
+    {
+      "id": "gpt-live",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-02"
+    },
+    {
+      "id": "openai-agents-api-session-update",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-10-30"
+    }
+  ],
   "skipped": [
     {
-      "title": "Australian universities are creating AI-native graduates",
-      "url": "https://openai.com/index/australian-universities-ai-native-graduates",
-      "reason": "기업 고객 사례. 새 모델 출시, 기능 출시, 가격 변경이 없고 대학의 ChatGPT 채택 마케팅에 해당하여 제외 대상(마케팅 글)에 포함됨"
+      "title": "Measuring how AI agents handle everyday wet-lab science",
+      "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+      "reason": "모델 출시와 무관한 연구 벤치마크 보고서입니다."
     },
     {
-      "title": "Cult.fit builds operational muscle with Codex",
-      "url": "https://openai.com/index/cultfit-builds-with-codex",
-      "reason": "기업 고객 사례. Cult.fit의 Codex 사용 사례로, 새 제품·기능 출시가 아닌 고객 마케팅 글에 해당"
-    },
-    {
-      "title": "Merge builds product and business tools with OpenAI technology",
-      "url": "https://openai.com/index/merge-builds-with-openai",
-      "reason": "기업 고객 사례 및 마케팅. Merge의 OpenAI 기술 활용 사례로, 새 모델이나 기능 출시가 아님"
-    },
-    {
-      "title": "Flipsnack grows product signups with conversion optimization",
-      "url": "https://openai.com/ads/customers/flipsnack",
-      "reason": "마케팅 캠페인 사례. Flipsnack의 광고 성과 사례로, AI 제품·기능 출시나 활용 팁이 아님"
+      "title": "Agent Distraction",
+      "url": "https://developers.googleblog.com/agent-distraction/",
+      "reason": "AI 에이전트 세션 분석 결과로, 모델 출시나 기능 추가와 무관한 연구 보고서입니다."
     }
   ],
   "failed": [],
@@ -103,18 +102,16 @@
   "authError": false,
   "guideChanges": [],
   "styleNotes": {
-    "claude-console-ip-allowlist": [
+    "openai-agents-api-session-update": [
+      "문체 수정: tldr",
       "문체 수정: changes.3",
       "문체 수정: cautions.0",
-      "문체 수정: cautions.1",
-      "문체 수정: tips.1.body"
-    ],
-    "claude-admin-api-sign-out-member": [
-      "문체 수정: tldr",
-      "문체 수정: changes.2",
-      "문체 수정: cautions.0"
+      "문체 수정: cautions.1"
     ]
   },
-  "techLinks": [],
+  "techLinks": [
+    "gemini-data-cloud-connectors → rag, tool-use",
+    "openai-agents-api-session-update → compaction"
+  ],
   "retired": []
 }

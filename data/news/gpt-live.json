@@ -43,10 +43,19 @@
   "changes": [
     "듣는 동안에도 말할 수 있는 전이중 방식이라, 모델이 말하는 중에 끼어들어 방향을 바꿀 수 있습니다.",
     "음성 모델이 대화를 이끌고 생각이 필요한 부분은 뒤에서 GPT-5.5가 처리합니다. 기본은 GPT-5.5 Instant이고 Medium·High를 고르면 GPT-5.5 Thinking이 맡습니다.",
-    "추론 수준은 사용자가 직접 고릅니다."
+    "추론 수준은 사용자가 직접 고릅니다.",
+    "2026-11-02: Live API에서 아웃바운드 SIP 발신이 모든 조직에 열렸습니다. SIP 제공업체를 통해 GPT-Live를 전화번호에 연결해 먼저 전화를 걸 수 있습니다.",
+    "발신은 POST /v1/live/sessions에 transport.type을 \"sip\"로 지정해 세션을 만듭니다. 수신 웹훅이나 accept 요청은 필요 없습니다.",
+    "요청마다 transport.destination(E.164 형식 번호, SIP URI는 불가)과 transport.trunk(provider_url, digest 인증 정보, caller_number)를 넣습니다.",
+    "트렁크는 TLS 시그널링과 SDES-SRTP 미디어를 지원해야 합니다. provider_url은 sips: 형식이어야 합니다.",
+    "세션 생성 직후 sideband WebSocket을 붙여 transport.ringing, transport.answered, transport.failed 같은 통화 진행 이벤트를 받습니다. sideband는 직전 3초의 이벤트만 다시 보내 줍니다.",
+    "통화 제어는 키패드 신호(DTMF) 전송, refer를 통한 전환, hangup으로 합니다. 통화 중 제어는 수신 통화와 발신 통화에 똑같이 적용됩니다."
   ],
   "availability": [
-    "ChatGPT 음성 대화: Go·Plus·Pro는 GPT-Live-1, Free는 GPT-Live-1 mini"
+    "ChatGPT 음성 대화: Go·Plus·Pro는 GPT-Live-1, Free는 GPT-Live-1 mini",
+    "Live API를 쓰는 모든 조직에서 아웃바운드 SIP 발신을 쓸 수 있습니다. Realtime API의 통화 생성 엔드포인트에서는 쓸 수 없습니다.",
+    "연결 중인 통화는 최대 2시간, 벨 울림은 최대 3분이며 생성 요청에서 바꿀 수 없습니다.",
+    "SIP 시그널링은 sip.api.openai.com과 sip-eu.api.openai.com의 5061 포트(TCP/TLS)를 씁니다."
   ],
   "tips": [
     {
@@ -84,6 +93,14 @@
     {
       "title": "Introducing GPT-Live (OpenAI)",
       "url": "https://openai.com/index/introducing-gpt-live/"
+    },
+    {
+      "title": "공식 API 변경 기록 (OpenAI)",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-02"
+    },
+    {
+      "title": "Telephony and SIP 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/voice-sip?api=live#place-an-outbound-call"
     }
   ]
 }

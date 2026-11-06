@@ -67,6 +67,14 @@
       "status": "added",
       "title": "Gemini Omni 1.1 Flash automatic routing notice: Effective December 3,2026, API requests to gemini-omni-1.1-flash will automatically route togemini-omni-1.2-flash atGemini Omni 1.2 Flash rates."
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-06-6ff5ad79": {
+      "checkedAt": "2026-11-07",
+      "company": "google",
+      "date": "2026-11-06",
+      "id": "gemini-embedding-2-preview-deprecation",
+      "status": "added",
+      "title": "Gemini Embedding 2 Preview deprecation:gemini-embedding-2-preview isdeprecated."
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -1057,6 +1065,14 @@
       "status": "skipped",
       "title": "What Google Cloud announced in AI this month"
     },
+    "https://cloud.google.com/blog/products/data-analytics/query-enterprise-data-in-gemini-with-data-cloud-connectors": {
+      "checkedAt": "2026-11-07",
+      "company": "google",
+      "date": "2026-11-05",
+      "id": "gemini-data-cloud-connectors",
+      "status": "added",
+      "title": "Bringing conversational analytics to Gemini with Agentic Data Cloud connectors"
+    },
     "https://cloud.google.com/blog/products/data-analytics/using-bigquerys-generative-ai-cost-management-features": {
       "checkedAt": "2026-10-15",
       "company": "google",
@@ -1230,6 +1246,14 @@
       "date": "2026-09-16",
       "status": "old",
       "title": "Agent Anomaly Detection, now in Private Preview on the Gemini Enterprise Agent Platform- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/agent-distraction": {
+      "checkedAt": "2026-11-07",
+      "company": "google",
+      "date": "2026-11-06",
+      "reason": "AI 에이전트 세션 분석 결과로, 모델 출시나 기능 추가와 무관한 연구 보고서입니다.",
+      "status": "skipped",
+      "title": "Agent Distraction"
     },
     "https://developers.googleblog.com/announcing-adk-for-kotlin-10-building-production-ready-ai-agents-in-kotlin-android-and-beyond": {
       "checkedAt": "2026-10-03",
@@ -1553,6 +1577,14 @@
       "status": "skipped",
       "title": "Eligible ChatGPT Pro and Business subscribers can now claim up to $500 per month in free API credits as a subscription benefit."
     },
+    "https://developers.openai.com/api/docs/changelog#2026-10-30-5c5a306a": {
+      "checkedAt": "2026-11-07",
+      "company": "openai",
+      "date": "2026-10-30",
+      "id": "openai-agents-api-session-update",
+      "status": "added",
+      "title": "Update · API: v1/agents · API: v1/agents/sessions"
+    },
     "https://developers.openai.com/api/docs/changelog#2026-10-30-5ea80d3e": {
       "checkedAt": "2026-10-31",
       "company": "openai",
@@ -1560,6 +1592,22 @@
       "id": "gpt-6-rosalind",
       "status": "added",
       "title": "Feature · Model: gpt-6-rosalind"
+    },
+    "https://developers.openai.com/api/docs/changelog#2026-10-30-e7377fcd": {
+      "checkedAt": "2026-11-07",
+      "company": "openai",
+      "date": "2026-10-30",
+      "id": "openai-agents-api-session-update",
+      "status": "updated",
+      "title": "Feature · API: v1/agents/sessions"
+    },
+    "https://developers.openai.com/api/docs/changelog#2026-11-02-0d1ec792": {
+      "checkedAt": "2026-11-07",
+      "company": "openai",
+      "date": "2026-11-02",
+      "id": "gpt-live",
+      "status": "updated",
+      "title": "Feature · Model: gpt-live-1 · API: v1/live/sessions"
     },
     "https://developers.openai.com/api/docs/changelog#2026-11-04-62296cb4": {
       "checkedAt": "2026-11-05",
@@ -2099,6 +2147,14 @@
       "reason": "새로운 평가 벤치마크 소개로, 모델 출시와 무관한 연구에 해당함",
       "status": "skipped",
       "title": "Advancing coding in low‑resource programming languages"
+    },
+    "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science": {
+      "checkedAt": "2026-11-07",
+      "company": "openai",
+      "date": "2026-11-06",
+      "reason": "모델 출시와 무관한 연구 벤치마크 보고서입니다.",
+      "status": "skipped",
+      "title": "Measuring how AI agents handle everyday wet-lab science"
     },
     "https://openai.com/index/merge-builds-with-openai": {
       "checkedAt": "2026-11-06",

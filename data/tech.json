@@ -234,7 +234,8 @@
         "gemini-3-5-flash-developer-guide",
         "openai-gpt-5-6-builders-guide",
         "gemini-app-small-business-tools",
-        "claude-personal-finance"
+        "claude-personal-finance",
+        "gemini-data-cloud-connectors"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -606,7 +607,8 @@
       ],
       "news": [
         "embeddinggemma-2",
-        "claude-personal-finance"
+        "claude-personal-finance",
+        "gemini-data-cloud-connectors"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -791,7 +793,8 @@
       "news": [
         "openai-skills-shell-compaction-tips",
         "openai-retained-reasoning-compaction",
-        "claude-code-session-value-tips"
+        "claude-code-session-value-tips",
+        "openai-agents-api-session-update"
       ],
       "verifiedAt": "2026-10-21"
     },

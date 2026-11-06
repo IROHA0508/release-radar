@@ -1,6 +1,9 @@
 {
-  "lastChecked": "2026-11-06 19:04",
+  "lastChecked": "2026-11-07 05:44",
   "news": [
+    "openai-agents-api-session-update",
+    "gemini-data-cloud-connectors",
+    "gemini-embedding-2-preview-deprecation",
     "gemini-omni-1-1-flash-deprecation",
     "claude-admin-api-sign-out-member",
     "claude-console-ip-allowlist",

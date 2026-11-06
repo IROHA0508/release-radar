@@ -1,0 +1,90 @@
+{
+  "id": "gemini-embedding-2-preview-deprecation",
+  "company": "google",
+  "date": "2026-11-06",
+  "kind": "지원 종료",
+  "shutdown": "2026-11-06",
+  "title": "Gemini Embedding 2 Preview",
+  "headline": "gemini-embedding-2-preview 요청이 gemini-embedding-2로 자동 전환됩니다",
+  "tldr": "Gemini API의 gemini-embedding-2-preview가 지원 종료됐습니다. 2026년 11월 6일부터 이 모델로 보낸 요청은 gemini-embedding-2로 전달되고 요금도 Gemini Embedding 2 기준으로 청구됩니다. 모델 문자열만 gemini-embedding-2로 바꾸면 됩니다.",
+  "models": [
+    {
+      "name": "Gemini Embedding 2",
+      "apiId": "gemini-embedding-2",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "전환 시행일",
+      "value": "2026-11-06",
+      "note": "이날부터 gemini-embedding-2-preview 요청이 gemini-embedding-2로 전달됨"
+    },
+    {
+      "label": "대체 모델",
+      "value": "gemini-embedding-2",
+      "note": "Gemini Embedding 2 요금 적용"
+    },
+    {
+      "label": "벡터 재색인",
+      "value": "필요 없음",
+      "note": "같은 임베딩 공간을 사용"
+    }
+  ],
+  "charts": [],
+  "chartNote": "지원 종료 공지라서 성능 비교 수치가 없습니다.",
+  "changes": [
+    "2026년 11월 6일부터 gemini-embedding-2-preview로 보내는 API 요청이 gemini-embedding-2로 전달됩니다.",
+    "전환된 요청에는 Gemini Embedding 2 요금이 적용됩니다.",
+    "gemini-embedding-2는 API 스키마, 가격, 임베딩 공간이 같아 다른 코드 수정이나 벡터 재색인이 필요 없습니다.",
+    "Google은 모델 문자열을 gemini-embedding-2로 바꾸라고 안내합니다."
+  ],
+  "availability": [
+    "Gemini API에서 gemini-embedding-2 모델 ID로 사용합니다.",
+    "대상은 gemini-embedding-2-preview를 호출하던 기존 코드입니다."
+  ],
+  "tips": [
+    {
+      "title": "모델 문자열만 교체",
+      "body": "코드와 설정 파일에서 gemini-embedding-2-preview를 찾아 gemini-embedding-2로 바꾸세요. 자동 전환이 되더라도 직접 바꿔 두면 이후 혼선이 없습니다."
+    },
+    {
+      "title": "기존 벡터는 그대로 사용",
+      "body": "임베딩 공간이 같다고 안내돼 있으므로 이미 저장한 벡터를 다시 만들 필요가 없습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "모델 문자열 일괄 교체",
+      "when": "저장소 전체에서 preview 모델 이름을 바꿀 때",
+      "type": "code",
+      "text": "grep -rl \"gemini-embedding-2-preview\" . | xargs sed -i 's/gemini-embedding-2-preview/gemini-embedding-2/g'"
+    },
+    {
+      "title": "호출 코드 점검 요청",
+      "when": "AI 코딩 도구에 점검을 맡길 때",
+      "type": "prompt",
+      "text": "이 프로젝트에서 gemini-embedding-2-preview를 쓰는 곳을 모두 찾아 gemini-embedding-2로 바꿔줘.\n다른 코드는 수정하지 말고, 바꾼 파일과 줄 목록만 알려줘."
+    }
+  ],
+  "cautions": [
+    "가격 수치는 원문에 따로 적혀 있지 않습니다. 정확한 요금은 공식 가격 페이지에서 확인해야 합니다.",
+    "자동 전환은 안내된 동작이므로 로그에 보이는 모델 이름이 달라질 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 변경 기록 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-06"
+    },
+    {
+      "title": "Gemini 지원 종료 모델 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/deprecations#embedding-deprecated-models"
+    },
+    {
+      "title": "Gemini Embedding 2 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/models/gemini-embedding-2"
+    }
+  ]
+}
