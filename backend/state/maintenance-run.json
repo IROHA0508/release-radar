@@ -1,59 +1,15 @@
 {
-  "startedAt": "2026-11-07T05:44:43+09:00",
+  "startedAt": "2026-11-07T09:29:10+09:00",
   "prices": {
-    "checked": [
-      "openai",
-      "anthropic",
-      "google"
-    ],
-    "changes": [
-      "가격 변경: Gemini 3 Pro Image 출력 $12.00 → $120.00",
-      "가격 변경: Gemini 3.1 Flash Image 출력 $3 → $60.00",
-      "가격 변경: Gemini 3.1 Flash Lite Image 출력 $1.50 → $30.00",
-      "가격 변경: Gemini 3.5 Live Translate 그 밖의 단가 $0.0053 / 분 (입력), $0.0315 / 분 (출력) → $0.0368 / 분 (추정)",
-      "가격 변경: Gemini 3.5 Transcribe 그 밖의 단가 $0.003 / 분 (입력), $0.002 / 분 (출력) (추정) → $0.005 / 분 (추정)",
-      "가격 변경: Gemini 3.5 Transcribe Live 그 밖의 단가 $0.005 / 분 (입력), $0.004 / 분 (출력) (추정) → $0.009 / 분 (추정)",
-      "가격 변경: Gemini 3.8 Live 입력 $0.75 → $3.00",
-      "가격 변경: Gemini 3.8 Live 출력 $4.50 → $12.00",
-      "가격 변경: Gemini 3.8 Live 그 밖의 단가 오디오 입력 $0.005 / 분, 출력 $0.018 / 분 → $0.005 / 분",
-      "가격 변경: Gemini 3.8 Live Extended Thinking 입력 $0.75 → $3.00",
-      "가격 변경: Gemini 3.8 Live Extended Thinking 출력 $4.50 → $12.00",
-      "가격 변경: Gemini 3.8 Live Extended Thinking 그 밖의 단가 오디오 입력 $0.005 / 분, 출력 $0.018 / 분 → $0.005 / 분",
-      "가격 변경: Gemini Embedding 2 그 밖의 단가 $0.00012 / 이미지, $0.00016 / 초(오디오), $0.00079 / 프레임(영상) → $0.00012 / 이미지",
-      "가격 변경: Gemini Nano Banana 2.1 출력 $7.50 → $30.00",
-      "가격 변경: Gemini Omni 1.2 Flash 출력 $9.00 → $12.00",
-      "가격 변경: Gemini 2.5 Flash Native Audio 입력 $0.50 → $3.00",
-      "가격 변경: Gemini 2.5 Flash Native Audio 출력 $2.00 → $12.00",
-      "가격 변경: Gemini 3.1 Flash Live Preview 입력 $0.75 → $3.00",
-      "가격 변경: Gemini 3.1 Flash Live Preview 출력 $4.50 → $12.00",
-      "가격 변경: Gemini 3.1 Flash Live Preview 그 밖의 단가 오디오 입력 $0.005 / 분, 출력 $0.018 / 분 → $0.005 / 분",
-      "가격 변경: Gemini Omni Flash 출력 $9.00 → $17.50"
-    ],
-    "notes": [
-      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음"
-    ],
+    "checked": [],
+    "changes": [],
+    "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 38,
-    "changed": [
-      "https://developers.openai.com/api/docs/guides/image-prompting",
-      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
-      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
-      "https://support.claude.com/en/articles/9519177-how-can-i-create-and-manage-projects",
-      "https://ai.google.dev/gemini-api/docs/speech-generation"
-    ],
-    "changes": [
-      "가이드 추가: [openai] 바꿀 물체는 동그라미 표시(markup)로 짚어 편집하기",
-      "가이드 추가: [openai] 프로젝트 대화에서는 + 메뉴나 앱 이름으로 연결된 앱 쓰기",
-      "가이드 추가: [openai] 프로젝트 안에서 나눈 지난 대화는 대화 검색으로 찾기",
-      "가이드 추가: [anthropic] thinking을 쓸 때 예시는 문제·방법·정답 순으로 보여 주기",
-      "가이드 추가: [anthropic] Team·Enterprise 프로젝트는 만들 때 공개 범위를 고르고 태그에는 민감한 정보 빼기",
-      "가이드 추가: [anthropic] 프로젝트가 안 보이면 세 탭을 모두 확인하고 자주 쓰는 건 별표 달기"
-    ],
+    "checked": 0,
+    "changed": [],
+    "changes": [],
     "errors": {}
   },
   "authError": false,
