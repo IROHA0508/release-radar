@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-08T09:03:44+09:00",
+  "startedAt": "2026-11-08T18:39:25+09:00",
   "prices": {
     "checked": [],
     "changes": [],
@@ -7,14 +7,9 @@
     "errors": {}
   },
   "guides": {
-    "checked": 2,
-    "changed": [
-      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
-    ],
-    "changes": [
-      "가이드 추가: [openai] Enterprise·Edu 프로젝트에서는 맞춤 지시 대신 프로젝트 지시문에 적기",
-      "가이드 추가: [openai] 프로젝트는 추가 요금이 없고 사용량은 일반 채팅과 같게 계산됨"
-    ],
+    "checked": 0,
+    "changed": [],
+    "changes": [],
     "errors": {}
   },
   "authError": false,
