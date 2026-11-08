@@ -1,59 +1,21 @@
 {
-  "startedAt": "2026-11-08T04:08:44+09:00",
+  "startedAt": "2026-11-08T09:03:44+09:00",
   "prices": {
-    "checked": [
-      "openai",
-      "anthropic",
-      "google"
-    ],
-    "changes": [
-      "가격 변경: Gemini 3 Pro Image 출력 $120.00 → $12.00",
-      "가격 변경: Gemini 3 Pro Image 그 밖의 단가 $0.134 / 이미지 (1K·2K), $0.24 / 이미지 (4K) → $0.134 / 이미지 (1K/2K)",
-      "가격 변경: Gemini 3.1 Flash Image 출력 $60.00 → $3",
-      "가격 변경: Gemini 3.1 Flash Lite Image 출력 $30.00 → $1.50",
-      "가격 변경: Gemini 3.5 Live Translate 그 밖의 단가 $0.0368 / 분 (추정) → $0.0053 / 분 (입력), $0.0315 / 분 (출력)",
-      "가격 변경: Gemini 3.5 Transcribe 그 밖의 단가 $0.005 / 분 (추정) → $0.003 / 분 (입력), $0.002 / 분 (출력) (추정)",
-      "가격 변경: Gemini 3.5 Transcribe Live 그 밖의 단가 $0.009 / 분 (추정) → $0.005 / 분 (입력), $0.004 / 분 (출력) (추정)",
-      "가격 변경: Gemini 3.8 Live 입력 $3.00 → $0.75",
-      "가격 변경: Gemini 3.8 Live 출력 $12.00 → $4.50",
-      "가격 변경: Gemini 3.8 Live 그 밖의 단가 $0.005 / 분 → $0.005 / 분 (오디오 입력), $0.018 / 분 (오디오 출력)",
-      "가격 변경: Gemini 3.8 Live Extended Thinking 입력 $3.00 → $0.75",
-      "가격 변경: Gemini 3.8 Live Extended Thinking 출력 $12.00 → $4.50",
-      "가격 변경: Gemini 3.8 Live Extended Thinking 그 밖의 단가 $0.005 / 분 → $0.005 / 분 (오디오 입력), $0.018 / 분 (오디오 출력)",
-      "가격 변경: Gemini Embedding 2 그 밖의 단가 $0.00012 / 이미지 → $0.00012 / 이미지, $0.00016 / 초 (오디오), $0.00079 / 프레임 (영상)",
-      "가격 변경: Gemini Nano Banana 2.1 출력 $30.00 → $7.50",
-      "가격 변경: Gemini Omni 1.2 Flash 출력 $12.00 → $9.00",
-      "가격 변경: Gemini 2.5 Flash Image 출력 $30.00 → —",
-      "가격 변경: Gemini 2.5 Flash Native Audio 입력 $3.00 → $0.50",
-      "가격 변경: Gemini 2.5 Flash Native Audio 출력 $12.00 → $2.00",
-      "가격 변경: Gemini 3.1 Flash Live Preview 입력 $3.00 → $0.75",
-      "가격 변경: Gemini 3.1 Flash Live Preview 출력 $12.00 → $4.50",
-      "가격 변경: Gemini 3.1 Flash Live Preview 그 밖의 단가 $0.005 / 분 → $0.005 / 분 (오디오 입력), $0.018 / 분 (오디오 출력)",
-      "가격 변경: Gemini Omni Flash 출력 $17.50 → $9.00"
-    ],
-    "notes": [
-      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음",
-      "새 모델 후보 Gemma 4: 가격을 원문에서 확인하지 못해 넣지 않음"
-    ],
+    "checked": [],
+    "changes": [],
+    "notes": [],
     "errors": {}
   },
   "guides": {
-    "checked": 36,
+    "checked": 2,
     "changed": [
-      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
-      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
-      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
-      "https://ai.google.dev/gemini-api/docs/speech-generation"
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
     ],
     "changes": [
-      "가이드 수정: [openai] 코드는 Preview와 Run으로 ChatGPT 안에서 바로 확인하기",
-      "가이드 추가: [google] 다중 화자 대본은 화자마다 항목을 나눠 speaker를 지정하기",
-      "가이드 추가: [google] 음질과 표현이 우선이면 Flash TTS, 대량·빠른 처리는 Flash-Lite TTS 고르기"
+      "가이드 추가: [openai] Enterprise·Edu 프로젝트에서는 맞춤 지시 대신 프로젝트 지시문에 적기",
+      "가이드 추가: [openai] 프로젝트는 추가 요금이 없고 사용량은 일반 채팅과 같게 계산됨"
     ],
-    "errors": {
-      "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt": "RuntimeError: 원문을 읽지 못함: https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt (HTTP 403; reader 2자)",
-      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt": "RuntimeError: 원문을 읽지 못함: https://help.openai.com/en/articles/10169521-projects-in-chatgpt (HTTP 403; reader 2자)"
-    }
+    "errors": {}
   },
   "authError": false,
   "note": ""

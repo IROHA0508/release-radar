@@ -1,6 +1,6 @@
 {
   "updatedAt": "2026-11-08",
-  "checkedAt": "2026-11-08 04:08",
+  "checkedAt": "2026-11-08 09:03",
   "common": [
     {
       "title": "결과와 완료 기준을 먼저 쓰기",
@@ -1902,6 +1902,28 @@
             "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
           },
           "addedAt": "2026-11-07"
+        },
+        {
+          "id": "openai-project-enterprise-context-table",
+          "category": "앱 기능과 설정",
+          "title": "Enterprise·Edu 프로젝트에서는 맞춤 지시 대신 프로젝트 지시문에 적기",
+          "body": "OpenAI 도움말 표에 따르면 Enterprise와 Edu 워크스페이스의 프로젝트 안 대화는 맞춤 지시를 쓰지 않고 프로젝트 지시문만 적용합니다. 저장된 메모리는 기본 메모리일 때만 쓰이고 프로젝트 전용 메모리에서는 쓰이지 않습니다. 다른 대화 참조는 어느 설정에서든 같은 프로젝트 안에서만 됩니다. 말투나 형식 같은 선호를 프로젝트에서도 유지하려면 프로젝트 지시문에 따로 적어 두세요.",
+          "source": {
+            "title": "Projects in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+          },
+          "addedAt": "2026-11-08"
+        },
+        {
+          "id": "openai-project-no-extra-cost",
+          "category": "앱 기능과 설정",
+          "title": "프로젝트는 추가 요금이 없고 사용량은 일반 채팅과 같게 계산됨",
+          "body": "OpenAI 도움말에 따르면 프로젝트 이용은 해당 ChatGPT 요금제에 포함되며 프로젝트를 만들 수 있는 수에 제한이 없습니다. 모델이나 도구에 붙는 크레딧과 사용량 요금은 프로젝트 대화에도 일반 대화와 똑같이 적용됩니다. 사용량 한도도 구독 수준에 따라 정해집니다. 프로젝트를 나눠 쓰더라도 사용량이 따로 늘어나지는 않으니, 업무별로 자유롭게 만드세요.",
+          "source": {
+            "title": "Projects in ChatGPT",
+            "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
+          },
+          "addedAt": "2026-11-08"
         }
       ],
       "templates": [
@@ -2006,7 +2028,7 @@
         {
           "title": "Scheduled tasks in ChatGPT",
           "url": "https://help.openai.com/en/articles/10291617-scheduled-tasks-in-chatgpt",
-          "checkedAt": "2026-11-07 05:44",
+          "checkedAt": "2026-11-08 09:03",
           "hash": "5e4be5bd1cd7dfac",
           "changedAt": "2026-11-02"
         },
@@ -2020,9 +2042,9 @@
         {
           "title": "Projects in ChatGPT",
           "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
-          "checkedAt": "2026-11-07 05:44",
-          "hash": "676fb832b8c3bc94",
-          "changedAt": "2026-11-07"
+          "checkedAt": "2026-11-08 09:03",
+          "hash": "1785deea4b203139",
+          "changedAt": "2026-11-08"
         },
         {
           "title": "ChatGPT custom instructions",
