@@ -1,0 +1,79 @@
+{
+  "id": "google-ai-studio-maps-platform",
+  "company": "google",
+  "date": "2026-11-09",
+  "kind": "제품·기능 출시",
+  "title": "AI Studio의 Google Maps Platform 앱 만들기",
+  "headline": "프롬프트만으로 지도 앱을 만들고 신용카드 없이 무료로 시험해 볼 수 있습니다",
+  "tldr": "Google AI Studio에서 Google Maps Platform 기반 앱을 바로 만들 수 있게 됐습니다. 아이디어를 설명하면 AI Studio가 설정과 API 키 관리를 맡고 미리보기 영역에 실제 지도를 띄웁니다. 샌드박스 할당량 안에서는 신용카드 없이 무료입니다.",
+  "models": [],
+  "numbers": [
+    {
+      "label": "일일 샌드박스 할당량",
+      "value": "API별 하루 100회",
+      "note": "24시간마다 초기화"
+    },
+    {
+      "label": "신용카드",
+      "value": "불필요",
+      "note": "샌드박스 할당량 안에서 무료"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "AI Studio에서 Google Maps Platform의 공간 도구를 프롬프트 화면에서 바로 쓸 수 있습니다.",
+    "앱 아이디어를 설명하면 AI Studio가 설정과 API 키 관리를 처리합니다.",
+    "리다이렉트 없이 Google Maps Platform이 설정되고 기존 Google Cloud 프로젝트가 있으면 자동으로 연결됩니다.",
+    "Maps(맞춤 스타일 지도, 사실적인 3D 도시 풍경), Places(대화형 장소 검색), Routes(다중 경유지 경로), Environment(대기질·꽃가루 알림) API를 쓸 수도 있습니다.",
+    "AI Studio 갤러리에 City Immersive Tour, Pet Grooming Route Optimizer, Store Locator & Near Me Finder 예제가 있어 복제해 고쳐 보는 것도 가능합니다.",
+    "샌드박스 할당량이 예상치 못한 요금을 막아 줍니다."
+  ],
+  "availability": [
+    "Google AI Studio (신용카드 없이 사용)",
+    "일일 할당량은 API별 하루 100회이며 24시간마다 초기화됩니다",
+    "운영 환경은 Google Cloud 결제 계정을 연결해 운영 수준 할당량을 열고 월별 무료 사용량이 포함된 표준 Google Maps Platform 요금이 적용됩니다"
+  ],
+  "tips": [
+    {
+      "title": "실제 장소가 있는 아이디어로 시작",
+      "body": "AI Studio에서 \"뉴욕의 대표 명소를 보여 주는 인터랙티브 3D 투어 만들어줘\"처럼 현실의 장소나 경로가 들어간 앱을 설명해 보세요."
+    },
+    {
+      "title": "갤러리 예제 복제",
+      "body": "처음부터 만들기 부담스러우면 AI Studio 갤러리의 작동하는 예제를 열어 복제한 뒤 내 용도에 맞게 고치세요."
+    },
+    {
+      "title": "출시 전에 결제 계정 연결",
+      "body": "샌드박스 할당량은 API별 하루 100회입니다. 실제로 공개하거나 더 많은 호출이 필요하면 Google Cloud 결제 계정을 연결하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "매장 찾기 앱",
+      "when": "Places API로 검색형 지도 앱을 만들 때",
+      "type": "prompt",
+      "text": "[업종] 매장 찾기 앱을 만들어줘.\n\n- 벡터 지도와 Places API를 써\n- 검색어로 지점을 찾고 거리별로 걸러 볼 수 있게 해줘\n- 지점을 누르면 영업시간과 상세 정보를 보여줘"
+    },
+    {
+      "title": "다중 경유지 경로 앱",
+      "when": "Routes API로 방문 일정을 짜는 앱을 만들 때",
+      "type": "prompt",
+      "text": "[도시]에서 하루에 [방문 장소 수]곳을 도는 경로 플래너를 만들어줘.\n\n- Routes API로 여러 경유지를 최적 순서로 연결해\n- 장소별 방문 시간은 [시간대]로 고정해\n- 경로를 지도에 그리고 이동 시간 타임라인을 보여줘"
+    }
+  ],
+  "cautions": [
+    "샌드박스는 실험용입니다. 일일 할당량(API별 100회)을 넘는 용도나 공개 운영에는 유료 Cloud 결제 계정이 필요합니다.",
+    "지원 API의 전체 목록과 할당량 세부 내용은 Google Maps Platform 문서에서 확인해야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "From prompt to app: Build with Google Maps in AI Studio (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/from-prompt-to-app-build-with-google-maps-in-ai-studio/"
+    },
+    {
+      "title": "Google Maps Platform",
+      "url": "https://mapsplatform.google.com/"
+    }
+  ]
+}

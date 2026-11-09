@@ -83,6 +83,14 @@
       "status": "skipped",
       "title": "Claude Corps"
     },
+    "https://anthropic.com/claude-fable-and-mythos-5-2": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "id": "claude-fable-5-2",
+      "status": "updated",
+      "title": "Introducing Claude Fable 5.2 and Claude Mythos 5.2"
+    },
     "https://anthropic.com/claude-haiku-5-5": {
       "checkedAt": "2026-10-08",
       "company": "anthropic",
@@ -937,6 +945,14 @@
       "status": "added",
       "title": "Introducing Personal Finance in Claude"
     },
+    "https://claude.com/resources/articles/jpmorganchase-expands-claude-code": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "reason": "JPMorganChase의 Claude Code 도입은 기업 파트너십",
+      "status": "skipped",
+      "title": "JPMorganChase expands Claude Code to more employees across the firm"
+    },
     "https://claude.com/resources/articles/message-threads": {
       "checkedAt": "2026-11-03",
       "company": "anthropic",
@@ -1064,6 +1080,14 @@
       "reason": "월간 뉴스 정리 페이지로 구체적인 새 모델, 기능, 업데이트 내용 없음",
       "status": "skipped",
       "title": "What Google Cloud announced in AI this month"
+    },
+    "https://cloud.google.com/blog/products/containers-kubernetes/gke-dynamic-slicing-on-tpus": {
+      "checkedAt": "2026-11-10",
+      "company": "google",
+      "date": "2026-11-09",
+      "reason": "Google Cloud 인프라 기술로, AI 모델 사용과 무관한 개발 프레임워크 글",
+      "status": "skipped",
+      "title": "Now generally available: GKE dynamic slicing for higher resilience, and efficiency for TPUs"
     },
     "https://cloud.google.com/blog/products/data-analytics/query-enterprise-data-in-gemini-with-data-cloud-connectors": {
       "checkedAt": "2026-11-07",
@@ -1270,6 +1294,14 @@
       "status": "skipped",
       "title": "Announcing DPoP Support for Google OAuth: Securing Refresh Tokens"
     },
+    "https://developers.googleblog.com/announcing-long-context-training-on-tpus-with-maxtext-context-parallelism": {
+      "checkedAt": "2026-11-10",
+      "company": "google",
+      "date": "2026-11-09",
+      "reason": "개발 프레임워크 개선으로, AI 모델 사용과 무관한 인프라·개발 도구 글",
+      "status": "skipped",
+      "title": "Announcing Long-Context Training on TPUs with MaxText Context Parallelism"
+    },
     "https://developers.googleblog.com/announcing-mcp-support-in-apigee-hybrid-agentic-tools-that-run-in-your-own-cluster": {
       "checkedAt": "2026-10-15",
       "company": "google",
@@ -1384,6 +1416,14 @@
       "id": "google-a2ui-express",
       "status": "added",
       "title": "Fast, reliable A2UI, with swappable inference formats"
+    },
+    "https://developers.googleblog.com/from-prompt-to-app-build-with-google-maps-in-ai-studio": {
+      "checkedAt": "2026-11-10",
+      "company": "google",
+      "date": "2026-11-09",
+      "id": "google-ai-studio-maps-platform",
+      "status": "added",
+      "title": "From prompt to app: Build with Google Maps in AI Studio"
     },
     "https://developers.googleblog.com/gemini-4-argon-for-robotics": {
       "checkedAt": "2026-10-14",
@@ -1547,6 +1587,14 @@
       "status": "skipped",
       "title": "Unifying Edge AI: How Coral NPU’s open standard brings portable, energy-viable intelligence from model to silicon"
     },
+    "https://developers.googleblog.com/what-is-pathways-single-controller-training-for-large-models": {
+      "checkedAt": "2026-11-10",
+      "company": "google",
+      "date": "2026-11-09",
+      "reason": "분산 학습 시스템 설명으로, AI 모델 사용과 무관한 개발 프레임워크 글",
+      "status": "skipped",
+      "title": "What is Pathways? Single-controller training for large models"
+    },
     "https://developers.googleblog.com/why-client-sdk-generation-belongs-in-the-open": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1637,6 +1685,14 @@
       "date": null,
       "status": "nodate",
       "title": "Bringing my LED display to life with GPT-Live-1 and Codex"
+    },
+    "https://developers.openai.com/blog/build-a-game-with-modretro-chromatic": {
+      "checkedAt": "2026-11-10",
+      "company": "openai",
+      "date": "2026-11-09",
+      "reason": "게임 제작에 특화된 마케팅 글로, 특정 업종 마케팅 글",
+      "status": "skipped",
+      "title": "Build a retro handheld game with Codex and ModRetro Chromatic"
     },
     "https://developers.openai.com/blog/building-frontend-uis-with-codex-and-figma": {
       "checkedAt": "2026-10-03",
@@ -1924,6 +1980,14 @@
       "status": "skipped",
       "title": "ChatGPT Ads expands to Southeast Asia and Taiwan"
     },
+    "https://openai.com/index/chatgpt-enterprise-aws-marketplace": {
+      "checkedAt": "2026-11-10",
+      "company": "openai",
+      "date": "2026-11-09",
+      "reason": "AWS Marketplace 판매는 요금제·영업 공지로, 사이트 대상(신기능 활용)과 맞지 않음",
+      "status": "skipped",
+      "title": "ChatGPT Enterprise now available in AWS Marketplace"
+    },
     "https://openai.com/index/chatgpt-expanding-world-of-work": {
       "checkedAt": "2026-10-27",
       "company": "openai",
@@ -1956,6 +2020,14 @@
       "status": "skipped",
       "title": "Cloudflare links vulnerability discovery to defense with OpenAI"
     },
+    "https://openai.com/index/coderabbit-codex-daybreak": {
+      "checkedAt": "2026-11-10",
+      "company": "openai",
+      "date": "2026-11-09",
+      "reason": "CodeRabbit의 고객 사례로, 특정 회사 마케팅 글",
+      "status": "skipped",
+      "title": "CodeRabbit scales agentic software development and ships 20x more"
+    },
     "https://openai.com/index/community-safety-report-and-new-protections-for-teens": {
       "checkedAt": "2026-10-31",
       "company": "openai",
@@ -1963,6 +2035,14 @@
       "reason": "정책·규제 글이자 안전 보고서. 새 모델, 제품·기능 출시가 아님",
       "status": "skipped",
       "title": "Community safety report and new protections for teens"
+    },
+    "https://openai.com/index/control-room": {
+      "checkedAt": "2026-11-10",
+      "company": "openai",
+      "date": "2026-11-09",
+      "reason": "연구 인프라 관리 시스템으로, AI 모델 사용과 무관한 인프라 글",
+      "status": "skipped",
+      "title": "Control Room: A central system to track and stop model workloads across our research infrastructure"
     },
     "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities": {
       "checkedAt": "2026-10-22",
@@ -2123,6 +2203,14 @@
       "reason": "고객 사례(기업 파트너십): Jump Trading의 ChatGPT 활용 사례로, 새 모델 출시, 모델 업데이트, 공식 활용 팁에 해당하지 않습니다.",
       "status": "skipped",
       "title": "How Jump Trading is scaling quant research with ChatGPT"
+    },
+    "https://openai.com/index/kuken": {
+      "checkedAt": "2026-11-10",
+      "company": "openai",
+      "date": "2026-11-09",
+      "reason": "Kuken Industries의 고객 사례로, 특정 회사 마케팅 글",
+      "status": "skipped",
+      "title": "Kuken Industries searches 70 years of drawings in minutes"
     },
     "https://openai.com/index/legalon-halves-codex-costs": {
       "checkedAt": "2026-10-09",
@@ -2507,6 +2595,70 @@
       "id": "claude-admin-api-sign-out-member",
       "status": "added",
       "title": "You can now sign a member of your Claude Enterprise (claude.ai) organization out of Claude everywhere with the Admin API."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-0645f2d0": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
+      "status": "skipped",
+      "title": "On the Claude API and Claude Models on Google Cloud (Google managed), a conversation that moves onto Claude Fable 5.2 or Claude Mythos 5.2 keeps the reasoning from other models, including Claude Opus "
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-15b6b9f2": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
+      "status": "skipped",
+      "title": "With the advisor tool, which is in beta, a Claude Fable 5.2 or Claude Mythos 5.2 executor accepts only Claude Fable 5.2 or Claude Mythos 5.2 as its advisor."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-21698b7f": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
+      "status": "skipped",
+      "title": "We’ve launched fast mode for Claude Fable 5.2 in Messages API requests on the Claude API."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-23989a5d": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
+      "status": "skipped",
+      "title": "Both models require 30-day data retention, like Claude Fable 5.1 and Claude Mythos 5.1."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-2b26272b": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
+      "status": "skipped",
+      "title": "Claude Fable 5.2 and Claude Mythos 5.2 enforce the prefix check for every account, whatever its age."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-a4b003ee": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "id": "claude-fable-5-2",
+      "status": "added",
+      "title": "We’ve launched Claude Fable 5.2 (claude-fable-5-2), built for demanding reasoning and long-horizon agentic work."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-b74cd300": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
+      "status": "skipped",
+      "title": "Thinking blocks that Claude Fable 5.2 and Claude Mythos 5.2 produce work only in the account that produced them, or in an account linked to it."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-c711f9a7": {
+      "checkedAt": "2026-11-10",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
+      "status": "skipped",
+      "title": "Claude Fable 5.2 and Claude Mythos 5.2 support computer use through the computer_toolset_20260801 toolset."
     }
   }
 }

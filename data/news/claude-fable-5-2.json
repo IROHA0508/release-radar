@@ -1,0 +1,127 @@
+{
+  "id": "claude-fable-5-2",
+  "company": "anthropic",
+  "date": "2026-11-09",
+  "kind": "모델 출시",
+  "title": "Claude Fable 5.2",
+  "headline": "Fable 5.1보다 입력·출력 가격이 20% 낮아진 추론·장기 에이전트 작업용 모델",
+  "tldr": "Anthropic이 어려운 추론과 오래 걸리는 에이전트 작업을 위한 Claude Fable 5.2를 출시했습니다. 같은 기능을 Cyber Verification Program 같은 검증을 거친 조직에만 제공하는 Claude Mythos 5.2도 함께 나왔습니다. 가격은 입력 100만 토큰당 $8, 출력 $40으로 5.1의 $10·$50보다 낮습니다.",
+  "models": [
+    {
+      "name": "Claude Fable 5.2",
+      "apiId": "claude-fable-5-2",
+      "input": "$8",
+      "output": "$40",
+      "cached": null
+    },
+    {
+      "name": "Claude Mythos 5.2",
+      "apiId": "claude-mythos-5-2",
+      "input": "$8",
+      "output": "$40",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "입력 가격",
+      "value": "$8 / MTok",
+      "note": "Fable 5.1·Mythos 5.1은 $10"
+    },
+    {
+      "label": "출력 가격",
+      "value": "$40 / MTok",
+      "note": "Fable 5.1·Mythos 5.1은 $50"
+    },
+    {
+      "label": "컨텍스트 윈도우",
+      "value": "1M 토큰",
+      "note": "두 모델 공통"
+    },
+    {
+      "label": "최대 출력",
+      "value": "128k 토큰",
+      "note": "두 모델 공통"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문 변경 기록에 벤치마크 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Claude Fable 5.2(claude-fable-5-2)는 어려운 추론과 장기 에이전트 작업을 위해 만든 모델입니다.",
+    "Claude Mythos 5.2(claude-mythos-5-2)는 같은 기능을 Cyber Verification Program 같은 Anthropic 검증 프로그램을 거친 조직에만 제공합니다.",
+    "두 모델 모두 컨텍스트 윈도우 1M 토큰, 최대 출력 128k 토큰이고 적응형 사고(adaptive thinking)가 항상 켜져 있습니다.",
+    "가격은 입력 100만 토큰당 $8, 출력 $40입니다. Fable 5.1과 Mythos 5.1은 입력 $10, 출력 $50이었습니다.",
+    "이전 thinking 블록은 API가 기본으로 유지하며 다른 입력 토큰처럼 컨텍스트 윈도우에 포함됩니다.",
+    "컨텍스트 인식(context awareness)용 토큰 예산 태그는 주입되지 않으므로 필요하면 task budgets(베타)로 예산을 지정합니다.",
+    "두 모델은 Fable 5.1·Mythos 5.1보다 출력이 최대 30% 빠릅니다. 선택 사항인 fast mode는 토큰 생성이 최대 2.5배 빠르고 입력 100만 토큰당 $16, 출력 $80입니다.",
+    "FrontierCode 2.0에서 Fable 5.2는 Xhigh effort 49.1%로 Anthropic이 테스트한 출시 모델 중 가장 높습니다. High effort는 45.3%로 Opus 5.5 최고점(45.5%)과 비슷하고 작업당 비용은 약 절반입니다.",
+    "안전 분류기의 불필요한 차단이 Fable 5.1보다 약 55% 줄었습니다(사이버 약 60%, 생물 약 40%). 차단된 질의는 사이버는 Opus 4.8, 생물은 Opus 5 응답으로 대체됩니다."
+  ],
+  "availability": [
+    "Claude Fable 5.2는 Claude API, Claude Platform on AWS, Claude Models on Google Cloud(Anthropic 관리)에서 씁니다.",
+    "Claude in Amazon Bedrock, Claude Models on Google Cloud(Google 관리), Claude in Microsoft Foundry에서도 씁니다.",
+    "API 모델명은 claude-fable-5-2이고 Mythos 5.2는 claude-mythos-5-2입니다.",
+    "Mythos 5.2는 검증된 조직만 쓸 수 있습니다.",
+    "Fast mode는 Claude Code, Claude Platform, Google Cloud의 Claude 모델(Anthropic 관리·Google 관리), Microsoft Foundry(Anthropic 호스팅)에서 씁니다. Mythos fast mode는 검증 프로그램에 속한 조직만 쓸 수 있습니다.",
+    "이번 주 대상 유료 요금제 구독자에게 Fable 사용량을 추가로 줍니다. Pro와 Team 표준 시트는 주간 사용 한도의 최대 50%까지 Fable을 쓸 수 있습니다.",
+    "Claude Enterprise 고객은 Mythos 5.2가 포함된 Claude Security를 쓸 수 있고 생명과학 연구자는 Life Sciences Verification Program으로 Mythos 접근을 신청합니다."
+  ],
+  "tips": [
+    {
+      "title": "마이그레이션 문서부터 확인",
+      "body": "API 변경점과 이전 방법은 공식 문서 What's new in Claude Fable 5.2에 있습니다. 5.1에서 옮기기 전에 먼저 읽어 보세요."
+    },
+    {
+      "title": "모델 전용 프롬프트 가이드 참고",
+      "body": "Anthropic이 Prompting Claude Fable 5.2 문서에 이 모델에 맞는 프롬프트 패턴을 따로 정리했습니다."
+    },
+    {
+      "title": "긴 대화는 서버 측 컴팩션으로",
+      "body": "대화가 컨텍스트 한도에 가까워지면 server-side compaction으로 앞부분을 요약해 이어 갈 수 있습니다. 베타 기능입니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "API 호출 예시 (Python)",
+      "when": "Claude API에서 Fable 5.2를 처음 호출할 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nmessage = client.messages.create(\n    model=\"claude-fable-5-2\",\n    max_tokens=16000,\n    messages=[{\"role\": \"user\", \"content\": \"[요청]\"}],\n)"
+    },
+    {
+      "title": "장기 작업 맡기기",
+      "when": "여러 단계가 필요한 에이전트 작업을 시작할 때",
+      "type": "prompt",
+      "text": "다음 목표를 끝까지 진행해줘: [목표]\n\n- 먼저 계획을 세우고 단계별로 진행해\n- 각 단계가 끝날 때마다 확인한 내용과 남은 일을 짧게 알려줘\n- 판단이 필요한 부분은 근거와 함께 알려줘"
+    }
+  ],
+  "cautions": [
+    "Mythos 5.2는 검증 프로그램을 거친 조직만 쓸 수 있습니다.",
+    "원문 변경 기록에는 성능 비교 수치가 없습니다. 성능은 공식 문서에서 확인이 필요합니다."
+  ],
+  "sources": [
+    {
+      "title": "Claude API 변경 기록 2026-11-09 (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09"
+    },
+    {
+      "title": "What's new in Claude Fable 5.2",
+      "url": "https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2"
+    },
+    {
+      "title": "Prompting Claude Fable 5.2",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2"
+    },
+    {
+      "title": "Context windows (Claude API 문서)",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows"
+    },
+    {
+      "title": "Introducing Claude Fable 5.2 and Claude Mythos 5.2",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+    },
+    {
+      "title": "Introducing Claude Fable 5.2 and Claude Mythos 5.2 (Anthropic)",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+    }
+  ]
+}

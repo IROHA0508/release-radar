@@ -1,15 +1,53 @@
 {
-  "startedAt": "2026-11-09T19:30:50+09:00",
+  "startedAt": "2026-11-10T08:41:40+09:00",
   "prices": {
-    "checked": [],
-    "changes": [],
-    "notes": [],
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "changes": [
+      "가격표에 추가: Claude Fable 5.2 (입력 $8 / 출력 $40)",
+      "가격표에 추가: Claude Mythos 5.2 (입력 $8 / 출력 $40)",
+      "가격 변경: Gemini 3 Pro Image 그 밖의 단가 $0.134 / 이미지 → $0.134 / 이미지 (1K/2K)",
+      "가격 변경: Gemini 3.1 Flash Image 그 밖의 단가 $0.067 / 이미지 → $0.067 / 이미지 (1K)",
+      "가격 변경: Gemini 3.1 Flash Lite Image 그 밖의 단가 $0.0336 / 이미지 → $0.0336 / 이미지 (1K)",
+      "가격 변경: Gemini Nano Banana 2.1 그 밖의 단가 $0.0336 / 이미지 → $0.0336 / 이미지 (1K)",
+      "가격 변경: Gemini 2.5 Flash Image 출력 $30.00 → $30"
+    ],
+    "notes": [
+      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음"
+    ],
     "errors": {}
   },
   "guides": {
-    "checked": 0,
-    "changed": [],
-    "changes": [],
+    "checked": 38,
+    "changed": [
+      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
+      "https://code.claude.com/docs/en/best-practices",
+      "https://ai.google.dev/gemini-api/docs/latest-model",
+      "https://ai.google.dev/gemini-api/docs/thinking",
+      "https://support.google.com/gemini/answer/16598625?hl=en",
+      "https://support.google.com/gemini/answer/17094507?hl=en"
+    ],
+    "changes": [
+      "가이드 수정: [anthropic] 생각이 너무 잦으면 '애매하면 바로 답해'라는 문장 넣기",
+      "가이드 추가: [anthropic] 화면이 도구 출력을 숨기면 사용자에게는 안 보인다고 모델에 알리기",
+      "가이드 추가: [anthropic] 대화 기록은 받은 그대로 덧붙이기만 하고 앞 턴은 고치지 않기",
+      "가이드 추가: [anthropic] 자리를 비우고 돌리는 작업은 시작 전에 다섯 가지를 확인하기",
+      "가이드 추가: [anthropic] 스크립트에서 claude -p를 돌릴 때는 --bare와 권한·턴 제한을 함께 주기",
+      "가이드 추가: [anthropic] Claude가 끝났다고 하면 /verify로 앱을 실제로 돌려 보게 하기",
+      "가이드 수정: [anthropic] Claude Code의 생각 양은 /effort로 조절하고 한 번만 필요하면 ultrathink",
+      "가이드 추가: [google] 작업 난이도에 맞춰 생각량을 정하고 긴 출력은 덜 생각하게 하기",
+      "가이드 추가: [google] 스트리밍으로 생각 요약을 조각 단위로 받기",
+      "가이드 추가: [google] 작업이 만든 파일은 스레드에서 열어 보고 바꿀 부분만 대화로 요청하기",
+      "가이드 수정: [google] 예약은 '언제(조건) + 무엇을(작업)'으로 나눠 쓰기"
+    ],
     "errors": {}
   },
   "authError": false,

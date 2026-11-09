@@ -1,18 +1,262 @@
 {
-  "startedAt": "2026-11-09T19:30:13+09:00",
+  "startedAt": "2026-11-10T08:37:35+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2636,
-  "candidates": [],
-  "added": [],
-  "updated": [],
-  "skipped": [],
+  "entries": 2648,
+  "candidates": [
+    {
+      "title": "ChatGPT Enterprise now available in AWS Marketplace",
+      "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+      "company": "openai",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Control Room: A central system to track and stop model workloads across our research infrastructure",
+      "url": "https://openai.com/index/control-room",
+      "company": "openai",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "CodeRabbit scales agentic software development and ships 20x more",
+      "url": "https://openai.com/index/coderabbit-codex-daybreak",
+      "company": "openai",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Kuken Industries searches 70 years of drawings in minutes",
+      "url": "https://openai.com/index/kuken",
+      "company": "openai",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "JPMorganChase expands Claude Code to more employees across the firm",
+      "url": "https://claude.com/resources/articles/jpmorganchase-expands-claude-code",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Now generally available: GKE dynamic slicing for higher resilience, and efficiency for TPUs",
+      "url": "https://cloud.google.com/blog/products/containers-kubernetes/gke-dynamic-slicing-on-tpus/",
+      "company": "google",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "We’ve launched Claude Fable 5.2 (claude-fable-5-2), built for demanding reasoning and long-horizon agentic work.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": "claude-fable-5-cowork-tips"
+    },
+    {
+      "title": "Claude Fable 5.2 and Claude Mythos 5.2 enforce the prefix check for every account, whatever its age.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "On the Claude API and Claude Models on Google Cloud (Google managed), a conversation that moves onto Claude Fable 5.2 or Claude Mythos 5.2 keeps the reasoning from other models, including Claude Opus ",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Claude Fable 5.2 and Claude Mythos 5.2 support computer use through the computer_toolset_20260801 toolset.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "With the advisor tool, which is in beta, a Claude Fable 5.2 or Claude Mythos 5.2 executor accepts only Claude Fable 5.2 or Claude Mythos 5.2 as its advisor.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Both models require 30-day data retention, like Claude Fable 5.1 and Claude Mythos 5.1.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": "claude-fable-mythos-5-1"
+    },
+    {
+      "title": "Thinking blocks that Claude Fable 5.2 and Claude Mythos 5.2 produce work only in the account that produced them, or in an account linked to it.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "We’ve launched fast mode for Claude Fable 5.2 in Messages API requests on the Claude API.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Introducing Claude Fable 5.2 and Claude Mythos 5.2",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Build a retro handheld game with Codex and ModRetro Chromatic",
+      "url": "https://developers.openai.com/blog/build-a-game-with-modretro-chromatic",
+      "company": "openai",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "What is Pathways? Single-controller training for large models",
+      "url": "https://developers.googleblog.com/what-is-pathways-single-controller-training-for-large-models/",
+      "company": "google",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "From prompt to app: Build with Google Maps in AI Studio",
+      "url": "https://developers.googleblog.com/from-prompt-to-app-build-with-google-maps-in-ai-studio/",
+      "company": "google",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Announcing Long-Context Training on TPUs with MaxText Context Parallelism",
+      "url": "https://developers.googleblog.com/announcing-long-context-training-on-tpus-with-maxtext-context-parallelism/",
+      "company": "google",
+      "date": "2026-11-09",
+      "relatedId": null
+    }
+  ],
+  "added": [
+    {
+      "id": "claude-fable-5-2",
+      "title": "Claude Fable 5.2",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "charts": 0
+    },
+    {
+      "id": "google-ai-studio-maps-platform",
+      "title": "AI Studio의 Google Maps Platform 앱 만들기",
+      "url": "https://developers.googleblog.com/from-prompt-to-app-build-with-google-maps-in-ai-studio/",
+      "charts": 0
+    }
+  ],
+  "updated": [
+    {
+      "id": "claude-fable-5-2",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+    }
+  ],
+  "skipped": [
+    {
+      "title": "ChatGPT Enterprise now available in AWS Marketplace",
+      "url": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+      "reason": "AWS Marketplace 판매는 요금제·영업 공지로, 사이트 대상(신기능 활용)과 맞지 않음"
+    },
+    {
+      "title": "Control Room: A central system to track and stop model workloads across our research infrastructure",
+      "url": "https://openai.com/index/control-room",
+      "reason": "연구 인프라 관리 시스템으로, AI 모델 사용과 무관한 인프라 글"
+    },
+    {
+      "title": "CodeRabbit scales agentic software development and ships 20x more",
+      "url": "https://openai.com/index/coderabbit-codex-daybreak",
+      "reason": "CodeRabbit의 고객 사례로, 특정 회사 마케팅 글"
+    },
+    {
+      "title": "Kuken Industries searches 70 years of drawings in minutes",
+      "url": "https://openai.com/index/kuken",
+      "reason": "Kuken Industries의 고객 사례로, 특정 회사 마케팅 글"
+    },
+    {
+      "title": "JPMorganChase expands Claude Code to more employees across the firm",
+      "url": "https://claude.com/resources/articles/jpmorganchase-expands-claude-code",
+      "reason": "JPMorganChase의 Claude Code 도입은 기업 파트너십"
+    },
+    {
+      "title": "Now generally available: GKE dynamic slicing for higher resilience, and efficiency for TPUs",
+      "url": "https://cloud.google.com/blog/products/containers-kubernetes/gke-dynamic-slicing-on-tpus/",
+      "reason": "Google Cloud 인프라 기술로, AI 모델 사용과 무관한 개발 프레임워크 글"
+    },
+    {
+      "title": "Claude Fable 5.2 and Claude Mythos 5.2 enforce the prefix check for every account, whatever its age.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복"
+    },
+    {
+      "title": "On the Claude API and Claude Models on Google Cloud (Google managed), a conversation that moves onto Claude Fable 5.2 or Claude Mythos 5.2 keeps the reasoning from other models, including Claude Opus ",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복"
+    },
+    {
+      "title": "Claude Fable 5.2 and Claude Mythos 5.2 support computer use through the computer_toolset_20260801 toolset.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복"
+    },
+    {
+      "title": "With the advisor tool, which is in beta, a Claude Fable 5.2 or Claude Mythos 5.2 executor accepts only Claude Fable 5.2 or Claude Mythos 5.2 as its advisor.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복"
+    },
+    {
+      "title": "Both models require 30-day data retention, like Claude Fable 5.1 and Claude Mythos 5.1.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복"
+    },
+    {
+      "title": "Thinking blocks that Claude Fable 5.2 and Claude Mythos 5.2 produce work only in the account that produced them, or in an account linked to it.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복"
+    },
+    {
+      "title": "We’ve launched fast mode for Claude Fable 5.2 in Messages API requests on the Claude API.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
+      "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복"
+    },
+    {
+      "title": "Build a retro handheld game with Codex and ModRetro Chromatic",
+      "url": "https://developers.openai.com/blog/build-a-game-with-modretro-chromatic",
+      "reason": "게임 제작에 특화된 마케팅 글로, 특정 업종 마케팅 글"
+    },
+    {
+      "title": "What is Pathways? Single-controller training for large models",
+      "url": "https://developers.googleblog.com/what-is-pathways-single-controller-training-for-large-models/",
+      "reason": "분산 학습 시스템 설명으로, AI 모델 사용과 무관한 개발 프레임워크 글"
+    },
+    {
+      "title": "Announcing Long-Context Training on TPUs with MaxText Context Parallelism",
+      "url": "https://developers.googleblog.com/announcing-long-context-training-on-tpus-with-maxtext-context-parallelism/",
+      "reason": "개발 프레임워크 개선으로, AI 모델 사용과 무관한 인프라·개발 도구 글"
+    }
+  ],
   "failed": [],
-  "guardNotes": {},
+  "guardNotes": {
+    "google-ai-studio-maps-platform": [
+      "핵심 수치 '지원 API 분야: 4개' 원문에서 확인 안 됨 → 제외"
+    ]
+  },
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {},
-  "techLinks": [],
+  "styleNotes": {
+    "google-ai-studio-maps-platform": [
+      "문체 수정: changes.3",
+      "문체 수정: changes.4"
+    ]
+  },
+  "techLinks": [
+    "google-ai-studio-maps-platform → maps-grounding, tool-use, tool-design"
+  ],
   "retired": []
 }

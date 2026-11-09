@@ -235,7 +235,8 @@
         "openai-gpt-5-6-builders-guide",
         "gemini-app-small-business-tools",
         "claude-personal-finance",
-        "gemini-data-cloud-connectors"
+        "gemini-data-cloud-connectors",
+        "google-ai-studio-maps-platform"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2419,7 +2420,8 @@
       "level": "중급",
       "status": "관찰",
       "companies": [
-        "anthropic"
+        "anthropic",
+        "google"
       ],
       "prerequisites": [
         "tool-use"
@@ -2456,7 +2458,9 @@
           "url": "https://www.anthropic.com/research/writing-tools-for-agents"
         }
       ],
-      "news": [],
+      "news": [
+        "google-ai-studio-maps-platform"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {
@@ -2695,7 +2699,9 @@
           "url": "https://blog.google/innovation-and-ai/technology/developers-tools/grounding-google-maps-gemini-api/"
         }
       ],
-      "news": [],
+      "news": [
+        "google-ai-studio-maps-platform"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {
