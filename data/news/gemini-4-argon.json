@@ -6,6 +6,22 @@
   "title": "Gemini 4 Argon",
   "headline": "구글의 차세대 프런티어 모델, 출력 한도 100만 토큰",
   "tldr": "실전 소프트웨어 엔지니어링, 법률·재무 같은 기업 지식 업무, 사이버 방어에 초점을 둔 새 프런티어 모델입니다. 지금은 Fairwind 프로그램의 신뢰된 사이버 방어자에게만 배포 중이고 이후 유료 API 고객과 Google AI Ultra 구독자부터 열릴 예정입니다.",
+  "fit": {
+    "summary": "결과물이 아주 길거나 영상·차트·문서가 섞인 어려운 지식 업무를 한 번에 맡길 때 쓰는 Google의 최상위 모델입니다.",
+    "good": [
+      "대규모 코드 마이그레이션, 장문 분석처럼 출력이 수십만 토큰에 이르는 작업",
+      "긴 영상에서 세부 찾기, 차트 분석 같은 시각 정보 기반 업무(LVBench 91.7%)",
+      "법률·재무 리서치 같은 기업 지식 업무(Vals Index 68.9%)",
+      "같은 긴 자료를 반복해 넘기는 작업(캐시 적중 95% 할인)"
+    ],
+    "notFor": [
+      "무료 등급에서 써 보려는 경우. Free tier에서는 쓸 수 없습니다",
+      "temperature로 답을 조절하던 코드. 보내도 무시됩니다",
+      "명시적 컨텍스트 캐싱(cached_content)에 의존하는 코드",
+      "터미널 기반 코딩 에이전트. Terminal-bench 4.0은 Claude Opus 5.5(66.4%)가 Argon(57.4%)보다 높습니다"
+    ],
+    "start": "thinking_level을 low, medium, high 세 단계로 모두 평가하고 기준을 넘는 가장 낮은 단계를 고릅니다."
+  },
   "models": [
     {
       "name": "Gemini 4 Argon",
@@ -35,6 +51,153 @@
       "label": "LVBench (긴 영상 이해)",
       "value": "91.7%",
       "note": "발표 기준 최고 기록"
+    }
+  ],
+  "figures": [
+    {
+      "type": "scale",
+      "title": "thinking_level 세 단계",
+      "caption": "품질, 지연, 토큰 사용량을 정하는 주된 설정입니다.",
+      "axis": [
+        "토큰 적음, 빠름",
+        "토큰 많음, 느림"
+      ],
+      "steps": [
+        {
+          "label": "low",
+          "desc": "단순하거나 비용이 중요한 작업"
+        },
+        {
+          "label": "medium",
+          "tag": "기본값",
+          "highlight": true,
+          "desc": "대부분의 작업에 권장"
+        },
+        {
+          "label": "high",
+          "desc": "어려운 수학·과학, 까다로운 코드와 에이전트 작업. 첫 토큰이 가장 늦습니다"
+        }
+      ],
+      "source": {
+        "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      }
+    },
+    {
+      "type": "flow",
+      "title": "출력 길이에 따라 호출 방식 고르기",
+      "caption": "max_output_tokens는 사고와 출력을 합친 한도입니다.",
+      "steps": [
+        {
+          "label": "한도를 적지 않음",
+          "desc": "서버가 64K에서 멈춥니다"
+        },
+        {
+          "label": "한도를 직접 적음",
+          "desc": "32,768 이상으로 둡니다"
+        },
+        {
+          "label": "65,536 초과가 필요함",
+          "desc": "background: true로 실행",
+          "highlight": true
+        },
+        {
+          "label": "결과 받기",
+          "desc": "몇 분 걸릴 수 있어 타임아웃을 15분 이상으로"
+        }
+      ],
+      "source": {
+        "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "가격이 바뀌는 시점",
+      "caption": "100만 토큰당 USD입니다. 사고 토큰도 출력으로 과금됩니다.",
+      "rowHead": "기간",
+      "columns": [
+        "입력",
+        "출력",
+        "캐시 적중"
+      ],
+      "rows": [
+        {
+          "label": "2026년 11월 30일까지 (도입가)",
+          "highlight": true,
+          "cells": [
+            "$2",
+            "$10",
+            "95% 할인"
+          ]
+        },
+        {
+          "label": "2026년 12월 1일부터",
+          "cells": [
+            "$4",
+            "$20",
+            "95% 할인"
+          ]
+        }
+      ],
+      "source": {
+        "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "다른 회사 최상위 모델과 비교",
+      "caption": "Google이 공개한 비교표의 수치입니다. 작업 종류에 따라 앞서는 모델이 다릅니다.",
+      "columns": [
+        "DeepSWE v1.1",
+        "Terminal-bench 4.0",
+        "LVBench",
+        "Vals Index"
+      ],
+      "rows": [
+        {
+          "label": "Gemini 4 Argon",
+          "highlight": true,
+          "cells": [
+            "77.9%",
+            "57.4%",
+            "91.7%",
+            "68.9%"
+          ]
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "cells": [
+            "74.2%",
+            "66.4%",
+            "83.7%",
+            "67.0%"
+          ]
+        },
+        {
+          "label": "GPT-6 Astra",
+          "cells": [
+            "74.1%",
+            "58.2%",
+            "87.5%",
+            "63.1%"
+          ]
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "cells": [
+            "67.4%",
+            "57.9%",
+            "79.7%",
+            "65.8%"
+          ]
+        }
+      ],
+      "source": {
+        "title": "Gemini 모델 페이지 (Google DeepMind) — Argon 비교표",
+        "url": "https://deepmind.google/models/gemini/"
+      }
     }
   ],
   "changes": [
@@ -74,6 +237,90 @@
     "도입 가격은 2026년 11월 30일까지 입력 100만 토큰당 $2, 출력 $10이며 캐시 입력 토큰은 95% 할인됩니다.",
     "12월 1일부터는 표준 가격인 입력 $4, 출력 $20이 적용됩니다.",
     "사이버 방어 조직은 Fairwind Program을 통해 보호 장치 없는 Argon을 제공받습니다."
+  ],
+  "usage": [
+    {
+      "title": "기본 호출",
+      "when": "Gemini 4 Argon을 처음 연결할 때",
+      "steps": [
+        "google-genai SDK로 클라이언트를 만듭니다. GEMINI_API_KEY 환경 변수를 읽습니다.",
+        "interactions.create에 model과 input을 넘깁니다.",
+        "generation_config의 thinking_level로 사고 수준을 정합니다. 적지 않으면 medium입니다.",
+        "결과 글은 output_text로 읽습니다."
+      ],
+      "example": {
+        "type": "code",
+        "text": "from google import genai\n\nclient = genai.Client()\n\ninteraction = client.interactions.create(\n    model=\"gemini-4-argon\",\n    input=\"[요청]\",\n    generation_config={\n        # low, medium, high\n        \"thinking_level\": \"medium\",\n    },\n)\nprint(interaction.output_text)"
+      },
+      "source": {
+        "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      }
+    },
+    {
+      "title": "아주 긴 결과물 받기",
+      "when": "코드 마이그레이션이나 긴 증명처럼 출력이 64K 토큰을 넘을 때",
+      "steps": [
+        "background를 true로 두고 요청합니다.",
+        "max_output_tokens를 131,072나 262,144처럼 필요한 만큼 적습니다. 최대는 1,048,576에서 입력 토큰을 뺀 값입니다.",
+        "요청이 돌려준 id로 완료될 때까지 상태를 확인합니다.",
+        "어려운 문제는 몇 분씩 걸립니다. 백그라운드를 쓰지 않는 호출은 HTTP 타임아웃을 15분 이상으로 잡습니다."
+      ],
+      "note": "상태를 확인하는 코드는 공식 가이드의 예시를 따르세요. 이 사이트는 REST 예시만 확인했습니다.",
+      "example": {
+        "type": "code",
+        "text": "interaction = client.interactions.create(\n    model=\"gemini-4-argon\",\n    input=\"[길게 써야 하는 요청]\",\n    background=True,\n    generation_config={\n        \"max_output_tokens\": 262144,\n        \"thinking_level\": \"high\",\n    },\n)\nprint(interaction.id)   # 이 id로 완료 여부를 확인한다"
+      },
+      "source": {
+        "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      }
+    },
+    {
+      "title": "대화 이어 가기",
+      "when": "멀티턴 대화나 함수 호출이 이어지는 작업",
+      "steps": [
+        "첫 요청의 id를 보관합니다.",
+        "다음 요청에 previous_interaction_id로 넘깁니다. 대화 상태는 서버가 들고 있습니다.",
+        "지난 대화를 매번 다시 보내지 않습니다."
+      ],
+      "example": {
+        "type": "code",
+        "text": "first = client.interactions.create(\n    model=\"gemini-4-argon\",\n    input=\"[첫 질문]\",\n)\nsecond = client.interactions.create(\n    model=\"gemini-4-argon\",\n    input=\"[이어지는 질문]\",\n    previous_interaction_id=first.id,\n)\nprint(second.output_text)"
+      },
+      "source": {
+        "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      }
+    },
+    {
+      "title": "thinking_level을 평가로 고르기",
+      "when": "비용과 품질 사이에서 단계를 정할 때",
+      "steps": [
+        "실제 업무를 대표하는 입력으로 평가 세트를 만듭니다.",
+        "low, medium, high로 각각 돌립니다.",
+        "품질 기준을 넘는 가장 낮은 단계를 씁니다.",
+        "처리된 토큰이 모두 과금되므로 단계별 비용도 함께 적어 둡니다."
+      ],
+      "source": {
+        "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      }
+    },
+    {
+      "title": "이전 Gemini 코드에서 지울 것",
+      "when": "다른 Gemini 모델을 쓰던 코드의 모델 이름만 바꾸려 할 때",
+      "steps": [
+        "temperature, top_p, top_k를 지웁니다. 보내도 무시됩니다.",
+        "cached_content를 만들거나 참조하는 호출을 지웁니다. 4,096 토큰 이상 프롬프트에는 암시적 캐싱이 자동으로 적용됩니다.",
+        "max_output_tokens를 32K 아래로 잡아 둔 곳은 32,768 이상으로 올립니다.",
+        "클라이언트 타임아웃을 늘립니다."
+      ],
+      "source": {
+        "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+        "url": "https://ai.google.dev/gemini-api/docs/latest-model"
+      }
+    }
   ],
   "tips": [
     {
@@ -152,6 +399,10 @@
     {
       "title": "Gemini 4 Argon 모델 문서",
       "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-argon"
+    },
+    {
+      "title": "What's new in Gemini 4 Argon (Gemini API 문서)",
+      "url": "https://ai.google.dev/gemini-api/docs/latest-model"
     }
   ],
   "chartSource": "Google DeepMind 모델 페이지(deepmind.google/models/gemini)의 Gemini 4 Argon 비교표 기준입니다. 강점과 약점을 함께 보도록 뒤지는 항목도 넣었습니다.",

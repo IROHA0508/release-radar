@@ -6,6 +6,22 @@
   "title": "GPT-6.1 Sol",
   "headline": "Astra에 가까운 성능을 Astra 가격의 1/5로",
   "tldr": "GPT-6 Sol을 업그레이드한 모델입니다. 에이전트 코딩, 컴퓨터 사용, 전문 업무에서 GPT-6 Astra에 근접하면서 표준 API 가격은 Astra의 1/5이고 캐시 입력은 표준 입력보다 95% 저렴한 $0.10입니다.",
+  "fit": {
+    "summary": "복잡한 코딩, 컴퓨터 사용, 전문 업무를 Astra에 가까운 품질로 돌리되 비용은 Astra의 1/5로 줄이고 싶을 때 고르는 모델입니다.",
+    "good": [
+      "리팩터링, 코드베이스 조사처럼 자주 반복하는 에이전트 코딩",
+      "표·차트·각주가 많은 전문 문서 질의",
+      "여러 앱을 오가는 업무 자동화와 컴퓨터 사용",
+      "같은 긴 앞부분을 반복해 보내는 작업(캐시 입력 $0.10)"
+    ],
+    "notFor": [
+      "가장 어려운 과학 연구 과제. Terminal-Bench Science는 Astra가 68.1%로 앞섭니다",
+      "추론을 끄고(none) 가장 빠르게 답해야 하는 일. 6.1 Sol은 none을 지원하지 않습니다",
+      "Chat Completions로 도구를 호출하는 기존 코드. 도구 호출은 Responses API에서만 됩니다",
+      "목표가 분명한 대량 반복 업무. GPT-6 Luna가 출력 $0.50으로 훨씬 쌉니다"
+    ],
+    "start": "Responses API에서 기본값인 medium으로 시작하고 품질이 실제로 좋아질 때만 강도를 올립니다."
+  },
   "models": [
     {
       "name": "GPT-6.1 Sol",
@@ -37,6 +53,136 @@
       "note": "어렵게 고른 질문, low 추론 강도 기준 약 32% 감소"
     }
   ],
+  "figures": [
+    {
+      "type": "compare",
+      "title": "GPT-6 계열 안에서의 자리",
+      "caption": "가격은 이 사이트 API 가격표 기준 100만 토큰당 USD(입력 27.2만 토큰 이하)입니다. 빈칸은 공식 가이드에 값이 없는 항목입니다.",
+      "columns": [
+        "공식 설명",
+        "입력 / 출력",
+        "추론 강도",
+        "none",
+        "도구 호출"
+      ],
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "cells": [
+            "가장 높은 지능",
+            "$10 / $50",
+            "기본값 명시 없음",
+            "미지원",
+            "Responses만"
+          ]
+        },
+        {
+          "label": "GPT-6.1 Sol",
+          "highlight": true,
+          "cells": [
+            "속도·비용·지능의 균형",
+            "$2 / $10",
+            "low~max, 기본 medium",
+            "미지원",
+            "Responses만"
+          ]
+        },
+        {
+          "label": "GPT-6.1 Terra",
+          "cells": [
+            "빠르고 효율적",
+            "$1 / $5",
+            "none~max, 기본 medium",
+            "지원",
+            "Responses만"
+          ]
+        },
+        {
+          "label": "GPT-6 Luna",
+          "cells": [
+            "가장 빠르고 저렴",
+            "$0.10 / $0.50",
+            "none~max, 기본 medium",
+            "지원",
+            "Chat Completions는 none일 때만"
+          ]
+        }
+      ],
+      "source": {
+        "title": "Using GPT-6 (OpenAI API 문서)",
+        "url": "https://developers.openai.com/api/docs/guides/latest-model"
+      }
+    },
+    {
+      "type": "scale",
+      "title": "추론 강도 다섯 단계",
+      "caption": "Responses에서는 reasoning.effort, Chat Completions에서는 reasoning_effort로 정합니다.",
+      "axis": [
+        "빠르고 저렴",
+        "깊고 느림"
+      ],
+      "steps": [
+        {
+          "label": "low",
+          "desc": "속도와 비용이 중요한 질의응답. 6.1 Sol의 사실성 개선이 이 단계에서 가장 컸습니다"
+        },
+        {
+          "label": "medium",
+          "tag": "기본값",
+          "highlight": true,
+          "desc": "여기서 시작합니다"
+        },
+        {
+          "label": "high",
+          "desc": "medium으로 부족한 것이 평가에서 확인될 때"
+        },
+        {
+          "label": "xhigh",
+          "desc": "시간과 토큰을 더 써도 품질 이득이 있는 작업"
+        },
+        {
+          "label": "max",
+          "desc": "가장 어려운 과제"
+        }
+      ],
+      "source": {
+        "title": "Using GPT-6 (OpenAI API 문서)",
+        "url": "https://developers.openai.com/api/docs/guides/latest-model"
+      }
+    },
+    {
+      "type": "flow",
+      "title": "기존 코드를 GPT-6.1 Sol로 옮기는 순서",
+      "caption": "공식 가이드의 이전 절차를 순서대로 옮겼습니다.",
+      "steps": [
+        {
+          "label": "model 변경",
+          "desc": "gpt-6.1-sol"
+        },
+        {
+          "label": "강도 값 정리",
+          "desc": "none과 minimal은 low로"
+        },
+        {
+          "label": "도구 호출 이전",
+          "desc": "Responses API로",
+          "highlight": true
+        },
+        {
+          "label": "샘플링 설정 삭제",
+          "desc": "temperature, top_p, logprobs"
+        },
+        {
+          "label": "캐시 설정 교체",
+          "desc": "prompt_cache_options.ttl"
+        }
+      ],
+      "source": {
+        "title": "Using GPT-6 (OpenAI API 문서)",
+        "url": "https://developers.openai.com/api/docs/guides/latest-model"
+      }
+    }
+  ],
   "changes": [
     "DeepSWE v1.1(실제 코드베이스의 장기 소프트웨어 엔지니어링 과제)에서 GPT-6 Astra와 같은 점수를 약 1/5 비용으로 냈습니다. GPT-6 Sol 최고점보다 6.4%p 높고 더 낮은 추론 강도에서 달성했습니다.",
     "OSWorld 2.0 오프라인 세트에서 최대 추론 강도 기준 GPT-6 Sol보다 7%p 높고 비용은 절반 이하입니다. Astra와의 차이는 2.1%p, 과제당 비용은 약 1/7입니다.",
@@ -50,6 +196,107 @@
     "일반 ChatGPT 채팅(Chat)에서는 아직 선택할 수 없습니다",
     "API 모델명: gpt-6.1-sol",
     "Codex용 Ultrafast 옵션(표준 대비 최대 8배 빠른 토큰 생성)이 며칠 안에 추가될 예정입니다"
+  ],
+  "usage": [
+    {
+      "title": "Responses API로 처음 호출하기",
+      "when": "GPT-6.1 Sol을 코드에 연결할 때",
+      "steps": [
+        "model을 gpt-6.1-sol로 적고 Responses API로 요청합니다.",
+        "reasoning.effort를 적지 않으면 medium으로 동작합니다. 가벼운 질의는 low로 내려 봅니다.",
+        "시스템 지시는 instructions에, 질문은 input에 넣습니다.",
+        "응답 글은 output_text로 읽습니다."
+      ],
+      "example": {
+        "type": "code",
+        "text": "from openai import OpenAI\n\nclient = OpenAI()\n\nresponse = client.responses.create(\n    model=\"gpt-6.1-sol\",\n    # low, medium, high, xhigh, max\n    reasoning={\"effort\": \"medium\"},\n    instructions=\"[역할과 규칙]\",\n    input=\"[요청]\",\n)\nprint(response.output_text)"
+      },
+      "source": {
+        "title": "Migrate to the Responses API (OpenAI API 문서)",
+        "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses"
+      }
+    },
+    {
+      "title": "평소에는 6.1 Sol로 돌리고 막힐 때만 Astra로 올리기",
+      "when": "에이전트 코딩 비용을 줄이고 싶을 때",
+      "steps": [
+        "반복하는 작업은 모두 gpt-6.1-sol로 돌립니다.",
+        "내 평가에서 통과하지 못하는 과제만 gpt-6-astra로 다시 돌립니다.",
+        "Astra는 none을 받지 않고 기본 강도가 문서에 없으니 reasoning.effort를 직접 적습니다.",
+        "두 모델 모두 도구 호출은 Responses API로 합니다."
+      ],
+      "note": "OpenAI 발표 기준으로 DeepSWE v1.1에서 6.1 Sol은 Astra와 같은 점수를 약 1/5 비용으로 냈습니다.",
+      "source": {
+        "title": "Introducing GPT-6.1 Sol (OpenAI)",
+        "url": "https://openai.com/index/introducing-gpt-6-1-sol/"
+      }
+    },
+    {
+      "title": "대화 도중 추론 강도 바꾸기",
+      "when": "어려운 단계에서만 강도를 올리고 싶을 때",
+      "steps": [
+        "요청의 reasoning.effort 값을 바꾸지 않습니다. 바꾸면 캐시된 앞부분이 깨집니다.",
+        "입력에 configuration_update 항목을 넣어 그 단계의 강도만 올리거나 내립니다.",
+        "단일 에이전트 표준 요청에서 지원합니다. 쓰기 전에 공식 문서의 호환 범위를 확인합니다."
+      ],
+      "note": "configuration_update 항목의 정확한 형태는 이 사이트가 아직 확인하지 못했습니다(확인 필요). 공식 Reasoning 가이드의 예시를 보세요.",
+      "source": {
+        "title": "Prompt guidance (OpenAI API 문서)",
+        "url": "https://developers.openai.com/api/docs/guides/prompt-guidance"
+      }
+    },
+    {
+      "title": "허락을 너무 자주 구하지 않게 하기",
+      "when": "모델이 계획만 내놓고 멈추거나 사소한 일마다 확인을 요청할 때",
+      "steps": [
+        "맥락에서 의도를 읽고 끝까지 진행하라고 지시합니다. 파괴적이거나 되돌릴 수 없는 행동만 예외로 둡니다.",
+        "허락이 필요한 일은 허락 없이 가능한 일을 모두 끝낸 뒤 마지막에 묻게 합니다.",
+        "확인이 필요한 범위를 적어 줍니다. 외부 쓰기, 삭제, 결제, 범위를 크게 넓히는 일입니다.",
+        "스킬이나 AGENTS.md에 멈춤을 유발하는 지시가 있는지 살핍니다."
+      ],
+      "note": "OpenAI는 이 지침을 GPT-6 Astra에서 관찰한 행동을 바탕으로 썼다고 밝혔습니다. 6.1 Sol에는 시험한 뒤 적용합니다.",
+      "example": {
+        "type": "prompt",
+        "text": "\"도와줘\"나 \"~해 줄 수 있어?\"로 시작하는 요청은 일을 직접 하라는 지시로 받아들여.\n범위 안의 로컬 변경과 테스트는 먼저 묻지 말고 진행해.\n외부에 쓰기, 삭제, 결제, 범위를 크게 넓히는 일만 실행 전에 확인을 받아.\n확인이 필요하면 그 전에 할 수 있는 일을 모두 끝내고 마지막에 한 번만 물어봐."
+      },
+      "source": {
+        "title": "Prompt guidance (OpenAI API 문서)",
+        "url": "https://developers.openai.com/api/docs/guides/prompt-guidance"
+      }
+    },
+    {
+      "title": "답 길이 조절하기",
+      "when": "답이 너무 길거나 \"간결하게\"라고 했더니 지나치게 짧아질 때",
+      "steps": [
+        "기본 길이는 text.verbosity(low, medium, high)로 정합니다.",
+        "작업별 길이 규칙은 프롬프트에 따로 적습니다.",
+        "\"간결하게\" 같은 넓은 지시는 피합니다. 답이 필요 이상으로 짧아집니다.",
+        "문단으로 쓸지 목록으로 쓸지 적어 줍니다."
+      ],
+      "example": {
+        "type": "code",
+        "text": "response = client.responses.create(\n    model=\"gpt-6.1-sol\",\n    text={\"verbosity\": \"low\"},\n    instructions=\"결론을 먼저 쓰고 근거, 주의할 점, 다음 행동 순서로 써.\",\n    input=\"[요청]\",\n)"
+      },
+      "source": {
+        "title": "Prompt guidance (OpenAI API 문서)",
+        "url": "https://developers.openai.com/api/docs/guides/prompt-guidance"
+      }
+    },
+    {
+      "title": "캐시 할인을 놓치지 않기",
+      "when": "같은 지시와 자료를 여러 번 보낼 때",
+      "steps": [
+        "시스템 지시, 도구 정의, 참고 문서처럼 변하지 않는 내용을 프롬프트 맨 앞에 둡니다.",
+        "바뀌는 질문은 뒤에 붙입니다.",
+        "요청 단위의 reasoning.effort를 고정합니다.",
+        "GPT-5.5 이전 코드라면 prompt_cache_retention을 prompt_cache_options.ttl로 바꿉니다."
+      ],
+      "note": "캐시 입력은 $0.10으로 표준 입력 $2의 1/20입니다.",
+      "source": {
+        "title": "Prompt guidance (OpenAI API 문서)",
+        "url": "https://developers.openai.com/api/docs/guides/prompt-guidance"
+      }
+    }
   ],
   "tips": [
     {
@@ -91,6 +338,18 @@
     {
       "title": "GPT-6.1 Sol 시스템 카드 부록",
       "url": "https://deploymentsafety.openai.com/gpt-6-1-sol"
+    },
+    {
+      "title": "Using GPT-6 (OpenAI API 문서)",
+      "url": "https://developers.openai.com/api/docs/guides/latest-model"
+    },
+    {
+      "title": "Prompt guidance (OpenAI API 문서)",
+      "url": "https://developers.openai.com/api/docs/guides/prompt-guidance"
+    },
+    {
+      "title": "Migrate to the Responses API (OpenAI API 문서)",
+      "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses"
     }
   ],
   "chartSource": "OpenAI GPT-6.1 Sol 발표문 기준입니다.",

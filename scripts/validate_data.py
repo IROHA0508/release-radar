@@ -18,7 +18,7 @@ COMPANIES = {"openai", "anthropic", "google"}
 KINDS = {"모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁", "지원 종료 예정", "지원 종료"}
 RETIRE_KINDS = {"지원 종료 예정", "지원 종료"}  # 이 둘만 shutdown(종료일)을 가진다
 TODAY = datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
-RESERVED_IDS = {"guide", "prices", "models", "tech", "lab", "glossary"}
+RESERVED_IDS = {"guide", "prices", "models", "tech", "lab", "glossary", "migrate"}
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 CHECKED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?$")
@@ -84,7 +84,117 @@ def check_news(path):
             err(where, f"prompt type은 prompt 또는 code: {p.get('type')}")
     for c in d.get("charts", []) or []:
         check_chart(where, c)
+    check_extras(where, d)
     return nid
+
+
+FIGURE_TYPES = {"flow", "scale", "compare"}
+
+
+def _src_ok(s):
+    return isinstance(s, dict) and bool(s.get("title")) and str(s.get("url", "")).startswith("https://")
+
+
+def check_extras(where, d):
+    """선택 필드: fit(언제 쓰나), figures(사이트가 그리는 도식·비교표), usage(자세한 사용법)."""
+    fit = d.get("fit")
+    if fit is not None:
+        if not isinstance(fit, dict) or not fit.get("summary"):
+            err(where, "fit에는 summary가 필요함")
+        elif not (fit.get("good") or fit.get("notFor")):
+            err(where, "fit에는 good(잘 맞는 일)이나 notFor(맞지 않는 일)가 하나는 있어야 함")
+    for f in d.get("figures") or []:
+        t, title = f.get("type"), f.get("title")
+        if t not in FIGURE_TYPES:
+            err(where, f"figure type은 {sorted(FIGURE_TYPES)} 중 하나: {t}")
+            continue
+        if not title:
+            err(where, f"figure({t})에 title 없음")
+        if not _src_ok(f.get("source")):
+            err(where, f"figure '{title}'에 공식 출처 source{{title, url(https)}}가 필요함")
+        if t in ("flow", "scale"):
+            steps = f.get("steps") or []
+            if len(steps) < 2:
+                err(where, f"figure '{title}'는 steps가 2개 이상이어야 함")
+            for st in steps:
+                if not st.get("label"):
+                    err(where, f"figure '{title}'에 label 없는 단계")
+        else:
+            cols, rows = f.get("columns") or [], f.get("rows") or []
+            if not cols or len(rows) < 2:
+                err(where, f"figure '{title}'(compare)는 columns와 rows 2개 이상이 필요함")
+            for r in rows:
+                if not r.get("label") or len(r.get("cells") or []) != len(cols):
+                    err(where, f"figure '{title}'의 '{r.get('label')}' 행은 cells 수가 columns({len(cols)})와 같아야 함")
+    for u in d.get("usage") or []:
+        title = u.get("title")
+        if not title or not (u.get("steps") or u.get("example")):
+            err(where, f"usage '{title}'에는 title과 steps 또는 example이 필요함")
+        ex = u.get("example")
+        if ex is not None and (ex.get("type") not in ("prompt", "code") or not ex.get("text")):
+            err(where, f"usage '{title}'의 example은 type(prompt|code)과 text가 필요함")
+        if not _src_ok(u.get("source")):
+            err(where, f"usage '{title}'에 공식 출처 source{{title, url(https)}}가 필요함")
+
+
+MIGRATE_STATUS = {"지원 종료", "지원 종료 예정", "새 모델에서 오류", "권장 전환"}
+
+
+def check_migrations(m, news_ids=frozenset()):
+    where = "data/migrations.json"
+    if m is None:
+        return
+    if not DATE_RE.match(str(m.get("verifiedAt", ""))):
+        err(where, "verifiedAt은 YYYY-MM-DD")
+    if not m.get("intro"):
+        err(where, "intro 없음")
+    for t in m.get("terms", []):
+        if not t.get("term") or not t.get("body"):
+            err(where, "terms 항목에 term/body 없음")
+    if m.get("terms"):
+        check_sources(f"{where} termSources", m.get("termSources"))
+    seen = set()
+    for x in m.get("items", []):
+        mid = x.get("id", "")
+        w = f"{where} [{mid}]"
+        if not ID_RE.match(mid) or mid in seen:
+            err(where, f"id 형식 오류 또는 중복: '{mid}'")
+        seen.add(mid)
+        if x.get("company") not in COMPANIES:
+            err(w, f"company 오류: {x.get('company')}")
+        if x.get("status") not in MIGRATE_STATUS:
+            err(w, f"status는 {sorted(MIGRATE_STATUS)} 중 하나: {x.get('status')}")
+        for key in ("title", "summary", "applies"):
+            if not x.get(key):
+                err(w, f"'{key}' 없음")
+        dl = x.get("deadline")
+        if dl is not None and not DATE_RE.match(str(dl)):
+            err(w, f"deadline은 YYYY-MM-DD: {dl}")
+        if x.get("status") == "지원 종료 예정" and not dl:
+            err(w, "'지원 종료 예정'에는 deadline(종료일)이 필요함")
+        if x.get("status") == "지원 종료 예정" and dl and dl <= TODAY:
+            warnings.append(f"{w}: 종료일 {dl}이 지났음. status를 '지원 종료'로 바꿔야 함")
+        if x.get("status") == "지원 종료" and dl and dl > TODAY:
+            err(w, f"종료일 {dl}이 아직 오지 않았으니 status는 '지원 종료 예정'이어야 함")
+        before, after = x.get("before"), x.get("after") or []
+        if before is not None and not before.get("code"):
+            err(w, "before에 code 없음")
+        for a in after:
+            if not a.get("label") or not a.get("code"):
+                err(w, "after 항목에는 label과 code가 필요함")
+        if before is not None and not after:
+            err(w, "before가 있으면 after(바꾼 코드)가 하나 이상 필요함")
+        for c in x.get("changes", []):
+            if not c.get("from") or not c.get("to"):
+                err(w, "changes 항목에는 from과 to가 필요함")
+        if not (after or x.get("changes")):
+            err(w, "after나 changes 중 하나는 있어야 함(무엇으로 바꾸는지)")
+        for n in x.get("news", []):
+            if n not in news_ids:
+                err(w, f"news '{n}' 소식이 없음")
+        if not DATE_RE.match(str(x.get("verifiedAt", ""))):
+            err(w, "verifiedAt은 YYYY-MM-DD")
+        check_sources(w, x.get("sources"))
 
 
 def check_shutdown(where, d):
@@ -450,6 +560,9 @@ def main():
     md_path = DATA / "models.json"
     model_rec = load(md_path) if md_path.exists() else None
     check_models(model_rec, prices)
+    mg_path = DATA / "migrations.json"
+    migrations = load(mg_path) if mg_path.exists() else None
+    check_migrations(migrations, set(ids))
     if manifest is not None:
         listed = manifest.get("news", [])
         if not CHECKED_RE.match(str(manifest.get("lastChecked", ""))):
@@ -471,7 +584,8 @@ def main():
         sys.exit(1)
     print(f"데이터 검증 통과: 소식 {len(ids)}건" + (f", 기술 {len(tech.get('items', []))}건" if tech else "")
           + (f", 용어 {len(glossary.get('terms', []))}개" if glossary else "")
-          + (f", 추천 모델 {len(model_rec.get('models', []))}개·상황 {len(model_rec.get('situations', []))}개" if model_rec else ""))
+          + (f", 추천 모델 {len(model_rec.get('models', []))}개·상황 {len(model_rec.get('situations', []))}개" if model_rec else "")
+          + (f", 코드 업데이트 {len(migrations.get('items', []))}건" if migrations else ""))
 
 
 if __name__ == "__main__":

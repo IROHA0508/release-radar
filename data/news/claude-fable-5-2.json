@@ -6,6 +6,23 @@
   "title": "Claude Fable 5.2",
   "headline": "Fable 5.1보다 입력·출력 가격이 20% 낮아진 추론·장기 에이전트 작업용 모델",
   "tldr": "Anthropic이 어려운 추론과 오래 걸리는 에이전트 작업을 위한 Claude Fable 5.2를 출시했습니다. 같은 기능을 Cyber Verification Program 같은 검증을 거친 조직에만 제공하는 Claude Mythos 5.2도 함께 나왔습니다. 가격은 입력 100만 토큰당 $8, 출력 $40으로 5.1의 $10·$50보다 낮습니다.",
+  "fit": {
+    "summary": "Opus의 effort를 올려도 평가 기준을 못 넘는 어려운 추론과 오래 걸리는 에이전트 작업에 쓰는 모델입니다. Anthropic은 대부분의 작업을 최신 Opus로 시작하라고 안내합니다.",
+    "good": [
+      "어려운 코딩, 리서치, 사람이 지켜보지 않는 긴 에이전트 실행",
+      "과학·수학처럼 답이 열려 있는 문제에서 모델의 한계 확인(max)",
+      "100만 토큰 컨텍스트와 12.8만 토큰 출력이 필요한 큰 작업",
+      "Fable 5.1을 쓰던 작업의 비용 절감(입력·출력 20% 인하)"
+    ],
+    "notFor": [
+      "평범한 작업 대부분. Opus 5.5가 입력 $4, 출력 $20으로 절반 가격입니다",
+      "tool_choice로 특정 도구를 강제해야 하는 파이프라인(400 오류)",
+      "데이터를 남기지 않는 ZDR 조직. 30일 보관이 필수입니다",
+      "temperature로 답의 다양성을 조절하던 코드",
+      "지난 대화 기록을 중간에 고쳐 다시 보내는 하네스(400 오류)"
+    ],
+    "start": "effort를 high로 직접 지정해 평가를 돌리고 품질이 유지되면 medium으로 내립니다."
+  },
   "models": [
     {
       "name": "Claude Fable 5.2",
@@ -44,6 +61,161 @@
       "note": "두 모델 공통"
     }
   ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "Fable 5.2를 쓸지 정하는 순서",
+      "caption": "공식 문서는 Opus에서 시작해 필요할 때만 Fable로 올라가라고 권합니다.",
+      "steps": [
+        {
+          "label": "최신 Opus로 시작",
+          "desc": "대부분의 작업은 여기서 끝납니다"
+        },
+        {
+          "label": "Opus의 effort 올리기",
+          "desc": "내 평가 세트로 다시 측정"
+        },
+        {
+          "label": "그래도 기준 미달이면 Fable 5.2",
+          "desc": "effort는 high부터",
+          "highlight": true
+        },
+        {
+          "label": "xhigh는 이득을 잰 뒤에",
+          "desc": "가장 어렵고 오래 걸리는 작업만"
+        }
+      ],
+      "source": {
+        "title": "What's new in Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2"
+      }
+    },
+    {
+      "type": "scale",
+      "title": "effort 다섯 단계와 맞는 작업",
+      "caption": "output_config.effort로 정합니다. 답의 길이와 말투는 effort가 아닌 프롬프트로 바꿉니다.",
+      "axis": [
+        "빠르고 저렴",
+        "깊고 느림"
+      ],
+      "steps": [
+        {
+          "label": "low",
+          "desc": "빠르고 조건이 분명한 일, 대량 처리, 빠른 서브에이전트"
+        },
+        {
+          "label": "medium",
+          "desc": "대화하며 하는 코딩, 채팅, 일상 지식 업무"
+        },
+        {
+          "label": "high",
+          "tag": "API 기본값",
+          "highlight": true,
+          "desc": "어려운 코딩, 리서치, 에이전트 작업, 지켜보지 않는 긴 실행"
+        },
+        {
+          "label": "xhigh",
+          "desc": "가장 어렵고 오래 걸리는 작업. 이득을 측정한 곳에만"
+        },
+        {
+          "label": "max",
+          "desc": "모델의 상한 측정, 과학·수학 같은 열린 문제"
+        }
+      ],
+      "source": {
+        "title": "Prompting Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "가까운 모델과 비교",
+      "caption": "가격은 100만 토큰당 USD입니다. 빈칸은 확인한 문서에 값이 없는 항목입니다.",
+      "columns": [
+        "입력 / 출력",
+        "Fast mode",
+        "기본 effort",
+        "ZDR",
+        "강제 tool_choice"
+      ],
+      "rows": [
+        {
+          "label": "Claude Fable 5.2",
+          "highlight": true,
+          "cells": [
+            "$8 / $40",
+            "$16 / $80",
+            "high",
+            "불가(30일 보관)",
+            "400 오류"
+          ]
+        },
+        {
+          "label": "Claude Fable 5.1",
+          "cells": [
+            "$10 / $50",
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "cells": [
+            "$4 / $20",
+            "$8 / $40",
+            "medium",
+            "",
+            ""
+          ]
+        },
+        {
+          "label": "Claude Opus 5",
+          "cells": [
+            "$5 / $25",
+            "$10 / $50",
+            "",
+            "가능",
+            "가능"
+          ]
+        }
+      ],
+      "source": {
+        "title": "Claude Fable 5.2 migration guide",
+        "url": "https://platform.claude.com/docs/en/models/fable-5-2/migration-guide"
+      }
+    },
+    {
+      "type": "flow",
+      "title": "대화 기록을 다루는 규칙 (prefix check)",
+      "caption": "thinking 블록 앞의 내용이 바뀌면 그 블록은 무효가 됩니다. Fable 5.2는 모든 계정에서 이를 검사합니다.",
+      "steps": [
+        {
+          "label": "system과 tools는 고정",
+          "desc": "대화 도중에 고치지 않습니다"
+        },
+        {
+          "label": "messages는 뒤에만 추가",
+          "desc": "앞 턴을 수정하거나 지우지 않습니다"
+        },
+        {
+          "label": "assistant 턴은 받은 그대로",
+          "desc": "thinking 블록을 빼거나 고치지 않고 돌려보냅니다"
+        },
+        {
+          "label": "어기면 400 오류",
+          "desc": "같은 요청을 다시 보내도 해결되지 않습니다",
+          "highlight": true
+        }
+      ],
+      "loop": "앞부분을 줄여야 하면 기록을 직접 고치지 말고 컴팩션이나 컨텍스트 편집 기능을 씁니다.",
+      "source": {
+        "title": "What's new in Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2"
+      }
+    }
+  ],
   "charts": [],
   "chartNote": "원문 변경 기록에 벤치마크 수치가 없어 그래프를 만들지 않았습니다.",
   "changes": [
@@ -65,6 +237,130 @@
     "Fast mode는 Claude Code, Claude Platform, Google Cloud의 Claude 모델(Anthropic 관리·Google 관리), Microsoft Foundry(Anthropic 호스팅)에서 씁니다. Mythos fast mode는 검증 프로그램에 속한 조직만 쓸 수 있습니다.",
     "이번 주 대상 유료 요금제 구독자에게 Fable 사용량을 추가로 줍니다. Pro와 Team 표준 시트는 주간 사용 한도의 최대 50%까지 Fable을 쓸 수 있습니다.",
     "Claude Enterprise 고객은 Mythos 5.2가 포함된 Claude Security를 쓸 수 있고 생명과학 연구자는 Life Sciences Verification Program으로 Mythos 접근을 신청합니다."
+  ],
+  "usage": [
+    {
+      "title": "effort를 직접 지정해 호출하기",
+      "when": "처음 연결하거나 다른 모델에서 옮겨 올 때",
+      "steps": [
+        "thinking 항목은 넣지 않습니다. 적응형 사고가 항상 켜져 있고 enabled나 disabled를 보내면 400 오류입니다.",
+        "output_config.effort를 high로 적고 평가를 돌립니다.",
+        "같은 평가를 medium과 xhigh로도 돌려 품질, 비용, 지연을 비교합니다. Fable 5.1이나 Opus 5.5에서 쓰던 값을 그대로 가져오지 않습니다.",
+        "사고 토큰이 max_tokens에 포함되므로 값을 넉넉히 둡니다. 작으면 글이 나오기 전에 stop_reason이 max_tokens로 끝납니다."
+      ],
+      "example": {
+        "type": "code",
+        "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.create(\n    model=\"claude-fable-5-2\",\n    max_tokens=16000,\n    # low, medium, high, xhigh, max\n    output_config={\"effort\": \"high\"},\n    messages=[{\"role\": \"user\", \"content\": \"[요청]\"}],\n)\n\n# thinking 블록이 먼저 오므로 type으로 골라 읽는다\nfor block in response.content:\n    if block.type == \"text\":\n        print(block.text)"
+      },
+      "source": {
+        "title": "What's new in Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/models/fable-5-2/whats-new-fable-5-2"
+      }
+    },
+    {
+      "title": "긴 작업을 중간에 멈추지 않게 하기",
+      "when": "에이전트가 할 일이 남았는데 \"계속할까요?\" 하고 끝낼 때",
+      "steps": [
+        "시스템 프롬프트에 '작업 마무리' 단락을 넣습니다.",
+        "일반 장애물(오류, 타임아웃, 잠긴 파일, 실패한 도구)은 스스로 원인을 찾아 재시도하거나 다른 도구로 넘어가게 합니다.",
+        "일부러 막아 둔 것(권한, 승인 대기)은 건드리지 말고 보고하게 합니다.",
+        "위험하거나 되돌릴 수 없는 행동 앞의 확인 단계는 그대로 둡니다."
+      ],
+      "note": "low와 medium에서는 일이 끝나기 전에 턴이 끝나는 일이 더 잦습니다.",
+      "example": {
+        "type": "prompt",
+        "text": "# 작업 마무리\n- 사용자가 맡긴 일이 남아 있으면 멈추지 마세요.\n- 방향을 다시 물어보거나 기다리겠다고 말하고 싶어지면 그 대신 다음 부분을 진행하세요.\n- 오류, 타임아웃, 잠긴 파일, 실패한 도구는 원인을 확인하고 다시 시도하거나 다른 방법으로 넘어가세요.\n- 일부러 막아 둔 것(권한, 승인 대기)은 우회하지 말고 무엇에 막혔는지 보고하세요."
+      },
+      "source": {
+        "title": "Prompting Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2"
+      }
+    },
+    {
+      "title": "승인은 구체적으로 말하기",
+      "when": "모델이 허락받은 일인지 헷갈려 필요 없이 멈출 때",
+      "steps": [
+        "승인하는 답장에 무엇을 승인하는지 그대로 적습니다. \"진행해\" 한 마디로 끝내지 않습니다.",
+        "규칙을 쓸 때는 그 규칙이 덮는 행동을 정확히 적습니다. 공식 가이드에 따르면 '대화 밖 사람에게 메시지 보내기'처럼 모호한 규칙 하나가 일상 메시지의 절반가량을 막았습니다.",
+        "'절대 금지' 규칙에는 예외를 함께 적습니다. \"먼저 허락을 받으면 가능\" 같은 문장이 있어야 승인된 단계가 실행됩니다.",
+        "이유가 사라진 주의 메모(예전에 적은 \"재시도 금지\")는 지웁니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "좋아, 스테이징 데이터베이스에 마이그레이션을 실행해.\n운영 데이터베이스는 내가 따로 말하기 전까지 건드리지 마."
+      },
+      "source": {
+        "title": "Prompting Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2"
+      }
+    },
+    {
+      "title": "코드를 과감하게 정리하게 하거나 최소로만 고치게 하기",
+      "when": "코딩 에이전트가 주변 문제를 보고만 하고 고치지 않을 때",
+      "steps": [
+        "구조를 손보고 관련 문제까지 고치게 하려면 코드베이스의 주인이 모델이라는 문장을 넣습니다. 이 문장이 없으면 근처 문제를 알려 주기만 하는 편입니다.",
+        "이 문장을 넣으면 출력 토큰이 약 1.5배가 되고 요청하지 않은 테스트와 문서, 기존 동작 변경이 따라오기도 합니다. 요약만 보지 말고 diff를 직접 읽습니다.",
+        "최소 변경을 원하면 이 문장을 넣지 않습니다. 다른 곳에 적은 \"지나가는 김에 리팩터링 금지\" 규칙으로는 이 문장이 취소되지 않습니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "이 코드베이스는 네 것이다. 무엇을 위한 코드이고 어떻게 짓는지는 네가 정하고 앞으로도 네가 계속 이어서 만든다."
+      },
+      "source": {
+        "title": "Prompting Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2"
+      }
+    },
+    {
+      "title": "긴 실행 중에 진행 상황 받기",
+      "when": "도구만 수십 번 부르고 한참 말이 없을 때",
+      "steps": [
+        "thinking의 display를 summarized로 두고 도구 호출 사이에 오는 thinking 블록을 화면에 보여 줍니다.",
+        "사람이 지켜보는 작업이면 시작할 때 한 줄, 끝날 때 짧은 정리를 요청합니다. 출력 토큰이 약 20% 늘어납니다.",
+        "하네스를 고칠 수 없으면 프롬프트에 주기적으로 알리라는 한 줄을 넣습니다.",
+        "앞서 넣은 알림 문장을 나중에 고치거나 지우지 않습니다. 뒤따르는 thinking 블록이 무효가 됩니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "시작하기 전에 무엇을 하려는지 한 줄로 말해 줘.\n도구를 몇 번 쓸 때마다 지금 어디까지 왔는지 한 줄로 알려 줘.\n끝나면 그것만 읽어도 이해되는 짧은 정리로 마무리해."
+      },
+      "source": {
+        "title": "Prompting Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2"
+      }
+    },
+    {
+      "title": "최종 보고를 읽기 쉽게 받기",
+      "when": "결과 보고가 작업 과정을 본 사람만 이해할 수 있게 나올 때",
+      "steps": [
+        "시스템 프롬프트에 '분명하게 전달하기' 단락을 넣습니다.",
+        "독자를 '똑똑하지만 도구 호출 과정을 보지 못한 사람'으로 정해 줍니다.",
+        "\"한 문장에 지시 하나, 20단어 이하\" 같은 딱딱한 문체 규칙은 지웁니다. Fable 5.2는 문체 규칙을 그대로 따라서 글이 뚝뚝 끊깁니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "# 분명하게 전달하기\n- 읽는 사람은 똑똑하지만 지금까지의 도구 호출을 보지 못했습니다.\n- 가장 중요한 내용을 첫 몇 문장에 쓰세요.\n- 쉬운 말을 쓰고 새 용어를 만들지 마세요.\n- 이어지는 생각은 문단으로, 서로 독립된 항목만 목록으로 쓰세요.\n- 짧게 쓰되 이해에 필요한 맥락은 남기세요."
+      },
+      "source": {
+        "title": "Prompting Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2"
+      }
+    },
+    {
+      "title": "이전 모델용 지시문 정리하기",
+      "when": "Fable 5.1이나 Opus 5.5에서 쓰던 프롬프트를 그대로 가져왔을 때",
+      "steps": [
+        "\"깊이 생각하지 말고 바로 답해\" 문장을 지우고 effort를 낮춥니다. medium 이상에서는 이 문장이 있어도 사고합니다.",
+        "프롬프트에 적어 둔 토큰 예산을 빼고 시험합니다. 공식 시험에서는 빼도 성능이 같았고 high와 xhigh의 비용이 내려갔습니다.",
+        "필요 없는 '서브에이전트에 위임하라' 지시를 지웁니다. Fable 5.2는 위임을 쉽게 하는 편이라 비용이 커집니다.",
+        "Opus 5.5용 \"그 답은 끝난 것으로 봐\" 문장은 앞선 실수를 다시 살펴야 하는 작업에서 뺍니다.",
+        "한 번에 하나씩 고치고 품질과 토큰 비용을 잽니다."
+      ],
+      "source": {
+        "title": "Prompting Claude Fable 5.2",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2"
+      }
+    }
   ],
   "tips": [
     {
@@ -120,8 +416,8 @@
       "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
     },
     {
-      "title": "Introducing Claude Fable 5.2 and Claude Mythos 5.2 (Anthropic)",
-      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+      "title": "Claude Fable 5.2 migration guide",
+      "url": "https://platform.claude.com/docs/en/models/fable-5-2/migration-guide"
     }
   ]
 }

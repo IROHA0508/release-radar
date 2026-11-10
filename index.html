@@ -482,6 +482,104 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
   .row .lab { grid-column: 1 / -1; }
   .axis .sp { display: none; }
 }
+/* ---- 언제 쓰면 좋은가 · 그림으로 보기 · 사용법 자세히 (소식 상세) ---- */
+.fit { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 18px 20px 20px; }
+.fit-sum { font-size: var(--s-box); font-weight: 600; line-height: 1.55; margin: 0 0 16px; }
+.fit-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.fit h3 { font-size: var(--s-sm); margin: 0 0 10px; color: var(--muted); }
+.fit ul.list { font-size: var(--s-lead); }
+.fit ul.list.no li::before { background: transparent; outline: 1.5px solid var(--danger); }
+.fit-start { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: var(--s-lead); }
+.fit-start b { margin-right: 8px; }
+.figs { display: grid; gap: 20px; }
+.figs > *, .usage > *, .mg-list > * { min-width: 0; }
+.fig { margin: 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); padding: 18px 18px 14px; }
+.fig h3 { margin: 0 0 4px; font-size: var(--s-md); }
+.fig .cap { margin: 0 0 14px; color: var(--muted); font-size: var(--s-note); max-width: 72ch; }
+.fig figcaption { margin-top: 12px; font-size: var(--s-2xs); color: var(--faint); }
+.fig figcaption a { color: inherit; text-underline-offset: 3px; }
+.fig .loop { margin: 10px 0 0; font-size: var(--s-note); color: var(--muted); }
+.fig .loop::before { content: "↺ "; font-family: var(--f-mono); }
+.flow { list-style: none; margin: 0; padding: 0; display: flex; align-items: stretch; }
+.flow li { flex: 1 1 0; min-width: 0; position: relative; border: 1px solid var(--line-strong); border-radius: 8px; padding: 12px 13px; margin-right: 28px; background: var(--bg); }
+.flow li:last-child { margin-right: 0; }
+.flow li:not(:last-child)::after { content: "→"; position: absolute; right: -23px; top: 50%; transform: translateY(-50%); color: var(--faint); font: 500 var(--s-md)/1 var(--f-mono); }
+.flow li.hl, .scale li.hl .lv-box { border-color: var(--c, var(--ink)); box-shadow: inset 3px 0 0 var(--c, var(--ink)); }
+.flow .no { font: 500 var(--s-3xs)/1 var(--f-mono); color: var(--faint); }
+.flow b { display: block; margin: 5px 0 3px; font-size: var(--s-sm); line-height: 1.4; overflow-wrap: anywhere; }
+.flow .d { display: block; font-size: var(--s-note); color: var(--muted); line-height: 1.5; overflow-wrap: anywhere; }
+.fig .tg { display: inline-block; font: 600 var(--s-3xs)/1 var(--f-body); padding: 4px 6px; border-radius: 3px; background: var(--mark); color: var(--mark-ink); margin-left: 6px; vertical-align: 1px; }
+.scale { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.scale li { display: grid; grid-template-columns: minmax(150px, 30%) 1fr; gap: 14px; align-items: center; }
+.scale .lv-box { border: 1px solid var(--line-strong); border-radius: 8px; background: var(--bg); padding: 9px 12px; }
+.scale .lv { font: 500 var(--s-sm)/1.3 var(--f-mono); }
+.scale .lv-bar { display: block; height: 6px; border-radius: 3px; margin-top: 7px; background: var(--bar-muted); }
+.scale li.hl .lv-bar { background: var(--c, var(--ink)); }
+.scale .d { font-size: var(--s-note); color: var(--muted); line-height: 1.55; }
+.scale-axis { display: flex; justify-content: space-between; font-size: var(--s-2xs); color: var(--faint); margin: 0 0 8px; }
+table.cmp td, table.cmp th { white-space: normal; vertical-align: top; min-width: 96px; }
+table.cmp td:first-child { font-weight: 600; white-space: nowrap; }
+table.cmp tr.hl td { background: color-mix(in srgb, var(--c, var(--mark)) 9%, transparent); }
+table.cmp tr.hl td:first-child { box-shadow: inset 3px 0 0 var(--c, var(--ink)); }
+.usage { display: grid; gap: 18px; }
+.use { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.use-head { padding: 16px 18px 6px; }
+.use-head h3 { margin: 0; font-size: var(--s-md); }
+.use-head .when { margin: 3px 0 0; font-size: var(--s-note); color: var(--muted); }
+.use ol { margin: 6px 0 14px; padding: 0 18px 0 40px; display: grid; gap: 6px; font-size: var(--s-lead); }
+.use .note { margin: 0; padding: 0 18px 14px; font-size: var(--s-note); color: var(--muted); }
+.ex-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 12px 8px 18px; border-top: 1px solid var(--line); font: 600 var(--s-xs)/1 var(--f-body); color: var(--muted); }
+.use .src, .mg .src { margin: 0; padding: 10px 18px; border-top: 1px solid var(--line); font-size: var(--s-xs); color: var(--faint); }
+.use .src a, .mg .src a { color: var(--muted); text-underline-offset: 3px; }
+.to-migrate { margin: 18px 0 0; font-size: var(--s-note); color: var(--muted); }
+/* ---- 코드 업데이트 탭 ---- */
+.mg-terms { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0 24px; margin: 18px 0 0; border-top: 1px solid var(--line); }
+.mg-terms div { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.mg-terms dt { font-weight: 700; font-size: var(--s-sm); }
+.mg-terms dd { margin: 3px 0 0; font-size: var(--s-note); color: var(--muted); }
+.mg-list { display: grid; gap: 14px; margin-top: 18px; }
+.mg { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow: hidden; }
+.mg.flash { outline: 2px solid var(--mark); }
+.mg > summary { list-style: none; cursor: pointer; padding: 16px 18px; display: grid; gap: 8px; }
+.mg > summary::-webkit-details-marker { display: none; }
+.mg > summary:hover h3 { text-decoration: underline; text-underline-offset: 4px; }
+.mg-meta { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+.mg h3 { margin: 0; font-size: var(--s-lg); line-height: 1.4; }
+.mg h3::after { content: "펼치기"; font: 500 var(--s-2xs)/1 var(--f-body); color: var(--faint); margin-left: 10px; }
+.mg[open] h3::after { content: "접기"; }
+.mg .sum { margin: 0; color: var(--muted); }
+.mg .applies { font: var(--s-xs)/1.5 var(--f-mono); color: var(--muted); overflow-wrap: anywhere; }
+.st { font: 700 var(--s-3xs)/1 var(--f-body); padding: 5px 7px; border-radius: 3px; border: 1.5px solid var(--line-strong); color: var(--muted); }
+.st.s-end, .st.s-soon { border-color: var(--danger); color: var(--danger); background: var(--danger-bg); }
+.st.s-err { border-color: var(--mark); background: var(--mark); color: var(--mark-ink); }
+.mg-body { border-top: 1px solid var(--line); }
+.mg-body h4 { margin: 0; padding: 16px 18px 8px; font-size: var(--s-sm); }
+.mg-body ol, .mg-body ul.list { margin: 0; padding: 0 18px 4px 40px; display: grid; gap: 6px; font-size: var(--s-lead); }
+.mg-body ul.list { padding-left: 18px; }
+.mg-detect { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 18px 4px; }
+.mg-detect code { font: var(--s-xs)/1 var(--f-mono); background: var(--code-bg); padding: 6px 8px; border-radius: 4px; }
+.mg-codes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 18px 6px; }
+.mg-codes.one { grid-template-columns: 1fr; }
+.mg-code { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; min-width: 0; }
+.mg-code.old { border-color: color-mix(in srgb, var(--danger) 45%, var(--line)); }
+.mg-code.old .ex-head { color: var(--danger); }
+.mg-code .ex-head { border-top: 0; padding-left: 14px; min-height: 46px; }
+.mg-codes > .old { grid-column: 1; grid-row: 1 / span 4; align-self: start; }
+.mg-codes:not(.one) > .mg-code:not(.old) { grid-column: 2; }
+.mg-code .note { margin: 0; padding: 10px 14px; font-size: var(--s-note); color: var(--muted); border-top: 1px solid var(--line); }
+.mg-body .tbl-wrap { margin: 0 18px 6px; }
+.mg-body table.cmp td { font-size: var(--s-note); }
+.mg-body table.cmp td:first-child, .mg-body table.cmp td:nth-child(2) { font-family: var(--f-mono); font-weight: 400; white-space: normal; overflow-wrap: anywhere; }
+.mg-body .src { margin-top: 14px; }
+@media (max-width: 640px) {
+  .fit-cols, .mg-codes { grid-template-columns: 1fr; }
+  .mg-codes > .old, .mg-codes:not(.one) > .mg-code:not(.old) { grid-column: 1; grid-row: auto; }
+  .flow { flex-direction: column; }
+  .flow li { margin: 0 0 26px; }
+  .flow li:last-child { margin-bottom: 0; }
+  .flow li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -22px; transform: translateX(-50%); }
+  .scale li { grid-template-columns: 1fr; gap: 4px; }
+}
 </style>
 
 <div class="wrap">
@@ -504,6 +602,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
     <a href="#guide" data-nav="guide">프롬프트 가이드</a>
     <a href="#prices" data-nav="prices">API 가격표</a>
     <a href="#models" data-nav="models">모델 추천</a>
+    <a href="#migrate" data-nav="migrate">코드 업데이트</a>
     <a href="#tech" data-nav="tech">AI 활용 기술</a>
     <a href="#lab" data-nav="lab">AI 활용 LAB</a>
     <a href="#glossary" data-nav="glossary">용어집</a>
@@ -536,7 +635,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
 
   var state = { manifest: null, news: [], byId: {}, guides: null, tech: null, techById: {}, glossary: null, gq: "", error: null, loaded: false, filter: "all", kind: "all", period: "all", listKey: "", listShown: 0, view: "", listScroll: 0, techPeriod: "all", techKey: "", techShown: 0, techScroll: 0 };
   try { var f = localStorage.getItem("rr-filter"); if (f && (f === "all" || COMPANIES[f])) state.filter = f; } catch (e) {}
-  state.guideTab = "common"; state.guideCat = "all";
+  state.guideTab = "common"; state.guideCat = "all"; state.mgCo = "all"; state.mgSt = "all";
   try { var gt = localStorage.getItem("rr-guide"); if (gt) state.guideTab = gt; } catch (e) {}
   try { var k = localStorage.getItem("rr-kind"); if (k && (k === "all" || KINDS.indexOf(k) >= 0)) state.kind = k; } catch (e) {}
 
@@ -605,7 +704,8 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
     var btn = h("button", { class: "copy", type: "button", text: "복사" });
     btn.addEventListener("click", function () {
       var text = getText();
-      var pre = btn.closest(".prompt") && btn.closest(".prompt").querySelector("pre");
+      var holder = btn.closest(".prompt, .use, .mg-code");
+      var pre = holder && holder.querySelector("pre");
       function selectFallback() {
         if (!pre) return;
         var r = document.createRange(); r.selectNodeContents(pre);
@@ -631,6 +731,70 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
         copyBtn(function () { return p.text; })
       ]),
       pre
+    ]);
+  }
+  /* ---------- 도식(사이트가 직접 그림): flow 순서도, scale 단계, compare 비교표 ---------- */
+  function srcLine(s, lead) {
+    return s && s.url ? [lead || "출처 · ", h("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title })] : [];
+  }
+  function tagEl(t) { return t ? h("span", { class: "tg", text: t }) : null; }
+  function figureBlock(f, company) {
+    var body;
+    if (f.type === "compare") {
+      body = h("div", { class: "tbl-wrap" }, [h("table", { class: "cmp" }, [
+        h("thead", null, [h("tr", null, [h("th", { text: f.rowHead || "모델" })].concat((f.columns || []).map(function (c) { return h("th", { text: c }); })))]),
+        h("tbody", null, (f.rows || []).map(function (r) {
+          return h("tr", { class: r.highlight ? "hl" : null }, [h("td", { text: r.label })].concat((r.cells || []).map(function (c) { return h("td", { text: c || "—" }); })));
+        }))
+      ])]);
+    } else if (f.type === "scale") {
+      var n = (f.steps || []).length;
+      body = h("div", null, [
+        f.axis ? h("p", { class: "scale-axis" }, [h("span", { text: f.axis[0] }), h("span", { text: f.axis[1] })]) : null,
+        h("ol", { class: "scale" }, (f.steps || []).map(function (st, i) {
+          return h("li", { class: st.highlight ? "hl" : null }, [
+            h("div", { class: "lv-box" }, [h("span", { class: "lv", text: st.label }), tagEl(st.tag),
+              h("span", { class: "lv-bar", style: "width:" + Math.round((i + 1) / n * 100) + "%", "aria-hidden": "true" })]),
+            h("span", { class: "d", text: st.desc || "" })
+          ]);
+        }))
+      ]);
+    } else {
+      body = h("div", null, [
+        h("ol", { class: "flow" }, (f.steps || []).map(function (st, i) {
+          return h("li", { class: st.highlight ? "hl" : null }, [
+            h("span", { class: "no", text: String(i + 1).padStart(2, "0") }), tagEl(st.tag),
+            h("b", { text: st.label }), st.desc ? h("span", { class: "d", text: st.desc }) : null
+          ]);
+        })),
+        f.loop ? h("p", { class: "loop", text: f.loop }) : null
+      ]);
+    }
+    return h("figure", { class: "fig c-" + company }, [
+      h("h3", { text: f.title }), f.caption ? h("p", { class: "cap", text: f.caption }) : null, body,
+      h("figcaption", null, ["릴리스 레이더가 원문 내용을 옮겨 그린 도식 · "].concat(srcLine(f.source, "근거 ")))
+    ]);
+  }
+  function exampleBlock(ex) {
+    var pre = h("pre", { class: ex.type === "code" ? "code" : "wrap-text" });
+    pre.textContent = ex.text;
+    return [h("div", { class: "ex-head" }, [h("span", { text: ex.type === "code" ? "코드 예시" : "프롬프트 예시" }), copyBtn(function () { return ex.text; })]), pre];
+  }
+  function usageBlock(u) {
+    return h("div", { class: "use" }, [
+      h("div", { class: "use-head" }, [h("h3", { text: u.title }), u.when ? h("p", { class: "when", text: u.when }) : null]),
+      (u.steps && u.steps.length) ? h("ol", null, u.steps.map(function (x) { return h("li", { text: x }); })) : null,
+      u.note ? h("p", { class: "note", text: u.note }) : null
+    ].concat(u.example ? exampleBlock(u.example) : [], [h("p", { class: "src" }, srcLine(u.source))]));
+  }
+  function fitBlock(fit) {
+    return h("div", { class: "fit" }, [
+      h("p", { class: "fit-sum", text: fit.summary }),
+      h("div", { class: "fit-cols" }, [
+        (fit.good && fit.good.length) ? h("div", null, [h("h3", { text: "이런 일에 잘 맞습니다" }), h("ul", { class: "list" }, fit.good.map(function (x) { return h("li", { text: x }); }))]) : null,
+        (fit.notFor && fit.notFor.length) ? h("div", null, [h("h3", { text: "이럴 때는 다른 선택을" }), h("ul", { class: "list no" }, fit.notFor.map(function (x) { return h("li", { text: x }); }))]) : null
+      ]),
+      fit.start ? h("p", { class: "fit-start" }, [h("b", { text: "처음 시작" }), fit.start]) : null
     ]);
   }
   /* ---------- charts ---------- */
@@ -887,6 +1051,10 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
       }))
     ]) : null;
     art.appendChild(h("div", { class: "tldr" }, [h("p", { class: "label", text: "한 줄 요약" }), h("p", { text: item.tldr }), srcList]));
+    if (isEnd(item.kind) && state.migrations) {
+      art.appendChild(h("p", { class: "to-migrate" }, ["이 모델을 부르던 코드를 어떻게 바꾸는지는 ", h("a", { href: "#migrate", text: "코드 업데이트" }), " 탭에 정리해 두었습니다."]));
+    }
+    if (item.fit && item.fit.summary) art.appendChild(section("언제 쓰면 좋은가", "when to use", [fitBlock(item.fit)]));
 
     if (item.numbers && item.numbers.length) {
       art.appendChild(section("숫자로 보기", "key numbers", [
@@ -894,6 +1062,10 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
           return h("div", { class: "num" }, [h("dt", { text: n.label }), h("dd", null, [h("span", { class: "v", text: n.value }), n.note ? h("span", { class: "n", text: n.note }) : null])]);
         }))
       ]));
+    }
+
+    if (item.figures && item.figures.length) {
+      art.appendChild(section("그림으로 보기", "diagrams", [h("div", { class: "figs" }, item.figures.map(function (f) { return figureBlock(f, item.company); }))]));
     }
 
     if (item.charts && item.charts.length) {
@@ -930,6 +1102,9 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
     }
     if (item.availability && item.availability.length) {
       art.appendChild(section(isTip ? "어디에 적용하나" : "어디서 쓸 수 있나", isTip ? "applies to" : "availability", [h("ul", { class: "list" }, item.availability.map(function (c) { return h("li", { text: c }); }))]));
+    }
+    if (item.usage && item.usage.length) {
+      art.appendChild(section("사용법 자세히", "step by step", [h("div", { class: "usage" }, item.usage.map(usageBlock))]));
     }
     if (item.tips && item.tips.length) {
       art.appendChild(section("이렇게 쓰면 더 좋다", "how to use it well", [h("div", { class: "tips" }, item.tips.map(function (t) {
@@ -1642,6 +1817,104 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
     } else window.scrollTo(0, 0);
   }
 
+  /* ---------- 코드 업데이트 탭 (#migrate): 지원이 끝나거나 바뀐 호출 코드를 어떻게 고치는지 ---------- */
+  var MG_STATUS = ["지원 종료 예정", "지원 종료", "새 모델에서 오류", "권장 전환"];
+  var MG_CLASS = { "지원 종료 예정": "s-soon", "지원 종료": "s-end", "새 모델에서 오류": "s-err", "권장 전환": "s-rec" };
+  function mgStatus(x) { return x.status === "지원 종료 예정" && x.deadline && x.deadline <= todayKST() ? "지원 종료" : x.status; }
+  function mgCode(c, old) {
+    var pre = h("pre", { class: "code" });
+    pre.textContent = c.code;
+    return h("div", { class: "mg-code" + (old ? " old" : "") }, [
+      h("div", { class: "ex-head" }, [h("span", { text: c.label || (old ? "기존 코드" : "바꾼 코드") }), old ? null : copyBtn(function () { return c.code; })]),
+      pre, c.note ? h("p", { class: "note", text: c.note }) : null
+    ]);
+  }
+  function mgCard(x, open) {
+    var st = mgStatus(x), note = null;
+    if (x.deadline) {
+      var left = Math.round((parseDate(x.deadline) - parseDate(todayKST())) / 86400000);
+      note = fmtDate(x.deadline) + (left > 0 ? " 종료 · D-" + left : " 종료");
+    }
+    var body = [];
+    if (x.detect && x.detect.length) {
+      body.push(h("h4", { text: "내 코드에서 이 글자를 찾아보세요" }));
+      body.push(h("div", { class: "mg-detect" }, x.detect.map(function (d) { return h("code", { text: d }); })));
+    }
+    if (x.before || (x.after && x.after.length)) {
+      body.push(h("h4", { text: "코드 바꾸기" }));
+      var afters = x.after || [];
+      body.push(h("div", { class: "mg-codes" + (x.before ? "" : " one") }, [x.before ? mgCode(x.before, true) : null].concat(afters.map(function (a) { return mgCode(a, false); }))));
+    }
+    if (x.changes && x.changes.length) {
+      body.push(h("h4", { text: "무엇이 무엇으로 바뀌나" }));
+      body.push(h("div", { class: "tbl-wrap" }, [h("table", { class: "cmp" }, [
+        h("thead", null, [h("tr", null, [h("th", { text: "기존" }), h("th", { text: "변경" }), h("th", { text: "설명" })])]),
+        h("tbody", null, x.changes.map(function (c) { return h("tr", null, [h("td", { text: c.from }), h("td", { text: c.to }), h("td", { text: c.note || "" })]); }))
+      ])]));
+    }
+    if (x.steps && x.steps.length) { body.push(h("h4", { text: "바꾸는 순서" })); body.push(h("ol", null, x.steps.map(function (t) { return h("li", { text: t }); }))); }
+    if (x.cautions && x.cautions.length) { body.push(h("h4", { text: "주의할 점" })); body.push(h("ul", { class: "list caution" }, x.cautions.map(function (t) { return h("li", { text: t }); }))); }
+    var rel = (x.news || []).filter(function (id) { return state.byId[id]; });
+    if (rel.length) {
+      body.push(h("h4", { text: "관련 소식" }));
+      body.push(h("ul", { class: "list" }, rel.map(function (id) { return h("li", null, [h("a", { href: "#" + id, text: state.byId[id].title })]); })));
+    }
+    body.push(h("p", { class: "src" }, ["공식 출처 · "].concat((x.sources || []).map(function (s, i) {
+      return h("span", null, [i ? " · " : "", h("a", { href: s.url, target: "_blank", rel: "noopener", text: s.title })]);
+    }), [" · 마지막 확인 " + fmtDate(x.verifiedAt)])));
+    return h("details", { class: "mg c-" + x.company, id: "mg-" + x.id, open: open }, [
+      h("summary", null, [
+        h("div", { class: "mg-meta" }, [coTag(x.company), h("span", { class: "st " + MG_CLASS[st], text: st }), note ? h("span", { class: "end-date", text: note }) : null]),
+        h("h3", { text: x.title }),
+        h("p", { class: "sum", text: x.summary }),
+        h("span", { class: "applies", text: "대상 · " + x.applies })
+      ]),
+      h("div", { class: "mg-body" }, body)
+    ]);
+  }
+  function renderMigrate(focus) {
+    setNav("migrate");
+    var mg = state.migrations;
+    var frag = document.createDocumentFragment();
+    if (!mg) { frag.appendChild(h("p", { class: "state", text: "코드 업데이트 정보를 불러오지 못했습니다." })); view.textContent = ""; view.appendChild(frag); return; }
+    frag.appendChild(h("p", { class: "lede", text: mg.intro }));
+    if (mg.terms && mg.terms.length) {
+      frag.appendChild(h("dl", { class: "mg-terms" }, mg.terms.map(function (t) { return h("div", null, [h("dt", { text: t.term }), h("dd", { text: t.body })]); })));
+    }
+    var items = mg.items || [];
+    if (focus && !items.some(function (x) { return x.id === focus && (state.mgCo === "all" || x.company === state.mgCo) && (state.mgSt === "all" || mgStatus(x) === state.mgSt); })) { state.mgCo = "all"; state.mgSt = "all"; }
+    var rows = h("div", { class: "filter-rows" }), box = h("div", { class: "mg-list" }), count = h("p", { class: "result", "aria-live": "polite" });
+    function chip(label, on, n, fn, cls) {
+      return h("button", { class: "chip" + (cls || ""), type: "button", "aria-pressed": String(on), onclick: fn }, [label, h("span", { class: "n", text: String(n) })]);
+    }
+    function draw() {
+      rows.textContent = "";
+      rows.appendChild(h("div", { class: "filters" }, [chip("전체", state.mgCo === "all", items.length, function () { state.mgCo = "all"; draw(); })].concat(ORDER.map(function (c) {
+        return chip(COMPANIES[c].name, state.mgCo === c, items.filter(function (x) { return x.company === c; }).length, function () { state.mgCo = c; draw(); });
+      }))));
+      var inCo = items.filter(function (x) { return state.mgCo === "all" || x.company === state.mgCo; });
+      rows.appendChild(h("div", { class: "filters" }, [chip("전체", state.mgSt === "all", inCo.length, function () { state.mgSt = "all"; draw(); })].concat(MG_STATUS.map(function (k) {
+        return chip(k, state.mgSt === k, inCo.filter(function (x) { return mgStatus(x) === k; }).length, function () { state.mgSt = k; draw(); }, k.indexOf("지원 종료") === 0 ? " k-end" : "");
+      }))));
+      var hits = inCo.filter(function (x) { return state.mgSt === "all" || mgStatus(x) === state.mgSt; });
+      count.textContent = items.length + "건 중 " + hits.length + "건";
+      box.textContent = "";
+      hits.forEach(function (x, i) { box.appendChild(mgCard(x, focus ? x.id === focus : i === 0)); });
+      if (!hits.length) box.appendChild(h("p", { class: "state", text: "조건에 맞는 항목이 없습니다." }));
+    }
+    draw();
+    frag.appendChild(rows); frag.appendChild(count); frag.appendChild(box);
+    frag.appendChild(h("p", { class: "lede", style: "font-size:var(--s-sm)" }, ["마지막 확인 " + fmtDate(mg.verifiedAt) + ". 모델별 종료일 전체 목록은 ", h("a", { href: "#prices", text: "API 가격표" }), "의 종료 예정·지원 종료 모델 표에 있습니다. 코드는 각 회사 공식 이전 가이드의 호출 형태를 따랐고 직접 실행해 확인한 것은 아니니 바꾼 뒤 꼭 한 번 돌려 보세요."]));
+    view.textContent = "";
+    view.appendChild(frag);
+    var el = focus && document.getElementById("mg-" + focus);
+    if (el) {
+      el.scrollIntoView({ block: "start" });
+      el.classList.add("flash");
+      setTimeout(function () { el.classList.remove("flash"); }, 1600);
+    } else window.scrollTo(0, 0);
+  }
+
   function renderState(msg) {
     view.textContent = "";
     view.appendChild(h("div", { class: "state" }, [h("b", { text: msg.title }), h("p", { text: msg.body })]));
@@ -1664,6 +1937,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
       if (prev === "techItem") { window.scrollTo(0, state.techScroll || 0); return; }
     }
     else if (hash === "lab") { state.view = "lab"; renderTech("path"); }
+    else if (hash === "migrate" || hash.indexOf("migrate/") === 0) { state.view = "migrate"; renderMigrate(hash.slice(8)); return; }
     else if (hash === "glossary" || hash.indexOf("glossary/") === 0) { state.view = "glossary"; renderGlossary(hash.slice(9)); return; }
     // 예전 주소(#tech/<학습 경로 id>)도 해당 페이지로 연다
     else if ((hash.indexOf("tech/") === 0 || hash.indexOf("lab/") === 0) && t) { state.view = "techItem"; renderTechItem(t); }
@@ -1691,7 +1965,8 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
       getJSON("data/prices.json").catch(function () { return null; }),
       getJSON("data/tech.json").catch(function () { return null; }),
       getJSON("data/glossary.json").catch(function () { return null; }),
-      getJSON("data/models.json").catch(function () { return null; })
+      getJSON("data/models.json").catch(function () { return null; }),
+      getJSON("data/migrations.json").catch(function () { return null; })
     ]);
   }).then(function (res) {
     state.news = res[0].filter(Boolean);
@@ -1701,6 +1976,7 @@ table.retired td.repl { white-space: normal; min-width: 12em; color: var(--muted
     state.tech = res[3];
     state.glossary = res[4];
     state.models = res[5];
+    state.migrations = res[6];
     ((state.tech && state.tech.items) || []).forEach(function (t) { state.techById[t.id] = t; });
     state.loaded = true;
     renderHeader();
