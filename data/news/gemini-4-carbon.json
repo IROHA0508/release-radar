@@ -68,14 +68,25 @@
     "내부 벤치마크에서 안전한 코드 생성 성공률이 Argon보다 2배 넘게 올랐습니다. Chrome 팀은 고품질 패치 생성에서 다른 연구소의 대형 프런티어 모델보다 10배 넘게 낫다고 보고했습니다.",
     "Terminal-Bench 4.0에서 부정행위 성공을 0.0%로, 시도를 0.4%로 줄였고 정확도도 함께 올랐습니다. 라이브 코딩 환경에서 심각도 높은 정렬 이상 경고는 80% 가까이 줄었습니다.",
     "근거 없는 주장은 Argon보다 약 2배 줄었습니다. 과잉 수행은 26%, 미흡 수행은 29% 줄어 범위를 지키며 다단계 계획을 끝까지 실행하는 신뢰도가 높아졌다고 합니다.",
-    "Gray Swan 간접 프롬프트 인젝션 공격 성공률이 Argon의 0.7%에서 0.0%가 됐습니다."
+    "Gray Swan 간접 프롬프트 인젝션 공격 성공률이 Argon의 0.7%에서 0.0%가 됐습니다.",
+    "2026-11-10: Gemini 4 Carbon이 개발자, 기업, 과학자, 일반 사용자에게 일반 공개됐습니다. 2주 전에는 Fairwind Program을 통해 사이버보안 방어자에게만 먼저 공개했습니다.",
+    "Google은 Argon이 대부분의 소프트웨어 엔지니어링과 지식 업무에 여전히 적합하다고 밝혔습니다. Carbon은 복잡한 다단계 코딩·디버깅과 개방형 과학 연구처럼 모델 지능의 한계를 시험하는 작업용이며 Argon보다 토큰을 더 써서 깊이 추론하고 검증 루프를 길게 돌립니다.",
+    "CursorBench 4.0, Perplexity의 WANDR, Zapier의 AutomationBench에서 1위입니다. 다음으로 좋은 외부 모델보다 작업당 비용이 2배 넘게 낮다고 Google은 설명합니다.",
+    "Artificial Analysis와 함께 만든 새 Multimodal Knowledge Agent(MKA) 벤치마크에서 2위입니다. 1위 모델보다 작업당 평균 비용은 6배 넘게 낮습니다.",
+    "Google Antigravity에서 /swarm을 미리보기로 공개했습니다. 프롬프트 하나를 에이전트 팀으로 바꿔 실시간으로 추적할 수 있고 Carbon은 설계·조율·감사 같은 깊은 추론 역할에, 더 빠르고 가벼운 모델은 병렬 작업 공간에 배치할 수 있습니다.",
+    "새 안전 결과로, 적응형 레드팀 에이전트의 공격 경로를 99% 차단했고 시도당 침해율은 0.8%로 Argon의 3.1%보다 낮습니다. 375개 과제 에이전트 정직성 벤치마크에서는 92%를 통과했고 Argon은 70%입니다."
   ],
   "availability": [
     "이번 주부터 일부 사이버 방어 담당자에게 제공합니다. 이후 Fairwind Program을 통해 신뢰할 수 있는 파트너로 단계적으로 넓힙니다.",
     "개발자·기업·일반 사용자에게는 제품 화면을 통해 가능한 한 빨리 공개할 예정이며 구체적인 날짜는 밝히지 않았습니다.",
     "Google은 출시 전 모델 테스트를 위한 미국 정부의 자발적 절차에도 참여 중이라고 밝혔습니다.",
     "도입 가격은 Argon과 같습니다. 입력 100만 토큰당 $2, 출력 100만 토큰당 $10이고 캐시된 입력 토큰은 입력 가격에서 95% 할인됩니다.",
-    "API 모델 ID는 원문에 없어 확인 필요입니다."
+    "API 모델 ID는 원문에 없어 확인 필요입니다.",
+    "API: Google AI Studio와 Gemini for business에서 모든 유료 개발자·기업에 제공합니다. 가격은 Argon과 같은 도입 가격으로 입력 100만 토큰당 $2, 출력 100만 토큰당 $10입니다.",
+    "Google AI Ultra 구독자: Google Antigravity, Gemini 앱, AI Mode in Search에서 순차 제공합니다. 개발자는 Android Studio에서도 Gemini API 유료 티어로 쓸 수 있습니다.",
+    "기업: Gemini for business의 API나 모델 드롭다운, Google Antigravity, CodeMender에서 쓸 수 있습니다.",
+    "과학자·연구자: Antigravity 최고 사용량 티어로 Argon과 Carbon을 6개월 무료로 쓸 수 있는 신청을 받고 심사와 수용 여건에 따라 매주 순차로 온보딩합니다.",
+    "사이버보안 방어자: Fairwind Program에 신청하면 순차로 Carbon for cyber를 쓸 수 있습니다."
   ],
   "tips": [
     {
@@ -118,6 +129,18 @@
     {
       "title": "Gemini 4 모델 안전·보안 (Google)",
       "url": "https://blog.google/innovation-and-ai/technology/safety-security/gemini-4-model-safety-security/"
+    },
+    {
+      "title": "Gemini 4 Carbon is now available (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
+    },
+    {
+      "title": "Gemini 4 Carbon developer guide (Google AI Studio)",
+      "url": "https://aistudio.google.com/learn/gemini-4-carbon-developer-guide"
+    },
+    {
+      "title": "Gemini 4 Carbon 새 소식 (Google AI Studio 문서)",
+      "url": "https://aistudio.google.com/docs/whats-new-gemini-4-carbon"
     }
   ]
 }

@@ -1,17 +1,52 @@
 {
-  "startedAt": "2026-11-10T19:34:17+09:00",
+  "startedAt": "2026-11-11T06:09:24+09:00",
   "prices": {
-    "checked": [],
-    "changes": [],
-    "notes": [],
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "changes": [
+      "새 모델 추가: gpt-5.5-cyber-preview [text] (입력 $12.50 / 출력 $75.00)",
+      "지원 종료 예정 표시: GPT Image 2 (2027-02-10 종료 예정, 대체 gpt-image-2.6-sunburst or gpt-image-2.6-flare)",
+      "지원 종료 예정 표시: gpt-5.5-cyber-preview (2027-02-01 종료 예정, 대체 The most capable cyber model available to you.)",
+      "가격 변경: Gemini 3.5 Live Translate 그 밖의 단가 $0.0368 / 분 (추정) → $0.0053 / 분 (입력) · $0.0315 / 분 (출력)",
+      "가격 변경: Gemini 3.5 Transcribe 그 밖의 단가 $0.005 / 분 (추정) → $0.003 / 분 (입력) · $0.002 / 분 (출력) (추정)",
+      "가격 변경: Gemini 3.5 Transcribe Live 그 밖의 단가 $0.009 / 분 (추정) → $0.005 / 분 (입력) · $0.004 / 분 (출력) (추정)",
+      "가격 변경: Gemini 2.5 Flash Image 출력 $30 → $30.00",
+      "가격표에 추가: Gemini 4 Carbon (입력 $2.00 / 출력 $10.00)"
+    ],
+    "notes": [
+      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음"
+    ],
     "errors": {}
   },
   "guides": {
-    "checked": 0,
-    "changed": [],
-    "changes": [],
+    "checked": 38,
+    "changed": [
+      "https://developers.openai.com/api/docs/guides/image-prompting",
+      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+      "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them",
+      "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+      "https://ai.google.dev/gemini-api/docs/latest-model",
+      "https://ai.google.dev/gemini-api/docs/thinking"
+    ],
+    "changes": [
+      "가이드 추가: [openai] 이미지는 쓰기 전에 글자·관계·보존·투명도부터 점검하기",
+      "가이드 추가: [openai] 같은 캐릭터를 이어 그릴 땐 외형 특징을 매번 다시 적기",
+      "가이드 추가: [openai] 앱 화면 시안은 이미 출시된 제품처럼 묘사하기",
+      "가이드 추가: [anthropic] 여러 마크다운 파일을 고칠 때는 파일마다 요청을 남기고 한꺼번에 보내기",
+      "가이드 추가: [anthropic] Claude Code 작업 결과는 아티팩트로 게시해 공유하기",
+      "가이드 추가: [anthropic] Slides는 키보드로 영역 이동(F6)과 슬라이드 편집을 익히기",
+      "가이드 수정: [anthropic] 남에게 보여 줄 결과물은 Docs·Slides·Design 템플릿으로 시작하기",
+      "가이드 추가: [google] 분량과 형식은 제약으로 직접 적기",
+      "가이드 추가: [google] 코딩 에이전트에는 최신 Gemini 문서와 스킬을 연결해 주기"
+    ],
     "errors": {}
   },
   "authError": false,
-  "note": ""
+  "note": " | 검증 실패로 되돌림: 데이터 검증 실패:\n - data/prices.json: Gemini 4 Carbon: 같은 모델이 두 번 있음(gemini-4-carbon)"
 }

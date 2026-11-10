@@ -1,0 +1,140 @@
+{
+  "id": "claude-interactive-connectors-full-tool",
+  "company": "anthropic",
+  "date": "2026-11-10",
+  "kind": "제품·기능 출시",
+  "title": "Claude Interactive connectors 전체 도구 열기",
+  "headline": "연결한 도구를 Claude 대화 옆이나 전체 화면에서 열고 함께 편집합니다",
+  "tldr": "Claude 웹과 데스크톱 앱에서 커넥터가 지원하는 도구를 대화 옆에 열거나 전체 화면으로 키울 수 있습니다. 열어 둔 페이지·행·파일을 Claude에게 바로 고치게 하고 변경은 도구에 실시간으로 나타납니다. 개발자는 MCP Apps로 자기 앱을 Claude 안에서 실행하는 것도 가능하며 이 기능은 공개 프리뷰입니다.",
+  "fit": {
+    "summary": "Notion·Confluence·Box처럼 문서를 다루는 도구를 Claude 화면을 떠나지 않고 함께 편집할 때 맞습니다.",
+    "good": [
+      "Confluence 페이지를 열어 두고 Claude에게 쓰고 고치게 한 뒤 변경을 바로 확인하는 일",
+      "Box 파일을 Claude가 수정하게 하고 이전 버전과 나란히 비교한 뒤 반영하는 일",
+      "Notion 문서나 데이터베이스를 대화하면서 만들고 직접 손보는 일",
+      "자주 쓰는 도구를 사이드바에 고정해 한 번에 여는 일"
+    ],
+    "notFor": [
+      "새 Claude 경험으로 계정이 아직 업데이트되지 않았거나 조직이 켜지 않은 경우",
+      "커넥터가 이 기능을 지원하지 않는 도구(원문은 지원하는 커넥터에서만 된다고 밝힘)"
+    ],
+    "start": "디렉터리에서 Asana, Notion, Box 같은 도구를 연결한 뒤 대화나 사이드바에서 열어 보세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "지원 도구 로고",
+      "value": "13개",
+      "note": "원문 이미지 대체 텍스트 기준, 인터랙티브 커넥터를 지원하는 도구"
+    },
+    {
+      "label": "제공 플랜",
+      "value": "모든 플랜",
+      "note": "웹과 Claude 데스크톱 앱"
+    },
+    {
+      "label": "개발자 지원 단계",
+      "value": "공개 프리뷰",
+      "note": "앱 도구와 임베디드 사이트 지원"
+    }
+  ],
+  "charts": [],
+  "chartNote": "성능 비교 수치가 없는 기능 소식이라 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Claude가 열려 있는 페이지, 행, 파일을 직접 고칩니다. 커넥터 작업을 승인하는 방식과 같게 승인하고 변경은 도구에 바로 나타납니다.",
+    "도구 전체가 대화 옆에 열립니다. 채팅을 숨기거나 전체 화면으로 키우는 것도 가능합니다.",
+    "Confluence나 Notion은 제한된 미리보기 대신 본인 계정으로 로그인한 전체 편집기를 씁니다.",
+    "Claude 프롬프트를 쓰지 않고 연결한 도구를 바로 열 수도 있고 도움이 필요하면 같은 화면에서 Claude에게 요청합니다.",
+    "자주 쓰는 도구를 고정하면 아티팩트와 함께 놓이고 사이드바와 + 메뉴에서 한 번에 엽니다.",
+    "인터랙티브 커넥터는 MCP Apps 위에서 돌아갑니다. Claude가 앱 도구와 임베디드 사이트 등 확장 기능을 더 지원하게 되어 개발자의 전체 앱을 Claude 안에서 실행하는 것도 가능합니다."
+  ],
+  "availability": [
+    "웹과 Claude 데스크톱 앱, 모든 플랜에 순차 적용됩니다.",
+    "대화와 Cowork를 합친 새 Claude 경험의 일부입니다. 계정이 새 Claude로 업데이트되거나 조직이 켜면 보입니다.",
+    "시작 도구는 디렉터리의 Asana, Canva, Carta, Dropbox, monday.com, Smartsheet, Vercel, Webflow 등입니다.",
+    "Adobe, Atlassian, Box, HubSpot, Notion도 쓸 수 있습니다. Figma, Harvey, Shopify는 통합을 준비 중입니다.",
+    "개발자용 기능은 공개 프리뷰입니다."
+  ],
+  "usage": [
+    {
+      "title": "Confluence 페이지를 Claude와 함께 고치기",
+      "when": "문서를 Claude 화면 안에서 쓰고 검토하고 싶을 때",
+      "steps": [
+        "디렉터리에서 Atlassian 커넥터를 연결합니다.",
+        "Confluence 페이지를 대화 옆에 엽니다.",
+        "Claude에게 쓰거나 고칠 내용을 요청합니다.",
+        "승인한 변경을 페이지에서 실시간으로 확인합니다."
+      ],
+      "note": "커넥터가 이 기능을 지원해야 하고 계정이 새 Claude로 업데이트되어 있어야 합니다.",
+      "example": {
+        "type": "prompt",
+        "text": "지금 열려 있는 Confluence 페이지의 [섹션 이름]을 [독자]가 읽기 쉽게 고쳐 줘. 바뀐 부분은 페이지에서 바로 확인할 수 있게 해 줘."
+      },
+      "source": {
+        "title": "Open your apps in Claude and work in them together (Claude)",
+        "url": "https://claude.com/resources/articles/interactive-connectors-full-tool"
+      }
+    },
+    {
+      "title": "자주 쓰는 도구를 사이드바에 고정하기",
+      "when": "같은 도구를 매번 대화에서 찾지 않고 열고 싶을 때",
+      "steps": [
+        "디렉터리에서 연결할 도구를 고릅니다.",
+        "대화에서 도구를 엽니다.",
+        "도구를 고정해 아티팩트와 함께 둡니다.",
+        "사이드바나 + 메뉴에서 한 번에 열고, 도움이 필요하면 같은 화면에서 Claude에게 묻습니다."
+      ],
+      "source": {
+        "title": "Open your apps in Claude and work in them together (Claude)",
+        "url": "https://claude.com/resources/articles/interactive-connectors-full-tool"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "Box는 비교한 뒤에 반영",
+      "body": "Box 파일을 Claude가 고치게 한 뒤 버전을 나란히 비교하고 나서 변경을 유지할지 정하세요."
+    },
+    {
+      "title": "필요하면 전체 화면으로",
+      "body": "넓은 작업 공간이 필요하면 채팅을 숨기거나 전체 화면으로 열어 도구를 직접 편집하세요."
+    },
+    {
+      "title": "관리자는 기존 설정 확인",
+      "body": "조직이 커넥터 도구를 모두 허용하고 있다면 새 기능이 순차 적용되며 나타납니다. 제한하려면 지금처럼 커넥터 도구별로 막으면 됩니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Notion 문서 함께 만들기",
+      "when": "Notion 커넥터를 연결해 문서를 새로 만들 때",
+      "type": "prompt",
+      "text": "Notion에 [주제] 문서를 새로 만들어 줘. 목차부터 잡고 내가 열어 둔 화면에서 바로 고칠 수 있게 단계별로 채워 줘."
+    },
+    {
+      "title": "열어 둔 파일 수정 요청",
+      "when": "Box 같은 도구에서 파일을 열어 둔 상태일 때",
+      "type": "prompt",
+      "text": "지금 열려 있는 [파일 이름]을 [수정 방향]으로 고쳐 줘. 이전 버전과 비교해 볼 수 있게 변경 내용을 먼저 요약해 줘."
+    }
+  ],
+  "cautions": [
+    "커넥터가 지원하는 경우에만 쓸 수 있고 계정이 새 Claude로 업데이트되기 전에는 보이지 않을 수 있습니다.",
+    "Claude의 변경은 승인이 필요합니다. 승인하기 전에 내용을 확인하세요.",
+    "개발자용 앱 도구와 임베디드 사이트 지원은 공개 프리뷰입니다."
+  ],
+  "sources": [
+    {
+      "title": "Open your apps in Claude and work in them together (Claude)",
+      "url": "https://claude.com/resources/articles/interactive-connectors-full-tool"
+    },
+    {
+      "title": "MCP Apps 시작하기 (Claude 커넥터 문서)",
+      "url": "https://claude.com/docs/connectors/building/mcp-apps/getting-started"
+    },
+    {
+      "title": "MCP Apps overview",
+      "url": "https://modelcontextprotocol.io/extensions/apps/overview"
+    }
+  ]
+}

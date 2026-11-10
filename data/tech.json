@@ -176,7 +176,8 @@
         "decisions-api",
         "google-a2ui-express",
         "google-a2ui-copilotkit-generative-ui",
-        "claude-personal-finance"
+        "claude-personal-finance",
+        "claude-whiteboards-sheets-data"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -236,7 +237,8 @@
         "gemini-app-small-business-tools",
         "claude-personal-finance",
         "gemini-data-cloud-connectors",
-        "google-ai-studio-maps-platform"
+        "google-ai-studio-maps-platform",
+        "claude-whiteboards-sheets-data"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2618,7 +2620,8 @@
       "level": "중급",
       "status": "관찰",
       "companies": [
-        "openai"
+        "openai",
+        "anthropic"
       ],
       "prerequisites": [
         "mcp"
@@ -2653,7 +2656,10 @@
           "url": "https://openai.com/index/introducing-apps-in-chatgpt/"
         }
       ],
-      "news": [],
+      "news": [
+        "claude-whiteboards-sheets-data",
+        "claude-interactive-connectors-full-tool"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {

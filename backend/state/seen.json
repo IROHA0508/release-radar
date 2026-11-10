@@ -75,6 +75,14 @@
       "status": "added",
       "title": "Gemini Embedding 2 Preview deprecation:gemini-embedding-2-preview isdeprecated."
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-10-0f413b1e": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "reason": "[4]와 같은 소식의 중복 발표(API 문서 변경 로그)입니다.",
+      "status": "skipped",
+      "title": "Gemini 4 Carbon (gemini-4-carbon) generally available (GA): ReleasedGemini 4 Carbon (gemini-4-carbon), our most capable reasoning model built for sustained agentic coding, multimodal knowledge work, s"
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -503,6 +511,14 @@
       "status": "old",
       "title": "UST is bringing Claude to physical AI"
     },
+    "https://blog.google/company-news/inside-google/company-announcements/adobe-google-partnership-integration": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "reason": "기업 파트너십으로 제외 대상입니다.",
+      "status": "skipped",
+      "title": "We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps."
+    },
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-flash-developers": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -510,6 +526,14 @@
       "reason": "개발자 쇼케이스",
       "status": "skipped",
       "title": "See what 4 builders are making with Gemini 3.8 Flash"
+    },
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "id": "gemini-4-carbon",
+      "status": "updated",
+      "title": "Gemini 4 Carbon is now available"
     },
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon": {
       "checkedAt": "2026-10-14",
@@ -526,6 +550,14 @@
       "id": "gemini-4-carbon",
       "status": "added",
       "title": "Gemini 4 Carbon: our next frontier model"
+    },
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "reason": "벤치마크 발표로 모델 사용과 직접 무관한 연구입니다.",
+      "status": "skipped",
+      "title": "Introducing the Multimodal Knowledge Agent benchmark"
     },
     "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly": {
       "checkedAt": "2026-10-30",
@@ -921,6 +953,14 @@
       "status": "skipped",
       "title": "How Cresta turned CX expertise into an agent builder on the Claude Agent SDK"
     },
+    "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude": {
+      "checkedAt": "2026-11-11",
+      "company": "anthropic",
+      "date": "2026-11-10",
+      "reason": "고객 사례로 제외 대상입니다.",
+      "status": "skipped",
+      "title": "How Curative is building a national provider network with agents on Claude"
+    },
     "https://claude.com/resources/articles/how-to-manage-costs-and-demonstrate-roi-for-claude-code-on-google-cloud": {
       "checkedAt": "2026-10-28",
       "company": "anthropic",
@@ -936,6 +976,14 @@
       "reason": "기업/파트너십 사례로, 특정 회사의 Claude 도입 소식입니다.",
       "status": "skipped",
       "title": "IDC brings Quanta into Claude and adopts Claude across the company"
+    },
+    "https://claude.com/resources/articles/interactive-connectors-full-tool": {
+      "checkedAt": "2026-11-11",
+      "company": "anthropic",
+      "date": "2026-11-10",
+      "id": "claude-interactive-connectors-full-tool",
+      "status": "added",
+      "title": "Your apps can now open in Claude, and Claude can work in them"
     },
     "https://claude.com/resources/articles/introducing-personal-finance-in-claude": {
       "checkedAt": "2026-11-06",
@@ -961,6 +1009,14 @@
       "status": "added",
       "title": "Make long-running agents faster with message threads"
     },
+    "https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors": {
+      "checkedAt": "2026-11-11",
+      "company": "anthropic",
+      "date": "2026-11-10",
+      "reason": "이 글은 같은 날 발표된 'Claude Whiteboards, Claude Sheets, Claude Data'(claude-whiteboards-sheets-data)와 'Claude Interactive connectors'(claude-interactive-connectors-full-tool)를 한데 묶어 소개하는 종합 글입니다. 두 소식이 이미 사이트에 있어서 새 항목을 만들면 내용이 겹칩니다. 나머지는 고객 인용과 엔터프라이즈 보안 설명이라 따로 덧붙일 내용이 없습니다. Claude Meetings는 출시 예정으로만 언급되고, auto-connect 베타도 기존 소식에 있는지 확인하지 못했습니다.",
+      "status": "skipped",
+      "title": "More ways to work with Claude: Sheets, Whiteboards, and Interactive Connectors"
+    },
     "https://claude.com/resources/articles/new-agents-and-products-claude-marketplace": {
       "checkedAt": "2026-11-05",
       "company": "anthropic",
@@ -968,6 +1024,14 @@
       "reason": "Claude Marketplace에 파트너사 에이전트·제품이 추가됐다는 소식입니다. 기업 파트너십과 엔터프라이즈 약정 지출 활용에 관한 영업·사업 공지라서 제외합니다.",
       "status": "skipped",
       "title": "New agents and products for security, productivity, and creative work on Claude Marketplace"
+    },
+    "https://claude.com/resources/articles/sheets-whiteboards-data": {
+      "checkedAt": "2026-11-11",
+      "company": "anthropic",
+      "date": "2026-11-10",
+      "id": "claude-whiteboards-sheets-data",
+      "status": "added",
+      "title": "Introducing Claude Whiteboards, Claude Sheets, and Claude Data"
     },
     "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets": {
       "checkedAt": "2026-10-29",
@@ -1024,6 +1088,14 @@
       "reason": "정부 부문 특화 버전으로 보이는 기업 파트너십 또는 정책·규제 영역 관련 글. ChatGPT·Gemini 같은 공식 도구를 더 잘 쓰는 실전 조언이나 새 모델 출시가 아님.",
       "status": "skipped",
       "title": "Introducing Gemini for government services"
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-healthcare": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "reason": "의료 분야 특화 솔루션으로 특정 업종 마케팅에 해당합니다.",
+      "status": "skipped",
+      "title": "Introducing Gemini for healthcare"
     },
     "https://cloud.google.com/blog/products/ai-machine-learning/gemini-robotics-embodied-reasoning-2-is-now-available-on-google-cloud": {
       "checkedAt": "2026-10-28",
@@ -1209,6 +1281,14 @@
       "status": "skipped",
       "title": "Gemini 4 Argon for Robotics"
     },
+    "https://deepmind.google/blog/gemini-4-carbon-is-now-available": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "id": "gemini-4-carbon",
+      "status": "updated",
+      "title": "Gemini 4 Carbon is now available"
+    },
     "https://deepmind.google/blog/gemini-4-carbon-our-next-frontier-model": {
       "checkedAt": "2026-10-29",
       "company": "google",
@@ -1232,6 +1312,14 @@
       "reason": "연구용 모델(DeepMind 월드 모델). 사용자나 개발자가 직접 쓸 수 있는 공식 AI 제품·도구가 아니며, 연구 보고서에 해당합니다.",
       "status": "skipped",
       "title": "Genie 4: A new generation of world simulation"
+    },
+    "https://deepmind.google/blog/introducing-alphaproof-code": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "reason": "소프트웨어 검증 도구로 AI 모델 사용과 무관한 개발 인프라입니다.",
+      "status": "skipped",
+      "title": "Introducing AlphaProof Code: a breakthrough in verifying complex software at depth"
     },
     "https://deepmind.google/blog/introducing-gemini-4-argon": {
       "checkedAt": "2026-10-14",
@@ -1876,6 +1964,14 @@
       "status": "skipped",
       "title": "Advancing computer use with Ironclad"
     },
+    "https://openai.com/index/ai-effect-on-freelance-work": {
+      "checkedAt": "2026-11-11",
+      "company": "openai",
+      "date": "2026-11-10",
+      "reason": "연구 보고서로 제외 대상입니다.",
+      "status": "skipped",
+      "title": "Work at the Frontier: AI’s effect on freelance work"
+    },
     "https://openai.com/index/airbnb-gpt-6-astra": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -2140,6 +2236,14 @@
       "status": "skipped",
       "title": "Heimstaden is changing residential real estate management with AI"
     },
+    "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life": {
+      "checkedAt": "2026-11-11",
+      "company": "openai",
+      "date": "2026-11-10",
+      "reason": "행사 홍보 및 교육 프로그램으로 제외 대상입니다.",
+      "status": "skipped",
+      "title": "Helping caregivers use AI in everyday life"
+    },
     "https://openai.com/index/higgsfield-longer-videos-voice": {
       "checkedAt": "2026-10-14",
       "company": "openai",
@@ -2155,6 +2259,14 @@
       "reason": "모델 출시·업데이트·제품·기능 출시와 무관한 안전 모니터링 보고서",
       "status": "skipped",
       "title": "How we detect frontier model misalignment"
+    },
+    "https://openai.com/index/introducing-businesses-chatgpt": {
+      "checkedAt": "2026-11-11",
+      "company": "openai",
+      "date": "2026-11-10",
+      "reason": "기업이 ChatGPT에서 자사 정보를 관리하고 고객과 연결하는 비즈니스·광고 플랫폼 공지입니다. 독자가 모델이나 AI 도구를 더 잘 쓰는 방법과 무관해서 제외합니다. Business Agent 후원과 ChatGPT Ads 연계 내용이 있고, 대상도 미국의 이커머스·온라인 서비스 사업자로 한정됩니다.",
+      "status": "skipped",
+      "title": "Introducing Businesses in ChatGPT"
     },
     "https://openai.com/index/introducing-gpt-6-1-terra": {
       "checkedAt": "2026-10-27",
@@ -2579,6 +2691,14 @@
       "reason": "기술 정책 공지로, 사용자가 새로 써볼 수 있는 기능도 아니고 모델 사용 방식을 크게 변경하지 않음",
       "status": "skipped",
       "title": "Text generated by Claude Mythos 5, Claude Opus 4.7, and Claude Sonnet 4.6 carries Anthropic’s text watermark on the platforms listed in How Claude marks AI-generated content."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05-165cf727": {
+      "checkedAt": "2026-11-11",
+      "company": "anthropic",
+      "date": "2026-11-05",
+      "reason": "API 인프라의 기술적 업데이트로 제외 대상입니다.",
+      "status": "skipped",
+      "title": "The Compliance API now includes Security posture data, in beta for Claude Enterprise organizations."
     },
     "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05-8e38c928": {
       "checkedAt": "2026-11-06",
