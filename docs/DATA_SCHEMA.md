@@ -18,12 +18,15 @@
 
 | 필드 | 형식 | 설명 |
 |---|---|---|
-| `id` | 문자열 | 파일 이름과 같음. 소문자·숫자·하이픈만. `guide`, `prices`, `models`, `tech`, `lab`, `glossary`는 예약어 |
+| `id` | 문자열 | 파일 이름과 같음. 소문자·숫자·하이픈만. `guide`, `prices`, `models`, `tech`, `lab`, `glossary`, `migrate`는 예약어 |
 | `company` | `openai` \| `anthropic` \| `google` | 발표한 회사 |
 | `date` | `YYYY-MM-DD` | 공식 발표일 |
 | `kind` | `모델 출시` \| `모델 업데이트` \| `제품·기능 출시` \| `활용 팁` \| `지원 종료 예정` \| `지원 종료` | 소식 종류. 화면의 종류 필터와 같음. 새 모델 출시·발표는 `모델 출시`, 기존 모델의 기능·가격·가용성 변경은 `모델 업데이트`, 모델·기능의 지원 종료(deprecation)·은퇴·자동 전환을 미리 알리는 공지는 `지원 종료 예정`, 이미 끝난 것은 `지원 종료`, ChatGPT·Codex·Claude·Claude Code·Gemini 앱·Gemini CLI 같은 공식 AI 제품과 개발자 도구의 새 앱·기능은 `제품·기능 출시`, 공식 사용 가이드·프롬프트 팁은 `활용 팁` |
 | `shutdown` | `YYYY-MM-DD`(선택) | `지원 종료 예정`·`지원 종료`에만 쓰는 종료일(더 이상 쓸 수 없거나 다른 모델로 전환되는 날, 대상이 여럿이면 가장 이른 날). 원문에 날짜가 없으면 빼 두고 화면에 '종료일 미정'으로 표시. `지원 종료 예정`은 이날(한국 시간)이 되면 화면에서 바로 `지원 종료`로 보이고 6시간마다 도는 자동 실행이 파일의 `kind`도 바꾼다. `지원 종료`인데 종료일이 아직 안 왔으면 검증 실패 |
 | `title`, `headline`, `tldr` | 문자열 | 제목, 한 줄 헤드라인, 2~3문장 요약 |
+| `fit` | 객체(선택) | 언제 쓰면 좋은가. `{summary, good[], notFor[], start}` — `summary`는 필수, `good`(잘 맞는 일)이나 `notFor`(다른 선택이 나은 경우) 중 하나는 있어야 함. 지원 종료 소식에는 쓰지 않음 |
+| `figures` | 배열(선택) | 그림으로 보기. 사이트가 원문 내용을 옮겨 직접 그리는 도식, 아래 참고 |
+| `usage` | 배열(선택) | 사용법 자세히. `{title, when, steps[], note, example: {type: "prompt" \| "code", text}, source: {title, url}}` — `steps`나 `example` 중 하나와 공식 출처 `source`가 필요 |
 | `models` | 배열 | `{name, apiId, input, output, cached}` — 가격은 1M 토큰당 USD 문자열, 모르면 `null` |
 | `numbers` | 배열 | `{label, value, note}` 핵심 수치 3~4개 |
 | `chartSource` | 문자열(선택) | 그래프 수치의 출처 설명 |
@@ -60,7 +63,63 @@
 - `keepOrder`: `true`면 입력 순서 유지, 아니면 성능 좋은 순으로 정렬
 - 수치는 반드시 공식 발표의 텍스트·표·차트 대체 텍스트에 있는 값만 씁니다. 그래프가 이미지로만 공개된 경우 `charts`를 비우고 `chartNote`에 이유를 적습니다.
 
+### figures 항목 (도식)
+
+원문 그림 파일은 복사하거나 주소로 걸지 않습니다(저작권, 링크 깨짐, 수치 검증 불가). 원문 내용을 아래 세 가지 모양의 데이터로 옮기면 화면이 그립니다. 도식마다 근거가 된 공식 문서 `source`가 필요합니다.
+
+```json
+{ "type": "flow", "title": "모델을 고르는 순서", "caption": "(선택) 한 줄 설명",
+  "steps": [{ "label": "최신 Opus로 시작", "desc": "(선택)", "tag": "(선택) 배지", "highlight": false }],
+  "loop": "(선택) 순서도 아래에 붙는 한 줄", "source": { "title": "...", "url": "https://..." } }
+
+{ "type": "scale", "title": "effort 다섯 단계", "axis": ["빠르고 저렴", "깊고 느림"],
+  "steps": [{ "label": "high", "desc": "어려운 코딩", "tag": "API 기본값", "highlight": true }], "source": {} }
+
+{ "type": "compare", "title": "가까운 모델과 비교", "rowHead": "(선택) 첫 열 이름, 기본 '모델'",
+  "columns": ["입력 / 출력", "기본 effort"],
+  "rows": [{ "label": "Claude Fable 5.2", "cells": ["$8 / $40", "high"], "highlight": true }], "source": {} }
+```
+
+- `flow`: 순서가 있는 절차. 단계 2개 이상, 화면에서 화살표로 잇습니다(모바일은 세로).
+- `scale`: 낮음에서 높음으로 가는 단계(effort, thinking level). 입력 순서가 곧 낮은 단계부터입니다. 기본값 단계에 `tag`와 `highlight`.
+- `compare`: 모델·요금제·기간 비교표. `cells` 수는 `columns` 수와 같아야 하고 값이 없는 칸은 빈 문자열(화면에 `—`). 다른 모델과의 비교는 공식 문서가 밝힌 값만 씁니다.
+- `highlight`는 이 소식의 주인공. 회사 색으로 표시됩니다.
+- 자동 업데이트가 쓴 `fit`·`figures`·`usage`는 `backend/guard.py`가 숫자를 원문과 대조해 원문에 없는 숫자가 든 줄·도식·사용법을 지웁니다. 출처는 그 소식의 원문으로 채웁니다. 원문 여러 개를 참고한 보강은 사람이 대화로 작성합니다.
+
 검증: `python3 scripts/validate_data.py`
+
+## data/migrations.json (코드 업데이트 탭)
+
+예전 방식의 LLM 호출 코드를 지금 방식으로 고치는 법. 화면 주소는 `#migrate`, 항목 하나는 `#migrate/<id>`.
+
+```json
+{
+  "verifiedAt": "2026-11-10",
+  "intro": "탭 맨 위 소개 문장",
+  "terms": [{ "term": "지원 종료 예정 (deprecated)", "body": "..." }],
+  "termSources": [{ "title": "...", "url": "https://..." }],
+  "items": [{
+    "id": "openai-gpt-4o-to-gpt-6-luna", "company": "openai",
+    "status": "지원 종료 예정", "deadline": "2027-01-14",
+    "title": "...", "summary": "왜 바꿔야 하는지", "applies": "대상 모델·코드",
+    "detect": ["model=\"gpt-4o\"", "temperature="],
+    "before": { "label": "기존 코드", "code": "..." },
+    "after": [{ "label": "방법 1 · 가장 적게 바꾸기", "code": "...", "note": "(선택)" }],
+    "changes": [{ "from": "temperature=0.9", "to": "(삭제)", "note": "..." }],
+    "steps": ["바꾸는 순서"], "cautions": ["주의할 점"],
+    "news": ["(선택) 관련 소식 id"],
+    "sources": [{ "title": "...", "url": "https://..." }], "verifiedAt": "2026-11-10"
+  }]
+}
+```
+
+- `status`: `지원 종료 예정`(종료일이 공지됨, `deadline` 필수), `지원 종료`(이미 끝남), `새 모델에서 오류`(새 모델이 거부하거나 무시하는 설정), `권장 전환`(기존 방식도 지원되지만 새 방식을 권장). 화면은 `지원 종료 예정`의 `deadline`이 지나면 `지원 종료`로 보여 주고 검증은 경고를 냅니다.
+- `detect`: 독자가 자기 코드에서 검색해 볼 글자.
+- `before`가 있으면 `after`가 하나 이상 필요합니다. 코드 없이 대응표(`changes`)만 둘 수도 있습니다.
+- 모든 항목은 공식 문서(`sources`)가 근거입니다. "지원 종료"라고 쓰려면 공식 지원 종료 페이지나 이전 가이드에 그렇게 적혀 있어야 합니다. 확인하지 못한 부분은 `cautions`에 "확인 필요"로 남깁니다.
+- 코드는 공식 이전 가이드의 호출 형태를 따릅니다. 직접 실행해 확인한 코드가 아니라는 점을 화면 아래에 밝힙니다.
+- 자동 업데이트는 이 파일을 고치지 않습니다. 새 모델의 이전 가이드가 나오면 사람이 확인해 추가합니다.
+- `migrate`는 소식 id 예약어입니다.
 
 ## data/guides.json (프롬프트 가이드 탭)
 

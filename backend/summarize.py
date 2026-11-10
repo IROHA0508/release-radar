@@ -33,15 +33,30 @@ CHART = _obj({
     "rows": {"type": "array", "items": _obj({"label": STR, "value": {"type": "number"}, "highlight": {"type": "boolean"}})},
 })
 
+# 사이트가 직접 그리는 도식. type에 따라 쓰는 칸이 다르다(flow·scale은 steps, compare는 columns·rows). 안 쓰는 칸은 빈 값.
+FIGURE = _obj({
+    "type": {"type": "string", "enum": ["flow", "scale", "compare"]},
+    "title": STR, "caption": STR, "loop": STR,
+    "steps": {"type": "array", "items": _obj({"label": STR, "desc": STR, "tag": STR, "highlight": {"type": "boolean"}})},
+    "columns": STR_LIST,
+    "rows": {"type": "array", "items": _obj({"label": STR, "cells": STR_LIST, "highlight": {"type": "boolean"}})},
+})
+FIT = _obj({"summary": STR, "good": STR_LIST, "notFor": STR_LIST, "start": STR})
+USAGE = _obj({"title": STR, "when": STR, "steps": STR_LIST, "note": STR,
+              "example": _obj({"type": {"type": "string", "enum": ["prompt", "code", ""]}, "text": STR})})
+
 ITEM = _obj({
     "id": STR,
     "kind": {"type": "string", "enum": ["모델 출시", "모델 업데이트", "제품·기능 출시", "활용 팁", "지원 종료 예정", "지원 종료"]},
     "shutdown": STR,
     "title": STR, "headline": STR, "tldr": STR,
+    "fit": FIT,
     "models": {"type": "array", "items": _obj({"name": STR, "apiId": STR, "input": STR, "output": STR, "cached": STR})},
     "numbers": {"type": "array", "items": _obj({"label": STR, "value": STR, "note": STR})},
+    "figures": {"type": "array", "items": FIGURE},
     "chartSource": STR, "charts": {"type": "array", "items": CHART}, "chartNote": STR,
     "changes": STR_LIST, "availability": STR_LIST,
+    "usage": {"type": "array", "items": USAGE},
     "tips": {"type": "array", "items": _obj({"title": STR, "body": STR})},
     "prompts": {"type": "array", "items": _obj({"title": STR, "when": STR,
                                                  "type": {"type": "string", "enum": ["prompt", "code"]}, "text": STR})},
@@ -103,6 +118,17 @@ RULES = """\
   성능 비교 수치가 없으면 charts는 빈 배열로 둔다.
 - numbers는 핵심 수치 3~4개, changes 3~6개, tips 2~4개, prompts 2개(바로 붙여 쓸 수 있는 한국어, 바꿀 부분은 [대괄호],
   API 예시는 type "code"), cautions 1~3개, sources는 원문 URL을 첫 번째로.
+- fit(언제 쓰면 좋은가): 독자가 이 모델·기능을 어디에 쓸지 바로 판단하게 돕는 칸. summary는 한두 문장, good은 잘 맞는 일 2~4개,
+  notFor는 맞지 않거나 다른 선택이 나은 경우 1~4개(원문이 밝힌 제한·미지원·더 나은 모델), start는 처음 시작할 설정 한 문장.
+  원문에 근거가 없으면 summary를 빈 문자열로 두고 나머지도 비운다. 지원 종료 소식에는 쓰지 않는다.
+- figures(그림으로 보기): 원문 그림을 복사하지 않고 원문 내용을 사이트가 다시 그리는 도식 0~3개. 원문에 순서·단계·비교가 있을 때만 쓴다.
+  type "flow"는 순서가 있는 절차(steps 3~5개, label은 짧게, desc는 한 줄), "scale"은 낮음→높음 단계(effort, thinking level 등,
+  기본값 단계에 tag "기본값"과 highlight true), "compare"는 모델·요금제·기간 비교표(columns 2~5개, rows의 cells는 columns와 같은 수,
+  이 소식의 주인공 행에 highlight true, 원문에 값이 없는 칸은 빈 문자열). 다른 모델과의 비교는 원문이 직접 비교한 값만 쓴다.
+- usage(사용법 자세히): 따라 할 수 있는 사용 시나리오 2~5개. title은 하려는 일, when은 이 방법이 필요한 상황, steps는 순서대로 2~5개,
+  example은 원문 예시를 바탕으로 한 프롬프트(type "prompt") 또는 코드(type "code")이고 없으면 type과 text를 빈 문자열로 둔다.
+  tips와 내용이 겹치지 않게 한다. tips는 짧은 요령, usage는 단계별 절차다.
+- fit, figures, usage의 숫자도 프로그램이 원문과 대조해 원문에 없는 숫자가 든 줄·도식·시나리오는 지운다.
 - id는 소문자 영문·숫자·하이픈(예: claude-haiku-5-5). guide, prices는 쓰지 않는다.
 - 빈 값은 빈 문자열/빈 배열로 둔다(null 금지).
 """

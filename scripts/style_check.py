@@ -126,6 +126,28 @@ def news_text(d: dict) -> list[str]:
     return [p for p in parts if p]
 
 
+def extras_text(d: dict) -> list[str]:
+    """소식의 선택 필드(fit·figures·usage). 본문과 따로 보는 독립된 글이다. 코드와 프롬프트 예시는 보지 않는다."""
+    fit = d.get("fit") or {}
+    parts = [fit.get("summary", ""), fit.get("start", "")] + _flat(fit.get("good")) + _flat(fit.get("notFor"))
+    for f in d.get("figures") or []:
+        parts += [f.get("title", ""), f.get("caption", ""), f.get("loop", "")]
+        parts += [x for st in f.get("steps") or [] for x in (st.get("label", ""), st.get("desc", ""))]
+    for u in d.get("usage") or []:
+        parts += [u.get("title", ""), u.get("when", ""), u.get("note", "")] + _flat(u.get("steps"))
+    return [p for p in parts if p]
+
+
+def migration_docs(m: dict) -> dict[str, list[str]]:
+    """코드 업데이트 탭. 항목 하나가 독립된 글이다. 코드(before·after의 code, detect)는 보지 않는다."""
+    docs = {"migrate/intro": [m.get("intro", "")] + [t.get("body", "") for t in m.get("terms", [])]}
+    for x in m.get("items", []):
+        parts = [x.get("title", ""), x.get("summary", "")] + _flat(x.get("steps")) + _flat(x.get("cautions"))
+        parts += [a.get("note", "") for a in x.get("after") or []] + [c.get("note", "") for c in x.get("changes") or []]
+        docs[f"migrate/{x.get('id')}"] = parts
+    return {k: [p for p in v if p] for k, v in docs.items()}
+
+
 def tech_text(i: dict) -> list[str]:
     parts = [i.get("name", ""), i.get("definition", ""), i.get("why", "")]
     parts += i.get("how", []) + i.get("effects", []) + i.get("limits", [])
@@ -153,7 +175,10 @@ def guide_docs(g: dict) -> dict[str, list[str]]:
 def site_docs() -> dict[str, list[str]]:
     docs: dict[str, list[str]] = {}
     for f in sorted((DATA / "news").glob("*.json")):
-        docs[f"news/{f.stem}"] = news_text(json.loads(f.read_text(encoding="utf-8")))
+        item = json.loads(f.read_text(encoding="utf-8"))
+        docs[f"news/{f.stem}"] = news_text(item)
+        if extras_text(item):
+            docs[f"news/{f.stem}/extras"] = extras_text(item)
     tech = DATA / "tech.json"
     if tech.exists():
         for i in json.loads(tech.read_text(encoding="utf-8")).get("items", []):
@@ -168,6 +193,9 @@ def site_docs() -> dict[str, list[str]]:
     models = DATA / "models.json"
     if models.exists():
         docs.update(models_docs(json.loads(models.read_text(encoding="utf-8"))))
+    mig = DATA / "migrations.json"
+    if mig.exists():
+        docs.update(migration_docs(json.loads(mig.read_text(encoding="utf-8"))))
     return docs
 
 

@@ -10,9 +10,9 @@ from pathlib import Path
 
 from . import config
 
-KEY_ORDER = ["id", "company", "date", "kind", "shutdown", "title", "headline", "tldr", "models", "numbers", "chartSource",
-             "charts", "chartNote", "changes", "availability", "tips", "prompts", "cautions", "sources"]
-RESERVED = {"guide", "prices", "models", "tech", "lab", "glossary"}
+KEY_ORDER = ["id", "company", "date", "kind", "shutdown", "title", "headline", "tldr", "fit", "models", "numbers", "figures",
+             "chartSource", "charts", "chartNote", "changes", "availability", "usage", "tips", "prompts", "cautions", "sources"]
+RESERVED = {"guide", "prices", "models", "tech", "lab", "glossary", "migrate"}
 RETIRE_SOON, RETIRED = "지원 종료 예정", "지원 종료"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -39,6 +39,91 @@ def _clean(value):
     if isinstance(value, list):
         return [_clean(v) for v in value]
     return value
+
+
+def _strs(values) -> list[str]:
+    return [str(v).strip() for v in values or [] if str(v or "").strip()]
+
+
+def normalize_extras(item: dict, source: dict) -> None:
+    """fit·figures·usage(선택 필드)를 검증 스크립트가 받는 모양으로 다듬는다. 모양이 맞지 않으면 그 항목만 버린다.
+    도식과 사용법의 출처는 모델이 쓰지 않고 이 소식의 원문으로 채운다."""
+    fit = item.get("fit") or {}
+    fit = {"summary": str(fit.get("summary") or "").strip(), "good": _strs(fit.get("good")),
+           "notFor": _strs(fit.get("notFor")), "start": str(fit.get("start") or "").strip()}
+    if item.get("kind") in (RETIRE_SOON, RETIRED) or not fit["summary"] or not (fit["good"] or fit["notFor"]):
+        item.pop("fit", None)
+    else:
+        item["fit"] = {k: v for k, v in fit.items() if v}
+
+    figures = []
+    for f in item.get("figures") or []:
+        kind, title = f.get("type"), str(f.get("title") or "").strip()
+        out = {"type": kind, "title": title}
+        if f.get("caption"):
+            out["caption"] = f["caption"]
+        if kind in ("flow", "scale"):
+            steps = []
+            for st in f.get("steps") or []:
+                if not str(st.get("label") or "").strip():
+                    continue
+                step = {"label": st["label"].strip()}
+                for k in ("desc", "tag"):
+                    if st.get(k):
+                        step[k] = st[k]
+                if st.get("highlight"):
+                    step["highlight"] = True
+                steps.append(step)
+            if not title or len(steps) < 2:
+                continue
+            out["steps"] = steps
+            if kind == "flow" and f.get("loop"):
+                out["loop"] = f["loop"]
+        elif kind == "compare":
+            cols = _strs(f.get("columns"))
+            rows = []
+            for r in f.get("rows") or []:
+                cells = [str(c or "").strip() for c in r.get("cells") or []]
+                if not str(r.get("label") or "").strip() or len(cells) != len(cols):
+                    continue
+                row = {"label": r["label"].strip(), "cells": cells}
+                if r.get("highlight"):
+                    row["highlight"] = True
+                rows.append(row)
+            if not title or not cols or len(rows) < 2:
+                continue
+            out["columns"], out["rows"] = cols, rows
+        else:
+            continue
+        out["source"] = source
+        figures.append(out)
+    if figures:
+        item["figures"] = figures[:3]
+    else:
+        item.pop("figures", None)
+
+    usage = []
+    for u in item.get("usage") or []:
+        title, steps = str(u.get("title") or "").strip(), _strs(u.get("steps"))
+        ex = u.get("example") or {}
+        has_ex = ex.get("type") in ("prompt", "code") and str(ex.get("text") or "").strip()
+        if not title or not (steps or has_ex):
+            continue
+        out = {"title": title}
+        if u.get("when"):
+            out["when"] = u["when"]
+        if steps:
+            out["steps"] = steps
+        if u.get("note"):
+            out["note"] = u["note"]
+        if has_ex:
+            out["example"] = {"type": ex["type"], "text": ex["text"]}
+        out["source"] = source
+        usage.append(out)
+    if usage:
+        item["usage"] = usage[:5]
+    else:
+        item.pop("usage", None)
 
 
 def normalize_item(raw: dict, *, company: str, day: date, url: str, title_hint: str) -> dict:
@@ -71,6 +156,7 @@ def normalize_item(raw: dict, *, company: str, day: date, url: str, title_hint: 
     if not any(s["url"].rstrip("/") == url.rstrip("/") for s in sources):
         sources.insert(0, {"title": f"{item.get('title') or title_hint} (공식 발표)", "url": url})
     item["sources"] = sources
+    normalize_extras(item, dict(sources[0]))
     for p in item.get("prompts", []):
         p["type"] = p.get("type") if p.get("type") in ("prompt", "code") else "prompt"
     ordered = {k: item[k] for k in KEY_ORDER if k in item}

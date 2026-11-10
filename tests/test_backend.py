@@ -1321,3 +1321,72 @@ def test_guard_drops_shutdown_not_in_source():
     item = {"kind": "지원 종료 예정", "shutdown": "2026-12-15", "numbers": [], "models": [], "charts": []}
     notes = guard.check_item(item, "The model shuts down on December 1, 2026.")
     assert "shutdown" not in item and any("종료일" in n for n in notes)
+
+
+# ---------- fit · figures · usage (소식의 선택 필드) ----------
+def _extras_item():
+    return {
+        "id": "gpt-7-nova", "kind": "모델 출시", "title": "GPT-7 Nova", "headline": "h", "tldr": "t",
+        "models": [], "numbers": [], "changes": [], "availability": [], "tips": [], "prompts": [], "cautions": [],
+        "sources": [],
+        "fit": {"summary": "긴 문서 작업에 맞습니다.", "good": ["컨텍스트 200만 토큰이 필요한 일", ""],
+                "notFor": ["응답이 99초 안에 와야 하는 일"], "start": ""},
+        "figures": [
+            {"type": "scale", "title": "추론 단계", "caption": "", "loop": "", "columns": [], "rows": [],
+             "steps": [{"label": "low", "desc": "빠름", "tag": "", "highlight": False},
+                       {"label": "high", "desc": "깊음", "tag": "기본값", "highlight": True}]},
+            {"type": "compare", "title": "가격 비교", "caption": "", "loop": "", "steps": [], "columns": ["입력", "출력"],
+             "rows": [{"label": "Nova", "cells": ["$3", "$15"], "highlight": True},
+                      {"label": "칸 수가 다른 행", "cells": ["$1"], "highlight": False},
+                      {"label": "Old", "cells": ["$5", "$19"], "highlight": False}]},
+            {"type": "flow", "title": "단계가 하나뿐", "caption": "", "loop": "", "columns": [], "rows": [],
+             "steps": [{"label": "하나", "desc": "", "tag": "", "highlight": False}]},
+            {"type": "pie", "title": "모르는 종류", "steps": [], "columns": [], "rows": []},
+        ],
+        "usage": [
+            {"title": "처음 호출하기", "when": "연결할 때", "steps": ["모델 이름을 적습니다.", ""], "note": "",
+             "example": {"type": "code", "text": "client.responses.create(model=\"gpt-7-nova\", max_output_tokens=4242)"}},
+            {"title": "지어낸 숫자", "when": "", "steps": ["한도를 31337로 둡니다."], "note": "", "example": {"type": "", "text": ""}},
+            {"title": "", "when": "", "steps": ["제목 없음"], "note": "", "example": {"type": "", "text": ""}},
+        ],
+    }
+
+
+def test_extras_are_normalized_and_guarded():
+    item = store.normalize_item(_extras_item(), company="openai", day=date(2026, 10, 1),
+                                url="https://openai.com/index/introducing-gpt-7-nova", title_hint="GPT-7 Nova")
+    # 모양이 맞지 않는 도식(단계 1개, 모르는 종류)과 제목 없는 사용법은 버리고 출처는 원문으로 채운다
+    assert [f["title"] for f in item["figures"]] == ["추론 단계", "가격 비교"]
+    assert [r["label"] for r in item["figures"][1]["rows"]] == ["Nova", "Old"]
+    assert item["figures"][0]["steps"][1] == {"label": "high", "desc": "깊음", "tag": "기본값", "highlight": True}
+    assert all(f["source"]["url"] == "https://openai.com/index/introducing-gpt-7-nova" for f in item["figures"])
+    assert [u["title"] for u in item["usage"]] == ["처음 호출하기", "지어낸 숫자"]
+    assert item["usage"][0]["steps"] == ["모델 이름을 적습니다."] and "example" not in item["usage"][1]
+    assert item["fit"]["good"] == ["컨텍스트 200만 토큰이 필요한 일"] and "start" not in item["fit"]
+    assert list(item).index("fit") < list(item).index("models") < list(item).index("figures") < list(item).index("usage")
+
+    # 원문에 없는 숫자가 든 줄·도식·사용법은 지운다. 코드 예시 안의 숫자는 보지 않는다.
+    art = extract.parse_html(ARTICLE, "u")
+    notes = guard.check_item(item, "\n".join([art.title, art.text, *art.tables]), "\n".join(art.links))
+    assert item["fit"]["notFor"] == [] and item["fit"]["good"]
+    assert [f["title"] for f in item["figures"]] == ["추론 단계"]          # $15, $5가 원문에 없음
+    assert [u["title"] for u in item["usage"]] == ["처음 호출하기"]
+    assert any("도식" in n for n in notes) and any("사용법" in n for n in notes)
+    item = store.normalize_item(item, company="openai", day=date(2026, 10, 1),
+                                url="https://openai.com/index/introducing-gpt-7-nova", title_hint="GPT-7 Nova")
+    assert "notFor" not in item["fit"]
+
+
+def test_extras_dropped_for_retirement_and_empty():
+    raw = _extras_item()
+    raw.update(kind="지원 종료 예정", shutdown="2027-01-14", figures=[], usage=[])
+    item = store.normalize_item(raw, company="openai", day=date(2026, 10, 1), url="https://openai.com/x", title_hint="x")
+    assert "fit" not in item and "figures" not in item and "usage" not in item
+
+
+def test_summary_schema_has_extras():
+    from backend import summarize
+
+    props = summarize.ITEM["properties"]
+    assert {"fit", "figures", "usage"} <= set(props) and {"fit", "figures", "usage"} <= set(summarize.ITEM["required"])
+    assert "usage(사용법 자세히)" in summarize.RULES and "figures(그림으로 보기)" in summarize.RULES
