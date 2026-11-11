@@ -1,0 +1,78 @@
+{
+  "id": "gemini-decision",
+  "company": "google",
+  "date": "2026-11-11",
+  "kind": "모델 출시",
+  "title": "Gemini Decision",
+  "headline": "출력 토큰 없이 이진·범주·루브릭 판정을 내리는 Gemini 모델과 Decisions API",
+  "tldr": "Google이 Gemini Decision(gemini-decision-1)과 Decisions API를 내놓았습니다. 텍스트, 이미지, 오디오, 영상, PDF를 입력으로 이진·범주·루브릭 판정을 빠르고 보정된 방식으로 내리며 출력 토큰은 쓰지 않습니다. 가격과 요청 한도는 공식 문서에서 확인해야 합니다.",
+  "fit": {
+    "summary": "텍스트, 이미지, 오디오, 영상, PDF를 보고 이진·범주·루브릭 판정을 빠르게 내려야 할 때 맞는 모델입니다.",
+    "good": [
+      "예·아니오로 답하는 이진 판정",
+      "정해진 범주로 나누는 범주 판정",
+      "루브릭 기준에 따른 판정",
+      "이미지·오디오·영상·PDF 같은 여러 형식 입력에 대한 판정"
+    ],
+    "start": "Decisions API 가이드에서 시작하는 방법을 먼저 확인하세요."
+  },
+  "models": [
+    {
+      "name": "Gemini Decision",
+      "apiId": "gemini-decision-1",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [],
+  "charts": [],
+  "chartNote": "원문에 비교 성능 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Gemini Decision(gemini-decision-1) 모델이 새로 나왔습니다.",
+    "Decisions API가 함께 공개됐습니다.",
+    "이진, 범주, 루브릭 판정을 빠르고 보정된 방식으로 내립니다.",
+    "텍스트, 이미지, 오디오, 영상, PDF를 입력으로 받습니다.",
+    "판정에 출력 토큰을 쓰지 않습니다."
+  ],
+  "availability": [
+    "Gemini API 모델명: gemini-decision-1",
+    "가격과 요청 한도는 공식 가격 페이지와 요금 한도 페이지에서 확인해야 합니다(확인 필요)."
+  ],
+  "tips": [
+    {
+      "title": "가이드부터 확인",
+      "body": "원문은 시작할 때 Decisions API 가이드를 보라고 안내합니다. 요청 형식과 판정 결과를 받는 방법은 가이드에서 확인하세요."
+    },
+    {
+      "title": "쓰기 전에 가격과 한도 확인",
+      "body": "가격과 요청 한도는 원문에 수치가 없습니다. 공식 가격 페이지와 요금 한도 페이지에서 직접 확인하세요."
+    }
+  ],
+  "prompts": [],
+  "cautions": [
+    "원문 변경 기록은 짧아서 성능 수치, 가격, 지원 범위가 나와 있지 않습니다. 자세한 내용은 모델 문서에서 확인해야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 변경 기록 2026-11-11 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-11"
+    },
+    {
+      "title": "Gemini Decision 모델 문서",
+      "url": "https://aistudio.google.com/docs/models/gemini-decision-1"
+    },
+    {
+      "title": "Decisions API 가이드",
+      "url": "https://aistudio.google.com/docs/decisions-api"
+    },
+    {
+      "title": "가격 (Gemini Decision)",
+      "url": "https://aistudio.google.com/docs/pricing#gemini-decision"
+    },
+    {
+      "title": "요금 한도 (Gemini Decision)",
+      "url": "https://aistudio.google.com/docs/rate-limits#gemini-decision"
+    }
+  ]
+}

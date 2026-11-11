@@ -83,6 +83,14 @@
       "status": "skipped",
       "title": "Gemini 4 Carbon (gemini-4-carbon) generally available (GA): ReleasedGemini 4 Carbon (gemini-4-carbon), our most capable reasoning model built for sustained agentic coding, multimodal knowledge work, s"
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-11-c2d6cbcf": {
+      "checkedAt": "2026-11-12",
+      "company": "google",
+      "date": "2026-11-11",
+      "id": "gemini-decision",
+      "status": "added",
+      "title": "Gemini Decision and the Decisions API: ReleasedGemini Decision (gemini-decision-1) and the Decisions API for fast, calibrated binary,categorical, and rubric decisions across text, images, audio, video"
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -574,6 +582,14 @@
       "id": "gemini-4-argon",
       "status": "updated",
       "title": "Gemini 4 Argon comes to the Gemini app."
+    },
+    "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay": {
+      "checkedAt": "2026-11-12",
+      "company": "google",
+      "date": "2026-11-11",
+      "id": "gemini-apple-carplay",
+      "status": "added",
+      "title": "Talk it through with Gemini, now on Apple CarPlay"
     },
     "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live": {
       "checkedAt": "2026-10-03",
@@ -1185,6 +1201,14 @@
       "status": "skipped",
       "title": "Predictable AI spend in BigQuery: Introducing cost management for generative AI functions"
     },
+    "https://cloud.google.com/blog/products/databases/ai-classify-and-ai-extract-functions-in-alloydb-ai": {
+      "checkedAt": "2026-11-12",
+      "company": "google",
+      "date": "2026-11-11",
+      "reason": "Google Cloud 인증 프로그램 소개. 행사 홍보 및 영업 범주로 제외.",
+      "status": "skipped",
+      "title": "Introducing new AI functions for AlloyDB: ai.classify and ai.extract"
+    },
     "https://cloud.google.com/blog/products/identity-security/scale-agents-securely-with-iam-helper-agent-skills-and-mcp-tools": {
       "checkedAt": "2026-10-27",
       "company": "google",
@@ -1256,6 +1280,14 @@
       "reason": "모델 출시·업데이트와 무관한 일반 의견",
       "status": "skipped",
       "title": "Why your startup needs open models alongside frontier APIs"
+    },
+    "https://cloud.google.com/blog/topics/training-certifications/google-cloud-agentic-architect-certification-dont-just-prompt-ai-design-it": {
+      "checkedAt": "2026-11-12",
+      "company": "google",
+      "date": "2026-11-11",
+      "reason": "AlloyDB 데이터베이스에 AI 함수 추가. AI 모델 사용과 무관한 인프라 기능으로 제외.",
+      "status": "skipped",
+      "title": "Don’t just prompt AI — architect it: Introducing the Professional Agentic Architect Certification"
     },
     "https://deepmind.google/blog/accelerating-antimicrobial-discovery": {
       "checkedAt": "2026-10-16",
@@ -1359,6 +1391,14 @@
       "date": "2026-09-02",
       "status": "old",
       "title": "4 engineering patterns behind the strongest AI Agents Challenge submissions- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences": {
+      "checkedAt": "2026-11-12",
+      "company": "google",
+      "date": "2026-11-11",
+      "reason": "A2UI 프로토콜 1.0 정식 출시. 개발 프레임워크로 판단되어 제외 범주에 해당.",
+      "status": "skipped",
+      "title": "A2UI 1.0: Build delightful, fast, reliable, agentic experiences"
     },
     "https://developers.googleblog.com/accelerating-spatio-temporal-attention-for-video-diffusion-on-tpus": {
       "checkedAt": "2026-10-03",
@@ -2803,6 +2843,14 @@
       "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
       "status": "skipped",
       "title": "Both models require 30-day data retention, like Claude Fable 5.1 and Claude Mythos 5.1."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-23adced2": {
+      "checkedAt": "2026-11-12",
+      "company": "anthropic",
+      "date": "2026-11-09",
+      "id": "claude-dreams-memory-store",
+      "status": "added",
+      "title": "Dreams (research preview) now supports Claude Fable 5.2."
     },
     "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09-2b26272b": {
       "checkedAt": "2026-11-10",

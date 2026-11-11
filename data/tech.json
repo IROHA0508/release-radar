@@ -1372,7 +1372,8 @@
         "google-adk-voice-agent-streaming-tools",
         "gpt-realtime-2",
         "decisions-api",
-        "google-ai-edge-gallery-on-device-speech"
+        "google-ai-edge-gallery-on-device-speech",
+        "gemini-apple-carplay"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2514,7 +2515,9 @@
           "url": "https://claude.com/resources/articles/context-management"
         }
       ],
-      "news": [],
+      "news": [
+        "claude-dreams-memory-store"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {
