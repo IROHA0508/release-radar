@@ -1,0 +1,202 @@
+{
+  "id": "google-ai-edge-gallery-on-device-speech",
+  "company": "google",
+  "date": "2026-11-10",
+  "kind": "제품·기능 출시",
+  "title": "Google AI Edge Gallery 온디바이스 음성 인식·음성 합성",
+  "headline": "네트워크 없이 폰 안에서 받아쓰고 읽어 주는 음성 파이프라인",
+  "tldr": "Google AI Edge Gallery에 온디바이스 음성 인식(ASR)과 음성 합성(TTS)이 들어왔습니다. Gemini Nano나 Gemma 4 같은 소형 언어모델과 묶어 완전히 오프라인으로 음성 대화를 만들 수 있습니다. Android는 ML Kit, 다른 플랫폼은 MediaPipe Tasks와 LiteRT로 같은 구성을 직접 만듭니다.",
+  "fit": {
+    "summary": "네트워크가 불안정한 환경에서 음성으로 소형 언어모델과 대화하는 앱을 만들 때 맞는 도구 모음입니다.",
+    "good": [
+      "오프라인에서 동작하는 음성 입력·낭독 채팅 앱 만들기",
+      "카메라와 음성 질문을 함께 쓰는 여행·언어 학습 앱",
+      "스마트 글래스처럼 손을 쓰지 않는 음성 중심 경험"
+    ],
+    "notFor": [
+      "Gemma 4처럼 오디오를 직접 처리하는 멀티모달 모델만으로 충분한 경우(원문은 ASR·TTS를 따로 붙이는 모듈형 구성을 권함)"
+    ],
+    "start": "Android와 iOS에서 Google AI Edge Gallery 앱을 내려받아 XR Language Teacher와 AI Chat의 음성 기능부터 써 보세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "ML Kit 음성 인식 속도",
+      "value": "실시간의 10배",
+      "note": "100개 이상 언어, FLEURS 단어 오류율 8.0%~9.0%"
+    },
+    {
+      "label": "ML Kit TTS 첫 발화",
+      "value": "약 100ms",
+      "note": "24kHz 음성, 최대 실시간의 50배 속도"
+    },
+    {
+      "label": "TTS 음성·로케일",
+      "value": "8개 음성 · 21개 로케일",
+      "note": "27초 분량 문단을 약 500ms에 합성"
+    },
+    {
+      "label": "APK 추가 용량",
+      "value": "0MB",
+      "note": "두 모델이 OS에 통합돼 있음"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "XR Language Teacher의 음성 처리 순서",
+      "caption": "모든 처리가 폰 안에서 이뤄집니다.",
+      "steps": [
+        {
+          "label": "카메라와 음성 질문",
+          "desc": "메뉴나 표지판을 비추고 소리 내어 질문합니다."
+        },
+        {
+          "label": "온디바이스 ASR",
+          "desc": "말하는 동안 질문을 실시간으로 받아 적습니다."
+        },
+        {
+          "label": "Gemini Nano 또는 Gemma 4",
+          "desc": "카메라 프레임과 질문을 한 번에 처리합니다.",
+          "highlight": true
+        },
+        {
+          "label": "구조화 출력",
+          "desc": "외국어 구절을 따로 표시해 설명합니다."
+        },
+        {
+          "label": "TTS 낭독",
+          "desc": "모국어 설명과 현지어 발음 사이에서 음성을 바꿔 읽습니다."
+        }
+      ],
+      "source": {
+        "title": "On-Device Speech Recognition and Text-to-Speech in Google AI Edge Gallery (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/on-device-speech-recognition-and-text-to-speech-in-google-ai-edge-gallery/"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "플랫폼별 개발 경로",
+      "columns": [
+        "대상",
+        "특징"
+      ],
+      "rows": [
+        {
+          "label": "ML Kit",
+          "cells": [
+            "Android",
+            "OS에 통합된 모델, APK 용량 0MB"
+          ],
+          "highlight": true
+        },
+        {
+          "label": "MediaPipe Tasks",
+          "cells": [
+            "iOS·macOS·Windows·Linux·Web",
+            "ASR·TTS API를 바로 쓸 수 있는 형태로 제공"
+          ]
+        },
+        {
+          "label": "LiteRT",
+          "cells": [
+            "크로스 플랫폼",
+            "세밀한 제어나 커스텀 모델용, .litertlm 번들"
+          ]
+        }
+      ],
+      "source": {
+        "title": "On-Device Speech Recognition and Text-to-Speech in Google AI Edge Gallery (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/on-device-speech-recognition-and-text-to-speech-in-google-ai-edge-gallery/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 성능 비교 표가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Google AI Edge Gallery에 온디바이스 ASR과 TTS가 추가됐습니다.",
+    "XR Language Teacher 쇼케이스가 새로 나왔습니다. 카메라로 물체를 비추고 질문하면 설명과 현지어 발음을 네트워크 없이 들려줍니다.",
+    "AI Chat에 스트리밍 음성 받아쓰기와 낭독이 들어왔습니다. 낭독 중에는 읽는 문장이 실시간으로 강조되고 문장을 눌러 그 위치로 이동합니다.",
+    "Model Management에서 ASR·TTS 파이프라인, 기본 음성, 내려받은 언어 팩을 한곳에서 고릅니다.",
+    "MediaPipe Tasks용으로 Parakeet-TDT 0.6B, PocketTTS 100M, Kokoro-82M, Phonon 31M 모델 번들(.litertlm)이 최적화됐습니다.",
+    "채팅 음성 출력의 참고 구현이 공개됐습니다. Markdown 문법 제거, 코드·표 건너뛰기, 문장 단위 합성 예약을 보여 줍니다."
+  ],
+  "availability": [
+    "Google AI Edge Gallery 앱은 Android와 iOS에서 최신 버전으로 받을 수 있습니다.",
+    "ML Kit GenAI Speech Recognition·Text-to-Speech API는 Android용입니다.",
+    "MediaPipe Tasks는 iOS, macOS, Windows, Linux, Web을 지원합니다.",
+    "오픈소스 코드는 Google AI Edge Gallery GitHub 저장소에 있습니다."
+  ],
+  "usage": [
+    {
+      "title": "앱에서 음성 기능 체험하기",
+      "when": "개발 전에 어떤 경험인지 먼저 확인하고 싶을 때",
+      "steps": [
+        "Android 또는 iOS에서 최신 Google AI Edge Gallery 앱을 설치합니다.",
+        "XR Language Teacher를 열어 카메라로 물체나 메뉴를 비추고 질문합니다.",
+        "AI Chat에서 Model Management의 ASR·TTS 설정을 고르고 Auto-play TTS를 켭니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "What is that, and how do I ask for one?"
+      },
+      "source": {
+        "title": "On-Device Speech Recognition and Text-to-Speech in Google AI Edge Gallery (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/on-device-speech-recognition-and-text-to-speech-in-google-ai-edge-gallery/"
+      }
+    },
+    {
+      "title": "내 앱에 음성 파이프라인 붙이기",
+      "when": "소형 언어모델 앱에 오프라인 음성 입출력을 넣고 싶을 때",
+      "steps": [
+        "Android 전용이면 ML Kit GenAI Speech Recognition·TTS API를 씁니다.",
+        "여러 플랫폼이면 MediaPipe Tasks의 ASR·TTS Task를 씁니다.",
+        "커스텀 모델이 필요하면 LiteRT 개발자 가이드를 따르고 Hugging Face LiteRT Community에서 .litertlm 번들을 받습니다.",
+        "GitHub 참고 구현이나 Google Antigravity 같은 코딩 에이전트로 스트리밍 ASR과 문장 단위 재생을 내 앱에 맞게 고칩니다."
+      ],
+      "source": {
+        "title": "On-Device Speech Recognition and Text-to-Speech in Google AI Edge Gallery (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/on-device-speech-recognition-and-text-to-speech-in-google-ai-edge-gallery/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "문장 단위로 합성",
+      "body": "LLM이 토큰을 생성하는 동안 연산과 메모리가 부딪히지 않도록 문장 단위로 합성을 예약합니다."
+    },
+    {
+      "title": "낭독할 필요 없는 부분은 건너뛰기",
+      "body": "Markdown 문법과 코드, 표는 읽지 않도록 걸러내는 방법이 참고 구현에 있습니다."
+    },
+    {
+      "title": "브라우저에서 먼저 시험",
+      "body": "MediaPipe ASR과 TTS Task는 브라우저에서 바로 써 보는 것도 가능합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "카메라 질문 예시",
+      "when": "XR Language Teacher에서 물체를 비추고 물을 때",
+      "type": "prompt",
+      "text": "What is that, and how do I ask for one?"
+    },
+    {
+      "title": "코딩 에이전트에게 구현 맡기기",
+      "when": "참고 구현을 내 앱에 옮길 때",
+      "type": "prompt",
+      "text": "Google AI Edge Gallery GitHub 저장소의 스트리밍 ASR, 이중 언어 TTS 전환, 문장 동기 재생 파이프라인을 살펴보고 [내 앱 플랫폼] 앱에 맞게 적용해 줘."
+    }
+  ],
+  "cautions": [
+    "속도·정확도 수치는 Google이 밝힌 값이며 기기에 따라 다를 수도 있습니다.",
+    "NPU·TPU 가속은 기기가 지원할 때만 적용됩니다.",
+    "Gemini Nano는 Android 기기에서, 다른 플랫폼에서는 Gemma 4가 쓰입니다."
+  ],
+  "sources": [
+    {
+      "title": "On-Device Speech Recognition and Text-to-Speech in Google AI Edge Gallery (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/on-device-speech-recognition-and-text-to-speech-in-google-ai-edge-gallery/"
+    }
+  ]
+}

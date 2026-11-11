@@ -1,0 +1,145 @@
+{
+  "id": "gemini-intelligence-november-features",
+  "company": "google",
+  "date": "2026-11-10",
+  "kind": "제품·기능 출시",
+  "title": "Gemini Intelligence",
+  "headline": "motorola signature 27과 Pixel 10으로 넓어지고 위젯 생성·기기 도우미 기능이 더해졌습니다",
+  "tldr": "Android 기기용 Gemini Intelligence가 motorola signature 27과 Pixel 10 계열로 확대됐습니다. 말한 내용을 정리하는 Rambler가 Pixel 10 계열에 들어가고 작업 자동화는 영국·인도·일본으로 넓어집니다. 설명만으로 홈 화면 위젯을 만드는 Create My Widget과 기기 설정을 대신 처리하는 Device Assistance도 새로 나왔습니다.",
+  "fit": {
+    "summary": "Android 폰에서 Gemini에게 위젯 제작, 기기 설정 변경, 앱 간 심부름을 맡기고 싶은 사용자에게 맞습니다.",
+    "good": [
+      "여행 대시보드나 월간 지출 기록처럼 Gmail·Calendar·Search 정보를 모은 위젯 만들기",
+      "저장 공간 정리, 위치 접근 앱 확인, 방해 알림 끄기 같은 기기 관리",
+      "음식 주문, 호출, 예약 같은 앱 간 심부름 맡기기",
+      "말로 떠올린 생각을 실시간으로 깔끔한 글로 정리하기"
+    ],
+    "notFor": [
+      "Gemini Intelligence를 지원하지 않는 기기(원문은 지원 기기를 나열합니다)",
+      "Pixel Watch의 Create My Widget은 앞으로 몇 주 뒤에 들어옵니다"
+    ],
+    "start": "Pixel 10 계열은 오늘 Pixel Drop을 받아 최신 기능을 쓰고 Create My Widget은 몇 주에 걸쳐 순차 적용됩니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "새로 지원하는 기기",
+      "value": "motorola signature 27 · Pixel 10",
+      "note": "Pixel 10, Pixel 10 Pro XL, Pixel 10 Pro Fold는 오늘 Pixel Drop으로 최신 기능을 받음"
+    },
+    {
+      "label": "motorola signature 27 예약 판매",
+      "value": "11월 19일",
+      "note": "미국에서 사전 주문 가능"
+    },
+    {
+      "label": "작업 자동화 확대 지역",
+      "value": "영국·인도·일본",
+      "note": "앱을 넘나드는 음식 주문, 호출, 예약 처리"
+    },
+    {
+      "label": "Create My Widget",
+      "value": "향후 몇 주",
+      "note": "순차 제공, Pixel Watch에도 몇 주 안에 지원"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "motorola 최초의 Gemini Intelligence 기기인 motorola signature 27이 나옵니다. 미국에서 11월 19일에 사전 주문을 받습니다.",
+    "오늘 Pixel Drop으로 Pixel 10, Pixel 10 Pro XL, Pixel 10 Pro Fold가 Gemini Intelligence 최신 기능을 받습니다.",
+    "말로 한 생각을 실시간으로 정리된 글로 바꿔 주는 Rambler가 Pixel 10 계열과 motorola signature 27에서 쓸 수 있습니다.",
+    "여러 앱에서 음식 주문, 호출, 예약을 처리하는 작업 자동화가 영국·인도·일본으로 확대됩니다.",
+    "Create My Widget은 말로 설명한 대로 홈 화면 위젯을 만듭니다. 코딩이 필요 없고 Gmail·Calendar·Search 정보를 가져옵니다.",
+    "Device Assistance는 기기 설정이나 문제를 Gemini에게 물어 해결합니다.",
+    "Gemini Intelligence가 있는 Pixel 폰에는 곧 Android Auto 선제 제안 기능이 들어옵니다."
+  ],
+  "availability": [
+    "Gemini Intelligence 기기: Pixel 11, Samsung Galaxy Z Fold8 Ultra·Z Fold8·Z Flip8, S26 시리즈에 이어 motorola signature 27, Pixel 10 계열",
+    "Rambler: Pixel 10, Pixel 10 Pro, Pixel 10 Pro XL, Pixel 10 Pro Fold, motorola signature 27",
+    "작업 자동화: 영국, 인도, 일본으로 확대",
+    "Create My Widget: 향후 몇 주에 걸쳐 순차 제공, Pixel Watch는 몇 주 안에 지원",
+    "Android Auto 선제 제안: Gemini Intelligence가 있는 Pixel 폰에 곧 제공",
+    "Googlebook: 지난달 출시된 Gemini Intelligence용 첫 노트북"
+  ],
+  "usage": [
+    {
+      "title": "설명만으로 홈 화면 위젯 만들기",
+      "when": "자주 보는 정보를 홈 화면에 모아 두고 싶을 때",
+      "steps": [
+        "Create My Widget이 기기에 들어올 때까지 기다립니다",
+        "만들고 싶은 위젯을 평소 말투로 설명합니다",
+        "Gmail, Calendar, Search 정보가 반영된 위젯을 홈 화면에 둡니다"
+      ],
+      "note": "순차 제공이라 계정마다 시점이 다릅니다.",
+      "example": {
+        "type": "prompt",
+        "text": "다음 달 여행 일정과 항공편 정보를 한눈에 보여 주는 위젯을 만들어줘."
+      },
+      "source": {
+        "title": "Gemini Intelligence: New features, on more devices (Google)",
+        "url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/"
+      }
+    },
+    {
+      "title": "기기 문제를 Gemini에게 맡기기",
+      "when": "설정 화면을 직접 뒤지기 번거로울 때",
+      "steps": [
+        "Device Assistance로 원하는 작업을 말합니다",
+        "저장 공간 정리나 위치 접근 앱 확인 같은 작업을 요청합니다",
+        "결과를 확인합니다"
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "위치 정보에 접근할 수 있는 앱을 알려 주고 필요 없는 앱은 정리하게 도와줘."
+      },
+      "source": {
+        "title": "Gemini Intelligence: New features, on more devices (Google)",
+        "url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "Pixel 10은 Pixel Drop부터 확인",
+      "body": "Pixel 10, Pixel 10 Pro XL, Pixel 10 Pro Fold는 오늘 Pixel Drop으로 최신 Gemini Intelligence 기능을 받습니다. 업데이트를 먼저 확인하세요."
+    },
+    {
+      "title": "위젯은 구체적으로 설명",
+      "body": "원문 예시는 여행 대시보드, 월간 지출 기록, 경주 당일 카운트다운입니다. 어떤 정보를 보고 싶은지 구체적으로 말할수록 위젯 구성이 분명해집니다."
+    },
+    {
+      "title": "방해 금지는 예외까지 말하기",
+      "body": "Device Assistance 예시처럼 방해를 끄되 중요한 전화는 받도록 조건을 함께 말하면 됩니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "맞춤 위젯 만들기",
+      "when": "Create My Widget이 열린 기기에서",
+      "type": "prompt",
+      "text": "[보고 싶은 정보]를 홈 화면에서 한눈에 볼 수 있는 위젯을 만들어줘. Gmail과 Calendar에서 [필요한 정보]를 가져와."
+    },
+    {
+      "title": "기기 설정 맡기기",
+      "when": "Device Assistance를 쓸 때",
+      "type": "prompt",
+      "text": "방해되는 알림은 모두 꺼 줘. 단 [중요한 연락처]에서 오는 전화는 계속 울리게 해줘."
+    }
+  ],
+  "cautions": [
+    "Create My Widget은 순차 제공이라 아직 안 보일 수 있습니다.",
+    "작업 자동화는 영국·인도·일본이 새로 추가된 지역입니다. 그 밖의 지역 제공 여부는 원문에 없어 확인 필요입니다.",
+    "Android Auto 제안과 Pixel Watch 위젯은 아직 출시 전입니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini Intelligence: New features, on more devices (Google)",
+      "url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/"
+    },
+    {
+      "title": "November 2026 Pixel Drop (Google)",
+      "url": "https://blog.google/products-and-platforms/devices/pixel/november-2026-pixel-drop/"
+    }
+  ]
+}

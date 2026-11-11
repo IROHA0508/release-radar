@@ -1,83 +1,27 @@
 {
-  "startedAt": "2026-11-11T06:04:22+09:00",
+  "startedAt": "2026-11-11T18:57:08+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2651,
+  "entries": 2655,
   "candidates": [
     {
-      "title": "Helping caregivers use AI in everyday life",
-      "url": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
+      "title": "ChatGPT Plus for veterans and servicemembers",
+      "url": "https://openai.com/index/chatgpt-plus-for-veterans",
+      "company": "openai",
+      "date": "2026-11-11",
+      "relatedId": null
+    },
+    {
+      "title": "Singapore Airlines elevates travel & work with OpenAI technology",
+      "url": "https://openai.com/index/singapore-airlines-travel-work",
       "company": "openai",
       "date": "2026-11-10",
       "relatedId": null
     },
     {
-      "title": "Introducing Businesses in ChatGPT",
-      "url": "https://openai.com/index/introducing-businesses-chatgpt",
+      "title": "Cogent and OpenAI build cyber defense factories for enterprises",
+      "url": "https://openai.com/index/cogent-security",
       "company": "openai",
-      "date": "2026-11-10",
-      "relatedId": null
-    },
-    {
-      "title": "Work at the Frontier: AI’s effect on freelance work",
-      "url": "https://openai.com/index/ai-effect-on-freelance-work",
-      "company": "openai",
-      "date": "2026-11-10",
-      "relatedId": null
-    },
-    {
-      "title": "Introducing the Multimodal Knowledge Agent benchmark",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/",
-      "company": "google",
-      "date": "2026-11-10",
-      "relatedId": null
-    },
-    {
-      "title": "Gemini 4 Carbon is now available",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/",
-      "company": "google",
-      "date": "2026-11-10",
-      "relatedId": "gemini-4-carbon"
-    },
-    {
-      "title": "We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps.",
-      "url": "https://blog.google/company-news/inside-google/company-announcements/adobe-google-partnership-integration/",
-      "company": "google",
-      "date": "2026-11-10",
-      "relatedId": null
-    },
-    {
-      "title": "Introducing AlphaProof Code: a breakthrough in verifying complex software at depth",
-      "url": "https://deepmind.google/blog/introducing-alphaproof-code/",
-      "company": "google",
-      "date": "2026-11-10",
-      "relatedId": null
-    },
-    {
-      "title": "Introducing Claude Whiteboards, Claude Sheets, and Claude Data",
-      "url": "https://claude.com/resources/articles/sheets-whiteboards-data",
-      "company": "anthropic",
-      "date": "2026-11-10",
-      "relatedId": null
-    },
-    {
-      "title": "Your apps can now open in Claude, and Claude can work in them",
-      "url": "https://claude.com/resources/articles/interactive-connectors-full-tool",
-      "company": "anthropic",
-      "date": "2026-11-10",
-      "relatedId": null
-    },
-    {
-      "title": "How Curative is building a national provider network with agents on Claude",
-      "url": "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude",
-      "company": "anthropic",
-      "date": "2026-11-10",
-      "relatedId": null
-    },
-    {
-      "title": "More ways to work with Claude: Sheets, Whiteboards, and Interactive Connectors",
-      "url": "https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors",
-      "company": "anthropic",
       "date": "2026-11-10",
       "relatedId": null
     },
@@ -89,32 +33,11 @@
       "relatedId": "gemini-app-resume-update"
     },
     {
-      "title": "Introducing Gemini for healthcare",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-healthcare/",
-      "company": "google",
-      "date": "2026-11-10",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Gemini 4 Carbon (gemini-4-carbon) generally available (GA): ReleasedGemini 4 Carbon (gemini-4-carbon), our most capable reasoning model built for sustained agentic coding, multimodal knowledge work, s",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-10",
-      "company": "google",
-      "date": "2026-11-10",
-      "relatedId": "gemini-4-carbon"
-    },
-    {
       "title": "Gemini Robotics 2.5 accelerates real-world general dexterity",
       "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
       "company": "google",
       "date": "2026-11-09",
       "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "The Compliance API now includes Security posture data, in beta for Claude Enterprise organizations.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
-      "company": "anthropic",
-      "date": "2026-11-05",
-      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
     },
     {
       "title": "Pushing voice agents further: inside four GPT-Live builds",
@@ -133,108 +56,62 @@
   ],
   "added": [
     {
-      "id": "claude-whiteboards-sheets-data",
-      "title": "Claude Whiteboards, Claude Sheets, Claude Data",
-      "url": "https://claude.com/resources/articles/sheets-whiteboards-data",
+      "id": "gemini-intelligence-november-features",
+      "title": "Gemini Intelligence",
+      "url": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
       "charts": 0
     },
     {
-      "id": "claude-interactive-connectors-full-tool",
-      "title": "Claude Interactive connectors 전체 도구 열기",
-      "url": "https://claude.com/resources/articles/interactive-connectors-full-tool",
+      "id": "gemini-robotics-2-5",
+      "title": "Gemini Robotics 2.5",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/",
+      "charts": 0
+    },
+    {
+      "id": "google-ai-edge-gallery-on-device-speech",
+      "title": "Google AI Edge Gallery 온디바이스 음성 인식·음성 합성",
+      "url": "https://developers.googleblog.com/on-device-speech-recognition-and-text-to-speech-in-google-ai-edge-gallery/",
       "charts": 0
     }
   ],
-  "updated": [
-    {
-      "id": "gemini-4-carbon",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/"
-    }
-  ],
+  "updated": [],
   "skipped": [
     {
-      "title": "Helping caregivers use AI in everyday life",
-      "url": "https://openai.com/index/helping-caregivers-use-ai-in-everyday-life",
-      "reason": "행사 홍보 및 교육 프로그램으로 제외 대상입니다."
+      "title": "ChatGPT Plus for veterans and servicemembers",
+      "url": "https://openai.com/index/chatgpt-plus-for-veterans",
+      "reason": "영업·광고 요금제 공지(군인 대상), 고객 사례 중심"
     },
     {
-      "title": "Work at the Frontier: AI’s effect on freelance work",
-      "url": "https://openai.com/index/ai-effect-on-freelance-work",
-      "reason": "연구 보고서로 제외 대상입니다."
+      "title": "Singapore Airlines elevates travel & work with OpenAI technology",
+      "url": "https://openai.com/index/singapore-airlines-travel-work",
+      "reason": "기업 고객 사례, 파트너십"
     },
     {
-      "title": "Introducing the Multimodal Knowledge Agent benchmark",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/",
-      "reason": "벤치마크 발표로 모델 사용과 직접 무관한 연구입니다."
+      "title": "Cogent and OpenAI build cyber defense factories for enterprises",
+      "url": "https://openai.com/index/cogent-security",
+      "reason": "기업 파트너십, 고객 사례"
     },
     {
-      "title": "We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps.",
-      "url": "https://blog.google/company-news/inside-google/company-announcements/adobe-google-partnership-integration/",
-      "reason": "기업 파트너십으로 제외 대상입니다."
-    },
-    {
-      "title": "Introducing AlphaProof Code: a breakthrough in verifying complex software at depth",
-      "url": "https://deepmind.google/blog/introducing-alphaproof-code/",
-      "reason": "소프트웨어 검증 도구로 AI 모델 사용과 무관한 개발 인프라입니다."
-    },
-    {
-      "title": "How Curative is building a national provider network with agents on Claude",
-      "url": "https://claude.com/resources/articles/how-curative-is-building-a-national-provider-network-with-agents-on-claude",
-      "reason": "고객 사례로 제외 대상입니다."
-    },
-    {
-      "title": "Introducing Gemini for healthcare",
-      "url": "https://cloud.google.com/blog/products/ai-machine-learning/gemini-for-healthcare/",
-      "reason": "의료 분야 특화 솔루션으로 특정 업종 마케팅에 해당합니다."
-    },
-    {
-      "title": "Gemini 4 Carbon (gemini-4-carbon) generally available (GA): ReleasedGemini 4 Carbon (gemini-4-carbon), our most capable reasoning model built for sustained agentic coding, multimodal knowledge work, s",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-10",
-      "reason": "[4]와 같은 소식의 중복 발표(API 문서 변경 로그)입니다."
-    },
-    {
-      "title": "The Compliance API now includes Security posture data, in beta for Claude Enterprise organizations.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-05",
-      "reason": "API 인프라의 기술적 업데이트로 제외 대상입니다."
-    },
-    {
-      "title": "Introducing Businesses in ChatGPT",
-      "url": "https://openai.com/index/introducing-businesses-chatgpt",
-      "reason": "기업이 ChatGPT에서 자사 정보를 관리하고 고객과 연결하는 비즈니스·광고 플랫폼 공지입니다. 독자가 모델이나 AI 도구를 더 잘 쓰는 방법과 무관해서 제외합니다. Business Agent 후원과 ChatGPT Ads 연계 내용이 있고, 대상도 미국의 이커머스·온라인 서비스 사업자로 한정됩니다."
-    },
-    {
-      "title": "More ways to work with Claude: Sheets, Whiteboards, and Interactive Connectors",
-      "url": "https://claude.com/resources/articles/more-ways-to-work-with-claude-sheets-whiteboards-and-interactive-connectors",
-      "reason": "이 글은 같은 날 발표된 'Claude Whiteboards, Claude Sheets, Claude Data'(claude-whiteboards-sheets-data)와 'Claude Interactive connectors'(claude-interactive-connectors-full-tool)를 한데 묶어 소개하는 종합 글입니다. 두 소식이 이미 사이트에 있어서 새 항목을 만들면 내용이 겹칩니다. 나머지는 고객 인용과 엔터프라이즈 보안 설명이라 따로 덧붙일 내용이 없습니다. Claude Meetings는 출시 예정으로만 언급되고, auto-connect 베타도 기존 소식에 있는지 확인하지 못했습니다."
+      "title": "Pushing voice agents further: inside four GPT-Live builds",
+      "url": "https://developers.openai.com/blog/pushing-voice-agents-further",
+      "reason": "고객 사용 사례 중심"
     }
   ],
   "failed": [],
-  "guardNotes": {
-    "claude-whiteboards-sheets-data": [
-      "도식 '요금제별 기본 설정'의 숫자 ['11'] 원문에서 확인 안 됨 → 도식 제외"
-    ]
-  },
+  "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
   "styleNotes": {
-    "claude-whiteboards-sheets-data": [
-      "문체 수정: changes.1",
-      "문체 수정: changes.4",
-      "문체 수정: availability.3",
-      "문체 수정: tips.1.body",
+    "google-ai-edge-gallery-on-device-speech": [
+      "문체 수정: cautions.0",
+      "문체 수정: cautions.1",
       "문체 수정: tips.2.body"
-    ],
-    "claude-interactive-connectors-full-tool": [
-      "문체 수정: tldr",
-      "문체 수정: changes.1",
-      "문체 수정: changes.3",
-      "문체 수정: changes.5"
     ]
   },
   "techLinks": [
-    "claude-whiteboards-sheets-data → apps-in-chat, tool-use, structured-output",
-    "claude-interactive-connectors-full-tool → apps-in-chat"
+    "gemini-intelligence-november-features → agent-loop, tool-use, structured-output",
+    "google-ai-edge-gallery-on-device-speech → voice-agent"
   ],
   "retired": []
 }

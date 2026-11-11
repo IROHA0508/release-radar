@@ -1,0 +1,123 @@
+{
+  "id": "gemini-robotics-2-5",
+  "company": "google",
+  "date": "2026-11-09",
+  "kind": "모델 출시",
+  "title": "Gemini Robotics 2.5",
+  "headline": "과제 성공률이 30~100% 오르고 20~30% 빨라진 DeepMind의 VLA 모델",
+  "tldr": "Gemini Robotics 2.5는 DeepMind가 내놓은 가장 뛰어난 비전-언어-행동(VLA) 모델입니다. 200가지가 넘는 과제로 평가한 결과 이전 기준선보다 성공률이 30%에서 100% 높고 과제를 20%에서 30% 빨리 끝냈습니다. 현재는 로보틱스 파트너에게 순차적으로 제공됩니다.",
+  "fit": {
+    "summary": "로봇이 도구나 부드러운 물체를 다루는 정밀 조작 과제를 연구하거나 현장에 시험 적용하려는 로보틱스 파트너에게 맞는 모델입니다.",
+    "good": [
+      "도구 사용이나 유연한 물체 조작처럼 손재주가 필요한 과제",
+      "공장 라인의 부품 분류와 담기 같은 반복 작업",
+      "사람이 가까이 있는 환경에서 물리적 안전 조향이 필요한 작업"
+    ],
+    "notFor": [
+      "현재 로보틱스 파트너에게만 제공되므로 일반 개발자가 바로 쓰기는 어렵습니다",
+      "작업 흐름을 추적하는 일은 별도의 Gemini Robotics ER 모델이 맡습니다"
+    ],
+    "start": "파트너 신청 페이지에서 제공 대상인지 먼저 확인합니다."
+  },
+  "models": [
+    {
+      "name": "Gemini Robotics 2.5",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Mercedes-Benz 생산 라인 부품 집기·담기",
+      "value": "96%",
+      "note": "Apptronik Apollo 2 휴머노이드로 수행한 개념 검증 성공률"
+    },
+    {
+      "label": "이전 기준선 대비 성공률",
+      "value": "30%~100% 상승",
+      "note": "과제 유형에 따라 다르고 과제 완료는 20%~30% 빨라짐"
+    },
+    {
+      "label": "평가한 과제 수",
+      "value": "200개 이상",
+      "note": "집게로 음식 담기, 선물 상자 리본 묶기, 액체 피펫팅 등"
+    },
+    {
+      "label": "안전한 과제 완료율 향상",
+      "value": "장애물 33% · 사람 근처 43%",
+      "note": "추론 시점 안전 조향 기능 기준"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "Apollo 2의 자동차 부품 키팅 작업 순서",
+      "caption": "Mercedes-Benz 생산 라인 개념 검증에서 두 모델이 나눠 맡은 역할입니다.",
+      "steps": [
+        {
+          "label": "작업 흐름 추적",
+          "desc": "Gemini Robotics ER가 전체 작업 순서를 파악합니다."
+        },
+        {
+          "label": "부품 집기",
+          "desc": "Gemini Robotics 2.5가 손과 팔을 제어해 공급 상자에서 금속 브래킷을 집습니다.",
+          "highlight": true
+        },
+        {
+          "label": "컨테이너에 담기",
+          "desc": "차량별 순서에 맞춰 시퀀싱 컨테이너에 놓습니다."
+        }
+      ],
+      "loop": "작업 중 생기는 빈틈은 로봇이 스스로 바로잡습니다.",
+      "source": {
+        "title": "Gemini Robotics 2.5 accelerates real-world general dexterity (Google DeepMind)",
+        "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 성능을 비교하는 표나 그래프 수치가 없어 그래프는 만들지 않았습니다.",
+  "changes": [
+    "과제 폭, 성능, 복잡도를 넓혀 도구 사용과 유연한 물체 조작, 섬세한 물체 다루기까지 평가했습니다.",
+    "이전 기준선과 비교해 성공률이 30%에서 100% 높고 과제를 20%에서 30% 빨리 끝냈습니다.",
+    "추론 시점 안전 지침으로 위험 요소를 실시간으로 피해 갑니다. 장애물 주변에서는 33%, 사람 근처에서는 43% 안전한 과제 완료율이 올랐습니다.",
+    "로보틱스 안전 평가를 위해 오픈소스 벤치마크 ASIMOV-Jailbreak를 공개했습니다. Gemini 4 Argon은 탈옥 저항률 99.5%를 기록했고 이전 기준선 Gemini Robotics ER 2는 82%였습니다.",
+    "Gemini 4 Argon이 시뮬레이션 엔진 역할을 해 개발 속도를 높였습니다. 실제 카메라 장면에서 수천 개의 시뮬레이션 연습을 만들고 디지털 트윈을 구축합니다."
+  ],
+  "availability": [
+    "로보틱스 파트너에게 순차적으로 제공됩니다.",
+    "Apptronik의 Apollo 2(five-finger, 22자유도 SharpaWave 손)와 두 손가락 평행 그리퍼를 쓰는 Franka Duo 플랫폼 등 여러 로봇에서 작동합니다."
+  ],
+  "tips": [
+    {
+      "title": "역할 나누기",
+      "body": "작업 흐름 추적은 Gemini Robotics ER에, 손과 팔의 동작 제어는 Gemini Robotics 2.5에 맡기는 구성이 원문 사례에서 쓰였습니다."
+    },
+    {
+      "title": "안전 조향 확인",
+      "body": "사람이 가까이 있는 환경에서는 추론 시점 안전 지침이 장애물과 사람 주변 과제 완료율을 높였다는 평가 결과를 참고합니다."
+    }
+  ],
+  "prompts": [],
+  "cautions": [
+    "Mercedes-Benz 96% 성공률은 개념 검증 결과입니다. DeepMind도 실제 산업 현장 적용을 향한 유망한 진전으로 설명합니다.",
+    "성공률과 속도 향상 폭은 과제 유형에 따라 다르며 비교 대상은 이전 기준선입니다.",
+    "API ID와 가격은 원문에 없어 확인 필요입니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity (Google DeepMind)",
+      "url": "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence/"
+    },
+    {
+      "title": "Gemini Robotics VLA (Google DeepMind)",
+      "url": "https://deepmind.google/models/gemini-robotics/vla/"
+    },
+    {
+      "title": "Gemini Robotics 파트너 (Google DeepMind)",
+      "url": "https://deepmind.google/models/gemini-robotics/#partners"
+    }
+  ]
+}

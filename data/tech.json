@@ -177,7 +177,8 @@
         "google-a2ui-express",
         "google-a2ui-copilotkit-generative-ui",
         "claude-personal-finance",
-        "claude-whiteboards-sheets-data"
+        "claude-whiteboards-sheets-data",
+        "gemini-intelligence-november-features"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -238,7 +239,8 @@
         "claude-personal-finance",
         "gemini-data-cloud-connectors",
         "google-ai-studio-maps-platform",
-        "claude-whiteboards-sheets-data"
+        "claude-whiteboards-sheets-data",
+        "gemini-intelligence-november-features"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -305,7 +307,8 @@
         "google-adk-voice-agent-streaming-tools",
         "google-agent-evaluation-beyond-vibe-check",
         "google-agents-cli-extension-system",
-        "claude-fold-subagents-main-agent-loop"
+        "claude-fold-subagents-main-agent-loop",
+        "gemini-intelligence-november-features"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1368,7 +1371,8 @@
       "news": [
         "google-adk-voice-agent-streaming-tools",
         "gpt-realtime-2",
-        "decisions-api"
+        "decisions-api",
+        "google-ai-edge-gallery-on-device-speech"
       ],
       "verifiedAt": "2026-10-21"
     },

@@ -647,6 +647,14 @@
       "status": "skipped",
       "title": "Developing Gemini 4 Argon responsibly and safely"
     },
+    "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "id": "gemini-intelligence-november-features",
+      "status": "added",
+      "title": "Gemini Intelligence: New features, on more devices"
+    },
     "https://blog.google/products-and-platforms/products/gemini/automate-tasks-with-skills": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1305,6 +1313,14 @@
       "status": "added",
       "title": "Gemini Omni 1.2 Flash: Fast and cost-effective with longer clips"
     },
+    "https://deepmind.google/blog/gemini-robotics-2-5-accelerates-real-world-physical-intelligence": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-09",
+      "id": "gemini-robotics-2-5",
+      "status": "added",
+      "title": "Gemini Robotics 2.5 accelerates real-world general dexterity"
+    },
     "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation": {
       "checkedAt": "2026-10-28",
       "company": "google",
@@ -1573,6 +1589,14 @@
       "reason": "모델과 무관한 LiteRT 인프라 도구 소개로, ChatGPT·Claude·Gemini 모델 뉴스가 아님",
       "status": "skipped",
       "title": "Native Model Authoring for Edge with LiteRT Tensor API"
+    },
+    "https://developers.googleblog.com/on-device-speech-recognition-and-text-to-speech-in-google-ai-edge-gallery": {
+      "checkedAt": "2026-11-11",
+      "company": "google",
+      "date": "2026-11-10",
+      "id": "google-ai-edge-gallery-on-device-speech",
+      "status": "added",
+      "title": "On-Device Speech Recognition and Text-to-Speech in Google AI Edge Gallery"
     },
     "https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon": {
       "checkedAt": "2026-10-14",
@@ -1861,6 +1885,14 @@
       "status": "nodate",
       "title": "Dec 30 OpenAI for Developers in 2025 A year-end roundup of the biggest model, API, and platform shifts for building production-grade agents. General"
     },
+    "https://developers.openai.com/blog/pushing-voice-agents-further": {
+      "checkedAt": "2026-11-11",
+      "company": "openai",
+      "date": "2026-11-10",
+      "reason": "고객 사용 사례 중심",
+      "status": "skipped",
+      "title": "Pushing voice agents further: inside four GPT-Live builds"
+    },
     "https://developers.openai.com/blog/realtime-api": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -2092,6 +2124,14 @@
       "status": "skipped",
       "title": "ChatGPT’s expanding world of work"
     },
+    "https://openai.com/index/chatgpt-plus-for-veterans": {
+      "checkedAt": "2026-11-11",
+      "company": "openai",
+      "date": "2026-11-11",
+      "reason": "영업·광고 요금제 공지(군인 대상), 고객 사례 중심",
+      "status": "skipped",
+      "title": "ChatGPT Plus for veterans and servicemembers"
+    },
     "https://openai.com/index/chatham-financial": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -2123,6 +2163,14 @@
       "reason": "CodeRabbit의 고객 사례로, 특정 회사 마케팅 글",
       "status": "skipped",
       "title": "CodeRabbit scales agentic software development and ships 20x more"
+    },
+    "https://openai.com/index/cogent-security": {
+      "checkedAt": "2026-11-11",
+      "company": "openai",
+      "date": "2026-11-10",
+      "reason": "기업 파트너십, 고객 사례",
+      "status": "skipped",
+      "title": "Cogent and OpenAI build cyber defense factories for enterprises"
     },
     "https://openai.com/index/community-safety-report-and-new-protections-for-teens": {
       "checkedAt": "2026-10-31",
@@ -2523,6 +2571,14 @@
       "reason": "모델 출시와 무관한 연구 보고서: 수학 분야 AI 연구 진전에 관한 내용으로, 특정 모델의 새로운 버전이나 기능 변경, 독자가 따라 할 수 있는 실전 조언이 아닙니다.",
       "status": "skipped",
       "title": "Sharing AI progress in mathematics"
+    },
+    "https://openai.com/index/singapore-airlines-travel-work": {
+      "checkedAt": "2026-11-11",
+      "company": "openai",
+      "date": "2026-11-10",
+      "reason": "기업 고객 사례, 파트너십",
+      "status": "skipped",
+      "title": "Singapore Airlines elevates travel & work with OpenAI technology"
     },
     "https://openai.com/index/stack-overflow-chatgpt-plugin": {
       "checkedAt": "2026-10-17",
