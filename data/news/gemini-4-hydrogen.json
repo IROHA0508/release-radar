@@ -1,0 +1,130 @@
+{
+  "id": "gemini-4-hydrogen",
+  "company": "google",
+  "date": "2026-11-12",
+  "kind": "모델 출시",
+  "title": "Gemini 4 Hydrogen",
+  "headline": "일상 코딩과 에이전트 워크플로에 맞춘 빠르고 효율적인 Gemini 4 모델",
+  "tldr": "Google이 개발자용 Gemini 4 Hydrogen을 공개했습니다. 저장소 코딩과 디버깅, 인터랙티브 웹 개발, 멀티모달 워크플로를 빠르게 반복하는 데 맞춘 모델입니다. 단독으로 쓰거나 Gemini 4 Carbon·Argon 같은 프런티어 모델과 함께 쓸 수 있고 thinking level은 네 단계로 조절합니다.",
+  "fit": {
+    "summary": "빠른 반복이 필요한 일상 코딩과 에이전트 작업에 맞는 모델입니다. 지시 따르기가 더 꼼꼼해지고 지어낸 주장이 줄었다고 Google은 설명합니다.",
+    "good": [
+      "저장소 단위 코딩과 디버깅",
+      "인터랙티브 웹 개발",
+      "멀티모달 워크플로",
+      "Gemini 4 Carbon과 짝지어 쓰는 에이전트 작업"
+    ],
+    "notFor": [
+      "가장 높은 성능이 필요한 일은 원문이 함께 쓰라고 소개한 프런티어 모델(Gemini 4 Carbon, Gemini 4 Argon)을 고려하세요."
+    ],
+    "start": "Google AI Studio나 Android Studio에서 Gemini API로 시작하고 thinking level은 Gemini API What's New Guide를 보고 고르세요."
+  },
+  "models": [
+    {
+      "name": "Gemini 4 Hydrogen",
+      "apiId": null,
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "thinking level",
+      "value": "4단계",
+      "note": "단독 실행 시 조절 가능한 단계 수"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 벤치마크 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "저장소 코딩과 디버깅, 인터랙티브 웹 개발, 멀티모달 워크플로를 빠르게 반복하도록 만든 모델입니다.",
+    "네 가지 thinking level을 조절하며 단독으로 쓸 수 있습니다.",
+    "Gemini 4 Carbon, Gemini 4 Argon 같은 프런티어 모델과 함께 쓰는 구성도 가능합니다.",
+    "지시 따르기가 더 정확해지고 지어낸 주장이 줄어 배포 가능한 코드를 더 빨리 내놓는다고 Google은 설명합니다.",
+    "Google Antigravity의 새 기능 Orchestrator가 Hydrogen을 Gemini 4 Carbon과 짝지어 줍니다.",
+    "가격은 100만 토큰 컨텍스트 전체에 같은 값이 적용됩니다. 입력 100만 토큰당 $1.50, 출력 100만 토큰당 $7.50입니다.",
+    "기본 thinking level은 high이고 xhigh 단계가 새로 생겼습니다. Artificial Analysis Intelligence Index에서 high는 51점으로 Argon(50)을 넘고 xhigh는 54점입니다.",
+    "Antigravity의 Orchestrator는 한 세션에서 Carbon과 Hydrogen을 번갈아 씁니다. Terminal-Bench 4.0에서 Carbon에 가까운 성공률을 내면서 할당량은 평균 24% 적게 쓰고 19% 빨리 끝냈습니다."
+  ],
+  "availability": [
+    "Google AI Studio와 Android Studio의 Gemini API",
+    "Gemini for business",
+    "유료 Google AI Pro·Ultra 구독자는 Google Antigravity에서 사용",
+    "모델 상세와 설정 방법은 Gemini API What's New Guide에서 확인",
+    "Gemini 앱 모델 드롭다운과 Google Search에서 모든 사용자가 쓸 수 있습니다.",
+    "Gemini in Google Sheets는 적격 비즈니스 구독에서 쓸 수 있고 일반 사용자는 Google AI Pro·Ultra 구독자부터 시작합니다.",
+    "Google AI Studio에서는 모든 요금 등급에서 쓸 수 있습니다."
+  ],
+  "usage": [
+    {
+      "title": "Gemini API로 Hydrogen 시작하기",
+      "when": "일상 코딩이나 에이전트 앱에 새 모델을 붙여 볼 때",
+      "steps": [
+        "Google AI Studio나 Android Studio에서 Gemini API를 엽니다.",
+        "Gemini API What's New Guide에서 모델 ID와 설정 방법을 확인합니다.",
+        "thinking level을 낮은 단계부터 시작해 결과가 부족하면 올립니다."
+      ],
+      "note": "모델 ID는 원문에 적혀 있지 않아 가이드에서 확인해야 합니다.",
+      "source": {
+        "title": "Gemini 4 Hydrogen: everyday coding and agentic workflows for developers (Google)",
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/"
+      }
+    },
+    {
+      "title": "Antigravity에서 Carbon과 함께 쓰기",
+      "when": "유료 Google AI Pro·Ultra 구독자가 두 모델을 나눠 쓰고 싶을 때",
+      "steps": [
+        "Google Antigravity를 엽니다.",
+        "Orchestrator 기능으로 Hydrogen과 Gemini 4 Carbon을 짝지어 작업을 맡깁니다."
+      ],
+      "note": "Orchestrator 사용법은 Google Antigravity 블로그를 참고하세요.",
+      "source": {
+        "title": "Gemini 4 Hydrogen: everyday coding and agentic workflows for developers (Google)",
+        "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "thinking level부터 정하기",
+      "body": "Hydrogen은 네 가지 thinking level을 지원합니다. 일상 작업은 낮은 단계로 시작하고 부족할 때만 올리세요."
+    },
+    {
+      "title": "프런티어 모델과 역할 나누기",
+      "body": "원문은 Hydrogen을 Gemini 4 Carbon이나 Argon과 함께 쓰는 구성을 소개합니다. 어려운 판단은 상위 모델에 맡기고 반복 작업은 Hydrogen에 맡겨 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "저장소 버그 수정",
+      "when": "저장소 안의 버그를 Hydrogen에 맡길 때",
+      "type": "prompt",
+      "text": "[파일 또는 에러 로그]에서 발생하는 버그의 원인을 찾아줘.\n\n- 최소한으로 수정해\n- 요청과 무관한 리팩터링은 하지 마\n- 수정 후 확인할 방법을 알려줘"
+    },
+    {
+      "title": "웹 화면 빠르게 만들기",
+      "when": "인터랙티브 웹 프로토타입을 반복해서 다듬을 때",
+      "type": "prompt",
+      "text": "[만들 화면 설명]을 HTML, CSS, JavaScript 한 파일로 만들어줘.\n\n- 먼저 가장 단순한 동작 버전을 보여줘\n- 이후 요청마다 바뀐 부분만 설명해"
+    }
+  ],
+  "cautions": [
+    "원문에 가격, 모델 ID, 벤치마크 수치가 없어 이 소식에는 적지 않았습니다. 가이드에서 확인이 필요합니다.",
+    "Antigravity에서는 유료 Google AI Pro·Ultra 구독자만 쓸 수 있다고 원문에 적혀 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini 4 Hydrogen: everyday coding and agentic workflows for developers (Google)",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/"
+    },
+    {
+      "title": "Gemini API What's New Guide (Gemini 4 Hydrogen)",
+      "url": "https://aistudio.google.com/docs/whats-new-gemini-4-hydrogen"
+    },
+    {
+      "title": "Introducing Gemini 4 Hydrogen (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+    }
+  ]
+}

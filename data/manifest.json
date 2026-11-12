@@ -1,6 +1,10 @@
 {
-  "lastChecked": "2026-11-12 19:25",
+  "lastChecked": "2026-11-13 06:45",
   "news": [
+    "claude-meetings",
+    "claude-self-hosted-managed-agents",
+    "gemini-4-hydrogen",
+    "gemini-4-hydrogen-google-search",
     "claude-dreams-memory-store",
     "gemini-decision",
     "gemini-apple-carplay",

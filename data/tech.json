@@ -178,7 +178,8 @@
         "google-a2ui-copilotkit-generative-ui",
         "claude-personal-finance",
         "claude-whiteboards-sheets-data",
-        "gemini-intelligence-november-features"
+        "gemini-intelligence-november-features",
+        "gemini-4-hydrogen-google-search"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -240,7 +241,8 @@
         "gemini-data-cloud-connectors",
         "google-ai-studio-maps-platform",
         "claude-whiteboards-sheets-data",
-        "gemini-intelligence-november-features"
+        "gemini-intelligence-november-features",
+        "gemini-4-hydrogen-google-search"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -440,7 +442,8 @@
         "gemini-4-argon-overnight-codebase",
         "openai-skills-shell-compaction-tips",
         "claude-fold-subagents-main-agent-loop",
-        "claude-tag-api"
+        "claude-tag-api",
+        "claude-self-hosted-managed-agents"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1324,7 +1327,8 @@
       "status": "관찰",
       "companies": [
         "google",
-        "openai"
+        "openai",
+        "anthropic"
       ],
       "prerequisites": [
         "agent-loop"
@@ -1373,7 +1377,8 @@
         "gpt-realtime-2",
         "decisions-api",
         "google-ai-edge-gallery-on-device-speech",
-        "gemini-apple-carplay"
+        "gemini-apple-carplay",
+        "claude-meetings"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1556,7 +1561,9 @@
           "url": "https://developers.googleblog.com/url-context-tool-for-gemini-api-now-generally-available/"
         }
       ],
-      "news": [],
+      "news": [
+        "gemini-4-hydrogen-google-search"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {
@@ -2767,7 +2774,9 @@
           "url": "https://openai.com/index/introducing-codex/"
         }
       ],
-      "news": [],
+      "news": [
+        "claude-self-hosted-managed-agents"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {

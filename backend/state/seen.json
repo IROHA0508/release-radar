@@ -559,6 +559,14 @@
       "status": "added",
       "title": "Gemini 4 Carbon: our next frontier model"
     },
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen": {
+      "checkedAt": "2026-11-13",
+      "company": "google",
+      "date": "2026-11-12",
+      "id": "gemini-4-hydrogen",
+      "status": "updated",
+      "title": "Introducing Gemini 4 Hydrogen"
+    },
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark": {
       "checkedAt": "2026-11-11",
       "company": "google",
@@ -639,6 +647,14 @@
       "status": "updated",
       "title": "Gemini 4 Argon is now available for developers."
     },
+    "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen": {
+      "checkedAt": "2026-11-13",
+      "company": "google",
+      "date": "2026-11-12",
+      "id": "gemini-4-hydrogen",
+      "status": "added",
+      "title": "Gemini 4 Hydrogen: everyday coding and agentic workflows for developers"
+    },
     "https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place": {
       "checkedAt": "2026-10-29",
       "company": "google",
@@ -718,6 +734,14 @@
       "reason": "의류 스타일링이라는 특정 분야의 사용 사례로, 광범위한 기술적 활용 팁이 아님",
       "status": "skipped",
       "title": "4 tips for styling outfits with Gemini"
+    },
+    "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade": {
+      "checkedAt": "2026-11-13",
+      "company": "google",
+      "date": "2026-11-12",
+      "id": "gemini-4-hydrogen-google-search",
+      "status": "added",
+      "title": "Google Search gets a major upgrade with Gemini 4 Hydrogen"
     },
     "https://claude.com/blog/agents-you-can-coach-how-asana-builds-human-agent-teams-with-claude": {
       "checkedAt": "2026-10-03",
@@ -889,6 +913,22 @@
       "status": "skipped",
       "title": "Claude for Government is now generally available"
     },
+    "https://claude.com/resources/articles/claude-for-manufacturing": {
+      "checkedAt": "2026-11-13",
+      "company": "anthropic",
+      "date": "2026-11-12",
+      "reason": "특정 업종 마케팅 (Claude for Manufacturing). 제외 대상.",
+      "status": "skipped",
+      "title": "Introducing Claude for Manufacturing"
+    },
+    "https://claude.com/resources/articles/claude-meetings": {
+      "checkedAt": "2026-11-13",
+      "company": "anthropic",
+      "date": "2026-11-12",
+      "id": "claude-meetings",
+      "status": "added",
+      "title": "Introducing Claude Meetings"
+    },
     "https://claude.com/resources/articles/claude-models-on-google-cloud-anthropic-managed": {
       "checkedAt": "2026-10-23",
       "company": "anthropic",
@@ -1017,6 +1057,14 @@
       "status": "added",
       "title": "Introducing Personal Finance in Claude"
     },
+    "https://claude.com/resources/articles/j-crew-style-advisor-with-claude": {
+      "checkedAt": "2026-11-13",
+      "company": "anthropic",
+      "date": "2026-11-12",
+      "reason": "고객 사례 (J. Crew의 Claude 활용). 제외 대상.",
+      "status": "skipped",
+      "title": "J. Crew brings its signature approach to styling to life with Claude"
+    },
     "https://claude.com/resources/articles/jpmorganchase-expands-claude-code": {
       "checkedAt": "2026-11-10",
       "company": "anthropic",
@@ -1048,6 +1096,14 @@
       "reason": "Claude Marketplace에 파트너사 에이전트·제품이 추가됐다는 소식입니다. 기업 파트너십과 엔터프라이즈 약정 지출 활용에 관한 영업·사업 공지라서 제외합니다.",
       "status": "skipped",
       "title": "New agents and products for security, productivity, and creative work on Claude Marketplace"
+    },
+    "https://claude.com/resources/articles/self-hosted-claude-managed-agents": {
+      "checkedAt": "2026-11-13",
+      "company": "anthropic",
+      "date": "2026-11-12",
+      "id": "claude-self-hosted-managed-agents",
+      "status": "added",
+      "title": "Operate Claude Managed Agents inside your security perimeter"
     },
     "https://claude.com/resources/articles/sheets-whiteboards-data": {
       "checkedAt": "2026-11-11",
@@ -1376,6 +1432,14 @@
       "reason": "기존 모델의 일반적 마케팅 소개",
       "status": "skipped",
       "title": "Gemini 4 Argon: Built to solve your hardest problems"
+    },
+    "https://deepmind.google/blog/introducing-gemini-4-hydrogen": {
+      "checkedAt": "2026-11-13",
+      "company": "google",
+      "date": "2026-11-12",
+      "id": "gemini-4-hydrogen",
+      "status": "updated",
+      "title": "Introducing Gemini 4 Hydrogen"
     },
     "https://deepmind.google/blog/on-device-ai-scam-detection-mddi": {
       "checkedAt": "2026-10-14",
@@ -2075,6 +2139,14 @@
       "reason": "고객 사례: Amp의 OpenAI 모델 활용 사례로, 기업 파트너십 콘텐츠입니다.",
       "status": "skipped",
       "title": "Amp puts AI agents to work beyond code with OpenAI models"
+    },
+    "https://openai.com/index/amplitude": {
+      "checkedAt": "2026-11-13",
+      "company": "openai",
+      "date": "2026-11-12",
+      "reason": "고객 사례 (Amplitude의 Wave 에이전트 도입 경험). 제외 대상.",
+      "status": "skipped",
+      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI"
     },
     "https://openai.com/index/anima": {
       "checkedAt": "2026-10-28",

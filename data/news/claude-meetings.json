@@ -1,0 +1,167 @@
+{
+  "id": "claude-meetings",
+  "company": "anthropic",
+  "date": "2026-11-12",
+  "kind": "제품·기능 출시",
+  "title": "Claude Meetings",
+  "headline": "Claude가 화상 회의에 참가해 질문에 답하고 문서·화이트보드·회의록을 만듭니다",
+  "tldr": "Claude가 화상 회의에 눈에 보이는 참가자로 들어와 대화를 따라가고 회의 중에 작업을 시작합니다. 구두나 채팅으로 질문하면 답하고 문서와 화이트보드를 함께 만들며 회의록과 액션 아이템을 대신 정리합니다. Team·Enterprise 플랜에서 베타로 출시되며 현재는 Google Meet를 지원합니다.",
+  "fit": {
+    "summary": "회의 중에 자료를 찾고 문서를 쓰고 기록까지 맡기고 싶은 팀에 맞는 기능입니다.",
+    "good": [
+      "회의하면서 기획 문서나 일정 화이트보드를 같이 만들 때",
+      "회의록과 액션 아이템 정리를 사람이 하지 않고 넘기고 싶을 때",
+      "지난 회의 내용을 나중에 Claude에게 물어보고 싶을 때"
+    ],
+    "notFor": [
+      "조직 밖 참석자가 있는 회의(기본값은 참여하지 않으며 관리자가 허용해야 함)",
+      "제로 데이터 보존(ZDR), HIPAA-ready 구성, 고객 관리 암호화 키(CMEK)를 쓰는 조직(베타 기간에는 제공되지 않음)",
+      "Google Meet 외 화상회의 플랫폼(곧 지원 예정)"
+    ],
+    "start": "회의에 Claude를 초대하거나 자동 참여(auto-join)를 켜고, claude.ai의 캘린더에서 다음 회의에 추가합니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "지원 플랫폼",
+      "value": "Google Meet",
+      "note": "다른 화상회의 플랫폼은 곧 지원 예정"
+    },
+    {
+      "label": "대상 플랜",
+      "value": "Team · Enterprise",
+      "note": "베타 롤아웃 시작"
+    },
+    {
+      "label": "결과물 무료 기간",
+      "value": "2027-02-10까지",
+      "note": "회의 중 만든 문서·화이트보드 등"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "Claude Meetings 회의 흐름",
+      "caption": "원문의 예시 시나리오를 순서로 옮겼습니다.",
+      "steps": [
+        {
+          "label": "Claude 초대",
+          "desc": "참가자로 들어와 채팅에 안내문을 올립니다."
+        },
+        {
+          "label": "질문과 작업",
+          "desc": "구두나 채팅으로 묻고 문서·화이트보드를 같이 만듭니다.",
+          "highlight": true
+        },
+        {
+          "label": "요약 공유",
+          "desc": "회의가 끝나기 전에 팀에 요약을 공유해 달라고 요청합니다."
+        },
+        {
+          "label": "회의 페이지",
+          "desc": "claude.ai의 회의 페이지에 노트·액션 아이템·결과물이 남습니다."
+        }
+      ],
+      "source": {
+        "title": "Introducing Claude Meetings, now in beta (Claude)",
+        "url": "https://claude.com/resources/articles/claude-meetings"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "성능 비교 수치가 없는 제품 소식이라 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Claude가 화상 회의에 눈에 보이는 참가자로 들어와 대화를 따라가고 회의 중에 작업을 시작합니다.",
+    "팀원이 구두나 채팅으로 질문하면 Claude가 답합니다. 기본 답변 방식은 글이며 허락을 받으면 연결된 도구도 씁니다.",
+    "Claude가 문서와 화이트보드 같은 결과물을 실시간으로 만들고 초대받은 팀원이 함께 고칩니다.",
+    "노트와 액션 아이템은 Claude가 작성합니다.",
+    "회의마다 claude.ai에 별도 페이지가 생겨 노트, 트랜스크립트, 결과물이 모입니다. 나중에 참석한 회의를 Claude에게 물어볼 수도 있습니다.",
+    "Gong, Attention, Granola, Fireflies.ai, Otter 같은 파트너와 협업해 회의 트랜스크립트를 기존 도구로 보내는 기능이 곧 나옵니다."
+  ],
+  "availability": [
+    "Team·Enterprise 플랜에서 베타 롤아웃 시작",
+    "현재 Google Meet 지원, 다른 화상회의 플랫폼은 곧 지원 예정",
+    "Team 플랜은 Claude 초대가 기본으로 켜져 있고 관리자가 끌 수 있음",
+    "Enterprise 플랜은 관리자가 전체 또는 일부 조직에 켬",
+    "ZDR, HIPAA-ready 구성, CMEK를 쓰는 조직 등 일부 조직은 베타 기간에 쓸 수 없음",
+    "베타 기간 노트·트랜스크립트·회의 중 답변은 무료(연결된 도구를 쓰는 답변은 플랜 사용량에 포함), 회의 중 만든 문서·화이트보드 등은 2027-02-10까지 무료"
+  ],
+  "usage": [
+    {
+      "title": "회의 중에 Claude로 문서 같이 만들기",
+      "when": "기획 회의에서 논의 내용을 바로 문서로 남기고 싶을 때",
+      "steps": [
+        "회의에 Claude를 초대하거나 자동 참여를 켭니다.",
+        "회의 중에 Claude에게 문서를 시작해 달라고 말합니다.",
+        "초대받은 팀원이 문서를 고치는 동안 회의를 이어 갑니다.",
+        "회의 후 claude.ai의 회의 페이지에서 결과물을 확인합니다."
+      ],
+      "note": "연결된 도구를 쓰는 답변은 첫 사용 때 승인을 묻고, 구두 요청은 현재 매번 화자를 확인합니다.",
+      "example": {
+        "type": "prompt",
+        "text": "Claude, 이 계획으로 문서를 하나 시작해 줘."
+      },
+      "source": {
+        "title": "Introducing Claude Meetings, now in beta (Claude)",
+        "url": "https://claude.com/resources/articles/claude-meetings"
+      }
+    },
+    {
+      "title": "예산과 일정을 같이 정리하기",
+      "when": "회의 중 과거 자료 조회나 일정 정리가 필요할 때",
+      "steps": [
+        "예산 논의 중에 Claude에게 과거 수치를 물어봅니다.",
+        "Claude가 연결된 도구 사용 허락을 구하면 승인합니다.",
+        "일정 논의에서는 화이트보드에 올려 달라고 요청합니다."
+      ],
+      "note": "채팅에 올라온 답변은 통화의 모든 참가자에게 보입니다.",
+      "example": {
+        "type": "prompt",
+        "text": "Claude, 작년 행사 비용이 얼마였는지 찾아서 현재 계획과 비교해 줘."
+      },
+      "source": {
+        "title": "Introducing Claude Meetings, now in beta (Claude)",
+        "url": "https://claude.com/resources/articles/claude-meetings"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "참석자 동의 먼저",
+      "body": "Claude를 추가하거나 자동 참여를 켜기 전에 통화 참석자 모두가 트랜스크립트 작성에 동의하는지 확인하세요."
+    },
+    {
+      "title": "회의 끝나기 전에 요약 요청",
+      "body": "회의가 끝나기 전에 팀에 요약을 공유해 달라고 요청하면 회의록을 바로 받을 수 있습니다."
+    },
+    {
+      "title": "결과는 회의 페이지에서",
+      "body": "끝난 뒤 노트, 액션 아이템, 계획, 화이트보드는 claude.ai의 회의 페이지에 있습니다. 설정 방법은 Help Center에 나와 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "회의 중 문서 시작",
+      "when": "논의 내용을 문서로 바로 정리하고 싶을 때",
+      "type": "prompt",
+      "text": "Claude, [주제]에 대한 계획 문서를 시작해 줘. 지금까지 나온 이야기를 정리해서 써 줘."
+    },
+    {
+      "title": "회의 요약 공유",
+      "when": "회의가 끝나기 직전",
+      "type": "prompt",
+      "text": "Claude, 오늘 회의 요약과 액션 아이템을 팀에 공유해 줘."
+    }
+  ],
+  "cautions": [
+    "조직 밖 사람이 초대되면 Claude는 기본적으로 통화에 들어가지 않고 중간에 외부인이 들어오면 나갑니다. 관리자가 허용하면 외부 손님이 있는 통화에도 참여하며 이때 안내문은 채팅에 올리지만 답하지는 않습니다. 손님의 발언도 노트와 트랜스크립트에 포함됩니다.",
+    "Claude는 트랜스크립트, 요약, 화면 설명을 저장하며 오디오는 저장하지 않습니다.",
+    "채팅에 올라온 답변은 통화의 모든 참가자에게 보입니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Meetings, now in beta (Claude)",
+      "url": "https://claude.com/resources/articles/claude-meetings"
+    }
+  ]
+}
