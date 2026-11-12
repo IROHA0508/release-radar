@@ -1,110 +1,32 @@
 {
-  "startedAt": "2026-11-12T06:37:40+09:00",
+  "startedAt": "2026-11-12T19:25:03+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2655,
+  "entries": 2657,
   "candidates": [
     {
-      "title": "Talk it through with Gemini, now on Apple CarPlay",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/",
-      "company": "google",
-      "date": "2026-11-11",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Introducing new AI functions for AlloyDB: ai.classify and ai.extract",
-      "url": "https://cloud.google.com/blog/products/databases/ai-classify-and-ai-extract-functions-in-alloydb-ai/",
-      "company": "google",
-      "date": "2026-11-11",
-      "relatedId": null
-    },
-    {
-      "title": "Don’t just prompt AI — architect it: Introducing the Professional Agentic Architect Certification",
-      "url": "https://cloud.google.com/blog/topics/training-certifications/google-cloud-agentic-architect-certification-dont-just-prompt-ai-design-it/",
-      "company": "google",
-      "date": "2026-11-11",
-      "relatedId": null
-    },
-    {
-      "title": "Gemini Decision and the Decisions API: ReleasedGemini Decision (gemini-decision-1) and the Decisions API for fast, calibrated binary,categorical, and rubric decisions across text, images, audio, video",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-11",
-      "company": "google",
-      "date": "2026-11-11",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Dreams (research preview) now supports Claude Fable 5.2.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
-      "company": "anthropic",
-      "date": "2026-11-09",
-      "relatedId": null
-    },
-    {
-      "title": "A2UI 1.0: Build delightful, fast, reliable, agentic experiences",
-      "url": "https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences/",
-      "company": "google",
-      "date": "2026-11-11",
+      "title": "Holiday Extras is rethinking what it can build with Codex",
+      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
+      "company": "openai",
+      "date": "2026-11-12",
       "relatedId": null
     }
   ],
-  "added": [
-    {
-      "id": "gemini-apple-carplay",
-      "title": "Gemini on Apple CarPlay",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay/",
-      "charts": 0
-    },
-    {
-      "id": "gemini-decision",
-      "title": "Gemini Decision",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-11",
-      "charts": 0
-    },
-    {
-      "id": "claude-dreams-memory-store",
-      "title": "Dreams (research preview)",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-09",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [
     {
-      "title": "Introducing new AI functions for AlloyDB: ai.classify and ai.extract",
-      "url": "https://cloud.google.com/blog/products/databases/ai-classify-and-ai-extract-functions-in-alloydb-ai/",
-      "reason": "Google Cloud 인증 프로그램 소개. 행사 홍보 및 영업 범주로 제외."
-    },
-    {
-      "title": "Don’t just prompt AI — architect it: Introducing the Professional Agentic Architect Certification",
-      "url": "https://cloud.google.com/blog/topics/training-certifications/google-cloud-agentic-architect-certification-dont-just-prompt-ai-design-it/",
-      "reason": "AlloyDB 데이터베이스에 AI 함수 추가. AI 모델 사용과 무관한 인프라 기능으로 제외."
-    },
-    {
-      "title": "A2UI 1.0: Build delightful, fast, reliable, agentic experiences",
-      "url": "https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences/",
-      "reason": "A2UI 프로토콜 1.0 정식 출시. 개발 프레임워크로 판단되어 제외 범주에 해당."
+      "title": "Holiday Extras is rethinking what it can build with Codex",
+      "url": "https://openai.com/business/customer-stories/holidays-extras-codex",
+      "reason": "고객 사례로, 모델 출시·업데이트·기능 출시와 무관한 마케팅 글입니다. 사이트에 포함하지 않습니다."
     }
   ],
   "failed": [],
-  "guardNotes": {
-    "gemini-decision": [
-      "핵심 수치 '출력 토큰: 0' 원문에서 확인 안 됨 → 제외",
-      "핵심 수치 '판정 유형: 3가지' 원문에서 확인 안 됨 → 제외",
-      "핵심 수치 '입력 형식: 5가지' 원문에서 확인 안 됨 → 제외"
-    ]
-  },
+  "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {
-    "gemini-apple-carplay": [
-      "문체 수정: tldr",
-      "문체 수정: changes.1"
-    ]
-  },
-  "techLinks": [
-    "gemini-apple-carplay → voice-agent",
-    "claude-dreams-memory-store → context-editing-memory"
-  ],
+  "styleNotes": {},
+  "techLinks": [],
   "retired": []
 }

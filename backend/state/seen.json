@@ -2012,6 +2012,14 @@
       "status": "skipped",
       "title": "Flipsnack grows product signups with conversion optimization"
     },
+    "https://openai.com/business/customer-stories/holidays-extras-codex": {
+      "checkedAt": "2026-11-12",
+      "company": "openai",
+      "date": "2026-11-12",
+      "reason": "고객 사례로, 모델 출시·업데이트·기능 출시와 무관한 마케팅 글입니다. 사이트에 포함하지 않습니다.",
+      "status": "skipped",
+      "title": "Holiday Extras is rethinking what it can build with Codex"
+    },
     "https://openai.com/form/codex-originals": {
       "checkedAt": "2026-10-03",
       "company": "openai",
