@@ -1,7 +1,89 @@
 {
-  "startedAt": "2026-11-13T19:16:20+09:00",
-  "prices": null,
-  "guides": null,
-  "authError": true,
-  "note": "Claude 인증 실패: 토큰(또는 API 키)을 새로 만들어 GitHub Secret을 바꿔 주세요."
+  "startedAt": "2026-11-13T22:03:18+09:00",
+  "prices": {
+    "checked": [
+      "openai",
+      "anthropic",
+      "google"
+    ],
+    "changes": [
+      "지원 종료 예정 표시: GPT Image 2 (2027-02-10 종료 예정, 대체 gpt-image-2.6-sunburst or gpt-image-2.6-flare)",
+      "가격 변경: Gemini 3 Pro Image 출력 $120.00 → $12.00",
+      "가격 변경: Gemini 3.1 Flash Image 출력 $60.00 → $3",
+      "가격 변경: Gemini 3.1 Flash Lite Image 출력 $30.00 → $1.50",
+      "가격 변경: Gemini Embedding 2 그 밖의 단가 $0.00012 / 이미지, $0.00016 / 초 (오디오), $0.00079 / 프레임 (영상) → $0.00012 / 이미지",
+      "가격 변경: Gemini Nano Banana 2.1 출력 $30.00 → $7.50",
+      "가격 변경: Gemini Omni 1.2 Flash 출력 $12.00 → $9.00",
+      "가격 변경: Gemini 2.5 Flash Image 출력 $30 → $30.00",
+      "가격 변경: Gemini Omni Flash 출력 $17.50 → $9.00",
+      "가격표에 추가: Gemini 4 Carbon (입력 $2.00 / 출력 $10.00)",
+      "새 모델 추가: Gemini 4 Hydrogen [text] (입력 $1.50 / 출력 $7.50)",
+      "새 모델 추가: Gemini Decision 1 [other] (입력 $0.10 / 출력 -)"
+    ],
+    "notes": [
+      "새 모델 후보 omni-moderation-latest: 가격을 원문에서 확인하지 못해 넣지 않음"
+    ],
+    "errors": {}
+  },
+  "guides": {
+    "checked": 38,
+    "changed": [
+      "https://developers.openai.com/api/docs/guides/latest-model",
+      "https://developers.openai.com/api/docs/guides/prompt-engineering",
+      "https://developers.openai.com/api/docs/guides/image-prompting",
+      "https://help.openai.com/en/articles/10500283-deep-research-in-chatgpt",
+      "https://help.openai.com/en/articles/20001246-working-with-writing-blocks-and-code-blocks-in-chatgpt",
+      "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1",
+      "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-haiku-5-5",
+      "https://code.claude.com/docs/en/best-practices",
+      "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+      "https://support.claude.com/en/articles/17153992-what-are-artifacts-and-how-do-i-use-them",
+      "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork",
+      "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+      "https://ai.google.dev/gemini-api/docs/latest-model",
+      "https://ai.google.dev/gemini-api/docs/thinking",
+      "https://ai.google.dev/gemini-api/docs/speech-generation"
+    ],
+    "changes": [
+      "가이드 추가: [openai] 오래 걸리는 도구는 async: true로 두고 call_id로 결과 돌려주기",
+      "가이드 추가: [openai] 작업 도중 정정·요구 변경은 Mid-turn steering으로 보내기",
+      "가이드 추가: [openai] GPT-5.5 이전에서 옮길 때 prompt_cache_retention을 prompt_cache_options.ttl로 바꾸기",
+      "가이드 추가: [openai] 운영 프롬프트는 저장된 prompt 객체 대신 코드에 두기",
+      "가이드 추가: [openai] 운영 앱은 모델 스냅샷을 고정하고 평가를 만들어 두기",
+      "가이드 추가: [openai] 응답 텍스트는 output[0]이 아니라 output_text로 읽기",
+      "가이드 추가: [openai] 이미지 속 글자를 번역할 땐 나머지는 바꾸지 말라고 덧붙이기",
+      "가이드 추가: [openai] 여러 장의 삽화는 캐릭터 기준 이미지부터 만들고 외형을 반복해 적기",
+      "가이드 추가: [openai] 앱 링크를 더 붙이지 못하면 링크 한도부터 확인하기",
+      "가이드 추가: [openai] 공유 창에서 구성원이나 그룹이 안 보이면 워크스페이스 설정 확인하기",
+      "가이드 추가: [anthropic] 결제·계좌번호·금융 기록을 다루는 에이전트는 전용 블록을 원문 그대로 넣기",
+      "가이드 추가: [anthropic] 발표 자료는 디자인 요소·시각적 위계·애니메이션을 함께 요청하기",
+      "가이드 추가: [anthropic] Opus 5에서 옮겨 올 때는 effort를 medium부터 다시 비교하기",
+      "가이드 추가: [anthropic] 작업 중 사용자 입력은 tool_result 밖에 두고 도구 결과마다 카운트다운 붙이지 않기",
+      "가이드 추가: [anthropic] Sonnet 5.5의 refusal은 범주를 보고 추론 요구 지시를 지우거나 검증 프로그램에 신청하기",
+      "가이드 추가: [anthropic] Claude가 못 보는 외부 시스템은 CLI나 MCP로 연결하기",
+      "가이드 추가: [anthropic] 작업 시작은 /loop나 /schedule로 맡기고 main은 브랜치 규칙으로 지키기",
+      "가이드 추가: [anthropic] 동시에 돌리는 작업은 워크트리로 체크아웃을 나누기",
+      "가이드 추가: [anthropic] 금융 계정을 연결해 쓴 대화와 일부 정보는 검색·메모리에서 빠진다고 알아 두기",
+      "가이드 추가: [anthropic] Team·Enterprise는 조직 생성일에 따라 메모리 기본값이 다르니 내 설정부터 확인하기",
+      "가이드 추가: [anthropic] Claude Code 세션 결과는 아티팩트로 게시해 공유하기",
+      "가이드 추가: [anthropic] 여러 Markdown 파일을 고칠 때는 파일마다 수정 요청을 남긴 뒤 한 번에 보내기",
+      "가이드 수정: [anthropic] 아티팩트에 데이터를 저장할 때는 개인 저장소와 공유 저장소를 구분하기",
+      "가이드 수정: [anthropic] 남에게 보여 줄 결과물은 Docs·Slides·Design 템플릿으로 시작하기",
+      "가이드 추가: [anthropic] 예약 작업은 Personal Finance 연결 계좌를 쓰지 못하니 다른 자료로 요청하기",
+      "가이드 추가: [google] 데이터를 나눠 병렬로 처리시키고 결과를 합치기",
+      "가이드 추가: [google] 에이전트 지시에는 조절할 행동 차원을 골라 적기",
+      "가이드 추가: [google] stop_sequences는 답변에 나올 만한 문자열을 피해 정하기",
+      "가이드 추가: [google] Hydrogen은 high로 시작하고 xhigh는 high가 모자란 어려운 문제에만",
+      "가이드 수정: [google] 추론 깊이는 thinking_level로, 세 수준을 시험해 가장 낮은 것을 고르기",
+      "가이드 추가: [google] 목소리는 Extended Voice Library에서 조건으로 찾고 커스텀 목소리 보관 기간 챙기기"
+    ],
+    "errors": {}
+  },
+  "authError": false,
+  "note": " | 검증 실패로 되돌림: 데이터 검증 실패:\n - data/prices.json: Gemini 4 Carbon: 같은 모델이 두 번 있음(gemini-4-carbon)"
 }

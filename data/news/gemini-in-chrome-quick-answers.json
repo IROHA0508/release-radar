@@ -1,0 +1,85 @@
+{
+  "id": "gemini-in-chrome-quick-answers",
+  "company": "google",
+  "date": "2026-11-12",
+  "kind": "활용 팁",
+  "title": "Chrome 사이드 패널의 Gemini로 탭 이동 없이 답 얻기",
+  "headline": "보던 페이지를 떠나지 않고 Gemini에게 요약·비교·설명을 맡기는 방법",
+  "tldr": "Chrome 툴바의 Gemini 아이콘을 누르면 사이드 패널이 열립니다. 긴 보고서 요약, 제품 정보 비교, 어려운 주제 쉬운 설명을 현재 페이지를 유지한 채 요청할 수 있습니다.",
+  "fit": {
+    "summary": "웹 페이지를 읽다가 새 탭을 열지 않고 바로 요약이나 설명이 필요할 때 맞습니다.",
+    "good": [
+      "내용이 빽빽한 보고서 요약",
+      "여러 제품의 세부 정보 비교",
+      "복잡한 주제를 쉬운 말로 설명 듣기"
+    ],
+    "start": "Chrome 툴바의 Gemini 아이콘을 눌러 사이드 패널을 엽니다."
+  },
+  "models": [],
+  "numbers": [],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Chrome 툴바의 Gemini 아이콘을 누르면 사이드 패널이 열립니다.",
+    "다른 탭을 열지 않고 지금 보는 웹사이트에서 바로 답을 얻을 수 있습니다.",
+    "빽빽한 보고서를 요약해 달라고 요청할 수도 있습니다.",
+    "제품 정보를 비교하거나 복잡한 주제를 쉬운 말로 풀어 달라는 요청도 가능합니다.",
+    "요청하는 동안에도 보던 위치를 그대로 유지합니다."
+  ],
+  "availability": [
+    "Chrome의 Gemini(Gemini 앱 소식). 지원 지역과 요금제는 원문에 없어 확인 필요"
+  ],
+  "usage": [
+    {
+      "title": "읽던 페이지를 떠나지 않고 요약 받기",
+      "when": "길고 빽빽한 보고서나 문서를 읽다가 핵심만 먼저 알고 싶을 때",
+      "steps": [
+        "요약할 웹 페이지를 Chrome에서 엽니다.",
+        "툴바의 Gemini 아이콘을 눌러 사이드 패널을 엽니다.",
+        "요약, 비교, 설명 중 필요한 것을 입력합니다.",
+        "답을 확인한 뒤 읽던 위치에서 이어 읽습니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "이 보고서를 핵심 위주로 요약해줘."
+      },
+      "source": {
+        "title": "Get quick answers from Gemini on any website. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "새 탭 대신 사이드 패널",
+      "body": "검색하려고 탭을 옮기지 말고 사이드 패널에서 바로 물어보세요. 보던 위치를 유지한 채 답을 받을 수도 있습니다."
+    },
+    {
+      "title": "요청 종류를 정해서 묻기",
+      "body": "원문은 요약, 제품 세부 정보 비교, 복잡한 주제의 쉬운 설명을 예로 듭니다. 하려는 일을 이 셋 중 하나로 분명히 적으면 시작하기 좋습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "제품 정보 비교",
+      "when": "여러 제품 페이지의 세부 정보를 비교할 때",
+      "type": "prompt",
+      "text": "이 페이지에 나온 [제품 A]와 [제품 B]의 세부 정보를 표로 비교해줘."
+    },
+    {
+      "title": "어려운 내용 쉽게 설명",
+      "when": "전문 용어가 많은 글을 읽을 때",
+      "type": "prompt",
+      "text": "이 글에서 [어려운 주제]를 전문 용어 없이 쉬운 말로 설명해줘."
+    }
+  ],
+  "cautions": [
+    "원문은 짧은 사용 안내라서 지원 지역, 요금제, 사용 조건은 나와 있지 않습니다. 확인 필요."
+  ],
+  "sources": [
+    {
+      "title": "Get quick answers from Gemini on any website. (Google)",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/"
+    }
+  ]
+}

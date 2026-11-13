@@ -1,0 +1,233 @@
+{
+  "id": "openai-securing-persistent-agents-openclaw",
+  "company": "openai",
+  "date": "2026-11-12",
+  "kind": "활용 팁",
+  "title": "Codex 샌드박스로 상시 실행 에이전트 보안 설정하기",
+  "headline": "OpenAI가 사내 OpenClaw 에이전트에 적용한 다섯 가지 통제와 설정 예시",
+  "tldr": "OpenAI는 24시간 도는 상시 실행(persistent) 에이전트를 사내에 배포하면서 쓴 보안 통제를 공개했습니다. 신뢰 영역과 비신뢰 영역 분리, Codex 샌드박스 설정, auto-review, 에이전트 신원 분리, 전체 로깅이 핵심입니다. requirements.toml과 config.toml 예시도 함께 나와 있어 그대로 참고할 수 있습니다.",
+  "fit": {
+    "summary": "상시 실행 에이전트나 Codex 기반 에이전트를 팀 환경에 배포하려는 보안·플랫폼 담당자에게 맞는 글입니다.",
+    "good": [
+      "OpenClaw 에이전트를 사내에 배포하기 전에 보안 기준을 잡을 때",
+      "Codex 샌드박스의 네트워크·파일·비밀값 제한을 설정할 때",
+      "에이전트마다 별도 신원과 감사 기록을 두려는 경우"
+    ],
+    "notFor": [
+      "고정된 목표로 사람이 직접 조종하는 일반 Codex 세션만 쓰는 경우",
+      "OpenClaw Enterprise는 아직 파일럿 단계라 바로 운영에 넣기 어려운 경우"
+    ],
+    "start": "Codex 설정에서 danger-full-access 모드를 제외하고 허용 도메인 목록부터 좁게 정하세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "OpenAI 사내 에이전트",
+      "value": "500개 이상",
+      "note": "백그라운드에서 능동적으로 일하는 에이전트"
+    },
+    {
+      "label": "OpenClaw 에이전트",
+      "value": "수백 개",
+      "note": "회사 전체에 배포된 상시 실행 에이전트 중 일부"
+    },
+    {
+      "label": "OpenClaw Enterprise 1.0",
+      "value": "올해 말 목표",
+      "note": "현재는 파일럿 단계"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "OpenAI의 상시 실행 에이전트 보안 통제",
+      "caption": "OpenClaw 사내 배포에 적용한 순서",
+      "steps": [
+        {
+          "label": "신뢰·비신뢰 분리",
+          "desc": "게이트웨이와 에이전트 하네스를 다른 컨테이너로 나눔"
+        },
+        {
+          "label": "샌드박스 경계",
+          "desc": "네트워크·파일·프로세스·비밀값을 제한함",
+          "highlight": true
+        },
+        {
+          "label": "모델 기반 안전장치",
+          "desc": "auto-review로 두 번째 에이전트가 행동을 검토함"
+        },
+        {
+          "label": "신원 분리",
+          "desc": "에이전트마다 ChatGPT Service Account를 연결함"
+        },
+        {
+          "label": "전체 로깅",
+          "desc": "설정 변경과 모든 턴을 기록함"
+        }
+      ],
+      "source": {
+        "title": "Securing persistent agents like OpenClaw at OpenAI (OpenAI)",
+        "url": "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "샌드박스 네 가지 통제",
+      "caption": "OpenAI가 OpenClaw 배포에서 쓴 방식",
+      "columns": [
+        "제어 대상",
+        "적용 방식"
+      ],
+      "rows": [
+        {
+          "label": "network",
+          "cells": [
+            "접근 가능한 엔드포인트",
+            "조직이 관리하는 허용 목록과 명시적 차단 목록"
+          ]
+        },
+        {
+          "label": "workspace",
+          "cells": [
+            "접근 가능한 파일",
+            "에이전트 작업 디렉터리에만 쓰기 허용"
+          ]
+        },
+        {
+          "label": "process",
+          "cells": [
+            "접근 가능한 프로세스",
+            "codex linux sandbox의 프로세스 격리"
+          ]
+        },
+        {
+          "label": "secrets",
+          "cells": [
+            "접근 가능한 비밀값",
+            "credential broker로 관리해 에이전트에게 보이지 않음"
+          ],
+          "highlight": true
+        }
+      ],
+      "source": {
+        "title": "Securing persistent agents like OpenClaw at OpenAI (OpenAI)",
+        "url": "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "상시 실행 에이전트는 설정을 바꾸고 임의 코드를 쓸 수 있어 공격이 내부에서 시작될 수 있습니다. OpenAI는 이 점을 기존 소프트웨어와 다른 위험으로 봅니다.",
+    "네트워크·신원·샌드박스는 결정적 코드로 두고 에이전트와 실행 환경, 에이전트가 쓴 코드는 비신뢰로 취급했습니다. 이를 위해 OpenClaw에 remote harness execution을 구현해 Gateway를 별도 컨테이너(별도 클러스터)에서 돌립니다.",
+    "Codex 하네스의 내장 샌드박스를 쓰고 danger-full-access 모드를 막았습니다. 웹 검색은 OpenAI 자체 인덱스를 거치는 cached 모드만 허용했습니다.",
+    "auto-review로 두 번째 에이전트가 주 에이전트의 행동을 검토합니다. 사람의 승인 피로를 줄이고 가치가 큰 승인에만 사람이 집중하게 하려는 목적입니다.",
+    "에이전트마다 고유한 신원을 ChatGPT Service Account와 연결해 사용자와 별도의 추론 자격 증명을 줍니다. 감사가 가능하고 필요하면 추론을 끌 수 있습니다.",
+    "설정 변경과 에이전트의 모든 턴을 기록하고 민감한 정보가 담길 수 있어 보안팀 소수만 로그를 볼 수 있게 했습니다."
+  ],
+  "availability": [
+    "OpenClaw Enterprise(OCE)는 오픈소스, 벤더 중립 에이전트 컨트롤 플레인이며 현재 파일럿 단계입니다. 1.0 출시는 올해 말을 목표로 합니다.",
+    "OCE에서 standard codex preset을 쓰면 글에서 설명한 안전장치 상당수가 기본으로 들어 있습니다.",
+    "auto-review는 OpenClaw와 Codex가 모두 기본 지원합니다."
+  ],
+  "usage": [
+    {
+      "title": "Codex 샌드박스 허용 범위 좁히기",
+      "when": "에이전트가 접근할 도메인과 모드를 관리자가 제한하고 싶을 때",
+      "steps": [
+        "requirements.toml에서 allowed_sandbox_modes를 read-only와 workspace-write로 제한합니다.",
+        "allowed_web_search_modes는 cached만 허용합니다.",
+        "managed network proxy를 켜고 allowed_domains에 필요한 호스트만 적습니다.",
+        "클라우드 메타데이터 주소 등은 denied_domains에 넣습니다."
+      ],
+      "note": "allowed_domains의 예시 호스트는 워크로드에 맞게 바꿔야 합니다.",
+      "example": {
+        "type": "code",
+        "text": "allowed_sandbox_modes = [\"read-only\", \"workspace-write\"]\nallowed_web_search_modes = [\"cached\"]\nexperimental_network.enabled = true\nexperimental_network.managed_allowed_domains_only = true\nexperimental_network.allowed_domains = [\"github.com\", \"api.github.com\"]\nexperimental_network.denied_domains = [\"pastebin.com\", \"metadata.google.internal\", \"169.254.169.254\"]"
+      },
+      "source": {
+        "title": "Securing persistent agents like OpenClaw at OpenAI (OpenAI)",
+        "url": "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai"
+      }
+    },
+    {
+      "title": "에이전트 작업 폴더만 쓰기 허용하기",
+      "when": "에이전트가 SSH 키 같은 파일에 닿지 않게 하고 싶을 때",
+      "steps": [
+        "config.toml에서 default_permissions에 프로파일 이름을 지정합니다.",
+        "작업 디렉터리만 write로 두고 읽기 전용 자산은 read로 둡니다.",
+        ".ssh 같은 민감 경로는 deny로 막습니다.",
+        "GitHub 토큰 등은 shell_environment_policy의 exclude에 넣습니다."
+      ],
+      "note": "exclude는 환경 변수만 제거하며 접근 가능한 파일에 저장된 자격 증명은 숨기지 못합니다.",
+      "example": {
+        "type": "code",
+        "text": "default_permissions = \"openclaw\"\nweb_search = \"cached\"\n\n[permissions.openclaw.filesystem]\n\"/home/dev-user/openclaw-workspaces\" = \"write\"\n\"/home/dev-user/.ssh\" = \"deny\""
+      },
+      "source": {
+        "title": "Securing persistent agents like OpenClaw at OpenAI (OpenAI)",
+        "url": "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai"
+      }
+    },
+    {
+      "title": "에이전트에 별도 신원 주기",
+      "when": "사용자 행동과 에이전트 행동을 구분해 감사하려는 때",
+      "steps": [
+        "에이전트마다 고유한 신원을 만들어 ChatGPT Service Account와 연결합니다.",
+        "에이전트는 자기 신원으로 동작하고 서드파티 서비스는 그 신원에 연결된 서비스 계정으로 접근하게 합니다.",
+        "문제가 생기면 감사 기록을 확인하고 필요하면 추론을 끕니다."
+      ],
+      "source": {
+        "title": "Securing persistent agents like OpenClaw at OpenAI (OpenAI)",
+        "url": "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "danger-full-access는 정책으로 제외",
+      "body": "사용자 설정에 맡기지 말고 requirements.toml에서 허용 모드 자체를 줄이세요. 사용자 수준 설정이 도메인 허용 목록을 넓히지 못하게 하는 옵션도 있습니다."
+    },
+    {
+      "title": "모든 에이전트 행동에 auto-review",
+      "body": "사람이 모든 권한 요청을 승인하면 승인 피로가 쌓여 무조건 수락하게 됩니다. 모델 검토를 먼저 거치게 하세요."
+    },
+    {
+      "title": "앱 기능은 기본 비활성",
+      "body": "예시 설정에서는 apps를 기본 꺼 두고 파괴적 작업과 open-world 작업도 끕니다. 필요한 앱만 하나씩 켜세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "에이전트 배포 보안 점검",
+      "when": "상시 실행 에이전트를 배포하기 전 설계를 점검할 때",
+      "type": "prompt",
+      "text": "우리 팀은 [에이전트 이름]을 24시간 실행하려고 해. 아래 다섯 가지 기준으로 배포 설계를 점검하고 빠진 통제를 알려줘.\n1. 신뢰 영역과 비신뢰 영역 분리\n2. 샌드박스의 network·workspace·process·secrets 제한\n3. 모델 기반 검토(auto-review)\n4. 에이전트 신원과 사용자 신원 분리\n5. 설정 변경과 모든 턴의 로깅\n\n현재 설계: [설계 내용]"
+    },
+    {
+      "title": "허용 도메인 목록 정리",
+      "when": "에이전트에 필요한 네트워크 접근을 최소로 정할 때",
+      "type": "prompt",
+      "text": "[에이전트 작업 설명]을 하는 데 꼭 필요한 외부 도메인만 골라 Codex의 allowed_domains 목록 초안을 만들어줘. 차단해야 할 데이터 유출 경로와 클라우드 메타데이터 주소는 denied_domains에 따로 정리해줘."
+    }
+  ],
+  "cautions": [
+    "원문 설정은 OpenAI의 OpenClaw 배포 사례입니다. 도메인과 경로는 자기 환경에 맞게 바꿔야 합니다.",
+    "OpenClaw Enterprise는 파일럿 단계이고 1.0은 아직 나오지 않았습니다.",
+    "shell_environment_policy의 exclude는 접근 가능한 파일에 저장된 자격 증명을 숨기지 않습니다."
+  ],
+  "sources": [
+    {
+      "title": "Securing persistent agents like OpenClaw at OpenAI (OpenAI)",
+      "url": "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai"
+    },
+    {
+      "title": "standard codex preset (OpenClaw Enterprise)",
+      "url": "https://github.com/openclaw/openclaw-enterprise/blob/main/docs/guides/topics/standard-codex-preset.md"
+    },
+    {
+      "title": "ChatGPT Service Accounts",
+      "url": "https://learn.chatgpt.com/docs/enterprise/service-accounts"
+    }
+  ]
+}

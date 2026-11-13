@@ -1,30 +1,9 @@
 {
-  "startedAt": "2026-11-13T19:12:24+09:00",
+  "startedAt": "2026-11-13T21:57:15+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 2661,
   "candidates": [
-    {
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/business/customer-stories/amplitude",
-      "company": "openai",
-      "date": "2026-11-12",
-      "relatedId": null
-    },
-    {
-      "title": "Gondola doubles revenue as its team builds more with Codex",
-      "url": "https://openai.com/business/customer-stories/gondola",
-      "company": "openai",
-      "date": "2026-11-12",
-      "relatedId": null
-    },
-    {
-      "title": "Using Claude Opus 5.5 as your daily driver for knowledge work",
-      "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
-      "company": "anthropic",
-      "date": "2026-11-12",
-      "relatedId": "claude-opus-5-5"
-    },
     {
       "title": "The Claude Tag guide for startups",
       "url": "https://claude.com/resources/articles/claude-tag-guide-for-startups",
@@ -40,10 +19,10 @@
       "relatedId": "gemini-app-resume-update"
     },
     {
-      "title": "We’ve launched self-hosted Claude Managed Agents.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-12",
-      "company": "anthropic",
-      "date": "2026-11-12",
+      "title": "Opening the datasets behind our AI weather models",
+      "url": "https://deepmind.google/blog/opening-the-datasets-behind-our-ai-weather-models/",
+      "company": "google",
+      "date": "2026-11-10",
       "relatedId": null
     },
     {
@@ -70,44 +49,57 @@
   ],
   "added": [
     {
-      "id": "claude-opus-5-5-knowledge-work-daily-driver",
-      "title": "지식 노동의 기본 모델로 Opus 5.5 쓰기",
-      "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
+      "id": "gemini-in-chrome-quick-answers",
+      "title": "Chrome 사이드 패널의 Gemini로 탭 이동 없이 답 얻기",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome/",
+      "charts": 0
+    },
+    {
+      "id": "openai-securing-persistent-agents-openclaw",
+      "title": "Codex 샌드박스로 상시 실행 에이전트 보안 설정하기",
+      "url": "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai",
+      "charts": 0
+    },
+    {
+      "id": "gemini-argon-z3-go-bug-hunting",
+      "title": "Gemini와 제약 해결기로 퍼징이 놓친 Go 버그 찾기",
+      "url": "https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver/",
       "charts": 0
     }
   ],
   "updated": [],
   "skipped": [
     {
-      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/business/customer-stories/amplitude",
-      "reason": "고객 사례(Amplitude가 OpenAI 모델로 제품을 만든 이야기)"
+      "title": "The Claude Tag guide for startups",
+      "url": "https://claude.com/resources/articles/claude-tag-guide-for-startups",
+      "reason": "특정 업종(스타트업) 대상 마케팅 글. Claude Tag API는 이미 2026-10-23에 등재됨."
     },
     {
-      "title": "Gondola doubles revenue as its team builds more with Codex",
-      "url": "https://openai.com/business/customer-stories/gondola",
-      "reason": "고객 사례(Gondola가 Codex로 성과를 낸 이야기)"
+      "title": "Opening the datasets behind our AI weather models",
+      "url": "https://deepmind.google/blog/opening-the-datasets-behind-our-ai-weather-models/",
+      "reason": "AI 모델 활용과 무관한 데이터셋·인프라 공개. 모델 출시나 업데이트가 아님"
     },
     {
-      "title": "We’ve launched self-hosted Claude Managed Agents.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-12",
-      "reason": "이미 사이트에 있는 소식(claude-self-hosted-managed-agents, 2026-11-12)"
+      "title": "How Agent Anomaly Detection scores on benchmarks we didn't write",
+      "url": "https://developers.googleblog.com/how-agent-anomaly-detection-scores-on-benchmarks-we-didnt-write/",
+      "reason": "벤치마크 성능 리포트. 새 모델·기능 출시나 공식 활용 팁의 기준에 맞지 않음"
     }
   ],
   "failed": [],
-  "guardNotes": {
-    "claude-opus-5-5-knowledge-work-daily-driver": [
-      "도식 '지식 노동용 모델 네 가지'의 숫자 ['100만'] 원문에서 확인 안 됨 → 도식 제외"
-    ]
-  },
-  "note": "요약 엔진: Claude Code CLI(구독) | Claude 인증 실패: 토큰(또는 API 키)을 새로 만들어 GitHub Secret을 바꿔 주세요.",
-  "authError": true,
+  "guardNotes": {},
+  "note": "요약 엔진: Claude Code CLI(구독)",
+  "authError": false,
   "guideChanges": [],
   "styleNotes": {
-    "claude-opus-5-5-knowledge-work-daily-driver": [
-      "문체 다듬기 실패: RuntimeError"
+    "gemini-in-chrome-quick-answers": [
+      "문체 수정: changes.2",
+      "문체 수정: changes.3",
+      "문체 수정: tips.0.body"
     ]
   },
-  "techLinks": [],
+  "techLinks": [
+    "openai-securing-persistent-agents-openclaw → long-autonomy, sandboxing, harness",
+    "gemini-argon-z3-go-bug-hunting → tool-use, evals, context-eng"
+  ],
   "retired": []
 }

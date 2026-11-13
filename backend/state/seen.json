@@ -623,6 +623,14 @@
       "status": "added",
       "title": "New Gemini tools for small business owners"
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome": {
+      "checkedAt": "2026-11-13",
+      "company": "google",
+      "date": "2026-11-12",
+      "id": "gemini-in-chrome-quick-answers",
+      "status": "added",
+      "title": "Get quick answers from Gemini on any website."
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini": {
       "checkedAt": "2026-11-06",
       "company": "google",
@@ -952,6 +960,14 @@
       "id": "claude-security-continuous-scan",
       "status": "added",
       "title": "Claude Security now scans continuously and tracks fixes"
+    },
+    "https://claude.com/resources/articles/claude-tag-guide-for-startups": {
+      "checkedAt": "2026-11-13",
+      "company": "anthropic",
+      "date": "2026-11-12",
+      "reason": "특정 업종(스타트업) 대상 마케팅 글. Claude Tag API는 이미 2026-10-23에 등재됨.",
+      "status": "skipped",
+      "title": "The Claude Tag guide for startups"
     },
     "https://claude.com/resources/articles/dashboards-and-motion": {
       "checkedAt": "2026-10-09",
@@ -1457,6 +1473,14 @@
       "status": "skipped",
       "title": "Google DeepMind and Singapore Government collaborate to build fine-tuned AI model for scam detection"
     },
+    "https://deepmind.google/blog/opening-the-datasets-behind-our-ai-weather-models": {
+      "checkedAt": "2026-11-13",
+      "company": "google",
+      "date": "2026-11-10",
+      "reason": "AI 모델 활용과 무관한 데이터셋·인프라 공개. 모델 출시나 업데이트가 아님",
+      "status": "skipped",
+      "title": "Opening the datasets behind our AI weather models"
+    },
     "https://developers.googleblog.com/4-engineering-patterns-behind-the-strongest-ai-agents-challenge-submissions": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1579,6 +1603,14 @@
       "status": "skipped",
       "title": "Building Conversational Commerce with Multi-Agent Swarms on GCP: A Working Prototype"
     },
+    "https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver": {
+      "checkedAt": "2026-11-13",
+      "company": "google",
+      "date": "2026-11-12",
+      "id": "gemini-argon-z3-go-bug-hunting",
+      "status": "added",
+      "title": "Catch Go bugs that fuzzing misses with Gemini and a constraint solver"
+    },
     "https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels": {
       "checkedAt": "2026-11-04",
       "company": "google",
@@ -1671,6 +1703,14 @@
       "id": "google-agents-cli-eval-hill-climbing",
       "status": "added",
       "title": "Hill-Climbing Agent Quality with Agents CLI Evaluation"
+    },
+    "https://developers.googleblog.com/how-agent-anomaly-detection-scores-on-benchmarks-we-didnt-write": {
+      "checkedAt": "2026-11-13",
+      "company": "google",
+      "date": "2026-11-12",
+      "reason": "벤치마크 성능 리포트. 새 모델·기능 출시나 공식 활용 팁의 기준에 맞지 않음",
+      "status": "skipped",
+      "title": "How Agent Anomaly Detection scores on benchmarks we didn't write"
     },
     "https://developers.googleblog.com/how-to-evaluate-live-voice-agents-in-adk": {
       "checkedAt": "2026-10-03",
@@ -2039,6 +2079,14 @@
       "date": null,
       "status": "nodate",
       "title": "Aug 21 Scaling cyber defenders with Daybreak Use ChatGPT, Codex Security, and open-source tools to investigate threats, validate vulnerabilities, and move from findings to reviewed, verified fixes. Co"
+    },
+    "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai": {
+      "checkedAt": "2026-11-13",
+      "company": "openai",
+      "date": "2026-11-12",
+      "id": "openai-securing-persistent-agents-openclaw",
+      "status": "added",
+      "title": "Securing persistent agents like OpenClaw at OpenAI"
     },
     "https://developers.openai.com/blog/skills-agents-sdk": {
       "checkedAt": "2026-10-03",

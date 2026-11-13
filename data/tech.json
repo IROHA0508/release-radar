@@ -242,7 +242,8 @@
         "google-ai-studio-maps-platform",
         "claude-whiteboards-sheets-data",
         "gemini-intelligence-november-features",
-        "gemini-4-hydrogen-google-search"
+        "gemini-4-hydrogen-google-search",
+        "gemini-argon-z3-go-bug-hunting"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -378,7 +379,8 @@
         "openai-retained-reasoning-compaction",
         "gpt-6-model-guide",
         "gemini-app-small-business-tools",
-        "claude-message-threads"
+        "claude-message-threads",
+        "gemini-argon-z3-go-bug-hunting"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -443,7 +445,8 @@
         "openai-skills-shell-compaction-tips",
         "claude-fold-subagents-main-agent-loop",
         "claude-tag-api",
-        "claude-self-hosted-managed-agents"
+        "claude-self-hosted-managed-agents",
+        "openai-securing-persistent-agents-openclaw"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -673,7 +676,8 @@
         "google-agent-evaluation-beyond-vibe-check",
         "openai-retained-reasoning-compaction",
         "google-agents-cli-extension-system",
-        "google-agents-cli-eval-hill-climbing"
+        "google-agents-cli-eval-hill-climbing",
+        "gemini-argon-z3-go-bug-hunting"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1244,7 +1248,8 @@
         "gemini-4-argon-overnight-codebase",
         "gpt-6-model-guide",
         "claude-duet",
-        "claude-enterprise-unified-chat-cowork"
+        "claude-enterprise-unified-chat-cowork",
+        "openai-securing-persistent-agents-openclaw"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2775,7 +2780,8 @@
         }
       ],
       "news": [
-        "claude-self-hosted-managed-agents"
+        "claude-self-hosted-managed-agents",
+        "openai-securing-persistent-agents-openclaw"
       ],
       "verifiedAt": "2026-10-21"
     },

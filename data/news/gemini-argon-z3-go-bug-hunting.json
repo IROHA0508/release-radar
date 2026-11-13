@@ -1,0 +1,208 @@
+{
+  "id": "gemini-argon-z3-go-bug-hunting",
+  "company": "google",
+  "date": "2026-11-12",
+  "kind": "활용 팁",
+  "title": "Gemini와 제약 해결기로 퍼징이 놓친 Go 버그 찾기",
+  "headline": "Gemini 4 Argon이 어셈블리를 Z3 규칙으로 옮기면 퍼저가 못 잡은 슬라이스 범위 버그가 드러납니다",
+  "tldr": "Google 개발자 관계 책임자 Karl Weinmeister가 Gemini 4 Argon과 Z3 제약 해결기로 Go 버그를 찾은 방법을 공유했습니다. 심어 둔 버그 3개를 모두 찾았고 skill-lint에서 잠재 버그 3개를 더 찾았습니다. go test -fuzz가 놓친 두 버그는 테스트 입력의 용량을 길이에 맞추는 한 줄로 잡힙니다.",
+  "fit": {
+    "summary": "슬라이스나 인덱스 계산이 복잡한 Go 파서·편집기의 범위 초과 패닉을 찾을 때 맞는 방법입니다. 대부분의 코드는 퍼징 설정 한 줄 수정만으로 충분합니다.",
+    "good": [
+      "여러 필드 헤더에서 오프셋을 계산하는 파서",
+      "줄 번호 범위로 편집을 적용하는 편집기",
+      "퍼징을 돌려도 패닉이 재현되지 않는 슬라이스 코드"
+    ],
+    "notFor": [
+      "데이터 레이스나 교착 상태 점검(원문은 race detector와 결정적 동시성 테스트를 권합니다)",
+      "파일 I/O, CLI 플래그, 네트워크 호출이 섞인 코드(순수 함수로 분리해 표준 퍼징에 맡기는 편이 낫습니다)",
+      "완전한 정확성 증명이 필요한 경우(unsat은 '아마 맞다'는 뜻일 뿐입니다)"
+    ],
+    "start": "슬라이스 계산을 순수 함수로 떼어 낸 뒤 퍼징 함수 안에서 data = data[:len(data):len(data)]로 용량을 길이에 맞춰 보세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "심어 둔 버그",
+      "value": "3개 모두 발견",
+      "note": "테스트용 파서에 심은 버그를 Argon과 Z3가 전부 찾음"
+    },
+    {
+      "label": "skill-lint 잠재 버그",
+      "value": "3개",
+      "note": "실제 코드에서 추가로 발견"
+    },
+    {
+      "label": "함수당 소요 시간",
+      "value": "약 1분",
+      "note": "대부분 Argon의 번역 시간이고 Z3는 밀리초 단위"
+    },
+    {
+      "label": "퍼저가 놓친 크래시 비율",
+      "value": "19.4%",
+      "note": "59바이트에서 (hdrLen, bodyLen) 조합 중 이 크래시를 일으키는 비율"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "Gemini와 Z3 버그 탐색 순서",
+      "caption": "Go 컴파일러가 못 지운 경계 검사만 솔버에 넘깁니다.",
+      "steps": [
+        {
+          "label": "컴파일",
+          "desc": "RISC-V용으로 빌드해 남은 경계 검사를 확인합니다."
+        },
+        {
+          "label": "모델에 전달",
+          "desc": "Go 소스와 디스어셈블리를 함께 넘깁니다."
+        },
+        {
+          "label": "Z3 스크립트 작성",
+          "desc": "Argon이 각 패닉 지점까지의 경로를 규칙으로 옮깁니다.",
+          "highlight": true
+        },
+        {
+          "label": "Z3 검사",
+          "desc": "sat이면 크래시를 일으키는 입력이 나옵니다."
+        },
+        {
+          "label": "go test 재생",
+          "desc": "그 바이트를 실제 함수에 넣어 패닉을 확인합니다."
+        }
+      ],
+      "loop": "sat이면 go test가 같은 입력을 재생해 실제 크래시를 확인합니다.",
+      "source": {
+        "title": "Catch Go bugs that fuzzing misses with Gemini and a constraint solver (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver/"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "Z3 결과를 읽는 법",
+      "caption": "sat은 확정이고 unsat은 보증이 아닙니다.",
+      "columns": [
+        "의미",
+        "다음 행동"
+      ],
+      "rows": [
+        {
+          "label": "sat",
+          "cells": [
+            "버그일 가능성이 매우 높음(구체적 입력 제공)",
+            "go test로 재현"
+          ],
+          "highlight": true
+        },
+        {
+          "label": "unsat",
+          "cells": [
+            "아마 맞음(Bloom filter와 비슷한 신호)",
+            "완전한 증명은 아님"
+          ]
+        }
+      ],
+      "source": {
+        "title": "Catch Go bugs that fuzzing misses with Gemini and a constraint solver (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Go 컴파일러의 SSA prove 패스가 지우지 못한 runtime.panicBounds 트랩만 남기고 Argon이 각 트랩까지의 경로를 Z3 규칙으로 옮깁니다.",
+    "컴파일은 GOOS=linux GOARCH=riscv64 go build -gcflags=\"-S -d=ssa/check_bce/debug=1\"로 하고 Go 소스와 디스어셈블리를 모델에 함께 줍니다. 소스만 보면 컴파일러가 이미 지운 검사나 8비트로 잘린 레지스터를 알 수 없기 때문입니다.",
+    "go test -fuzz는 슬라이스를 용량과 길이가 다르게 넘기는 일이 많아 용량 기준 범위 초과를 놓칩니다. 10초 동안 386,741번 호출한 조사에서 입력의 89%가 약 100 MB 공유 버퍼의 뷰였고 cap == len인 입력은 0.07%였습니다.",
+    "퍼징 함수에서 data = data[:len(data):len(data)]로 용량을 길이에 맞추자 ParseTwoChunkFrame과 ExtractQuotedToken이 세 번의 실행 모두에서 크래시했습니다(중앙값 0.28초와 0.17초).",
+    "skill-lint의 함수 5개 중 3개에서 버그가 나왔습니다. 겹치는 편집 청크를 허용하던 ApplyReplacementChunks가 가장 심각했고 정렬 뒤 겹침을 거부하면 고쳐집니다.",
+    "주석을 모두 지운 상태로 다시 돌려도 Argon과 Z3는 버그 3개를 다시 찾았고 두 스캐너와 패치 3개에는 unsat을 냈습니다."
+  ],
+  "availability": [
+    "Gemini 4 Argon과 Z3(오픈소스 제약 해결기), Go 툴체인만 있으면 됩니다.",
+    "원문은 Go 1.27.3에서 퍼징 기준선을 측정했습니다.",
+    "Anthropic의 Rocq 증명 글과 같은 RISC-V 대상을 썼지만 정리 증명 대신 SMT 기반 제약 해결기를 사용합니다."
+  ],
+  "usage": [
+    {
+      "title": "퍼징이 놓치는 범위 초과 패닉 잡기",
+      "when": "go test -fuzz를 돌려도 슬라이스 패닉이 나오지 않을 때",
+      "steps": [
+        "퍼징 함수 첫 줄에서 data = data[:len(data):len(data)]로 용량을 길이에 맞춥니다.",
+        "대상 함수를 호출하고 퍼징을 다시 돌립니다.",
+        "패닉이 나오면 입력을 저장해 회귀 테스트로 남깁니다."
+      ],
+      "note": "원문에서 이 설정을 넣자 퍼저가 두 버그를 모두 잡았습니다.",
+      "example": {
+        "type": "code",
+        "text": "f.Fuzz(func(t *testing.T, data []byte) {\n\tdata = data[:len(data):len(data)] // cap == len: slicing past the end now panics\n\tParseTwoChunkFrame(data)\n})"
+      },
+      "source": {
+        "title": "Catch Go bugs that fuzzing misses with Gemini and a constraint solver (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver/"
+      }
+    },
+    {
+      "title": "남은 경계 검사를 Argon과 Z3로 검증하기",
+      "when": "퍼징으로 안 잡히는 오프셋 계산 버그가 의심될 때",
+      "steps": [
+        "대상 함수를 순수 함수로 떼어 입구 가드(경계 검사나 정렬)를 함께 넣습니다.",
+        "RISC-V용으로 컴파일해 어셈블리 목록과 남은 경계 검사 로그를 얻습니다.",
+        "Go 소스와 디스어셈블리를 Gemini 4 Argon에 주고 각 트랩의 Z3 스크립트를 요청합니다.",
+        "Z3가 sat을 내면 그 바이트를 go test로 재생해 크래시를 확인합니다."
+      ],
+      "note": "입구 가드가 빠진 헬퍼는 Z3가 호출자만 보장하는 전제를 어긴 입력을 만들어 낼 수 있습니다.",
+      "example": {
+        "type": "prompt",
+        "text": "아래 Go 소스와 RISC-V 디스어셈블리를 보고, 남아 있는 runtime.panicBounds 트랩마다 그 지점까지의 경로를 Z3(Python) 스크립트로 모델링해줘. 길이 64바이트 이하이고 cap == len인 슬라이스를 가정하고, 버그를 찾으면 패치한 함수도 함께 줘.\n\n[Go 소스]\n[디스어셈블리]"
+      },
+      "source": {
+        "title": "Catch Go bugs that fuzzing misses with Gemini and a constraint solver (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "순수 함수만 솔버에 넘기기",
+      "body": "CLI 플래그, 네트워크 호출, 파일 I/O는 go test -fuzz와 go test -race에 맡기세요. 파서와 슬라이스 계산만 순수 함수로 떼어 솔버에 보냅니다."
+    },
+    {
+      "title": "크래시는 go test로 확인하기",
+      "body": "Z3가 sat을 내면 그 입력을 go test로 직접 돌려 보세요. 크래시가 재현되면 Argon의 모델이 정확했는지와 무관하게 실제 버그입니다."
+    },
+    {
+      "title": "입구 가드를 대상에 포함하기",
+      "body": "주석 위에만 적힌 전제는 Z3가 어기는 입력을 만듭니다. 호출자가 보장하던 가드까지 함수에 넣어야 오탐이 없습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Z3 모델링 요청",
+      "when": "Go 함수의 남은 경계 검사를 솔버로 확인할 때",
+      "type": "prompt",
+      "text": "다음 Go 함수와 디스어셈블리를 읽고 남아 있는 경계 검사 트랩마다 Z3 스크립트를 써줘. 버그가 있으면 크래시를 일으키는 입력과 패치한 함수도 알려줘.\n\n[함수 이름]\n[Go 소스]\n[디스어셈블리]"
+    },
+    {
+      "title": "퍼징 함수에서 용량 줄이기",
+      "when": "퍼저가 슬라이스 범위 초과를 놓칠 때",
+      "type": "code",
+      "text": "f.Fuzz(func(t *testing.T, data []byte) {\n\tdata = data[:len(data):len(data)]\n\t[대상 함수](data)\n})"
+    }
+  ],
+  "cautions": [
+    "LLM이 쓴 솔버 모델은 건전한 증명 체계가 아닙니다. unsat은 '아마 맞다'는 뜻일 뿐 정확성을 보증하지 않습니다.",
+    "원문 실험은 작은 슬라이스 위주의 함수 단위 점검입니다. 바이너리가 커지면 심볼 수가 늘어(skill-lint 바이너리는 32,321개) 통째로 넘기기는 어렵습니다.",
+    "데이터 레이스나 교착 상태는 솔버 모델이 보지 못하니 race detector와 결정적 동시성 테스트를 함께 쓰세요."
+  ],
+  "sources": [
+    {
+      "title": "Catch Go bugs that fuzzing misses with Gemini and a constraint solver (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver/"
+    },
+    {
+      "title": "Gemini 4 Argon 모델 문서 (Gemini API)",
+      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-4-argon"
+    }
+  ]
+}
