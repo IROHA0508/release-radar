@@ -1129,6 +1129,14 @@
       "status": "added",
       "title": "Claude Cowork and chat come together for Enterprise"
     },
+    "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work": {
+      "checkedAt": "2026-11-13",
+      "company": "anthropic",
+      "date": "2026-11-12",
+      "id": "claude-opus-5-5-knowledge-work-daily-driver",
+      "status": "added",
+      "title": "Using Claude Opus 5.5 as your daily driver for knowledge work"
+    },
     "https://claude.com/resources/articles/were-expanding-the-claude-startups-program-to-help-founders-build": {
       "checkedAt": "2026-10-07",
       "company": "anthropic",
@@ -2076,6 +2084,22 @@
       "status": "skipped",
       "title": "Flipsnack grows product signups with conversion optimization"
     },
+    "https://openai.com/business/customer-stories/amplitude": {
+      "checkedAt": "2026-11-13",
+      "company": "openai",
+      "date": "2026-11-12",
+      "reason": "고객 사례(Amplitude가 OpenAI 모델로 제품을 만든 이야기)",
+      "status": "skipped",
+      "title": "How Amplitude ships product improvements in 1–2 days with OpenAI"
+    },
+    "https://openai.com/business/customer-stories/gondola": {
+      "checkedAt": "2026-11-13",
+      "company": "openai",
+      "date": "2026-11-12",
+      "reason": "고객 사례(Gondola가 Codex로 성과를 낸 이야기)",
+      "status": "skipped",
+      "title": "Gondola doubles revenue as its team builds more with Codex"
+    },
     "https://openai.com/business/customer-stories/holidays-extras-codex": {
       "checkedAt": "2026-11-12",
       "company": "openai",
@@ -2963,6 +2987,14 @@
       "reason": "[6]과 같은 릴리스 노트 페이지 내 다른 섹션으로 중복",
       "status": "skipped",
       "title": "Claude Fable 5.2 and Claude Mythos 5.2 support computer use through the computer_toolset_20260801 toolset."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-12-0412c5ec": {
+      "checkedAt": "2026-11-13",
+      "company": "anthropic",
+      "date": "2026-11-12",
+      "reason": "이미 사이트에 있는 소식(claude-self-hosted-managed-agents, 2026-11-12)",
+      "status": "skipped",
+      "title": "We’ve launched self-hosted Claude Managed Agents."
     }
   }
 }

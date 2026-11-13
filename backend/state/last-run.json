@@ -1,62 +1,20 @@
 {
-  "startedAt": "2026-11-13T06:38:03+09:00",
+  "startedAt": "2026-11-13T19:12:24+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2660,
+  "entries": 2661,
   "candidates": [
     {
       "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/index/amplitude",
+      "url": "https://openai.com/business/customer-stories/amplitude",
       "company": "openai",
       "date": "2026-11-12",
       "relatedId": null
     },
     {
-      "title": "Google Search gets a major upgrade with Gemini 4 Hydrogen",
-      "url": "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
-      "company": "google",
-      "date": "2026-11-12",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Gemini 4 Hydrogen: everyday coding and agentic workflows for developers",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
-      "company": "google",
-      "date": "2026-11-12",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Introducing Gemini 4 Hydrogen",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/",
-      "company": "google",
-      "date": "2026-11-12",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Operate Claude Managed Agents inside your security perimeter",
-      "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
-      "company": "anthropic",
-      "date": "2026-11-12",
-      "relatedId": null
-    },
-    {
-      "title": "J. Crew brings its signature approach to styling to life with Claude",
-      "url": "https://claude.com/resources/articles/j-crew-style-advisor-with-claude",
-      "company": "anthropic",
-      "date": "2026-11-12",
-      "relatedId": null
-    },
-    {
-      "title": "Introducing Claude for Manufacturing",
-      "url": "https://claude.com/resources/articles/claude-for-manufacturing",
-      "company": "anthropic",
-      "date": "2026-11-12",
-      "relatedId": null
-    },
-    {
-      "title": "Introducing Claude Meetings",
-      "url": "https://claude.com/resources/articles/claude-meetings",
-      "company": "anthropic",
+      "title": "Gondola doubles revenue as its team builds more with Codex",
+      "url": "https://openai.com/business/customer-stories/gondola",
+      "company": "openai",
       "date": "2026-11-12",
       "relatedId": null
     },
@@ -89,13 +47,6 @@
       "relatedId": null
     },
     {
-      "title": "Gemini 4 Hydrogen (gemini-4-hydrogen) generally available (GA): ReleasedGemini 4 Hydrogen (gemini-4-hydrogen),bringing cutting-edge intelligence to everyone, with speed and efficiency for everyday cod",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-12",
-      "company": "google",
-      "date": "2026-11-12",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
       "title": "Securing persistent agents like OpenClaw at OpenAI",
       "url": "https://developers.openai.com/blog/securing-persistent-agents-like-openclaw-at-openai",
       "company": "openai",
@@ -119,63 +70,44 @@
   ],
   "added": [
     {
-      "id": "gemini-4-hydrogen-google-search",
-      "title": "Google Search의 Gemini 4 Hydrogen",
-      "url": "https://blog.google/products-and-platforms/products/search/gemini-4-hydrogen-search-upgrade/",
-      "charts": 0
-    },
-    {
-      "id": "gemini-4-hydrogen",
-      "title": "Gemini 4 Hydrogen",
-      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-4-hydrogen/",
-      "charts": 0
-    },
-    {
-      "id": "claude-self-hosted-managed-agents",
-      "title": "Self-hosted Claude Managed Agents",
-      "url": "https://claude.com/resources/articles/self-hosted-claude-managed-agents",
-      "charts": 0
-    },
-    {
-      "id": "claude-meetings",
-      "title": "Claude Meetings",
-      "url": "https://claude.com/resources/articles/claude-meetings",
+      "id": "claude-opus-5-5-knowledge-work-daily-driver",
+      "title": "지식 노동의 기본 모델로 Opus 5.5 쓰기",
+      "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work",
       "charts": 0
     }
   ],
-  "updated": [
-    {
-      "id": "gemini-4-hydrogen",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
-    }
-  ],
+  "updated": [],
   "skipped": [
     {
       "title": "How Amplitude ships product improvements in 1–2 days with OpenAI",
-      "url": "https://openai.com/index/amplitude",
-      "reason": "고객 사례 (Amplitude의 Wave 에이전트 도입 경험). 제외 대상."
+      "url": "https://openai.com/business/customer-stories/amplitude",
+      "reason": "고객 사례(Amplitude가 OpenAI 모델로 제품을 만든 이야기)"
     },
     {
-      "title": "J. Crew brings its signature approach to styling to life with Claude",
-      "url": "https://claude.com/resources/articles/j-crew-style-advisor-with-claude",
-      "reason": "고객 사례 (J. Crew의 Claude 활용). 제외 대상."
+      "title": "Gondola doubles revenue as its team builds more with Codex",
+      "url": "https://openai.com/business/customer-stories/gondola",
+      "reason": "고객 사례(Gondola가 Codex로 성과를 낸 이야기)"
     },
     {
-      "title": "Introducing Claude for Manufacturing",
-      "url": "https://claude.com/resources/articles/claude-for-manufacturing",
-      "reason": "특정 업종 마케팅 (Claude for Manufacturing). 제외 대상."
+      "title": "We’ve launched self-hosted Claude Managed Agents.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-12",
+      "reason": "이미 사이트에 있는 소식(claude-self-hosted-managed-agents, 2026-11-12)"
     }
   ],
   "failed": [],
-  "guardNotes": {},
-  "note": "요약 엔진: Claude Code CLI(구독)",
-  "authError": false,
+  "guardNotes": {
+    "claude-opus-5-5-knowledge-work-daily-driver": [
+      "도식 '지식 노동용 모델 네 가지'의 숫자 ['100만'] 원문에서 확인 안 됨 → 도식 제외"
+    ]
+  },
+  "note": "요약 엔진: Claude Code CLI(구독) | Claude 인증 실패: 토큰(또는 API 키)을 새로 만들어 GitHub Secret을 바꿔 주세요.",
+  "authError": true,
   "guideChanges": [],
-  "styleNotes": {},
-  "techLinks": [
-    "gemini-4-hydrogen-google-search → web-grounding, tool-use, structured-output",
-    "claude-self-hosted-managed-agents → harness, sandboxing",
-    "claude-meetings → voice-agent"
-  ],
+  "styleNotes": {
+    "claude-opus-5-5-knowledge-work-daily-driver": [
+      "문체 다듬기 실패: RuntimeError"
+    ]
+  },
+  "techLinks": [],
   "retired": []
 }

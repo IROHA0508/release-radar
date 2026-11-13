@@ -1,0 +1,248 @@
+{
+  "id": "claude-opus-5-5-knowledge-work-daily-driver",
+  "company": "anthropic",
+  "date": "2026-11-12",
+  "kind": "활용 팁",
+  "title": "지식 노동의 기본 모델로 Opus 5.5 쓰기",
+  "headline": "Anthropic이 Pro·Max·Ultra·Team 요금제의 기본 모델이 된 Opus 5.5를 일상 업무용으로 권하는 이유",
+  "tldr": "Claude Opus 5.5가 Pro, Max, Ultra, Team 요금제의 기본 모델이 됐습니다. Anthropic은 리서치, 분석, 문서·스프레드시트·슬라이드 작성 같은 지식 노동에 Opus 5.5를 켜 두라고 권합니다. 더 유능한 모델은 일을 덜 해도 끝내므로 토큰 단가 차이를 상당 부분 상쇄한다는 설명입니다. 모델 네 개의 쓰임새와 프롬프트 습관도 함께 안내합니다.",
+  "fit": {
+    "summary": "문서, 리서치, 재무 분석, 차트 읽기처럼 판단이 필요한 일상 업무에 Opus 5.5를 기본으로 두고 쓰려는 사람에게 맞습니다.",
+    "good": [
+      "리서치 메모, 차이 분석, 기존 문서를 바탕으로 한 슬라이드 만들기",
+      "긴 계획서·보고서·덱에서 오류와 불일치 찾기",
+      "차트·스크린샷·도식에서 값을 읽어 내는 작업",
+      "인터페이스 시안이나 웹사이트 같은 시각 작업"
+    ],
+    "notFor": [
+      "짧고 범위가 좁은 조회나 대량 요약은 Haiku 5.5가 더 빠르고 쌉니다.",
+      "명확한 지시서가 있는 범위 좁은 작업은 Sonnet 5.5가 더 빠르고 쌉니다.",
+      "수 시간 이어지는 다단계 리서치나 서브에이전트에 맡기는 코딩은 Fable 5.2가 맞습니다."
+    ],
+    "start": "Opus 5.5를 Medium effort로 두고 파일과 완성 결과물의 모습을 한 메시지에 담아 요청해 보세요."
+  },
+  "models": [
+    {
+      "name": "Claude Haiku 5.5",
+      "apiId": null,
+      "input": "$0.10",
+      "output": "$0.50",
+      "cached": null
+    },
+    {
+      "name": "Claude Sonnet 5.5",
+      "apiId": null,
+      "input": "$2",
+      "output": "$10",
+      "cached": null
+    },
+    {
+      "name": "Claude Opus 5.5",
+      "apiId": null,
+      "input": "$4",
+      "output": "$20",
+      "cached": null
+    },
+    {
+      "name": "Claude Fable 5.2",
+      "apiId": null,
+      "input": "$8",
+      "output": "$40",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "리서치 테스트 통과",
+      "value": "18개 중 16개",
+      "note": "저장된 웹 스냅샷만으로 보고서를 쓰고 수치·인용이 하나라도 지어내면 탈락시킨 내부 테스트"
+    },
+    {
+      "label": "재무 모델 과제 소요 시간",
+      "value": "63분",
+      "note": "같은 과제에서 Opus 5는 93분이었고 비용은 절반"
+    },
+    {
+      "label": "권장 시작 effort",
+      "value": "Medium",
+      "note": "코딩·지식 업무 평가에서 Opus 5.5 Medium이 Opus 5 High와 같거나 더 나음"
+    },
+    {
+      "label": "출력 토큰 감소",
+      "value": "20~25%",
+      "note": "Factory 얼리 테스터 평가, Opus 5 High와 같은 결과를 내면서 줄어든 양"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "결과가 기대에 못 미칠 때",
+      "caption": "모델을 바꾸기 전에 effort부터 올립니다.",
+      "steps": [
+        {
+          "label": "Medium으로 시작",
+          "desc": "Opus 5.5 기본값으로 먼저 돌려 봅니다.",
+          "tag": "기본값",
+          "highlight": true
+        },
+        {
+          "label": "effort 올리기",
+          "desc": "Medium에서 막히면 High로 올립니다."
+        },
+        {
+          "label": "모델 올리기",
+          "desc": "그래도 틀리면 상위 모델로 옮깁니다."
+        }
+      ],
+      "loop": "맥락을 주고 제대로 시도했는데도 틀렸다면 그때 상위 모델로 옮깁니다.",
+      "source": {
+        "title": "Which Claude model is best to use for knowledge work (Claude)",
+        "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 성능을 비교한 벤치마크 수치 표가 없어 그래프를 만들지 않았습니다. 가격과 속도 비교는 그림으로 보기에 정리했습니다.",
+  "changes": [
+    "Opus 5.5가 Pro, Max, Ultra, Team 요금제 Claude의 기본 모델이 됐습니다. Anthropic은 이를 지식 노동의 daily driver로 권합니다.",
+    "Sonnet으로 일상 업무를 하고 Opus를 무거운 분석에 아껴 두던 사용자에게 재검토를 권합니다. 유능한 모델은 일을 덜 하고도 끝내서 토큰당 높은 가격을 상당 부분 상쇄하기 때문입니다.",
+    "Opus 5.5는 지시를 정확히 따르고 범위를 지켜서 스프레드시트·슬라이드·문서를 손볼 곳이 적게 내놓습니다. 중요한 정보를 먼저 쓰고 전문 용어를 줄이며 긴 작업에서는 한 일과 필요한 것을 분명히 알려 줍니다.",
+    "Opus 5.5는 Opus 중 비전이 가장 좋습니다. 가장 낮은 effort에서도 빽빽한 차트의 값을 Opus 5가 가장 높은 effort에서 읽은 것보다 정확히 읽었습니다.",
+    "Haiku 5.5는 effort 조절을 갖춘 첫 Haiku 모델입니다. 짧고 범위가 좁은 작업에 맞고 긴 분석은 Opus 5.5로 옮기라고 안내합니다.",
+    "Sonnet 5.5는 높은 effort에서 작업당 비용이 Opus 5.5에 가까워집니다. Extra high나 Max로 쓰고 있다면 Opus 5.5로 바꾸라고 권합니다."
+  ],
+  "availability": [
+    "Opus 5.5는 Pro, Max, Ultra, Team 요금제 Claude의 기본 모델입니다.",
+    "Fable 5.2는 모든 유료 요금제에서 쓸 수 있습니다. 사용량 반영 방식은 요금제마다 다릅니다.",
+    "Pro 요금제와 Team·좌석제 Enterprise의 일반 좌석은 한시적 출시 혜택 기간을 빼면 Fable 5.2가 한도에 포함되지 않아 사용량 크레딧으로 실행됩니다.",
+    "Pro, Max, Ultra, Team에서는 가격이 높은 모델일수록 한도가 더 빨리 소진됩니다.",
+    "Haiku 5.5의 가격은 100k 토큰까지의 프롬프트 기준이고 더 긴 프롬프트는 $0.50 / $2.50입니다."
+  ],
+  "usage": [
+    {
+      "title": "모델과 effort 고르기",
+      "when": "어떤 모델을 기본으로 둘지 정하거나 결과가 아쉬울 때",
+      "steps": [
+        "일상 지식 업무는 Opus 5.5 Medium으로 시작합니다.",
+        "짧고 범위가 좁은 조회와 대량 작업은 Haiku 5.5를 씁니다.",
+        "결과가 아쉬우면 모델을 올리기 전에 먼저 effort를 High로 올립니다.",
+        "맥락을 줬고 제대로 시도했는데도 틀리면 상위 모델로 옮깁니다."
+      ],
+      "note": "effort는 보내기 버튼 옆의 모델 이름을 눌러 Effort에서 바꿉니다.",
+      "source": {
+        "title": "Which Claude model is best to use for knowledge work (Claude)",
+        "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work"
+      }
+    },
+    {
+      "title": "긴 문서 점검 맡기기",
+      "when": "계획서·보고서·덱에 숨은 불일치가 걱정될 때",
+      "steps": [
+        "점검할 문서를 올립니다.",
+        "실수와 불일치를 찾아 달라고 요청합니다.",
+        "덱의 차트가 원본 데이터와 맞는지 같은 구체 항목도 함께 적습니다."
+      ],
+      "note": "Opus 5.5는 덱의 차트가 원본 데이터와 어긋나는 것처럼 긴 문서에서 놓치기 쉬운 세부를 잡습니다.",
+      "example": {
+        "type": "prompt",
+        "text": "첨부한 [보고서·덱]을 읽고 실수와 서로 맞지 않는 내용을 찾아줘. 차트가 원본 데이터와 다른 곳도 확인해줘."
+      },
+      "source": {
+        "title": "Which Claude model is best to use for knowledge work (Claude)",
+        "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work"
+      }
+    },
+    {
+      "title": "완성 상태를 처음에 설명하기",
+      "when": "여러 단계가 필요한 분석을 한 번에 맡길 때",
+      "steps": [
+        "목표를 적습니다.",
+        "원하는 최종 결과물을 적습니다.",
+        "언제 멈추고 물어볼지 알려 줍니다.",
+        "파일은 업로드하거나 커넥터로 연결해 둡니다."
+      ],
+      "note": "지시를 하나씩 내리는 대신 한 메시지에 담는 편이 긴 다단계 작업을 끝까지 끌고 가는 데 낫습니다.",
+      "example": {
+        "type": "prompt",
+        "text": "올해 성장이 많이 둔화됐어. 경영진의 가설 네 가지는 [메모 위치]에 있고 자료는 업로드한 폴더에 다 있어. 각 가설을 데이터로 검증해서 어떤 것이 맞는지 알려줘. 결과는 [원하는 형식]으로 정리해줘."
+      },
+      "source": {
+        "title": "Which Claude model is best to use for knowledge work (Claude)",
+        "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work"
+      }
+    },
+    {
+      "title": "디자인 작업에서 피할 스타일 지정하기",
+      "when": "인터페이스나 웹사이트 시안이 뻔한 모양으로 나올 때",
+      "steps": [
+        "\"뻔한 느낌은 피해줘\" 같은 일반 지시를 빼고 피할 패턴을 구체적으로 적습니다.",
+        "따르게 할 브랜드·문체 가이드를 붙이거나 참고할 덱이 든 폴더를 알려 줍니다.",
+        "몇 차례 수정을 거쳐 맞춥니다."
+      ],
+      "note": "일반적인 지시는 기본 스타일 하나를 다른 기본 스타일로 바꾸는 데 그치는 경향이 있습니다.",
+      "example": {
+        "type": "prompt",
+        "text": "[서비스] 랜딩 페이지 시안을 만들어줘. 크림색 배경과 알약 모양 버튼은 쓰지 마. 첨부한 브랜드 가이드를 따라줘."
+      },
+      "source": {
+        "title": "Which Claude model is best to use for knowledge work (Claude)",
+        "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "모델 올리기 전에 effort 먼저",
+      "body": "결과가 기대에 못 미치면 먼저 effort를 올려 보세요. 맥락을 충분히 줬고 제대로 시도했는데도 틀렸을 때만 상위 모델로 옮깁니다."
+    },
+    {
+      "title": "\"think hard\" 문구는 지우기",
+      "body": "Opus 5.5는 thinking이 항상 켜져 있고 요청과 effort에 맞춰 생각량을 정합니다. Anthropic 테스트에서 이런 문구를 지우자 품질이 뚜렷이 떨어지지 않으면서 답이 더 빨리 시작됐습니다."
+    },
+    {
+      "title": "차트는 옮겨 적지 말고 첨부",
+      "body": "차트, 스크린샷, 도식은 숫자를 프롬프트에 다시 쓰지 말고 그대로 첨부하세요. 이전 모델용 우회법이 이제 필요 없을 수 있습니다."
+    },
+    {
+      "title": "파일과 시스템 연결",
+      "body": "커넥터로 작업 파일과 시스템에 닿게 하면 붙여 넣은 내용에만 의존하지 않고 필요한 자료를 직접 가져옵니다. Team·Enterprise 요금제에서는 소유자가 커넥터를 먼저 켜야 구성원이 쓸 수 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "가설 검증 요청",
+      "when": "흩어진 자료로 원인을 분석하고 싶을 때 (원문 데모 프롬프트를 응용)",
+      "type": "prompt",
+      "text": "올해 [지표]가 많이 둔화됐어. 경영진이 세운 가설 몇 가지는 [메모 위치]에 있어. 내가 가진 자료는 모두 업로드한 폴더에 있어. 각 가설을 데이터로 검증해서 어떤 것이 맞는지 알려줘."
+    },
+    {
+      "title": "완성 파일로 요청하기",
+      "when": "문서나 스프레드시트를 바로 받고 싶을 때",
+      "type": "prompt",
+      "text": "[첨부 파일]을 바탕으로 [보고서 / 스프레드시트 / 슬라이드 덱]을 완성된 파일로 만들어줘. 개요가 아니라 바로 쓸 수 있는 결과물이 필요해. 우리 문체 가이드는 [붙여 넣은 내용]이야."
+    }
+  ],
+  "cautions": [
+    "Opus 5.5 효과를 보여 주는 리서치와 재무 분석 사례는 Anthropic 내부 테스트와 얼리 테스터 평가입니다. 실제 업무에서는 결과가 다를 수 있습니다.",
+    "높은 effort는 더 오래 생각하고 비용도 더 들지만 항상 더 나은 결과를 내지는 않습니다.",
+    "가격이 높은 모델일수록 Pro, Max, Ultra, Team의 한도를 더 빨리 씁니다. Fable 5.2는 일부 요금제에서 사용량 크레딧으로 실행됩니다."
+  ],
+  "sources": [
+    {
+      "title": "Which Claude model is best to use for knowledge work (Claude)",
+      "url": "https://claude.com/resources/articles/using-claude-opus-5-5-as-your-daily-driver-for-knowledge-work"
+    },
+    {
+      "title": "Opus 5.5 개요 (Claude Platform 문서)",
+      "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview"
+    },
+    {
+      "title": "비용과 지능 최적화 (Claude Platform 문서)",
+      "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence"
+    },
+    {
+      "title": "Claude Fable models on your plan (Claude 지원)",
+      "url": "https://support.claude.com/en/articles/15424964-claude-fable-models-on-your-plan"
+    }
+  ]
+}
