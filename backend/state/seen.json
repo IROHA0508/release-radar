@@ -599,6 +599,14 @@
       "status": "added",
       "title": "Talk it through with Gemini, now on Apple CarPlay"
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app": {
+      "checkedAt": "2026-11-14",
+      "company": "google",
+      "date": "2026-11-13",
+      "id": "gemini-google-wallet",
+      "status": "added",
+      "title": "Connect Google Wallet to Gemini for personal finance insights"
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/guided-vision-gemini-live": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -872,6 +880,14 @@
       "id": "claude-fold-subagents-main-agent-loop",
       "status": "added",
       "title": "Building agents: When to fold subagents into your main agent loop"
+    },
+    "https://claude.com/resources/articles/building-always-on-agents": {
+      "checkedAt": "2026-11-14",
+      "company": "anthropic",
+      "date": "2026-11-13",
+      "id": "claude-building-always-on-agents",
+      "status": "added",
+      "title": "Building always-on agents"
     },
     "https://claude.com/resources/articles/claude-code-mods": {
       "checkedAt": "2026-10-07",
@@ -1264,6 +1280,14 @@
       "reason": "Google Cloud 인프라 기술로, AI 모델 사용과 무관한 개발 프레임워크 글",
       "status": "skipped",
       "title": "Now generally available: GKE dynamic slicing for higher resilience, and efficiency for TPUs"
+    },
+    "https://cloud.google.com/blog/products/data-analytics/enterprise-ai-agent-observability-with-bigquery-and-looker": {
+      "checkedAt": "2026-11-14",
+      "company": "google",
+      "date": "2026-11-13",
+      "reason": "BigQuery와 Looker의 에이전트 관찰성·거버넌스는 AI 모델을 쓰는 방식과 무관한 엔터프라이즈 데이터 인프라 거버넌스로, 독자가 새로 써 볼 공식 AI 제품·기능이 아닙니다.",
+      "status": "skipped",
+      "title": "New AI agent observability and governance across BigQuery and Looker"
     },
     "https://cloud.google.com/blog/products/data-analytics/query-enterprise-data-in-gemini-with-data-cloud-connectors": {
       "checkedAt": "2026-11-07",
@@ -2507,6 +2531,14 @@
       "reason": "기업이 ChatGPT에서 자사 정보를 관리하고 고객과 연결하는 비즈니스·광고 플랫폼 공지입니다. 독자가 모델이나 AI 도구를 더 잘 쓰는 방법과 무관해서 제외합니다. Business Agent 후원과 ChatGPT Ads 연계 내용이 있고, 대상도 미국의 이커머스·온라인 서비스 사업자로 한정됩니다.",
       "status": "skipped",
       "title": "Introducing Businesses in ChatGPT"
+    },
+    "https://openai.com/index/introducing-chatgpt-wallet": {
+      "checkedAt": "2026-11-14",
+      "company": "openai",
+      "date": "2026-11-13",
+      "id": "chatgpt-wallet",
+      "status": "added",
+      "title": "Introducing ChatGPT Wallet"
     },
     "https://openai.com/index/introducing-gpt-6-1-terra": {
       "checkedAt": "2026-10-27",

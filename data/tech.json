@@ -243,7 +243,8 @@
         "claude-whiteboards-sheets-data",
         "gemini-intelligence-november-features",
         "gemini-4-hydrogen-google-search",
-        "gemini-argon-z3-go-bug-hunting"
+        "gemini-argon-z3-go-bug-hunting",
+        "chatgpt-wallet"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -446,7 +447,8 @@
         "claude-fold-subagents-main-agent-loop",
         "claude-tag-api",
         "claude-self-hosted-managed-agents",
-        "openai-securing-persistent-agents-openclaw"
+        "openai-securing-persistent-agents-openclaw",
+        "claude-building-always-on-agents"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2440,7 +2442,8 @@
       "status": "관찰",
       "companies": [
         "anthropic",
-        "google"
+        "google",
+        "openai"
       ],
       "prerequisites": [
         "tool-use"
@@ -2478,7 +2481,8 @@
         }
       ],
       "news": [
-        "google-ai-studio-maps-platform"
+        "google-ai-studio-maps-platform",
+        "chatgpt-wallet"
       ],
       "verifiedAt": "2026-10-21"
     },

@@ -38,5 +38,15 @@
     ],
     "company": "google",
     "addedAt": "2026-11-06"
+  },
+  {
+    "name": "상시 실행 에이전트",
+    "en": "Always-on agents",
+    "oneLiner": "이벤트를 기다리며 백그라운드에서 주기적으로 깨어나 일하는 에이전트를 설계하는 아키텍처 패턴입니다.",
+    "news": [
+      "claude-building-always-on-agents"
+    ],
+    "company": "anthropic",
+    "addedAt": "2026-11-14"
   }
 ]
