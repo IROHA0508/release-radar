@@ -1,86 +1,32 @@
 {
-  "startedAt": "2026-11-14T06:03:32+09:00",
+  "startedAt": "2026-11-14T18:35:13+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2662,
+  "entries": 2663,
   "candidates": [
     {
-      "title": "Introducing ChatGPT Wallet",
-      "url": "https://openai.com/index/introducing-chatgpt-wallet",
+      "title": "Shield helps technicians hand off legacy portal work with OpenAI",
+      "url": "https://openai.com/business/customer-stories/shield",
       "company": "openai",
       "date": "2026-11-13",
       "relatedId": null
-    },
-    {
-      "title": "Building always-on agents",
-      "url": "https://claude.com/resources/articles/building-always-on-agents",
-      "company": "anthropic",
-      "date": "2026-11-13",
-      "relatedId": null
-    },
-    {
-      "title": "Connect Google Wallet to Gemini for personal finance insights",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/",
-      "company": "google",
-      "date": "2026-11-13",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "New AI agent observability and governance across BigQuery and Looker",
-      "url": "https://cloud.google.com/blog/products/data-analytics/enterprise-ai-agent-observability-with-bigquery-and-looker/",
-      "company": "google",
-      "date": "2026-11-13",
-      "relatedId": null
     }
   ],
-  "added": [
-    {
-      "id": "chatgpt-wallet",
-      "title": "ChatGPT Wallet",
-      "url": "https://openai.com/index/introducing-chatgpt-wallet",
-      "charts": 0
-    },
-    {
-      "id": "claude-building-always-on-agents",
-      "title": "상시 실행 에이전트를 만드는 다섯 가지 구성 요소",
-      "url": "https://claude.com/resources/articles/building-always-on-agents",
-      "charts": 0
-    },
-    {
-      "id": "gemini-google-wallet",
-      "title": "Google Wallet in Gemini",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/google-wallet-gemini-app/",
-      "charts": 0
-    }
-  ],
+  "added": [],
   "updated": [],
   "skipped": [
     {
-      "title": "New AI agent observability and governance across BigQuery and Looker",
-      "url": "https://cloud.google.com/blog/products/data-analytics/enterprise-ai-agent-observability-with-bigquery-and-looker/",
-      "reason": "BigQuery와 Looker의 에이전트 관찰성·거버넌스는 AI 모델을 쓰는 방식과 무관한 엔터프라이즈 데이터 인프라 거버넌스로, 독자가 새로 써 볼 공식 AI 제품·기능이 아닙니다."
+      "title": "Shield helps technicians hand off legacy portal work with OpenAI",
+      "url": "https://openai.com/business/customer-stories/shield",
+      "reason": "고객 사례. 특정 기업(Shield)이 OpenAI Forge agents를 어떻게 사용했는지 설명하는 내용으로, 판단 기준 '제외' 항목의 '고객 사례'에 해당합니다. 사이트에서 다루는 새 모델 출시·제품·기능 출시·공식 활용 팁과 무관합니다."
     }
   ],
   "failed": [],
-  "guardNotes": {
-    "claude-building-always-on-agents": [
-      "핵심 수치 '인박스 시작 단위: 사용자당 1개' 원문에서 확인 안 됨 → 제외",
-      "핵심 수치 '인박스의 동시 활성 작업자: 1개' 원문에서 확인 안 됨 → 제외"
-    ]
-  },
+  "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {
-    "gemini-google-wallet": [
-      "문체 수정: changes.2",
-      "문체 수정: changes.5"
-    ]
-  },
-  "techLinks": [
-    "chatgpt-wallet → tool-use, tool-design",
-    "claude-building-always-on-agents → harness",
-    "새 기술 후보: 상시 실행 에이전트 (Always-on agents) ← claude-building-always-on-agents"
-  ],
+  "styleNotes": {},
+  "techLinks": [],
   "retired": []
 }

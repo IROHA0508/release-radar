@@ -2180,6 +2180,14 @@
       "status": "skipped",
       "title": "Holiday Extras is rethinking what it can build with Codex"
     },
+    "https://openai.com/business/customer-stories/shield": {
+      "checkedAt": "2026-11-14",
+      "company": "openai",
+      "date": "2026-11-13",
+      "reason": "고객 사례. 특정 기업(Shield)이 OpenAI Forge agents를 어떻게 사용했는지 설명하는 내용으로, 판단 기준 '제외' 항목의 '고객 사례'에 해당합니다. 사이트에서 다루는 새 모델 출시·제품·기능 출시·공식 활용 팁과 무관합니다.",
+      "status": "skipped",
+      "title": "Shield helps technicians hand off legacy portal work with OpenAI"
+    },
     "https://openai.com/form/codex-originals": {
       "checkedAt": "2026-10-03",
       "company": "openai",
