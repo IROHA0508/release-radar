@@ -1,28 +1,12 @@
 {
-  "startedAt": "2026-11-16T09:29:50+09:00",
+  "startedAt": "2026-11-16T12:27:16+09:00",
   "mode": "update",
-  "sourceErrors": {
-    "Google Cloud AI blog": "HTTPError: 500 Server Error: Internal Server Error for url: https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/"
-  },
-  "entries": 2645,
-  "candidates": [
-    {
-      "title": "A step toward defining the Standard Model on a lattice",
-      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
-      "company": "openai",
-      "date": "2026-11-15",
-      "relatedId": null
-    }
-  ],
+  "sourceErrors": {},
+  "entries": 2665,
+  "candidates": [],
   "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "A step toward defining the Standard Model on a lattice",
-      "url": "https://openai.com/index/step-toward-defining-the-standard-model",
-      "reason": "모델 출시와 무관한 기초 물리학 연구 보고서. 특정 학문 분야의 사례 연구로 독자가 직접 따라 할 수 있는 공식 활용 팁이나 제품·기능 출시가 아님."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
