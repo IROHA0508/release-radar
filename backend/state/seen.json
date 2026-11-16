@@ -2820,6 +2820,14 @@
       "status": "skipped",
       "title": "Stack Overflow for Agents triples signups with ChatGPT plugin"
     },
+    "https://openai.com/index/step-toward-defining-the-standard-model": {
+      "checkedAt": "2026-11-16",
+      "company": "openai",
+      "date": "2026-11-15",
+      "reason": "모델 출시와 무관한 기초 물리학 연구 보고서. 특정 학문 분야의 사례 연구로 독자가 직접 따라 할 수 있는 공식 활용 팁이나 제품·기능 출시가 아님.",
+      "status": "skipped",
+      "title": "A step toward defining the Standard Model on a lattice"
+    },
     "https://openai.com/index/ted-taylor-restaurant": {
       "checkedAt": "2026-10-21",
       "company": "openai",
