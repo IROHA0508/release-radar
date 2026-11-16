@@ -1,12 +1,26 @@
 {
-  "startedAt": "2026-11-16T12:27:16+09:00",
+  "startedAt": "2026-11-16T19:16:30+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2665,
-  "candidates": [],
+  "entries": 2666,
+  "candidates": [
+    {
+      "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
+      "url": "https://openai.com/index/lvmh-media-division-partnership",
+      "company": "openai",
+      "date": "2026-11-16",
+      "relatedId": null
+    }
+  ],
   "added": [],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "LVMH’s Media Division announces strategic partnership with OpenAI",
+      "url": "https://openai.com/index/lvmh-media-division-partnership",
+      "reason": "기업 파트너십(LVMH 미디어 부문과 OpenAI) 발표로, 포함 기준의 새 모델 출시·업데이트, AI 제품·기능 출시, 공식 활용 팁에 해당하지 않습니다. 판단 기준의 '제외' 항목 중 '기업 파트너십'에 해당합니다."
+    }
+  ],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
