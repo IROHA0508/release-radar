@@ -631,6 +631,14 @@
       "status": "added",
       "title": "New Gemini tools for small business owners"
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices": {
+      "checkedAt": "2026-11-17",
+      "company": "google",
+      "date": "2026-11-16",
+      "id": "gemini-app-regional-voices",
+      "status": "added",
+      "title": "Regional voices are rolling out in the Gemini app."
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/research-with-gemini-in-chrome": {
       "checkedAt": "2026-11-13",
       "company": "google",
@@ -1543,6 +1551,14 @@
       "status": "skipped",
       "title": "Agent Distraction"
     },
+    "https://developers.googleblog.com/agents-are-sessions-not-requests-size-gke-node-pools-for-ai-agent-sessions": {
+      "checkedAt": "2026-11-17",
+      "company": "google",
+      "date": "2026-11-16",
+      "reason": "GKE 쿠버네티스 최적화로 개발 프레임워크·인프라 글",
+      "status": "skipped",
+      "title": "Agents are sessions, not requests: size GKE node pools for AI agent sessions"
+    },
     "https://developers.googleblog.com/announcing-adk-for-kotlin-10-building-production-ready-ai-agents-in-kotlin-android-and-beyond": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1805,6 +1821,14 @@
       "status": "old",
       "title": "Reproducing Olmo 3 7B Pre-training in MaxText: case study of large scale training on TPUs- Google Developers Blog"
     },
+    "https://developers.googleblog.com/securing-your-agents-a-hands-on-guide-to-agent-anomaly-detection": {
+      "checkedAt": "2026-11-17",
+      "company": "google",
+      "date": "2026-11-16",
+      "id": "google-agent-anomaly-detection-guide",
+      "status": "added",
+      "title": "Securing Your Agents: A Hands-On Guide to Agent Anomaly Detection"
+    },
     "https://developers.googleblog.com/smaller-apps-and-faster-gpu-inference-with-litert-in-google-play-services": {
       "checkedAt": "2026-10-29",
       "company": "google",
@@ -1859,6 +1883,14 @@
       "reason": "google/adk-recipes 저장소를 소개하는 둘러보기 글입니다. 새 모델 출시나 모델 업데이트가 아니고, 가격이나 사용 가능 범위가 크게 바뀐 내용도 없습니다. Gemini 앱이나 Gemini API 같은 공식 도구를 더 잘 쓰는 법이나 프롬프트 가이드도 아닙니다. 저장소 구조와 설치 명령을 보여 주는 개발자 도구 소개이고, 원문도 공식 지원 제품이 아니라 시연용 시작점이라고 밝힙니다.",
       "status": "skipped",
       "title": "Three layers, one repo: a tour of google/adk-recipes"
+    },
+    "https://developers.googleblog.com/tpu-model-design-considerations-and-optimization-guide": {
+      "checkedAt": "2026-11-17",
+      "company": "google",
+      "date": "2026-11-16",
+      "reason": "TPU 하드웨어 최적화 가이드로 인프라·하드웨어 글",
+      "status": "skipped",
+      "title": "TPU Model Design Considerations and Optimization Guide"
     },
     "https://developers.googleblog.com/turn-your-rest-apis-into-mcp-tools-with-google-cloud-api-gateway": {
       "checkedAt": "2026-10-03",
@@ -1952,6 +1984,14 @@
       "id": "images-2-6",
       "status": "updated",
       "title": "Feature · Model: gpt-image-2.6-sunburst · Model: gpt-image-2.6-flare · API: v1/images/generations · API: v1/images/edits"
+    },
+    "https://developers.openai.com/api/docs/changelog#2026-11-16-dd10bc0c": {
+      "checkedAt": "2026-11-17",
+      "company": "openai",
+      "date": "2026-11-16",
+      "reason": "CSAM 모니터링 기능으로 승인된 조직만 사용 가능하고 정책·규제 관련",
+      "status": "skipped",
+      "title": "Feature · Model: omni-moderation-csam-latest · API: v1/moderations"
     },
     "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps": {
       "checkedAt": "2026-10-03",
@@ -2203,6 +2243,14 @@
       "reason": "고객 사례 및 특정 업종(엔지니어링) 마케팅. 새 모델, 기능, 가격 변경이 아님.",
       "status": "skipped",
       "title": "Accelerating engineering for the physical world"
+    },
+    "https://openai.com/index/advancing-computer-use-for-healthcare-teams": {
+      "checkedAt": "2026-11-17",
+      "company": "openai",
+      "date": "2026-11-16",
+      "reason": "원문 본문을 가져오지 못했습니다. 페이지가 500 Internal Server Error를 반환해 제목 외에 발표 내용이 없습니다. 제목만으로는 사실을 쓸 수 없고, 헬스케어 팀 대상 글이면 업종 마케팅일 수도 있습니다. 원문이 정상으로 열리면 다시 판단해야 합니다.",
+      "status": "skipped",
+      "title": "Advancing computer-use agents for healthcare teams"
     },
     "https://openai.com/index/advancing-computer-use-with-ironclad": {
       "checkedAt": "2026-10-07",
@@ -2468,6 +2516,14 @@
       "status": "skipped",
       "title": "Disrupting a coordinated model-distillation campaign"
     },
+    "https://openai.com/index/expanding-chatgpt-for-academic-researchers": {
+      "checkedAt": "2026-11-17",
+      "company": "openai",
+      "date": "2026-11-16",
+      "reason": "학계 프로그램 확대로 모델 출시나 새로운 기능과 무관한 요금제 사업 공지",
+      "status": "skipped",
+      "title": "Broadening access to AI for scientists"
+    },
     "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security": {
       "checkedAt": "2026-10-27",
       "company": "openai",
@@ -2652,6 +2708,14 @@
       "status": "skipped",
       "title": "Merge builds product and business tools with OpenAI technology"
     },
+    "https://openai.com/index/more-ways-to-move-care-forward-with-chatgpt-for-healthcare": {
+      "checkedAt": "2026-11-17",
+      "company": "openai",
+      "date": "2026-11-16",
+      "reason": "원문 본문이 500 Internal Server Error 페이지라 ChatGPT for Healthcare의 실제 내용을 확인할 수 없습니다. 근거 없이 쓰지 않고 건너뜁니다. 의료 기관 대상 제품이라 업종 특화 글일 가능성도 있습니다.",
+      "status": "skipped",
+      "title": "More ways to move care forward with ChatGPT for Healthcare"
+    },
     "https://openai.com/index/new-chatgpt-ads-format-and-measurement": {
       "checkedAt": "2026-10-06",
       "company": "openai",
@@ -2707,6 +2771,14 @@
       "reason": "기업 파트너십 공지. OpenAI와 Oracle 간 비즈니스 파트너십으로, 지침의 제외 대상입니다.",
       "status": "skipped",
       "title": "OpenAI expands partnership with Oracle to bring its apps to ChatGPT"
+    },
+    "https://openai.com/index/our-first-phase-of-embedded-assessments": {
+      "checkedAt": "2026-11-17",
+      "company": "openai",
+      "date": "2026-11-16",
+      "reason": "모델 정렬 평가 발표로 모델 출시와 무관한 안전 보고서",
+      "status": "skipped",
+      "title": "Our first phase of embedded assessments"
     },
     "https://openai.com/index/pollo-ai": {
       "checkedAt": "2026-10-09",
@@ -2788,6 +2860,14 @@
       "status": "skipped",
       "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)"
     },
+    "https://openai.com/index/science-at-the-frontier": {
+      "checkedAt": "2026-11-17",
+      "company": "openai",
+      "date": "2026-11-16",
+      "reason": "과학자의 ChatGPT 사용 사례 보고서로 모델 출시와 무관한 고객 사례 연구",
+      "status": "skipped",
+      "title": "Science at the Frontier: How scientists use ChatGPT"
+    },
     "https://openai.com/index/securing-our-frontier-model-training-environment": {
       "checkedAt": "2026-10-24",
       "company": "openai",
@@ -2867,6 +2947,14 @@
       "reason": "고객 사례",
       "status": "skipped",
       "title": "The Den frees up 10-15 hours a week to grow with ChatGPT Work"
+    },
+    "https://openai.com/index/the-kings-trust-and-openai": {
+      "checkedAt": "2026-11-17",
+      "company": "openai",
+      "date": "2026-11-16",
+      "reason": "기업 파트너십으로 모델 출시와 무관",
+      "status": "skipped",
+      "title": "The King’s Trust and OpenAI launch £1m partnership"
     },
     "https://openai.com/index/third-moment-research": {
       "checkedAt": "2026-10-15",
@@ -3099,6 +3187,14 @@
       "reason": "이미 사이트에 있는 소식(claude-self-hosted-managed-agents, 2026-11-12)",
       "status": "skipped",
       "title": "We’ve launched self-hosted Claude Managed Agents."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-16-31fccfaa": {
+      "checkedAt": "2026-11-17",
+      "company": "anthropic",
+      "date": "2026-11-16",
+      "reason": "Claude 모델의 텍스트 워터마크 추가로 정책·규제 관련 기능",
+      "status": "skipped",
+      "title": "Text generated by Claude Opus 4.6, Claude Opus 4.5, Claude Sonnet 4.5, and Claude Haiku 4.5 carries Anthropic’s text watermark on supported platforms."
     }
   }
 }

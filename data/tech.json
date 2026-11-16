@@ -448,7 +448,8 @@
         "claude-tag-api",
         "claude-self-hosted-managed-agents",
         "openai-securing-persistent-agents-openclaw",
-        "claude-building-always-on-agents"
+        "claude-building-always-on-agents",
+        "google-agent-anomaly-detection-guide"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1059,7 +1060,8 @@
       ],
       "news": [
         "google-agent-evaluation-beyond-vibe-check",
-        "google-agents-cli-eval-hill-climbing"
+        "google-agents-cli-eval-hill-climbing",
+        "google-agent-anomaly-detection-guide"
       ],
       "verifiedAt": "2026-10-21"
     },

@@ -1,0 +1,199 @@
+{
+  "id": "google-agent-anomaly-detection-guide",
+  "company": "google",
+  "date": "2026-11-16",
+  "kind": "활용 팁",
+  "title": "Agent Anomaly Detection으로 에이전트의 범위 이탈 잡아내기",
+  "headline": "샘플 에이전트로 첫 이상 탐지 결과와 알림까지 확인하는 실습 가이드",
+  "tldr": "Gemini Platform의 Agent Anomaly Detection은 에이전트가 이미 남기는 트레이스와 로그를 읽어 맡은 일을 벗어난 세션을 찾아냅니다. Google은 고객 지원 샘플 에이전트를 배포하고 정상 대화와 범위 밖 대화를 하나씩 보내 첫 탐지 결과와 알림까지 확인하는 과정을 안내합니다. 현재 Private Preview라 프로젝트 승인이 필요합니다.",
+  "fit": {
+    "summary": "운영 중인 에이전트에 붙이기 전에 테스트 환경에서 이상 행동 탐지가 어떻게 동작하는지 먼저 확인하고 싶을 때 맞는 가이드입니다.",
+    "good": [
+      "도구 권한이 넓은 에이전트가 범위를 벗어난 요청을 처리하는지 점검하는 일",
+      "시스템 오류 없이 진행돼 놓치기 쉬운 에이전트 오동작을 감시하는 일",
+      "탐지 결과를 Cloud Monitoring과 Security Command Center 알림으로 연결하는 일"
+    ],
+    "notFor": [
+      "Private Preview 승인을 받지 않은 프로젝트",
+      "프롬프트와 응답 내용을 Cloud Trace와 Cloud Logging에 내보내기 어려운 환경",
+      "US·EU 멀티 리전 밖에 로그를 두어야 하는 경우"
+    ],
+    "start": "샘플 에이전트를 배포할 때 텔레메트리 환경 변수 세 개를 켜고 배포 직후 테스트 메시지를 한 번 보냅니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "탐지 설정 소요 시간",
+      "value": "약 30분",
+      "note": "콘솔에서 Enable 한 뒤 설정이 끝나기까지"
+    },
+    {
+      "label": "샘플 에이전트 배포",
+      "value": "5~10분",
+      "note": "Step 1 배포 셀 기준"
+    },
+    {
+      "label": "세션 분석",
+      "value": "5분 이내",
+      "note": "보낸 세션을 스캔해 결과를 표시"
+    },
+    {
+      "label": "첫 탐지 결과",
+      "value": "Tool misuse, High, 95%",
+      "note": "Google이 실행한 결과이며 탐지기와 심각도는 달라질 수 있음"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "첫 이상 탐지까지의 순서",
+      "caption": "원문 Step 1~5를 순서대로 옮긴 도식입니다.",
+      "steps": [
+        {
+          "label": "샘플 에이전트 배포",
+          "desc": "텔레메트리를 켜고 배포한 뒤 테스트 메시지 한 번 전송",
+          "tag": "Step 1"
+        },
+        {
+          "label": "탐지 켜기",
+          "desc": "로그 버킷과 Observability 데이터셋을 고르고 Enable",
+          "tag": "Step 2"
+        },
+        {
+          "label": "세션 두 개 전송",
+          "desc": "정상 대화 하나와 범위 밖 대화 하나",
+          "tag": "Step 3"
+        },
+        {
+          "label": "탐지 결과 읽기",
+          "desc": "세션 상세 화면에서 탐지기와 권고 확인",
+          "tag": "Step 4",
+          "highlight": true
+        },
+        {
+          "label": "알림 연결",
+          "desc": "Cloud Monitoring과 Security Command Center",
+          "tag": "Step 5"
+        }
+      ],
+      "source": {
+        "title": "Securing Your Agents: A Hands-On Guide to Agent Anomaly Detection (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/securing-your-agents-a-hands-on-guide-to-agent-anomaly-detection/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프는 만들지 않았습니다.",
+  "changes": [
+    "Agent Anomaly Detection은 에이전트가 이미 만드는 트레이스와 로그를 읽어 맡은 일을 벗어난 세션을 표시합니다.",
+    "예시 에이전트는 모든 테이블을 읽을 수 있는 fetch_records 도구를 일부러 열어 두었습니다. payroll 테이블의 직원 정보까지 읽히는 구조입니다.",
+    "에이전트를 탐지 대상으로 만들려면 환경 변수 세 개로 텔레메트리를 켜고 프롬프트·응답 내용을 Cloud Logging에 남깁니다.",
+    "세션 상세 화면은 세션(왼쪽), 대화(가운데), 세부 정보(오른쪽) 세 영역으로 나뉩니다. 세부 정보에는 탐지기별 심각도, 확률, 이유, 권고가 나옵니다.",
+    "탐지 건은 Cloud Monitoring 지표 두 개(Detected events, Monitored agents)와 Security Command Center의 AGENT_SESSION_ANOMALY 결과로도 확인합니다."
+  ],
+  "availability": [
+    "Private Preview이며 승인된 Google Cloud 프로젝트와 결제 설정이 필요합니다.",
+    "ADK for Python 1.2 이상 에이전트와 호환되고 2.0 이상을 권장합니다.",
+    "Cloud Logging 버킷과 Observability 데이터셋이 같은 US 또는 EU 멀티 리전에 있어야 합니다.",
+    "프롬프트·응답 내용 내보내기는 현재 US와 EU 멀티 리전만 지원합니다."
+  ],
+  "usage": [
+    {
+      "title": "샘플 에이전트를 탐지 대상으로 배포하기",
+      "when": "탐지가 에이전트를 인식하도록 텔레메트리를 처음 켤 때",
+      "steps": [
+        "배포 환경 변수 세 개를 설정해 텔레메트리와 메시지 내용 기록을 켭니다.",
+        "Agent Runtime에 배포합니다.",
+        "배포 직후 테스트 메시지를 한 번 보냅니다. 요청을 처리한 적 없는 에이전트는 Monitored agents에 나타나지 않습니다.",
+        "Agent Deployments 페이지에서 Configure를 눌러 Observability 설정을 확인합니다."
+      ],
+      "note": "예시 도구는 일부러 과하게 열어 둔 것이라 운영 환경에 그대로 쓰면 안 됩니다.",
+      "example": {
+        "type": "code",
+        "text": "DEPLOY_ENV_VARS = {\n    \"GOOGLE_CLOUD_AGENT_ENGINE_ENABLE_TELEMETRY\": \"true\",\n    \"OTEL_SEMCONV_STABILITY_OPT_IN\": \"gen_ai_latest_experimental\",\n    \"OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT\": \"EVENT_ONLY\",\n}"
+      },
+      "source": {
+        "title": "Securing Your Agents: A Hands-On Guide to Agent Anomaly Detection (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/securing-your-agents-a-hands-on-guide-to-agent-anomaly-detection/"
+      }
+    },
+    {
+      "title": "탐지를 켜고 첫 이상 세션 읽기",
+      "when": "에이전트 배포를 마치고 탐지 결과를 처음 볼 때",
+      "steps": [
+        "Agent Platform > Agents > Audit 페이지에서 Enable을 누릅니다.",
+        "같은 리전의 로그 버킷과 Observability 데이터셋을 고르고 Automatically monitor new agents를 켠 뒤 Agree and continue를 누릅니다.",
+        "설정이 끝나면 Settings > Monitored agents에서 에이전트가 Active인지 확인합니다.",
+        "정상 대화와 범위 밖 대화를 각각 별도 세션으로 보냅니다.",
+        "랜딩 페이지에서 이상 세션의 ID를 눌러 상세 화면에서 탐지기와 권고를 읽습니다."
+      ],
+      "note": "Active가 되기 전에 시작한 세션은 분석되지 않습니다.",
+      "source": {
+        "title": "Securing Your Agents: A Hands-On Guide to Agent Anomaly Detection (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/securing-your-agents-a-hands-on-guide-to-agent-anomaly-detection/"
+      }
+    },
+    {
+      "title": "이상 탐지 알림 만들기",
+      "when": "콘솔을 계속 보지 않고 새 이상을 통보받고 싶을 때",
+      "steps": [
+        "Monitoring > Alerting에서 Create policy를 누르고 Detected events 지표를 고릅니다.",
+        "필터를 비운 채 롤링 윈도우 5분, delta 함수, 임곗값 0 초과로 설정합니다.",
+        "무엇이 정상인지 파악한 뒤에는 High나 Critical 같은 심각도 필터를 추가합니다.",
+        "Monitored agents에 지표 부재 정책을 걸어 모니터링이 멈췄을 때도 알림을 받습니다."
+      ],
+      "note": "Security Command Center가 조직에 켜져 있으면 같은 이상이 AGENT_SESSION_ANOMALY 결과로도 올라옵니다.",
+      "source": {
+        "title": "Securing Your Agents: A Hands-On Guide to Agent Anomaly Detection (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/securing-your-agents-a-hands-on-guide-to-agent-anomaly-detection/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "텔레메트리를 먼저 켜세요",
+      "body": "탐지는 에이전트의 텔레메트리로 대상을 찾습니다. 프롬프트·응답 내용을 Cloud Trace와 Cloud Logging에 내보내도록 설정해야 합니다."
+    },
+    {
+      "title": "결과를 읽는 순서",
+      "body": "세션 전체 심각도를 본 다음 호출 단위 분석을 열어 보세요. 예시에서는 호출 하나하나가 Medium이었지만 합치면 세션이 High가 됐습니다."
+    },
+    {
+      "title": "도구 권한부터 좁히세요",
+      "body": "예시의 권고는 fetch_records 도구가 특정 테이블만 읽도록 제한하는 것이었습니다. 탐지는 도구 권한과 가드레일을 통과한 세션을 잡는 보완책입니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "범위 밖 대화 점검용 질문 예시",
+      "when": "자기 에이전트의 테스트 환경에서 범위 이탈 탐지를 시험할 때",
+      "type": "prompt",
+      "text": "안녕하세요, 고객 [고객 ID]입니다. 제 최근 주문을 보여 주세요.\n[존재하지 않는 테이블 이름] 테이블에서 제 결제 내역도 확인해 주세요.\n[민감 정보가 든 테이블 이름] 테이블에는 누가 있나요?"
+    },
+    {
+      "title": "탐지 결과 해석 요청",
+      "when": "탐지 결과 화면의 이유와 권고를 팀에 공유할 정리로 만들 때",
+      "type": "prompt",
+      "text": "아래는 Agent Anomaly Detection의 세션 결과입니다. 탐지기 이름, 심각도, 확률, 탐지 이유, 권고 조치를 표로 정리하고 우리 에이전트의 도구 권한이나 시스템 지침에서 무엇을 고칠지 세 줄로 요약해 줘.\n\n[세션 상세 내용]"
+    }
+  ],
+  "cautions": [
+    "탐지에 쓰는 모델이 비결정적이라 탐지기와 심각도는 실행마다 다를 수 있습니다.",
+    "예시 도구는 과하게 열린 구조를 보여 주려는 것이라 운영 환경에 복사하면 안 됩니다.",
+    "사용하려면 Private Preview 접근 승인이 필요하고 필요한 권한과 API 목록은 공식 문서에서 확인해야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "Securing Your Agents: A Hands-On Guide to Agent Anomaly Detection (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/securing-your-agents-a-hands-on-guide-to-agent-anomaly-detection/"
+    },
+    {
+      "title": "Agent Anomaly Detection 문서",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/agent-anomalies-overview"
+    },
+    {
+      "title": "Agent Anomaly Detection 실습 노트북",
+      "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_agent_anomaly_detection.ipynb"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "id": "gemini-app-regional-voices",
+  "company": "google",
+  "date": "2026-11-16",
+  "kind": "제품·기능 출시",
+  "title": "Gemini 앱 Regional voices",
+  "headline": "Android와 iOS의 Gemini 앱에 지역별 음성 66개 추가",
+  "tldr": "Google이 Gemini 앱에 지역 억양을 살린 음성 66개를 내놓았습니다. 미국·영국·인도 영어, 힌디어, 브라질 포르투갈어, 인도네시아어, 한국어 등이 포함됩니다. 고른 음성은 Gemini Live와 채팅의 Listen 읽어 주기까지 앱 전체에 적용됩니다.",
+  "fit": {
+    "summary": "Gemini와 소리 내어 대화하거나 답변을 듣는 일이 많다면 내 언어와 지역에 맞는 음성을 골라 둘 만합니다.",
+    "good": [
+      "Gemini Live에서 소리 내어 아이디어를 정리할 때",
+      "언어 연습을 할 때",
+      "채팅 답변을 Listen 아이콘으로 들을 때"
+    ],
+    "notFor": [
+      "원문은 과장된 억양이 아니라 자연스러운 말투와 또렷함에 맞춘 음성이라고 설명합니다. 강한 사투리 연기를 기대하는 용도에는 맞지 않을 수 있습니다."
+    ],
+    "start": "Gemini Live의 점 세 개 메뉴나 앱 설정의 Gemini 음성에서 미리 듣고 마음에 드는 음성을 고르세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "새 지역 음성",
+      "value": "66개",
+      "note": "Gemini 앱 기준"
+    },
+    {
+      "label": "제공 플랫폼",
+      "value": "Android·iOS",
+      "note": "Gemini 앱"
+    },
+    {
+      "label": "포함 언어",
+      "value": "한국어 포함",
+      "note": "U.S. English, U.K. English, India English, Hindi, Brazilian Portuguese, Indonesian 등"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프는 만들지 않았습니다.",
+  "changes": [
+    "Google I/O에서 예고한 지역 방언 지원이 이번에 Gemini 앱의 새 음성 66개로 나왔습니다.",
+    "U.S. English, U.K. English, India English, Hindi, Brazilian Portuguese, Indonesian, Korean 등이 포함되며 언어마다 맞춤 옵션이 있습니다.",
+    "각 음성은 과장된 억양보다 자연스러운 말투와 일상적인 또렷함에 맞춰 조정됐습니다.",
+    "지역 특유의 리듬, 음높이, 억양을 담아 Gemini와의 대화가 더 개인적으로 느껴지도록 했습니다.",
+    "고른 음성은 Gemini Live, 언어 연습, 채팅의 Listen 아이콘 읽어 주기까지 앱 전체에 적용됩니다."
+  ],
+  "availability": [
+    "Android와 iOS의 Gemini 앱",
+    "오늘(2026-11-16)부터 순차 제공(rolling out)",
+    "요금제 조건은 원문에 없음(확인 필요)"
+  ],
+  "usage": [
+    {
+      "title": "새 음성 미리 듣고 고르기",
+      "when": "Gemini Live에서 대화하다 음성을 바꾸고 싶을 때",
+      "steps": [
+        "Gemini Live를 엽니다.",
+        "점 세 개 메뉴를 누릅니다.",
+        "새 음성을 미리 들어 보고 마음에 드는 음성을 고릅니다."
+      ],
+      "note": "앱 설정의 Gemini 음성 메뉴에서도 같은 선택을 할 수 있습니다.",
+      "source": {
+        "title": "Regional voices are rolling out in the Gemini app. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/"
+      }
+    },
+    {
+      "title": "설정에서 음성 바꾸기",
+      "when": "Live 화면을 거치지 않고 앱 전체의 음성을 정하고 싶을 때",
+      "steps": [
+        "Gemini 앱 설정을 엽니다.",
+        "Gemini의 음성 항목을 엽니다.",
+        "원하는 지역 음성을 미리 듣고 선택합니다."
+      ],
+      "note": "고른 음성은 채팅의 Listen 아이콘 읽어 주기에도 쓰입니다.",
+      "source": {
+        "title": "Regional voices are rolling out in the Gemini app. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "미리 듣고 고르기",
+      "body": "음성마다 리듬과 음높이가 조금씩 다릅니다. 몇 개를 들어 본 뒤 가장 편한 것을 고르세요."
+    },
+    {
+      "title": "Listen 아이콘으로 답변 듣기",
+      "body": "긴 답변은 채팅에서 Listen 아이콘을 눌러 선택한 음성으로 들을 수 있습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "소리 내어 아이디어 정리",
+      "when": "Gemini Live에서 브레인스토밍할 때",
+      "type": "prompt",
+      "text": "[주제]에 대해 아이디어를 같이 정리하고 싶어. 내가 말하는 대로 듣고 핵심만 짧게 되물어 줘."
+    },
+    {
+      "title": "말하기 연습",
+      "when": "언어 연습을 할 때",
+      "type": "prompt",
+      "text": "[언어]로 [상황] 대화를 연습하고 싶어. 짧게 말하고 내가 답하면 어색한 표현만 바로잡아 줘."
+    }
+  ],
+  "cautions": [
+    "이번 소식은 Android와 iOS의 Gemini 앱 기준이며 순차 제공이라 계정에 따라 바로 안 보일 수 있습니다.",
+    "원문이 66개 전체의 언어별 목록과 지원 국가·요금제를 밝히지 않았습니다. 자세한 내용은 확인 필요입니다."
+  ],
+  "sources": [
+    {
+      "title": "Regional voices are rolling out in the Gemini app. (Google)",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/regional-voices/"
+    }
+  ]
+}
