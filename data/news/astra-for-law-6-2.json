@@ -1,0 +1,264 @@
+{
+  "id": "astra-for-law-6-2",
+  "company": "openai",
+  "date": "2026-11-17",
+  "kind": "모델 업데이트",
+  "title": "Astra for Law",
+  "headline": "Harvey LAB-AA 1위, 중대한 환각은 Claude Opus 5.5의 1/20 수준인 법률 특화 구성",
+  "tldr": "Astra for Law는 GPT-6.2 Astra에 확장한 법률 검색 인덱스와 조사·판단·작성 지침을 묶은 모델 구성입니다. 업데이트 버전은 Harvey LAB-AA에서 1위(20.8%)를 기록했고 Vals AI Legal Research Bench에서는 9월 약 46%에서 53.8%로 올랐습니다. 이제 모든 ChatGPT Enterprise 고객이 Trusted Access Program으로 접근을 요청할 수 있습니다.",
+  "fit": {
+    "summary": "법률 조사, 서면 작성, 계약·규정 검토처럼 근거 인용의 정확도가 중요한 법무 업무에 맞춘 구성입니다.",
+    "good": [
+      "미국 연방·주법 판례 조사와 쟁점 정리",
+      "준비서면 초안 작성",
+      "규정과 사내 정책을 업무 흐름으로 바꾸는 일",
+      "내 주장에 가장 강한 반론을 세워 보는 스파링 상대"
+    ],
+    "notFor": [
+      "ChatGPT Enterprise 고객이 아니거나 Trusted Access Program 승인을 받지 못한 경우",
+      "일반 업무용으로는 GPT-6.2 Astra를 쓰는 편이 낫습니다. Astra for Law는 법률 업무용 구성입니다."
+    ],
+    "start": "ChatGPT Enterprise 관리자 콘솔의 Trusted Access Program에서 접근을 요청하고 승인된 뒤 ChatGPT에서 gpt-6.2-astra-law를 고릅니다."
+  },
+  "models": [
+    {
+      "name": "Astra for Law",
+      "apiId": "gpt-6.2-astra-law",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "LAB-AA 전체 점수 과제 비율",
+      "value": "20.8%",
+      "note": "GPT-6.2 Astra 15.0%, Muse Wonder Full 13.1%"
+    },
+    {
+      "label": "과제당 중대한 환각",
+      "value": "0.03건",
+      "note": "Claude Opus 5.5는 0.59건"
+    },
+    {
+      "label": "Vals AI Legal Research Bench",
+      "value": "53.8%",
+      "note": "9월 약 46%에서 두 달 안에 약 8%p 상승, 208문항 중 112문항"
+    },
+    {
+      "label": "법률 검색 인덱스",
+      "value": "3.1억 개 이상 URL",
+      "note": "9월 이후 34% 확대, 8천만 개 이상 URL 추가"
+    }
+  ],
+  "chartSource": "OpenAI 발표문과 Artificial Analysis의 LAB-AA, Harvey LAB·LAB: USCL, Vals AI Legal Research Bench 수치 기준입니다.",
+  "charts": [
+    {
+      "title": "Harvey LAB-AA 전체 점수 과제 비율",
+      "desc": "120개 과제 중 모든 요건을 충족하고 환각이 없어 전체 점수를 받은 비율",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "Artificial Analysis",
+      "rows": [
+        {
+          "label": "Astra for Law",
+          "value": 20.8,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6.2 Astra",
+          "value": 15
+        },
+        {
+          "label": "Muse Wonder Full",
+          "value": 13.1
+        }
+      ]
+    },
+    {
+      "title": "과제당 중대한 환각 수",
+      "desc": "LAB-AA 120개 과제 기준, 낮을수록 좋음",
+      "type": "bar",
+      "unit": "",
+      "lowerIsBetter": true,
+      "source": "Artificial Analysis",
+      "note": "Astra for Law는 GPT-6와 공동 최저",
+      "rows": [
+        {
+          "label": "Astra for Law",
+          "value": 0.03,
+          "highlight": true
+        },
+        {
+          "label": "GPT-6.2 Astra",
+          "value": 0.06
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 0.59
+        }
+      ]
+    },
+    {
+      "title": "LAB: USCL 연구 후 작성",
+      "desc": "모델이 직접 판례를 찾아 서면을 쓰는 버전 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Harvey, Grubel",
+      "rows": [
+        {
+          "label": "Astra for Law",
+          "value": 1844,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 1817
+        }
+      ]
+    },
+    {
+      "title": "LAB: USCL 판례 제공",
+      "desc": "기록과 원 변호사가 인용한 판례를 받는 버전 (Elo)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Harvey, Grubel",
+      "note": "사실상 동점",
+      "rows": [
+        {
+          "label": "Astra for Law",
+          "value": 1883,
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5.5",
+          "value": 1882
+        }
+      ]
+    },
+    {
+      "title": "Harvey LAB 전체 점수 과제 비율",
+      "desc": "Harvey 자체 LAB에서 모든 요건을 충족한 과제 비율",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "Harvey LAB",
+      "note": "LAB-AA와는 별개의 시험",
+      "rows": [
+        {
+          "label": "GPT-6 Astra",
+          "value": 4.6
+        },
+        {
+          "label": "GPT-6.2 Astra",
+          "value": 14.6
+        },
+        {
+          "label": "Astra for Law",
+          "value": 16.2,
+          "highlight": true
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "법률 추론을 개선하고 법률 검색 인덱스를 9월보다 34% 넓혀 3억 1천만 개 이상 URL을 담았습니다. 영국, 호주, 캐나다 같은 해외 관할도 포함합니다.",
+    "인덱스는 공개된 미국 선례 판례법의 99.9% 이상을 다룹니다.",
+    "LAB-AA에서 과제당 평균 출력 토큰이 약 64,000개로 Muse Wonder Full의 139,000개보다 54% 적었습니다.",
+    "Vals AI Legal Research Bench에서 부분 점수를 포함해 전체 점수의 90.9%를 얻었습니다.",
+    "Trusted Access Program으로 모든 ChatGPT Enterprise 고객이 API를 포함해 접근을 요청할 수 있게 됐습니다."
+  ],
+  "availability": [
+    "ChatGPT Enterprise 관리자 콘솔의 Trusted Access Program에서 요청합니다.",
+    "이미 접근 권한이 있으면 ChatGPT에서 gpt-6.2-astra-law를 선택합니다.",
+    "API 접근은 OpenAI의 법률 영업 문의 양식으로 요청합니다."
+  ],
+  "usage": [
+    {
+      "title": "Astra for Law 접근 요청하기",
+      "when": "ChatGPT Enterprise 팀에서 법률 업무에 쓰고 싶을 때",
+      "steps": [
+        "관리자 콘솔에서 Trusted Access Program을 엽니다.",
+        "Astra for Law 접근을 요청합니다.",
+        "승인되면 ChatGPT 모델 선택에서 gpt-6.2-astra-law를 고릅니다."
+      ],
+      "note": "API로 쓰려면 원문의 문의 양식으로 따로 요청해야 합니다.",
+      "source": {
+        "title": "Astra for Law leads in legal intelligence (OpenAI)",
+        "url": "https://openai.com/index/astra-law-6-2"
+      }
+    },
+    {
+      "title": "반대편 입장에서 내 논거 점검하기",
+      "when": "법령 해석 논거를 세운 뒤 반론을 미리 확인하고 싶을 때",
+      "steps": [
+        "내가 읽은 법령 해석을 정리해 붙여 넣습니다.",
+        "상대편 입장에서 반박하도록 요청합니다.",
+        "입법 연혁, 판례, 다른 언어 판본을 근거로 쓰게 합니다."
+      ],
+      "note": "원문이 소개한 OpenAI 내부 사용 사례를 바탕으로 한 예시입니다.",
+      "example": {
+        "type": "prompt",
+        "text": "아래는 [법령 조문]에 대한 내 해석이야.\n[내 해석]\n\n상대편 입장에서 가장 강하게 반박해줘. 입법 연혁과 판례를 근거로 쓰고 근거마다 출처를 밝혀줘."
+      },
+      "source": {
+        "title": "Astra for Law leads in legal intelligence (OpenAI)",
+        "url": "https://openai.com/index/astra-law-6-2"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "반론 상대로 쓰기",
+      "body": "원문은 흔한 사용법으로 스파링 파트너를 꼽습니다. 내 해석을 주고 반대편 논거를 요청해 약한 곳을 먼저 찾으세요."
+    },
+    {
+      "title": "외부 변호사와의 첫 통화 전에 쟁점 정리",
+      "body": "익숙하지 않은 산업에 진출할 때 적용될 규칙을 먼저 지도로 그려 보면 첫 통화에서 실제 쟁점을 바로 논의할 수도 있습니다."
+    },
+    {
+      "title": "권고와 의무의 경계 확인",
+      "body": "각 의무를 쉬운 말로 풀어 쓴 설명을 법안의 원문 표현 옆에 놓고 비교하면 어느 해석을 조문이 뒷받침하는지 빠르게 판단하기 쉽습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "정책 묶음을 업무 흐름으로 바꾸기",
+      "when": "규제 절차와 사내 정책을 접수 처리 흐름으로 만들 때",
+      "type": "prompt",
+      "text": "아래 규제 절차와 사내 정책을 읽고 접수된 건을 처리하는 업무 흐름으로 정리해줘.\n\n[규제 절차]\n[사내 정책]\n\n추가 정보를 요청할 때, 건을 종결할 때, 변호사에게 올릴 때의 기준을 각각 구분해서 써줘."
+    },
+    {
+      "title": "쟁점별 적용 규칙 지도",
+      "when": "새 사업을 검토하며 적용될 규칙을 파악할 때",
+      "type": "prompt",
+      "text": "우리가 검토 중인 사업은 [사업 내용]이야. 이 활동에 적용될 수 있는 규칙을 [관할]별로 정리하고 외부 변호사에게 먼저 물어봐야 할 핵심 쟁점을 골라줘."
+    }
+  ],
+  "cautions": [
+    "접근은 Trusted Access Program 요청 절차를 거칩니다. 요청한다고 바로 쓸 수 있다는 안내는 원문에 없습니다.",
+    "성능 수치는 OpenAI와 Harvey, Artificial Analysis, Vals AI가 공개한 평가 결과입니다. 환각이 적어도 법률 인용은 직접 확인해야 합니다.",
+    "API 가격은 원문에 없어 확인 필요입니다."
+  ],
+  "sources": [
+    {
+      "title": "Astra for Law leads in legal intelligence (OpenAI)",
+      "url": "https://openai.com/index/astra-law-6-2"
+    },
+    {
+      "title": "Introducing GPT-6.2 Astra and Sol (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+    },
+    {
+      "title": "Harvey LAB-AA (Artificial Analysis)",
+      "url": "https://artificialanalysis.ai/evaluations/harvey-lab-aa"
+    },
+    {
+      "title": "Vals AI Legal Research Bench",
+      "url": "https://www.vals.ai/benchmarks/legal_research"
+    }
+  ]
+}

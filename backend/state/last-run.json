@@ -1,32 +1,210 @@
 {
-  "startedAt": "2026-11-17T20:17:12+09:00",
+  "startedAt": "2026-11-18T07:42:33+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2678,
+  "entries": 2686,
   "candidates": [
     {
-      "title": "How Revolut raises ambition without lowering the bar",
-      "url": "https://openai.com/business/customer-stories/revolut",
+      "title": "Introducing GPT-6.2 Astra and Sol",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
       "company": "openai",
-      "date": "2026-11-16",
+      "date": "2026-11-17",
       "relatedId": null
+    },
+    {
+      "title": "Introducing OpenAI for Chile",
+      "url": "https://openai.com/index/introducing-openai-for-chile",
+      "company": "openai",
+      "date": "2026-11-17",
+      "relatedId": null
+    },
+    {
+      "title": "Astra for Law leads in legal intelligence",
+      "url": "https://openai.com/index/astra-law-6-2",
+      "company": "openai",
+      "date": "2026-11-17",
+      "relatedId": null
+    },
+    {
+      "title": "Linked billing on the Claude Platform",
+      "url": "https://claude.com/resources/articles/linked-billing-on-claude-platform",
+      "company": "anthropic",
+      "date": "2026-11-17",
+      "relatedId": null
+    },
+    {
+      "title": "See what 5 builders are making with Gemini 4 Carbon",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-carbon-builders/",
+      "company": "google",
+      "date": "2026-11-17",
+      "relatedId": "gemini-4-carbon"
+    },
+    {
+      "title": "Put Gemini to work for you",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+      "company": "google",
+      "date": "2026-11-17",
+      "relatedId": "gemini-app-resume-update"
+    },
+    {
+      "title": "Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · API: v1/responses · API: v1/chat/completions",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-17",
+      "company": "openai",
+      "date": "2026-11-17",
+      "relatedId": null
+    },
+    {
+      "title": "Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · Model: gpt-6.1-terra · Model: gpt-6-luna · API: v1/responses",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-17",
+      "company": "openai",
+      "date": "2026-11-17",
+      "relatedId": "gpt-6-1-terra"
+    },
+    {
+      "title": "We’ve launched Linked billing in beta with the user-profiles-billing-2026-10-01 beta header.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-17",
+      "company": "anthropic",
+      "date": "2026-11-17",
+      "relatedId": null
+    },
+    {
+      "title": "ChatGPT Ads increases its market presence in 44 countries",
+      "url": "https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence",
+      "company": "openai",
+      "date": "2026-11-12",
+      "relatedId": null
+    },
+    {
+      "title": "How VistaPrint helps small businesses get the word out",
+      "url": "https://openai.com/ads/customers/vistaprint",
+      "company": "openai",
+      "date": "2026-11-09",
+      "relatedId": null
+    },
+    {
+      "title": "Gemini 4 Hydrogen: a faster model for general purpose robotics",
+      "url": "https://developers.googleblog.com/gemini-hydrogen-for-robotics/",
+      "company": "google",
+      "date": "2026-11-17",
+      "relatedId": "gemini-4-hydrogen"
+    },
+    {
+      "title": "Build full-stack Android apps with Gemini in Google AI Studio",
+      "url": "https://developers.googleblog.com/build-full-stack-android-apps-with-gemini-in-google-ai-studio/",
+      "company": "google",
+      "date": "2026-11-17",
+      "relatedId": "gemini-app-resume-update"
     }
   ],
-  "added": [],
+  "added": [
+    {
+      "id": "gpt-6-2-astra-sol",
+      "title": "GPT-6.2 Astra · GPT-6.2 Sol",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol",
+      "charts": 1
+    },
+    {
+      "id": "astra-for-law-6-2",
+      "title": "Astra for Law",
+      "url": "https://openai.com/index/astra-law-6-2",
+      "charts": 5
+    },
+    {
+      "id": "claude-linked-billing",
+      "title": "Claude Platform 연결 결제",
+      "url": "https://claude.com/resources/articles/linked-billing-on-claude-platform",
+      "charts": 0
+    },
+    {
+      "id": "gemini-app-tasks",
+      "title": "Gemini 앱 Task 모드",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features/",
+      "charts": 0
+    },
+    {
+      "id": "google-ai-studio-android-full-stack",
+      "title": "Full-stack Android apps in Google AI Studio",
+      "url": "https://developers.googleblog.com/build-full-stack-android-apps-with-gemini-in-google-ai-studio/",
+      "charts": 0
+    }
+  ],
   "updated": [],
   "skipped": [
     {
-      "title": "How Revolut raises ambition without lowering the bar",
-      "url": "https://openai.com/business/customer-stories/revolut",
-      "reason": "고객 사례(Customer Story). 판단 기준의 '제외' 항목에 명시된 대로 고객 성공 사례는 실으지 않습니다. Revolut의 OpenAI 모델 활용 경험담이지만, 새 모델 출시, 모델 업데이트, 가격/사용 범위 변경, AI 제품·기능 출시, 공식 활용 팁(프롬프트 가이드, 모범 사례)에 해당하지 않습니다."
+      "title": "Introducing OpenAI for Chile",
+      "url": "https://openai.com/index/introducing-openai-for-chile",
+      "reason": "OpenAI과 칠레 정부의 파트너십 공지. 판단 기준의 제외 항목인 기업·정부 파트너십에 해당"
+    },
+    {
+      "title": "See what 5 builders are making with Gemini 4 Carbon",
+      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-4-carbon-builders/",
+      "reason": "Gemini 4 Carbon을 사용하는 5개 프로젝트 소개. 고객 사례로 판단 기준의 제외 항목에 해당"
+    },
+    {
+      "title": "Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · API: v1/responses · API: v1/chat/completions",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-17",
+      "reason": "OpenAI API 문서의 변경 로그. 별도 뉴스 아이템이 아니며 [0] 항목과 중복"
+    },
+    {
+      "title": "Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · Model: gpt-6.1-terra · Model: gpt-6-luna · API: v1/responses",
+      "url": "https://developers.openai.com/api/docs/changelog#2026-11-17",
+      "reason": "OpenAI Responses API 문서의 변경 로그. 별도 뉴스 아이템이 아님"
+    },
+    {
+      "title": "We’ve launched Linked billing in beta with the user-profiles-billing-2026-10-01 beta header.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-17",
+      "reason": "Claude Platform 문서의 릴리스 노트. 별도 뉴스 아이템이 아니며 [3] 항목과 중복"
+    },
+    {
+      "title": "ChatGPT Ads increases its market presence in 44 countries",
+      "url": "https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence",
+      "reason": "ChatGPT Ads의 44개 국가 광고 지역 확대 및 판매자 선정. 판단 기준의 제외 항목인 광고 사업 공지에 해당"
+    },
+    {
+      "title": "How VistaPrint helps small businesses get the word out",
+      "url": "https://openai.com/ads/customers/vistaprint",
+      "reason": "VistaPrint의 ChatGPT Ads 사용 사례. 고객 사례로 판단 기준의 제외 항목에 해당"
+    },
+    {
+      "title": "Gemini 4 Hydrogen: a faster model for general purpose robotics",
+      "url": "https://developers.googleblog.com/gemini-hydrogen-for-robotics/",
+      "reason": "이미 사이트에 등재된 Gemini 4 Hydrogen 모델의 로보틱스 용도 활용 가이드. 기존 모델의 용도 설명으로 별도 뉴스 아이템이 아님"
     }
   ],
   "failed": [],
-  "guardNotes": {},
+  "guardNotes": {
+    "gpt-6-2-astra-sol": [
+      "도식 'API 가격 비교 (100만 토큰당)'의 숫자 ['100만'] 원문에서 확인 안 됨 → 도식 제외"
+    ],
+    "gemini-app-tasks": [
+      "핵심 수치 '무료 배포 국가: 6개국' 원문에서 확인 안 됨 → 제외",
+      "핵심 수치 '정비 예약 소요 시간: 5분 미만' 원문에서 확인 안 됨 → 제외"
+    ],
+    "google-ai-studio-android-full-stack": [
+      "핵심 수치 '오늘 출시된 기능: 6가지' 원문에서 확인 안 됨 → 제외"
+    ]
+  },
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {},
-  "techLinks": [],
+  "styleNotes": {
+    "astra-for-law-6-2": [
+      "문체 수정: tips.1.body",
+      "문체 수정: tips.2.body"
+    ],
+    "claude-linked-billing": [
+      "문체 수정: changes.3",
+      "문체 수정: changes.5"
+    ],
+    "gemini-app-tasks": [
+      "문체 수정: changes.4",
+      "문체 수정: changes.5",
+      "문체 수정: cautions.1"
+    ]
+  },
+  "techLinks": [
+    "gemini-app-tasks → long-autonomy, agent-loop, harness, tool-use",
+    "google-ai-studio-android-full-stack → agent-loop, tool-use"
+  ],
   "retired": []
 }

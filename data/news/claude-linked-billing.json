@@ -1,0 +1,140 @@
+{
+  "id": "claude-linked-billing",
+  "company": "anthropic",
+  "date": "2026-11-17",
+  "kind": "제품·기능 출시",
+  "title": "Claude Platform 연결 결제",
+  "headline": "API 키를 넘기지 않고 서드파티 플랫폼에서 내 Claude 조직으로 결제합니다",
+  "tldr": "Claude Platform에 연결 결제(linked billing) 베타가 나왔습니다. 코딩 에이전트나 워크플로 자동화 같은 서드파티 플랫폼에서 고객이 API 키를 공유하지 않고 Claude API 사용료를 낼 수 있습니다. 고객은 기존 Anthropic 결제를 그대로 쓰고 플랫폼별 지출 한도도 직접 정합니다.",
+  "fit": {
+    "summary": "Claude를 붙인 서비스를 운영하는 플랫폼과 그런 서비스에 자기 Claude 조직을 연결하려는 고객에게 맞습니다. 키 보관과 별도 청구 부담이 줄어듭니다.",
+    "good": [
+      "고객 API 키를 저장·암호화·교체하는 부담 없이 Claude를 제공하려는 플랫폼",
+      "기존 Anthropic 약정 금액을 서드파티 도구에서 쓰려는 기업 고객",
+      "플랫폼별 월 지출 한도를 걸어 비용을 관리하려는 조직"
+    ],
+    "notFor": [
+      "고객 조직의 IP 허용 목록, 암호화 키, 데이터 보존 설정을 그대로 적용해야 하는 경우(요청이 플랫폼 조직에서 실행되므로 적용되지 않음)",
+      "Owner, Admin, Billing 역할이 없는 사용자(연결 승인 불가)"
+    ],
+    "start": "플랫폼 운영자는 Console에서 앱을 만들고 문서의 절차를 따르고, 고객은 지원 플랫폼에서 자기 Claude Platform 조직을 연결합니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "API 키 공유",
+      "value": "불필요",
+      "note": "고객 키가 조직 밖으로 나가지 않음"
+    },
+    {
+      "label": "지출 한도",
+      "value": "플랫폼별 월 한도",
+      "note": "모든 플랫폼에 적용되는 기본값도 설정 가능"
+    },
+    {
+      "label": "연결 승인 권한",
+      "value": "Owner · Admin · Billing",
+      "note": "Console 사용자 역할"
+    },
+    {
+      "label": "상태",
+      "value": "베타",
+      "note": "Claude Platform에서 오늘부터 사용 가능"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 비교 수치가 없어 성능 그래프는 만들지 않았습니다.",
+  "changes": [
+    "고객이 자기 Claude Platform 조직을 플랫폼에 연결하면 사용료가 그 조직으로 직접 청구됩니다. 플랫폼은 고객 키를 저장하거나 암호화하거나 교체할 필요가 없습니다.",
+    "Anthropic이 승인 흐름과 청구를 맡으므로 플랫폼은 사용량 측정이나 청구서 발행 기능을 직접 만들지 않아도 됩니다.",
+    "플랫폼은 연결된 고객별 요청 수, 토큰 사용량, 사용한 모델을 Console이나 Usage and Cost Analytics API(베타)로 볼 수 있습니다.",
+    "플랫폼은 요청마다 플랫폼이 낼지 고객이 낼지 정할 수 있어 일부 기능은 제품이나 인스턴스 단위로 직접 부담하는 방식도 가능합니다.",
+    "고객은 조직 전체에 한 번만 연결하고 플랫폼별 월 지출 한도를 정합니다. Console에서 플랫폼별 지출을 확인하고 언제든 연결을 해제합니다.",
+    "기존 Anthropic 약정 금액에서 차감하거나 종량제로 낼 수도 있습니다."
+  ],
+  "availability": [
+    "Claude Platform 베타, 오늘부터 사용 가능",
+    "플랫폼 운영자는 Console에서 앱을 만들고 문서 절차에 따라 지원을 추가합니다",
+    "고객은 지원 플랫폼에서 연결하고 Claude Marketplace에서 연결 결제를 지원하는 플랫폼을 찾습니다",
+    "현재 지원 플랫폼은 Asana, ClickHouse, Factory, Gumloop, Harness, Higgsfield AI, Kilo Code, Linear, Major, Mintlify, Omni, OpenArt, Niteshift, Railway, Ramp, Runlayer, Tessera, Tines, Warp입니다"
+  ],
+  "usage": [
+    {
+      "title": "고객이 서드파티 플랫폼에 내 Claude 조직 연결하기",
+      "when": "플랫폼에 API 키를 붙여 넣지 않고 기존 Claude 약정을 쓰고 싶을 때",
+      "steps": [
+        "연결 결제를 지원하는 플랫폼의 설정에서 Claude 연결을 시작합니다.",
+        "Anthropic이 호스팅하는 승인 화면에서 Owner, Admin, Billing 역할의 Console 사용자가 연결을 승인합니다.",
+        "플랫폼별 월 지출 한도나 모든 플랫폼에 적용되는 기본 한도를 정합니다.",
+        "Console에서 플랫폼별 지출을 확인하고 필요하면 연결을 해제합니다."
+      ],
+      "note": "요청은 플랫폼 조직에서 실행되어 내 조직의 IP 허용 목록, 암호화 키, 데이터 보존 설정은 적용되지 않습니다.",
+      "source": {
+        "title": "Linked billing on the Claude Platform (Anthropic)",
+        "url": "https://claude.com/resources/articles/linked-billing-on-claude-platform"
+      }
+    },
+    {
+      "title": "플랫폼에서 연결 결제 지원 추가하기",
+      "when": "고객 API 키를 받지 않고 Claude를 제공하고 싶을 때",
+      "steps": [
+        "Console에서 앱을 만듭니다.",
+        "공식 문서의 단계에 따라 승인 흐름과 요청 방식을 구현합니다.",
+        "요청마다 플랫폼이 낼지 고객이 낼지 정합니다.",
+        "Console이나 Usage and Cost Analytics API로 고객별 사용량을 확인합니다."
+      ],
+      "note": "자세한 구현 방법은 organization-billing-connections 문서를 확인해야 하며 원문에는 코드 예시가 없습니다.",
+      "source": {
+        "title": "Linked billing on the Claude Platform (Anthropic)",
+        "url": "https://claude.com/resources/articles/linked-billing-on-claude-platform"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "한도는 기본값부터",
+      "body": "플랫폼이 여러 개라면 모든 플랫폼에 적용되는 기본 월 한도를 먼저 걸고 필요한 플랫폼만 따로 조정하세요."
+    },
+    {
+      "title": "연결은 조직에서 한 번",
+      "body": "개인 개발자든 큰 팀이든 Owner, Admin, Billing 역할 사용자가 조직 단위로 한 번 승인하면 됩니다."
+    },
+    {
+      "title": "플랫폼 쪽 사용량 확인",
+      "body": "고객별 요청 수와 토큰 사용량을 API로 가져오려면 Usage and Cost Analytics API(베타)를 함께 쓰세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "연결 결제 도입 점검",
+      "when": "플랫폼에 연결 결제를 붙이기 전 팀 논의를 정리할 때",
+      "type": "prompt",
+      "text": "우리 서비스는 현재 고객에게 [API 키 입력 방식]으로 Claude를 연결하고 있어. Claude Platform 연결 결제로 바꿀 때 달라지는 점을 정리해줘.\n- 키 저장·교체 부담이 어떻게 줄어드는지\n- 요청마다 플랫폼이 낼지 고객이 낼지 정하는 기준 후보\n- 고객 조직 설정(IP 허용 목록, 암호화 키, 데이터 보존)이 적용되지 않는 점을 고객에게 안내할 문구"
+    },
+    {
+      "title": "고객용 연결 안내문",
+      "when": "고객에게 연결 방법을 알릴 때",
+      "type": "prompt",
+      "text": "[플랫폼 이름] 고객이 자기 Claude Platform 조직을 연결하는 방법을 안내하는 글을 써줘. 승인은 Owner, Admin, Billing 역할 사용자가 하고 월 지출 한도를 정할 수 있으며 언제든 Console에서 해제할 수 있다는 내용을 넣어줘."
+    }
+  ],
+  "cautions": [
+    "연결 결제는 베타입니다.",
+    "요청이 플랫폼 조직에서 실행되므로 고객 조직의 IP 허용 목록, 암호화 키, 데이터 보존 설정은 적용되지 않습니다.",
+    "원문에 요금제나 가격 변경은 없으며 연결 결제 지원 여부는 플랫폼마다 다릅니다."
+  ],
+  "sources": [
+    {
+      "title": "Linked billing on the Claude Platform (Anthropic)",
+      "url": "https://claude.com/resources/articles/linked-billing-on-claude-platform"
+    },
+    {
+      "title": "Organization billing connections 문서",
+      "url": "https://platform.claude.com/docs/en/manage-claude/oauth-apps/organization-billing-connections"
+    },
+    {
+      "title": "Usage and Cost Analytics API 문서",
+      "url": "https://platform.claude.com/docs/en/manage-claude/usage-cost-analytics-api"
+    }
+  ]
+}

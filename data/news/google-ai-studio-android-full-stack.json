@@ -1,0 +1,198 @@
+{
+  "id": "google-ai-studio-android-full-stack",
+  "company": "google",
+  "date": "2026-11-17",
+  "kind": "제품·기능 출시",
+  "title": "Full-stack Android apps in Google AI Studio",
+  "headline": "프롬프트 하나로 데이터 저장·로그인·Gemini 기능을 갖춘 Kotlin Android 앱을 만들고 Play 스토어까지 올립니다",
+  "tldr": "Google AI Studio Build agent가 Cloud Firestore, Google 로그인, Firebase AI Logic 설정까지 맡아 풀스택 Android 앱을 만듭니다. 1200p HD 에뮬레이터, 실시간 오디오 출력, 스크린샷 첨부, 커스텀 폰트도 함께 나왔습니다. 만든 앱은 개인 Google Play 라이브러리에 올려 내 폰에 바로 설치할 수 있습니다.",
+  "fit": {
+    "summary": "Android 앱 아이디어를 빠르게 실제 기기에서 돌려 보고 싶을 때 맞습니다. 데이터 저장, 로그인, Gemini 호출이 필요한 앱도 설정 작업 없이 시작할 수 있습니다.",
+    "good": [
+      "사용자 데이터를 기기 간에 동기화하는 앱 시제품 만들기",
+      "API 키를 APK에 넣지 않고 Gemini를 호출하는 앱 만들기",
+      "음성 코치, TTS, 소리가 있는 게임처럼 오디오를 쓰는 앱 시험하기",
+      "에뮬레이터 화면을 캡처해 UI를 시각적으로 고치기"
+    ],
+    "notFor": [
+      "원문은 개인 Google Play 라이브러리 배포만 설명합니다. 일반 사용자에게 공개하는 배포 절차는 원문에 없어 확인 필요입니다."
+    ],
+    "start": "Google AI Studio Build를 열고 작업 공간 위쪽의 Android 칩을 선택한 뒤 만들고 싶은 앱을 프롬프트로 설명합니다."
+  },
+  "models": [
+    {
+      "name": "Gemini 4 Hydrogen",
+      "apiId": "gemini-4-hydrogen",
+      "input": null,
+      "output": null,
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "HD 스트리밍 해상도",
+      "value": "1200p",
+      "note": "에뮬레이터 도구 모음의 HD 토글로 전환"
+    },
+    {
+      "label": "내 기기 테스트 비용",
+      "value": "무료",
+      "note": "Play 스토어에서 직접 받아 테스트하는 경우"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "프롬프트에서 내 폰 설치까지",
+      "caption": "원문이 설명하는 Android 앱 제작 순서입니다.",
+      "steps": [
+        {
+          "label": "Android 칩 선택",
+          "desc": "AI Studio Build 작업 공간 위쪽에서 고릅니다."
+        },
+        {
+          "label": "프롬프트 입력",
+          "desc": "만들 앱을 설명하면 agent가 필요한 백엔드를 감지합니다."
+        },
+        {
+          "label": "백엔드 확인",
+          "desc": "사용자가 확인하면 Firestore, 로그인, AI Logic을 자동 연결합니다.",
+          "highlight": true
+        },
+        {
+          "label": "에뮬레이터 점검",
+          "desc": "HD 화면, 오디오, 스크린샷으로 UI를 다듬습니다."
+        },
+        {
+          "label": "Play에 게시",
+          "desc": "게시 패널에서 개인 Google Play 라이브러리로 올립니다."
+        }
+      ],
+      "source": {
+        "title": "Build full-stack Android apps with Gemini in Google AI Studio (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/build-full-stack-android-apps-with-gemini-in-google-ai-studio/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "이전에는 AI Studio가 만든 Android 앱이 로컬 세션 저장소만 쓸 수 있었습니다. 이제 Build agent가 저장, 로그인, 생성형 AI 기능이 필요한 요구를 감지하고 사용자가 확인하면 백엔드를 준비해 Kotlin 코드에 연결합니다.",
+    "Cloud Firestore 데이터베이스를 만들고 데이터 모델에 맞는 Security Rules를 생성합니다. 오프라인 캐시도 지원해 연결이 돌아오면 자동으로 동기화됩니다.",
+    "Firebase Authentication의 Google 로그인과 사용자별 권한 규칙을 설정해 사용자가 자기 문서만 읽고 쓰게 합니다.",
+    "Firebase AI Logic과 Firebase App Check로 API 키를 APK에 넣지 않고 Gemini 모델을 호출합니다. App Check는 Google Fraud Defense를 사용합니다.",
+    "에뮬레이터가 더 빠르게 시작하고 1200p HD 스트리밍과 실시간 오디오 출력을 지원합니다. 에뮬레이터 스크린샷을 한 번에 프롬프트에 첨부할 수도 있습니다.",
+    "커스텀 폰트를 요청하면 agent가 내려받아 Compose 테마에 적용합니다. 프로젝트 구성, 최신 Android 문서 조회, Gradle 빌드에는 공식 Android CLI를 씁니다.",
+    "게시 패널에서 Play 계정을 설정하면 Android App Bundle(.aab)을 빌드·서명해 개인 Google Play 라이브러리로 올립니다."
+  ],
+  "availability": [
+    "오늘부터 Google AI Studio에서 순차 적용 중입니다.",
+    "Google AI Studio Build의 Android 칩에서 사용합니다.",
+    "개인 Google Play 라이브러리 게시에는 일반 Google 계정이 필요합니다.",
+    "Gemini 4 Carbon과 Hydrogen이 함께 쓰입니다."
+  ],
+  "usage": [
+    {
+      "title": "데이터가 저장되는 Android 앱 만들기",
+      "when": "여러 기기에서 같은 데이터를 보는 앱이 필요할 때",
+      "steps": [
+        "Google AI Studio Build에서 Android 칩을 선택합니다.",
+        "저장, 로그인, Gemini 기능이 필요한 앱을 프롬프트로 설명합니다.",
+        "agent가 요구 사항을 감지해 확인을 요청하면 승인합니다.",
+        "Firestore와 로그인이 연결된 Kotlin 코드를 에뮬레이터에서 실행합니다."
+      ],
+      "note": "원문의 예시 프롬프트를 바탕으로 한 것입니다.",
+      "example": {
+        "type": "prompt",
+        "text": "Build an Android workout coach app that uses the Gemini API to generate personalized daily routines, reads cues aloud with audio, and saves workout history across devices using Cloud Firestore and Google Sign-In."
+      },
+      "source": {
+        "title": "Build full-stack Android apps with Gemini in Google AI Studio (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/build-full-stack-android-apps-with-gemini-in-google-ai-studio/"
+      }
+    },
+    {
+      "title": "스크린샷으로 UI 고치기",
+      "when": "화면 문제를 글로 설명하기 어려울 때",
+      "steps": [
+        "에뮬레이터에서 앱을 실행합니다.",
+        "도구 모음의 Take a screenshot을 눌러 화면을 프롬프트에 첨부합니다.",
+        "고치고 싶은 부분을 적어 요청합니다."
+      ],
+      "note": "카드 여백 조정, 대비 수정, 툴바 재정렬 같은 요청이 원문 예시입니다.",
+      "example": {
+        "type": "prompt",
+        "text": "첨부한 화면에서 [카드]의 여백을 좁히고 [텍스트] 대비를 높여줘."
+      },
+      "source": {
+        "title": "Build full-stack Android apps with Gemini in Google AI Studio (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/build-full-stack-android-apps-with-gemini-in-google-ai-studio/"
+      }
+    },
+    {
+      "title": "내 폰에 앱 설치하기",
+      "when": "에뮬레이터 대신 실제 기기에서 확인하고 싶을 때",
+      "steps": [
+        "게시 패널에서 Play 계정을 몇 번의 클릭으로 설정합니다.",
+        "앱을 개인 Google Play 라이브러리에 게시합니다.",
+        "폰의 Google Play에서 앱을 내려받아 실행합니다."
+      ],
+      "note": "USB 디버깅 케이블이나 로컬 서명 키 관리가 필요 없다고 원문이 설명합니다.",
+      "source": {
+        "title": "Build full-stack Android apps with Gemini in Google AI Studio (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/build-full-stack-android-apps-with-gemini-in-google-ai-studio/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "Android 칩부터 선택",
+      "body": "Build 작업 공간 위쪽의 Android 칩을 고른 뒤 프롬프트를 쓰세요. 앱에 필요한 저장·로그인·AI 기능을 프롬프트에 적어 두면 agent가 알아서 감지합니다."
+    },
+    {
+      "title": "폰트는 말로 요청",
+      "body": "원하는 서체 느낌을 프롬프트에 적으면 agent가 폰트를 내려받아 Compose 테마에 적용합니다."
+    },
+    {
+      "title": "세부 UI는 HD로 확인",
+      "body": "여백, 애니메이션, 촘촘한 레이아웃은 도구 모음의 HD 토글로 1200p로 바꿔 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "가족 레시피 앱",
+      "when": "로그인과 공유 데이터가 있는 앱을 만들 때 (원문 예시)",
+      "type": "prompt",
+      "text": "Create a collaborative family recipe Android app with custom serif typography where users sign in with Google, snap photos of ingredients to generate recipe ideas with Gemini, and sync shared grocery lists in Firestore."
+    },
+    {
+      "title": "UI 수정 요청",
+      "when": "스크린샷을 첨부한 뒤 화면을 고칠 때",
+      "type": "prompt",
+      "text": "첨부한 스크린샷 기준으로 [수정할 부분]을 [원하는 모습]으로 바꿔줘. 다른 화면은 건드리지 마."
+    }
+  ],
+  "cautions": [
+    "이 기능들은 오늘부터 순차 적용 중이라 계정에 따라 바로 보이지 않을 수 있습니다.",
+    "Firebase 백엔드는 사용자가 확인한 뒤에 만들어집니다. 생성된 Security Rules와 권한 설정은 직접 검토하세요.",
+    "개인 Google Play 라이브러리 게시를 설명하는 글입니다. 일반 공개 배포 조건은 원문에 없어 확인 필요입니다."
+  ],
+  "sources": [
+    {
+      "title": "Build full-stack Android apps with Gemini in Google AI Studio (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/build-full-stack-android-apps-with-gemini-in-google-ai-studio/"
+    },
+    {
+      "title": "Google AI Studio Build (Android)",
+      "url": "https://aistudio.google.com/apps?features=build_android_app"
+    },
+    {
+      "title": "Firebase AI Logic 문서",
+      "url": "https://firebase.google.com/docs/ai-logic"
+    },
+    {
+      "title": "Firebase App Check 문서",
+      "url": "https://firebase.google.com/docs/app-check"
+    }
+  ]
+}

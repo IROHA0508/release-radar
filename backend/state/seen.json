@@ -136,6 +136,13 @@
       "status": "old",
       "title": "Advancing Claude for Education"
     },
+    "https://anthropic.com/news/advancing-claude-for-financial-services": {
+      "checkedAt": "2026-11-18",
+      "company": "anthropic",
+      "date": "2025-10-27",
+      "status": "old",
+      "title": "Advancing Claude for Financial Services"
+    },
     "https://anthropic.com/news/apple-xcode-claude-agent-sdk": {
       "checkedAt": "2026-10-21",
       "company": "anthropic",
@@ -647,6 +654,14 @@
       "status": "added",
       "title": "Get quick answers from Gemini on any website."
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features": {
+      "checkedAt": "2026-11-18",
+      "company": "google",
+      "date": "2026-11-17",
+      "id": "gemini-app-tasks",
+      "status": "added",
+      "title": "Put Gemini to work for you"
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/turn-drawings-into-apps-gemini": {
       "checkedAt": "2026-11-06",
       "company": "google",
@@ -750,6 +765,14 @@
       "reason": "기존 모델(Gemini 4 Argon)의 사용 사례/예시 모음. 고객 사례 성격으로 지침의 제외 대상입니다.",
       "status": "skipped",
       "title": "8 examples of Gemini 4 Argon in action"
+    },
+    "https://blog.google/products-and-platforms/products/gemini/gemini-4-carbon-builders": {
+      "checkedAt": "2026-11-18",
+      "company": "google",
+      "date": "2026-11-17",
+      "reason": "Gemini 4 Carbon을 사용하는 5개 프로젝트 소개. 고객 사례로 판단 기준의 제외 항목에 해당",
+      "status": "skipped",
+      "title": "See what 5 builders are making with Gemini 4 Carbon"
     },
     "https://blog.google/products-and-platforms/products/gemini/stylist-outfit-tips-gemini": {
       "checkedAt": "2026-10-20",
@@ -1112,6 +1135,14 @@
       "reason": "JPMorganChase의 Claude Code 도입은 기업 파트너십",
       "status": "skipped",
       "title": "JPMorganChase expands Claude Code to more employees across the firm"
+    },
+    "https://claude.com/resources/articles/linked-billing-on-claude-platform": {
+      "checkedAt": "2026-11-18",
+      "company": "anthropic",
+      "date": "2026-11-17",
+      "id": "claude-linked-billing",
+      "status": "added",
+      "title": "Linked billing on the Claude Platform"
     },
     "https://claude.com/resources/articles/message-threads": {
       "checkedAt": "2026-11-03",
@@ -1613,6 +1644,14 @@
       "status": "skipped",
       "title": "Bringing Visual Graph Debugging to Custom Edge Compilers with Model Explorer"
     },
+    "https://developers.googleblog.com/build-full-stack-android-apps-with-gemini-in-google-ai-studio": {
+      "checkedAt": "2026-11-18",
+      "company": "google",
+      "date": "2026-11-17",
+      "id": "google-ai-studio-android-full-stack",
+      "status": "added",
+      "title": "Build full-stack Android apps with Gemini in Google AI Studio"
+    },
     "https://developers.googleblog.com/build-generative-ui-apps-with-a2ui-copilotkit-agents": {
       "checkedAt": "2026-10-30",
       "company": "google",
@@ -1720,6 +1759,14 @@
       "reason": "응용 사례로 실전 조언 부족",
       "status": "skipped",
       "title": "Gemini 4 Argon for Robotics"
+    },
+    "https://developers.googleblog.com/gemini-hydrogen-for-robotics": {
+      "checkedAt": "2026-11-18",
+      "company": "google",
+      "date": "2026-11-17",
+      "reason": "이미 사이트에 등재된 Gemini 4 Hydrogen 모델의 로보틱스 용도 활용 가이드. 기존 모델의 용도 설명으로 별도 뉴스 아이템이 아님",
+      "status": "skipped",
+      "title": "Gemini 4 Hydrogen: a faster model for general purpose robotics"
     },
     "https://developers.googleblog.com/google-ai-edge-with-embeddinggemma-2": {
       "checkedAt": "2026-10-07",
@@ -1993,6 +2040,22 @@
       "status": "skipped",
       "title": "Feature · Model: omni-moderation-csam-latest · API: v1/moderations"
     },
+    "https://developers.openai.com/api/docs/changelog#2026-11-17-342b1a2a": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-17",
+      "reason": "OpenAI Responses API 문서의 변경 로그. 별도 뉴스 아이템이 아님",
+      "status": "skipped",
+      "title": "Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · Model: gpt-6.1-terra · Model: gpt-6-luna · API: v1/responses"
+    },
+    "https://developers.openai.com/api/docs/changelog#2026-11-17-ee4c638f": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-17",
+      "reason": "OpenAI API 문서의 변경 로그. 별도 뉴스 아이템이 아니며 [0] 항목과 중복",
+      "status": "skipped",
+      "title": "Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · API: v1/responses · API: v1/chat/completions"
+    },
     "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -2180,6 +2243,14 @@
       "status": "nodate",
       "title": "Nov 24 What makes a great ChatGPT app How to build capabilities that make conversations better. Apps SDK"
     },
+    "https://openai.com/ads/blog/chatgpt-ads-increases-its-market-presence": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-12",
+      "reason": "ChatGPT Ads의 44개 국가 광고 지역 확대 및 판매자 선정. 판단 기준의 제외 항목인 광고 사업 공지에 해당",
+      "status": "skipped",
+      "title": "ChatGPT Ads increases its market presence in 44 countries"
+    },
     "https://openai.com/ads/customers/evernote": {
       "checkedAt": "2026-11-04",
       "company": "openai",
@@ -2195,6 +2266,14 @@
       "reason": "마케팅 캠페인 사례. Flipsnack의 광고 성과 사례로, AI 제품·기능 출시나 활용 팁이 아님",
       "status": "skipped",
       "title": "Flipsnack grows product signups with conversion optimization"
+    },
+    "https://openai.com/ads/customers/vistaprint": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-09",
+      "reason": "VistaPrint의 ChatGPT Ads 사용 사례. 고객 사례로 판단 기준의 제외 항목에 해당",
+      "status": "skipped",
+      "title": "How VistaPrint helps small businesses get the word out"
     },
     "https://openai.com/business/customer-stories/amplitude": {
       "checkedAt": "2026-11-13",
@@ -2323,6 +2402,14 @@
       "reason": "고객 사례: 기업 고객(Asana)의 특정 성과를 소개하는 글로, 판단 기준의 제외 대상(기업 파트너십, 고객 사례)입니다.",
       "status": "skipped",
       "title": "Asana cuts model costs 76x in browser tests with GPT-6.1 Sol"
+    },
+    "https://openai.com/index/astra-law-6-2": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-17",
+      "id": "astra-for-law-6-2",
+      "status": "added",
+      "title": "Astra for Law leads in legal intelligence"
     },
     "https://openai.com/index/atlassian-partnership": {
       "checkedAt": "2026-10-07",
@@ -2620,6 +2707,14 @@
       "status": "added",
       "title": "Introducing GPT-6.1 Terra"
     },
+    "https://openai.com/index/introducing-gpt-6-2-astra-sol": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-17",
+      "id": "gpt-6-2-astra-sol",
+      "status": "added",
+      "title": "Introducing GPT-6.2 Astra and Sol"
+    },
     "https://openai.com/index/introducing-gpt-6-cyber": {
       "checkedAt": "2026-11-06",
       "company": "openai",
@@ -2635,6 +2730,14 @@
       "id": "images-2-6",
       "status": "added",
       "title": "Introducing Images 2.6"
+    },
+    "https://openai.com/index/introducing-openai-for-chile": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-17",
+      "reason": "OpenAI과 칠레 정부의 파트너십 공지. 판단 기준의 제외 항목인 기업·정부 파트너십에 해당",
+      "status": "skipped",
+      "title": "Introducing OpenAI for Chile"
     },
     "https://openai.com/index/introducing-the-rosalind-academic-plan": {
       "checkedAt": "2026-10-16",
@@ -3203,6 +3306,14 @@
       "reason": "Claude 모델의 텍스트 워터마크 추가로 정책·규제 관련 기능",
       "status": "skipped",
       "title": "Text generated by Claude Opus 4.6, Claude Opus 4.5, Claude Sonnet 4.5, and Claude Haiku 4.5 carries Anthropic’s text watermark on supported platforms."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-17-58daa52f": {
+      "checkedAt": "2026-11-18",
+      "company": "anthropic",
+      "date": "2026-11-17",
+      "reason": "Claude Platform 문서의 릴리스 노트. 별도 뉴스 아이템이 아니며 [3] 항목과 중복",
+      "status": "skipped",
+      "title": "We’ve launched Linked billing in beta with the user-profiles-billing-2026-10-01 beta header."
     }
   }
 }

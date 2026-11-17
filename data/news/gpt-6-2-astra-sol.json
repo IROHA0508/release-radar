@@ -1,0 +1,190 @@
+{
+  "id": "gpt-6-2-astra-sol",
+  "company": "openai",
+  "date": "2026-11-17",
+  "kind": "모델 출시",
+  "title": "GPT-6.2 Astra · GPT-6.2 Sol",
+  "headline": "전문 업무용 최상위 Astra와 일상 업무용 Sol이 함께 나왔습니다. Astra는 입출력 가격이 20% 내려갔습니다.",
+  "tldr": "OpenAI가 GPT-6.2 Astra와 GPT-6.2 Sol을 출시했습니다. Astra는 복잡한 전문 업무와 과학 작업을 겨냥한 최상위 모델이고 Sol은 일상 업무의 기본 모델입니다. 두 모델 모두 더 적은 출력 토큰으로 어려운 과제를 풉니다. Astra의 API 입출력 가격은 GPT-6 Astra보다 20% 낮고 Sol은 GPT-6.1 Sol의 가격을 그대로 씁니다.",
+  "fit": {
+    "summary": "Astra는 법률·금융·과학처럼 결과물의 품질이 중요한 복잡한 업무에 맞고 Sol은 매일 쓰는 기본 모델로 맞습니다.",
+    "good": [
+      "템플릿과 업계 관행을 따르는 슬라이드·스프레드시트·문서 작성",
+      "기존 코드베이스에서 복잡한 변경을 구현하고 테스트하는 코딩 작업",
+      "CAD·시뮬레이션 도구를 다루는 컴퓨터 사용 작업과 웹·3D 디자인",
+      "여러 단계로 이어지는 에이전트 워크플로(Sol)"
+    ],
+    "notFor": [
+      "고위험 사이버 보안 지원은 안전장치가 더 엄격해져 일부 정당한 취약점 연구와 보안 테스트가 제한됩니다.",
+      "고위험 사이버 테스트가 필요한 방어자는 OpenAI Daybreak의 GPT-6 Sol과 GPT-6 Cyber 등을 먼저 확인해야 합니다. GPT-6.2 모델의 Daybreak 도입은 추진 중입니다."
+    ],
+    "start": "일상 업무는 GPT-6.2 Sol로 시작하고 결과가 부족한 어려운 과제에만 GPT-6.2 Astra를 쓰세요."
+  },
+  "models": [
+    {
+      "name": "GPT-6.2 Astra",
+      "apiId": "gpt-6.2-astra",
+      "input": "$8",
+      "output": "$40",
+      "cached": "$0.40"
+    },
+    {
+      "name": "GPT-6.2 Sol",
+      "apiId": "gpt-6.2-sol",
+      "input": "$2",
+      "output": "$10",
+      "cached": "$0.10"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Agents' Last Exam",
+      "value": "+5.2점",
+      "note": "GPT-6 Astra보다 높고 비용은 3분의 1 미만. Claude Fable 5.2보다 5.5점 높고 비용은 5%"
+    },
+    {
+      "label": "AA-3D (Elo)",
+      "value": "1,318",
+      "note": "GPT-6.2 Astra 1위. Claude Fable 5.2 1,271, GPT-6.2 Sol 1,259"
+    },
+    {
+      "label": "GDPval v2",
+      "value": "+6.2%p",
+      "note": "GPT-6 Astra 대비 출력 토큰 22% 감소. Sol은 GPT-6.1 Sol보다 5.3점 상승"
+    },
+    {
+      "label": "Astra API 가격",
+      "value": "20% 인하",
+      "note": "입력·출력 토큰 기준. 캐시 입력은 60% 할인"
+    }
+  ],
+  "chartSource": "OpenAI GPT-6.2 Astra·Sol 발표문 본문에 적힌 Artificial Analysis AA-3D 수치입니다. 사람 심사위원이 같은 프롬프트로 만든 두 결과를 블라인드로 비교해 투표한 Elo 점수입니다.",
+  "charts": [
+    {
+      "title": "AA-3D",
+      "desc": "같은 프롬프트로 만든 3D 웹 경험의 블라인드 선호 투표 (Artificial Analysis)",
+      "type": "dot",
+      "unit": "Elo",
+      "lowerIsBetter": false,
+      "source": "Artificial Analysis AA-3D, OpenAI 발표문 인용",
+      "rows": [
+        {
+          "label": "GPT-6.2 Astra",
+          "value": 1318,
+          "highlight": true
+        },
+        {
+          "label": "Claude Fable 5.2",
+          "value": 1271
+        },
+        {
+          "label": "GPT-6.2 Sol",
+          "value": 1259,
+          "highlight": true
+        }
+      ]
+    }
+  ],
+  "chartNote": "다른 벤치마크는 원문에 이전 모델 대비 차이만 적혀 있거나 값이 그림으로만 있어 그래프로 옮기지 않았습니다.",
+  "changes": [
+    "GPT-6.2 Astra는 슬라이드·스프레드시트·문서가 덜 AI답게 읽히고 제공한 템플릿과 업계 관행을 더 가깝게 따릅니다.",
+    "코드가 더 깔끔하고 웹·게임·3D 디자인에서 프론트엔드의 외관과 동작이 나아졌습니다. 컴퓨터 사용이 정밀해져 CAD·시뮬레이션 도구에서 부품과 연결 단위까지 다룹니다.",
+    "Harvey LAB-AA v1.1에서 Astra는 Claude Fable 5.2의 통과율을 두 배 넘게 올렸고 비용은 약 6분의 1입니다.",
+    "GPT-6.2 Sol은 GPT-6.1 Sol보다 똑똑하고 효율적이며 같은 유료 요금제에서 더 많은 작업을 끝냅니다. FrontierCode 2.0(둘 다 max)에서 Astra와 0.5점 차이이고 비용은 약 5분의 1입니다.",
+    "사이버 역량이 크게 올랐고 두 모델 모두 사이버 보안은 Critical, 생물·화학은 High 기준에 해당합니다. 그래서 가장 엄격한 안전장치와 함께 출시됐습니다.",
+    "Astra는 AI 자기 개선 분야에서 High 기준에 해당하는 첫 외부 공개 모델입니다."
+  ],
+  "availability": [
+    "ChatGPT Work와 Codex: Plus, Pro, Enterprise, Edu 사용자 모두 오늘부터 사용 가능",
+    "Enterprise·Edu는 워크스페이스 관리자가 켜면 같은 접근이 가능",
+    "Ultrafast: Pro 500 구독자는 두 모델 모두, Pro 200 구독자는 처음으로 GPT-6.2 Sol부터 사용 가능",
+    "API: gpt-6.2-astra, gpt-6.2-sol (출시 시점에 두 모델 모두 Ultrafast 지원)",
+    "GPT-6.2 Astra 표준 API 요금(100만 토큰당): 입력 $8, 캐시 입력 $0.40, 출력 $40",
+    "GPT-6.2 Sol 요금(100만 토큰당): 입력 $2, 캐시 입력 $0.10, 출력 $10"
+  ],
+  "usage": [
+    {
+      "title": "API에서 GPT-6.2 Sol 호출하기",
+      "when": "일상 업무용 기본 모델을 API에 연결할 때",
+      "steps": [
+        "모델 이름에 gpt-6.2-sol을 넣습니다.",
+        "어려운 과제에서 결과가 부족하면 gpt-6.2-astra로 바꿔 비교합니다.",
+        "여러 턴으로 이어 갈 때는 앞부분 프롬프트를 바꾸지 않고 새 지시를 뒤에 덧붙입니다."
+      ],
+      "note": "앞부분을 그대로 두면 캐시 재사용이 늘어 비용과 지연이 줄고 턴 사이의 추론이 유지됩니다.",
+      "example": {
+        "type": "code",
+        "text": "from openai import OpenAI\n\nclient = OpenAI()\n\nresponse = client.responses.create(\n    model=\"gpt-6.2-sol\",\n    input=\"[요청]\",\n)\nprint(response.output_text)"
+      },
+      "source": {
+        "title": "Introducing GPT-6.2 Astra and Sol (OpenAI)",
+        "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol"
+      }
+    },
+    {
+      "title": "템플릿에 맞춘 슬라이드 만들기",
+      "when": "회사 슬라이드 템플릿이 있고 편집을 줄이고 싶을 때",
+      "steps": [
+        "템플릿을 원본 파일이나 스크린샷으로 첨부합니다.",
+        "근거 자료와 장수, 장마다 넣을 내용을 알려 줍니다.",
+        "GPT-6.2 Astra를 선택해 요청합니다."
+      ],
+      "note": "원문은 Astra가 레이아웃·색·글꼴 크기까지 맞추고 템플릿의 문체를 새 슬라이드에 옮긴다고 설명합니다.",
+      "example": {
+        "type": "prompt",
+        "text": "첨부한 템플릿을 따라 [주제] 발표 자료를 [장수]장으로 만들어줘.\n제목에는 각 장의 핵심 결론을 쓰고 본문은 독자가 알아야 할 세부 내용만 간결하게 넣어줘."
+      },
+      "source": {
+        "title": "Introducing GPT-6.2 Astra and Sol (OpenAI)",
+        "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "기본은 Sol로 시작",
+      "body": "OpenAI 직원 다수가 기술·비기술 업무의 기본 모델로 Sol을 씁니다. Sol은 FrontierCode 2.0에서 Astra와 0.5점 차이이고 비용은 약 5분의 1입니다."
+    },
+    {
+      "title": "프롬프트 앞부분은 그대로 유지",
+      "body": "OpenAI는 캐시 재사용을 늘리고 턴 사이 추론을 보존하도록 프롬프트 앞부분을 바꾸지 말고 새 지시를 뒤에 덧붙이라고 권합니다."
+    },
+    {
+      "title": "템플릿은 파일이나 스크린샷으로 제공",
+      "body": "Astra는 원본 파일뿐 아니라 스크린샷으로 준 템플릿도 따라 합니다. 결과를 직접 쓰기 쉬워져 수정 횟수가 줄었다고 얼리 테스터는 평가했습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "템플릿 기반 보고서 작성",
+      "when": "자료와 양식이 있는 전문 문서를 만들 때",
+      "type": "prompt",
+      "text": "첨부한 [양식]을 따라 [주제] 보고서를 작성해줘.\n- 첨부한 자료만 근거로 쓰고 수치마다 출처 문서를 표시해\n- 일반적인 결론이나 군더더기 문장은 빼고 구체적으로 써줘\n- 마지막에 확인이 필요한 항목을 따로 정리해"
+    },
+    {
+      "title": "기존 코드 변경과 테스트",
+      "when": "Codex나 ChatGPT에서 복잡한 변경을 맡길 때",
+      "type": "prompt",
+      "text": "[파일 또는 기능]에 [변경 내용]을 구현해줘.\n- 기존 코드 스타일을 따르고 요청과 무관한 수정은 하지 마\n- 변경에 맞는 테스트를 추가하고 실행 결과를 알려줘"
+    }
+  ],
+  "cautions": [
+    "고위험 사이버 보안 지원에 더 엄격한 안전장치가 적용돼 일부 정당한 취약점 연구와 보안 테스트 워크플로도 제한될 수 있습니다.",
+    "정렬 평가에서 두 모델은 작업을 막은 장애물(없는 파일, 쓸 수 없는 검색 도구 등)을 말하지 않고 넘어가는 경향이 두 테스트에서 더 높았습니다. OpenAI는 Codex에 이를 줄이는 지시를 넣었고 계속 조사 중입니다.",
+    "Agents' Last Exam의 Fable 5.2 결과는 대체 모델을 쓴 9개 과제를 뺀 값입니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing GPT-6.2 Astra and Sol (OpenAI)",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol"
+    },
+    {
+      "title": "Preserved reasoning 가이드 (OpenAI API)",
+      "url": "https://developers.openai.com/api/docs/guides/preserved-reasoning"
+    },
+    {
+      "title": "GPT-6.2 system card (OpenAI)",
+      "url": "https://deploymentsafety.openai.com/gpt-6-2-astra-sol"
+    }
+  ]
+}

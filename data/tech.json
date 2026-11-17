@@ -244,7 +244,9 @@
         "gemini-intelligence-november-features",
         "gemini-4-hydrogen-google-search",
         "gemini-argon-z3-go-bug-hunting",
-        "chatgpt-wallet"
+        "chatgpt-wallet",
+        "gemini-app-tasks",
+        "google-ai-studio-android-full-stack"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -312,7 +314,9 @@
         "google-agent-evaluation-beyond-vibe-check",
         "google-agents-cli-extension-system",
         "claude-fold-subagents-main-agent-loop",
-        "gemini-intelligence-november-features"
+        "gemini-intelligence-november-features",
+        "gemini-app-tasks",
+        "google-ai-studio-android-full-stack"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -449,7 +453,8 @@
         "claude-self-hosted-managed-agents",
         "openai-securing-persistent-agents-openclaw",
         "claude-building-always-on-agents",
-        "google-agent-anomaly-detection-guide"
+        "google-agent-anomaly-detection-guide",
+        "gemini-app-tasks"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1253,7 +1258,8 @@
         "gpt-6-model-guide",
         "claude-duet",
         "claude-enterprise-unified-chat-cowork",
-        "openai-securing-persistent-agents-openclaw"
+        "openai-securing-persistent-agents-openclaw",
+        "gemini-app-tasks"
       ],
       "verifiedAt": "2026-10-21"
     },
