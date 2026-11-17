@@ -2220,6 +2220,14 @@
       "status": "skipped",
       "title": "Holiday Extras is rethinking what it can build with Codex"
     },
+    "https://openai.com/business/customer-stories/revolut": {
+      "checkedAt": "2026-11-17",
+      "company": "openai",
+      "date": "2026-11-16",
+      "reason": "고객 사례(Customer Story). 판단 기준의 '제외' 항목에 명시된 대로 고객 성공 사례는 실으지 않습니다. Revolut의 OpenAI 모델 활용 경험담이지만, 새 모델 출시, 모델 업데이트, 가격/사용 범위 변경, AI 제품·기능 출시, 공식 활용 팁(프롬프트 가이드, 모범 사례)에 해당하지 않습니다.",
+      "status": "skipped",
+      "title": "How Revolut raises ambition without lowering the bar"
+    },
     "https://openai.com/business/customer-stories/shield": {
       "checkedAt": "2026-11-14",
       "company": "openai",
