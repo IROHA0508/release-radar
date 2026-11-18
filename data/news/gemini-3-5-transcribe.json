@@ -55,12 +55,16 @@
     "85개 이상 언어를 자동으로 감지해 받아씁니다.",
     "녹음 파일에서 최대 3명의 화자를 타임스탬프와 함께 구분합니다(3명 초과는 실험 기능).",
     "제공한 사용자 단어장에 맞춰 전문 용어와 특이한 표기를 인식합니다.",
-    "최종 받아쓰기까지 걸리는 시간이 Chirp 3보다 70% 줄었습니다(Artificial Analysis 측정)."
+    "최종 받아쓰기까지 걸리는 시간이 Chirp 3보다 70% 줄었습니다(Artificial Analysis 측정).",
+    "gemini-3.5-transcribe와 gemini-3.5-transcribe-live가 음성으로 편집하는 기능을 지원합니다. 받아쓴 음성이나 이미 있는 텍스트(source_text)를 말로 고쳐 쓰고 서식을 정할 수 있습니다.",
+    "편집 대상은 받아쓰기로 만든 글과 기존 텍스트 모두입니다. 이미 써 둔 글에 source_text로 넘겨 음성 명령으로 다듬는 방식도 됩니다."
   ],
   "availability": [
     "Gemini API(Google AI Studio, Google Antigravity) 공개 프리뷰",
     "Gemini Enterprise Agent Platform 공개 프리뷰",
-    "Android의 Rambler(일부 국가·언어), Chrome에 곧 제공"
+    "Android의 Rambler(일부 국가·언어), Chrome에 곧 제공",
+    "Gemini API의 gemini-3.5-transcribe(오디오 전사)와 gemini-3.5-transcribe-live(실시간 전사)에서 지원합니다.",
+    "사용법은 Audio transcription 가이드와 Live transcription 가이드의 음성 편집(voice editing) 항목에 있습니다."
   ],
   "tips": [
     {
@@ -98,6 +102,22 @@
     {
       "title": "Gemini 3.5 Transcribe (Google)",
       "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/"
+    },
+    {
+      "title": "Gemini API 변경 기록 2026-11-17 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-17"
+    },
+    {
+      "title": "Gemini 3.5 Transcribe 모델 문서 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/models/gemini-3.5-transcribe"
+    },
+    {
+      "title": "Audio transcription 가이드: 음성 편집 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/transcribe#voice-editing"
+    },
+    {
+      "title": "Live transcription 가이드: 음성 편집 (Google AI Studio)",
+      "url": "https://aistudio.google.com/docs/live-api/live-transcribe#voice-editing"
     }
   ]
 }

@@ -35,12 +35,16 @@
     "GenerateContent API의 함수 응답(function response) 파트가 이미지·PDF·일반 텍스트에 더해 오디오, 비디오, Office·OpenDocument 파일을 받습니다. 도구가 이런 파일을 모델에 바로 돌려줄 수 있습니다.",
     "함수 응답 파트가 fileData도 받습니다. 도구가 인라인 바이트 대신 Files API URI를 돌려줄 수 있습니다.",
     "inlineData와 fileData 모두에서 displayName을 쓸 수 있고 비디오 파트는 mediaProcessing(STATIC 또는 AGENTIC)을 받습니다.",
-    "Interactions API의 function_result 단계가 텍스트·이미지에 더해 document, audio, video 콘텐츠 블록을 인라인 데이터 또는 uri로 받습니다. 비디오 블록은 v1beta와 v1alpha에서 쓸 수 있고 processing을 받습니다."
+    "Interactions API의 function_result 단계가 텍스트·이미지에 더해 document, audio, video 콘텐츠 블록을 인라인 데이터 또는 uri로 받습니다. 비디오 블록은 v1beta와 v1alpha에서 쓸 수 있고 processing을 받습니다.",
+    "2026-11-18 변경 기록에 따르면 Word, PowerPoint, Excel 같은 Microsoft Office 파일과 OpenDocument 파일을 Gemini API에 바로 넘길 수 있습니다.",
+    "사용자 프롬프트와 함수 응답에서 문서, 스프레드시트, 영상, 오디오를 잘라 처리하는 슬라이싱이 추가됐습니다.",
+    "페이지 범위, 워크시트 탭, 셀 범위, 시간 구간, 콘텐츠 레이어(페이지 이미지, 추출 텍스트, 수식, 영상 자막)를 골라 필요한 부분만 처리하고 그만큼만 비용을 냅니다."
   ],
   "availability": [
     "Gemini API (2026-11-05 변경 기록에 반영)",
     "형식별 처리 방식은 공식 문서의 Office and OpenDocument files 항목에 정리돼 있습니다.",
-    "Gemini API의 GenerateContent API와 Interactions API (Interactions API 비디오 블록은 v1beta·v1alpha)"
+    "Gemini API의 GenerateContent API와 Interactions API (Interactions API 비디오 블록은 v1beta·v1alpha)",
+    "Gemini API. 시작 방법은 Document understanding, Video understanding, Audio understanding 문서에 있습니다."
   ],
   "tips": [
     {
@@ -86,6 +90,22 @@
     {
       "title": "Multimodal function responses (Function calling 문서)",
       "url": "https://aistudio.google.com/docs/function-calling#multimodal"
+    },
+    {
+      "title": "Gemini API 변경 기록 2026-11-18 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18"
+    },
+    {
+      "title": "Document processing 맞춤 설정 (Google AI Studio 문서)",
+      "url": "https://aistudio.google.com/docs/document-processing#customize-document-processing"
+    },
+    {
+      "title": "Video understanding 맞춤 설정 (Google AI Studio 문서)",
+      "url": "https://aistudio.google.com/docs/video-understanding#customize-video-processing"
+    },
+    {
+      "title": "Audio 구간 자르기 (Google AI Studio 문서)",
+      "url": "https://aistudio.google.com/docs/audio#clipping-intervals"
     }
   ]
 }

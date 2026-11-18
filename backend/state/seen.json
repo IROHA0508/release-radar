@@ -91,6 +91,22 @@
       "status": "added",
       "title": "Gemini Decision and the Decisions API: ReleasedGemini Decision (gemini-decision-1) and the Decisions API for fast, calibrated binary,categorical, and rubric decisions across text, images, audio, video"
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-17-e69a3369": {
+      "checkedAt": "2026-11-18",
+      "company": "google",
+      "date": "2026-11-17",
+      "id": "gemini-3-5-transcribe",
+      "status": "updated",
+      "title": "Voice editing in Gemini 3.5 Transcribe:gemini-3.5-transcribe andgemini-3.5-transcribe-live now support voice-driven editing, rewriting,and formatting of dictated speech or pre-existing text (source_te"
+    },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18-fb82ddd1": {
+      "checkedAt": "2026-11-18",
+      "company": "google",
+      "date": "2026-11-18",
+      "id": "gemini-api-office-opendocument-files",
+      "status": "updated",
+      "title": "Multimodal file processing and slicing: You can now pass Microsoft Office and OpenDocument files (Word, PowerPoint, and Excel) directly to the Gemini API, and slice documents, spreadsheets, videos, an"
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -2691,6 +2707,14 @@
       "status": "skipped",
       "title": "Introducing Businesses in ChatGPT"
     },
+    "https://openai.com/index/introducing-chatgpt-for-sales": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-17",
+      "id": "chatgpt-for-sales",
+      "status": "added",
+      "title": "Introducing ChatGPT for Sales"
+    },
     "https://openai.com/index/introducing-chatgpt-wallet": {
       "checkedAt": "2026-11-14",
       "company": "openai",
@@ -2770,6 +2794,14 @@
       "reason": "Kuken Industries의 고객 사례로, 특정 회사 마케팅 글",
       "status": "skipped",
       "title": "Kuken Industries searches 70 years of drawings in minutes"
+    },
+    "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership": {
+      "checkedAt": "2026-11-18",
+      "company": "openai",
+      "date": "2026-11-18",
+      "reason": "기업과 미디어 출판사 간의 콘텐츠 제휴 발표로 판단 기준의 기업 파트너십 제외 항목에 해당함",
+      "status": "skipped",
+      "title": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT"
     },
     "https://openai.com/index/legalon-halves-codex-costs": {
       "checkedAt": "2026-10-09",

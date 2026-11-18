@@ -1,0 +1,220 @@
+{
+  "id": "chatgpt-for-sales",
+  "company": "openai",
+  "date": "2026-11-17",
+  "kind": "제품·기능 출시",
+  "title": "ChatGPT for Sales",
+  "headline": "영업 전용 Sales 플러그인과 파트너 플러그인 30여 개로 고객 파악부터 후속 조치까지 ChatGPT에서 처리",
+  "tldr": "OpenAI가 영업 팀을 위한 ChatGPT for Sales를 내놓았습니다. 영업 업무용 스킬을 담은 새 Sales 플러그인과 새로 나왔거나 개선된 파트너 플러그인 30개 이상이 들어 있습니다. CRM, 통화 기록, 계약 도구의 정보를 ChatGPT로 모아 통화 준비, 제안서 작성, 후속 메일을 빠르게 처리하도록 돕습니다.",
+  "fit": {
+    "summary": "CRM, 통화 녹취, 계약 도구를 이미 쓰는 영업 팀이 고객 정보를 ChatGPT 한곳에서 모아 쓰려 할 때 맞습니다.",
+    "good": [
+      "통화 전에 계정 이력과 이전 통화, 구매자 우선순위를 묶어 브리핑 받기",
+      "통화 뒤에 후속 메일 초안과 합의한 다음 단계 정리하기",
+      "CRM과 고객 대화를 바탕으로 위험한 딜 살펴보기",
+      "CRM 정보와 조사 자료로 우선순위 계정 목록 만들기"
+    ],
+    "notFor": [
+      "파트너 플러그인은 요금제, 지역, 워크스페이스 설정에 따라 제공 여부가 달라 일부 기능은 쓰지 못할 수 있습니다",
+      "연결할 CRM이나 영업 도구가 없는 팀은 고객 정보를 모으는 효과가 작습니다"
+    ],
+    "start": "Sales 플러그인을 설치한 뒤 자주 쓰는 CRM이나 통화 기록 파트너 플러그인을 하나 연결해 보세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "파트너 플러그인",
+      "value": "30개 이상",
+      "note": "ChatGPT에 새로 나왔거나 개선된 플러그인"
+    },
+    {
+      "label": "Sales 플러그인",
+      "value": "1개",
+      "note": "OpenAI가 만든 영업용 스킬 모음"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "영업 업무가 ChatGPT에서 이어지는 순서",
+      "caption": "원문의 활용 사례를 순서대로 옮긴 도식입니다.",
+      "steps": [
+        {
+          "label": "계정 선정",
+          "desc": "CRM과 조사 도구 정보로 우선순위 계정 목록 만들기"
+        },
+        {
+          "label": "통화 준비",
+          "desc": "계정 이력, 이전 통화, 구매자 우선순위를 묶은 브리핑 받기"
+        },
+        {
+          "label": "맞춤 제안",
+          "desc": "Gamma나 Canva로 고객별 발표 자료 만들기"
+        },
+        {
+          "label": "후속 조치",
+          "desc": "후속 메일 초안, 다음 단계 정리, 고객 기록 갱신안 작성"
+        },
+        {
+          "label": "위험 점검",
+          "desc": "CRM 이력과 고객 대화로 딜이 막힌 이유 파악"
+        }
+      ],
+      "loop": "dot을 쓰면 대화 사이에도 딜 변경을 추적하고 다음 단계를 제안받을 수 있습니다.",
+      "source": {
+        "title": "Introducing ChatGPT for Sales (OpenAI)",
+        "url": "https://openai.com/index/introducing-chatgpt-for-sales"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "영업 단계별 연결 도구",
+      "caption": "원문이 소개한 파트너 플러그인 예시입니다.",
+      "columns": [
+        "연결 도구 예시"
+      ],
+      "rows": [
+        {
+          "label": "계정·딜 관리",
+          "cells": [
+            "Salesforce, HubSpot, Close CRM, monday CRM"
+          ]
+        },
+        {
+          "label": "영업 발굴",
+          "cells": [
+            "Apollo, Clay, Common Room, Outreach, Salesloft"
+          ]
+        },
+        {
+          "label": "고객 대화",
+          "cells": [
+            "Meetings 플러그인, Gong, Otter.ai, Granola"
+          ]
+        },
+        {
+          "label": "견적·계약",
+          "cells": [
+            "Docusign, Ironclad, PandaDoc, ServiceNow CPQ"
+          ]
+        }
+      ],
+      "source": {
+        "title": "Introducing ChatGPT for Sales (OpenAI)",
+        "url": "https://openai.com/index/introducing-chatgpt-for-sales"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "이 소식은 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "영업 업무용 스킬을 담은 새 Sales 플러그인이 나왔습니다. 어떤 계정을 공략할지 정하는 일부터 통화 준비, 후속 메일 작성까지 쓸 수 있는 워크플로를 줍니다.",
+    "ChatGPT에 새로 나왔거나 개선된 파트너 플러그인이 30개 이상입니다. Salesforce, HubSpot, Gong, Docusign 같은 기존 영업 도구의 고객 정보를 ChatGPT가 활용합니다.",
+    "ChatGPT Voice로 발표와 반론 대응을 연습하고 ChatGPT Slides, Gamma, Figma, Canva로 맞춤 발표 자료를 만듭니다. ChatGPT Sites로는 대화형 데모나 ROI 계산기도 만들 수 있습니다.",
+    "항상 켜져 있는 에이전트인 dot에 맡기면 같은 플러그인과 고객 정보로 미팅 브리핑을 준비하고 딜 변경을 추적합니다. 검토할 다음 단계도 먼저 알려 줍니다.",
+    "Attio 같은 도구를 연결하면 ChatGPT에서 다음 단계를 CRM에 저장합니다."
+  ],
+  "availability": [
+    "Sales 플러그인은 chatgpt.com/plugins/sales에서 설치합니다.",
+    "파트너 플러그인과 기능의 제공 여부는 요금제, 지역, 워크스페이스 설정에 따라 다릅니다.",
+    "ChatGPT Business와 Enterprise 관리자는 Admin Console에서 워크스페이스를 고르고 Plugins로 들어가 Sales 플러그인과 파트너 플러그인을 구성원이 설치하게 열거나 기본으로 설치할 수 있습니다."
+  ],
+  "usage": [
+    {
+      "title": "통화 전에 구매자 브리핑 받기",
+      "when": "미팅 직전에 계정 이력과 이전 통화 내용을 한꺼번에 파악하고 싶을 때",
+      "steps": [
+        "Sales 플러그인과 CRM, 통화 기록 플러그인을 연결합니다.",
+        "계정 이력, 이전 통화, 구매자 우선순위를 묶은 브리핑을 요청합니다.",
+        "아직 답이 필요한 질문을 정리한 뒤 Gamma나 Canva로 고객별 제안 자료를 만듭니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "[고객사 이름]과의 다음 미팅을 준비해 줘. CRM의 계정 이력과 이전 통화 내용을 바탕으로 구매자의 우선순위와 아직 답이 필요한 질문을 정리해 줘."
+      },
+      "source": {
+        "title": "Introducing ChatGPT for Sales (OpenAI)",
+        "url": "https://openai.com/index/introducing-chatgpt-for-sales"
+      }
+    },
+    {
+      "title": "통화 뒤 후속 조치 정리하기",
+      "when": "통화가 끝난 직후 후속 메일과 CRM 기록을 빠르게 처리하고 싶을 때",
+      "steps": [
+        "통화 기록 플러그인(Meetings, Gong, Otter.ai, Granola 중 하나)을 연결합니다.",
+        "후속 메일 초안과 합의한 다음 단계 정리를 요청합니다.",
+        "제안된 고객 기록 변경을 검토하고 대화에서 메시지를 다듬습니다."
+      ],
+      "note": "Attio 같은 도구를 연결하면 다음 단계를 CRM에 저장할 수 있습니다.",
+      "example": {
+        "type": "prompt",
+        "text": "방금 끝난 [고객사 이름] 통화 기록으로 후속 메일 초안을 쓰고 합의한 다음 단계를 정리해 줘. 고객 기록에 반영할 변경안도 함께 보여 줘."
+      },
+      "source": {
+        "title": "Introducing ChatGPT for Sales (OpenAI)",
+        "url": "https://openai.com/index/introducing-chatgpt-for-sales"
+      }
+    },
+    {
+      "title": "딜 위험 점검을 dot에 맡기기",
+      "when": "여러 딜을 매일 살펴보고 변화를 놓치고 싶지 않을 때",
+      "steps": [
+        "CRM 이력과 고객 대화를 연결합니다.",
+        "dot에게 매일 아침 딜을 확인하고 주의가 필요한 변화를 알려 달라고 맡깁니다.",
+        "dot이 준비한 미팅 브리핑이나 후속 시퀀스를 검토합니다."
+      ],
+      "note": "원문은 Rox 플러그인을 예로 들었습니다.",
+      "source": {
+        "title": "Introducing ChatGPT for Sales (OpenAI)",
+        "url": "https://openai.com/index/introducing-chatgpt-for-sales"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "쓰는 도구부터 연결",
+      "body": "모든 플러그인을 켜기보다 지금 쓰는 CRM과 통화 기록 도구에 맞는 파트너 플러그인을 먼저 고르세요. 원문도 영업 과정에 맞는 플러그인을 고르라고 안내합니다."
+    },
+    {
+      "title": "대화 안에서 다듬기",
+      "body": "브리핑, 제안 자료, 후속 메시지를 한 대화에서 이어 만들고 고객에게 보내기 전에 대화로 다듬으세요."
+    },
+    {
+      "title": "권한 먼저 확인",
+      "body": "관리자는 필요한 앱의 접근 범위와 앱이 실행할 수 있는 작업을 검토하세요. 구성원은 안내가 뜰 때 필요한 계정 연결을 마치면 됩니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "우선순위 계정 목록 만들기",
+      "when": "CRM과 조사 도구를 연결한 뒤 공략할 계정을 정할 때",
+      "type": "prompt",
+      "text": "CRM 정보와 [조사 도구 이름]의 조사 자료로 우선순위 계정 목록을 만들어 줘. 계정마다 왜 적합한지, 빠진 정보가 무엇인지 알려 주고 [우리 팀의 우선순위 기준]에 맞춰 목록을 다듬어 줘."
+    },
+    {
+      "title": "딜 막힌 이유 파악",
+      "when": "진행이 멈춘 딜의 원인을 찾을 때",
+      "type": "prompt",
+      "text": "[딜 이름]이 진행되지 않는 이유를 CRM 이력과 고객 대화에서 찾아 줘. 지금 필요한 다음 행동도 제안해 줘."
+    }
+  ],
+  "cautions": [
+    "파트너 플러그인과 기능은 요금제, 지역, 워크스페이스 설정에 따라 제공 범위가 다릅니다.",
+    "플러그인이 고객 정보와 연결 앱의 작업에 접근하므로 관리자는 접근 권한과 사용할 수 있는 작업을 먼저 검토해야 합니다.",
+    "CRM 기록 변경과 고객에게 보낼 메시지는 실행 전에 직접 검토하세요."
+  ],
+  "sources": [
+    {
+      "title": "Introducing ChatGPT for Sales (OpenAI)",
+      "url": "https://openai.com/index/introducing-chatgpt-for-sales"
+    },
+    {
+      "title": "Sales 플러그인 설치 (ChatGPT)",
+      "url": "https://chatgpt.com/plugins/sales"
+    },
+    {
+      "title": "플러그인·앱 관리자 제어 (OpenAI Help)",
+      "url": "https://help.openai.com/articles/11509118-admin-controls-security-and-compliance-for-plugins-and-apps"
+    }
+  ]
+}
