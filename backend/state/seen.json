@@ -99,6 +99,14 @@
       "status": "updated",
       "title": "Voice editing in Gemini 3.5 Transcribe:gemini-3.5-transcribe andgemini-3.5-transcribe-live now support voice-driven editing, rewriting,and formatting of dictated speech or pre-existing text (source_te"
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18-76bd9215": {
+      "checkedAt": "2026-11-19",
+      "company": "google",
+      "date": "2026-11-18",
+      "id": "gemini-4-neon",
+      "status": "updated",
+      "title": "Gemini 4 Neon (gemini-4-neon) generally available (GA): ReleasedGemini 4 Neon (gemini-4-neon), bringing frontier-level intelligence with fast end-to-end task completion across complex software enginee"
+    },
     "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18-fb82ddd1": {
       "checkedAt": "2026-11-18",
       "company": "google",
@@ -590,6 +598,14 @@
       "status": "updated",
       "title": "Introducing Gemini 4 Hydrogen"
     },
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon": {
+      "checkedAt": "2026-11-19",
+      "company": "google",
+      "date": "2026-11-18",
+      "id": "gemini-4-neon",
+      "status": "added",
+      "title": "Introducing Gemini 4 Neon"
+    },
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark": {
       "checkedAt": "2026-11-11",
       "company": "google",
@@ -613,6 +629,14 @@
       "id": "gemini-4-argon",
       "status": "updated",
       "title": "Gemini 4 Argon comes to the Gemini app."
+    },
+    "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices": {
+      "checkedAt": "2026-11-19",
+      "company": "google",
+      "date": "2026-11-18",
+      "id": "gemini-app-lower-memory-android",
+      "status": "added",
+      "title": "The Gemini app is now available on lower-memory Android devices."
     },
     "https://blog.google/innovation-and-ai/products/gemini-app/gemini-on-apple-carplay": {
       "checkedAt": "2026-11-12",
@@ -1328,6 +1352,14 @@
       "status": "skipped",
       "title": "What Google Cloud announced in AI this month"
     },
+    "https://cloud.google.com/blog/products/application-development/lessons-from-building-sashiko-an-agentic-code-review-system": {
+      "checkedAt": "2026-11-19",
+      "company": "google",
+      "date": "2026-11-18",
+      "reason": "Gemini 에이전트를 사용한 고객 사례이자 개발 프레임워크 설명으로, AI 모델 사용 방식과 무관한 인프라 글",
+      "status": "skipped",
+      "title": "Sashiko: Lessons from building an agentic code review system for Linux"
+    },
     "https://cloud.google.com/blog/products/containers-kubernetes/gke-dynamic-slicing-on-tpus": {
       "checkedAt": "2026-11-10",
       "company": "google",
@@ -1543,6 +1575,14 @@
       "id": "gemini-4-hydrogen",
       "status": "updated",
       "title": "Introducing Gemini 4 Hydrogen"
+    },
+    "https://deepmind.google/blog/introducing-gemini-4-neon": {
+      "checkedAt": "2026-11-19",
+      "company": "google",
+      "date": "2026-11-18",
+      "id": "gemini-4-neon",
+      "status": "added",
+      "title": "Introducing Gemini 4 Neon"
     },
     "https://deepmind.google/blog/on-device-ai-scam-detection-mddi": {
       "checkedAt": "2026-10-14",
@@ -2347,6 +2387,14 @@
       "status": "skipped",
       "title": "Accelerating engineering for the physical world"
     },
+    "https://openai.com/index/advancing-chip-design-with-our-models": {
+      "checkedAt": "2026-11-19",
+      "company": "openai",
+      "date": "2026-11-18",
+      "reason": "OpenAI 모델을 사용한 고객 사례(칩 설계)로, 모델 출시나 업데이트가 아님",
+      "status": "skipped",
+      "title": "Advancing chip design with OpenAI models"
+    },
     "https://openai.com/index/advancing-computer-use-for-healthcare-teams": {
       "checkedAt": "2026-11-17",
       "company": "openai",
@@ -2699,6 +2747,14 @@
       "status": "skipped",
       "title": "How we detect frontier model misalignment"
     },
+    "https://openai.com/index/inside-the-codex-sandbox": {
+      "checkedAt": "2026-11-19",
+      "company": "openai",
+      "date": "2026-11-18",
+      "reason": "Codex 샌드박스의 기술 아키텍처 설명으로, 사용자가 직접 따라 할 수 있는 활용 팁 또는 사용 범위 변경이 아님",
+      "status": "skipped",
+      "title": "Inside the Codex sandbox"
+    },
     "https://openai.com/index/introducing-businesses-chatgpt": {
       "checkedAt": "2026-11-11",
       "company": "openai",
@@ -2834,6 +2890,14 @@
       "reason": "기업 파트너십(LVMH 미디어 부문과 OpenAI) 발표로, 포함 기준의 새 모델 출시·업데이트, AI 제품·기능 출시, 공식 활용 팁에 해당하지 않습니다. 판단 기준의 '제외' 항목 중 '기업 파트너십'에 해당합니다.",
       "status": "skipped",
       "title": "LVMH’s Media Division announces strategic partnership with OpenAI"
+    },
+    "https://openai.com/index/managing-frontier-ai-risk": {
+      "checkedAt": "2026-11-19",
+      "company": "openai",
+      "date": "2026-11-18",
+      "reason": "AI 안전·정책 보고서로, 모델 출시, 기능 출시, 활용 팁과 무관함",
+      "status": "skipped",
+      "title": "Managing frontier AI risk: From training to deployment"
     },
     "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science": {
       "checkedAt": "2026-11-07",

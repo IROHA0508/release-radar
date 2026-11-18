@@ -1394,7 +1394,8 @@
         "decisions-api",
         "google-ai-edge-gallery-on-device-speech",
         "gemini-apple-carplay",
-        "claude-meetings"
+        "claude-meetings",
+        "gemini-app-lower-memory-android"
       ],
       "verifiedAt": "2026-10-21"
     },

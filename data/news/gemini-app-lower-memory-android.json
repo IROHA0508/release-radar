@@ -1,0 +1,140 @@
+{
+  "id": "gemini-app-lower-memory-android",
+  "company": "google",
+  "date": "2026-11-18",
+  "kind": "제품·기능 출시",
+  "title": "저사양 Android 기기용 Gemini 앱",
+  "headline": "메모리가 적은 Android(Go edition) 기기에서도 Gemini 앱을 씁니다",
+  "tldr": "Google이 Gemini 앱을 메모리가 적은 Android(Go edition) 기기에서도 돌아가게 앱 구조를 다시 짰습니다. 전에는 기본 음성 명령만 되던 기기에서 Gemini Live 대화, 카메라로 노트·서식 번역, Nano Banana 이미지 만들기를 쓸 수 있습니다.",
+  "fit": {
+    "summary": "보급형 Android(Go edition) 폰에서 음성 대화, 카메라 번역, 이미지 만들기를 쓰고 싶을 때 맞는 소식입니다.",
+    "good": [
+      "말로 풀어 가며 면접을 연습하는 일",
+      "카메라로 노트나 서식을 비춰 배우고 번역하는 일",
+      "주말 빵 가게 전단 같은 맞춤 이미지를 만드는 일"
+    ],
+    "notFor": [
+      "원문이 밝힌 지원 대상은 eligible Android(Go edition) 기기입니다. 어느 기기가 해당하는지는 원문에 목록이 없어 확인이 필요합니다."
+    ],
+    "start": "Google Play에서 Gemini 앱을 내려받거나 지원 기기에서 전원 버튼을 길게 누릅니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "Gemini Live 지원 언어",
+      "value": "45개 이상",
+      "note": "음성으로 대화하고 면접을 연습할 때"
+    },
+    {
+      "label": "대상 사용자",
+      "value": "수억 명",
+      "note": "원문은 hundreds of millions more people이라고 표현"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Gemini 앱을 다시 설계해 적은 메모리의 하드웨어에서도 핵심 Gemini 경험이 부드럽게 돌아갑니다.",
+    "그동안 이런 기기는 기본 음성 명령만 쓸 수 있었습니다. 이제 eligible Android(Go edition) 기기에 Gemini 앱이 들어갑니다.",
+    "Gemini Live로 45개 이상 언어에서 말로 대화하고 면접을 소리 내어 연습합니다.",
+    "카메라를 노트나 서식에 비춰 배우고 번역합니다.",
+    "Nano Banana로 주말 빵 가게 세일 전단 같은 맞춤 이미지를 만듭니다."
+  ],
+  "availability": [
+    "eligible Android(Go edition) 기기",
+    "Google Play에서 Gemini 앱 내려받기",
+    "지원 폰에서 전원 버튼 길게 누르기",
+    "Transsion 같은 파트너의 출시 예정 기기에는 사전 설치"
+  ],
+  "usage": [
+    {
+      "title": "말로 면접 연습하기",
+      "when": "긴 프롬프트를 입력하기 번거로울 때",
+      "steps": [
+        "Gemini 앱을 열어 Gemini Live를 시작합니다.",
+        "원하는 언어로 면접관 역할을 부탁합니다.",
+        "질문에 소리 내어 답하며 연습합니다."
+      ],
+      "note": "Gemini Live는 45개 이상 언어를 지원합니다.",
+      "example": {
+        "type": "prompt",
+        "text": "[직무] 면접관이 되어 질문을 하나씩 해 줘. 내가 말로 답하면 이어서 다음 질문을 해 줘."
+      },
+      "source": {
+        "title": "The Gemini app is now available on lower-memory Android devices. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/"
+      }
+    },
+    {
+      "title": "카메라로 노트나 서식 번역하기",
+      "when": "외국어 서식이나 필기를 이해해야 할 때",
+      "steps": [
+        "Gemini 앱에서 카메라를 켭니다.",
+        "노트나 서식을 비춥니다.",
+        "내용을 배우거나 번역해 달라고 요청합니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "카메라에 보이는 서식을 [언어]로 번역하고 작성해야 할 항목을 알려줘."
+      },
+      "source": {
+        "title": "The Gemini app is now available on lower-memory Android devices. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/"
+      }
+    },
+    {
+      "title": "Nano Banana로 전단 이미지 만들기",
+      "when": "가게 홍보물이나 맞춤 이미지가 필요할 때",
+      "steps": [
+        "Gemini 앱에서 만들 이미지를 설명합니다.",
+        "결과를 보고 문구나 분위기를 고쳐 달라고 요청합니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "주말 [가게 종류] 세일을 알리는 전단 이미지를 만들어 줘. 분위기는 [분위기]로."
+      },
+      "source": {
+        "title": "The Gemini app is now available on lower-memory Android devices. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "전원 버튼으로 바로 부르기",
+      "body": "지원 폰에서는 전원 버튼을 길게 눌러 Gemini를 시작합니다. 앱 아이콘을 찾지 않아도 됩니다."
+    },
+    {
+      "title": "긴 입력 대신 말로 시작",
+      "body": "타이핑이 불편하면 Gemini Live로 말하며 생각을 정리합니다."
+    },
+    {
+      "title": "카메라는 학습과 번역에",
+      "body": "노트나 서식을 비추는 방식으로 읽고 이해하는 일을 맡깁니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "면접 연습",
+      "when": "Gemini Live로 면접 답변을 연습할 때",
+      "type": "prompt",
+      "text": "[직무] 면접관이 되어 질문을 하나씩 해 줘. 내가 답하면 좋은 점과 고칠 점을 짧게 알려줘."
+    },
+    {
+      "title": "전단 이미지 만들기",
+      "when": "가게나 모임 홍보 이미지가 필요할 때",
+      "type": "prompt",
+      "text": "[행사 내용]을 알리는 전단 이미지를 만들어 줘. 분위기는 [분위기], 꼭 넣을 문구는 [문구]야."
+    }
+  ],
+  "cautions": [
+    "지원 대상은 eligible 기기입니다. 내 기기가 해당하는지는 원문에 기준이 없어 확인이 필요합니다.",
+    "파트너 기기 사전 설치는 출시 예정(upcoming) 기기에 해당합니다."
+  ],
+  "sources": [
+    {
+      "title": "The Gemini app is now available on lower-memory Android devices. (Google)",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/"
+    }
+  ]
+}

@@ -1,67 +1,105 @@
 {
-  "startedAt": "2026-11-18T19:49:04+09:00",
+  "startedAt": "2026-11-19T07:24:39+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2682,
+  "entries": 2681,
   "candidates": [
     {
-      "title": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
-      "url": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+      "title": "Inside the Codex sandbox",
+      "url": "https://openai.com/index/inside-the-codex-sandbox",
       "company": "openai",
       "date": "2026-11-18",
       "relatedId": null
     },
     {
-      "title": "Multimodal file processing and slicing: You can now pass Microsoft Office and OpenDocument files (Word, PowerPoint, and Excel) directly to the Gemini API, and slice documents, spreadsheets, videos, an",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18",
+      "title": "Managing frontier AI risk: From training to deployment",
+      "url": "https://openai.com/index/managing-frontier-ai-risk",
+      "company": "openai",
+      "date": "2026-11-18",
+      "relatedId": null
+    },
+    {
+      "title": "Advancing chip design with OpenAI models",
+      "url": "https://openai.com/index/advancing-chip-design-with-our-models",
+      "company": "openai",
+      "date": "2026-11-18",
+      "relatedId": null
+    },
+    {
+      "title": "Introducing Gemini 4 Neon",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
       "company": "google",
       "date": "2026-11-18",
       "relatedId": "gemini-app-resume-update"
     },
     {
-      "title": "Introducing ChatGPT for Sales",
-      "url": "https://openai.com/index/introducing-chatgpt-for-sales",
-      "company": "openai",
-      "date": "2026-11-17",
+      "title": "The Gemini app is now available on lower-memory Android devices.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
+      "company": "google",
+      "date": "2026-11-18",
+      "relatedId": "gemini-app-resume-update"
+    },
+    {
+      "title": "Sashiko: Lessons from building an agentic code review system for Linux",
+      "url": "https://cloud.google.com/blog/products/application-development/lessons-from-building-sashiko-an-agentic-code-review-system/",
+      "company": "google",
+      "date": "2026-11-18",
       "relatedId": null
     },
     {
-      "title": "Voice editing in Gemini 3.5 Transcribe:gemini-3.5-transcribe andgemini-3.5-transcribe-live now support voice-driven editing, rewriting,and formatting of dictated speech or pre-existing text (source_te",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-17",
+      "title": "Gemini 4 Neon (gemini-4-neon) generally available (GA): ReleasedGemini 4 Neon (gemini-4-neon), bringing frontier-level intelligence with fast end-to-end task completion across complex software enginee",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18",
       "company": "google",
-      "date": "2026-11-17",
-      "relatedId": "gemini-3-5-transcribe"
+      "date": "2026-11-18",
+      "relatedId": "gemini-app-resume-update"
     }
   ],
   "added": [
     {
-      "id": "chatgpt-for-sales",
-      "title": "ChatGPT for Sales",
-      "url": "https://openai.com/index/introducing-chatgpt-for-sales",
+      "id": "gemini-4-neon",
+      "title": "Gemini 4 Neon",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+      "charts": 1
+    },
+    {
+      "id": "gemini-app-lower-memory-android",
+      "title": "저사양 Android 기기용 Gemini 앱",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
       "charts": 0
     }
   ],
   "updated": [
     {
-      "id": "gemini-api-office-opendocument-files",
+      "id": "gemini-4-neon",
       "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18"
-    },
-    {
-      "id": "gemini-3-5-transcribe",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-17"
     }
   ],
   "skipped": [
     {
-      "title": "Le Groupe Figaro and OpenAI partner to bring Le Figaro journalism to ChatGPT",
-      "url": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
-      "reason": "기업과 미디어 출판사 간의 콘텐츠 제휴 발표로 판단 기준의 기업 파트너십 제외 항목에 해당함"
+      "title": "Inside the Codex sandbox",
+      "url": "https://openai.com/index/inside-the-codex-sandbox",
+      "reason": "Codex 샌드박스의 기술 아키텍처 설명으로, 사용자가 직접 따라 할 수 있는 활용 팁 또는 사용 범위 변경이 아님"
+    },
+    {
+      "title": "Managing frontier AI risk: From training to deployment",
+      "url": "https://openai.com/index/managing-frontier-ai-risk",
+      "reason": "AI 안전·정책 보고서로, 모델 출시, 기능 출시, 활용 팁과 무관함"
+    },
+    {
+      "title": "Advancing chip design with OpenAI models",
+      "url": "https://openai.com/index/advancing-chip-design-with-our-models",
+      "reason": "OpenAI 모델을 사용한 고객 사례(칩 설계)로, 모델 출시나 업데이트가 아님"
+    },
+    {
+      "title": "Sashiko: Lessons from building an agentic code review system for Linux",
+      "url": "https://cloud.google.com/blog/products/application-development/lessons-from-building-sashiko-an-agentic-code-review-system/",
+      "reason": "Gemini 에이전트를 사용한 고객 사례이자 개발 프레임워크 설명으로, AI 모델 사용 방식과 무관한 인프라 글"
     }
   ],
   "failed": [],
   "guardNotes": {
-    "chatgpt-for-sales": [
-      "핵심 수치 '도구 분류: 6개 영역' 원문에서 확인 안 됨 → 제외"
+    "gemini-app-lower-memory-android": [
+      "핵심 수치 '시작 방법: 3가지' 원문에서 확인 안 됨 → 제외"
     ]
   },
   "note": "요약 엔진: Claude Code CLI(구독)",
@@ -69,7 +107,7 @@
   "guideChanges": [],
   "styleNotes": {},
   "techLinks": [
-    "chatgpt-for-sales → agent-loop"
+    "gemini-app-lower-memory-android → voice-agent"
   ],
   "retired": []
 }

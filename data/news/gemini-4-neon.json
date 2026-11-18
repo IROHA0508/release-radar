@@ -1,0 +1,220 @@
+{
+  "id": "gemini-4-neon",
+  "company": "google",
+  "date": "2026-11-18",
+  "kind": "모델 출시",
+  "title": "Gemini 4 Neon",
+  "headline": "Carbon급 보호 장치를 유지하면서 속도와 비용을 낮춘 Gemini 4 중간 모델",
+  "tldr": "Gemini 4 패밀리의 새 모델입니다. 복잡한 소프트웨어 엔지니어링, 지식 노동, 과학 작업에서 빠르게 끝까지 일을 처리합니다. Artificial Analysis Intelligence Index에서 xhigh 기준 61점으로 전체 3위이고 가격은 입력 $3, 출력 $15입니다.",
+  "fit": {
+    "summary": "복잡한 코딩, 분석, 업무용 워크플로를 자주 돌리는 팀이 깊이와 효율의 균형을 맞출 때 맞는 모델입니다.",
+    "good": [
+      "여러 파일에 걸친 디버깅과 리팩터링",
+      "스프레드시트·PDF·차트·음성·영상을 한 컨텍스트에서 종합하는 업무",
+      "Antigravity에서 Hydrogen 서브에이전트를 지휘하는 오케스트레이터",
+      "취약점 찾기·검증·패치 같은 보안 방어 작업(Neon for cyber)"
+    ],
+    "notFor": [
+      "가장 어려운 장기 프로젝트는 원문이 Carbon을 권합니다",
+      "빠른 일상 실행은 원문이 Hydrogen을 맡는 역할로 소개합니다",
+      "Gemini app 무료 사용자는 원문 출시 대상에 없습니다"
+    ],
+    "start": "기본 thinking level인 high로 시작하고 가장 어려운 작업에만 xhigh를 씁니다."
+  },
+  "models": [
+    {
+      "name": "Gemini 4 Neon",
+      "apiId": "gemini-4-neon",
+      "input": "$3",
+      "output": "$15",
+      "cached": "$0.15"
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Artificial Analysis Intelligence Index",
+      "value": "61",
+      "note": "xhigh 기준 전체 3위"
+    },
+    {
+      "label": "Vals Index",
+      "value": "70.9%",
+      "note": "2위, Pareto frontier"
+    },
+    {
+      "label": "Terminal-Bench 4.1",
+      "value": "65.2%",
+      "note": "Artificial Analysis Coding Agent Index는 58.6으로 1위"
+    },
+    {
+      "label": "컨텍스트 창",
+      "value": "100만 토큰",
+      "note": "캐시 입력은 95% 할인"
+    }
+  ],
+  "figures": [
+    {
+      "type": "compare",
+      "title": "Gemini 4 패밀리에서 Neon의 자리",
+      "caption": "원문이 설명한 모델별 역할입니다.",
+      "columns": [
+        "역할"
+      ],
+      "rows": [
+        {
+          "label": "Gemini 4 Carbon",
+          "cells": [
+            "가장 어려운 장기 프로젝트"
+          ]
+        },
+        {
+          "label": "Gemini 4 Neon",
+          "cells": [
+            "깊이와 효율의 균형, 복잡한 고빈도 워크플로"
+          ],
+          "highlight": true
+        },
+        {
+          "label": "Gemini 4 Hydrogen",
+          "cells": [
+            "빠른 일상 실행"
+          ]
+        }
+      ],
+      "source": {
+        "title": "Introducing Gemini 4 Neon (Google)",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+      }
+    }
+  ],
+  "chartSource": "Google Gemini 4 Neon 발표문 본문 수치 기준입니다.",
+  "charts": [
+    {
+      "title": "SWE-sweep",
+      "desc": "같은 Neon을 하네스별로 비교한 값",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "Google",
+      "note": "모델 간 비교가 아니라 하네스에 따른 차이입니다.",
+      "rows": [
+        {
+          "label": "Google Antigravity 하네스",
+          "value": 39,
+          "highlight": true
+        },
+        {
+          "label": "mini-SWE 하네스",
+          "value": 12.8
+        }
+      ]
+    }
+  ],
+  "chartNote": "나머지 벤치마크는 다른 모델 수치가 이미지로만 있어 텍스트로 확인한 값만 실었습니다.",
+  "changes": [
+    "Artificial Analysis Intelligence Index에서 xhigh 기준 61점으로 비슷한 모델보다 앞서고 전체 3위입니다. Vals Index는 2위입니다.",
+    "Legal Research Bench와 Tax Agent Bench에서 1위입니다. Zapier AutomationBench 56.3%와 Vending-Bench 2 $16,843도 1위입니다.",
+    "Terminal-Bench Science 70.5%, RiemannBench 84.0%, HLE-Diamond 71.3%로 과학·수학 추론에서 가장 앞선다고 밝혔습니다.",
+    "불필요한 파일 읽기를 줄이고 진행 상황을 공유하며 긴 세션의 컨텍스트 컴팩션을 안정적으로 처리합니다.",
+    "high에서 Artificial Analysis 작업당 비용이 Carbon보다 32% 낮습니다. xhigh에서도 경쟁 모델의 최고 설정보다 36% 이상 저렴합니다.",
+    "내부 Antigravity 테스트에서 지금까지 가장 낮은 fabrication 비율을 기록했습니다.",
+    "thinking level은 low, medium, high(기본값), xhigh 네 단계를 지원합니다.",
+    "통합 1M 토큰 컨텍스트 창과 함께 최대 1M 토큰까지 길게 생성하는 long decode를 지원합니다."
+  ],
+  "availability": [
+    "Google AI Studio와 Android Studio의 Gemini API 유료 티어",
+    "Gemini for business(API 또는 모델 드롭다운)",
+    "Google Antigravity는 유료 Google AI Pro·Ultra 구독자",
+    "Gemini 앱은 Pro·Ultra 구독자가 모델 드롭다운에서 선택",
+    "Neon for cyber는 Fairwind Program의 자격 있는 방어 담당자에게 며칠 안에 순차 제공",
+    "API 모델명: gemini-4-neon",
+    "Gemini API 유료 티어에서 입력 100만 토큰당 $3.00, 출력 100만 토큰당 $15.00에 제공됩니다(2026-11-18 API 변경 기록 기준)."
+  ],
+  "usage": [
+    {
+      "title": "Gemini API로 Neon 호출하기",
+      "when": "AI Studio에서 먼저 써 본 뒤 코드에 붙일 때",
+      "steps": [
+        "Google AI Studio에서 모델을 Gemini 4 Neon으로 고릅니다.",
+        "결과가 마음에 들면 같은 모델명으로 API를 호출합니다.",
+        "기본 high로 시작하고 어려운 작업에만 xhigh로 올립니다."
+      ],
+      "note": "API는 유료 티어에서 쓸 수 있습니다.",
+      "example": {
+        "type": "code",
+        "text": "from google import genai\n\nclient = genai.Client()\n\nresponse = client.models.generate_content(\n    model=\"gemini-4-neon\",\n    contents=\"[요청]\",\n)\nprint(response.text)"
+      },
+      "source": {
+        "title": "Introducing Gemini 4 Neon (Google)",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+      }
+    },
+    {
+      "title": "Gemini 앱에서 Task를 Neon으로 돌리기",
+      "when": "청구서나 영수증처럼 번거로운 다단계 작업을 맡길 때",
+      "steps": [
+        "Pro 또는 Ultra 구독 상태에서 모델 드롭다운으로 Gemini 4 Neon을 고릅니다.",
+        "분석할 자료를 올리고 할 일을 적어 Task로 넘깁니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "첨부한 공과금 청구서 세 달 치를 비교해서 이번 달 요금이 왜 올랐는지 알려줘."
+      },
+      "source": {
+        "title": "Introducing Gemini 4 Neon (Google)",
+        "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "thinking level은 high에서 시작",
+      "body": "high가 기본값이고 비용 대비 성능이 가장 좋다고 Google이 설명합니다. 가장 어려운 엔지니어링·분석·과학 작업에만 xhigh를 쓰세요."
+    },
+    {
+      "title": "Antigravity에서 역할 나누기",
+      "body": "Neon을 오케스트레이터로 두고 Hydrogen 서브에이전트를 병렬로 돌리는 구성을 원문이 소개합니다."
+    },
+    {
+      "title": "긴 자료는 한 번에 넣기",
+      "body": "스프레드시트, PDF, 차트, 음성, 영상을 100만 토큰 컨텍스트에 함께 넣으면 구조화된 결과물로 정리합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "여러 자료를 묶은 분석 보고서",
+      "when": "스프레드시트와 PDF를 한꺼번에 종합할 때",
+      "type": "prompt",
+      "text": "첨부한 [스프레드시트]와 [PDF]를 근거로 [주제] 분석 보고서를 써줘.\n결론을 먼저 쓰고, 근거 수치마다 어느 자료에서 왔는지 표시해줘.\n자료에 없는 내용은 추측하지 말고 '확인 필요'라고 적어."
+    },
+    {
+      "title": "범위를 정한 리팩터링",
+      "when": "여러 파일에 걸친 수정을 맡길 때",
+      "type": "prompt",
+      "text": "[모듈 이름]의 [문제]를 고쳐줘.\n- 원인을 찾은 뒤 필요한 부분만 수정해\n- 요청과 무관한 변경은 하지 마\n- 수정 후 관련 테스트를 실행하고 결과를 알려줘"
+    }
+  ],
+  "cautions": [
+    "대부분의 순위는 Google이 소개한 외부 평가 기준이고 이미지로만 공개된 비교 수치는 확인하지 못했습니다.",
+    "Gemini 앱 사용은 Pro·Ultra 구독자로 한정됩니다.",
+    "Neon for cyber는 Fairwind Program에 가입한 자격 있는 방어 담당자만 받습니다. 접근 요청은 Cloud 계정 팀에 문의해야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Gemini 4 Neon (Google)",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/"
+    },
+    {
+      "title": "Gemini 4 Neon model card",
+      "url": "https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-4-Neon-Model-Card.pdf"
+    },
+    {
+      "title": "Gemini 4 Neon (gemini-4-neon) generally available (GA): ReleasedGemini 4 Neon (gemini-4-neon), bringing frontier-level intelligence with fast end-to-end task completion across complex software enginee",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18"
+    },
+    {
+      "title": "Gemini API 변경 기록 2026-11-18 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18"
+    }
+  ]
+}
