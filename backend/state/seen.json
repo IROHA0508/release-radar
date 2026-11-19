@@ -115,6 +115,22 @@
       "status": "updated",
       "title": "Multimodal file processing and slicing: You can now pass Microsoft Office and OpenDocument files (Word, PowerPoint, and Excel) directly to the Gemini API, and slice documents, spreadsheets, videos, an"
     },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19-0ea97541": {
+      "checkedAt": "2026-11-20",
+      "company": "google",
+      "date": "2026-11-19",
+      "id": "genie-4",
+      "status": "added",
+      "title": "Genie 4 (models/genie-4) generally available (GA): ReleasedGenie 4 (models/genie-4) on theInteractions API (v1beta) for real-time interactive world generation, streaming steerable 24 fps16:9 video wit"
+    },
+    "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19-8d4c0fe3": {
+      "checkedAt": "2026-11-20",
+      "company": "google",
+      "date": "2026-11-19",
+      "id": "gemini-api-tool-retrieval",
+      "status": "added",
+      "title": "Tool retrieval (Preview): The Interactions API can now search your tool library and load function schemas on demand, so large tool sets no longer have to be sent in full on every request."
+    },
     "https://anthropic.com/claude-corps": {
       "checkedAt": "2026-10-03",
       "company": "anthropic",
@@ -614,6 +630,14 @@
       "status": "skipped",
       "title": "Introducing the Multimodal Knowledge Agent benchmark"
     },
+    "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac": {
+      "checkedAt": "2026-11-20",
+      "company": "google",
+      "date": "2026-11-19",
+      "id": "gemini-app-mac-computer-use",
+      "status": "added",
+      "title": "Let Gemini tackle repetitive chores on your Mac"
+    },
     "https://blog.google/innovation-and-ai/products/gemini-app/edit-files-directly": {
       "checkedAt": "2026-10-30",
       "company": "google",
@@ -693,6 +717,14 @@
       "id": "gemini-in-chrome-quick-answers",
       "status": "added",
       "title": "Get quick answers from Gemini on any website."
+    },
+    "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history": {
+      "checkedAt": "2026-11-20",
+      "company": "google",
+      "date": "2026-11-19",
+      "id": "gemini-app-import-history",
+      "status": "added",
+      "title": "ICYMI: Transfer your history from other AI apps into Gemini."
     },
     "https://blog.google/innovation-and-ai/products/gemini-app/tasks-in-gemini-free-new-features": {
       "checkedAt": "2026-11-18",
@@ -1416,6 +1448,14 @@
       "status": "skipped",
       "title": "How Visko streams real-time world models on Google Cloud TPUs"
     },
+    "https://cloud.google.com/blog/products/storage-data-transfer/cost-effective-ai-context-extraction-from-unstructured-gcs-data": {
+      "checkedAt": "2026-11-20",
+      "company": "google",
+      "date": "2026-11-19",
+      "reason": "Google Cloud의 비정형 데이터 처리 인프라(object enrichments) 소개. 데이터 플랫폼 기능으로, AI 모델 사용과 무관한 클라우드 인프라 글",
+      "status": "skipped",
+      "title": "Introducing object enrichments: Transform unstructured data into agent-ready context"
+    },
     "https://cloud.google.com/blog/topics/ai-infrastructure/whats-new-in-ai-infrastructure-this-month": {
       "checkedAt": "2026-10-31",
       "company": "google",
@@ -1455,6 +1495,14 @@
       "reason": "바이오테크 분야의 일반적인 AI 에이전트 아키텍처 설계 패턴으로, 특정 모델(Claude, GPT, Gemini)의 활용 팁이 아닙니다.",
       "status": "skipped",
       "title": "Architecting autonomy: A design pattern for high-compute, governed agents in biotech"
+    },
+    "https://cloud.google.com/blog/topics/partners/helping-our-partners-market-smarter-together-with-gemini": {
+      "checkedAt": "2026-11-20",
+      "company": "google",
+      "date": "2026-11-19",
+      "reason": "파트너 대상 Gemini 기반 공동마케팅 솔루션 소개. 기업 파트너십·영업 공지에 해당",
+      "status": "skipped",
+      "title": "Helping our partners market smarter, together, with Gemini"
     },
     "https://cloud.google.com/blog/topics/startups/what-the-gemini-agent-means-for-startups": {
       "checkedAt": "2026-10-16",
@@ -1762,6 +1810,14 @@
       "status": "skipped",
       "title": "DevFest is back!"
     },
+    "https://developers.googleblog.com/distributed-llm-training-across-metros-streaming-diloco-in-maxtext": {
+      "checkedAt": "2026-11-20",
+      "company": "google",
+      "date": "2026-11-19",
+      "reason": "분산 LLM 학습 인프라(Streaming DiLoCo in MaxText). AI 모델을 쓰는 방식과 무관한 개발 프레임워크·학습 인프라 글",
+      "status": "skipped",
+      "title": "Distributed LLM Training Across Metros: Streaming DiLoCo in MaxText"
+    },
     "https://developers.googleblog.com/driving-developer-excellence-inside-the-program-sprints": {
       "checkedAt": "2026-10-03",
       "company": "google",
@@ -1876,6 +1932,14 @@
       "date": "2026-09-23",
       "status": "old",
       "title": "Introducing Support for Local AI Models in the Antigravity SDK- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/multi-turn-agentic-reinforcement-learning-with-tunix-and-gemma-4-on-google-tpus": {
+      "checkedAt": "2026-11-20",
+      "company": "google",
+      "date": "2026-11-19",
+      "reason": "Google TPU에서 Gemma 4를 이용한 에이전트 학습 방법론. 개발 프레임워크·학습 인프라 관련 연구 글이지, 모델 출시나 사용자 활용 팁이 아님",
+      "status": "skipped",
+      "title": "Multi-Turn Agentic Reinforcement Learning with Tunix and Gemma 4 on Google TPUs"
     },
     "https://developers.googleblog.com/native-model-authoring-for-edge-with-litert-tensor-api": {
       "checkedAt": "2026-10-20",
@@ -2111,6 +2175,14 @@
       "reason": "OpenAI API 문서의 변경 로그. 별도 뉴스 아이템이 아니며 [0] 항목과 중복",
       "status": "skipped",
       "title": "Feature · Model: gpt-6.2-astra · Model: gpt-6.2-sol · API: v1/responses · API: v1/chat/completions"
+    },
+    "https://developers.openai.com/api/docs/changelog#2026-11-19-06807347": {
+      "checkedAt": "2026-11-20",
+      "company": "openai",
+      "date": "2026-11-19",
+      "id": "gpt-live-1-1",
+      "status": "added",
+      "title": "Feature · Model: gpt-live-1.1 · API: v1/live/sessions"
     },
     "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps": {
       "checkedAt": "2026-10-03",
@@ -2746,6 +2818,14 @@
       "reason": "고객 기업 파트너십 및 사례 소개",
       "status": "skipped",
       "title": "Higgsfield takes AI video from 1 minute to over 10"
+    },
+    "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast": {
+      "checkedAt": "2026-11-20",
+      "company": "openai",
+      "date": "2026-11-19",
+      "reason": "인프라 최적화(Performance Factory) 관련 기술 글. 사용자가 직접 써 볼 수 있는 모델, 기능, 활용 팁이 아님",
+      "status": "skipped",
+      "title": "How OpenAI’s Performance Factory keeps ChatGPT fast"
     },
     "https://openai.com/index/how-we-detect-frontier-model-misalignment": {
       "checkedAt": "2026-10-30",

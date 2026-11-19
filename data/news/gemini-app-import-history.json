@@ -1,0 +1,119 @@
+{
+  "id": "gemini-app-import-history",
+  "company": "google",
+  "date": "2026-11-19",
+  "kind": "제품·기능 출시",
+  "title": "Gemini 앱 다른 AI 앱 기록 가져오기",
+  "headline": "다른 AI 비서의 선호와 대화 기록을 Gemini로 옮겨 이어서 쓰기",
+  "tldr": "다른 AI 앱에서 쓰던 맥락과 선호, 대화 기록을 Gemini로 가져오는 것이 가능합니다. 선호 요약은 Gemini가 주는 프롬프트로 만들고 대화 기록은 이전 서비스에서 받은 ZIP 파일로 올립니다. Google은 처음부터 다시 시작하지 않고 대화를 이어 갈 수 있다고 안내합니다.",
+  "fit": {
+    "summary": "다른 AI 비서에서 Gemini로 옮기면서 쌓아 둔 선호와 지난 대화를 그대로 가져가고 싶을 때 맞는 기능입니다.",
+    "good": [
+      "다른 AI 앱에서 Gemini로 갈아타는 경우",
+      "이전 서비스에서 정리해 둔 선호와 맥락을 Gemini에 알려 주고 싶을 때",
+      "이전 대화를 이어서 진행하고 싶을 때"
+    ],
+    "start": "Gemini 가져오기 설정을 열어 안내 프롬프트를 복사한 뒤 이전 AI 도구에 붙여 넣는 것부터 시작합니다."
+  },
+  "models": [],
+  "numbers": [],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "다른 AI 앱에서 Gemini로 옮기는 순서",
+      "caption": "선호 요약과 대화 기록을 따로 가져오는 다섯 단계입니다.",
+      "steps": [
+        {
+          "label": "프롬프트 복사",
+          "desc": "Gemini 가져오기 설정에서 안내 프롬프트를 복사합니다."
+        },
+        {
+          "label": "이전 AI에 붙여넣기",
+          "desc": "이전 AI 도구에 붙여 넣어 선호 요약을 만듭니다."
+        },
+        {
+          "label": "Gemini에 응답 붙여넣기",
+          "desc": "받은 요약을 Gemini에 붙여 넣습니다.",
+          "highlight": true
+        },
+        {
+          "label": "대화 기록 ZIP 내보내기",
+          "desc": "이전 서비스의 계정 설정에서 대화 기록 ZIP을 받습니다."
+        },
+        {
+          "label": "ZIP 업로드",
+          "desc": "Gemini 설정에서 ZIP을 올려 대화를 이어 갑니다."
+        }
+      ],
+      "source": {
+        "title": "ICYMI: Transfer your history from other AI apps into Gemini. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "다른 AI 비서에서 쓰던 맥락과 선호, 대화 기록을 Gemini로 가져올 수 있습니다.",
+    "선호 가져오기는 Gemini가 제공하는 프롬프트를 이전 AI 도구에 붙여 넣어 요약을 만드는 방식입니다.",
+    "대화 기록 가져오기는 이전 서비스에서 내보낸 ZIP 파일을 Gemini 설정에 올리는 방식입니다.",
+    "Google은 가져온 뒤 이전 대화를 바로 이어서 나눌 수 있다고 소개합니다."
+  ],
+  "availability": [
+    "Gemini 앱 설정의 가져오기 화면(gemini.google/import-memory)",
+    "지원하는 요금제·지역·가져올 수 있는 서비스 범위는 원문에 없어 확인 필요"
+  ],
+  "usage": [
+    {
+      "title": "이전 AI 앱의 선호를 Gemini로 옮기기",
+      "when": "이전 앱에 쌓인 말투나 작업 선호를 Gemini에서도 반영하고 싶을 때",
+      "steps": [
+        "Gemini 가져오기 설정을 열고 안내 프롬프트를 복사합니다.",
+        "이전 AI 도구에 프롬프트를 붙여 넣어 선호 요약을 만듭니다.",
+        "나온 응답을 Gemini에 붙여 넣습니다."
+      ],
+      "source": {
+        "title": "ICYMI: Transfer your history from other AI apps into Gemini. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/"
+      }
+    },
+    {
+      "title": "이전 대화 기록 이어 가기",
+      "when": "이전 서비스에서 하던 대화를 Gemini에서 계속하고 싶을 때",
+      "steps": [
+        "이전 서비스의 계정 설정에서 대화 기록을 ZIP 파일로 내보냅니다.",
+        "Gemini 설정에서 ZIP 파일을 올립니다.",
+        "가져온 대화에서 하던 이야기를 이어 갑니다."
+      ],
+      "source": {
+        "title": "ICYMI: Transfer your history from other AI apps into Gemini. (Google)",
+        "url": "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "선호부터 옮기기",
+      "body": "프롬프트로 선호 요약을 먼저 붙여 넣으면 Gemini가 이전 앱에서 쓰던 맥락을 알고 시작합니다."
+    },
+    {
+      "title": "ZIP 내보내기 위치 확인",
+      "body": "대화 기록 ZIP은 이전 서비스의 계정 설정에서 받습니다. 서비스마다 메뉴가 다를 수도 있으니 해당 서비스의 안내를 확인하세요."
+    }
+  ],
+  "prompts": [],
+  "cautions": [
+    "원문은 단계별 안내만 담고 있습니다. 가져올 수 있는 서비스 범위와 데이터 처리 방식은 적혀 있지 않아 확인 필요합니다.",
+    "선호 요약에는 이전 AI 도구가 만든 내용이 들어갑니다. Gemini에 붙여 넣기 전에 읽어 보고 옮기고 싶지 않은 내용은 지우세요."
+  ],
+  "sources": [
+    {
+      "title": "ICYMI: Transfer your history from other AI apps into Gemini. (Google)",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/"
+    },
+    {
+      "title": "Gemini import settings",
+      "url": "https://gemini.google/import-memory/"
+    }
+  ]
+}

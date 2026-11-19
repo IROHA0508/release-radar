@@ -1,0 +1,117 @@
+{
+  "id": "genie-4",
+  "company": "google",
+  "date": "2026-11-19",
+  "kind": "모델 출시",
+  "title": "Genie 4",
+  "headline": "텍스트나 이미지로 세계를 만들고 키보드로 조종하는 실시간 월드 생성 모델",
+  "tldr": "Genie 4(models/genie-4)가 Gemini API의 Interactions API(v1beta)에서 정식 출시(GA)됐습니다. 텍스트나 16:9 참조 이미지로 세계를 만들고 WASD·방향키와 세션 중 텍스트 이벤트로 실시간 조종합니다. 24 fps 16:9 영상과 48 kHz 스테레오 오디오를 WebRTC와 WebSockets로 스트리밍합니다.",
+  "fit": {
+    "summary": "텍스트나 이미지에서 실시간으로 탐험하고 조종할 수 있는 상호작용형 세계를 만들 때 맞습니다.",
+    "good": [
+      "텍스트 설명으로 탐험 가능한 가상 세계 만들기",
+      "참조 이미지에서 시작하는 인터랙티브 장면 시제품",
+      "세션 중 텍스트 이벤트로 장면을 바꾸는 실험"
+    ],
+    "notFor": [
+      "무료 등급으로 쓰기(유료 등급에서만 제공)"
+    ],
+    "start": "AI Studio 문서의 Genie 4 가이드를 읽고 Interactions API에서 models/genie-4로 세션을 시작합니다."
+  },
+  "models": [
+    {
+      "name": "Genie 4",
+      "apiId": "models/genie-4",
+      "input": "$1.50",
+      "output": "$9.00",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "입력 가격",
+      "value": "$1.50",
+      "note": "100만 토큰당"
+    },
+    {
+      "label": "텍스트 출력 가격",
+      "value": "$9.00",
+      "note": "100만 토큰당"
+    },
+    {
+      "label": "영상 출력 가격",
+      "value": "$17.50",
+      "note": "100만 토큰당, 약 $0.10/초, 스테레오 오디오 포함"
+    },
+    {
+      "label": "영상 사양",
+      "value": "24 fps",
+      "note": "16:9, 48 kHz 스테레오 오디오"
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Genie 4가 Interactions API(v1beta)에서 정식 출시(GA)됐습니다.",
+    "실시간 인터랙티브 월드 생성 모델로, 24 fps 16:9 영상을 스트리밍합니다.",
+    "48 kHz 스테레오 오디오가 영상과 동기화되며 WebRTC와 WebSockets로 전달됩니다.",
+    "텍스트, 16:9 참조 이미지 또는 둘 다로 세계를 시작합니다.",
+    "WASD·방향키와 세션 중 텍스트 이벤트로 실시간 조종합니다."
+  ],
+  "availability": [
+    "Gemini API Interactions API(v1beta)",
+    "유료 등급에서 제공",
+    "모델 이름: models/genie-4"
+  ],
+  "tips": [
+    {
+      "title": "시작 입력 고르기",
+      "body": "텍스트만으로 세계를 만들 수 있고 16:9 참조 이미지를 함께 줄 수도 있습니다."
+    },
+    {
+      "title": "세션 중 조종",
+      "body": "WASD나 방향키로 움직이고 텍스트 이벤트로 장면을 바꿉니다."
+    },
+    {
+      "title": "가이드 먼저 읽기",
+      "body": "공식 Genie 4 프롬프트·조작 가이드와 사용량 한도 문서를 먼저 확인하세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "세계 시작 프롬프트",
+      "when": "텍스트로 세계를 만들 때",
+      "type": "prompt",
+      "text": "[장소와 분위기]를 배경으로 한 탐험 가능한 세계를 만들어줘. 시점은 [1인칭/3인칭]으로 하고 [시간대와 날씨]를 반영해줘."
+    },
+    {
+      "title": "세션 중 텍스트 이벤트",
+      "when": "진행 중인 세계에 변화를 줄 때",
+      "type": "prompt",
+      "text": "지금 장면에서 [변화시킬 요소]가 나타나게 해줘."
+    }
+  ],
+  "cautions": [
+    "유료 등급에서만 제공됩니다.",
+    "참조 이미지는 16:9여야 합니다.",
+    "사용량 한도는 공식 rate limits 문서에서 확인이 필요합니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 변경 기록 2026-11-19 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19"
+    },
+    {
+      "title": "Genie 4 모델 문서 (AI Studio)",
+      "url": "https://aistudio.google.com/docs/models/genie-4"
+    },
+    {
+      "title": "Genie 4 프롬프트·조작 가이드",
+      "url": "https://aistudio.google.com/docs/genie-prompting"
+    },
+    {
+      "title": "가격 (AI Studio)",
+      "url": "https://aistudio.google.com/docs/pricing#genie-4"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "id": "gemini-api-tool-retrieval",
+  "company": "google",
+  "date": "2026-11-19",
+  "kind": "제품·기능 출시",
+  "title": "Tool retrieval",
+  "headline": "도구가 많아도 매 요청에 전부 보내지 않고 필요한 함수 스키마만 불러옵니다",
+  "tldr": "Gemini API의 Interactions API에서 Tool retrieval(Preview)을 쓰면 Gemini가 도구 라이브러리를 검색해 필요한 함수 스키마만 그때그때 불러옵니다. 도구가 많은 에이전트도 매 요청마다 전체 도구 목록을 보내지 않아도 됩니다.",
+  "fit": {
+    "summary": "도구가 많은 에이전트에서 매 요청에 전체 스키마를 싣는 부담을 줄이고 싶을 때 맞는 기능입니다.",
+    "good": [
+      "함수 도구가 많은 에이전트",
+      "원격 MCP 서버를 여러 개 연결한 에이전트",
+      "도구 검색 로직을 직접 만들어 붙이려는 경우"
+    ],
+    "notFor": [
+      "Gemini 3.6 이전 모델을 쓰는 경우",
+      "Interactions API가 아닌 다른 방식으로 호출하는 경우"
+    ],
+    "start": "불러오는 시점을 늦출 도구에 defer_loading: true를 표시하고 {\"type\": \"tool_search\"} 도구를 함께 추가합니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "지원 모델",
+      "value": "Gemini 3.6 이상",
+      "note": "Gemini 4 모델 전체 포함, Interactions API에서 사용"
+    },
+    {
+      "label": "지연 로딩 설정",
+      "value": "defer_loading: true",
+      "note": "도구마다 표시, 원격 MCP 서버도 지원"
+    },
+    {
+      "label": "검색 도구",
+      "value": "{\"type\": \"tool_search\"}",
+      "note": "Gemini가 스키마를 대신 검색"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "Tool retrieval 설정 순서",
+      "caption": "Gemini가 필요한 도구 스키마만 가져오게 하는 기본 흐름입니다.",
+      "steps": [
+        {
+          "label": "도구 표시",
+          "desc": "늦게 불러올 도구에 defer_loading: true를 붙입니다."
+        },
+        {
+          "label": "검색 도구 추가",
+          "desc": "{\"type\": \"tool_search\"} 도구를 함께 넣습니다.",
+          "highlight": true
+        },
+        {
+          "label": "스키마 로드",
+          "desc": "Gemini가 필요한 함수 스키마만 검색해 불러옵니다."
+        }
+      ],
+      "loop": "검색 로직을 직접 쓰려면 execution을 \"client\"로 설정합니다.",
+      "source": {
+        "title": "Gemini API 변경 기록 2026-11-19 (Google)",
+        "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Interactions API가 도구 라이브러리를 검색해 함수 스키마를 필요할 때 불러옵니다(Preview).",
+    "큰 도구 세트를 매 요청에 전부 보내지 않아도 됩니다.",
+    "도구에 defer_loading: true를 표시하고 {\"type\": \"tool_search\"} 도구를 추가하면 Gemini가 스키마를 대신 가져옵니다.",
+    "execution: \"client\"로 설정하면 직접 만든 검색 로직을 실행합니다.",
+    "원격 MCP 서버도 defer_loading을 지원합니다."
+  ],
+  "availability": [
+    "Gemini API의 Interactions API(Preview)",
+    "Gemini 3.6 이상 모델, Gemini 4 모델 전체 포함"
+  ],
+  "usage": [
+    {
+      "title": "Gemini가 도구를 직접 검색하게 하기",
+      "when": "도구가 많아 요청마다 전체 스키마를 보내기 부담스러울 때",
+      "steps": [
+        "늦게 불러올 도구에 defer_loading: true를 표시합니다.",
+        "도구 목록에 {\"type\": \"tool_search\"} 도구를 추가합니다.",
+        "요청을 보내면 Gemini가 필요한 스키마를 검색해 불러옵니다."
+      ],
+      "note": "정확한 필드 구성은 Tool retrieval 가이드에서 확인해야 합니다.",
+      "example": {
+        "type": "code",
+        "text": "\"tools\": [\n  { ...[함수 도구 정의], \"defer_loading\": true },\n  { \"type\": \"tool_search\" }\n]"
+      },
+      "source": {
+        "title": "Gemini API 변경 기록 2026-11-19 (Google)",
+        "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19"
+      }
+    },
+    {
+      "title": "직접 만든 검색 로직 연결하기",
+      "when": "자체 검색 방식으로 도구를 고르고 싶을 때",
+      "steps": [
+        "검색 도구에 execution: \"client\"를 설정합니다.",
+        "클라이언트에서 검색 로직을 실행해 스키마를 돌려줍니다."
+      ],
+      "source": {
+        "title": "Gemini API 변경 기록 2026-11-19 (Google)",
+        "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "자주 쓰는 도구는 그대로 두기",
+      "body": "모든 도구에 defer_loading을 붙일 필요는 없습니다. 거의 쓰지 않는 도구부터 표시해 보세요."
+    },
+    {
+      "title": "원격 MCP 서버에도 적용",
+      "body": "원격 MCP 서버도 defer_loading을 지원하므로 도구가 많은 서버를 연결할 때 먼저 켜 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "도구 검색 설정 점검 요청",
+      "when": "기존 Interactions API 코드에 Tool retrieval을 붙일 때",
+      "type": "prompt",
+      "text": "아래 Interactions API 코드에서 도구 [N]개를 defer_loading: true로 바꾸고 {\"type\": \"tool_search\"} 도구를 추가해 줘. Tool retrieval 가이드(https://aistudio.google.com/docs/tool-retrieval) 기준으로 필드 구성을 확인하고, 바뀐 부분만 알려줘.\n\n[기존 코드]"
+    },
+    {
+      "title": "지연 로딩 대상 고르기",
+      "when": "어떤 도구를 늦게 불러올지 정할 때",
+      "type": "prompt",
+      "text": "내 에이전트의 도구 목록이야. 자주 쓰는 도구와 드물게 쓰는 도구로 나누고, 드문 도구를 defer_loading 대상으로 추천해 줘.\n\n[도구 목록]"
+    }
+  ],
+  "cautions": [
+    "Preview 기능이라 동작과 설정이 바뀔 수 있습니다.",
+    "Interactions API에서 Gemini 3.6 이상 모델에만 적용됩니다."
+  ],
+  "sources": [
+    {
+      "title": "Gemini API 변경 기록 2026-11-19 (Google)",
+      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19"
+    },
+    {
+      "title": "Tool retrieval 가이드",
+      "url": "https://aistudio.google.com/docs/tool-retrieval"
+    }
+  ]
+}

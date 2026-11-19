@@ -1329,7 +1329,8 @@
       "news": [
         "claude-computer-use-best-practices",
         "gpt-6-astra",
-        "claude-duet"
+        "claude-duet",
+        "gemini-app-mac-computer-use"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2910,7 +2911,8 @@
       "level": "심화",
       "status": "관찰",
       "companies": [
-        "anthropic"
+        "anthropic",
+        "google"
       ],
       "prerequisites": [
         "tool-use",
@@ -2947,7 +2949,9 @@
           "url": "https://www.anthropic.com/research/advanced-tool-use"
         }
       ],
-      "news": [],
+      "news": [
+        "gemini-api-tool-retrieval"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {
