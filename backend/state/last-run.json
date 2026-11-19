@@ -1,113 +1,44 @@
 {
-  "startedAt": "2026-11-19T07:24:39+09:00",
+  "startedAt": "2026-11-19T19:50:07+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2681,
+  "entries": 2684,
   "candidates": [
     {
-      "title": "Inside the Codex sandbox",
-      "url": "https://openai.com/index/inside-the-codex-sandbox",
+      "title": "Research acceleration: The jagged frontier",
+      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
       "company": "openai",
       "date": "2026-11-18",
       "relatedId": null
     },
     {
-      "title": "Managing frontier AI risk: From training to deployment",
-      "url": "https://openai.com/index/managing-frontier-ai-risk",
+      "title": "How Sumitomo Life’s leaders helped teams adopt ChatGPT Enterprise",
+      "url": "https://openai.com/business/customer-stories/sumitomo-life",
       "company": "openai",
       "date": "2026-11-18",
       "relatedId": null
-    },
-    {
-      "title": "Advancing chip design with OpenAI models",
-      "url": "https://openai.com/index/advancing-chip-design-with-our-models",
-      "company": "openai",
-      "date": "2026-11-18",
-      "relatedId": null
-    },
-    {
-      "title": "Introducing Gemini 4 Neon",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
-      "company": "google",
-      "date": "2026-11-18",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "The Gemini app is now available on lower-memory Android devices.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
-      "company": "google",
-      "date": "2026-11-18",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Sashiko: Lessons from building an agentic code review system for Linux",
-      "url": "https://cloud.google.com/blog/products/application-development/lessons-from-building-sashiko-an-agentic-code-review-system/",
-      "company": "google",
-      "date": "2026-11-18",
-      "relatedId": null
-    },
-    {
-      "title": "Gemini 4 Neon (gemini-4-neon) generally available (GA): ReleasedGemini 4 Neon (gemini-4-neon), bringing frontier-level intelligence with fast end-to-end task completion across complex software enginee",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18",
-      "company": "google",
-      "date": "2026-11-18",
-      "relatedId": "gemini-app-resume-update"
     }
   ],
-  "added": [
-    {
-      "id": "gemini-4-neon",
-      "title": "Gemini 4 Neon",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
-      "charts": 1
-    },
-    {
-      "id": "gemini-app-lower-memory-android",
-      "title": "저사양 Android 기기용 Gemini 앱",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices/",
-      "charts": 0
-    }
-  ],
-  "updated": [
-    {
-      "id": "gemini-4-neon",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-18"
-    }
-  ],
+  "added": [],
+  "updated": [],
   "skipped": [
     {
-      "title": "Inside the Codex sandbox",
-      "url": "https://openai.com/index/inside-the-codex-sandbox",
-      "reason": "Codex 샌드박스의 기술 아키텍처 설명으로, 사용자가 직접 따라 할 수 있는 활용 팁 또는 사용 범위 변경이 아님"
+      "title": "Research acceleration: The jagged frontier",
+      "url": "https://openai.com/index/research-acceleration-jagged-frontier",
+      "reason": "모델 출시와 무관한 연구 보고서. 코딩 에이전트의 성능 측정과 AI 연구 가속화 메트릭을 다루지만, 새 모델·기능 출시나 공식 활용 팁 아님."
     },
     {
-      "title": "Managing frontier AI risk: From training to deployment",
-      "url": "https://openai.com/index/managing-frontier-ai-risk",
-      "reason": "AI 안전·정책 보고서로, 모델 출시, 기능 출시, 활용 팁과 무관함"
-    },
-    {
-      "title": "Advancing chip design with OpenAI models",
-      "url": "https://openai.com/index/advancing-chip-design-with-our-models",
-      "reason": "OpenAI 모델을 사용한 고객 사례(칩 설계)로, 모델 출시나 업데이트가 아님"
-    },
-    {
-      "title": "Sashiko: Lessons from building an agentic code review system for Linux",
-      "url": "https://cloud.google.com/blog/products/application-development/lessons-from-building-sashiko-an-agentic-code-review-system/",
-      "reason": "Gemini 에이전트를 사용한 고객 사례이자 개발 프레임워크 설명으로, AI 모델 사용 방식과 무관한 인프라 글"
+      "title": "How Sumitomo Life’s leaders helped teams adopt ChatGPT Enterprise",
+      "url": "https://openai.com/business/customer-stories/sumitomo-life",
+      "reason": "고객 사례(customer story). 특정 기업(Sumitomo Life)의 ChatGPT Enterprise 채택 경험을 다룬 마케팅 글로, 제외 대상."
     }
   ],
   "failed": [],
-  "guardNotes": {
-    "gemini-app-lower-memory-android": [
-      "핵심 수치 '시작 방법: 3가지' 원문에서 확인 안 됨 → 제외"
-    ]
-  },
+  "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
   "styleNotes": {},
-  "techLinks": [
-    "gemini-app-lower-memory-android → voice-agent"
-  ],
+  "techLinks": [],
   "retired": []
 }
