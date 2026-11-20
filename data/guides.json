@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-20",
+  "updatedAt": "2026-11-21",
   "checkedAt": "2026-11-10 08:41",
   "common": [
     {
@@ -1958,6 +1958,41 @@
           },
           "newsId": "openai-gpt-live-regional-accents-prompting",
           "addedAt": "2026-11-20"
+        },
+        {
+          "id": "openai-absolute-deadline",
+          "category": "에이전트와 코딩",
+          "title": "마감은 '15분 뒤' 대신 절대 시각으로 적어 주기",
+          "body": "OpenAI 개발자 블로그의 회의 준비 예시는 \"I have a meeting in 15 minutes. Give me a briefing with three minutes left to review it\"처럼 마감을 요청에 적어 에이전트에 알립니다. 앱에서는 \"15분 뒤\", \"읽을 시간 3분\" 같은 시간 표현을 절대 타임스탬프로 바꿔 넘겨야 모델과 앱이 같은 시간 데이터를 갖습니다. 마감이 가까우면 에이전트는 새 조사를 여는 것보다 확실한 발견을 점검하고 브리핑을 쓰는 데 시간을 쓰고 여유가 길면 더 깊이 조사합니다. 마감이 있는 작업을 맡길 때 적용하세요.",
+          "before": "15분 뒤에 회의가 있어요. 그 회사에 대해 조사해서 브리핑해 주세요.",
+          "after": "[회의 시작 시각, 예: 2026-11-20T16:15:00Z]에 [회사명] 담당자와 회의가 있습니다. 회사 사업, 최근 제품 발표, 제가 물어볼 질문을 정리한 간결한 브리핑을 [브리핑 마감 시각, 예: 2026-11-20T16:12:00Z]까지 보내 주세요. 회의 전에 읽을 시간이 필요합니다.",
+          "models": [
+            "gpt-6.2-astra"
+          ],
+          "source": {
+            "title": "마감 시간을 아는 에이전트와 비동기 질문 만들기",
+            "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+          },
+          "newsId": "openai-agents-time-awareness-async-input",
+          "addedAt": "2026-11-21"
+        },
+        {
+          "id": "openai-clarify-keep-progress",
+          "category": "에이전트와 코딩",
+          "title": "되묻기는 허용하되 답을 기다리는 동안 작업을 계속하게 하기",
+          "body": "OpenAI 블로그의 예시 에이전트 지시문은 결과가 크게 나아질 때만 되묻고 답이 올 때까지도 작업을 계속하며 중요한 불확실성은 밝히라고 적습니다. 사용자가 끝내 답하지 않아도 쓸 만한 결과가 나와야 하므로, 마감이 있는 작업에서는 질문과 진행을 함께 지시하세요. 마감까지 검증된 결과가 없으면 그렇다고 보고하게 하는 문장도 함께 두면 좋습니다.",
+          "before": "빠진 정보가 있으면 물어보고 답을 받은 뒤에 시작해 주세요.",
+          "after": "결과가 분명히 나아질 때만 저에게 물어봐 주세요. 답을 기다리는 동안에도 [독립적으로 할 수 있는 조사]를 계속하세요. 답이 오지 않으면 가정을 밝히고 마감까지 쓸 만한 결과를 내 주세요. 중요한 불확실성은 꼭 적어 주세요.",
+          "code": "instructions: \"You are a personal assistant. Deliver useful, well-sourced answers within the user's time constraints. Ask for clarification when it would materially improve the result, and keep making progress while a reply is pending. State important uncertainties.\"",
+          "models": [
+            "gpt-6.2-astra"
+          ],
+          "source": {
+            "title": "마감 시간을 아는 에이전트와 비동기 질문 만들기",
+            "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+          },
+          "newsId": "openai-agents-time-awareness-async-input",
+          "addedAt": "2026-11-21"
         }
       ],
       "templates": [

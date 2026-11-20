@@ -246,7 +246,8 @@
         "gemini-argon-z3-go-bug-hunting",
         "chatgpt-wallet",
         "gemini-app-tasks",
-        "google-ai-studio-android-full-stack"
+        "google-ai-studio-android-full-stack",
+        "openai-agents-time-awareness-async-input"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -317,7 +318,8 @@
         "gemini-intelligence-november-features",
         "gemini-app-tasks",
         "google-ai-studio-android-full-stack",
-        "chatgpt-for-sales"
+        "chatgpt-for-sales",
+        "openai-agents-time-awareness-async-input"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -455,7 +457,8 @@
         "openai-securing-persistent-agents-openclaw",
         "claude-building-always-on-agents",
         "google-agent-anomaly-detection-guide",
-        "gemini-app-tasks"
+        "gemini-app-tasks",
+        "openai-agents-time-awareness-async-input"
       ],
       "verifiedAt": "2026-10-21"
     },

@@ -89,13 +89,25 @@
     "예시 에이전트는 모든 테이블을 읽을 수 있는 fetch_records 도구를 일부러 열어 두었습니다. payroll 테이블의 직원 정보까지 읽히는 구조입니다.",
     "에이전트를 탐지 대상으로 만들려면 환경 변수 세 개로 텔레메트리를 켜고 프롬프트·응답 내용을 Cloud Logging에 남깁니다.",
     "세션 상세 화면은 세션(왼쪽), 대화(가운데), 세부 정보(오른쪽) 세 영역으로 나뉩니다. 세부 정보에는 탐지기별 심각도, 확률, 이유, 권고가 나옵니다.",
-    "탐지 건은 Cloud Monitoring 지표 두 개(Detected events, Monitored agents)와 Security Command Center의 AGENT_SESSION_ANOMALY 결과로도 확인합니다."
+    "탐지 건은 Cloud Monitoring 지표 두 개(Detected events, Monitored agents)와 Security Command Center의 AGENT_SESSION_ANOMALY 결과로도 확인합니다.",
+    "Agent Anomaly Detection이 Google Cloud 밖에서 실행되는 에이전트도 감시합니다. AWS Lambda의 에이전트나 Microsoft Foundry에 올린 호스팅 에이전트, 온프레미스 에이전트가 대상입니다.",
+    "이 기능은 에이전트의 트레이스와 로그를 분석하므로 런타임에 접근할 필요가 없습니다. 텔레메트리가 사용자의 Google Cloud 프로젝트에 도착하면 에이전트가 어디서 돌든 이상 행동을 찾습니다.",
+    "텔레메트리 조건은 세 가지입니다. 리소스 속성을 유지하는 Telemetry API(telemetry.googleapis.com)로 보내야 합니다. OpenTelemetry 규칙을 따르고 프롬프트와 응답을 로그 이벤트로 남겨야 합니다. 리소스 속성에 에이전트 이름이 있어야 합니다.",
+    "연결에는 서비스 계정 키 없는 Google 신원과 내보내기 도구(exporter)가 필요합니다. Workload Identity Federation으로 AWS 역할이나 Microsoft Entra 신원을 단기 Google 자격 증명으로 바꾸고 ADK의 Google Cloud exporter가 트레이스와 로그를 Telemetry API로 보냅니다. 설정은 환경 변수 몇 개로 합니다.",
+    "연결한 에이전트는 30분 안에 Monitored agents 목록에 나타납니다. 수동으로 켜거나 발견 시 자동 에이전트 등록으로 켜면 세션 분석이 시작됩니다.",
+    "AWS Lambda 재고 에이전트 테스트에서는 허용된 도구 호출만 썼는데도 카탈로그를 100개씩 긁어 가는 스크래퍼 세션만 표시됐습니다. 분석은 연쇄 실패와 자원 고갈을 찾아냈고 list_inventory 호출에 속도 제한을 걸라고 권고했습니다.",
+    "Amazon Bedrock의 Amazon Nova Lite로 돌린 재고 에이전트에서는 40개 세션 중 10개가 표시됐습니다. 감지는 에이전트가 쓰는 모델에 의존하지 않습니다.",
+    "Microsoft Foundry 고객 서비스 에이전트 테스트에서는 여섯 세션 중 역할을 벗어난 네 개를 모두 표시했습니다. 관리자를 사칭해 주문 총액의 10배를 환불받으려 한 세션과 'SYSTEM OVERRIDE' 주문 메모로 $15.99 주문에 $999를 환불한 세션이 포함됩니다. issue_refund 인자 검증과 기준 금액 이상 환불의 추가 검증을 권고했습니다."
   ],
   "availability": [
     "Private Preview이며 승인된 Google Cloud 프로젝트와 결제 설정이 필요합니다.",
     "ADK for Python 1.2 이상 에이전트와 호환되고 2.0 이상을 권장합니다.",
     "Cloud Logging 버킷과 Observability 데이터셋이 같은 US 또는 EU 멀티 리전에 있어야 합니다.",
-    "프롬프트·응답 내용 내보내기는 현재 US와 EU 멀티 리전만 지원합니다."
+    "프롬프트·응답 내용 내보내기는 현재 US와 EU 멀티 리전만 지원합니다.",
+    "Private Preview이며 접근은 Agent Anomaly Detection overview에서 신청합니다.",
+    "현재 지원 대상은 ADK for Python 2.12.0 이상으로 만든 에이전트입니다.",
+    "Google Cloud 밖 에이전트의 감지 결과는 Agent Anomaly Detection 콘솔에서만 볼 수 있습니다.",
+    "모델 호출과 도구 호출은 에이전트가 도는 곳에서 그대로 실행됩니다. 프롬프트와 응답을 포함한 텔레메트리만 사용자의 Google Cloud 프로젝트로 가고 분석은 따로 돌아 에이전트를 느리게 하지 않습니다."
   ],
   "usage": [
     {
@@ -194,6 +206,14 @@
     {
       "title": "Agent Anomaly Detection 실습 노트북",
       "url": "https://github.com/GoogleCloudPlatform/generative-ai/blob/main/agents/agent_engine/tutorial_agent_anomaly_detection.ipynb"
+    },
+    {
+      "title": "Agent Anomaly Detection: Safeguarding agents across other clouds (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/agent-anomaly-detection-safeguarding-agents-across-other-clouds/"
+    },
+    {
+      "title": "Agent Anomaly Detection 다른 클라우드 설정 (Google Cloud 문서)",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/audit/agent-anomalies-other-clouds"
     }
   ]
 }

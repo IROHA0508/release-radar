@@ -1416,6 +1416,14 @@
       "status": "added",
       "title": "Bringing conversational analytics to Gemini with Agentic Data Cloud connectors"
     },
+    "https://cloud.google.com/blog/products/data-analytics/scaling-airflow-pipelines-with-ai-agents-on-managed-airflow": {
+      "checkedAt": "2026-11-21",
+      "company": "google",
+      "date": "2026-11-20",
+      "reason": "특정 기술·업종 마케팅. Airflow 파이프라인 최적화는 데이터 엔지니어링 도구에 초점이 있으며, Gemini 에이전트 자체의 기능 출시나 활용 팁이 아님.",
+      "status": "skipped",
+      "title": "Drowning in clicks: Scaling Black Friday pipelines with Managed Airflow agents"
+    },
     "https://cloud.google.com/blog/products/data-analytics/using-bigquerys-generative-ai-cost-management-features": {
       "checkedAt": "2026-10-15",
       "company": "google",
@@ -1487,6 +1495,14 @@
       "reason": "AI 에이전트 평가 방법론으로, 비슷한 주제의 글이 이미 사이트에 있습니다(google-agent-evaluation-beyond-vibe-check, 2026-10-15).",
       "status": "skipped",
       "title": "Four evaluation engineering lessons learned from building agent plugins"
+    },
+    "https://cloud.google.com/blog/topics/developers-practitioners/how-to-fix-your-teams-api-keys": {
+      "checkedAt": "2026-11-21",
+      "company": "google",
+      "date": "2026-11-20",
+      "reason": "개발 프레임워크·인프라 글. API 키 관리는 AI 모델을 쓰는 방식과 무관한 개발 도구 설정에 해당.",
+      "status": "skipped",
+      "title": "Ultimate guide for fixing your team’s API keys"
     },
     "https://cloud.google.com/blog/topics/healthcare-life-sciences/architecting-scalable-agentic-biotech-workloads": {
       "checkedAt": "2026-10-17",
@@ -1677,6 +1693,14 @@
       "date": "2026-09-16",
       "status": "old",
       "title": "Agent Anomaly Detection, now in Private Preview on the Gemini Enterprise Agent Platform- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/agent-anomaly-detection-safeguarding-agents-across-other-clouds": {
+      "checkedAt": "2026-11-21",
+      "company": "google",
+      "date": "2026-11-20",
+      "id": "google-agent-anomaly-detection-guide",
+      "status": "updated",
+      "title": "Agent Anomaly Detection: Safeguarding agents across other clouds"
     },
     "https://developers.googleblog.com/agent-distraction": {
       "checkedAt": "2026-11-07",
@@ -1917,6 +1941,22 @@
       "date": "2026-08-24",
       "status": "old",
       "title": "How to Evaluate Live & Voice Agents in ADK- Google Developers Blog"
+    },
+    "https://developers.googleblog.com/how-to-handle-user-connector-and-agent-auth-in-gemini-enterprise-with-a-custom-ui": {
+      "checkedAt": "2026-11-21",
+      "company": "google",
+      "date": "2026-11-20",
+      "reason": "Gemini Enterprise에 맞춤 UI를 붙일 때 쓰는 인증·IAM 아키텍처 안내(Workforce/Workload Identity Federation, 3LO OAuth)입니다. 모델이나 공식 AI 제품·기능을 새로 쓰는 법이 아니라 기업 내부 시스템 연동용 인프라·보안 구성 글이라 제외합니다.",
+      "status": "skipped",
+      "title": "How to handle user, connector, and agent auth in Gemini Enterprise with a custom UI"
+    },
+    "https://developers.googleblog.com/how-to-securely-connect-internal-cloud-run-mcp-servers-to-gemini-enterprise": {
+      "checkedAt": "2026-11-21",
+      "company": "google",
+      "date": "2026-11-20",
+      "reason": "인프라·개발 프레임워크 글. Cloud Run MCP 서버 연결, Egress Agent Gateway, Private Service Connect 등 클라우드 인프라 설정에 초점이 있음.",
+      "status": "skipped",
+      "title": "How to securely connect internal Cloud Run MCP servers to Gemini Enterprise"
     },
     "https://developers.googleblog.com/integrating-torchtpu-into-torchtitan-and-optimizing-models-for-tpu": {
       "checkedAt": "2026-10-21",
@@ -2365,6 +2405,14 @@
       "status": "nodate",
       "title": "Jan 11 Supercharging Codex with JetBrains MCP at Skyscanner How Skyscanner integrated Codex CLI with JetBrains IDEs to speed up debugging, testing, and development workflows. Codex"
     },
+    "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents": {
+      "checkedAt": "2026-11-21",
+      "company": "openai",
+      "date": "2026-11-20",
+      "id": "openai-agents-time-awareness-async-input",
+      "status": "added",
+      "title": "Time awareness and async input for personal agents"
+    },
     "https://developers.openai.com/blog/updates-audio-models": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -2426,6 +2474,14 @@
       "reason": "고객 사례(Gondola가 Codex로 성과를 낸 이야기)",
       "status": "skipped",
       "title": "Gondola doubles revenue as its team builds more with Codex"
+    },
+    "https://openai.com/business/customer-stories/hebbia": {
+      "checkedAt": "2026-11-21",
+      "company": "openai",
+      "date": "2026-11-20",
+      "reason": "고객 사례. Hebbia의 GPT-6 Astra 테스트 결과는 특정 고객의 사용 경험으로, 제외 대상인 고객 사례(customer stories)에 해당.",
+      "status": "skipped",
+      "title": "Hebbia sees improvements in financial research with GPT-6 Astra"
     },
     "https://openai.com/business/customer-stories/holidays-extras-codex": {
       "checkedAt": "2026-11-12",
@@ -2699,6 +2755,14 @@
       "status": "skipped",
       "title": "Cogent and OpenAI build cyber defense factories for enterprises"
     },
+    "https://openai.com/index/combatting-adversarial-distillation": {
+      "checkedAt": "2026-11-21",
+      "company": "openai",
+      "date": "2026-11-20",
+      "reason": "모델 출시와 무관한 안전 보고서. 적대적 증류 공격에 대한 보안 접근법이 주제이며, 새로운 모델이나 기능 출시, 활용 팁이 아님.",
+      "status": "skipped",
+      "title": "Combatting adversarial distillation"
+    },
     "https://openai.com/index/community-safety-report-and-new-protections-for-teens": {
       "checkedAt": "2026-10-31",
       "company": "openai",
@@ -2914,6 +2978,14 @@
       "id": "images-2-6",
       "status": "added",
       "title": "Introducing Images 2.6"
+    },
+    "https://openai.com/index/introducing-medchembench": {
+      "checkedAt": "2026-11-21",
+      "company": "openai",
+      "date": "2026-11-20",
+      "reason": "모델 출시와 무관한 연구 보고서. MedChemBench는 AI 모델을 평가하는 벤치마크 연구로, 새로운 모델이나 기능 출시가 아님.",
+      "status": "skipped",
+      "title": "Can AI help scientists identify promising drug candidates?"
     },
     "https://openai.com/index/introducing-openai-for-chile": {
       "checkedAt": "2026-11-18",

@@ -1,0 +1,251 @@
+{
+  "id": "openai-agents-time-awareness-async-input",
+  "company": "openai",
+  "date": "2026-11-20",
+  "kind": "활용 팁",
+  "title": "마감 시간을 아는 에이전트와 비동기 질문 만들기",
+  "headline": "Agents API의 time awareness와 async 도구로 기한 안에 결과를 내는 개인 에이전트 구성법",
+  "tldr": "OpenAI는 개인 에이전트가 마감 시간을 인식하도록 experimental.time_awareness를 켜고 사용자 답을 기다리는 동안에도 일을 이어 가도록 async 함수 도구를 쓰는 방법을 회의 준비 예제로 보여 줍니다. 답이 끝내 오지 않아도 기한 안에 쓸 만한 결과를 내도록 질문을 닫는 시점까지 코드로 설명합니다.",
+  "fit": {
+    "summary": "사용자에게 정해진 시각까지 결과를 줘야 하고 중간에 되물을 일이 생기는 개인 에이전트를 만들 때 맞는 구성입니다.",
+    "good": [
+      "회의 직전 브리핑처럼 마감이 분명한 조사·정리 작업",
+      "추가 맥락이 필요하지만 답을 기다리는 동안에도 조사를 이어 가야 하는 작업",
+      "사용자가 답하지 않아도 기한 안에 결과를 내야 하는 앱"
+    ],
+    "notFor": [
+      "Agents API 접근 권한이 없는 프로젝트(원문은 Agents API 접근 권한이 있는 프로젝트의 키를 쓰라고 안내)",
+      "질문 답이 없으면 진행할 수 없는 작업(원문 예제는 답이 없어도 브리핑을 끝내는 흐름)"
+    ],
+    "start": "에이전트를 만들 때 experimental.time_awareness를 true로 두고, async가 true인 함수 도구와 live 모드의 web_search를 함께 등록하세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "회의까지 남은 시간",
+      "value": "15분",
+      "note": "예제에서 요청 시점(오후 4시 UTC) 기준 회의는 오후 4시 15분"
+    },
+    {
+      "label": "브리핑 마감",
+      "value": "12분 뒤",
+      "note": "사용자가 읽을 시간 3분을 남기는 오후 4시 12분"
+    },
+    {
+      "label": "미응답 질문 닫는 시점",
+      "value": "10분 뒤",
+      "note": "오후 4시 10분, 브리핑 마감 2분 전에 no_answer 반환"
+    },
+    {
+      "label": "읽을 시간",
+      "value": "3분 이상",
+      "note": "브리핑을 회의 전에 최소 3분 읽을 수 있게 전달"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "기한이 있는 에이전트 작업 흐름",
+      "caption": "원문 회의 준비 예제의 순서를 옮긴 것입니다.",
+      "steps": [
+        {
+          "label": "에이전트 만들기",
+          "desc": "time_awareness, web_search, async 함수 도구를 설정합니다."
+        },
+        {
+          "label": "기한 있는 작업 시작",
+          "desc": "회의 시각과 브리핑 기한을 절대 시각으로 넘깁니다.",
+          "highlight": true
+        },
+        {
+          "label": "대기 질문 표시",
+          "desc": "request_user_input_async 호출을 이벤트 스트림에서 읽어 화면에 띄웁니다."
+        },
+        {
+          "label": "도구 결과 반환",
+          "desc": "답이 있으면 answered, 마감까지 없으면 no_answer를 보냅니다."
+        },
+        {
+          "label": "최종 브리핑 가져오기",
+          "desc": "turn이 끝나면 phase가 final_answer인 메시지를 찾습니다."
+        }
+      ],
+      "loop": "답이 오면 answered, 마감 시각까지 없으면 no_answer로 결과를 돌려줍니다.",
+      "source": {
+        "title": "Time awareness and async input for personal agents (OpenAI)",
+        "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "예제의 시간표",
+      "caption": "오후 4시(UTC)에 요청한 경우입니다.",
+      "columns": [
+        "시각 (UTC)",
+        "하는 일"
+      ],
+      "rows": [
+        {
+          "label": "요청",
+          "cells": [
+            "4:00 PM",
+            "브리핑을 요청하고 세션을 시작"
+          ]
+        },
+        {
+          "label": "질문 마감",
+          "cells": [
+            "4:10 PM",
+            "답이 없으면 no_answer 반환"
+          ]
+        },
+        {
+          "label": "브리핑 기한",
+          "cells": [
+            "4:12 PM",
+            "최종 브리핑 전달"
+          ],
+          "highlight": true
+        },
+        {
+          "label": "회의 시작",
+          "cells": [
+            "4:15 PM",
+            "사용자가 최소 3분 읽을 시간 확보"
+          ]
+        }
+      ],
+      "source": {
+        "title": "Time awareness and async input for personal agents (OpenAI)",
+        "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Agents API에 최근 추가된 time awareness는 모델에 현재 시각을 주기적으로 알려 줘서 마감에 맞춰 작업량을 조절하게 합니다.",
+    "마감이 가까워지면 새 조사를 시작하기보다 가장 확실한 발견을 점검하고 브리핑을 쓰는 쪽을 우선합니다. 기한이 길면 더 깊이 조사합니다.",
+    "async function tool은 애플리케이션이 최종 사용자의 답을 기다리는 동안에도 에이전트가 다른 일을 계속하게 합니다.",
+    "'15분 뒤' 같은 상대 표현은 애플리케이션이 절대 시각으로 바꿔서 넘겨야 모델과 앱이 같은 시간 정보를 씁니다.",
+    "원문은 질문 이벤트를 받아 표시하고 도구 결과를 돌려주고 최종 답을 가져오는 과정을 Python, TypeScript, Go, Java, Ruby, curl 예제로 제공합니다."
+  ],
+  "availability": [
+    "OpenAI Agents API(beta). OPENAI_API_KEY는 Agents API 접근 권한이 있는 프로젝트의 키를 사용",
+    "공식 SDK는 Python, TypeScript, Go, Java, Ruby를 예제로 제공하고 curl 예제도 있음",
+    "예제 모델은 gpt-6.2-astra"
+  ],
+  "usage": [
+    {
+      "title": "마감 시간을 아는 에이전트 만들기",
+      "when": "에이전트가 정해진 시각까지 결과를 내야 할 때",
+      "steps": [
+        "에이전트를 만들 때 experimental에 time_awareness를 true로 둡니다.",
+        "web_search 도구를 live 모드로 추가합니다.",
+        "request_user_input_async 같은 함수 도구를 만들고 async를 true로 설정합니다.",
+        "세션을 시작할 때 회의 시각과 전달 기한을 절대 시각(ISO 형식)으로 입력에 넣습니다."
+      ],
+      "note": "요청 문장이 기한을 정하고 time awareness는 검색과 사용자 입력을 기다리는 동안에도 모델에 시간을 계속 알려 줍니다.",
+      "example": {
+        "type": "code",
+        "text": "agent = await client.beta.agents.create(\n    name=\"Personal assistant\",\n    model=\"gpt-6.2-astra\",\n    experimental={\"time_awareness\": True},\n    instructions=\"You are a personal assistant. Deliver useful, well-sourced answers within the user's time constraints. Ask for clarification when it would materially improve the result, and keep making progress while a reply is pending. State important uncertainties.\",\n    tools=[\n        {\"type\": \"web_search\", \"mode\": \"live\"},\n        {\n            \"type\": \"function\",\n            \"name\": \"request_user_input_async\",\n            \"description\": \"Ask for missing context while continuing independent work.\",\n            \"async\": True,\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"question\": {\"type\": \"string\"},\n                    \"choices\": {\"type\": \"array\", \"items\": {\"type\": \"string\"}},\n                },\n                \"required\": [\"question\"],\n                \"additionalProperties\": False,\n            },\n        },\n    ],\n)"
+      },
+      "source": {
+        "title": "Time awareness and async input for personal agents (OpenAI)",
+        "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+      }
+    },
+    {
+      "title": "에이전트의 질문을 화면에 띄우기",
+      "when": "에이전트가 조사 도중 추가 맥락을 물을 때",
+      "steps": [
+        "세션 이벤트 스트림에서 request_user_input_async 함수 호출이 담긴 agent.session.turn.item.done 이벤트를 지켜봅니다.",
+        "item.arguments에서 질문과 제안 선택지를 읽습니다.",
+        "세션 ID와 호출의 turn_id, call_id를 저장해 답과 짝을 맞춥니다.",
+        "답을 받는 일은 별도 작업으로 처리해 이벤트 수신이 막히지 않게 합니다."
+      ],
+      "note": "session의 required_actions 목록은 차단 작업만 보여 주므로 그것을 기다리면 비동기 질문을 놓칠 수 있습니다. 같은 질문이 한 번만 표시되도록 추적하고 실행이 끝나면 입력 대기를 취소합니다.",
+      "source": {
+        "title": "Time awareness and async input for personal agents (OpenAI)",
+        "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+      }
+    },
+    {
+      "title": "답이 없을 때를 포함해 도구 결과 돌려주기",
+      "when": "사용자가 질문에 끝내 답하지 않을 수 있을 때",
+      "steps": [
+        "답이 오면 status를 answered로 두고 입력한 글이나 고른 선택지를 answer에 넣습니다.",
+        "브리핑 기한보다 앞선 마감 시각(예제는 2분 전)까지 답이 없으면 {\"status\":\"no_answer\"}를 반환합니다.",
+        "agent.session.input.tool_result 이벤트로 저장해 둔 turn_id와 call_id를 담아 보냅니다.",
+        "결과를 보내는 동안에도 스트림 수신을 계속합니다."
+      ],
+      "note": "에이전트가 먼저 끝나면 화면의 대기 질문도 닫아야 합니다.",
+      "example": {
+        "type": "code",
+        "text": "result = (\n    {\"status\": \"answered\", \"answer\": answer}\n    if answer\n    else {\"status\": \"no_answer\"}\n)\nawait client.beta.agents.sessions.events.create(\n    session_id,\n    events=[\n        {\n            \"type\": \"agent.session.input.tool_result\",\n            \"turn_id\": call.turn_id,\n            \"call_id\": call.call_id,\n            \"success\": True,\n            \"output\": json.dumps(result),\n        }\n    ],\n)"
+      },
+      "source": {
+        "title": "Time awareness and async input for personal agents (OpenAI)",
+        "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+      }
+    },
+    {
+      "title": "최종 브리핑 꺼내 전달하기",
+      "when": "에이전트 작업이 끝났거나 기한이 다가올 때",
+      "steps": [
+        "agent.session.turn.completed 이벤트를 받으면 turn items 목록을 조회합니다.",
+        "완료된 assistant 메시지 중 phase가 final_answer인 것을 찾아 output_text를 합칩니다.",
+        "스트림이 일찍 닫히면 세션의 turn 목록을 조회해 저장된 상태를 확인합니다.",
+        "기한이 먼저 오면 완료된 최신 브리핑을 주거나 검증된 결과가 없다고 알립니다."
+      ],
+      "note": "원문은 브리핑을 준비되는 대로 전달해 사용자에게 최소 3분의 읽을 시간을 남기라고 안내합니다.",
+      "source": {
+        "title": "Time awareness and async input for personal agents (OpenAI)",
+        "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "기한은 절대 시각으로",
+      "body": "'15분 뒤', '읽을 시간 3분' 같은 말은 앱이 시각 값으로 바꿔 입력에 넣으세요. 예제는 회의 시각과 전달 기한을 ISO 형식으로 넘깁니다."
+    },
+    {
+      "title": "질문 마감은 전달 기한보다 앞에",
+      "body": "예제는 전달 기한 2분 전에 미응답 질문을 닫습니다. 에이전트가 답 없이도 브리핑을 마무리할 시간을 남기려는 설계입니다."
+    },
+    {
+      "title": "기한에 따라 조사 깊이가 달라짐",
+      "body": "마감이 가까우면 확실한 발견을 점검하고 정리하는 쪽으로, 기한이 넉넉하면 더 깊이 조사하는 쪽으로 움직입니다. 요청에 기한을 분명히 적어 두세요."
+    },
+    {
+      "title": "지시문에 진행과 불확실성 명시",
+      "body": "예제 instructions는 답을 기다리는 동안에도 진행하고 중요한 불확실성은 밝히라고 적어 둡니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "기한이 있는 브리핑 요청",
+      "when": "에이전트에 회의 준비를 맡길 때(원문 예제를 한국어로 옮김)",
+      "type": "prompt",
+      "text": "[회사명]([도메인])과 [주제]에 관한 회의가 [회의 시각]에 있습니다. 그 회사의 사업, 최근 제품 발표, 제가 물어볼 만한 질문을 정리해 주세요. 회의 전에 읽을 시간이 있도록 [브리핑 기한]까지 간결한 브리핑을 보내 주세요."
+    },
+    {
+      "title": "질문 결과 반환 코드",
+      "when": "사용자의 답이나 마감을 도구 결과로 돌려줄 때 (Python)",
+      "type": "code",
+      "text": "result = (\n    {\"status\": \"answered\", \"answer\": answer}\n    if answer\n    else {\"status\": \"no_answer\"}\n)\nawait client.beta.agents.sessions.events.create(\n    session_id,\n    events=[\n        {\n            \"type\": \"agent.session.input.tool_result\",\n            \"turn_id\": call.turn_id,\n            \"call_id\": call.call_id,\n            \"success\": True,\n            \"output\": json.dumps(result),\n        }\n    ],\n)"
+    }
+  ],
+  "cautions": [
+    "time awareness는 experimental 설정이고 Agents API는 beta 헤더(OpenAI-Beta: agents=v1)를 씁니다. 필드 이름이 바뀔 수 있으니 공식 문서를 확인하세요.",
+    "질문 이벤트는 required_actions가 아니라 세션 이벤트 스트림에서 읽어야 합니다.",
+    "에이전트가 일찍 끝나면 아직 답하지 않은 질문을 화면에서 닫으세요. 끝난 turn에 답을 보내면 충돌 오류가 날 수 있습니다."
+  ],
+  "sources": [
+    {
+      "title": "Time awareness and async input for personal agents (OpenAI)",
+      "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents"
+    }
+  ]
+}

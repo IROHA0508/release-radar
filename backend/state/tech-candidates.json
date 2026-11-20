@@ -48,5 +48,15 @@
     ],
     "company": "anthropic",
     "addedAt": "2026-11-14"
+  },
+  {
+    "name": "마감 시간 인식 에이전트",
+    "en": "Deadline-aware agent execution",
+    "oneLiner": "에이전트가 마감을 인식해 기한에 따라 작업 깊이와 우선순위를 조절합니다.",
+    "news": [
+      "openai-agents-time-awareness-async-input"
+    ],
+    "company": "openai",
+    "addedAt": "2026-11-21"
   }
 ]
