@@ -1396,7 +1396,8 @@
         "google-ai-edge-gallery-on-device-speech",
         "gemini-apple-carplay",
         "claude-meetings",
-        "gemini-app-lower-memory-android"
+        "gemini-app-lower-memory-android",
+        "openai-gpt-live-regional-accents-prompting"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -3172,7 +3173,8 @@
         "lyria-3-prompting-tips",
         "nano-banana-prompting-guide",
         "gemini-3-1-flash-tts-prompting",
-        "openai-gpt-image-prompting-guide"
+        "openai-gpt-image-prompting-guide",
+        "openai-gpt-live-regional-accents-prompting"
       ],
       "verifiedAt": "2026-10-22"
     }

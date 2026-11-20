@@ -2292,6 +2292,14 @@
       "status": "nodate",
       "title": "Dec 30 OpenAI for Developers in 2025 A year-end roundup of the biggest model, API, and platform shifts for building production-grade agents. General"
     },
+    "https://developers.openai.com/blog/prompting-multilingual-voice-agents": {
+      "checkedAt": "2026-11-20",
+      "company": "openai",
+      "date": "2026-11-19",
+      "id": "openai-gpt-live-regional-accents-prompting",
+      "status": "added",
+      "title": "Prompting GPT-Live for languages and regional accents"
+    },
     "https://developers.openai.com/blog/pushing-voice-agents-further": {
       "checkedAt": "2026-11-11",
       "company": "openai",
@@ -2450,6 +2458,14 @@
       "reason": "고객 사례(customer story). 특정 기업(Sumitomo Life)의 ChatGPT Enterprise 채택 경험을 다룬 마케팅 글로, 제외 대상.",
       "status": "skipped",
       "title": "How Sumitomo Life’s leaders helped teams adopt ChatGPT Enterprise"
+    },
+    "https://openai.com/business/learn/codex-security-plugin-demo": {
+      "checkedAt": "2026-11-20",
+      "company": "openai",
+      "date": "2026-11-19",
+      "reason": "데모 영상 소개로, 새로운 기능이나 모델 업데이트가 아니며 활용 팁 기준(독자가 바로 따라 할 실전 조언)에 미달",
+      "status": "skipped",
+      "title": "Explore the Codex Security Plugin"
     },
     "https://openai.com/form/codex-originals": {
       "checkedAt": "2026-10-03",

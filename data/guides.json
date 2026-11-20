@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-10",
+  "updatedAt": "2026-11-20",
   "checkedAt": "2026-11-10 08:41",
   "common": [
     {
@@ -1924,6 +1924,40 @@
             "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt"
           },
           "addedAt": "2026-11-08"
+        },
+        {
+          "id": "openai-live-language-switch-policy",
+          "category": "이미지·영상·음성",
+          "title": "다국어 음성 에이전트는 언어 전환 조건과 억양 유지를 따로 정하기",
+          "body": "OpenAI의 GPT-Live 다국어 가이드는 다국어 앱이라면 무엇이 언어 전환을 일으킬지와 지역 말투를 그대로 둘지를 별개의 선택으로 정하라고 합니다. 예시 정책은 사용자의 가장 최근 분명한 발화 언어로 답하고 아랍어 문장 속 짧은 'OK'나 숫자, 이름, 영어 제품명만으로는 전환하지 않게 합니다. 금액은 현재 대화 언어로 말하되 값과 통화를 그대로 지키게 합니다. 지시문으로 억양을 유도해도 모든 답에서 유지된다는 보장은 없으니, 양방향 전환과 세션 재연결 뒤까지 시험하세요.",
+          "before": "사용자가 쓰는 언어에 맞춰서 대답해 줘.",
+          "after": "사용자의 가장 최근 분명한 발화 언어로 답하세요. 사용자가 분명히 언어를 바꾸면 [언어 A]와 [언어 B] 사이에서 전환하세요. 문장 속의 짧은 'OK', 숫자, 이름, 제품명만으로는 대화 언어를 바꾸지 마세요. [언어 A]로 말할 때는 [지역] 말투를 유지하세요. 금액은 현재 대화 언어로 말하되 값과 통화는 그대로 지키세요.",
+          "models": [
+            "GPT-Live"
+          ],
+          "source": {
+            "title": "GPT-Live 음성 에이전트에 언어와 지역 억양 맞추기",
+            "url": "https://developers.openai.com/blog/prompting-multilingual-voice-agents"
+          },
+          "newsId": "openai-gpt-live-regional-accents-prompting",
+          "addedAt": "2026-11-20"
+        },
+        {
+          "id": "openai-live-register-examples",
+          "category": "이미지·영상·음성",
+          "title": "말투의 격식은 '이렇게 말해, 이렇게는 말하지 마' 예시 쌍으로 보여 주기",
+          "body": "OpenAI 가이드에 따르면 언어와 억양을 정해도 격식의 정도는 열려 있습니다. 원문은 힌디어 상담원에게 존칭 'आप'를 쓰게 하면서 \"हाँ, बताओ\" 대신 \"जी, बताइए\"라고 말하게 하는 식으로 쓸 표현과 피할 표현을 짝지어 줍니다. 이렇게 하면 단순히 전문적으로 말하라고 할 때보다 모델이 따를 목표가 분명해집니다. 현지 상담원이 실제로 쓰는 표현을 고르고 영어 대본을 직역하지 말고 문맥 속에서 시험하세요.",
+          "before": "고객에게 공손하고 전문적으로 말해 줘.",
+          "after": "고객에게는 '고객님'이라고 부르고 존댓말을 쓰세요. \"네, 말씀하세요\" 대신 \"네, 말씀해 주세요\"라고 하세요. \"어떻게 지내?\" 대신 \"어떻게 지내세요?\"라고 하세요. [현지 상담원이 실제로 쓰는 표현]도 같은 방식으로 한두 쌍 더 적습니다.",
+          "models": [
+            "GPT-Live"
+          ],
+          "source": {
+            "title": "GPT-Live 음성 에이전트에 언어와 지역 억양 맞추기",
+            "url": "https://developers.openai.com/blog/prompting-multilingual-voice-agents"
+          },
+          "newsId": "openai-gpt-live-regional-accents-prompting",
+          "addedAt": "2026-11-20"
         }
       ],
       "templates": [

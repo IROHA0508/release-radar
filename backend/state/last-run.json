@@ -1,62 +1,13 @@
 {
-  "startedAt": "2026-11-20T07:29:48+09:00",
+  "startedAt": "2026-11-20T19:39:44+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2688,
+  "entries": 2692,
   "candidates": [
     {
-      "title": "How OpenAI’s Performance Factory keeps ChatGPT fast",
-      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
+      "title": "Explore the Codex Security Plugin",
+      "url": "https://openai.com/business/learn/codex-security-plugin-demo",
       "company": "openai",
-      "date": "2026-11-19",
-      "relatedId": null
-    },
-    {
-      "title": "ICYMI: Transfer your history from other AI apps into Gemini.",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/",
-      "company": "google",
-      "date": "2026-11-19",
-      "relatedId": null
-    },
-    {
-      "title": "Let Gemini tackle repetitive chores on your Mac",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
-      "company": "google",
-      "date": "2026-11-19",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Introducing object enrichments: Transform unstructured data into agent-ready context",
-      "url": "https://cloud.google.com/blog/products/storage-data-transfer/cost-effective-ai-context-extraction-from-unstructured-gcs-data/",
-      "company": "google",
-      "date": "2026-11-19",
-      "relatedId": null
-    },
-    {
-      "title": "Helping our partners market smarter, together, with Gemini",
-      "url": "https://cloud.google.com/blog/topics/partners/helping-our-partners-market-smarter-together-with-gemini/",
-      "company": "google",
-      "date": "2026-11-19",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Feature · Model: gpt-live-1.1 · API: v1/live/sessions",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-11-19",
-      "company": "openai",
-      "date": "2026-11-19",
-      "relatedId": "gpt-live"
-    },
-    {
-      "title": "Genie 4 (models/genie-4) generally available (GA): ReleasedGenie 4 (models/genie-4) on theInteractions API (v1beta) for real-time interactive world generation, streaming steerable 24 fps16:9 video wit",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19",
-      "company": "google",
-      "date": "2026-11-19",
-      "relatedId": null
-    },
-    {
-      "title": "Tool retrieval (Preview): The Interactions API can now search your tool library and load function schemas on demand, so large tool sets no longer have to be sent in full on every request.",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19",
-      "company": "google",
       "date": "2026-11-19",
       "relatedId": null
     },
@@ -66,106 +17,39 @@
       "company": "openai",
       "date": "2026-11-19",
       "relatedId": "gpt-live"
-    },
-    {
-      "title": "Multi-Turn Agentic Reinforcement Learning with Tunix and Gemma 4 on Google TPUs",
-      "url": "https://developers.googleblog.com/multi-turn-agentic-reinforcement-learning-with-tunix-and-gemma-4-on-google-tpus/",
-      "company": "google",
-      "date": "2026-11-19",
-      "relatedId": null
-    },
-    {
-      "title": "Distributed LLM Training Across Metros: Streaming DiLoCo in MaxText",
-      "url": "https://developers.googleblog.com/distributed-llm-training-across-metros-streaming-diloco-in-maxtext/",
-      "company": "google",
-      "date": "2026-11-19",
-      "relatedId": null
     }
   ],
   "added": [
     {
-      "id": "gemini-app-import-history",
-      "title": "Gemini 앱 다른 AI 앱 기록 가져오기",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/switch-ai-assistants-transfer-history/",
-      "charts": 0
-    },
-    {
-      "id": "gemini-app-mac-computer-use",
-      "title": "Gemini 앱 Mac용 computer use",
-      "url": "https://blog.google/innovation-and-ai/products/gemini-app/computer-use-mac/",
-      "charts": 0
-    },
-    {
-      "id": "gpt-live-1-1",
-      "title": "GPT-Live-1.1",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-11-19",
-      "charts": 0
-    },
-    {
-      "id": "genie-4",
-      "title": "Genie 4",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19",
-      "charts": 0
-    },
-    {
-      "id": "gemini-api-tool-retrieval",
-      "title": "Tool retrieval",
-      "url": "https://ai.google.dev/gemini-api/docs/changelog#2026-11-19",
+      "id": "openai-gpt-live-regional-accents-prompting",
+      "title": "GPT-Live 음성 에이전트에 언어와 지역 억양 맞추기",
+      "url": "https://developers.openai.com/blog/prompting-multilingual-voice-agents",
       "charts": 0
     }
   ],
   "updated": [],
   "skipped": [
     {
-      "title": "How OpenAI’s Performance Factory keeps ChatGPT fast",
-      "url": "https://openai.com/index/how-openai-performance-factory-keeps-chatgpt-fast",
-      "reason": "인프라 최적화(Performance Factory) 관련 기술 글. 사용자가 직접 써 볼 수 있는 모델, 기능, 활용 팁이 아님"
-    },
-    {
-      "title": "Introducing object enrichments: Transform unstructured data into agent-ready context",
-      "url": "https://cloud.google.com/blog/products/storage-data-transfer/cost-effective-ai-context-extraction-from-unstructured-gcs-data/",
-      "reason": "Google Cloud의 비정형 데이터 처리 인프라(object enrichments) 소개. 데이터 플랫폼 기능으로, AI 모델 사용과 무관한 클라우드 인프라 글"
-    },
-    {
-      "title": "Helping our partners market smarter, together, with Gemini",
-      "url": "https://cloud.google.com/blog/topics/partners/helping-our-partners-market-smarter-together-with-gemini/",
-      "reason": "파트너 대상 Gemini 기반 공동마케팅 솔루션 소개. 기업 파트너십·영업 공지에 해당"
-    },
-    {
-      "title": "Multi-Turn Agentic Reinforcement Learning with Tunix and Gemma 4 on Google TPUs",
-      "url": "https://developers.googleblog.com/multi-turn-agentic-reinforcement-learning-with-tunix-and-gemma-4-on-google-tpus/",
-      "reason": "Google TPU에서 Gemma 4를 이용한 에이전트 학습 방법론. 개발 프레임워크·학습 인프라 관련 연구 글이지, 모델 출시나 사용자 활용 팁이 아님"
-    },
-    {
-      "title": "Distributed LLM Training Across Metros: Streaming DiLoCo in MaxText",
-      "url": "https://developers.googleblog.com/distributed-llm-training-across-metros-streaming-diloco-in-maxtext/",
-      "reason": "분산 LLM 학습 인프라(Streaming DiLoCo in MaxText). AI 모델을 쓰는 방식과 무관한 개발 프레임워크·학습 인프라 글"
+      "title": "Explore the Codex Security Plugin",
+      "url": "https://openai.com/business/learn/codex-security-plugin-demo",
+      "reason": "데모 영상 소개로, 새로운 기능이나 모델 업데이트가 아니며 활용 팁 기준(독자가 바로 따라 할 실전 조언)에 미달"
     }
   ],
   "failed": [],
-  "guardNotes": {
-    "genie-4": [
-      "fit.notFor '16:9가 아닌 참조 이미지로 시작하기…'의 숫자 ['16'] 원문에서 확인 안 됨 → 제외"
-    ]
-  },
+  "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
-  "guideChanges": [],
+  "guideChanges": [
+    "가이드 추가: [openai] 다국어 음성 에이전트는 언어 전환 조건과 억양 유지를 따로 정하기",
+    "가이드 추가: [openai] 말투의 격식은 '이렇게 말해, 이렇게는 말하지 마' 예시 쌍으로 보여 주기"
+  ],
   "styleNotes": {
-    "gemini-app-import-history": [
-      "문체 수정: tldr",
-      "문체 수정: changes.3",
-      "문체 수정: tips.1.body"
-    ],
-    "gemini-app-mac-computer-use": [
-      "문체 수정: changes.2",
-      "문체 수정: changes.3",
-      "문체 수정: tips.1.body"
+    "openai-gpt-live-regional-accents-prompting": [
+      "문체 수정: changes.5"
     ]
   },
   "techLinks": [
-    "gemini-app-mac-computer-use → computer-use",
-    "gemini-api-tool-retrieval → tool-search"
+    "openai-gpt-live-regional-accents-prompting → voice-agent, media-prompting"
   ],
   "retired": []
 }
