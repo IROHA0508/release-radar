@@ -1,136 +1,41 @@
 {
-  "startedAt": "2026-11-21T07:01:24+09:00",
+  "startedAt": "2026-11-21T19:22:31+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2698,
+  "entries": 2699,
   "candidates": [
     {
-      "title": "Combatting adversarial distillation",
-      "url": "https://openai.com/index/combatting-adversarial-distillation",
-      "company": "openai",
-      "date": "2026-11-20",
-      "relatedId": null
-    },
-    {
-      "title": "Hebbia sees improvements in financial research with GPT-6 Astra",
-      "url": "https://openai.com/business/customer-stories/hebbia",
-      "company": "openai",
-      "date": "2026-11-20",
-      "relatedId": "gpt-6-model-guide"
-    },
-    {
-      "title": "Can AI help scientists identify promising drug candidates?",
-      "url": "https://openai.com/index/introducing-medchembench",
-      "company": "openai",
-      "date": "2026-11-20",
-      "relatedId": null
-    },
-    {
-      "title": "Ultimate guide for fixing your team’s API keys",
-      "url": "https://cloud.google.com/blog/topics/developers-practitioners/how-to-fix-your-teams-api-keys/",
+      "title": "Check what your AI agents do before they do it, with Semantic governance policies",
+      "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/",
       "company": "google",
       "date": "2026-11-20",
       "relatedId": null
-    },
-    {
-      "title": "Drowning in clicks: Scaling Black Friday pipelines with Managed Airflow agents",
-      "url": "https://cloud.google.com/blog/products/data-analytics/scaling-airflow-pipelines-with-ai-agents-on-managed-airflow/",
-      "company": "google",
-      "date": "2026-11-20",
-      "relatedId": null
-    },
-    {
-      "title": "Time awareness and async input for personal agents",
-      "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents",
-      "company": "openai",
-      "date": "2026-11-20",
-      "relatedId": null
-    },
-    {
-      "title": "Agent Anomaly Detection: Safeguarding agents across other clouds",
-      "url": "https://developers.googleblog.com/agent-anomaly-detection-safeguarding-agents-across-other-clouds/",
-      "company": "google",
-      "date": "2026-11-20",
-      "relatedId": "google-agent-anomaly-detection-guide"
-    },
-    {
-      "title": "How to handle user, connector, and agent auth in Gemini Enterprise with a custom UI",
-      "url": "https://developers.googleblog.com/how-to-handle-user-connector-and-agent-auth-in-gemini-enterprise-with-a-custom-ui/",
-      "company": "google",
-      "date": "2026-11-20",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "How to securely connect internal Cloud Run MCP servers to Gemini Enterprise",
-      "url": "https://developers.googleblog.com/how-to-securely-connect-internal-cloud-run-mcp-servers-to-gemini-enterprise/",
-      "company": "google",
-      "date": "2026-11-20",
-      "relatedId": "gemini-app-resume-update"
     }
   ],
   "added": [
     {
-      "id": "openai-agents-time-awareness-async-input",
-      "title": "마감 시간을 아는 에이전트와 비동기 질문 만들기",
-      "url": "https://developers.openai.com/blog/time-awareness-and-async-input-for-personal-agents",
+      "id": "google-semantic-governance-policies",
+      "title": "Semantic governance policies",
+      "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/",
       "charts": 0
     }
   ],
-  "updated": [
-    {
-      "id": "google-agent-anomaly-detection-guide",
-      "url": "https://developers.googleblog.com/agent-anomaly-detection-safeguarding-agents-across-other-clouds/"
-    }
-  ],
-  "skipped": [
-    {
-      "title": "Combatting adversarial distillation",
-      "url": "https://openai.com/index/combatting-adversarial-distillation",
-      "reason": "모델 출시와 무관한 안전 보고서. 적대적 증류 공격에 대한 보안 접근법이 주제이며, 새로운 모델이나 기능 출시, 활용 팁이 아님."
-    },
-    {
-      "title": "Hebbia sees improvements in financial research with GPT-6 Astra",
-      "url": "https://openai.com/business/customer-stories/hebbia",
-      "reason": "고객 사례. Hebbia의 GPT-6 Astra 테스트 결과는 특정 고객의 사용 경험으로, 제외 대상인 고객 사례(customer stories)에 해당."
-    },
-    {
-      "title": "Can AI help scientists identify promising drug candidates?",
-      "url": "https://openai.com/index/introducing-medchembench",
-      "reason": "모델 출시와 무관한 연구 보고서. MedChemBench는 AI 모델을 평가하는 벤치마크 연구로, 새로운 모델이나 기능 출시가 아님."
-    },
-    {
-      "title": "Ultimate guide for fixing your team’s API keys",
-      "url": "https://cloud.google.com/blog/topics/developers-practitioners/how-to-fix-your-teams-api-keys/",
-      "reason": "개발 프레임워크·인프라 글. API 키 관리는 AI 모델을 쓰는 방식과 무관한 개발 도구 설정에 해당."
-    },
-    {
-      "title": "Drowning in clicks: Scaling Black Friday pipelines with Managed Airflow agents",
-      "url": "https://cloud.google.com/blog/products/data-analytics/scaling-airflow-pipelines-with-ai-agents-on-managed-airflow/",
-      "reason": "특정 기술·업종 마케팅. Airflow 파이프라인 최적화는 데이터 엔지니어링 도구에 초점이 있으며, Gemini 에이전트 자체의 기능 출시나 활용 팁이 아님."
-    },
-    {
-      "title": "How to securely connect internal Cloud Run MCP servers to Gemini Enterprise",
-      "url": "https://developers.googleblog.com/how-to-securely-connect-internal-cloud-run-mcp-servers-to-gemini-enterprise/",
-      "reason": "인프라·개발 프레임워크 글. Cloud Run MCP 서버 연결, Egress Agent Gateway, Private Service Connect 등 클라우드 인프라 설정에 초점이 있음."
-    },
-    {
-      "title": "How to handle user, connector, and agent auth in Gemini Enterprise with a custom UI",
-      "url": "https://developers.googleblog.com/how-to-handle-user-connector-and-agent-auth-in-gemini-enterprise-with-a-custom-ui/",
-      "reason": "Gemini Enterprise에 맞춤 UI를 붙일 때 쓰는 인증·IAM 아키텍처 안내(Workforce/Workload Identity Federation, 3LO OAuth)입니다. 모델이나 공식 AI 제품·기능을 새로 쓰는 법이 아니라 기업 내부 시스템 연동용 인프라·보안 구성 글이라 제외합니다."
-    }
-  ],
+  "updated": [],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
-  "guideChanges": [
-    "가이드 추가: [openai] 마감은 '15분 뒤' 대신 절대 시각으로 적어 주기",
-    "가이드 추가: [openai] 되묻기는 허용하되 답을 기다리는 동안 작업을 계속하게 하기"
-  ],
-  "styleNotes": {},
+  "guideChanges": [],
+  "styleNotes": {
+    "google-semantic-governance-policies": [
+      "문체 수정: cautions.0",
+      "문체 수정: cautions.2",
+      "문체 수정: tips.2.body"
+    ]
+  },
   "techLinks": [
-    "openai-agents-time-awareness-async-input → agent-loop, tool-use, harness",
-    "새 기술 후보: 마감 시간 인식 에이전트 (Deadline-aware agent execution) ← openai-agents-time-awareness-async-input"
+    "google-semantic-governance-policies → handoffs-guardrails, harness"
   ],
   "retired": []
 }

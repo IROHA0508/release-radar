@@ -458,7 +458,8 @@
         "claude-building-always-on-agents",
         "google-agent-anomaly-detection-guide",
         "gemini-app-tasks",
-        "openai-agents-time-awareness-async-input"
+        "openai-agents-time-awareness-async-input",
+        "google-semantic-governance-policies"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -3070,7 +3071,8 @@
       "level": "중급",
       "status": "관찰",
       "companies": [
-        "openai"
+        "openai",
+        "google"
       ],
       "prerequisites": [
         "agent-loop"
@@ -3110,7 +3112,9 @@
           "url": "https://openai.github.io/openai-agents-python/"
         }
       ],
-      "news": [],
+      "news": [
+        "google-semantic-governance-policies"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {

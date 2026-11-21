@@ -1,0 +1,221 @@
+{
+  "id": "google-semantic-governance-policies",
+  "company": "google",
+  "date": "2026-11-20",
+  "kind": "제품·기능 출시",
+  "title": "Semantic governance policies",
+  "headline": "에이전트가 도구를 호출하기 전에 사용자 요청과 회사 규칙에 맞는지 먼저 검사합니다",
+  "tldr": "Semantic governance policies는 에이전트 모델이 제안한 도구 호출을 실행 전에 검사하는 기능으로, 현재 Gemini 플랫폼에서 Preview로 제공됩니다. 사용자가 실제로 요청한 일인지, 평이한 말로 쓴 회사 규칙을 지키는지 두 가지를 확인하고 둘 다 통과해야 호출이 실행됩니다. 규칙은 에이전트 코드와 따로 관리합니다.",
+  "fit": {
+    "summary": "에이전트가 메일 발송이나 파일 삭제처럼 되돌리기 어려운 도구를 쓸 때 실행 전에 규칙 위반을 막고 싶은 기업 팀에 맞습니다.",
+    "good": [
+      "법무·컴플라이언스 팀이 쓴 규칙을 코드 수정 없이 에이전트에 적용하는 일",
+      "문서에 숨은 지시(간접 프롬프트 인젝션)로 에이전트가 엉뚱한 행동을 하는 것을 막는 일",
+      "환불 한도나 승인 절차 같은 업무 규칙을 도구 호출마다 확인하는 일",
+      "모든 판정과 근거를 Cloud Logging에 남겨 감사하는 일"
+    ],
+    "notFor": [
+      "판정이 LLM에서 나오므로 달라질 수 있어 단독 방어 수단으로 쓰기에는 부족합니다. 다른 통제와 함께 쓰라고 원문이 권합니다.",
+      "스트리밍으로 받는 모델 응답은 검사하지 않습니다.",
+      "텍스트만 담긴 응답은 행동이 없어 검사 대상이 아닙니다.",
+      "공시 통제와 법무·컴플라이언스 검토를 대신하지 못합니다."
+    ],
+    "start": "Agent Gateway 뒤에 있는 에이전트에 정책 엔진을 연결하고 dry run 모드를 켠 채 판정을 먼저 살펴보세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "실행 전 검사",
+      "value": "2가지",
+      "note": "회사 규칙과 사용자 요청. 둘 다 통과해야 실행"
+    },
+    {
+      "label": "예시 호출",
+      "value": "3건",
+      "note": "1건 허용, 2건 거부"
+    },
+    {
+      "label": "제공 단계",
+      "value": "Preview",
+      "note": "Gemini 플랫폼"
+    },
+    {
+      "label": "환불 한도 예시",
+      "value": "$80 이하",
+      "note": "원문의 정책 작성 예시"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "도구 호출이 검사를 거치는 순서",
+      "caption": "모델이 제안한 호출은 에이전트에 닿기 전에 정책 엔진을 지납니다.",
+      "steps": [
+        {
+          "label": "모델이 도구 호출 제안",
+          "desc": "에이전트의 모델이 도구 호출이 담긴 응답을 보냅니다."
+        },
+        {
+          "label": "Agent Gateway가 전달",
+          "desc": "응답이 에이전트에 닿기 전에 정책 엔진으로 보냅니다."
+        },
+        {
+          "label": "LLM 판정",
+          "desc": "대화 내용, 시스템 지시, 도구 설명, 정책을 기준으로 평가합니다.",
+          "highlight": true
+        },
+        {
+          "label": "허용 또는 거부",
+          "desc": "허용이면 그대로 전달하고 거부면 거부 메시지로 바꿉니다."
+        }
+      ],
+      "loop": "통과하면 응답이 그대로 전달되고 거부되면 응답 내용이 거부 메시지로 바뀝니다. 판정과 근거는 어느 쪽이든 Cloud Logging에 남습니다.",
+      "source": {
+        "title": "Check what your AI agents do before they do it, with Semantic governance policies (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "재무팀 에이전트의 세 가지 호출",
+      "caption": "하나의 실적 공개 제한 정책이 걸린 에이전트의 사례입니다.",
+      "columns": [
+        "제안한 호출",
+        "판정",
+        "결정한 검사"
+      ],
+      "rows": [
+        {
+          "label": "컨트롤러에게 3분기 실적 발송",
+          "cells": [
+            "send_email",
+            "허용",
+            "정책(@example.com 주소만 허용)"
+          ]
+        },
+        {
+          "label": "투자자에게 발송하고 개인 Gmail 참조",
+          "cells": [
+            "send_email",
+            "거부",
+            "정책(NDA도 예외 아님)"
+          ],
+          "highlight": true
+        },
+        {
+          "label": "문서의 숨은 지시로 Forecasts 폴더 삭제",
+          "cells": [
+            "delete_file",
+            "거부",
+            "사용자 의도 검사"
+          ],
+          "highlight": true
+        }
+      ],
+      "source": {
+        "title": "Check what your AI agents do before they do it, with Semantic governance policies (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 성능 비교 수치가 없어 그래프는 만들지 않았습니다.",
+  "changes": [
+    "에이전트 모델이 제안한 각 도구 호출을 실행 전에 두 가지 기준으로 검사합니다. 하나는 평이한 말로 쓴 회사 규칙이고 다른 하나는 사용자가 요청한 내용입니다.",
+    "사용자 의도 검사는 기본으로 켜져 있어 정책이 없어도 정책 엔진을 연결하는 순간부터 하이재킹을 막습니다.",
+    "정책은 자연어 제약 하나로 쓰며 에이전트의 모든 도구에 걸거나 특정 도구와 그 매개변수에만 걸 수 있습니다.",
+    "LLM 판정자는 대화 내용, 에이전트의 시스템 지시, 도구 설명, 정책을 함께 보고 평가합니다. 거부되면 응답의 도구 호출을 포함한 내용이 설정한 거부 메시지로 바뀝니다.",
+    "판정과 판정자의 근거, 사용한 토큰이 프로젝트의 Cloud Logging에 남습니다.",
+    "에이전트는 Gemini API, Anthropic Messages API, Gemini 플랫폼의 Claude 모델, vLLM 같은 자체 호스팅 서버를 포함한 OpenAI 호환 Chat Completions API로 모델을 호출할 수 있습니다."
+  ],
+  "availability": [
+    "Gemini 플랫폼에서 Preview로 제공",
+    "현재 지원하는 정책 집행 지점은 Agent Gateway이며 에이전트의 모든 외부 송신 트래픽이 Agent Gateway를 거치도록 설정해야 합니다.",
+    "Google Cloud 콘솔 또는 Google Cloud CLI로 정책을 만듭니다."
+  ],
+  "usage": [
+    {
+      "title": "정책 엔진을 연결하고 dry run으로 먼저 시험하기",
+      "when": "실제 차단 없이 정책이 어떻게 판정하는지 보고 싶을 때",
+      "steps": [
+        "정책 엔진을 준비해 Agent Gateway에 연결합니다.",
+        "dry run 모드를 켭니다. 엔진은 차단 없이 거부했을 호출만 기록합니다.",
+        "모든 도구에 명확한 설명을 붙입니다.",
+        "업무 규칙을 정책으로 추가하고 Cloud Logging의 판정을 확인한 뒤 집행으로 바꿉니다."
+      ],
+      "note": "판정자는 설명이 없는 도구의 호출을 거부하도록 지시를 받습니다.",
+      "source": {
+        "title": "Check what your AI agents do before they do it, with Semantic governance policies (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/"
+      }
+    },
+    {
+      "title": "gcloud로 정책 만들기",
+      "when": "콘솔 대신 명령줄로 정책을 등록하고 싶을 때",
+      "steps": [
+        "정책 ID와 위치, 대상 에이전트 경로를 정합니다.",
+        "자연어 제약과 거부 메시지를 지정해 명령을 실행합니다."
+      ],
+      "note": "판정자의 근거에 정책 문구가 인용될 수 있으므로 사용자에게 보이지 않아야 하면 정책에 거부 메시지를 직접 설정합니다.",
+      "example": {
+        "type": "code",
+        "text": "gcloud beta ai semantic-governance-policies create POLICY_ID \\\n    --location=LOCATION \\\n    --display-name=\"Earnings disclosure\" \\\n    --agent=projects/PROJECT_ID/locations/LOCATION/agents/AGENT_ID \\\n    --natural-language-constraint=\"[평이한 말로 쓴 규칙]\" \\\n    --agent-response-denial-message=\"[사용자에게 보일 거부 메시지]\" \\\n    --project=PROJECT_ID"
+      },
+      "source": {
+        "title": "Check what your AI agents do before they do it, with Semantic governance policies (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "정책이 기대는 사실은 시스템 지시에 적기",
+      "body": "판정자는 대화와 에이전트의 지시, 정책만 보고 판단합니다. 실적 발표일처럼 정책이 의존하는 정보는 에이전트의 시스템 지시에 넣어 두세요."
+    },
+    {
+      "title": "정책에는 구체적인 한도와 도구 설명의 용어 쓰기",
+      "body": "정책을 쓸 때 구체적인 한도를 정하고 도구 설명에 쓴 말과 같은 용어를 씁니다. 예외로 삼지 않을 사유(NDA, 긴급함, 요청자의 직급)도 문장에 적습니다."
+    },
+    {
+      "title": "집행 전에 판정 검토",
+      "body": "판정이 LLM에서 나오므로 달라질 수도 있습니다. dry run으로 Cloud Logging의 판정을 살펴본 뒤 집행으로 바꾸라고 원문이 권합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "공개 전 정보 공유 제한 정책",
+      "when": "공개 전에 알려선 안 되는 자료를 에이전트가 외부로 보내지 못하게 할 때",
+      "type": "prompt",
+      "text": "[공개 전 정보 항목]은 [공개일]까지 공개해서는 안 됩니다. 공개 전에는 @[회사 도메인] 주소로만 공유할 수 있습니다. 외부·개인 주소, 투자자, 애널리스트, 언론에는 NDA, 긴급함, 요청자의 직급과 관계없이 절대 보내지 마세요."
+    },
+    {
+      "title": "금액 한도 정책",
+      "when": "에이전트가 처리할 수 있는 금액을 제한할 때",
+      "type": "prompt",
+      "text": "환불 요청은 금액이 $[한도] 이하일 때만 수락합니다."
+    }
+  ],
+  "cautions": [
+    "판정은 확률적인 LLM에서 나오므로 달라질 여지가 있습니다. 다른 통제와 함께 쓰세요.",
+    "스트리밍된 모델 응답은 평가하지 않습니다.",
+    "판정자의 근거가 정책 문구를 인용할 수도 있으니 사용자에게 보이면 안 되는 내용은 거부 메시지를 직접 설정하세요."
+  ],
+  "sources": [
+    {
+      "title": "Check what your AI agents do before they do it, with Semantic governance policies (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/"
+    },
+    {
+      "title": "Semantic governance policies overview",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/semantic-governance-overview"
+    },
+    {
+      "title": "Configure semantic governance policies",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/configure-semantic-governance"
+    },
+    {
+      "title": "Best practices for writing policies",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/best-practices"
+    }
+  ]
+}

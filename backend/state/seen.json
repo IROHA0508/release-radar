@@ -1818,6 +1818,14 @@
       "status": "added",
       "title": "Catch Go bugs that fuzzing misses with Gemini and a constraint solver"
     },
+    "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies": {
+      "checkedAt": "2026-11-21",
+      "company": "google",
+      "date": "2026-11-20",
+      "id": "google-semantic-governance-policies",
+      "status": "added",
+      "title": "Check what your AI agents do before they do it, with Semantic governance policies"
+    },
     "https://developers.googleblog.com/cost-per-task-using-cheap-classifiers-to-route-across-gemini-models-and-thinking-levels": {
       "checkedAt": "2026-11-04",
       "company": "google",
