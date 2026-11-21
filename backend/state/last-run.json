@@ -1,25 +1,10 @@
 {
-  "startedAt": "2026-11-21T19:22:31+09:00",
+  "startedAt": "2026-11-22T05:42:16+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 2699,
-  "candidates": [
-    {
-      "title": "Check what your AI agents do before they do it, with Semantic governance policies",
-      "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/",
-      "company": "google",
-      "date": "2026-11-20",
-      "relatedId": null
-    }
-  ],
-  "added": [
-    {
-      "id": "google-semantic-governance-policies",
-      "title": "Semantic governance policies",
-      "url": "https://developers.googleblog.com/check-what-your-ai-agents-do-before-they-do-it-with-semantic-governance-policies/",
-      "charts": 0
-    }
-  ],
+  "candidates": [],
+  "added": [],
   "updated": [],
   "skipped": [],
   "failed": [],
@@ -27,15 +12,7 @@
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {
-    "google-semantic-governance-policies": [
-      "문체 수정: cautions.0",
-      "문체 수정: cautions.2",
-      "문체 수정: tips.2.body"
-    ]
-  },
-  "techLinks": [
-    "google-semantic-governance-policies → handoffs-guardrails, harness"
-  ],
+  "styleNotes": {},
+  "techLinks": [],
   "retired": []
 }
