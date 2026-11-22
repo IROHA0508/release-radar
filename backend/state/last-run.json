@@ -1,8 +1,10 @@
 {
-  "startedAt": "2026-11-22T09:45:06+09:00",
+  "startedAt": "2026-11-22T19:26:43+09:00",
   "mode": "update",
-  "sourceErrors": {},
-  "entries": 2700,
+  "sourceErrors": {
+    "Gemini API release notes": "RuntimeError: 원문을 읽지 못함: https://ai.google.dev/gemini-api/docs/changelog (본문이 너무 짧음(0자); reader 401 Client Error: Unauthorized for url: https://r.jina.ai/https://ai.google.dev/gemini-api/docs/changelog)"
+  },
+  "entries": 2538,
   "candidates": [],
   "added": [],
   "updated": [],
