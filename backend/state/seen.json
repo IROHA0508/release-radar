@@ -3171,6 +3171,14 @@
       "status": "skipped",
       "title": "Our first phase of embedded assessments"
     },
+    "https://openai.com/index/perplexity-and-intelligence": {
+      "checkedAt": "2026-11-23",
+      "company": "openai",
+      "date": "2026-11-22",
+      "reason": "Perplexity 메트릭에 관한 개념 설명 글로, 새 모델·기능 출시나 사용자가 직접 써 볼 수 있는 도구 출시가 아님. 모델 성능 평가 방법론을 다루는 연구 콘텐츠로, 판단 기준의 '모델 출시와 무관한 연구·보고서'에 해당",
+      "status": "skipped",
+      "title": "Perplexity and Intelligence"
+    },
     "https://openai.com/index/pollo-ai": {
       "checkedAt": "2026-10-09",
       "company": "openai",
