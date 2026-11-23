@@ -1,28 +1,12 @@
 {
-  "startedAt": "2026-11-23T05:52:27+09:00",
+  "startedAt": "2026-11-23T10:12:09+09:00",
   "mode": "update",
-  "sourceErrors": {
-    "Gemini API release notes": "RuntimeError: 원문을 읽지 못함: https://ai.google.dev/gemini-api/docs/changelog (본문이 너무 짧음(0자); reader 2자)"
-  },
-  "entries": 2539,
-  "candidates": [
-    {
-      "title": "Perplexity and Intelligence",
-      "url": "https://openai.com/index/perplexity-and-intelligence",
-      "company": "openai",
-      "date": "2026-11-22",
-      "relatedId": null
-    }
-  ],
+  "sourceErrors": {},
+  "entries": 2701,
+  "candidates": [],
   "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Perplexity and Intelligence",
-      "url": "https://openai.com/index/perplexity-and-intelligence",
-      "reason": "Perplexity 메트릭에 관한 개념 설명 글로, 새 모델·기능 출시나 사용자가 직접 써 볼 수 있는 도구 출시가 아님. 모델 성능 평가 방법론을 다루는 연구 콘텐츠로, 판단 기준의 '모델 출시와 무관한 연구·보고서'에 해당"
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
