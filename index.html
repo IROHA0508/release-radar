@@ -616,7 +616,7 @@ table.cmp tr.hl td:first-child { box-shadow: inset 3px 0 0 var(--c, var(--ink));
 
   <footer class="foot">
     <span>비공식 요약입니다. 수치와 가격은 각 사 공식 발표 시점 기준이며 정확한 내용은 각 소식의 출처 링크에서 확인하세요.</span>
-    <span>6시간마다(한국 시간 0시·6시·12시·18시) OpenAI, Anthropic, Google의 공식 페이지를 확인해 새 모델, 제품·기능 출시, 활용 팁 소식을 추가합니다.</span>
+    <span>하루 한 번(한국 시간 새벽 2시 무렵) OpenAI, Anthropic, Google의 공식 페이지를 확인해 새 모델, 제품·기능 출시, 활용 팁 소식을 추가합니다.</span>
   </footer>
 </div>
 
@@ -674,7 +674,7 @@ table.cmp tr.hl td:first-child { box-shadow: inset 3px 0 0 var(--c, var(--ink));
     return h("span", { class: "co c-" + c }, [h("span", { class: "sw", "aria-hidden": "true" }), co.name]);
   }
   /* 지원 종료: 데이터의 kind가 아직 '예정'이어도 종료일(한국 시간)이 되면 화면에서는 바로 '지원 종료'로 본다.
-     데이터 쪽은 6시간마다 도는 자동 실행(backend store.retire_due)이 같은 기준으로 바꿔 둔다. */
+     데이터 쪽은 하루 한 번 도는 자동 실행(backend store.retire_due)이 같은 기준으로 바꿔 둔다. */
   function todayKST() { return new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10); }
   function kindOf(item) {
     return item.kind === "지원 종료 예정" && item.shutdown && item.shutdown <= todayKST() ? "지원 종료" : item.kind;

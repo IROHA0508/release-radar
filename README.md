@@ -25,7 +25,7 @@ scripts/check_links.py    공식 출처 링크 점검 (매주 월요일, 데이�
 vercel.json             Vercel 설정 (데이터 캐시 끄기, 깔끔한 URL)
 backend/                새 소식 감지·요약·반영 Python 코드 (GitHub Actions에서 실행)
 tests/                  backend 오프라인 테스트
-.github/workflows/      6시간마다 실행하는 GitHub Actions 워크플로
+.github/workflows/      하루 한 번 실행하는 GitHub Actions 워크플로
 .vercelignore           배포에서 backend·tests 등 제외
 ```
 
@@ -51,7 +51,7 @@ python3 -m http.server 8000
 
 ## 자동 업데이트 (Python 백엔드)
 
-`backend/`의 Python 코드가 GitHub Actions에서 6시간마다(한국 시간 0시·6시·12시·18시) 실행됩니다. GitHub 사정으로 몇 분 늦게 시작할 수 있습니다. 사이트는 정적 파일이라 서버가 따로 없고 이 작업이 `data/`를 고쳐 커밋하면 Vercel이 자동으로 다시 배포합니다.
+`backend/`의 Python 코드가 GitHub Actions에서 하루 한 번(한국 시간 새벽 2시 23분) 실행됩니다. GitHub 사정으로 몇 시간 늦게 시작할 수 있습니다. 사이트는 정적 파일이라 서버가 따로 없고 이 작업이 `data/`를 고쳐 커밋하면 Vercel이 자동으로 다시 배포합니다.
 
 ```
 감지  모델 발표: OpenAI 뉴스 RSS, Anthropic 뉴스룸·사이트맵, Google Gemini 모델 블로그·DeepMind RSS
@@ -83,7 +83,7 @@ python3 -m http.server 8000
 | `backend/pipeline.py` | 전체 흐름, 실행 보고서(`backend/state/last-run.json`) |
 | `backend/humanize.py` | im-not-ai 문체 규칙을 작성 프롬프트에 넣고 쓴 뒤 문체 신호를 점검·수정 |
 | `backend/techlinks.py` | 새 소식을 AI 활용 기술 항목에 연결, 새 기술 후보 기록 |
-| `.github/workflows/update-news.yml` | 6시간마다 실행, 코드가 바뀌면 테스트와 소스 자가 시험 |
+| `.github/workflows/update-news.yml` | 하루 한 번 실행, 코드가 바뀌면 테스트와 소스 자가 시험 |
 
 ### 처음 한 번 설정
 
@@ -126,7 +126,7 @@ GitHub **Actions → 새 소식 자동 업데이트 → Run workflow**에서 `up
 
 ### 하루 한 번 정기 점검 (API 가격표·프롬프트 가이드)
 
-6시간마다 실행할 때, 그날 처음 실행이면 `python -m backend maintain`이 이어서 돌아갑니다.
+자동 실행이 끝나면 `python -m backend maintain`이 이어서 돌아갑니다. 그날 이미 점검했으면 건너뜁니다.
 
 ```
 API 가격표    세 회사 공식 가격 페이지를 읽고 표에 있는 모델이 실제로 API 가격표에 있는지와 현재 가격을 확인
