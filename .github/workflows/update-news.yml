@@ -2,7 +2,7 @@ name: 새 소식 자동 업데이트
 
 on:
   schedule:
-    - cron: "0 15,21,3,9 * * *"   # 6시간마다: 한국 시간 00·06·12·18시 (UTC 15·21·03·09시). GitHub 사정으로 몇 분 늦게 시작할 수 있음
+    - cron: "23 17 * * *"   # 하루 한 번: 한국 시간 02:23 (UTC 17:23). 정각을 피해 GitHub 부하가 몰리는 시간을 비킨다. GitHub 사정으로 몇 시간 늦게 시작할 수 있음
   workflow_dispatch:
     inputs:
       command:
