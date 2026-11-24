@@ -1,0 +1,114 @@
+{
+  "id": "claude-enterprise-frontier-safeguards",
+  "company": "anthropic",
+  "date": "2026-11-23",
+  "kind": "제품·기능 출시",
+  "title": "Enterprise Frontier Safeguards",
+  "headline": "가장 강력한 Claude 모델을 쓰면서 프롬프트와 응답을 Anthropic에 남기지 않는 ZDR 기능",
+  "tldr": "Enterprise Frontier Safeguards(EFS)가 Claude Platform, Claude Platform on AWS, Claude Models on Google Cloud(Anthropic managed)에서 베타로 출시됐습니다. 자격이 되는 조직이 Claude의 가장 강력한 모델을 쓰면서 Zero Data Retention(ZDR)을 적용받는 방식입니다. 암호화된 Sealed Safety Data는 조직의 클라우드 계정에 있는 버킷에 저장됩니다.",
+  "fit": {
+    "summary": "가장 강력한 Claude 모델이 필요하지만 Sealed Safety Data를 자기 클라우드 계정에 두어야 하는 조직에 맞습니다.",
+    "good": [
+      "프롬프트와 응답을 Anthropic이 보존하지 않아야 하는 업무",
+      "Sealed Safety Data를 조직의 클라우드 계정에서 관리해야 하는 경우",
+      "Safety Case를 Anthropic 검토자가 아니라 조직 내부 담당자가 검토해야 하는 경우"
+    ],
+    "notFor": [
+      "Anthropic 관리 저장소를 쓰는 워크스페이스는 EFS에 해당하지 않습니다.",
+      "코드 실행 컨테이너, Files API 업로드, Batch API 결과, Claude Managed Agents 세션처럼 기능이 자체 용도로 저장하는 데이터는 EFS 범위 밖입니다.",
+      "조직의 버킷이 없으면 EFS를 쓸 수 없습니다. EFS는 자기 버킷이 필요합니다."
+    ],
+    "start": "Setup guide에서 쓰는 플랫폼에 맞춰 접근 권한을 받고 고객 소유 저장소(버킷)를 설정합니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "EFS 이용료",
+      "value": "없음",
+      "note": "Anthropic은 EFS에 요금을 받지 않고 API 가격과 속도 제한도 바뀌지 않음"
+    },
+    {
+      "label": "적용 단위",
+      "value": "워크스페이스 전체",
+      "note": "Claude Platform에서 EFS가 적용되면 그 워크스페이스의 모든 모델 요청에 적용"
+    },
+    {
+      "label": "Anthropic Human Review",
+      "value": "항상 꺼짐",
+      "note": "조직 내부 팀이 자동 안전 모니터링이 찾은 Safety Case를 검토"
+    }
+  ],
+  "charts": [],
+  "chartNote": "성능 비교 수치가 없는 기능 소식이라 그래프를 만들지 않았습니다.",
+  "changes": [
+    "EFS는 자격이 되는 조직이 Claude의 가장 강력한 모델을 쓸 때 적용되는 Zero Data Retention(ZDR)입니다. Anthropic은 프롬프트와 응답을 보존하지 않습니다.",
+    "프롬프트, 응답, 모델 추론을 Anthropic 형식으로 암호화한 Sealed Safety Data는 조직이 소유한 저장소에 기록됩니다. 조직 팀도 이 데이터를 읽을 수 없습니다.",
+    "Anthropic 검토자 대신 조직 내부 팀이 Safety Case를 검토합니다. Anthropic Human Review는 항상 꺼져 있습니다.",
+    "Messages API 요청 중 EFS로 설정한 워크스페이스의 요청은 모델과 관계없이 EFS가 다룹니다.",
+    "Claude Platform에서 약관에 동의하면 EFS와 Enterprise Data Controls를 함께 받습니다. 고객 관리 키를 쓰거나 Anthropic 관리 저장소에서 Anthropic Human Review를 끌 수 있습니다."
+  ],
+  "availability": [
+    "Claude Platform, Claude Platform on AWS, Claude Models on Google Cloud(Anthropic managed)에서 베타",
+    "자격이 되는 조직이 대상이며 접근 권한은 Setup guide에 따라 신청",
+    "Anthropic은 EFS에 요금을 받지 않습니다. 저장소 비용은 클라우드 제공업체가 읽기, 쓰기, 데이터 송신을 포함해 평소대로 청구합니다."
+  ],
+  "usage": [
+    {
+      "title": "일부 트래픽에만 EFS 적용하기",
+      "when": "EFS가 필요한 요청과 그렇지 않은 요청이 섞여 있을 때",
+      "steps": [
+        "EFS용 워크스페이스를 새로 만듭니다.",
+        "EFS가 필요한 요청에는 그 워크스페이스의 API 키나 워크스페이스 ID를 씁니다.",
+        "나머지 요청은 기존 워크스페이스의 API 키로 보냅니다."
+      ],
+      "note": "새 워크스페이스를 만들어도 기존 워크스페이스와 API 키는 그대로 유지됩니다.",
+      "source": {
+        "title": "Claude Platform release notes 2026-11-23 (Anthropic)",
+        "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23"
+      }
+    },
+    {
+      "title": "EFS 시작하기",
+      "when": "조직의 클라우드 계정에 Sealed Safety Data를 두고 싶을 때",
+      "steps": [
+        "Setup guide에서 쓰는 플랫폼의 접근 방법을 확인합니다.",
+        "조직 소유 버킷을 준비하고 고객 소유 저장소를 설정합니다.",
+        "Safety Case를 받아 조사하고 대응할 내부 검토 담당을 정합니다."
+      ],
+      "source": {
+        "title": "Claude Platform release notes 2026-11-23 (Anthropic)",
+        "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "워크스페이스를 나눠 쓰기",
+      "body": "EFS는 워크스페이스 전체에 적용되므로 일부 트래픽에만 쓰려면 워크스페이스를 따로 만드세요. 어느 설정을 쓸지는 보내는 API 키나 워크스페이스 ID가 정합니다."
+    },
+    {
+      "title": "저장소 비용 미리 확인하기",
+      "body": "EFS 자체는 무료지만 버킷의 읽기, 쓰기, 데이터 송신 비용은 클라우드 제공업체가 청구합니다."
+    }
+  ],
+  "prompts": [],
+  "cautions": [
+    "Anthropic 관리 저장소를 쓰는 워크스페이스는 EFS가 아닙니다. Anthropic이 그 워크스페이스의 Sealed Safety Data를 보관하기 때문입니다.",
+    "코드 실행 컨테이너, Files API 업로드, Batch API 결과, Claude Managed Agents 세션 데이터는 EFS가 다루지 않습니다. 자세한 내용은 FAQ의 Data and retention을 확인하세요.",
+    "Sealed Safety Data는 조직의 버킷에 있어도 조직 팀이 읽을 수 없습니다."
+  ],
+  "sources": [
+    {
+      "title": "Claude Platform release notes 2026-11-23 (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23"
+    },
+    {
+      "title": "Enterprise Frontier Safeguards (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/manage-claude/enterprise-frontier-safeguards/overview"
+    },
+    {
+      "title": "EFS 설정 가이드 (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/manage-claude/enterprise-frontier-safeguards/setup-console"
+    }
+  ]
+}

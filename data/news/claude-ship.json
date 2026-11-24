@@ -1,0 +1,185 @@
+{
+  "id": "claude-ship",
+  "company": "anthropic",
+  "date": "2026-11-23",
+  "kind": "제품·기능 출시",
+  "title": "Claude Ship",
+  "headline": "PR 리뷰, 수정, 머지 승인 판단까지 이어 주는 Claude의 베타 기능",
+  "tldr": "Claude Ship은 풀 리퀘스트(PR)를 리뷰하고 고치고 머지할 준비가 됐는지 판단하는 기능입니다. 이미 정식 출시된 Code Review에 베타 에이전트 PR Steward와 Claude Approvals가 더해졌습니다. 개발자는 Claude Code의 /ship 명령으로 써 볼 수 있고 관리자는 저장소 단위로 켤 수도 있습니다.",
+  "fit": {
+    "summary": "에이전트가 코드를 빠르게 쓰는 팀에서 PR 이후 단계(리뷰, 실패한 검사 수정, 승인)를 같은 속도로 처리하고 싶을 때 맞습니다.",
+    "good": [
+      "실패한 CI 검사와 머지 충돌, 리뷰 의견을 반영하느라 흐름이 끊기는 PR 작업",
+      "저장소마다 리뷰 수준(Quick, Standard, Deep)을 다르게 두고 싶은 팀",
+      "일상적인 변경은 정책에 따라 자동 승인하고 민감한 변경만 사람이 보게 하려는 경우",
+      "내 PR에서 먼저 /ship을 써 보고 싶은 개발자"
+    ],
+    "notFor": [
+      "GitHub가 아닌 저장소를 쓰는 조직(원문은 GitHub 저장소 기준으로 안내)",
+      "Zero Data Retention, HIPAA 구성, 고객 관리형 암호화 키를 쓰는 조직(사용 불가)",
+      "Claude Team·Enterprise 요금제가 아닌 경우"
+    ],
+    "start": "한 저장소에서 Code Review와 PR Steward를 켜고 승인 정책은 관찰 전용(observe) 모드로 먼저 돌려 보세요."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "되돌려진 PR 비율",
+      "value": "40% 넘게 감소",
+      "note": "Claude Code 팀, 6월에서 9월 사이"
+    },
+    {
+      "label": "Enterprise 크레딧",
+      "value": "최소 $10,000",
+      "note": "신청 후 30일 안에 사용, 2027-01-15까지 신청"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "Claude Ship이 PR을 처리하는 순서",
+      "caption": "세 구성 요소가 리뷰, 수정, 승인 판단을 나눠 맡습니다.",
+      "steps": [
+        {
+          "label": "Code Review",
+          "desc": "여러 관점으로 PR을 리뷰하고 결과를 검증·분류해 PR에 게시합니다.",
+          "tag": "정식 출시"
+        },
+        {
+          "label": "PR Steward",
+          "desc": "실패한 CI 검사, 머지 충돌, 리뷰 의견을 처리합니다. 승인과 머지는 하지 않습니다.",
+          "tag": "베타",
+          "highlight": true
+        },
+        {
+          "label": "Claude Approvals",
+          "desc": "저장소의 정책 파일에 따라 승인하거나 사람의 확인을 요구합니다.",
+          "tag": "베타",
+          "highlight": true
+        }
+      ],
+      "loop": "PR Steward는 푸시할 때마다 바꾼 내용과 되돌리는 방법을 댓글로 남깁니다.",
+      "source": {
+        "title": "Introducing Claude Ship (Anthropic)",
+        "url": "https://claude.com/resources/articles/introducing-claude-ship"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 모델 간 성능 비교 수치가 없어 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Claude Ship은 이미 정식 출시된 Code Review와 베타인 PR Steward, Claude Approvals로 구성됩니다.",
+    "Code Review는 여러 관점으로 PR을 깊이 리뷰하고 결과를 적대적으로 검증해 분류한 뒤 PR에 게시합니다. 저장소마다 Quick, Standard, Deep 수준을 고를 수 있습니다.",
+    "PR Steward는 실패한 CI 검사, 머지 충돌, 리뷰 의견에 대응해 PR을 통과 상태로 유지합니다. 승인이나 머지는 하지 않도록 설계됐고 개발자는 @claude로 지시하거나 @claude stop으로 멈출 수도 있습니다.",
+    "Claude Approvals는 저장소에 파일로 둔 승인 정책을 적용합니다. 정책이 허용하면 일상적인 변경을 스스로 승인하고 특정 상황에서는 사람의 더 깊은 확인을 요구합니다. Code Review 결과나 자연어로 쓴 분류기를 판단 신호로 쓸 수 있습니다.",
+    "Claude Code의 새 /ship 명령은 변경을 푸시하고 PR을 열고 리뷰한 뒤 피드백과 실패한 검사를 처리합니다. 머지 가능 여부는 개발자의 권한과 저장소의 브랜치 규칙을 따릅니다.",
+    "Claude Code 팀은 Claude Tag로 열게 한 PR이 Code Review, 문서 리뷰어 확인, Claude Approvals를 거쳐 같은 날 저녁에 머지된 사례를 소개했습니다."
+  ],
+  "availability": [
+    "Claude Team과 Enterprise 요금제, GitHub 저장소 기준",
+    "Code Review는 정식 출시이고 PR Steward와 Claude Approvals는 베타입니다.",
+    "/ship은 오늘부터 Claude Code와 데스크톱 앱에 순차 적용됩니다.",
+    "적격한 Claude Enterprise 조직은 최소 $10,000의 Claude Ship 크레딧을 신청할 수 있고 신청 후 30일 안에 써야 합니다. 신청 기한은 2027-01-15입니다.",
+    "Zero Data Retention, HIPAA 구성, 고객 관리형 암호화 키를 쓰는 조직은 사용할 수 없습니다."
+  ],
+  "usage": [
+    {
+      "title": "내 PR에서 /ship으로 시작하기",
+      "when": "관리자 설정 없이 개발자 혼자 먼저 써 보고 싶을 때",
+      "steps": [
+        "Claude Code를 업데이트합니다.",
+        "변경이 준비되면 /ship을 실행합니다.",
+        "Claude가 푸시하고 PR을 열어 리뷰한 뒤 피드백과 실패한 검사를 처리하는 과정을 지켜봅니다.",
+        "머지는 내 권한과 저장소의 브랜치 규칙에 따라 진행됩니다."
+      ],
+      "note": "/ship 실행은 일반 Claude Code 사용량으로 계산됩니다.",
+      "example": {
+        "type": "code",
+        "text": "/ship"
+      },
+      "source": {
+        "title": "Introducing Claude Ship (Anthropic)",
+        "url": "https://claude.com/resources/articles/introducing-claude-ship"
+      }
+    },
+    {
+      "title": "저장소 한 곳에 단계적으로 적용하기",
+      "when": "관리자가 팀 전체 PR에 자동으로 적용하려 할 때",
+      "steps": [
+        "관리자가 저장소 한 곳에서 Code Review와 PR Steward를 켭니다.",
+        "리뷰 수준(Quick, Standard, Deep)과 리뷰가 도는 시점을 정하고 월 지출 한도를 설정합니다.",
+        "기본 브랜치에 승인 정책 파일을 두면 Claude Approvals가 시작됩니다.",
+        "정책은 관찰 전용 모드로 돌리며 신뢰가 쌓인 뒤 브랜치 보호에서 Claude Approvals의 승인을 필수로 설정합니다."
+      ],
+      "note": "Claude Approvals는 관리자가 끌 수 있고 기존 브랜치 보호와 필수 검사는 그대로 함께 작동합니다.",
+      "source": {
+        "title": "Introducing Claude Ship (Anthropic)",
+        "url": "https://claude.com/resources/articles/introducing-claude-ship"
+      }
+    },
+    {
+      "title": "PR Steward에게 작업 방향 지시하기",
+      "when": "자동 수정이 원하는 방향과 다르게 갈 때",
+      "steps": [
+        "PR에 @claude와 함께 원하는 지시를 댓글로 남깁니다.",
+        "PR Steward가 푸시한 뒤 남기는 댓글에서 바꾼 내용과 되돌리는 방법을 확인합니다.",
+        "멈추게 하려면 @claude stop을 댓글로 남깁니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "@claude [실패한 검사를 고치되 범위를 한정하는 지시]"
+      },
+      "source": {
+        "title": "Introducing Claude Ship (Anthropic)",
+        "url": "https://claude.com/resources/articles/introducing-claude-ship"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "승인 정책은 관찰 모드로 먼저",
+      "body": "Anthropic은 대부분의 고객에게 observe-only 모드로 먼저 켜 신뢰를 쌓은 뒤 브랜치 보호에서 Claude Approvals의 승인을 필수로 걸라고 권합니다."
+    },
+    {
+      "title": "저장소 한 곳에서 시작",
+      "body": "리뷰 수준과 실행 시점을 정하고 월 지출 한도를 걸어 둔 채 저장소 하나로 시작해 보세요."
+    },
+    {
+      "title": "정책에 자연어 분류기 활용",
+      "body": "Claude Approvals는 Code Review 결과 외에 자연어로 쓴 분류기도 판단 신호로 쓸 수 있습니다. 사람이 꼭 봐야 할 변경 유형을 정책에 담아 보세요."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "/ship으로 PR 마무리하기",
+      "when": "변경이 끝나 PR 리뷰와 수정까지 맡기고 싶을 때",
+      "type": "prompt",
+      "text": "/ship"
+    },
+    {
+      "title": "PR Steward에게 지시하기",
+      "when": "PR Steward가 처리 중인 PR의 방향을 바로잡을 때",
+      "type": "prompt",
+      "text": "@claude [실패한 검사만 고치고 관련 없는 파일은 건드리지 마]"
+    }
+  ],
+  "cautions": [
+    "Claude Ship은 토큰 기준으로 과금되므로 켜면 비용이 늘 수도 있습니다. 비용은 PR 수와 크기, 리뷰 수준, 리뷰 빈도, PR Steward의 작업량에 따라 달라집니다.",
+    "Claude Approvals는 기본 요금이 없지만 정책의 분류기는 쓴 토큰만큼 과금됩니다. Claude의 리뷰를 쓰는 정책은 관찰 모드에서도 Code Review 비용이 청구됩니다.",
+    "Claude Ship은 AI를 쓰므로 버그와 보안 취약점을 놓칠 여지가 있다고 원문이 밝힙니다."
+  ],
+  "sources": [
+    {
+      "title": "Introducing Claude Ship (Anthropic)",
+      "url": "https://claude.com/resources/articles/introducing-claude-ship"
+    },
+    {
+      "title": "Claude Ship 문서 (Claude Code Docs)",
+      "url": "https://code.claude.com/docs/en/claude-ship"
+    },
+    {
+      "title": "Code Review 설정 가이드 (Claude Code Docs)",
+      "url": "https://code.claude.com/docs/en/code-review-setup"
+    }
+  ]
+}

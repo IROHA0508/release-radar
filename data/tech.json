@@ -319,7 +319,8 @@
         "gemini-app-tasks",
         "google-ai-studio-android-full-stack",
         "chatgpt-for-sales",
-        "openai-agents-time-awareness-async-input"
+        "openai-agents-time-awareness-async-input",
+        "claude-ship"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -459,7 +460,8 @@
         "google-agent-anomaly-detection-guide",
         "gemini-app-tasks",
         "openai-agents-time-awareness-async-input",
-        "google-semantic-governance-policies"
+        "google-semantic-governance-policies",
+        "claude-securing-coding-agents-guide"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -1201,7 +1203,8 @@
         }
       ],
       "news": [
-        "claude-code-skills-lessons"
+        "claude-code-skills-lessons",
+        "claude-securing-coding-agents-guide"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2338,7 +2341,8 @@
         }
       ],
       "news": [
-        "openai-codex-gpt-6-software-maintenance"
+        "openai-codex-gpt-6-software-maintenance",
+        "claude-ship"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2801,7 +2805,8 @@
       ],
       "news": [
         "claude-self-hosted-managed-agents",
-        "openai-securing-persistent-agents-openclaw"
+        "openai-securing-persistent-agents-openclaw",
+        "claude-securing-coding-agents-guide"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -3072,7 +3077,8 @@
       "status": "관찰",
       "companies": [
         "openai",
-        "google"
+        "google",
+        "anthropic"
       ],
       "prerequisites": [
         "agent-loop"
@@ -3113,7 +3119,8 @@
         }
       ],
       "news": [
-        "google-semantic-governance-policies"
+        "google-semantic-governance-policies",
+        "claude-ship"
       ],
       "verifiedAt": "2026-10-21"
     },

@@ -590,6 +590,14 @@
       "status": "updated",
       "title": "Gemini 4 Carbon is now available"
     },
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-hydrogen-builders": {
+      "checkedAt": "2026-11-24",
+      "company": "google",
+      "date": "2026-11-23",
+      "reason": "빌더들의 고객 사례 모음으로, 제외 범위(고객 사례)에 해당합니다.",
+      "status": "skipped",
+      "title": "See what 6 builders are making with Gemini 4 Hydrogen"
+    },
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon": {
       "checkedAt": "2026-10-14",
       "company": "google",
@@ -653,6 +661,14 @@
       "id": "gemini-4-argon",
       "status": "updated",
       "title": "Gemini 4 Argon comes to the Gemini app."
+    },
+    "https://blog.google/innovation-and-ai/products/gemini-app/gemini-canvas-tasks": {
+      "checkedAt": "2026-11-24",
+      "company": "google",
+      "date": "2026-11-23",
+      "id": "gemini-canvas-four-uses",
+      "status": "added",
+      "title": "Here are 4 things you didn’t know you could do with Gemini Canvas."
     },
     "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices": {
       "checkedAt": "2026-11-19",
@@ -1096,6 +1112,14 @@
       "status": "skipped",
       "title": "Build live dashboards and animate explainers with Claude"
     },
+    "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents": {
+      "checkedAt": "2026-11-24",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "id": "claude-securing-coding-agents-guide",
+      "status": "added",
+      "title": "The enterprise guide to securing coding agents"
+    },
     "https://claude.com/resources/articles/expanding-claude-for-nonprofits": {
       "checkedAt": "2026-10-27",
       "company": "anthropic",
@@ -1183,6 +1207,14 @@
       "id": "claude-interactive-connectors-full-tool",
       "status": "added",
       "title": "Your apps can now open in Claude, and Claude can work in them"
+    },
+    "https://claude.com/resources/articles/introducing-claude-ship": {
+      "checkedAt": "2026-11-24",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "id": "claude-ship",
+      "status": "added",
+      "title": "Introducing Claude Ship"
     },
     "https://claude.com/resources/articles/introducing-personal-finance-in-claude": {
       "checkedAt": "2026-11-06",
@@ -1440,6 +1472,14 @@
       "status": "skipped",
       "title": "Introducing new AI functions for AlloyDB: ai.classify and ai.extract"
     },
+    "https://cloud.google.com/blog/products/databases/alloydb-omni-integration-with-local-models": {
+      "checkedAt": "2026-11-24",
+      "company": "google",
+      "date": "2026-11-23",
+      "reason": "AlloyDB Omni 같은 데이터베이스 인프라 중심으로, AI 모델을 쓰는 방식과 무관한 인프라 글로 제외 범위에 해당합니다.",
+      "status": "skipped",
+      "title": "Data + AI Anywhere: AlloyDB Omni integration with local models"
+    },
     "https://cloud.google.com/blog/products/identity-security/scale-agents-securely-with-iam-helper-agent-skills-and-mcp-tools": {
       "checkedAt": "2026-10-27",
       "company": "google",
@@ -1567,6 +1607,14 @@
       "reason": "모델 출시와 무관한 안전·책임 보고서",
       "status": "skipped",
       "title": "Developing Gemini 4 Argon responsibly and safely"
+    },
+    "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification": {
+      "checkedAt": "2026-11-24",
+      "company": "google",
+      "date": "2026-11-23",
+      "reason": "모델 출시와 무관한 연구(양자 알고리즘 최적화 연구)로, 제외 범위에 해당합니다.",
+      "status": "skipped",
+      "title": "Finding faster quantum algorithms with agents and formal verification"
     },
     "https://deepmind.google/blog/gemini-4-argon-for-robotics": {
       "checkedAt": "2026-10-14",
@@ -2506,6 +2554,14 @@
       "reason": "고객 사례(Customer Story). 판단 기준의 '제외' 항목에 명시된 대로 고객 성공 사례는 실으지 않습니다. Revolut의 OpenAI 모델 활용 경험담이지만, 새 모델 출시, 모델 업데이트, 가격/사용 범위 변경, AI 제품·기능 출시, 공식 활용 팁(프롬프트 가이드, 모범 사례)에 해당하지 않습니다.",
       "status": "skipped",
       "title": "How Revolut raises ambition without lowering the bar"
+    },
+    "https://openai.com/business/customer-stories/richpanel-ai-customer-support": {
+      "checkedAt": "2026-11-24",
+      "company": "openai",
+      "date": "2026-11-23",
+      "reason": "고객 사례(Richpanel의 지원 자동화 도입 사례)로, 제외 범위에 해당합니다.",
+      "status": "skipped",
+      "title": "Richpanel helps companies automate 50% of support in 30 days"
     },
     "https://openai.com/business/customer-stories/shield": {
       "checkedAt": "2026-11-14",
@@ -3610,6 +3666,22 @@
       "reason": "Claude Platform 문서의 릴리스 노트. 별도 뉴스 아이템이 아니며 [3] 항목과 중복",
       "status": "skipped",
       "title": "We’ve launched Linked billing in beta with the user-profiles-billing-2026-10-01 beta header."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23-682d8b0a": {
+      "checkedAt": "2026-11-24",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "id": "claude-opus-4-5-deprecation",
+      "status": "added",
+      "title": "We announced the deprecation of the Claude Opus 4.5 model (claude-opus-4-5-20251101 and claude-opus-4-5), with retirement on the Claude API scheduled for January 22, 2027."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23-9f0cbced": {
+      "checkedAt": "2026-11-24",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "id": "claude-enterprise-frontier-safeguards",
+      "status": "added",
+      "title": "We’ve launched Enterprise Frontier Safeguards (EFS) in beta on Claude Platform, Claude Platform on AWS, and Claude Models on Google Cloud (Anthropic managed)."
     }
   }
 }

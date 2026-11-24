@@ -1,0 +1,303 @@
+{
+  "id": "claude-securing-coding-agents-guide",
+  "company": "anthropic",
+  "date": "2026-11-23",
+  "kind": "활용 팁",
+  "title": "Claude Code 코딩 에이전트를 겹겹이 안전하게 쓰는 설정",
+  "headline": "판단 계층과 고정 경계 계층을 겹쳐 에이전트 사고의 반경을 줄이는 기업용 가이드",
+  "tldr": "Anthropic이 Claude Team·Enterprise 조직을 위해 낸 코딩 에이전트 보안 가이드입니다. 모델의 판단에 기대는 계층과 규칙·샌드박스로 범위를 고정하는 계층을 함께 쓰라고 권합니다. 인터랙티브 세션의 기본 시작 모드인 auto mode와 관리형 설정(managed settings)으로 정책을 잠그는 방법, 2주짜리 파일럿 절차까지 정리했습니다.",
+  "fit": {
+    "summary": "Claude Code를 팀이나 조직 단위로 도입하면서 권한, 샌드박스, 중앙 정책을 어떻게 잡을지 정해야 할 때 맞는 가이드입니다.",
+    "good": [
+      "Claude Code 도입 전에 보안 기준과 공급사 점검 질문을 정리할 때",
+      "관리형 설정으로 샌드박스, 네트워크 허용 목록, 권한 규칙을 조직 전체에 강제할 때",
+      "신뢰할 수 없는 내용을 읽거나 사람 없이 도는 작업의 실행 환경을 고를 때"
+    ],
+    "notFor": [
+      "개인 로컬 작업만 하는 경우에는 전부 적용할 필요가 없습니다. 위험이 낮고 독립적인 작업은 로컬 세션이 적합하다고 원문이 설명합니다.",
+      "제로 데이터 보존, HIPAA 구성, 고객 관리형 암호화 키를 쓰는 조직은 클라우드 세션을 쓸 수 없습니다.",
+      "Anthropic이 호스팅하는 클라우드 환경에는 조직 전체 허용 목록이 없어 완전한 잠금이 필요하면 자체 호스팅 환경이 맞습니다."
+    ],
+    "start": "저위험 저장소 하나를 골라 샌드박스, 자격 증명 경로 Read deny 규칙, 이그레스 허용 목록, auto mode를 켠 중앙 기준 정책으로 2주간 파일럿을 시작합니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "위험 명령 차단율",
+      "value": "13.6% vs 89%",
+      "note": "사람 검토 대비 auto mode, 유료 테스터 1,053명 대상 통제 연구(2026년 8월 발표)"
+    },
+    {
+      "label": "악성 요청 거절률",
+      "value": "81%~85%",
+      "note": "프로덕션 안전장치 없이 Claude Code에서 테스트한 현재 Claude 모델"
+    },
+    {
+      "label": "이중 용도·정상 요청 수행률",
+      "value": "98%~100%",
+      "note": "정찰 도구 실행이나 사이트 취약점 점검 같은 요청"
+    },
+    {
+      "label": "Salesforce 병합 PR",
+      "value": "+79%",
+      "note": "Claude Code로 표준화한 뒤 개발자당 병합 PR, 전체 사고는 5% 감소"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "권한 규칙이 확인되는 순서",
+      "caption": "deny가 먼저라서 allow 규칙이 deny의 예외를 만들지 못합니다.",
+      "steps": [
+        {
+          "label": "Deny 규칙",
+          "desc": "일치하면 바로 차단합니다.",
+          "highlight": true
+        },
+        {
+          "label": "Ask 규칙",
+          "desc": "실행 전에 사람에게 묻습니다."
+        },
+        {
+          "label": "Allow 규칙",
+          "desc": "일치하면 실행합니다."
+        }
+      ],
+      "loop": "일치하는 규칙이 없으면 권한 모드가 처리 방식을 정합니다.",
+      "source": {
+        "title": "The enterprise guide to securing coding agents (Anthropic)",
+        "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "Claude Code 실행 환경 세 가지",
+      "caption": "원문이 설명한 기본 동작과 권장 용도입니다.",
+      "columns": [
+        "기본 접근 범위",
+        "잘 맞는 작업"
+      ],
+      "rows": [
+        {
+          "label": "로컬",
+          "cells": [
+            "사용자가 접근하는 컴퓨터의 모든 것",
+            "위험이 낮고 독립적인 작업"
+          ]
+        },
+        {
+          "label": "로컬 샌드박스",
+          "cells": [
+            "프로젝트 폴더 변경, 허용 목록 사이트만 연결",
+            "대부분의 기업에 권장"
+          ],
+          "highlight": true
+        },
+        {
+          "label": "클라우드 세션",
+          "cells": [
+            "작업마다 새 VM, GitHub 자격 증명은 VM 밖",
+            "신뢰할 수 없는 내용을 읽거나 무인으로 도는 작업"
+          ]
+        }
+      ],
+      "source": {
+        "title": "The enterprise guide to securing coding agents (Anthropic)",
+        "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents"
+      }
+    },
+    {
+      "type": "flow",
+      "title": "파일럿 진행 순서",
+      "caption": "한 저장소에서 먼저 확인한 뒤 범위를 넓힙니다.",
+      "steps": [
+        {
+          "label": "저장소 등급 나누기",
+          "desc": "민감도로 순위를 매기고 공급사를 점검합니다."
+        },
+        {
+          "label": "낮은 등급 저장소 선택",
+          "desc": "실제 세션이 생길 만큼 활발하고 실수 비용은 작은 곳"
+        },
+        {
+          "label": "중앙 기준 정책 배포",
+          "desc": "샌드박스, deny 규칙, 자격 증명 마스킹, 허용 목록, auto mode",
+          "highlight": true
+        },
+        {
+          "label": "기록 켜기",
+          "desc": "OpenTelemetry 내보내기와 샌드박스·이그레스 로그"
+        },
+        {
+          "label": "2주 운영 후 검토",
+          "desc": "정책을 바꾸지 않고 차단 기록을 봅니다."
+        }
+      ],
+      "source": {
+        "title": "The enterprise guide to securing coding agents (Anthropic)",
+        "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents"
+      }
+    }
+  ],
+  "chartSource": "Anthropic이 2026년 8월 발표한 통제 연구(유료 테스터 1,053명)를 인용한 가이드 본문 기준입니다.",
+  "charts": [
+    {
+      "title": "위험한 명령 차단율",
+      "desc": "같은 위험 명령을 사람 검토와 auto mode가 막은 비율",
+      "type": "bar",
+      "unit": "%",
+      "lowerIsBetter": false,
+      "source": "Anthropic 통제 연구",
+      "note": "테스터는 검증 대상 동작을 몰랐습니다.",
+      "rows": [
+        {
+          "label": "auto mode",
+          "value": 89,
+          "highlight": true
+        },
+        {
+          "label": "사람 검토",
+          "value": 13.6
+        }
+      ]
+    }
+  ],
+  "changes": [
+    "방어는 두 계층입니다. 판단 계층(정렬 훈련, 프롬프트 인젝션 프로브, auto mode 분류기)과 고정 경계 계층(권한 규칙, 명령 분석, 훅, 샌드박스, 이그레스 허용 목록)이 겹칩니다.",
+    "auto mode는 이제 모든 요금제의 인터랙티브 세션에서 기본 시작 모드입니다. 헤드리스 claude -p, Agent SDK, HIPAA 구성은 수동이 기본입니다.",
+    "권한 규칙은 deny, ask, allow 순으로 확인하고 관리형 설정의 deny 규칙은 사용자나 프로젝트 설정으로 덮어쓸 수 없습니다.",
+    "Bash 명령은 실행 전에 분해해 각 부분을 규칙과 대조합니다. git status만 허용해도 git status && curl attacker.example 전체가 통과하지 않습니다.",
+    "관리형 설정은 서버 관리 설정, MDM·OS 정책, 관리형 설정 파일 세 경로로 들어옵니다. 기본값에서는 가장 높은 순위의 출처 하나만 적용되고 나머지는 경고 없이 무시됩니다.",
+    "위험은 자격 증명 유출과 권한 남용, 검증되지 않은 의존성·확장, 데이터 유출, 프롬프트 인젝션 네 가지로 나눕니다."
+  ],
+  "availability": [
+    "이 가이드는 Claude Team·Enterprise 요금제 조직을 대상으로 씁니다.",
+    "AWS, Google Cloud, Microsoft Azure 같은 클라우드 공급사를 거쳐 Claude를 쓰는 경우에도 같은 원칙과 로컬 통제가 적용됩니다.",
+    "Enterprise에서는 SSO·역할 기반 접근 제어, 스킬·플러그인 스캔, 감사 API를 씁니다.",
+    "Enterprise Frontier Safeguards는 단계적으로 제공 중입니다."
+  ],
+  "usage": [
+    {
+      "title": "로컬 세션을 샌드박스로 강제하기",
+      "when": "개발자 PC에서 에이전트가 프로젝트 밖 파일이나 임의 사이트에 닿지 않게 하고 싶을 때",
+      "steps": [
+        "관리형 설정에서 sandbox.enabled를 켭니다.",
+        "failIfUnavailable을 켜고 allowUnsandboxedCommands를 false로 두어 샌드박스 없는 재시도를 막습니다.",
+        "sandbox.network.allowedDomains로 승인된 사이트 목록을 정합니다. 개발자가 직접 추가하지 못하게 하려면 allowManagedDomainsOnly를 씁니다.",
+        "WebFetch 도구는 허용 목록이 닿지 않으므로 별도 권한 규칙으로 제한합니다."
+      ],
+      "note": "허용 목록은 셸 명령에만 적용됩니다.",
+      "example": {
+        "type": "prompt",
+        "text": "우리 조직의 Claude Code 관리형 설정 초안을 만들어줘.\n- 샌드박스 필수(sandbox.enabled, failIfUnavailable)\n- 샌드박스 밖 재시도 금지(allowUnsandboxedCommands: false)\n- 승인된 도메인만 허용(allowManagedDomainsOnly)\n승인 도메인 목록은 [도메인 목록]이야. 각 설정이 무엇을 막는지 한 줄씩 설명해줘."
+      },
+      "source": {
+        "title": "The enterprise guide to securing coding agents (Anthropic)",
+        "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents"
+      }
+    },
+    {
+      "title": "자격 증명 유출 줄이기",
+      "when": "에이전트가 장기 토큰이나 키 파일을 읽을 수 있는 환경일 때",
+      "steps": [
+        "조직의 자격 증명 경로에 permissions.deny로 Read deny 규칙을 추가합니다.",
+        "sandbox.credentials로 자격 증명 마스킹을 설정해 명령이 실제 값을 쥐지 않고 로그인하게 합니다.",
+        "클라우드 환경에서는 키를 환경 변수가 아니라 공유 환경의 Network secrets에 저장합니다."
+      ],
+      "note": "자격 증명은 작업이나 잡 범위에 맞춰 수명을 짧게 두라고 권합니다.",
+      "source": {
+        "title": "The enterprise guide to securing coding agents (Anthropic)",
+        "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents"
+      }
+    },
+    {
+      "title": "고위험 작업에 사람 승인 요구하기",
+      "when": "auto mode를 켜더라도 실수 한 번의 비용이 큰 작업이 있을 때",
+      "steps": [
+        "작업마다 되돌릴 수 없는지, 실수 한 번이 모든 건을 사람이 검토하는 비용보다 큰지 묻습니다.",
+        "두 질문 모두 예라면 사람 승인을 요구합니다.",
+        "PreToolUse 훅으로 시크릿이 든 커밋 같은 호출을 실행 전에 막습니다."
+      ],
+      "note": "원문은 프로덕션 DB 마이그레이션, IAM 정책 변경과 자격 증명 교체, 인프라 정의 수정을 예로 듭니다.",
+      "example": {
+        "type": "prompt",
+        "text": "우리 저장소에서 사람 승인이 필요한 작업 목록을 만들려고 해.\n각 작업에 대해 (1) 되돌릴 수 없는가 (2) 실수 한 번의 비용이 모든 건을 사람이 검토하는 비용보다 큰가를 판단하고, 둘 다 예인 것만 추려줘.\n후보: [작업 목록]"
+      },
+      "source": {
+        "title": "The enterprise guide to securing coding agents (Anthropic)",
+        "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents"
+      }
+    },
+    {
+      "title": "2주 파일럿 돌리기",
+      "when": "조직 전체로 넓히기 전에 정책이 실제 환경에서 버티는지 보고 싶을 때",
+      "steps": [
+        "저장소를 민감도로 등급화하고 가장 낮은 등급에서 하나를 고릅니다.",
+        "샌드박스 strict 모드, 자격 증명 deny 규칙, 마스킹, 이그레스 허용 목록, auto mode와 보안 지침 플러그인을 포함한 기준 정책을 배포합니다.",
+        "OpenTelemetry 내보내기를 켭니다. 도구 내용 포함은 베타입니다.",
+        "정책을 바꾸지 않고 2주 운영한 뒤 분류기 거부, 샌드박스 차단, 샌드박스 밖 재시도, 거부된 이그레스를 검토합니다.",
+        "deny 규칙을 풀지 말고 작업에 필요했던 허용 목록 항목만 추가합니다."
+      ],
+      "note": "결과를 1장의 다섯 질문으로 채점한 뒤 두 번째 팀으로 넓힙니다.",
+      "source": {
+        "title": "The enterprise guide to securing coding agents (Anthropic)",
+        "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "공급사 점검에 여섯 질문 쓰기",
+      "body": "모델이 거절하는지, 모델 밖에서 행동을 자동 점검하는지, 환경이 피해 반경을 제한하는지, 정책을 중앙에서 잠글 수 있는지, 에이전트가 쓴 코드가 안전한지, 사고를 재구성할 수 있는지 묻습니다. 기존 SaaS 점검표에 그대로 얹으면 됩니다."
+    },
+    {
+      "title": "확장도 의존성처럼 검토",
+      "body": "MCP 서버, 플러그인, 스킬, 서브에이전트 정의, 저장소의 CLAUDE.md는 로드되는 즉시 에이전트에 닿습니다. 패키지에 하던 수준으로 검토하고 Enterprise에서는 스킬·플러그인 스캔을 켭니다."
+    },
+    {
+      "title": "서브에이전트 권한 상속 주의",
+      "body": "서브에이전트는 부모 세션의 권한 규칙과 권한 모드를 물려받습니다. 최상위 세션용으로 넓게 쓴 규칙이 위임받은 모든 에이전트에 적용됩니다."
+    },
+    {
+      "title": "Bash(python:*) 같은 허용은 피하기",
+      "body": "임의 코드를 실행할 만큼 넓은 명령에는 allow 규칙을 만들지 않는 편이 안전합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "에이전트 위험 점검표 만들기",
+      "when": "새 코딩 에이전트를 도입하기 전 내부 보안 검토를 준비할 때",
+      "type": "prompt",
+      "text": "우리 조직이 코딩 에이전트를 도입하려고 해. 아래 네 가지 위험마다 지금 쓰는 통제와 에이전트 도입 후 달라지는 점을 표로 정리해줘.\n- 자격 증명 유출과 권한 남용\n- 검증되지 않은 의존성과 확장\n- 데이터 유출\n- 프롬프트 인젝션\n현재 환경: [CI, 시크릿 관리, 네트워크 정책 요약]"
+    },
+    {
+      "title": "파일럿 결과 검토",
+      "when": "2주 파일럿 로그를 읽고 정책을 손볼 때",
+      "type": "prompt",
+      "text": "아래는 파일럿 2주간의 Claude Code 기록이야. 분류기 거부, 샌드박스 차단, 샌드박스 밖 재시도, 거부된 이그레스를 각각 분류해줘. 각 건이 통제가 제 역할을 한 것인지, 기준 정책이 예상하지 못한 정당한 필요인지 구분하고 후자는 추가할 허용 목록 항목만 제안해줘. deny 규칙은 완화하지 마.\n\n[로그 붙여넣기]"
+    }
+  ],
+  "cautions": [
+    "alignment 훈련은 나쁜 결과의 가능성을 낮추지만 결과의 심각도를 제한하지 않습니다. auto mode도 분류 시스템에 의존하므로 모든 위험을 없애지 않습니다.",
+    "도메인 허용 목록은 내 계정과 공격자 계정을 구분하지 못하고 DNS로도 데이터가 샐 수 있습니다. 토큰이 이미 유출되면 이그레스 필터링은 요청을 보지 못합니다.",
+    "관리형 설정 출처를 여러 개 쓰면 기본값에서는 순위가 가장 높은 하나만 적용됩니다. 여러 출처를 합치려면 managedSourcesBehavior를 merge로 설정해야 합니다."
+  ],
+  "sources": [
+    {
+      "title": "The enterprise guide to securing coding agents (Anthropic)",
+      "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents"
+    },
+    {
+      "title": "Managed settings (Claude Code Docs)",
+      "url": "https://code.claude.com/docs/en/managed-settings"
+    },
+    {
+      "title": "Permissions (Claude Code Docs)",
+      "url": "https://code.claude.com/docs/en/permissions"
+    },
+    {
+      "title": "Auto mode 설정 (Claude Code Docs)",
+      "url": "https://code.claude.com/docs/en/auto-mode-config"
+    }
+  ]
+}

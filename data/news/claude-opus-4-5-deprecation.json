@@ -1,0 +1,184 @@
+{
+  "id": "claude-opus-4-5-deprecation",
+  "company": "anthropic",
+  "date": "2026-11-23",
+  "kind": "지원 종료 예정",
+  "shutdown": "2027-01-22",
+  "title": "Claude Opus 4.5",
+  "headline": "Claude API에서 2027년 1월 22일 종료, Claude Opus 5.5로 옮기길 권장",
+  "tldr": "Anthropic이 Claude Opus 4.5(claude-opus-4-5-20251101, claude-opus-4-5)의 지원 종료를 예고했습니다. Claude API에서는 2027년 1월 22일에 종료됩니다. Anthropic은 Claude Opus 5.5로 옮기길 권하며 다른 플랫폼의 종료일은 Model deprecations 페이지에서 확인해야 합니다.",
+  "models": [
+    {
+      "name": "Claude Opus 4.5",
+      "apiId": "claude-opus-4-5-20251101",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Claude Opus 4.5",
+      "apiId": "claude-opus-4-5",
+      "input": null,
+      "output": null,
+      "cached": null
+    },
+    {
+      "name": "Claude Opus 5.5",
+      "apiId": "claude-opus-5-5",
+      "input": "$4",
+      "output": "$20",
+      "cached": null
+    }
+  ],
+  "numbers": [
+    {
+      "label": "Claude API 종료일",
+      "value": "2027-01-22",
+      "note": "claude-opus-4-5-20251101과 claude-opus-4-5 모두 해당"
+    },
+    {
+      "label": "권장 전환 모델",
+      "value": "Claude Opus 5.5",
+      "note": "모델 ID는 claude-opus-5-5"
+    },
+    {
+      "label": "Opus 5.5 가격",
+      "value": "$4 / $20",
+      "note": "100만 토큰당 입력 / 출력, Claude Opus 5는 $5 / $25"
+    }
+  ],
+  "figures": [
+    {
+      "type": "compare",
+      "title": "Opus 5.5와 Opus 5 비교",
+      "caption": "이전 가이드가 밝힌 가격과 기본 effort입니다.",
+      "columns": [
+        "입력 / 출력 (100만 토큰당)",
+        "기본 effort"
+      ],
+      "rows": [
+        {
+          "label": "Claude Opus 5.5",
+          "cells": [
+            "$4 / $20",
+            "medium"
+          ],
+          "highlight": true
+        },
+        {
+          "label": "Claude Opus 5",
+          "cells": [
+            "$5 / $25",
+            "high"
+          ]
+        }
+      ],
+      "source": {
+        "title": "Claude API 릴리스 노트 2026-11-23 (Anthropic)",
+        "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "성능 비교 수치가 없는 지원 종료 공지라 그래프를 만들지 않았습니다.",
+  "changes": [
+    "Claude Opus 4.5(claude-opus-4-5-20251101, claude-opus-4-5)의 지원 종료가 공지됐습니다.",
+    "Claude API에서는 2027년 1월 22일에 종료될 예정입니다.",
+    "Anthropic은 Claude Opus 5.5로 옮기길 권하며 Migrating from Claude Opus 4.5 or earlier 가이드를 안내합니다.",
+    "다른 플랫폼에 적용되는 날짜는 Model deprecations 페이지에서 확인해야 합니다.",
+    "Claude Opus 5.5는 Claude Opus 5보다 저렴한 $4 / $20(100만 토큰당 입력 / 출력)입니다."
+  ],
+  "availability": [
+    "종료 대상 모델 ID는 claude-opus-4-5-20251101과 claude-opus-4-5",
+    "종료일은 Claude API 기준 2027-01-22",
+    "전환 대상은 claude-opus-5-5(날짜 접미사 없는 고정 모델 ID)",
+    "Amazon Bedrock 등 다른 플랫폼은 각 플랫폼의 모델 ID와 종료일을 따로 확인"
+  ],
+  "usage": [
+    {
+      "title": "Claude Code로 프로젝트를 Opus 5.5로 옮기기",
+      "when": "코드베이스 안의 모델 ID와 요청 설정을 한꺼번에 고치고 싶을 때",
+      "steps": [
+        "프로젝트 폴더에서 Claude Code를 엽니다.",
+        "아래 명령으로 마이그레이션을 맡깁니다.",
+        "바뀐 모델 ID와 요청 설정을 검토한 뒤 테스트를 돌립니다."
+      ],
+      "note": "공식 가이드가 안내하는 방식입니다.",
+      "example": {
+        "type": "prompt",
+        "text": "/claude-api\nmigrate this project to claude-opus-5-5"
+      },
+      "source": {
+        "title": "Claude API 릴리스 노트 2026-11-23 (Anthropic)",
+        "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23"
+      }
+    },
+    {
+      "title": "요청 코드를 직접 고치기",
+      "when": "Opus 4.5 호출 코드를 손으로 바꿀 때",
+      "steps": [
+        "모델 ID를 claude-opus-5-5로 바꿉니다.",
+        "thinking 필드는 빼고 output_config의 effort를 정합니다.",
+        "temperature, top_p, top_k를 지우고 마지막 assistant 메시지 prefill을 없앱니다.",
+        "응답은 content[0] 같은 위치가 아니라 type이 text인 블록에서 읽습니다."
+      ],
+      "note": "기본 effort는 medium입니다.",
+      "example": {
+        "type": "code",
+        "text": "response = client.messages.create(\n    model=\"claude-opus-5-5\",\n    max_tokens=4096,\n    output_config={\"effort\": \"medium\"},\n    messages=[{\"role\": \"user\", \"content\": \"[요청]\"}],\n)\nfor block in response.content:\n    if block.type == \"text\":\n        print(block.text)"
+      },
+      "source": {
+        "title": "Claude API 릴리스 노트 2026-11-23 (Anthropic)",
+        "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "코드에서 모델 ID부터 검색",
+      "body": "claude-opus-4-5-20251101과 claude-opus-4-5가 들어간 곳을 먼저 찾으세요. 설정 파일과 환경 변수에 남아 있는 경우도 많습니다."
+    },
+    {
+      "title": "effort를 명시해서 비용 다시 재기",
+      "body": "Opus 5.5의 기본 effort는 medium입니다. 비용과 지연을 정한 effort 기준으로 다시 측정하세요."
+    },
+    {
+      "title": "thinking 블록을 그대로 돌려주기",
+      "body": "도구 호출 루프를 쓴다면 thinking 블록을 수정하지 말고 그대로 API에 돌려줘야 합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "Claude Code 마이그레이션 요청",
+      "when": "프로젝트 전체를 Opus 5.5로 옮길 때",
+      "type": "prompt",
+      "text": "/claude-api\nmigrate this project to claude-opus-5-5"
+    },
+    {
+      "title": "Opus 5.5 호출 예시 (Python)",
+      "when": "effort를 직접 정해 호출할 때",
+      "type": "code",
+      "text": "import anthropic\n\nclient = anthropic.Anthropic()\n\nresponse = client.messages.create(\n    model=\"claude-opus-5-5\",\n    max_tokens=4096,\n    output_config={\"effort\": \"medium\"},\n    messages=[{\"role\": \"user\", \"content\": \"[요청]\"}],\n)"
+    }
+  ],
+  "cautions": [
+    "Opus 5.5는 thinking: {\"type\": \"disabled\"}, 수동 thinking 예산, tool_choice의 any·tool, assistant prefill을 400 오류로 거부합니다.",
+    "temperature, top_p, top_k는 보내지 않아야 합니다.",
+    "thinking이 항상 켜져 있어 출력 토큰이 늘 수 있습니다. max_tokens를 다시 점검하고 xhigh·max effort에서는 64k부터 시작하라고 안내합니다.",
+    "Bedrock 등 다른 플랫폼의 종료일은 원문에 없어 확인 필요입니다."
+  ],
+  "sources": [
+    {
+      "title": "Claude API 릴리스 노트 2026-11-23 (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23"
+    },
+    {
+      "title": "Claude Opus 5.5 migration guide (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide#migrating-from-claude-opus-45"
+    },
+    {
+      "title": "Model deprecations (Anthropic)",
+      "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations"
+    }
+  ]
+}

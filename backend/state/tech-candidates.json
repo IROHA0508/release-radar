@@ -58,5 +58,15 @@
     ],
     "company": "openai",
     "addedAt": "2026-11-21"
+  },
+  {
+    "name": "채팅 옆 작업 공간 (Canvas pattern)",
+    "en": "Canvas-style interactive workspace",
+    "oneLiner": "모델과의 채팅은 유지하면서 별개 공간에서 웹 앱, 학습 도구, 업무 도구를 모델이 생성하고 사용자가 실시간으로 보고 편집하는 UI 패턴입니다.",
+    "news": [
+      "gemini-canvas-four-uses"
+    ],
+    "company": "google",
+    "addedAt": "2026-11-24"
   }
 ]

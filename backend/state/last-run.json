@@ -1,18 +1,164 @@
 {
-  "startedAt": "2026-11-23T20:26:15+09:00",
+  "startedAt": "2026-11-24T10:56:51+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2701,
-  "candidates": [],
-  "added": [],
+  "entries": 2708,
+  "candidates": [
+    {
+      "title": "Richpanel helps companies automate 50% of support in 30 days",
+      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "company": "openai",
+      "date": "2026-11-23",
+      "relatedId": null
+    },
+    {
+      "title": "See what 6 builders are making with Gemini 4 Hydrogen",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-hydrogen-builders/",
+      "company": "google",
+      "date": "2026-11-23",
+      "relatedId": "gemini-4-hydrogen"
+    },
+    {
+      "title": "Finding faster quantum algorithms with agents and formal verification",
+      "url": "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/",
+      "company": "google",
+      "date": "2026-11-23",
+      "relatedId": null
+    },
+    {
+      "title": "The enterprise guide to securing coding agents",
+      "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "relatedId": null
+    },
+    {
+      "title": "Introducing Claude Ship",
+      "url": "https://claude.com/resources/articles/introducing-claude-ship",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "relatedId": null
+    },
+    {
+      "title": "Here are 4 things you didn’t know you could do with Gemini Canvas.",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-canvas-tasks/",
+      "company": "google",
+      "date": "2026-11-23",
+      "relatedId": "gemini-app-resume-update"
+    },
+    {
+      "title": "Data + AI Anywhere: AlloyDB Omni integration with local models",
+      "url": "https://cloud.google.com/blog/products/databases/alloydb-omni-integration-with-local-models/",
+      "company": "google",
+      "date": "2026-11-23",
+      "relatedId": null
+    },
+    {
+      "title": "We announced the deprecation of the Claude Opus 4.5 model (claude-opus-4-5-20251101 and claude-opus-4-5), with retirement on the Claude API scheduled for January 22, 2027.",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "relatedId": null
+    },
+    {
+      "title": "We’ve launched Enterprise Frontier Safeguards (EFS) in beta on Claude Platform, Claude Platform on AWS, and Claude Models on Google Cloud (Anthropic managed).",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "relatedId": "claude-linked-billing"
+    },
+    {
+      "title": "Building security review into your SDLC with Codex Security",
+      "url": "https://developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security",
+      "company": "openai",
+      "date": "2026-11-23",
+      "relatedId": null
+    },
+    {
+      "title": "Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies",
+      "url": "https://developers.googleblog.com/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
+      "company": "google",
+      "date": "2026-11-23",
+      "relatedId": "google-semantic-governance-policies"
+    }
+  ],
+  "added": [
+    {
+      "id": "claude-securing-coding-agents-guide",
+      "title": "Claude Code 코딩 에이전트를 겹겹이 안전하게 쓰는 설정",
+      "url": "https://claude.com/resources/articles/enterprise-guide-to-securing-coding-agents",
+      "charts": 1
+    },
+    {
+      "id": "claude-ship",
+      "title": "Claude Ship",
+      "url": "https://claude.com/resources/articles/introducing-claude-ship",
+      "charts": 0
+    },
+    {
+      "id": "gemini-canvas-four-uses",
+      "title": "Gemini Canvas로 앱, 학습 도구, 업무 도구 만들기",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-canvas-tasks/",
+      "charts": 0
+    },
+    {
+      "id": "claude-opus-4-5-deprecation",
+      "title": "Claude Opus 4.5",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
+      "charts": 0
+    },
+    {
+      "id": "claude-enterprise-frontier-safeguards",
+      "title": "Enterprise Frontier Safeguards",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
+      "charts": 0
+    }
+  ],
   "updated": [],
-  "skipped": [],
+  "skipped": [
+    {
+      "title": "Richpanel helps companies automate 50% of support in 30 days",
+      "url": "https://openai.com/business/customer-stories/richpanel-ai-customer-support",
+      "reason": "고객 사례(Richpanel의 지원 자동화 도입 사례)로, 제외 범위에 해당합니다."
+    },
+    {
+      "title": "See what 6 builders are making with Gemini 4 Hydrogen",
+      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-hydrogen-builders/",
+      "reason": "빌더들의 고객 사례 모음으로, 제외 범위(고객 사례)에 해당합니다."
+    },
+    {
+      "title": "Finding faster quantum algorithms with agents and formal verification",
+      "url": "https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/",
+      "reason": "모델 출시와 무관한 연구(양자 알고리즘 최적화 연구)로, 제외 범위에 해당합니다."
+    },
+    {
+      "title": "Data + AI Anywhere: AlloyDB Omni integration with local models",
+      "url": "https://cloud.google.com/blog/products/databases/alloydb-omni-integration-with-local-models/",
+      "reason": "AlloyDB Omni 같은 데이터베이스 인프라 중심으로, AI 모델을 쓰는 방식과 무관한 인프라 글로 제외 범위에 해당합니다."
+    }
+  ],
   "failed": [],
-  "guardNotes": {},
+  "guardNotes": {
+    "claude-ship": [
+      "핵심 수치 '병합된 PR: 2배 이상' 원문에서 확인 안 됨 → 제외",
+      "핵심 수치 '리뷰 수준: 3단계' 원문에서 확인 안 됨 → 제외"
+    ]
+  },
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
-  "styleNotes": {},
-  "techLinks": [],
+  "styleNotes": {
+    "claude-ship": [
+      "문체 수정: tldr",
+      "문체 수정: changes.2",
+      "문체 수정: cautions.0",
+      "문체 수정: cautions.2"
+    ]
+  },
+  "techLinks": [
+    "claude-securing-coding-agents-guide → harness, hooks, sandboxing",
+    "claude-ship → agent-loop, cloud-coding-agents, handoffs-guardrails",
+    "새 기술 후보: 채팅 옆 작업 공간 (Canvas pattern) (Canvas-style interactive workspace) ← gemini-canvas-four-uses"
+  ],
   "retired": []
 }
