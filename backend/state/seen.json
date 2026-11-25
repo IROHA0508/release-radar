@@ -598,6 +598,14 @@
       "status": "skipped",
       "title": "See what 6 builders are making with Gemini 4 Hydrogen"
     },
+    "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-neon-builders": {
+      "checkedAt": "2026-11-25",
+      "company": "google",
+      "date": "2026-11-24",
+      "reason": "사용자 사례/마케팅",
+      "status": "skipped",
+      "title": "See what 5 builders are making with Gemini 4 Neon"
+    },
     "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon": {
       "checkedAt": "2026-10-14",
       "company": "google",
@@ -861,6 +869,14 @@
       "reason": "Gemini 4 Carbon을 사용하는 5개 프로젝트 소개. 고객 사례로 판단 기준의 제외 항목에 해당",
       "status": "skipped",
       "title": "See what 5 builders are making with Gemini 4 Carbon"
+    },
+    "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state": {
+      "checkedAt": "2026-11-25",
+      "company": "google",
+      "date": "2026-11-24",
+      "reason": "기업 파트너십",
+      "status": "skipped",
+      "title": "How Gemini is changing the game for Golden State's organization and fans."
     },
     "https://blog.google/products-and-platforms/products/gemini/stylist-outfit-tips-gemini": {
       "checkedAt": "2026-10-20",
@@ -1288,6 +1304,14 @@
       "status": "added",
       "title": "Introducing Claude Whiteboards, Claude Sheets, and Claude Data"
     },
+    "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more": {
+      "checkedAt": "2026-11-25",
+      "company": "anthropic",
+      "date": "2026-11-24",
+      "id": "claude-mcp-skills-tasks-elicitation",
+      "status": "added",
+      "title": "MCP servers can now ship skills, run tasks, and more with Claude"
+    },
     "https://claude.com/resources/articles/smart-reports-surveys-pooled-budgets": {
       "checkedAt": "2026-10-29",
       "company": "anthropic",
@@ -1479,6 +1503,14 @@
       "reason": "AlloyDB Omni 같은 데이터베이스 인프라 중심으로, AI 모델을 쓰는 방식과 무관한 인프라 글로 제외 범위에 해당합니다.",
       "status": "skipped",
       "title": "Data + AI Anywhere: AlloyDB Omni integration with local models"
+    },
+    "https://cloud.google.com/blog/products/identity-security/deploying-agents-safely-in-your-enterprise": {
+      "checkedAt": "2026-11-25",
+      "company": "google",
+      "date": "2026-11-24",
+      "reason": "보안 정책/거버넌스 (모델 사용과 무관한 인프라 정책)",
+      "status": "skipped",
+      "title": "Built for trust and control: Powering the next wave of AI agents across Google Workspace and Google Cloud"
     },
     "https://cloud.google.com/blog/products/identity-security/scale-agents-securely-with-iam-helper-agent-skills-and-mcp-tools": {
       "checkedAt": "2026-10-27",
@@ -2280,6 +2312,22 @@
       "status": "added",
       "title": "Feature · Model: gpt-live-1.1 · API: v1/live/sessions"
     },
+    "https://developers.openai.com/api/docs/changelog#2026-11-24-6f327edc": {
+      "checkedAt": "2026-11-25",
+      "company": "openai",
+      "date": "2026-11-24",
+      "id": "openai-healthcare-model-configurations",
+      "status": "added",
+      "title": "Feature · Model: gpt-6.2-astra-healthcare · Model: gpt-6.2-sol-healthcare · Model: gpt-6-astra-healthcare · Model: gpt-6.1-sol-healthcare · API: v1/responses"
+    },
+    "https://developers.openai.com/api/docs/changelog#2026-11-24-e4a6f5ed": {
+      "checkedAt": "2026-11-25",
+      "company": "openai",
+      "date": "2026-11-24",
+      "id": "openai-chat-latest-snapshot",
+      "status": "added",
+      "title": "Update · Model: chat-latest"
+    },
     "https://developers.openai.com/blog/15-lessons-building-chatgpt-apps": {
       "checkedAt": "2026-10-03",
       "company": "openai",
@@ -2315,6 +2363,14 @@
       "date": null,
       "status": "nodate",
       "title": "Feb 26 Building frontend UIs with Codex and Figma Use Codex and Figma to bring real, running interfaces into Figma, refine them, and bring changes back to Codex. Codex"
+    },
+    "https://developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security": {
+      "checkedAt": "2026-11-25",
+      "company": "openai",
+      "date": "2026-11-23",
+      "id": "openai-codex-security-sdlc-review",
+      "status": "added",
+      "title": "Building security review into your SDLC with Codex Security"
     },
     "https://developers.openai.com/blog/codex-as-a-platform": {
       "checkedAt": "2026-10-03",
@@ -2387,6 +2443,14 @@
       "date": null,
       "status": "nodate",
       "title": "Dec 30 OpenAI for Developers in 2025 A year-end roundup of the biggest model, API, and platform shifts for building production-grade agents. General"
+    },
+    "https://developers.openai.com/blog/production-monitoring-with-codex": {
+      "checkedAt": "2026-11-25",
+      "company": "openai",
+      "date": "2026-11-24",
+      "id": "openai-securing-persistent-agents-openclaw",
+      "status": "updated",
+      "title": "Production monitoring with Codex"
     },
     "https://developers.openai.com/blog/prompting-multilingual-voice-agents": {
       "checkedAt": "2026-11-20",
@@ -2523,6 +2587,14 @@
       "status": "skipped",
       "title": "How Amplitude ships product improvements in 1–2 days with OpenAI"
     },
+    "https://openai.com/business/customer-stories/clay-plugins-openai": {
+      "checkedAt": "2026-11-25",
+      "company": "openai",
+      "date": "2026-11-24",
+      "reason": "고객 사례",
+      "status": "skipped",
+      "title": "Clay helps sales teams win with Codex and ChatGPT"
+    },
     "https://openai.com/business/customer-stories/gondola": {
       "checkedAt": "2026-11-13",
       "company": "openai",
@@ -2546,6 +2618,14 @@
       "reason": "고객 사례로, 모델 출시·업데이트·기능 출시와 무관한 마케팅 글입니다. 사이트에 포함하지 않습니다.",
       "status": "skipped",
       "title": "Holiday Extras is rethinking what it can build with Codex"
+    },
+    "https://openai.com/business/customer-stories/ifood": {
+      "checkedAt": "2026-11-25",
+      "company": "openai",
+      "date": "2026-11-24",
+      "reason": "고객 사례",
+      "status": "skipped",
+      "title": "How iFood scales coding agents across 15,000 repositories"
     },
     "https://openai.com/business/customer-stories/revolut": {
       "checkedAt": "2026-11-17",
@@ -2922,6 +3002,14 @@
       "id": "gpt-6-sol-luna",
       "status": "updated",
       "title": "GPT-6 and Intelligent UI for everyone"
+    },
+    "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities": {
+      "checkedAt": "2026-11-25",
+      "company": "openai",
+      "date": "2026-11-24",
+      "reason": "모델 출시와 무관한 연구 보고서 (기존 모델의 능력 분석)",
+      "status": "skipped",
+      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities"
     },
     "https://openai.com/index/greptile-code-review-codex-astra": {
       "checkedAt": "2026-10-27",
@@ -3331,6 +3419,14 @@
       "status": "skipped",
       "title": "Science at the Frontier: How scientists use ChatGPT"
     },
+    "https://openai.com/index/searching-for-distant-planets-with-astra": {
+      "checkedAt": "2026-11-25",
+      "company": "openai",
+      "date": "2026-11-24",
+      "reason": "고객 사례",
+      "status": "skipped",
+      "title": "Searching for distant planets with Astra"
+    },
     "https://openai.com/index/securing-our-frontier-model-training-environment": {
       "checkedAt": "2026-10-24",
       "company": "openai",
@@ -3667,6 +3763,46 @@
       "status": "skipped",
       "title": "We’ve launched Linked billing in beta with the user-profiles-billing-2026-10-01 beta header."
     },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20-715d2da8": {
+      "checkedAt": "2026-11-25",
+      "company": "anthropic",
+      "date": "2026-11-20",
+      "reason": "API 명세 변경",
+      "status": "skipped",
+      "title": "For chats that the change reached, the API does not get the names of some skills and plugins that Anthropic did not make, such as your own."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20-939bbcc5": {
+      "checkedAt": "2026-11-25",
+      "company": "anthropic",
+      "date": "2026-11-20",
+      "reason": "API 명세 변경",
+      "status": "skipped",
+      "title": "The Claude Enterprise Analytics API has a new rule for when a chat in Chat and Cowork unified counts as a session."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20-f75e6694": {
+      "checkedAt": "2026-11-25",
+      "company": "anthropic",
+      "date": "2026-11-20",
+      "reason": "API 명세 변경",
+      "status": "skipped",
+      "title": "Other counts from the connector, skill, and plugin usage endpoints can be higher or lower."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23-06667b2b": {
+      "checkedAt": "2026-11-25",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "reason": "API 버그 수정",
+      "status": "skipped",
+      "title": "On November 24, 2026, a fix for an undercount of project activity in the Claude Enterprise Analytics API will go live."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23-670a6d70": {
+      "checkedAt": "2026-11-25",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "reason": "API 버그 수정",
+      "status": "skipped",
+      "title": "A fix is live for an undercount in the Get Connector Usage endpoint of the Claude Enterprise Analytics API."
+    },
     "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23-682d8b0a": {
       "checkedAt": "2026-11-24",
       "company": "anthropic",
@@ -3674,6 +3810,14 @@
       "id": "claude-opus-4-5-deprecation",
       "status": "added",
       "title": "We announced the deprecation of the Claude Opus 4.5 model (claude-opus-4-5-20251101 and claude-opus-4-5), with retirement on the Claude API scheduled for January 22, 2027."
+    },
+    "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23-800c1835": {
+      "checkedAt": "2026-11-25",
+      "company": "anthropic",
+      "date": "2026-11-23",
+      "reason": "API 버그 수정",
+      "status": "skipped",
+      "title": "A fix is live for an undercount of web searches in the List User Activity endpoint of the Claude Enterprise Analytics API."
     },
     "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23-9f0cbced": {
       "checkedAt": "2026-11-24",

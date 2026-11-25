@@ -123,12 +123,17 @@
     "Codex 하네스의 내장 샌드박스를 쓰고 danger-full-access 모드를 막았습니다. 웹 검색은 OpenAI 자체 인덱스를 거치는 cached 모드만 허용했습니다.",
     "auto-review로 두 번째 에이전트가 주 에이전트의 행동을 검토합니다. 사람의 승인 피로를 줄이고 가치가 큰 승인에만 사람이 집중하게 하려는 목적입니다.",
     "에이전트마다 고유한 신원을 ChatGPT Service Account와 연결해 사용자와 별도의 추론 자격 증명을 줍니다. 감사가 가능하고 필요하면 추론을 끌 수 있습니다.",
-    "설정 변경과 에이전트의 모든 턴을 기록하고 민감한 정보가 담길 수 있어 보안팀 소수만 로그를 볼 수 있게 했습니다."
+    "설정 변경과 에이전트의 모든 턴을 기록하고 민감한 정보가 담길 수 있어 보안팀 소수만 로그를 볼 수 있게 했습니다.",
+    "프로덕션 모니터링 글은 알림이 울릴 때 Codex가 로그·트레이스·지표·런타임 상태를 모아 원인 가설을 세우는 8단계 흐름을 보여 줍니다. 단계는 트리거, 증거 수집, 맥락 연결, 가설, 제한된 조치 제안, 사람 승인, 복구 확인, 결과 기록입니다.",
+    "접근 권한은 읽기 전용으로 작게 시작해 필요할 때 넓히라고 권합니다. 서비스 계정으로 접근 범위를 세밀하게 통제하고 모든 판단에 근거와 인용을 요구하라고 안내합니다.",
+    "수정안은 롤백 계획과 함께 보고서나 PR 형태로 제안하게 하고 지정된 승인자가 허가합니다. 원인 분석을 맡는 실행 에이전트와 가설을 반박하는 검토 에이전트를 나누는 구성도 시험해 볼 수 있습니다.",
+    "과거 사고로 리허설을 반복하며 지침을 고치고 정리된 runbook은 Codex skill이나 plugin으로 만들어 팀이 함께 쓰라고 권합니다."
   ],
   "availability": [
     "OpenClaw Enterprise(OCE)는 오픈소스, 벤더 중립 에이전트 컨트롤 플레인이며 현재 파일럿 단계입니다. 1.0 출시는 올해 말을 목표로 합니다.",
     "OCE에서 standard codex preset을 쓰면 글에서 설명한 안전장치 상당수가 기본으로 들어 있습니다.",
-    "auto-review는 OpenClaw와 Codex가 모두 기본 지원합니다."
+    "auto-review는 OpenClaw와 Codex가 모두 기본 지원합니다.",
+    "데모는 Grafana, Kubernetes, Codex Security를 이용한 조사 과정을 다룹니다."
   ],
   "usage": [
     {
@@ -228,6 +233,14 @@
     {
       "title": "ChatGPT Service Accounts",
       "url": "https://learn.chatgpt.com/docs/enterprise/service-accounts"
+    },
+    {
+      "title": "Production monitoring with Codex",
+      "url": "https://developers.openai.com/blog/production-monitoring-with-codex"
+    },
+    {
+      "title": "Production monitoring with Codex (OpenAI)",
+      "url": "https://developers.openai.com/blog/production-monitoring-with-codex"
     }
   ]
 }
