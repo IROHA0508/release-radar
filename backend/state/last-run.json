@@ -1,133 +1,14 @@
 {
-  "startedAt": "2026-11-25T10:28:28+09:00",
+  "startedAt": "2026-11-26T10:02:06+09:00",
   "mode": "update",
   "sourceErrors": {},
-  "entries": 2728,
+  "entries": 2729,
   "candidates": [
     {
-      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
-      "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
-      "company": "openai",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "Searching for distant planets with Astra",
-      "url": "https://openai.com/index/searching-for-distant-planets-with-astra",
-      "company": "openai",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "How iFood scales coding agents across 15,000 repositories",
-      "url": "https://openai.com/business/customer-stories/ifood",
-      "company": "openai",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "Clay helps sales teams win with Codex and ChatGPT",
-      "url": "https://openai.com/business/customer-stories/clay-plugins-openai",
-      "company": "openai",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "See what 5 builders are making with Gemini 4 Neon",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-neon-builders/",
+      "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity",
+      "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/",
       "company": "google",
       "date": "2026-11-24",
-      "relatedId": "gemini-4-neon"
-    },
-    {
-      "title": "MCP servers can now ship skills, run tasks, and more with Claude",
-      "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
-      "company": "anthropic",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "How Gemini is changing the game for Golden State's organization and fans.",
-      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/",
-      "company": "google",
-      "date": "2026-11-24",
-      "relatedId": "gemini-app-resume-update"
-    },
-    {
-      "title": "Built for trust and control: Powering the next wave of AI agents across Google Workspace and Google Cloud",
-      "url": "https://cloud.google.com/blog/products/identity-security/deploying-agents-safely-in-your-enterprise/",
-      "company": "google",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "Update · Model: chat-latest",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-11-24",
-      "company": "openai",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "Feature · Model: gpt-6.2-astra-healthcare · Model: gpt-6.2-sol-healthcare · Model: gpt-6-astra-healthcare · Model: gpt-6.1-sol-healthcare · API: v1/responses",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-11-24",
-      "company": "openai",
-      "date": "2026-11-24",
-      "relatedId": "gpt-6-2-astra-sol"
-    },
-    {
-      "title": "A fix is live for an undercount of web searches in the List User Activity endpoint of the Claude Enterprise Analytics API.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
-      "company": "anthropic",
-      "date": "2026-11-23",
-      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
-    },
-    {
-      "title": "A fix is live for an undercount in the Get Connector Usage endpoint of the Claude Enterprise Analytics API.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
-      "company": "anthropic",
-      "date": "2026-11-23",
-      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
-    },
-    {
-      "title": "On November 24, 2026, a fix for an undercount of project activity in the Claude Enterprise Analytics API will go live.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
-      "company": "anthropic",
-      "date": "2026-11-23",
-      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
-    },
-    {
-      "title": "The Claude Enterprise Analytics API has a new rule for when a chat in Chat and Cowork unified counts as a session.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20",
-      "company": "anthropic",
-      "date": "2026-11-20",
-      "relatedId": "claude-enterprise-smart-reports-surveys-budgets"
-    },
-    {
-      "title": "For chats that the change reached, the API does not get the names of some skills and plugins that Anthropic did not make, such as your own.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20",
-      "company": "anthropic",
-      "date": "2026-11-20",
-      "relatedId": null
-    },
-    {
-      "title": "Other counts from the connector, skill, and plugin usage endpoints can be higher or lower.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20",
-      "company": "anthropic",
-      "date": "2026-11-20",
-      "relatedId": null
-    },
-    {
-      "title": "Production monitoring with Codex",
-      "url": "https://developers.openai.com/blog/production-monitoring-with-codex",
-      "company": "openai",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "Building security review into your SDLC with Codex Security",
-      "url": "https://developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security",
-      "company": "openai",
-      "date": "2026-11-23",
       "relatedId": null
     },
     {
@@ -147,116 +28,35 @@
   ],
   "added": [
     {
-      "id": "claude-mcp-skills-tasks-elicitation",
-      "title": "Skills over MCP, Tasks, Elicitation",
-      "url": "https://claude.com/resources/articles/skills-over-mcp-tasks-and-more",
+      "id": "google-antigravity-mass-spec-skills",
+      "title": "Mass Spec Skills for Google Antigravity",
+      "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/",
       "charts": 0
     },
     {
-      "id": "openai-chat-latest-snapshot",
-      "title": "chat-latest",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-11-24",
-      "charts": 0
-    },
-    {
-      "id": "openai-healthcare-model-configurations",
-      "title": "Healthcare model configurations",
-      "url": "https://developers.openai.com/api/docs/changelog#2026-11-24",
-      "charts": 0
-    },
-    {
-      "id": "openai-codex-security-sdlc-review",
-      "title": "Codex Security로 PR 보안 리뷰를 개발 흐름에 넣기",
-      "url": "https://developers.openai.com/blog/building-security-review-into-your-sdlc-with-codex-security",
+      "id": "google-agent-retrieval-managed-ingestion",
+      "title": "Managed ingestion과 SearchDocuments",
+      "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/",
       "charts": 0
     }
   ],
-  "updated": [
-    {
-      "id": "openai-securing-persistent-agents-openclaw",
-      "url": "https://developers.openai.com/blog/production-monitoring-with-codex"
-    }
-  ],
+  "updated": [],
   "skipped": [
     {
-      "title": "GPT-6 models demonstrate intrinsic protein-design capabilities",
-      "url": "https://openai.com/index/gpt-6-models-demonstrate-intrinsic-protein-design-capabilities",
-      "reason": "모델 출시와 무관한 연구 보고서 (기존 모델의 능력 분석)"
-    },
-    {
-      "title": "Searching for distant planets with Astra",
-      "url": "https://openai.com/index/searching-for-distant-planets-with-astra",
-      "reason": "고객 사례"
-    },
-    {
-      "title": "How iFood scales coding agents across 15,000 repositories",
-      "url": "https://openai.com/business/customer-stories/ifood",
-      "reason": "고객 사례"
-    },
-    {
-      "title": "Clay helps sales teams win with Codex and ChatGPT",
-      "url": "https://openai.com/business/customer-stories/clay-plugins-openai",
-      "reason": "고객 사례"
-    },
-    {
-      "title": "See what 5 builders are making with Gemini 4 Neon",
-      "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-neon-builders/",
-      "reason": "사용자 사례/마케팅"
-    },
-    {
-      "title": "How Gemini is changing the game for Golden State's organization and fans.",
-      "url": "https://blog.google/products-and-platforms/products/gemini/gemini-golden-state/",
-      "reason": "기업 파트너십"
-    },
-    {
-      "title": "Built for trust and control: Powering the next wave of AI agents across Google Workspace and Google Cloud",
-      "url": "https://cloud.google.com/blog/products/identity-security/deploying-agents-safely-in-your-enterprise/",
-      "reason": "보안 정책/거버넌스 (모델 사용과 무관한 인프라 정책)"
-    },
-    {
-      "title": "A fix is live for an undercount of web searches in the List User Activity endpoint of the Claude Enterprise Analytics API.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
-      "reason": "API 버그 수정"
-    },
-    {
-      "title": "A fix is live for an undercount in the Get Connector Usage endpoint of the Claude Enterprise Analytics API.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
-      "reason": "API 버그 수정"
-    },
-    {
-      "title": "On November 24, 2026, a fix for an undercount of project activity in the Claude Enterprise Analytics API will go live.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-23",
-      "reason": "API 버그 수정"
-    },
-    {
-      "title": "The Claude Enterprise Analytics API has a new rule for when a chat in Chat and Cowork unified counts as a session.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20",
-      "reason": "API 명세 변경"
-    },
-    {
-      "title": "For chats that the change reached, the API does not get the names of some skills and plugins that Anthropic did not make, such as your own.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20",
-      "reason": "API 명세 변경"
-    },
-    {
-      "title": "Other counts from the connector, skill, and plugin usage endpoints can be higher or lower.",
-      "url": "https://platform.claude.com/docs/en/release-notes/overview#2026-11-20",
-      "reason": "API 명세 변경"
+      "title": "Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies",
+      "url": "https://developers.googleblog.com/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
+      "reason": "기존 목록의 'google-semantic-governance-policies(2026-11-20)'과 같은 주제의 중복 소식입니다. 이미 사이트에 등재되었으므로 제외됩니다."
     }
   ],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
-  "guideChanges": [
-    "가이드 추가: [openai] 보안 검토는 위협 모델과 정책 문서를 저장소에 두고 참조시키기",
-    "가이드 추가: [openai] 검토 결과는 근거와 함께 검토한 범위·제외·보류까지 적게 하기"
-  ],
+  "guideChanges": [],
   "styleNotes": {},
   "techLinks": [
-    "claude-mcp-skills-tasks-elicitation → mcp, mcp-elicitation, skills",
-    "openai-healthcare-model-configurations → harness, web-grounding",
-    "openai-codex-security-sdlc-review → skills, context-eng"
+    "google-antigravity-mass-spec-skills → skills, tool-use, agent-loop",
+    "google-agent-retrieval-managed-ingestion → managed-file-search"
   ],
   "retired": []
 }

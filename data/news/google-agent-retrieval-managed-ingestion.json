@@ -1,0 +1,235 @@
+{
+  "id": "google-agent-retrieval-managed-ingestion",
+  "company": "google",
+  "date": "2026-11-24",
+  "kind": "제품·기능 출시",
+  "title": "Managed ingestion과 SearchDocuments",
+  "headline": "파일을 Cloud Storage에 두면 파싱·임베딩 없이 API 호출 한 번으로 출처가 붙은 검색 결과를 받습니다",
+  "tldr": "Agent Retrieval(예전 이름 Vector Search 2.0)에 관리형 수집과 SearchDocuments가 Public Preview로 추가됐습니다. 데이터 스토어를 Cloud Storage의 파일에 연결하면 서비스가 파싱, 분할, Gemini Embedding 2 임베딩을 맡습니다. 검색 결과에는 문서는 페이지 범위, 영상은 시작·종료 시각이 함께 붙습니다.",
+  "fit": {
+    "summary": "PDF·Office 파일이나 영상을 대상으로 에이전트의 검색 도구를 만들 때 수집 파이프라인 코드를 직접 짜지 않아도 됩니다.",
+    "good": [
+      "PDF, DOCX, PPTX, XLSX, TXT 문서에서 페이지 번호가 붙은 답을 찾는 에이전트",
+      "영상 속 장면이나 발언이 나온 시점을 찾는 검색",
+      "메타데이터 필터와 리랭킹으로 결과를 좁혀야 하는 문서 검색"
+    ],
+    "notFor": [
+      "파서·분할·스키마를 직접 제어해야 하는 경우는 데이터 스토어 대신 Collection을 직접 쓰는 편이 낫습니다.",
+      "VIDEO 데이터 스토어에서는 reranking_spec을 쓸 수 없습니다.",
+      "Public Preview 기간에는 us-east4와 europe-west4 리전만 지원합니다."
+    ],
+    "start": "문서는 UNSTRUCTURED, 영상은 VIDEO 데이터 스토어를 따로 만들고 Cloud Storage 경로를 가져온 뒤 SearchDocuments를 호출합니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "PDF 검색 가능까지",
+      "value": "약 9분",
+      "note": "Alphabet 투자자용 PDF 18개, 공개 Cloud Storage 버킷 기준(Google 자체 테스트)"
+    },
+    {
+      "label": "영상 검색 속도",
+      "value": "0.3~0.5초",
+      "note": "약 19분 분량 영상, 쿼리당(Google 자체 테스트)"
+    },
+    {
+      "label": "영상 가져오기 시간",
+      "value": "20~45분",
+      "note": "영상 5개를 데이터 스토어 2개에 가져온 시간"
+    },
+    {
+      "label": "영상 분할 길이",
+      "value": "기본 30초",
+      "note": "짧은 창은 10~20초, 긴 창은 최대 80초"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "파일에서 인용된 답까지",
+      "caption": "데이터 스토어를 만들고 파일을 가져온 뒤 검색하는 순서입니다.",
+      "steps": [
+        {
+          "label": "데이터 스토어 만들기",
+          "desc": "문서는 UNSTRUCTURED, 영상은 VIDEO로 만듭니다."
+        },
+        {
+          "label": "파일 가져오기",
+          "desc": "gs:// 경로 패턴이나 JSONL 매니페스트로 가져옵니다."
+        },
+        {
+          "label": "자동 처리",
+          "desc": "서비스가 파싱, 분할, 임베딩을 맡습니다.",
+          "tag": "관리형",
+          "highlight": true
+        },
+        {
+          "label": "SearchDocuments 호출",
+          "desc": "텍스트 쿼리 하나로 검색합니다."
+        },
+        {
+          "label": "인용 결과",
+          "desc": "파일 URI와 페이지 범위 또는 시간 구간이 붙습니다."
+        }
+      ],
+      "loop": "같은 파일을 다시 가져오면 기존 문서를 갱신하고 내용이 같은 파일은 건너뜁니다.",
+      "source": {
+        "title": "From Files to Cited Answers in One API Call (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/"
+      }
+    },
+    {
+      "type": "compare",
+      "title": "문서 분할 방식 두 가지",
+      "caption": "문서 데이터 스토어의 segmentation 설정입니다.",
+      "columns": [
+        "분할 단위",
+        "페이지 정보",
+        "특징"
+      ],
+      "rows": [
+        {
+          "label": "Chunk segmentation (기본값)",
+          "cells": [
+            "100~500 토큰 청크",
+            "청크가 걸친 페이지 범위",
+            "레이아웃 파싱과 함께 쓰면 표와 제목도 감지"
+          ]
+        },
+        {
+          "label": "Page segmentation",
+          "cells": [
+            "페이지당 세그먼트 하나",
+            "한 페이지",
+            "결과에 페이지 번호가 바로 담김"
+          ],
+          "highlight": true
+        }
+      ],
+      "source": {
+        "title": "From Files to Cited Answers in One API Call (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "원문에 텍스트로 된 성능 비교 수치가 없어 그래프는 만들지 않았습니다.",
+  "changes": [
+    "관리형 수집이 파싱, 분할, 임베딩, 벡터 Collection과 스키마를 대신 처리합니다. 임베딩에는 Gemini Embedding 2를 씁니다.",
+    "SearchDocuments는 데이터 스토어와 텍스트 쿼리만 받습니다. Collection 이름, 벡터 필드, task type, 출력 필드를 넘기지 않아도 되고 문서에는 하이브리드 검색(의미 + 전문)이 자동으로 실행됩니다.",
+    "결과마다 원본 파일 URI가 붙습니다. 문서는 페이지 범위, 영상은 시작·종료 시각이 함께 나와 출처를 정확히 인용할 수 있습니다.",
+    "filter, document_ids, output_fields.metadata로 결과를 좁히고 메타데이터를 함께 받을 수 있습니다.",
+    "리랭킹을 켜면 top_k보다 많은 후보를 가져와 Ranking API(semantic-ranker-fast@latest)로 다시 정렬합니다. 직원 수를 묻는 예시에서는 리랭킹 전 상위 5개에 직원 수와 무관한 대차대조표 페이지가 둘 섞였지만 켠 뒤에는 모든 상위 결과가 직원 수를 담고 있었습니다.",
+    "영상은 audio_mode를 ENABLED로 두면 첫 번째 오디오 트랙도 함께 임베딩해 말한 내용으로 검색됩니다. 기본값 DISABLED에서는 화면 프레임만 임베딩합니다."
+  ],
+  "availability": [
+    "Public Preview 단계입니다. 리전은 us-east4와 europe-west4만 지원합니다.",
+    "데이터 스토어와 SearchDocuments API는 v1beta이며 REST로 호출합니다(Python SDK 지원은 예정).",
+    "관리형 수집 자체는 Public Preview 동안 별도 요금이 없고 GA 때부터 청구됩니다. 뒤에서 쓰는 Collection은 Agent Retrieval 표준 요금이 적용됩니다.",
+    "지원 파일 형식은 PDF, DOCX, PPTX, XLSX, TXT와 MP4, MOV, WebM, MKV 등 영상입니다."
+  ],
+  "usage": [
+    {
+      "title": "PDF 문서를 페이지 인용과 함께 검색하기",
+      "when": "보고서 PDF를 대상으로 출처가 있는 답을 찾는 에이전트 도구가 필요할 때",
+      "steps": [
+        "document_type을 UNSTRUCTURED로, segmentation_config를 page_segmentation_config로 두어 데이터 스토어를 만듭니다.",
+        "importDocuments로 gs:// 경로나 JSONL 매니페스트를 가져옵니다(긴 작업으로 실행됩니다).",
+        "documents:search에 text_query와 top_k를 넣어 호출하고 pageRange와 gcsUri로 출처를 표시합니다."
+      ],
+      "note": "Collection 쪽 권한을 위해 Agent Retrieval 서비스 에이전트에 roles/vectorsearch.serviceAgent를 부여해야 합니다.",
+      "example": {
+        "type": "code",
+        "text": "response = session.post(\n    f\"{PARENT}/dataStores/investor-reports/documents:search\",\n    json={\n        \"text_query\": {\"text\": \"How much did Google Cloud revenue grow?\"},\n        \"top_k\": 5,\n    },\n).json()"
+      },
+      "source": {
+        "title": "From Files to Cited Answers in One API Call (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/"
+      }
+    },
+    {
+      "title": "리랭킹으로 검색 정확도 올리기",
+      "when": "하이브리드 검색 결과에 질문과 무관한 페이지가 섞일 때",
+      "steps": [
+        "문서용 데이터 스토어에서 검색 요청에 ranking_spec을 추가합니다.",
+        "reranking_spec의 enabled를 True로 둡니다.",
+        "상위 결과가 질문에 맞는지 비교합니다."
+      ],
+      "note": "VIDEO 데이터 스토어에서는 reranking_spec을 지원하지 않습니다.",
+      "example": {
+        "type": "code",
+        "text": "\"ranking_spec\": {\"reranking_spec\": {\"enabled\": True}}"
+      },
+      "source": {
+        "title": "From Files to Cited Answers in One API Call (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/"
+      }
+    },
+    {
+      "title": "영상 속 발언까지 검색하기",
+      "when": "화면에는 연사가 나오고 내용은 말로만 전달되는 영상을 찾아야 할 때",
+      "steps": [
+        "document_type을 VIDEO로 두고 데이터 스토어를 만듭니다.",
+        "fixed_window_config의 segment_duration으로 구간 길이를 정합니다.",
+        "embedding_config의 audio_mode를 ENABLED로 둡니다.",
+        "영상을 가져온 뒤 SearchDocuments로 검색하고 videoDetails의 startOffset과 endOffset을 확인합니다."
+      ],
+      "note": "영상 가져오기는 트랜스코딩과 임베딩을 거쳐 시간이 걸립니다. 데이터 스토어당 가져오기는 한 번에 하나씩 실행합니다.",
+      "example": {
+        "type": "code",
+        "text": "\"document_type\": \"VIDEO\",\n\"processing_config\": {\n    \"video_processing_config\": {\n        \"segmentation_config\": {\"fixed_window_config\": {\"segment_duration\": \"20s\"}},\n        \"embedding_config\": {\"audio_mode\": \"ENABLED\"},\n    }\n}"
+      },
+      "source": {
+        "title": "From Files to Cited Answers in One API Call (Google Developers Blog)",
+        "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "구간 길이는 질문 유형에 맞추기",
+      "body": "특정 순간을 찾으려면 10~20초의 짧은 창이 정확한 시각을 줍니다. 주제 단위 질문에는 최대 80초까지의 긴 창이 맥락을 더 많이 담습니다."
+    },
+    {
+      "title": "메타데이터 스키마를 먼저 설계하기",
+      "body": "데이터 스토어를 만들 때 document_metadata_schema에 doc_type, year 같은 필드를 넣어 두면 filter로 좁히고 결과와 함께 돌려받을 수 있습니다."
+    },
+    {
+      "title": "정리할 때 Collection도 함께 삭제하기",
+      "body": "데이터 스토어를 지울 때 force=true와 backing_collection_deleted=true를 함께 지정하지 않으면 Collection이 남습니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "문서 검색 에이전트 도구 설계 요청",
+      "when": "관리형 수집을 에이전트에 붙이는 설계를 상의할 때",
+      "type": "prompt",
+      "text": "[문서 종류]를 Cloud Storage에 두고 Agent Retrieval의 데이터 스토어와 SearchDocuments로 검색하는 에이전트 도구를 설계해 줘.\n- 결과에 파일 URI와 페이지 범위를 포함해 출처를 인용하게 해\n- 필터로 쓸 메타데이터 필드는 [필드 목록]으로 해\n- 답이 부정확하면 리랭킹을 켜는 방법도 알려줘"
+    },
+    {
+      "title": "영상 데이터 스토어 생성 요청 (REST)",
+      "when": "영상 검색용 데이터 스토어 설정을 만들 때",
+      "type": "code",
+      "text": "\"document_type\": \"VIDEO\",\n\"processing_config\": {\n    \"video_processing_config\": {\n        \"segmentation_config\": {\"fixed_window_config\": {\"segment_duration\": \"20s\"}},\n        \"embedding_config\": {\"audio_mode\": \"ENABLED\"},\n    }\n}"
+    }
+  ],
+  "cautions": [
+    "Public Preview라 리전과 API 버전(v1beta) 제한이 있습니다. 수치는 모두 Google의 자체 테스트 결과입니다.",
+    "데이터 스토어 삭제는 백그라운드로 실행되며 Google 테스트에서 약 20분 걸렸습니다.",
+    "GA 이후 관리형 수집 요금이 청구될 예정입니다. 구체적인 금액은 원문에 없어 확인 필요입니다."
+  ],
+  "sources": [
+    {
+      "title": "From Files to Cited Answers in One API Call (Google Developers Blog)",
+      "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/"
+    },
+    {
+      "title": "Search documents in a data store (Google Cloud)",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search-2/query-search/search-data-stores"
+    },
+    {
+      "title": "Agent Retrieval overview (Google Cloud)",
+      "url": "https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search-2/overview"
+    }
+  ]
+}

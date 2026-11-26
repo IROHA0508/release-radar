@@ -1,0 +1,173 @@
+{
+  "id": "google-antigravity-mass-spec-skills",
+  "company": "google",
+  "date": "2026-11-24",
+  "kind": "제품·기능 출시",
+  "title": "Mass Spec Skills for Google Antigravity",
+  "headline": "탠덤 질량 스펙트럼에서 분자 구조 후보를 찾아 주는 Antigravity 전용 스킬 모음",
+  "tldr": "Google DeepMind가 Google Antigravity에서 쓰는 Mass Spec Skills를 공개했습니다. Gemini의 화학 추론과 공개된 질량분석 도구, 화학 데이터베이스 조회를 한 흐름으로 묶어 스펙트럼에서 구조 후보와 검토용 보고서까지 만들어 줍니다. 공개 라이브러리에 있는 화합물 100개 평가에서 스킬을 더하면 세 모델 모두 약 97%를 정확히 식별했습니다.",
+  "fit": {
+    "summary": "탠덤 질량분석(MS/MS) 스펙트럼을 해석해야 하는 연구자가 반복 작업을 맡기기에 맞는 도구입니다.",
+    "good": [
+      "공개 데이터베이스에 이미 등록된 분자를 스펙트럼으로 빠르게 식별하기",
+      "라이브러리에 없는 스펙트럼에서 분자식과 구조 후보를 좁히기",
+      "노이즈가 낀 기록을 정리하거나 피크를 주석 처리하는 일상 작업",
+      "후보 이성질체를 비교해 근거를 보고서로 남기기"
+    ],
+    "notFor": [
+      "거울상 분자나 일부 근연 이성질체 구분(머무름 시간, 이온 이동도, NMR 같은 다른 측정이 필요)",
+      "어떤 데이터베이스에도 없는 완전히 새로운 분자의 구조 확정(분자식, 피크 할당, 주석 표를 출발점으로만 제공)",
+      "화학자의 과학적 판단을 대신하는 최종 결론"
+    ],
+    "start": "Antigravity 앱을 내려받아 Mass Spec 플러그인을 설치한 뒤, 스펙트럼 파일과 장비 허용 오차를 평이한 말로 적어 요청합니다."
+  },
+  "models": [],
+  "numbers": [
+    {
+      "label": "정확 일치 식별률",
+      "value": "약 97%",
+      "note": "스킬을 더한 경우, Gemini 3.8 Flash·Gemini 4 Argon·Gemini 4 Carbon 모두 100개 화합물 평가 기준"
+    },
+    {
+      "label": "인터넷·스킬 없는 경우",
+      "value": "4% 미만",
+      "note": "세 모델 모두 피크 목록만으로는 구조를 추론하지 못함"
+    },
+    {
+      "label": "생성 토큰 감소",
+      "value": "Flash 약 4배 감소",
+      "note": "Argon은 절반, Carbon은 약 1/5 감소(시도당 생성 토큰)"
+    },
+    {
+      "label": "무료 지원 대상",
+      "value": "과학자 10,000명",
+      "note": "최고 사용량 등급을 6개월 동안 무료로 제공"
+    }
+  ],
+  "figures": [
+    {
+      "type": "flow",
+      "title": "스펙트럼에서 분자를 식별하는 네 단계",
+      "caption": "Mass Spec Skills가 탠덤 질량 스펙트럼을 처리하는 순서입니다.",
+      "steps": [
+        {
+          "label": "신호 준비",
+          "desc": "원시 기록을 전처리해 신호를 정리합니다."
+        },
+        {
+          "label": "라이브러리 검색",
+          "desc": "참조 스펙트럼 라이브러리에서 일치하는 분자를 찾습니다."
+        },
+        {
+          "label": "분자식에서 구조로",
+          "desc": "분자식을 추정하고 후보 구조의 순위를 매깁니다.",
+          "highlight": true
+        },
+        {
+          "label": "교차 검증",
+          "desc": "후보를 관측된 중성 소실과 결합 절단에 맞춰 확인하고 다듬습니다."
+        }
+      ],
+      "loop": "각 단계는 따로 실행해 노이즈 정리, 피크 주석, 이성질체 비교 같은 작은 작업에도 쓸 수 있습니다.",
+      "source": {
+        "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity (Google DeepMind)",
+        "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/"
+      }
+    }
+  ],
+  "charts": [],
+  "chartNote": "정확도와 토큰 비교 그래프(Figure 5a, 5b)가 이미지로만 공개돼 모델별 수치를 텍스트로 확인할 수 없어 그래프는 만들지 않았습니다. 본문에 적힌 수치는 핵심 수치에 옮겼습니다.",
+  "changes": [
+    "Gemini의 화학 추론을 기존 질량분석 도구와 공개 화학 데이터베이스 조회에 연결한 도메인 스킬 모음입니다. Antigravity가 스킬을 실행하고 결과를 합쳐 화학자가 검토할 근거를 정리합니다.",
+    "연구자는 작업과 장비별 허용 오차를 평이한 말로 적으면 됩니다. 에이전트가 필요한 스킬을 골라 이어 붙입니다.",
+    "프롬프트 하나로 주석이 없는 탠덤 스펙트럼에서 구조 후보와 감사 가능한 보고서까지 만들 수 있습니다.",
+    "원문 사례에서 에이전트는 SIRIUS로 분자식 C20H21ClN6O를 정하고 PubChem의 이성질체 845개를 점수화한 뒤, 중성 소실과 결합 절단으로 아마이드 이성질체를 걸러 냈습니다.",
+    "스킬이 검증된 도구를 호출하기 때문에 에이전트가 검색 스크립트를 처음부터 짜고 고치는 일이 줄어 생성 토큰이 줄었습니다.",
+    "경량 모델인 Gemini 3.8 Flash도 스킬을 더하면 Gemini 4 Argon·Gemini 4 Carbon과 같은 수준의 정확도를 냈습니다."
+  ],
+  "availability": [
+    "Google Antigravity에서 오늘부터 사용할 수 있습니다. Antigravity 앱을 내려받아 Mass Spec 플러그인을 설치합니다.",
+    "Enterprise 사용자는 앱에서 “Use Business Account”를 고르고 Google Cloud 계정으로 로그인해 시작합니다.",
+    "연구 지원으로 과학자 10,000명에게 Google Antigravity 최고 사용량 등급을 6개월 무료로 제공합니다. 신청은 열려 있고 자격, 수용 능력, 선발에 따라 순차적으로 진행합니다."
+  ],
+  "usage": [
+    {
+      "title": "스펙트럼 파일에서 구조 후보 찾기",
+      "when": "라이브러리에 없는 MS/MS 스펙트럼의 분자식과 구조 후보를 좁혀야 할 때",
+      "steps": [
+        "Antigravity 앱에 Mass Spec 플러그인을 설치합니다.",
+        "스펙트럼 파일을 지정하고 장비 허용 오차를 평이한 말로 적어 요청합니다.",
+        "에이전트가 만든 분자식, 후보 순위, 피크 할당 보고서를 검토합니다.",
+        "설명되지 않는 피크나 후보 간 차이는 화학자가 직접 판단합니다."
+      ],
+      "note": "완전히 새로운 분자는 구조를 확정하지 못하고 출발점만 제공합니다.",
+      "example": {
+        "type": "prompt",
+        "text": "첨부한 MS2 스펙트럼 파일로 구조 규명을 실행해 줘.\n- 전구체 이온: [m/z 값], 극성: [양이온/음이온]\n- 질량 허용 오차: [값]\n분자식을 정하고 PubChem 후보의 순위를 매긴 뒤, 근거와 함께 보고서로 정리해 줘."
+      },
+      "source": {
+        "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity (Google DeepMind)",
+        "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/"
+      }
+    },
+    {
+      "title": "단계 하나만 따로 실행하기",
+      "when": "전체 흐름 없이 노이즈 정리나 이성질체 비교 같은 작은 작업만 필요할 때",
+      "steps": [
+        "하려는 단계 하나만 요청에 적습니다.",
+        "결과를 확인한 뒤 필요하면 다음 단계를 이어서 요청합니다."
+      ],
+      "example": {
+        "type": "prompt",
+        "text": "이 스펙트럼 기록의 노이즈를 정리하고 남은 피크에 주석을 달아 줘. 구조 후보 검색은 하지 마."
+      },
+      "source": {
+        "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity (Google DeepMind)",
+        "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/"
+      }
+    }
+  ],
+  "tips": [
+    {
+      "title": "허용 오차는 말로 적기",
+      "body": "각 도구를 직접 설정하지 않고 장비별 허용 오차를 평이한 말로 요청에 적으면 에이전트가 스킬을 골라 연결합니다."
+    },
+    {
+      "title": "후보는 근거로 검토",
+      "body": "스펙트럼 일치도는 질량만으로 맞춘 값이라 관능기와 결합 연결이 맞는지 따로 확인합니다. 에이전트가 중성 소실과 결합 절단으로 거른 근거를 보고서에서 읽어 보세요."
+    },
+    {
+      "title": "경량 모델부터 시도",
+      "body": "스킬을 더하면 Gemini 3.8 Flash도 프런티어 모델과 같은 식별 정확도를 냈습니다. 토큰을 아끼려면 경량 모델로 시작해 볼 만합니다."
+    }
+  ],
+  "prompts": [
+    {
+      "title": "구조 규명 end-to-end 요청",
+      "when": "주석이 없는 탠덤 스펙트럼 하나를 처음부터 끝까지 해석하고 싶을 때",
+      "type": "prompt",
+      "text": "첨부한 MS2 스펙트럼 파일의 구조 규명을 실행해 줘.\n전구체 이온은 [m/z 값]이고 [양이온/음이온] 모드야. 질량 허용 오차는 [값]으로 설정해.\n분자식을 정하고 후보 이성질체의 순위를 매긴 뒤, 후보 구조와 근거를 보고서로 정리해 줘."
+    },
+    {
+      "title": "후보 이성질체 비교",
+      "when": "점수가 비슷한 후보 두 개를 구분해야 할 때",
+      "type": "prompt",
+      "text": "분자식 [분자식]의 상위 후보 [CID 1]과 [CID 2]를 비교해 줘.\n중성 소실과 결합 절단 경로로 각 후보가 관측된 피크를 설명하는지 확인하고, 어느 쪽이 더 맞는지 근거를 적어 줘."
+    }
+  ],
+  "cautions": [
+    "LC-MS/MS 스펙트럼만으로는 거울상 분자와 일부 근연 이성질체를 구분하지 못합니다. 머무름 시간, 이온 이동도, NMR 같은 다른 측정이 필요합니다.",
+    "어떤 데이터베이스에도 없는 새 분자는 Antigravity가 구조를 찾거나 확인하지 못합니다. 예측 분자식, 피크 할당, 주석 표를 출발점으로 쓰는 용도입니다.",
+    "정확도 수치는 Enamine REAL MS/MS 컬렉션 100개 화합물(스펙트럼당 세 번 시도) 평가 값입니다. 1시간 제한을 넘긴 시도는 실패로 처리했습니다."
+  ],
+  "sources": [
+    {
+      "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity (Google DeepMind)",
+      "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/"
+    },
+    {
+      "title": "Google Antigravity 과학 활용 사례",
+      "url": "https://antigravity.google/use-cases/science"
+    }
+  ]
+}

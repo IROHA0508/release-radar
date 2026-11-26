@@ -247,7 +247,8 @@
         "chatgpt-wallet",
         "gemini-app-tasks",
         "google-ai-studio-android-full-stack",
-        "openai-agents-time-awareness-async-input"
+        "openai-agents-time-awareness-async-input",
+        "google-antigravity-mass-spec-skills"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -320,7 +321,8 @@
         "google-ai-studio-android-full-stack",
         "chatgpt-for-sales",
         "openai-agents-time-awareness-async-input",
-        "claude-ship"
+        "claude-ship",
+        "google-antigravity-mass-spec-skills"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -528,7 +530,8 @@
         "claude-fable-5-cowork-tips",
         "claude-fold-subagents-main-agent-loop",
         "claude-mcp-skills-tasks-elicitation",
-        "openai-codex-security-sdlc-review"
+        "openai-codex-security-sdlc-review",
+        "google-antigravity-mass-spec-skills"
       ],
       "verifiedAt": "2026-10-21"
     },
@@ -2917,7 +2920,9 @@
           "url": "https://blog.google/innovation-and-ai/technology/developers-tools/file-search-gemini-api/"
         }
       ],
-      "news": [],
+      "news": [
+        "google-agent-retrieval-managed-ingestion"
+      ],
       "verifiedAt": "2026-10-21"
     },
     {

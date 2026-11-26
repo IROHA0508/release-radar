@@ -1696,6 +1696,14 @@
       "status": "skipped",
       "title": "Genie 4: A new generation of world simulation"
     },
+    "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity": {
+      "checkedAt": "2026-11-26",
+      "company": "google",
+      "date": "2026-11-24",
+      "id": "google-antigravity-mass-spec-skills",
+      "status": "added",
+      "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity"
+    },
     "https://deepmind.google/blog/introducing-alphaproof-code": {
       "checkedAt": "2026-11-11",
       "company": "google",
@@ -1922,6 +1930,14 @@
       "status": "skipped",
       "title": "DevFest is back!"
     },
+    "https://developers.googleblog.com/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies": {
+      "checkedAt": "2026-11-26",
+      "company": "google",
+      "date": "2026-11-23",
+      "reason": "기존 목록의 'google-semantic-governance-policies(2026-11-20)'과 같은 주제의 중복 소식입니다. 이미 사이트에 등재되었으므로 제외됩니다.",
+      "status": "skipped",
+      "title": "Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies"
+    },
     "https://developers.googleblog.com/distributed-llm-training-across-metros-streaming-diloco-in-maxtext": {
       "checkedAt": "2026-11-20",
       "company": "google",
@@ -1967,6 +1983,14 @@
       "id": "google-a2ui-express",
       "status": "added",
       "title": "Fast, reliable A2UI, with swappable inference formats"
+    },
+    "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval": {
+      "checkedAt": "2026-11-26",
+      "company": "google",
+      "date": "2026-11-24",
+      "id": "google-agent-retrieval-managed-ingestion",
+      "status": "added",
+      "title": "From Files to Cited Answers in One API Call: Managed Ingestion and SearchDocuments in Agent Retrieval"
     },
     "https://developers.googleblog.com/from-prompt-to-app-build-with-google-maps-in-ai-studio": {
       "checkedAt": "2026-11-10",
