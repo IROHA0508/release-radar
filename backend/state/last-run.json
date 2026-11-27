@@ -1,62 +1,18 @@
 {
-  "startedAt": "2026-11-26T10:02:06+09:00",
+  "startedAt": "2026-11-27T10:03:53+09:00",
   "mode": "update",
   "sourceErrors": {},
   "entries": 2729,
-  "candidates": [
-    {
-      "title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity",
-      "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/",
-      "company": "google",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "From Files to Cited Answers in One API Call: Managed Ingestion and SearchDocuments in Agent Retrieval",
-      "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/",
-      "company": "google",
-      "date": "2026-11-24",
-      "relatedId": null
-    },
-    {
-      "title": "Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies",
-      "url": "https://developers.googleblog.com/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
-      "company": "google",
-      "date": "2026-11-23",
-      "relatedId": "google-semantic-governance-policies"
-    }
-  ],
-  "added": [
-    {
-      "id": "google-antigravity-mass-spec-skills",
-      "title": "Mass Spec Skills for Google Antigravity",
-      "url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/",
-      "charts": 0
-    },
-    {
-      "id": "google-agent-retrieval-managed-ingestion",
-      "title": "Managed ingestion과 SearchDocuments",
-      "url": "https://developers.googleblog.com/from-files-to-cited-answers-in-one-api-call-managed-ingestion-and-searchdocuments-in-agent-retrieval/",
-      "charts": 0
-    }
-  ],
+  "candidates": [],
+  "added": [],
   "updated": [],
-  "skipped": [
-    {
-      "title": "Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies",
-      "url": "https://developers.googleblog.com/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/",
-      "reason": "기존 목록의 'google-semantic-governance-policies(2026-11-20)'과 같은 주제의 중복 소식입니다. 이미 사이트에 등재되었으므로 제외됩니다."
-    }
-  ],
+  "skipped": [],
   "failed": [],
   "guardNotes": {},
   "note": "요약 엔진: Claude Code CLI(구독)",
   "authError": false,
   "guideChanges": [],
   "styleNotes": {},
-  "techLinks": [
-    "google-antigravity-mass-spec-skills → skills, tool-use, agent-loop",
-    "google-agent-retrieval-managed-ingestion → managed-file-search"
-  ],
+  "techLinks": [],
   "retired": []
 }
